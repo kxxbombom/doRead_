@@ -2,6 +2,7 @@ package kr.member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
@@ -20,13 +21,27 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
 		String sql = null;
+		int num = 0;
 		try {
 			conn = DBUtil.getConnection();
 			
 			conn.setAutoCommit(false);
 			
 			//회원번호 생성
+			sql = "SELECT member_seq.nextval FROM dual";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt(1);
+			}
+			
+			sql = "INSERT member (mem_num, mem_id) VALUES (?,?)";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, num);
+			pstmt2.setString(2, member.getId());
+			
 			//member insert
 			//member_detail insert
 			
