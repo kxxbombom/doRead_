@@ -10,7 +10,7 @@ public class BookVO {
 	private int stock; 				//재고
 	private String book_img;		//책 이미지
 	private String book_category;	//책 분야
-	
+	   
 	public int getBook_num() {
 		return book_num;
 	}

@@ -12,7 +12,7 @@ public class InsertBookFormAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		Integer mem_num = (Integer)session.getAttribute("mem_num");
-		return null;
+		return null;    
 	}
-
+	
 }

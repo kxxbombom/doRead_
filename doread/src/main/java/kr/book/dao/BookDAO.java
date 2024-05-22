@@ -23,6 +23,6 @@ public class BookDAO {
 		conn = DBUtil.getConnection();
 		sql = "INSERT book(book_num,book_name,author,publisher,publish_date,price,stock,book_img,book_category) VALUES (book_seq,?,?,?,?,?,?,?,?)";
 		
-		
+		    
 	};
 }
