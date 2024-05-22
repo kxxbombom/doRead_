@@ -1,1 +1,38 @@
 @charset "UTF-8";
+body{
+	width:960px;
+	margin:0 auto;
+	background:#E6E6E6;
+}
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	text-decoration:none;
+	color:#6C6C6C;
+}
+/* 페이지 레이아웃
+---------------------*/
+.page-main{
+	background:#FFFFFF;
+	margin:40px 0;
+	border-radius:5px;
+	box-shadow:0 2px 6px rgba(100,100,100,0.3);
+	min-height:650px;
+}
+.content-main{
+	padding:10px 20px;
+}
+/*관리자 페이지 상단바*/
+#adminpage{
+	width:1004px;
+	height:163px;
+	background:rgb(26, 77, 46);
+	color:#999;
+	
+}
