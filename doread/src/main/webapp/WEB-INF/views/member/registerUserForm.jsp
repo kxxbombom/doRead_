@@ -10,6 +10,9 @@
 <script type="text/javascript">
 $(function(){
 	let idChecked = 0;
+	let pwChecked = 0;
+	$('#passwd_checkmessage').hide();
+	
 	$('#id_check').click(function(){
 		if($('#id').val().length < 4){
 			alert('아이디는 4~12글자이어야 합니다');
@@ -30,10 +33,10 @@ $(function(){
 			success:function(param){
 				if(param.result == 'idNotFound'){
 					idChecked = 1;
-					$('id_checkmessage').css('color','black').text('사용 가능 아이디');
+					$('#id_checkmessage').css('color','black').text('사용 가능 아이디');
 				}else if(param.result == 'idDuplicated'){
 					idChecked = 0;
-					$('id_checkmessage').css('color','red').text('중복된 아이디');
+					$('#id_checkmessage').css('color','red').text('중복된 아이디');
 					$('#id').focus();
 				}else{
 					idChecked = 0;
@@ -49,7 +52,18 @@ $(function(){
 	
 	$('#register_form #id').keydown(function(){
 		idChecked = 0;
-		$('id_checkmessage').text('');
+		$('#id_checkmessage').text('');
+	});
+	
+	$('#register_form #cpasswd').keydown(function(){
+		pwChecked = 0;
+		$('#passwd_checkmessage').show();
+	});
+	$('#register_form #cpasswd').keyup(function(){
+		if($('#passwd').val() == $('#cpasswd').val()){
+			pwChecked = 1;
+			$('#passwd_checkmessage').hide();
+		}
 	});
 	
 	$('#register_form').submit(function(){
@@ -69,6 +83,15 @@ $(function(){
 			}
 			if(items[i].id == 'id' && idChecked == 0){
 				alert('아이디 중복 체크 필수');
+				return false;
+			}
+			if(items[i].id == 'cpasswd' && pwChecked == 0){
+				alert('비밀번호를 다시 입력하세요');
+				return false;
+			}
+			if(items[i].id == 'phone' && !/^01([016789]{1})-?([0-9]{3,4})-?([0-9]{4})$/.test($('#phone').val())){
+				alert('전화번호를 양식에 맞게 입력하세요');
+				$('#id').focus();
 				return false;
 			}
 			if(items[i].id == 'zipcode' && !/^[0-9]{5}$/.test($('#zipcode').val())){
@@ -122,9 +145,10 @@ $(function(){
 				<li>
 					<label for="phone">전화번호</label>
 					<input type="text" name="phone" id="phone" maxlength="15" class="input-check">
+					<div class="form_notice">*010-0000-0000 형식으로 입력</div>
 				</li>
 				<li>
-					<label for="zipcode">우편변호</label>
+					<label for="zipcode">우편번호</label>
 					<input type="text" name="zipcode" id="zipcode" maxlength="5" autocomplete="off" class="input-check">
 					<input type="button" value="우편번호 찾기" onclick="execDaumPostcode()">
 				</li>
@@ -133,22 +157,22 @@ $(function(){
 					<input type="text" name="address1" id="address1" maxlength="50" class="input-check">
 				</li>
 				<li>
-					<label for="address2">주소</label>
+					<label for="address2">상세 주소</label>
 					<input type="text" name="address2" id="address2" maxlength="50" class="input-check">
 				</li>
 				<li>
 					<label for="">관심도서</label><%-- --%>
-					<input type="checkbox" name="preference" value="novel">소설
-					<input type="checkbox" name="preference" value="essay">시/에세이
-					<input type="checkbox" name="preference" value="humanities">인문
-					<input type="checkbox" name="preference" value="politics">정치/사회
-					<input type="checkbox" name="preference" value="science">과학/공학
-					<input type="checkbox" name="preference" value="it">IT/프로그래밍
-					<input type="checkbox" name="preference" value="self-improvement">자기계발
-					<input type="checkbox" name="preference" value="foreign_language">외국어
-					<input type="checkbox" name="preference" value="examination">수험서/취업
-					<input type="checkbox" name="preference" value="comics">만화
-					<input type="checkbox" name="preference" value="hobby">취미/스포츠
+					<input type="radio" name="preference" value="1">소설
+					<input type="radio" name="preference" value="2">시/에세이
+					<input type="radio" name="preference" value="3">인문
+					<input type="radio" name="preference" value="4">정치/사회
+					<input type="radio" name="preference" value="5">과학/공학
+					<input type="radio" name="preference" value="6">IT/프로그래밍
+					<input type="radio" name="preference" value="7">자기계발
+					<input type="radio" name="preference" value="8">외국어
+					<input type="radio" name="preference" value="9">수험서/취업
+					<input type="radio" name="preference" value="10">만화
+					<input type="radio" name="preference" value="11">취미/스포츠
 				</li>
 			</ul>
 			<hr size="1" noshade width="1000">

@@ -37,19 +37,19 @@ public class MemberDAO {
 				num = rs.getInt(1);
 			}
 			
-			sql = "INSERT member (mem_num, mem_id) VALUES (?,?)";
+			sql = "INSERT INTO member (mem_num, mem_id) VALUES (?,?)";
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(1, num);
 			pstmt2.setString(2, member.getMem_id());
 			pstmt2.executeUpdate();
 			
-			sql = "INSERT INTO member_detail (mem_num, mem_name, mem_passwd, mem_phone, mem_email, mem_zipcode, mem_address1, mem_address2) VALUES (?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO member_detail (mem_num, mem_name, mem_pw, mem_phone, mem_email, mem_zipcode, mem_address1, mem_address2) VALUES (?,?,?,?,?,?,?,?)";
 			
 			pstmt3 = conn.prepareStatement(sql);
 			
 			pstmt3.setInt(1, num);
 			pstmt3.setString(2, member.getMem_name());
-			pstmt3.setString(3, member.getMem_passwd());
+			pstmt3.setString(3, member.getMem_pw());
 			pstmt3.setString(4, member.getMem_phone());
 			pstmt3.setString(5, member.getMem_email());
 			pstmt3.setString(6, member.getMem_zipcode());
@@ -86,7 +86,7 @@ public class MemberDAO {
 				member.setMem_num(rs.getInt("mem_num"));
 				member.setMem_id(rs.getString("mem_id"));
 				member.setMem_auth(rs.getInt("mem_auth"));
-				member.setMem_passwd(rs.getString("mem_passwd"));
+				member.setMem_pw(rs.getString("mem_pw"));
 				member.setMem_email(rs.getString("mem_email"));
 				member.setMem_phone(rs.getString("mem_phone"));
 			}
