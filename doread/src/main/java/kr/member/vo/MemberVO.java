@@ -1,6 +1,6 @@
 package kr.member.vo;
 
-import java.sql.Date;
+import java.sql.Date; 
 
 public class MemberVO {
 	private int mem_num;
