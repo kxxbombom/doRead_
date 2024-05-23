@@ -56,6 +56,7 @@ public class MemberDAO {
 			pstmt3.setString(7, member.getMem_address1());
 			pstmt3.setString(8, member.getMem_address2());
 			
+			pstmt3.executeUpdate();
 			conn.commit();
 			
 		}catch(Exception e) {
@@ -64,7 +65,7 @@ public class MemberDAO {
 		}finally {
 			DBUtil.executeClose(null, pstmt3, null);
 			DBUtil.executeClose(null, pstmt2, null);
-			DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(rs, pstmt, conn);
 		}
 	}
 	//아이디중복체크, 로그인
@@ -72,7 +73,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "";
+		String sql = null;
 		MemberVO member = null;
 		try {
 			conn = DBUtil.getConnection();

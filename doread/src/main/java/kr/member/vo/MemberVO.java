@@ -18,8 +18,8 @@ public class MemberVO {
 	private Date mem_mdate;
 	private int book_category;
 	
-	public boolean isCheckedPassword(String mem_pw) {
-		if(mem_auth > 1 && mem_pw.equals(mem_pw)) {
+	public boolean isCheckedPassword(String userpw) {
+		if(mem_auth > 1 && mem_pw.equals(userpw)) {
 			return true;
 		}
 		return false;
