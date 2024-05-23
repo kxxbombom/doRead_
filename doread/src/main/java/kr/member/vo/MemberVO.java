@@ -23,7 +23,7 @@ public class MemberVO {
 			return true;
 		}
 		return false;
-	}
+	} 
 		
 	public int getBook_category() {
 		return book_category;

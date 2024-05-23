@@ -50,11 +50,11 @@
 						</li>
 						<li id="menu-cart">
 							<img src="${pageContext.request.contextPath}/images/cart.png" width="25" 
-							height="25" onclick="location.href='cart.do'" class="click-image">
+							height="25" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'" class="click-image">
 						</li>
 						<li id="menu-mypage">
 							<img src="${pageContext.request.contextPath}/images/mypage1.png" width="25" 
-							height="25" onclick="location.href='mypage.do'" class="click-image">
+							height="25" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'" class="click-image">
 						</li>
 					</ul>
 			</form>
