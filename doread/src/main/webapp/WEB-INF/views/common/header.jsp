@@ -84,8 +84,6 @@
 		<li>
 			<a href="${pageContext.request.contextPath}/adminster/adminPage.do">관리자페이지</a>
 		</li>
-		
-		
 	</ul>
 </div>
 <!-- header 끝 -->

@@ -23,8 +23,20 @@
 #main_nav{
 	text-align:center;
 }
+#main_nav ul li{
+	box-sizing:border-box;
+	display:inline-block;
+	width: 120px;
+	height: 40px;
+	border-bottom: 0;
+	border: 1px solid #576979;
+	text-align: center;
+	color:#336633;
+}
+#main_nav ul li{
+	background-color:#336633;
+}
 /* 검색창 */
-
 #header-search{
 	text-align:center;
 }
