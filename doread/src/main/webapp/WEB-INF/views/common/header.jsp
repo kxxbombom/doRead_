@@ -6,7 +6,7 @@
 	<ul>
 		<c:if test="${empty user_num}">
 		<li>
-			<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
+			<a href="${pageContext.request.contextPath}/member/registerUserForm.do" >회원가입</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
@@ -64,25 +64,25 @@
 <div id="main_nav">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">책 카테고리</a>
+			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">책 카테고리</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/newsList.do">뉴스</a>
+			<a href="${pageContext.request.contextPath}/board/newsList.do" class="nav">뉴스</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/eventList.do">이벤트</a>
+			<a href="${pageContext.request.contextPath}/board/eventList.do" class="nav">이벤트</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/usedList.do">중고</a>
+			<a href="${pageContext.request.contextPath}/board/usedList.do" class="nav" >중고</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
+			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">게시판</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/QnAList.do">QnA</a>
+			<a href="${pageContext.request.contextPath}/board/QnAList.do" class="nav">QnA</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/adminster/adminPage.do">관리자페이지</a>
+			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" class="nav">관리자페이지</a>
 		</li>
 	</ul>
 </div>

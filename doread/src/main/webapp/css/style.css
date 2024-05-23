@@ -7,22 +7,25 @@ body{
 	margin:0 auto;
 	background:#E6E6E6;
 }
-/* a:link{
-	text-decoration:none;
-	color:#000000;
-} */
 a:link{
 	text-decoration:none;
-	color:white;
-}
-/* a:visited{
-	text-decoration:none;
 	color:#000000;
-} */
+}
+
 a:visited{
 	text-decoration:none;
+	color:#000000;
+} 
+.nav:link{
+	text-decoration:none;
 	color:white;
 }
+
+.nav:visited{
+	text-decoration:none;
+	color:white;
+} 
+
 a:hover{
 	text-decoration:none;
 	color:#6C6C6C;
