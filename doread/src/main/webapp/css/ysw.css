@@ -1,4 +1,9 @@
 @charset "UTF-8";
+/* 정렬 */
+.align-left{
+	text-align:left;
+}
+/* 최상단 nav 바 */
 #mini_nav{
 	float:right;
 }
@@ -8,20 +13,32 @@
 	padding:0;
 }
 #mini_nav ul li{
-	
 	display:inline-block;
 	width:70px;
 	text-align:center;
-	vertical-align:middle;
+	vertical-align:middle; 
 	padding-top:10px;
 }
+/* 메인nav */
+#main_nav{
+	text-align:center;
+}
+/* 검색창 */
 
-.align-left{
-	text-align:left;
-}
-#main_logo{
-	padding-left:50px;
-}
 #header-search{
+	text-align:center;
+}
+#header-search ul{
+	list-style:none;
+	text-align:right;
+	margin:0;
+	padding:0;
+}
+#header-search ul li{
 	display:inline-block;
-}   
+	
+}
+
+.click-image{
+	cursor:pointer;
+}

@@ -26,44 +26,39 @@
 	</ul>
 </div>
 <div id="header-search">
-	<h1 class="align-left">
-		<a href="${pageContext.request.contextPath}/main/main.do">Do Read</a>
-	</h1>
-	<form id="search_form" action="list.do" method="get">
-			<ul class="search">
-				<li>
-					<select name="keyfield">
-						<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
-						<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>아이디</option>
-						<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>내용</option>
-					</select>
-				</li>
-				<li>
-					<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">				
-				</li>
-				<li>
-					<input type="submit" value="검색">
-				</li>
-			</ul>
-	</form>
-</div>
-<div>
 	<ul>
-		<c:if test="${!empty user_num}">
 		<li>
-			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
+			<h1 class="align-left">
+				<a href="${pageContext.request.contextPath}/main/main.do">Do Read</a>
+			</h1>
 		</li>
-		</c:if>
-		<c:if test="${!empty user_num && !empty user_photo}">
-		<li	class="menu-profile">
-			<img src="${pageContext.request.contextPath}/upload/${user_photo}" width="25" height="25" class="my-photo">
+		<li>
+			<form id="search_form" action="list.do" method="get">
+					<ul class="search">
+						<li>
+							<select name="keyfield">
+								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>도서명</option>
+								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>제목</option>
+								<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>내용</option>
+							</select>
+						</li>
+						<li>
+							<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">				
+						</li>
+						<li>
+							<input type="submit" value="검색">
+						</li>
+						<li id="menu-cart">
+							<img src="${pageContext.request.contextPath}/images/cart.png" width="25" 
+							height="25" onclick="location.href='cart.do'" class="click-image">
+						</li>
+						<li id="menu-mypage">
+							<img src="${pageContext.request.contextPath}/images/mypage1.png" width="25" 
+							height="25" onclick="location.href='mypage.do'" class="click-image">
+						</li>
+					</ul>
+			</form>
 		</li>
-		</c:if>
-		<c:if test="${!empty user_num && empty user_photo}">
-		<li	class="menu-profile">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
-		</li>
-		</c:if>
 	</ul>
 </div>
 <div id="main_nav">
