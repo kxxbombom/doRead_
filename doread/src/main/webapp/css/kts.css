@@ -1,7 +1,37 @@
 @charset "UTF-8";
-.contents-main{
-	padding:5px 10px 40px 10px;
-	margin-top:15px;
+
+.mypage-div{
+	width:800px;
+	margin: 0 auto ;
 	background-color:#1a4d2e;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 	
+	
+}
+.mypage-div ul{
+	margin:0;
+	padding:2px 20px 20px 20px;
+	white-space: nowrap;
+	
+}
+.mypage-div ul li{
+	padding-top:8px;
+	font-size:14px;
+	color:#FFFFFF;
+}
+.mypage-div ul li.page-name{
+	font-size:30px;
+	white-space: nowrap;
+}
+.mypage-title{
+	font-size:20px;
+}
+.outer-main{
+	float: left;
+	position: relative;
+}
+.inner-menu > a{
+	color:#FFFFFF;
 }
