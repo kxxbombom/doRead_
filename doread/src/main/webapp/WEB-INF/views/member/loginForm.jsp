@@ -14,7 +14,7 @@
 <body>
 <div class="page-main">
 	<div class="content-main">
-		<h2>Do READ</h2>
+		<h2><a href="${pageContext.request.contextPath}/main/main.do">Do READ</a></h2>
 		<form id="login_form" action="login.do" method="post">
 			<ul>
 				<li class="floating-label">
