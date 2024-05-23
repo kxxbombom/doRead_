@@ -54,6 +54,7 @@
 				<li>
 					<a href="${pageContext.request.contextPath}/member/inquery.do">1:1문의</a>
 					<a href="${pageContext.request.contextPath}/member/bookrequest.do">도서 신청</a>
+					
 				</li>
 			</ul>
 		</div>
