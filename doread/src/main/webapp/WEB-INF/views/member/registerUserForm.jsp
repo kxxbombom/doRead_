@@ -94,6 +94,11 @@ $(function(){
 				$('#id').focus();
 				return false;
 			}
+			if(items[i].id == 'email' && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($('#email').val())){
+				alert('이메일을 양식에 맞게 입력하세요');
+				$('#id').focus();
+				return false;
+			}
 			if(items[i].id == 'zipcode' && !/^[0-9]{5}$/.test($('#zipcode').val())){
 				alert('우편번호를 입력하세요(숫자5자리)');
 				$('#zipcode').val('').focus();
@@ -106,13 +111,14 @@ $(function(){
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="content-main">
+	<div class="content-main register-header">
 		<h2>회원가입</h2>
-		<div class="register-top"><%-- --%>
-			<span>일반 개인회원</span>
+		<div class="register-top">
+   			 <div class="background-box">
+        		<span>일반 개인회원</span>
+  	 		 </div>
 		</div>
-		<hr size="1" noshade width="1000">
+		<hr size="1" noshade width="860">
 	</div>
 	<div class="register-main"><%-- --%>
 		<span>기본 정보 입력</span>
@@ -120,7 +126,7 @@ $(function(){
 			<ul>
 				<li>
 					<label for="name">이름</label>
-					<input type="text" name="name" id="name" maxlength="10" class="input-check">
+					<input type="text" name="name" id="name" maxlength="10" autocomplete="off" class="input-check">
 				</li>
 				<li>
 					<label for="id">아이디</label>
@@ -144,7 +150,7 @@ $(function(){
 				</li>
 				<li>
 					<label for="phone">전화번호</label>
-					<input type="text" name="phone" id="phone" maxlength="15" class="input-check">
+					<input type="text" name="phone" id="phone" maxlength="15" autocomplete="off" class="input-check">
 					<div class="form_notice">*010-0000-0000 형식으로 입력</div>
 				</li>
 				<li>

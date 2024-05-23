@@ -3,11 +3,11 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:960px;
+	width:1200px;
 	margin:0 auto;
 	background:#FFFFFF;
 }
-a:link{
+/*a:link{
 	text-decoration:none;
 	color:#000000;
 }
@@ -18,19 +18,20 @@ a:visited{
 a:hover{
 	text-decoration:none;
 	color:#6C6C6C;
-}
+}*/
 /* 페이지 레이아웃
 ---------------------*/
 .page-main{
 	background:#FFFFFF;
 	margin:40px 0;
-	border-radius:5px;
-	box-shadow:0 2px 6px rgba(100,100,100,0.3);
+	border-radius:5px;/*삭제!*/
+	box-shadow:0 2px 6px rgba(100,100,100);/*삭제!*/
 	min-height:650px;
 }
 .content-main{
 	padding:10px 20px;
 }
+
 /* 공통 메시지
 ---------------------*/
 .result-display{
@@ -90,7 +91,7 @@ form{
 	width:600px;
 	margin:0 auto;
 	border:1px solid #000;
-	padding:10px 10px 10px 30px;
+	padding:0;
 }
 form ul li{
 	clear:both;
@@ -121,6 +122,34 @@ input[type="number"]{
 .form-notice{
 	margin-left:130px;
 }
+/* 회원가입
+---------------------*/
+.register-header h2{
+	padding:0 150px;
+}
+.register-top{
+	text-align:center;
+}
+.background-box{
+	display:inline-block;
+	padding:7px 50px;
+	border-radius:4px;
+	background-color:rgb(26, 77, 46);
+}
+.register-top .background-box span {
+	font-size: 20px;
+	color: #FFF;
+}
+
+.register-main{
+	padding:10px 20px;
+
+}
+.register-main span{
+	padding:0 0 0 150px;
+	font-size:18px;
+}
+
 /* 로그인
 ---------------------*/
 #login_form{

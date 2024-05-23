@@ -13,10 +13,9 @@ public class MemberVO {
 	private String mem_address1;
 	private String mem_address2;
 	private int mem_auth;
-	private String mem_photo;
 	private Date mem_rdate;
 	private Date mem_mdate;
-	private int book_category;
+	private Integer book_category;
 	
 	public boolean isCheckedPassword(String userpw) {
 		if(mem_auth > 1 && mem_pw.equals(userpw)) {
@@ -25,11 +24,11 @@ public class MemberVO {
 		return false;
 	} 
 		
-	public int getBook_category() {
+	public Integer getBook_category() {
 		return book_category;
 	}
 
-	public void setBook_category(int book_category) {
+	public void setBook_category(Integer book_category) {
 		this.book_category = book_category;
 	}
 
@@ -112,14 +111,6 @@ public class MemberVO {
 
 	public void setMem_auth(int mem_auth) {
 		this.mem_auth = mem_auth;
-	}
-
-	public String getMem_photo() {
-		return mem_photo;
-	}
-
-	public void setMem_photo(String mem_photo) {
-		this.mem_photo = mem_photo;
 	}
 
 	public Date getMem_rdate() {

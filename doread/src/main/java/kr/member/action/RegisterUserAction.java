@@ -23,7 +23,16 @@ public class RegisterUserAction implements Action{
 		member.setMem_zipcode(request.getParameter("zipcode"));
 		member.setMem_address1(request.getParameter("address1"));
 		member.setMem_address2(request.getParameter("address2"));
-		member.setBook_category(Integer.parseInt(request.getParameter("preference")));
+		String preference = request.getParameter("preference");
+        if (preference != null) {
+            try {
+                member.setBook_category(Integer.parseInt(preference));
+            } catch (NumberFormatException e) {
+                member.setBook_category(null); // 파싱 실패 시 null로 설정
+            }
+        } else {
+            member.setBook_category(null); // null 값 그대로 유지
+        }
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		dao.insertMember(member);
