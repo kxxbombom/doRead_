@@ -17,7 +17,7 @@
 <body>
 <div class="page-main">
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<form action="bookcreate.do" method="post" id="bookcreate_form">
+<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
 	<ul>
 		<li><label for="book_name">책 이름</label>
 			<input type="text" name="book_name" class="inputcheck" id="book_name" maxlength="30" >

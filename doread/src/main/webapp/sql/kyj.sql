@@ -7,7 +7,7 @@ create table book(
 	price number(8) not null,
 	stock number(8) not null,
 	book_img varchar2(400) not null,
-	book_category number(3) not null
+	book_category number(3)
 );
 
 create sequence book_seq;

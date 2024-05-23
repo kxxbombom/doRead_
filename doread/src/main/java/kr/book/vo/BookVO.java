@@ -9,7 +9,7 @@ public class BookVO {
 	private int price; 				//가격
 	private int stock; 				//재고
 	private String book_img;		//책 이미지
-	private String book_category;	//책 분야
+	private int book_category;		//책 분야
 	   
 	public int getBook_num() {
 		return book_num;
@@ -59,12 +59,12 @@ public class BookVO {
 	public void setBook_img(String book_img) {
 		this.book_img = book_img;
 	}
-	public String getBook_category() {
+	public int getBook_category() {
 		return book_category;
 	}
-	public void setBook_category(String book_category) {
+	public void setBook_category(int book_category) {
 		this.book_category = book_category;
 	}
-	
+
 	
 }
