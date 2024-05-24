@@ -21,22 +21,18 @@ a:hover{
 .page-main{
 	background:#FFFFFF;
 	margin:40px 0;
-	border:none;
+	border-radius:5px;
 	box-shadow:0 2px 6px rgba(100,100,100,0.3);
 	min-height:650px;
 }
 .content-main{
 	padding:10px 20px;
 }
-form{
-	border-style:none;
-}
 /*관리자 페이지 상단바*/
 #adminpage{
-	margin:0  auto;
-	width:800px;
+	
 	height:163px;
 	background:rgb(26, 77, 46);
-	color:#000000;
+	color:#999;
 	
 }
