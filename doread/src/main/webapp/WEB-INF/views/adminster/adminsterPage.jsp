@@ -1,47 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 	window.onload = function(){
 		const inputcheck = document.getElementsByClassName('inputcheck');
 		
 	};
 
-//책 이미지 미리보기 
-$(function(){
-	let img_path = $('.book-img').attr('src');
-	$('#book_img').change(function(){
-		let img = this.files[0];
-		if(!img){
-			$('.book-img').attr('src',photo_path);
-			return;
-		}
-		
-		const reader = new FileReader();
-		reader.readAsDataURL(img);
-		
-		reader.onload=function(){
-			$('.book-img').attr('src',reader.result);
-		}
-	}); //end of change
-	
-	
-});
 </script>
 </head>
 <body>
 <div class="page-main">
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
+<form action="bookcreate.do" method="post" id="bookcreate_form">
 	<ul>
 		<li><label for="book_name">책 이름</label>
 			<input type="text" name="book_name" class="inputcheck" id="book_name" maxlength="30" >
@@ -79,12 +55,7 @@ $(function(){
 		<li>
 			<label for="book_img">책 이미지</label>
 			<input type="file" id="book_img" name="book_img" class="inputcheck" accept="image/gif,image/png,image/jpeg">
-			<c:if test ="${empty book_img}">
-				<img src="${pageContext.request.contextPath}/images/face.png" class="book-img">
-			</c:if>
-			<c:if test="${!empty book_img}">
-				<img src="${pageContext.request.ContextPath}/upload/${book_img}" class="book-img">
-			</c:if>
+			<img src="${pageContext.request.contextPath}/images/face.png">
 		</li>
 	</ul>
 	<input type="submit" value="전송">
