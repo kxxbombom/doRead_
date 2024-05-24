@@ -5,7 +5,3 @@
 			    request.getContextPath()+"/main/main.do");
 
 %>
-
-
-
-
