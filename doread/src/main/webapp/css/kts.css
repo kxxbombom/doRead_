@@ -6,23 +6,23 @@
 	display:flex;
 	margin: 8px ;
 	text-align:center;
-	
 }
 .mypage-div ul{
 	margin:0;
 	padding:2px 20px 20px 20px;
 	white-space: nowrap;
-	
 }
 .mypage-div ul li{
 	padding-top:8px;
 	font-size:14px;
 	color:#FFFFFF;
+	
+	
 }
 .mypage-div ul li.page-name{
 	font-size:30px;
 	white-space: nowrap;
-	
+	float: left;
 }
 .mypage-div ul li.mypage-mid{
 	font-size:30px;
