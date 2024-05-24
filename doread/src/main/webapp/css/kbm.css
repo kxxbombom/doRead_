@@ -3,7 +3,7 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:1200px;
+	width:1400px;
 	margin:0 auto;
 	background:#FFFFFF;
 }
@@ -44,6 +44,7 @@ a:hover{
 	align-items:center;세로 정렬
 	justify-content:center; 가로 정렬
 } 
+*/
 공통 정렬
 ---------------------
 .align-center{
@@ -52,6 +53,7 @@ a:hover{
 .align-right{
 	text-align:right;
 }
+/*
 메뉴
 ---------------------
 #main_logo{
@@ -90,16 +92,16 @@ a:hover{
 /* 공통 등록, 수정 폼
 ---------------------*/
 form{
-	width:600px;
-	margin:0 auto;
-	border:1px;
+	width:800px;
+	margin-left:120px;
 	padding:0;
 }
 form ul li{
 	clear:both;
 }
 form ul li label{
-	width:130px;
+	margin-right:20px;;
+	width:140px;
 	float:left; /*태그를 왼쪽으로 정렬*/
 }
 ul {
@@ -107,35 +109,25 @@ ul {
 	padding:0;
 }
 input{
-	margin-top:4px;
+	margin-bottom:20px;
+	height:30px;
 }
-input[type="text"],input[type="password"],
-                                     input[type="email"]{
-	width:310px;	
+input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"]{
+	width:250px;
+	border-radius:5px;
 }
-#register_form input[id="id"]{
-	width:223px;
-}
-input[id="zipcode"]{
-	width:205px;
-}
-input[type="number"]{
-	width:100px;
-}
-.form-notice{
-	margin-left:130px;
-}
+
 /* 회원가입
 ---------------------*/
 .register-header h2{
-	padding:0 150px;
+	padding:0 180px;
 }
 .register-top{
 	text-align:center;
 }
 .background-box{
 	display:inline-block;
-	padding:7px 50px;
+	padding:8px 90px;
 	border-radius:4px;
 	background-color:rgb(26, 77, 46);
 }
@@ -151,20 +143,112 @@ input[type="number"]{
 }
 
 .register-main span{
-	padding:0 0 0 150px;
+	padding:10px 0 0 180px;
 	font-size:18px;
 }
 .register-member label{
-	font-size:18px;
+	font-size:17px;
+}
+/*아이디중복, 우편번호찾기 버튼*/
+#id_check{
+	width:90px;
+	border-radius:5px;
+	background-color:rgb(26, 77, 46);
+	color:#FFF;
+	margin-bottom:0;
+}
+input[value="우편번호 찾기"]{
+	width:110px;
+	border-radius:5px;
+	background-color:rgb(26, 77, 46);
+	color:#FFF;
+}
+#register_form input[id="id"]{
+	width:250px;
+	margin-bottom:0;
+}
+
+input[type="number"]{
+	width:100px;
+}
+.form-notice1{
+	font-size:15px;
+	margin:0 0 20px 160px;
+	color:rgb(89, 89, 89);
+}	
+.register-phone{
+	display:flex;
+}
+.form-notice2{
+	font-size:15px;
+	margin:0 0 0 10px;
+	color:rgb(89, 89, 89);
+}
+
+/* input[type="radio"], .preference-group label{
+    float: left;
+    margin-right: 5px;
+}
+.preference-group label{
+	font-size:14px;
+} */
+
+/*radio*/
+.test{
+	width:150px;
+	display:flex;
+	float:left;
+}
+.test input{
+	margin:0 5px 0 0;
+	padding:0;
+}
+.preference-group {
+	clear:both;
+}
+
+.container{
+	float:left;
+	margin-bottom:30px;
+}
+
+
+#register_form hr{
+	margin-left:-250px;
+}
+.register-button{
+	padding:20px 160px;
+}
+/*회원가입,홈으로 버튼*/
+.register-button input[type="submit"]{
+	width:80px;
+	height:40px;
+	border-radius:5px;
+	background-color:rgb(26, 77, 46);
+	color:#FFF;
+}
+.register-button input[type="button"]{
+	width:80px;
+	height:40px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
 }
 /* 회원가입,로그인 헤더
 ---------------------*/
 #header_login h1, #header_login hr{
-	padding:0 60px;
+	padding:0;
 }
 
 /* 로그인
 ---------------------*/
+.login-top{
+	font-size:20pt;
+	margin:50px;
+	text-align:center;
+}
+
+
 #login_form{
 	width:300px;
 	margin:0 auto;
@@ -205,7 +289,7 @@ input[type="number"]{
 }
 /* MY페이지
 ---------------------*/
-.mypage-div{
+/* .mypage-div{
 	width:48%;
 	float:left;
 	padding:5px;
@@ -215,11 +299,11 @@ input[type="number"]{
 }
 .my-photo{
 	object-fit:cover;
-	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정
 	object-position:top;
-	/*사각형의 모서리 둥근 정도를 지정하는 속성,50%를 지정하면 완전한 원*/
+	사각형의 모서리 둥근 정도를 지정하는 속성,50%를 지정하면 완전한 원
 	border-radius:50%;
-}
+} */
 /* 공통 목록
 ---------------------*/
 form#search_form{

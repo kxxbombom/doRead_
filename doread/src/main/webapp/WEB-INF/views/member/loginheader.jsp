@@ -5,7 +5,7 @@
 
 <div id="header_login">
 	<h1><a href="${pageContext.request.contextPath}/main/main.do">Do Read</a></h1>
-	<hr size="1" noshade width="920px">	
+	<hr size="1" noshade width="100%">	
 </div>
 
 <!-- header 끝 -->

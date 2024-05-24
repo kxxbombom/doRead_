@@ -14,7 +14,10 @@
 <body>
 <div class="page-main">
 	<div class="content-main">
-		<h2><a href="${pageContext.request.contextPath}/main/main.do">Do READ</a></h2>
+	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
+		<div class="login-top">
+			<b>Do READ</b>
+		</div>
 		<form id="login_form" action="login.do" method="post">
 			<ul>
 				<li class="floating-label">
