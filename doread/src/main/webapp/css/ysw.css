@@ -19,8 +19,26 @@
 	vertical-align:middle; 
 	padding-top:10px;
 }
+.nav:link{
+	text-decoration:none;
+	color:white;
+}
 
-/* 메인nav */
+.nav:visited{
+	text-decoration:none;
+	color:white;
+} 
+.top-nav:link{
+	text-decoration:none;
+	color:#000000;
+}
+
+.top-nav:visited{
+	text-decoration:none;
+	color:#000000;
+} 
+
+/* nav */
 #main_nav{
 	text-align:center;
 }
@@ -43,15 +61,16 @@
 }
 #header-search ul{
 	list-style:none;
-	text-align:right;
+	text-align:left;
 	margin:0;
 	padding:0;
 }
 #header-search ul li{
 	display:inline-block;
-	
 }
+
 
 .click-image{
 	cursor:pointer;
 }
+

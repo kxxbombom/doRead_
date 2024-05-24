@@ -6,21 +6,22 @@
 	<ul>
 		<c:if test="${empty user_num}">
 		<li>
-			<a href="${pageContext.request.contextPath}/member/registerUserForm.do" >회원가입</a>
+			<a href="${pageContext.request.contextPath}/member/registerUserForm.do" class="top-nav">회원가입</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
+			<a href="${pageContext.request.contextPath}/member/loginForm.do" class="top-nav" >로그인</a>
 		</li>
 		</c:if>
 		<c:if test="${!empty user_num}">
 		<li class="menu-logout">
-			[<span>${user_id}</span>]
-			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+		[<span>${user_id}</span>]
+		
+			<a href="${pageContext.request.contextPath}/member/logout.do" class="top-nav">로그아웃</a>
 		</li>
 		</c:if>
 		<c:if test="${!empty user_num && user_auth == 9}">
 		<li>
-			<a href="${pageContext.request.contextPath}/member/adminList.do">회원관리</a>
+			<a href="${pageContext.request.contextPath}/member/adminList.do" class="top-nav">회원관리</a>
 		</li>
 		</c:if>
 	</ul>
@@ -28,8 +29,8 @@
 <div id="header-search">
 	<ul>
 		<li>
-			<h1 class="align-left">
-				<a href="${pageContext.request.contextPath}/main/main.do">Do Read</a>
+			<h1 class="home">
+				<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav">Do Read</a>
 			</h1>
 		</li>
 		<li>
@@ -53,7 +54,7 @@
 							height="25" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'" class="click-image">
 						</li>
 						<li id="menu-mypage">
-							<img src="${pageContext.request.contextPath}/images/mypage1.png" width="25" 
+							<img src="${pageContext.request.contextPath}/images/mypage.png" width="25" 
 							height="25" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'" class="click-image">
 						</li>
 					</ul>
@@ -76,14 +77,16 @@
 			<a href="${pageContext.request.contextPath}/board/usedList.do" class="nav" >중고</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">게시판</a>
+			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">스토리</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/QnAList.do" class="nav">QnA</a>
 		</li>
+		<c:if test="${!empty user_num && user_auth == 9}">
 		<li>
 			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" class="nav">관리자페이지</a>
 		</li>
+		</c:if>
 	</ul>
 </div>
 <!-- header 끝 -->
