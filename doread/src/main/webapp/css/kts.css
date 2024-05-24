@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
 .mypage-div{
-	width:800px;
-	margin: 0 auto ;
+	width:900px;
 	background-color:#1a4d2e;
 	display:flex;
-	align-items:center;
-	justify-content:center;
-	
+	margin: 8px ;
+	text-align:center;
 	
 }
 .mypage-div ul{
@@ -24,14 +22,25 @@
 .mypage-div ul li.page-name{
 	font-size:30px;
 	white-space: nowrap;
+	
+}
+.mypage-div ul li.mypage-mid{
+	font-size:30px;
 }
 .mypage-title{
 	font-size:20px;
 }
 .outer-main{
 	float: left;
-	position: relative;
+}
+.mypage-button{
+	float: left;
 }
 .inner-menu > a{
+	vertical-align:middle;
+	text-decoration-line: none;
 	color:#FFFFFF;
+}
+#main_nav{
+	display:none;
 }

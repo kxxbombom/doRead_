@@ -17,7 +17,7 @@
 	<div class="content-main">
 		<div class="mypage-div">
 			<ul>
-				<li>
+				<li id="profile-image">
 					<img src="${pageContext.request.contextPath}/upload/${member.photo}" 
 					                   width="50" height="50" class="my-photo">
 				</li>	            
@@ -62,9 +62,17 @@
 				</li>
 			</ul>
 		</div>
+		<div class="mypage-button">
+			<ul>
+				<li class="mypage-mid">
+					<input type="button" value="찜" onclick="location.href='${like}'">
+					<input type="button" value="추천" onclick="location.href='${best}'">
+				</li>
+			</ul>
+		</div>
 	</div>
+		
 </div>
-
 </body>
 </html>
 
