@@ -101,7 +101,7 @@ a:hover{
 form{
 	width:600px;
 	margin:0 auto;
-	border:1px solid #000;
+	border:none;
 	padding:10px 10px 10px 30px;
 }
 form ul li{

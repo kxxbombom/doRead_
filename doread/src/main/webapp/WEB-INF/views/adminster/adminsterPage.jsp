@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>관리자페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript">
 	window.onload = function(){
 		const inputcheck = document.getElementsByClassName('inputcheck');
@@ -16,6 +17,7 @@
 </head>
 <body>
 <div class="page-main">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
 	<ul>
