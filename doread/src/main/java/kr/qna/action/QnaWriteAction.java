@@ -27,7 +27,7 @@ public class QnaWriteAction implements Action {
 		qna.setQ_content(request.getParameter("q_content"));
 		qna.setQ_ip(request.getRemoteAddr());
 		qna.setQ_auth(Integer.parseInt(request.getParameter("q_auth")));
-		qna.setQ_image(FileUtil.createFile(request, "q_iamge"));
+		qna.setQ_image(FileUtil.createFile(request, "q_image"));
 		qna.setMem_num(user_num); //작성자 회원번호
 		
 		QnaDAO dao = QnaDAO.getInstance();
