@@ -100,7 +100,7 @@ $(function(){
 			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">스토리</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/QnAList.do" class="nav">QnA</a>
+			<a href="${pageContext.request.contextPath}/qna/qnaList.do" class="nav">QnA</a>
 		</li>
 		<c:if test="${!empty user_num && user_auth == 9}">
 		<li>
