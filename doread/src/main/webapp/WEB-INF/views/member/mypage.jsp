@@ -18,9 +18,27 @@
 		<div class="mypage-div">
 			<ul>
 				<li>
+					<c:if test="${empty member.photo}">
+					<img src="${pageContext.request.contextPath}/images/face.png" 
+					                   width="100" height="100" class="my-photo">
+					</c:if>
+					<c:if test="${!empty member.photo}">
 					<img src="${pageContext.request.contextPath}/upload/${member.photo}" 
-					                   width="50" height="50" class="my-photo">
-				</li>	            
+					                   width="100" height="100" class="my-photo">
+					</c:if>
+				</li>   
+				<li>
+					<div class="align-center">
+						<input type="button" value="수정"
+						                     id="photo_btn">
+					</div>
+					<div id="photo_choice" style="display:none;">
+						<input type="file" id="photo"
+						          accept="image/gif,image/png,image/jpeg">
+						<input type="button" value="전송" id="photo_submit">
+						<input type="button" value="취소" id="photo_reset">          
+					</div>
+				</li> 
 				<li class="page-name">${member.id}님<br>어서오세요</li>
 			</ul>
 			<ul>
@@ -62,9 +80,17 @@
 				</li>
 			</ul>
 		</div>
+		<div class="mypage-button">
+			<ul>
+				<li class="mypage-mid">
+					<input type="button" value="찜" onclick="location.href='${like}'">
+					<input type="button" value="추천" onclick="location.href='${best}'">
+				</li>
+			</ul>
+		</div>
 	</div>
+		
 </div>
-
 </body>
 </html>
 

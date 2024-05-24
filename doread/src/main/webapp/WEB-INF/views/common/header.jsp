@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#book_category').hover(function(){
+		$('#category_items').show('fast');},
+		function(){
+			$('#category_items').hide('fast');
+		});
+});
+</script>
 <!-- header 시작 -->
 <div id="mini_nav">
 	<ul>
@@ -65,7 +75,17 @@
 <div id="main_nav">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">책 카테고리</a>
+			<a href="${pageContext.request.contextPath}/book/list.do" class="nav" id="book_category">책 카테고리</a>
+			<div id="category_items" style="display:none;">
+				<ul class="category">
+					<li>도서 전체</li>
+					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
+					
+				</ul>
+			</div>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/newsList.do" class="nav">뉴스</a>
@@ -80,7 +100,7 @@
 			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">스토리</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/QnAList.do" class="nav">QnA</a>
+			<a href="${pageContext.request.contextPath}/qna/qnaList.do" class="nav">QnA</a>
 		</li>
 		<c:if test="${!empty user_num && user_auth == 9}">
 		<li>

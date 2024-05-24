@@ -1,1 +1,17 @@
 @charset "UTF-8";
+
+#category_items{
+	background-color:white;
+	position:absolute;
+	display:table-cell;
+	border:none;
+};
+
+#category_items ul.category{
+	list-style:none;
+}
+
+#category_items ul.category li{
+	background-color:white;
+	color:black;
+}
