@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="page-main">
-	<%-- 로그인용 header 만들기 --%>
+	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 	<div class="content-main">
 		<h2>회원정보</h2>
 		<div class="result-display">

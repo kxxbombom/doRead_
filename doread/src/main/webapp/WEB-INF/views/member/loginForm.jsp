@@ -8,7 +8,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-
+	$(function(){
+		$('#login_form').submit(function(){
+			if($('#id').val().trim() == ''){
+				alert('아이디를 입력하세요');
+				$('#id').val('').focus();
+				return false;
+			}
+			if($('#passwd').val().trim() == ''){
+				alert('비밀번호를 입력하세요');
+				$('#passwd').val('').focus();
+				return false;
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -16,7 +29,7 @@
 	<div class="content-main">
 	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 		<div class="login-top">
-			<b>Do READ</b>
+			<a href="${pageContext.request.contextPath}/main/main.do"><b>Do READ</b></a>
 		</div>
 		<form id="login_form" action="login.do" method="post">
 			<ul>
@@ -33,7 +46,7 @@
 				<input type="submit" value="로그인">
 			</div>	
 		</form>
-		<div>
+		<div class="login-help-btn">
 			<input type="button" value="아이디 찾기" onclick="location.href='${pageContext.request.contextPath}/findId.do'">
 			<input type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/findPasswd.do'">
 		</div>

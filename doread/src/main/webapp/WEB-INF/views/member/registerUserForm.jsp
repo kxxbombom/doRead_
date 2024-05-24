@@ -14,6 +14,11 @@ $(function(){
 	$('#passwd_checkmessage').hide();
 	
 	$('#id_check').click(function(){
+		if($('#id').val().length == 0){
+			alert('아이디를 입력하세요');
+			$('#id').focus();
+			return;
+		}
 		if($('#id').val().length < 4){
 			alert('아이디는 4~12글자이어야 합니다');
 			$('#id').focus();
@@ -121,7 +126,8 @@ $(function(){
   	 		 </div>
 		</div>
 	</div>
-	<div class="register-main"><%-- --%>
+	<hr size="1" noshade width="1000">
+	<div class="register-main">
 		<span>기본 정보 입력</span>
 		<form id="register_form" action="registerUser.do" method="post" class="register-member">
 			<ul>

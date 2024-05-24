@@ -117,10 +117,27 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	border-radius:5px;
 }
 
+/* 회원가입,로그인 헤더
+---------------------*/
+#header_login img, #header_login hr{
+	padding:0;
+}
+#header_login img{
+	width:45px;
+	margin-right:10px;
+}
+#header_login h1{
+	display:inline-block;
+}
+#header_login h1 a{
+		color:rgb(26, 77, 46);
+}
+
 /* 회원가입
 ---------------------*/
 .register-header h2{
 	padding:0 180px;
+	color:rgb(26, 77, 46);
 }
 .register-top{
 	text-align:center;
@@ -145,9 +162,13 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 .register-main span{
 	padding:10px 0 0 180px;
 	font-size:18px;
+	font-weight:bold;
+	color:rgb(26, 77, 46);
 }
 .register-member label{
 	font-size:17px;
+	font-weight:bold;
+	color:rgb(26, 77, 46);
 }
 /*아이디중복, 우편번호찾기 버튼*/
 #id_check{
@@ -184,15 +205,6 @@ input[type="number"]{
 	margin:0 0 0 10px;
 	color:rgb(89, 89, 89);
 }
-
-/* input[type="radio"], .preference-group label{
-    float: left;
-    margin-right: 5px;
-}
-.preference-group label{
-	font-size:14px;
-} */
-
 /*radio*/
 .test{
 	width:150px;
@@ -206,7 +218,10 @@ input[type="number"]{
 .preference-group {
 	clear:both;
 }
-
+.preference-group label{
+	font-weight:normal;
+	color:black;
+}
 .container{
 	float:left;
 	margin-bottom:30px;
@@ -221,33 +236,40 @@ input[type="number"]{
 }
 /*회원가입,홈으로 버튼*/
 .register-button input[type="submit"]{
-	width:80px;
+	width:95px;
 	height:40px;
 	border-radius:5px;
 	background-color:rgb(26, 77, 46);
 	color:#FFF;
+	font-size:15px;
+	margin-right:10px;
+	font-weight:bold;
+	border:none;
 }
 .register-button input[type="button"]{
-	width:80px;
+	width:95px;
 	height:40px;
 	border-radius:5px;
 	background-color:#FFF;
 	color:rgb(26, 77, 46);
-}
-/* 회원가입,로그인 헤더
----------------------*/
-#header_login h1, #header_login hr{
-	padding:0;
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
 }
 
 /* 로그인
 ---------------------*/
 .login-top{
-	font-size:20pt;
+	font-size:25pt;
 	margin:50px;
 	text-align:center;
 }
-
+.login-top a{
+	color:rgb(26, 77, 46);
+}
+.login-top a:hover{
+	color:rgb(26, 77, 46);
+}
 
 #login_form{
 	width:300px;
@@ -265,7 +287,10 @@ input[type="number"]{
 	width:300px;
 	height:32px;
 	padding:0.55rem 0.55rem;
+	border:1px solid rgb(79, 111, 82);
+	margin-bottom:10px;
 }
+
 .floating-label > label{
 	position:absolute;
 	top:0;
@@ -281,12 +306,38 @@ input[type="number"]{
 	padding-top:1.125rem;
 	padding-bottom:0.125rem;      
 }
-
 .floating-label > .form-input:focus + label, 
  .floating-label > .form-input:not(:placeholder-shown) + label{
 	opacity:0.65;
 	transform:scale(0.85) translateY(-0.5rem) translateX(-0.5rem);      
 }
+#login_form input[type="submit"]{
+	width:320px;
+	height:50px;
+	border-radius:5px;
+	border:none;
+	background-color:rgb(26, 77, 46);
+	color:#FFF;
+	font-size:20px;
+	font-weight:bold;
+}
+#login_form input[type="submit"]:hover{
+	border:1px solid rgb(79, 111, 82);
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	
+}
+.login-help-btn{
+	margin-left:665px;
+}
+.login-help-btn input{
+	border:none;
+	text-decoration: underline;
+	background: none;
+	padding: 0;
+	font-size:15px;
+}
+/*rgb(26, 77, 46)*/
 /* MY페이지
 ---------------------*/
 /* .mypage-div{
