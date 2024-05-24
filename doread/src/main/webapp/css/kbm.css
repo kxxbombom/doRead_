@@ -24,8 +24,8 @@ a:hover{
 .page-main{
 	background:#FFFFFF;
 	margin:40px 0;
-	border-radius:5px;/*삭제!*/
-	box-shadow:0 2px 6px rgba(100,100,100);/*삭제!*/
+/* 	border-radius:5px;삭제!
+	box-shadow:0 2px 6px rgba(100,100,100);삭제! */
 	min-height:650px;
 }
 .content-main{
