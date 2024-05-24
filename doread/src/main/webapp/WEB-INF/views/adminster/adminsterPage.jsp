@@ -6,22 +6,42 @@
 <meta charset="UTF-8">
 <title>관리자페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript">
 	window.onload = function(){
 		const inputcheck = document.getElementsByClassName('inputcheck');
+		const form = document.getElementById('bookcreate_form');
+		
+		form.onsubmit = function(){
+			for(let i=0; i<inputcheck.length; i++){
+			const label = document.querySelector('label[for="'+inputcheck[i].id+'"]');
+			
+			if(inputcheck[i].value.trim()==''){
+				alert(label.textContent+' 필수 입력');
+				inputcheck[i].value='';
+				inputcheck[i].focus();
+				return false;
+				
+			}
+		
+			}
+		}
 		
 	};
 
 </script>
 </head>
 <body>
-<div class="page-main">
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+<jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
+<div class="page-main">
+
 	<h2>책 등록</h2>
-	<hr size="1.5" width="100%" noshade="noshade">
+	
+	<hr size="1.5" width="80%" noshade="noshade">
+	<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
+	<div class="content-main">
 	<ul>
 		<li><label for="book_name">책 이름</label>
 			<input type="text" name="book_name" class="inputcheck input-style" id="book_name" maxlength="30" >
@@ -62,11 +82,14 @@
 			
 		</li>
 	</ul>
+	</div>
 	<div class="align-center">
 	<input type="submit" value="등록" class="button2">
 	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
+	
 </form>
+
 </div>
 </body>
 </html>

@@ -9,55 +9,27 @@ body{
 }
 .page-main{
 	background:#FFFFFF;
-	margin:40px 0;
+	margin:40px auto;
 	border:none;
-	box-shadow:0 2px 6px rgba(100,100,100,0.3);
 	min-height:650px;
 }
-.content-main{
-	padding:10px 20px;
+h2{
+	margin:0 100px;
 }
-#main_logo{
-	padding-top:20px;
-}
-
-/* #main_nav{
-	padding:2px 10px 20px 10px;
-	height:20px;
-	background-color:#336633;
-} */
-#main_nav ul{
+ul{
 	list-style:none;
-	margin:0;
-	padding:0;
-
 }
-#main_nav ul li{
-	display:inline-block;
-	width:100px;
+.align-center{
 	text-align:center;
-	vertical-align:middle;
-	padding-top:8px;
 }
-#main_nav ul li img.my-photo{
-	vertical-align:middle;
+.align-right{
+	text-align:right;
 }
-#main_nav ul li.menu-profile{
-	padding-top:5px;
-	width:25px;
-}
-#main_nav ul li.menu-logout{
-	width:150px;
-	text-align:left;
-}
-form{
-	border-style:none;
-}
+
 /*관리자 페이지 상단바*/
 #adminpage{
 	margin:0  auto;
-	text-align:center;
-	vertical-align:middle;
+
 	width:800px;
 	height:163px;
 	background:rgb(26, 77, 46);
@@ -65,22 +37,31 @@ form{
 	
 }
 
-.adminnav ul{
-	list-style:none;
-	margin:0;
-	padding:0;
+
+div.adminnav ul{
+	list-style:none ;
+	margin:0 auto;
 
 }
-.adminnav ul li{
+div.adminnav ul li{
 	display:inline-block;
-	width:150px;
-	text-align:center;
-	vertical-align:middle;
+	width:400px;
 	padding-top:8px;
 	font-size:16pt;
-	
+	clear:both;
 }
-.adminnav ul li a{
+form{
+	width:600px;
+	margin:0 auto;
+	border:none;
+	padding:10px 10px 10px 30px;
+	border-style:none;
+}
+ul li label{
+	width:150px;
+	float:left !important; /*태그를 왼쪽으로 정렬*/
+}
+div#adminpage div.adminnav ul li a{
 	color:rgb(255, 255, 255) !important;
 }
 #profileimage{
@@ -122,3 +103,93 @@ form{
 hr{
 	background: rgb(224, 224, 224);
 }
+/*
+검색*/
+#header-search{
+	width:600px;
+	list-style:none;
+	padding:0;
+	padding:0 100px;
+}
+#header-search{
+	margin:0 auto;
+	padding:0;
+	display:inline;
+}
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+}
+
+.input {
+  width: 600px;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid rgb(232, 223, 202);
+  border-radius: 20px;
+  outline: none;
+  
+  color: #0d0c22;
+  transition: 0.3s ease;
+}
+
+.input::placeholder {
+  color: rgb(232, 223, 202);
+}
+
+.input:focus,
+input:hover {
+  outline: none;
+  border-color: rgba(0, 48, 73, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(0 48 73 / 10%);
+}
+
+.icon {
+  position: absolute;
+  color: rgb(232, 223, 202);
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+
+
+
+
+/*header2*/
+#main_logo{
+	padding-top:20px;
+}
+
+/* #main_nav{
+	padding:2px 10px 20px 10px;
+	height:20px;
+	background-color:#336633;
+} */
+#main_nav ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+
+}
+#main_nav ul li{
+	display:inline-block;
+	width:300px;
+	text-align:center;
+	vertical-align:middle;
+	padding-top:8px;
+	margin-right:100px;
+}
+#main_nav ul li.menu-logout{
+	width:200px;
+	text-align:left;
+	margin:0 auto;
+}
+
