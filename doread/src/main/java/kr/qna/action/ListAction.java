@@ -9,7 +9,7 @@ import kr.controller.Action;
 import kr.qna.dao.QnaDAO;
 import kr.qna.vo.QnaVO;
 import kr.util.PagingUtil;
-
+  
 public class ListAction implements Action{
 
 	@Override
