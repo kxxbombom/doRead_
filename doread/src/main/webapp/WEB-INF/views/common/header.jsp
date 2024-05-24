@@ -9,7 +9,7 @@ $(function(){
 		$('#category_items').show('fast');},
 		function(){
 			$('#category_items').hide('fast');
-		});
+		}); 
 });
 </script>
 <!-- header 시작 -->
