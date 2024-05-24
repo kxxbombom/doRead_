@@ -7,7 +7,7 @@ body{
 	margin:0 auto;
 	background:#FFFFFF;
 }
-/*a:link{
+a:link{
 	text-decoration:none;
 	color:#000000;
 }
@@ -18,7 +18,7 @@ a:visited{
 a:hover{
 	text-decoration:none;
 	color:#6C6C6C;
-}*/
+}
 /* 페이지 레이아웃
 ---------------------*/
 .page-main{
@@ -30,29 +30,30 @@ a:hover{
 }
 .content-main{
 	padding:10px 20px;
+	
 }
 
 /* 공통 메시지
 ---------------------*/
-.result-display{
+/* .result-display{
 	width:400px;
 	height:200px;
 	margin:50px auto;
 	border:1px solid #000;
 	display:flex;
-	align-items:center;/*세로 정렬*/
-	justify-content:center;/*가로 정렬*/
-}
-/* 공통 정렬
----------------------*/
+	align-items:center;세로 정렬
+	justify-content:center; 가로 정렬
+} 
+공통 정렬
+---------------------
 .align-center{
 	text-align:center;
 }
 .align-right{
 	text-align:right;
 }
-/* 메뉴
----------------------*/
+메뉴
+---------------------
 #main_logo{
 	padding-top:20px;
 }
@@ -84,13 +85,14 @@ a:hover{
 #main_nav ul li.menu-logout{
 	width:150px;
 	text-align:left;
-}
+} */
+
 /* 공통 등록, 수정 폼
 ---------------------*/
 form{
 	width:600px;
 	margin:0 auto;
-	border:1px solid #000;
+	border:1px;
 	padding:0;
 }
 form ul li{
@@ -102,6 +104,7 @@ form ul li label{
 }
 ul {
 	list-style:none;
+	padding:0;
 }
 input{
 	margin-top:4px;
@@ -143,11 +146,21 @@ input[type="number"]{
 
 .register-main{
 	padding:10px 20px;
-
+	display: flex;
+	flex-direction:row;
 }
+
 .register-main span{
 	padding:0 0 0 150px;
 	font-size:18px;
+}
+.register-member label{
+	font-size:18px;
+}
+/* 회원가입,로그인 헤더
+---------------------*/
+#header_login h1, #header_login hr{
+	padding:0 60px;
 }
 
 /* 로그인

@@ -112,17 +112,17 @@ $(function(){
 <body>
 <div class="page-main">
 	<div class="content-main register-header">
+		<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 		<h2>회원가입</h2>
 		<div class="register-top">
    			 <div class="background-box">
         		<span>일반 개인회원</span>
   	 		 </div>
 		</div>
-		<hr size="1" noshade width="860">
 	</div>
 	<div class="register-main"><%-- --%>
 		<span>기본 정보 입력</span>
-		<form id="register_form" action="registerUser.do" method="post">
+		<form id="register_form" action="registerUser.do" method="post" class="register-member">
 			<ul>
 				<li>
 					<label for="name">이름</label>
@@ -167,18 +167,36 @@ $(function(){
 					<input type="text" name="address2" id="address2" maxlength="50" class="input-check">
 				</li>
 				<li>
-					<label for="">관심도서</label><%-- --%>
-					<input type="radio" name="preference" value="1">소설
-					<input type="radio" name="preference" value="2">시/에세이
-					<input type="radio" name="preference" value="3">인문
-					<input type="radio" name="preference" value="4">정치/사회
-					<input type="radio" name="preference" value="5">과학/공학
-					<input type="radio" name="preference" value="6">IT/프로그래밍
-					<input type="radio" name="preference" value="7">자기계발
-					<input type="radio" name="preference" value="8">외국어
-					<input type="radio" name="preference" value="9">수험서/취업
-					<input type="radio" name="preference" value="10">만화
-					<input type="radio" name="preference" value="11">취미/스포츠
+					<label>관심도서</label><%-- --%>
+					<div class="preference-group">
+					<label for="preference1">소설</label>
+					<input type="radio" name="preference" value="1" id="preference1">
+					<label for="preference2">시/에세이</label>
+					<input type="radio" name="preference" value="2" id="preference2">
+					<label for="preference3">인문</label>
+					<input type="radio" name="preference" value="3" id="preference3">
+					<label for="preference4">정치/사회</label>
+					<input type="radio" name="preference" value="4" id="preference4">
+					
+					</div>
+					<div class="preference-group">
+					<input type="radio" name="preference" value="5" id="preference5">
+					<label for="preference5">과학/공학</label>
+					<input type="radio" name="preference" value="6" id="preference6">
+					<label for="preference6">IT/프로그래밍</label>
+					<input type="radio" name="preference" value="7" id="preference7">
+					<label for="preference7">자기계발</label>
+					<input type="radio" name="preference" value="8" id="preference8">
+					<label for="preference8">외국어</label>
+					</div>
+					<div class="preference-group">
+					<input type="radio" name="preference" value="9" id="preference9">
+					<label for="preference9">수험서/취업</label>
+					<input type="radio" name="preference" value="10" id="preference10">
+					<label for="preference10">만화</label>
+					<input type="radio" name="preference" value="11" id="preference11">
+					<label for="preference11">취미/스포츠</label>
+					</div>
 				</li>
 			</ul>
 			<hr size="1" noshade width="1000">
