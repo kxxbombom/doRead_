@@ -1,20 +1,34 @@
 @charset "UTF-8";
 
 div#category_items{
+	display:none;
+	margin-top:10px;
 	background-color:white;
-	display:flex;
+	position:relative;
+	z-index: 50;
 };
 
-#category_items ul.category{
+div#category_items>ul{
 	list-style:none;	
 }
 
-#category_items ul.category li{
+#category_items>ul li{
+	border:initial;
+	vertical-align:middle;
 	background-color:white;
 	color:black;
 }
  
-ul.category li a{
+#category_items>ul li a{
 	text-decoration: none;
 	color:black;
+}
+
+#category_items>ul li a:hover{
+	text-decoration: none;
+	color:#6C6C6C;
+}
+
+div#main_nav>ul>li:hover div#category_items{
+	display:block;
 }

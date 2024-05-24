@@ -2,16 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	$('#book_category').hover(function(){
-		$('#category_items').show('fast');},
-		function(){
-			$('#category_items').hide('fast');
-		}); 
-});
-</script>
 <!-- header 시작 -->
 <div id="mini_nav">
 	<ul>
@@ -77,8 +67,8 @@ $(function(){
 	<ul>
 		<li>
 			<a href="${pageContext.request.contextPath}/book/list.do" class="nav" id="book_category">책 카테고리</a>
-			<div id="category_items" style="display:none;">
-				<ul class="category">
+			<div id="category_items">
+				<ul>
 					<li>도서 전체</li>
 					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
 					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
@@ -111,11 +101,5 @@ $(function(){
 	</ul>
 </div>
 <!-- header 끝 -->
-
-
-
-
-
-
 
 
