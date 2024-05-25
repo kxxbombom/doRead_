@@ -70,10 +70,17 @@
 			<div id="category_items">
 				<ul>
 					<li>도서 전체</li>
-					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
-					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
-					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
-					<li><a href="${pageContext.request.contextPath}/book/novelList.do">소설</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">소설</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">시/에세이</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">인문</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">정치/사회</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">과학/공학</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">IT/프로그래밍</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">자기계발</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">외국어</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">수험서/취업</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">만화</a></li>
+					<li><a href="${pageContext.request.contextPath}/book/list.do">취미/스포츠</a></li>
 					
 				</ul>
 			</div>
