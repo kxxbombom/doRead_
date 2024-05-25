@@ -105,6 +105,36 @@ public class MemberDAO {
 		}
 		return member;
 	}
+	//아이디찾기
+	public MemberVO findMemberID(String name, String email)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO member = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+		
+			sql = "SELECT * FROM member LEFT OUTER JOIN member_detail USING(mem_num) WHERE mem_name=? AND mem_email=?";
+				
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberVO();
+				member.setMem_id(rs.getString("mem_id"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return member;
+	}
+		//비밀번호 찾기
 	//회원상세정보
 	public MemberVO getMember(int mem_num)throws Exception{
 		Connection conn = null;

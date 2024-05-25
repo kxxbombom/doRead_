@@ -42,15 +42,16 @@
 					<label for="passwd">비밀번호</label>
 				</li>
 			</ul>
-			<div>
+			<div class="login-submit">
 				<input type="submit" value="로그인">
 			</div>	
 		</form>
 		<div class="login-help-btn">
-			<input type="button" value="아이디 찾기" onclick="location.href='${pageContext.request.contextPath}/findId.do'">
-			<input type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/findPasswd.do'">
+			<input type="button" value="아이디 찾기" onclick="location.href='findIDForm.do'">
+			|
+			<input type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/findPW.do'">
 		</div>
-		<div>
+		<div class="login-btn">
 			<input type="button" value="회원가입" onclick="location.href='registerUserForm.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
