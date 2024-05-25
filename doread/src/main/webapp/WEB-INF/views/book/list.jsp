@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 목록</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
-
+<div class="page-main">
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	</div>
 </body>
 </html>
