@@ -7,6 +7,31 @@ body{
 	
 	font-family:"Noto Sans KR", sans-serif;
 }
+a:link{
+	text-decoration:none;
+	color:black;
+	
+}
+
+a:visited{
+	text-decoration:none;
+	color:black;
+	
+}  
+a:hover{
+	text-decoration:none;
+	color: rgb(224, 224, 224);
+	
+}  
+a#header:link{
+	text-decoration:none;
+	color:rgb(26, 77, 46);
+}
+
+a#header:visited{
+	text-decoration:none;
+	color:rgb(26, 77, 46);
+}  
 .page-main{
 	background:#FFFFFF;
 	margin:40px auto;
@@ -19,6 +44,18 @@ h2{
 ul{
 	list-style:none;
 }
+.page-center{
+	margin-left:200px;
+	
+}
+div.page-center ul{
+	margin-top:30px;
+	
+}
+div.page-center ul li{
+	margin-top:8px;
+	
+}
 .align-center{
 	text-align:center;
 }
@@ -28,27 +65,53 @@ ul{
 
 /*관리자 페이지 상단바*/
 #adminpage{
-	margin:0  auto;
-
-	width:800px;
+	margin:0 auto;
+	width:1000px;
 	height:163px;
 	background:rgb(26, 77, 46);
 	color:rgb(255, 255, 255) !important;
 	
 }
-
+.my-photo{
+	object-fit:cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position:top;
+	/*사각형의 모서리 둥근 정도를 지정하는 속성,50%를 지정하면 완전한 원*/
+	border-radius:50%;
+	margin-right:50px;
+	z-index:1;
+}
+img#penimage{
+	position:relative;
+	top:100px;
+	left:110px;
+	z-index:999;
+	border-radius:50%;
+	background:white;
+}
 
 div.adminnav ul{
 	list-style:none ;
-	margin:0 auto;
-
+	margin-top:26px;
+	text-align:right;
+	color:rgb(255, 255, 255) !important;
 }
 div.adminnav ul li{
 	display:inline-block;
-	width:400px;
+	text-align:center;
+	vertical-align:middle;
+	width:150px;
 	padding-top:8px;
 	font-size:16pt;
 	clear:both;
+	position:relative;
+	bottom:60px;
+	right:70px;
+}
+div.adminnav ul li#myphoto{
+	position:relative;
+	bottom:40px;
+	right:50px;
 }
 form{
 	width:600px;
@@ -65,7 +128,11 @@ div#adminpage div.adminnav ul li a{
 	color:rgb(255, 255, 255) !important;
 }
 #profileimage{
-	
+	object-fit:cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position:top;
+	/*사각형의 모서리 둥근 정도를 지정하는 속성,50%를 지정하면 완전한 원*/
+	border-radius:50%;
 	
 	text-align:left;
 }
@@ -105,17 +172,7 @@ hr{
 }
 /*
 검색*/
-#header-search{
-	width:600px;
-	list-style:none;
-	padding:0;
-	padding:0 100px;
-}
-#header-search{
-	margin:0 auto;
-	padding:0;
-	display:inline;
-}
+
 .group {
   display: flex;
   line-height: 28px;
@@ -125,7 +182,7 @@ hr{
 }
 
 .input {
-  width: 600px;
+  width: 300px;
   height: 40px;
   line-height: 28px;
   padding: 0 1rem;
@@ -168,28 +225,44 @@ input:hover {
 	padding-top:20px;
 }
 
-/* #main_nav{
-	padding:2px 10px 20px 10px;
-	height:20px;
-	background-color:#336633;
-} */
-#main_nav ul{
+
+#header_login img, #header_login hr{
+	padding:0;
+}
+#header_login img{
+	width:45px;
+	margin-right:10px;
+}
+#header_login h1{
+	display:inline-block;
+}
+#header_login h1 a{
+		color:rgb(26, 77, 46);
+}
+#header_login ul{
 	list-style:none;
 	margin:0;
 	padding:0;
 
 }
-#main_nav ul li{
+#header_login ul li{
 	display:inline-block;
-	width:300px;
+	width:100px;
 	text-align:center;
 	vertical-align:middle;
 	padding-top:8px;
-	margin-right:100px;
+	margin-right:10px;
+	
 }
-#main_nav ul li.menu-logout{
-	width:200px;
-	text-align:left;
-	margin:0 auto;
+/*관리자 유저페이지*/
+table{
+	text-align:center;
+	margin:30px 0;
 }
 
+th,td{
+	width:150px;
+}
+img#modifyauth{
+	cursor:pointer;
+}
