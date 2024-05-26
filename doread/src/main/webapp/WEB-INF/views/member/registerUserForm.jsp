@@ -92,9 +92,10 @@ $(function(){
 			}
 			if(items[i].id == 'cpasswd' && pwChecked == 0){
 				alert('비밀번호를 다시 입력하세요');
+				$('#cpasswd').focus();
 				return false;
 			}
-			if(items[i].id == 'phone' && !/^01([016789]{1})-?([0-9]{3,4})-?([0-9]{4})$/.test($('#phone').val())){
+			if(items[i].id == 'phone' && !/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('#phone').val())){
 				alert('전화번호를 양식에 맞게 입력하세요');
 				$('#id').focus();
 				return false;
@@ -147,7 +148,7 @@ $(function(){
 					<input type="password" name="passwd" id="passwd" maxlength="12" class="input-check">
 				</li>
 				<li>
-					<label for="cpasswd">비밀번호 재입력</label>
+					<label for="cpasswd">비밀번호 확인</label>
 					<input type="password" name="cpasswd" id="cpasswd" maxlength="12" class="input-check">
 					<span id="passwd_checkmessage">비밀번호가 불일치합니다</span>
 				</li>
@@ -159,7 +160,7 @@ $(function(){
 					<div class="register-phone">
 					<label for="phone">전화번호</label>
 					<input type="text" name="phone" id="phone" maxlength="15" autocomplete="off" class="input-check">
-					<div class="form-notice2">*010-0000-0000 형식으로 입력</div>
+					<div class="form-notice2">*숫자만 입력</div>
 					</div>
 				</li>
 				<li>

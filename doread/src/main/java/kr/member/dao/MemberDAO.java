@@ -125,6 +125,7 @@ public class MemberDAO {
 			if(rs.next()) {
 				member = new MemberVO();
 				member.setMem_id(rs.getString("mem_id"));
+				member.setMem_num(rs.getInt("mem_num"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -134,7 +135,6 @@ public class MemberDAO {
 		}
 		return member;
 	}
-		//비밀번호 찾기
 	//회원상세정보
 	public MemberVO getMember(int mem_num)throws Exception{
 		Connection conn = null;

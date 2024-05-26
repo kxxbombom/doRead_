@@ -17,7 +17,7 @@ public class FindMemberIDAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		Map<String,String> mapAjax = new HashMap<String,String>();
+		Map<String,Object> mapAjax = new HashMap<String,Object>();
 		
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("name");
@@ -31,6 +31,7 @@ public class FindMemberIDAction implements Action{
 		}else {
 			mapAjax.put("result", "memberFound");
 			mapAjax.put("id", member.getMem_id());
+			mapAjax.put("num", member.getMem_num());
 		}
 		
 		ObjectMapper mapper = new ObjectMapper();

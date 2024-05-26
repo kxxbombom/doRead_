@@ -92,7 +92,7 @@ a:hover{
 /* 공통 등록, 수정 폼
 ---------------------*/
 form{
-	width:800px;
+	width:1000px;
 	margin-left:120px;
 	padding:0;
 }
@@ -118,7 +118,7 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	border-radius:5px;
 }
 
-/* 회원가입,로그인 헤더
+/* 회원가입,로그인,회원정보찾기 헤더
 ---------------------*/
 #header_login img, #header_login hr{
 	padding:0;
@@ -160,19 +160,19 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	flex-direction:row;
 }
 
-.register-main span{
+.register-main > span{
 	padding:10px 0 0 180px;
 	font-size:18px;
 	font-weight:bold;
 	color:rgb(26, 77, 46);
 }
 .register-member label{
-	font-size:17px;
+	font-size:15px;
 	font-weight:bold;
 	color:rgb(26, 77, 46);
 }
 #register_form input:focus{
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 #register_form input[type="radio"]:focus{
 	box-shadow:none;
@@ -181,7 +181,7 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 /*아이디중복, 우편번호찾기 버튼*/
 #id_check{
 	width:90px;
-	border-radius:5px;
+	border-radius:30px;
 	background-color:rgb(26, 77, 46);
 	color:#FFF;
 	margin-bottom:0;
@@ -189,11 +189,17 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 }
 input[value="우편번호 찾기"]{
 	width:105px;
-	border-radius:5px;
+	border-radius:30px;
 	background-color:rgb(26, 77, 46);
 	color:#FFF;
 	cursor:pointer;
 }
+
+#id_checkmessage, #passwd_checkmessage{
+	font-size:15px;
+	font-weight:bold;
+}
+
 #register_form input[id="id"]{
 	width:250px;
 	margin-bottom:0;
@@ -203,7 +209,7 @@ input[type="number"]{
 	width:100px;
 }
 .form-notice1{
-	font-size:15px;
+	font-size:14px;
 	margin:0 0 20px 160px;
 	color:rgb(89, 89, 89);
 }	
@@ -211,7 +217,7 @@ input[type="number"]{
 	display:flex;
 }
 .form-notice2{
-	font-size:15px;
+	font-size:14px;
 	margin:0 0 0 10px;
 	color:rgb(89, 89, 89);
 }
@@ -230,6 +236,7 @@ input[type="number"]{
 }
 .preference-group label{
 	font-weight:normal;
+	font-size:14px;
 	color:black;
 }
 .container{
@@ -242,7 +249,7 @@ input[type="number"]{
 	margin-left:-250px;
 }
 .register-button{
-	padding:20px 160px;
+	padding:40px 160px;
 }
 /*회원가입,홈으로 버튼*/
 .register-button input[type="submit"]{
@@ -269,7 +276,7 @@ input[type="number"]{
 }
 .register-button input[type="submit"]:hover, .register-button input[type="button"]:hover{
 	border:1px solid rgb(26, 77, 46);
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
 /* 로그인
@@ -322,7 +329,7 @@ input[type="number"]{
 	padding-top:1.125rem;
 	padding-bottom:0.125rem;
 	border:2px solid rgb(43, 122, 56);
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 .floating-label > .form-input:focus + label, 
  .floating-label > .form-input:not(:placeholder-shown) + label{
@@ -376,40 +383,57 @@ input[type="number"]{
 	width:320px;
 	height:50px;
 	padding:0.55rem 0.55rem;
-	border:1px solid rgb(182, 186, 183);
+	border:1px solid #4F6F52;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
 	border-radius:5px;
 	font-size:18px;
-	background-color:#FFF;
 	margin-bottom:10px;
+	
+	
 }
 .login-btn input:hover{
 	border:1px solid rgb(26, 77, 46);
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 	color:rgb(34, 99, 50);
 }
 
 
 /* 아이디찾기
 ---------------------*/
-.findID-menu{
+.find-menu{
 	margin:0 200px;
 }
-.findID-h{
-	margin:20px 0 0 0;
+.find-h{
+	margin:0 10px;
 	padding:0 0 0 5px;
 }
-.findID-h h2, .findID-h h3{
+.find-h h2, .find-h h4{
 	display:inline-block;
 	width:150;
-	margin-right:20px;
+	margin-right:30px;
 	
 }
-div.findID-main{
+.find-menu2{
+	margin:0 240px;
+	display: flex;
+	flex-direction: column;
+}
+.findID-menu2 h3{
+	display:inline-block;
+	width:150;
+	margin-right:30px;
+	
+}
+div.findID-main, div.findPW-main{
 	margin:50px auto;
 }
+div.findPW-main{
+	margin:20px auto;
+}
 
-#findID_form{
-	width:300px;
+#findID_form, #findPW_form{
+	width:500px;
 	margin:0 auto;
 	padding:0;
 	border:none;
@@ -419,11 +443,13 @@ div.findID-main{
 	padding: 0;
 }
 
-#findID_form li {
+#findID_form ul li{
 	display:flex;
 }
-#findID_form li label{
-	margin-right:30px;
+#findID_form ul li label, #findPW_form ul li label{
+	width:100px;
+	margin-right:20px;
+	padding-right:0px;
 }
 
 #findID_form input[type="text"], #findID_form input[type="email"] {
@@ -433,18 +459,19 @@ div.findID-main{
     border:1px solid rgb(182, 186, 183);
     border-radius: 5px;
     box-sizing: border-box;
-    font-size:16px;
+    font-size:14px;
 }
 #findID_form input[type="text"]:focus, #findID_form input[type="email"]:focus {
 	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 }
-.findID-button {
+.findID-button, .findPW-button {
     text-align:center;
+    margin-top:10px;
     margin-bottom:0;
     padding:0;
 }
 
-.findID-button input[type="submit"] {
+.findID-button input[type="submit"]{
 	width:100px;
 	height:35px;
 	background-color:rgb(26, 77, 46);
@@ -471,29 +498,37 @@ div.findID-main{
 	text-align:center;
 	margin-top:30px;
 }
-.findID-btn input{
+.findID-btn input, .findPW-button input[type="submit"]{
 	width:95px;
 	height:40px;
 	border-radius:5px;
+	border:1px solid #4F6F52;
 	background-color:#FFF;
 	color:rgb(26, 77, 46);
 	font-size:15px;
 	margin-right:10px;
 	font-weight:bold;
-	border:1px solid rgb(26, 77, 46);
+
 }
-.findID-btn input:hover{
+.findID-btn input:hover, .findPW-button input[type="submit"]:hover{
 	width:95px;
 	height:40px;
 	border-radius:5px;
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-	color:rgb(34, 99, 50);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 	font-size:15px;
 	margin-right:10px;
 	font-weight:bold;
 }
 .findID-btn input:last-child{
 	width:110px;
+}
+.ID-setted{
+	margin-bottom:30px;
+}
+.ID-setted span{
+	font-size:18px;
+	font-weight:bold;
+	color:rgb(31, 181, 68);
 }
 
 /* 비밀번호찾기

@@ -11,6 +11,7 @@
 $(function(){
 	$('#findID-result').hide();
 	$('#findID_btn_pw').hide();
+	let paramNum = null;
 	
 	$('#findID_form').submit(function(event){
 		const name = document.getElementById('name');
@@ -47,6 +48,7 @@ $(function(){
 				}else if(param.result == 'memberFound'){
 					$('#result_msg1').css('color','black').text('고객님의 정보와 일치하는 아이디입니다');
 					$('#result_msg2').css('color','rgb(31, 181, 68)').text(param.id);
+					paramNum = param.num;
 					$('#result_msg2').show();
 					$('#findID-result').show();
 					$('#findID_btn_pw').show();
@@ -64,19 +66,33 @@ $(function(){
 		document.getElementById('email').value = email.value;
 		
 	});
+	$('#findID_btn_pw').click(function() {
+		const paramId = $('#result_msg2').text();
+		const form = $('<form action="findPWForm.do" method="post">'
+						+ '<input type="hidden" name="id" value="' + encodeURIComponent(paramId) + '">'
+						+ '<input type="hidden" name="num" value="' + encodeURIComponent(paramNum) + '">'
+						+'</form>');
+		$('body').append(form);
+		form.submit();
+	});
 });
 </script>
 </head>
 <body>
 <div class="page-main">
+	<div class="content-main">
 	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
-	<div class="findID-menu">
-		<div class="findID-h">
+	<div class="find-menu">
+		<div class="find-h">
 			<h2><a href="location.href='findIDForm.do'">아이디 찾기</a></h2>
-			<h3><a href="location.href='findPWForm.do'">비밀번호 찾기</a></h3>
+			<h4><a href="location.href='findPWFormN.do'">비밀번호 찾기</a></h4>
 		</div>
 	</div>
 	<hr size="1" noshade width="1000">
+	<div class="find-menu2">
+		<h3>아이디 찾기</h3>
+		<span>본인확인 이메일 주소와 입력한 이메일 주소가 같아야합니다.</span>
+	</div>
 	<div class="findID-main">
 		<form id="findID_form" action="findIDForm.do" method="post" class="register-member">
 			<ul>
@@ -101,9 +117,10 @@ $(function(){
 		</div>
 		<div class="findID-btn">
 			<input type="button" value="로그인" onclick="location.href='loginForm.do'">
-			<input type="button" value="홈으로" onclick="${pageContext.request.contextPath}/main/main.do">
+			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			<input type="button" value="비밀번호 찾기" id="findID_btn_pw" onclick="location.href='findPWForm.do'">
 		</div>
+	</div>
 	</div>
 </div>
 </body>
