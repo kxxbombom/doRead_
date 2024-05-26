@@ -66,7 +66,7 @@
 <div id="main_nav">
 	<ul>
 		<li>
-			<a href="/WEB-INF/views/book/list.jsp" class="nav" id="book_category">책 카테고리</a>
+			<a href="${pageContext.request.contextPath}" class="nav" id="book_category">책 카테고리</a>
 			<div id="category_items">
 				<ul>
 					<li>도서 전체</li>

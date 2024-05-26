@@ -10,6 +10,11 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="content-main">
+		<form id="search_form" action="bookList.do" method="get">
+			<input type="search" size="15" name="bookSearch" id="bookSearch" maxlength="30">
+		</form>
+	</div>
 	</div>
 </body>
 </html>
