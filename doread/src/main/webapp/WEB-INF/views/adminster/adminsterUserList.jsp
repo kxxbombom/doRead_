@@ -21,8 +21,11 @@
 	<hr size="1.5" width="80%" noshade="noshade">
 	
 	<div class="content-main">
-	<table>
+		<c:if test="${empty member}">
+		가입된 회원이 없습니다.
+		</c:if>
 		<c:if test="${!empty member}">
+		<table>
 			<tr>
 			<th>회원번호</th>
 			<th>회원이름</th>
@@ -44,8 +47,9 @@
 			<td>${i.mem_rdate}</td>
 			</tr>
 		</c:forEach>
+		</table>
 		</c:if>
-	</table>
+	
 	</div>
 	<div class="align-center">
 

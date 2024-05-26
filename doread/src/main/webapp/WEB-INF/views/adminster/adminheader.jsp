@@ -32,13 +32,13 @@
 			<div class="subul">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/adminster/userList.do">-전체회원</a></li>
-				<li><a href="#">-정지회원</a></li>
+				<li><a href="${pageContext.request.contextPath}/adminster/user2List.do">-정지회원</a></li>
 			</ul>
 			</div>
 		</li>
 
 		<li >
-			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" >판매내역</a>
+			<a href="${pageContext.request.contextPath}/event/eventmain.do" >이벤트 (임시)</a>
 			<div class="subul">
 			<ul>
 				<li><a href="#">-일별</a></li>
