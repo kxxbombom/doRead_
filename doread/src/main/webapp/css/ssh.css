@@ -88,9 +88,11 @@ img#penimage{
 	z-index:999;
 	border-radius:50%;
 	background:white;
+	cursor:pointer;
 }
 
 div.adminnav ul{
+	
 	list-style:none ;
 	margin-top:26px;
 	text-align:right;
@@ -99,9 +101,9 @@ div.adminnav ul{
 div.adminnav ul li{
 	display:inline-block;
 	text-align:center;
-	vertical-align:middle;
+	vertical-align:top;
 	width:150px;
-	padding-top:8px;
+	margin-top:15px;
 	font-size:16pt;
 	clear:both;
 	position:relative;
@@ -243,6 +245,7 @@ input:hover {
 	list-style:none;
 	margin:0;
 	padding:0;
+	
 
 }
 #header_login ul li{
@@ -265,4 +268,17 @@ th,td{
 }
 img#modifyauth{
 	cursor:pointer;
+}
+div.subul ul{
+	margin-top:50px;
+	margin-left:70px;
+	
+	
+}
+div.subul ul li{
+	font-size:12pt !important;
+	text-align:left;
+
+	
+	
 }

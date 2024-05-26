@@ -20,18 +20,42 @@
 			<b>관리자<br>페이지입니다.</b>
 		</li>
 		<li>
-		
 			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" >책등록</a>
+			<div class="subul">
+			<ul >
+				<li></li>
+			</ul>
+			</div>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/adminster/userList.do" >회원관리</a>
+			<div class="subul">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/adminster/userList.do">-전체회원</a></li>
+				<li><a href="#">-정지회원</a></li>
+			</ul>
+			</div>
 		</li>
 
 		<li >
 			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" >판매내역</a>
+			<div class="subul">
+			<ul>
+				<li><a href="#">-일별</a></li>
+				<li><a href="#">-월별</a></li>
+			</ul>
+			</div>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" >신고내역</a>
+			<div class="subul">
+			<ul >
+				<li><a href="#">-신고게시글</a></li>
+				<li><a href="#">-신고댓글</a></li>
+				<li><a href="#">-정지게시글/댓글</a></li>
+				
+			</ul>
+			</div>
 		</li>
 		
 	</ul>
