@@ -34,7 +34,7 @@ window.onload= function(){
 				<li>
 					<select name="keyfield">
 						<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
-						<option value="3" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
+						<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
 					</select>
 				</li>
 				<li>
@@ -63,11 +63,11 @@ window.onload= function(){
 				<th>제목</th>
 				<th>작성일</th>
 			</tr>
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="qna" items="${list}">
 			<tr>
 				<td>${qna.q_num}</td>
-				<td><a href="detail.do?board_num=${qna.q_num}">${qna.q_title}</a></td>
-				<td>${qna.reg_date}</td>
+				<td><a href="qnaDetail.do?q_num=${qna.q_num}">${qna.q_title}</a></td>
+				<td>${qna.q_rdate}</td>
 			</tr>
 			</c:forEach>
 		</table>

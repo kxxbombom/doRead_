@@ -135,4 +135,46 @@ public class QnaDAO {
 			}
 			return list;
 		}
+		//QNA 상세
+		public QnaVO getQna(int q_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt =null;
+			ResultSet rs = null;
+			QnaVO qna = null;
+			String sql=null;
+			try {
+				//커넥션 풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//sql문 작성
+				//(주의) 회원 탈퇴를 하게되면 member_detail의 레코드를 지우기 때문에 조인시 데이터 누락 방지를 위해 outer join을 사용
+				sql= "SELECT * FROM qna JOIN member USING(mem_num) LEFT OUTER JOIN member_detail USING(mem_num) "
+						+ "WHERE q_num=?";
+				//pstmt 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//데이터바인딩
+				pstmt.setInt(1, q_num);
+				//sql문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					qna = new QnaVO();
+					qna.setQ_num(rs.getInt("q_num"));
+					qna.setQ_title(rs.getString("q_title"));
+					qna.setQ_content(rs.getString("q_content"));
+					qna.setQ_rdate(rs.getDate("q_rdate"));
+					qna.setQ_mdate(rs.getDate("q_mdate"));
+					qna.setQ_image(rs.getString("q_image"));
+					qna.setQ_answer(rs.getString("q_answer"));
+	
+					//로그인한 회원번호와 조건 체크를 해야하기 때문에 mem_num필요
+					qna.setMem_num(rs.getInt("mem_num"));
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return qna;
+		}
 }
