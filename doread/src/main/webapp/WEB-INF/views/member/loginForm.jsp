@@ -49,7 +49,7 @@
 		<div class="login-help-btn">
 			<input type="button" value="아이디 찾기" onclick="location.href='findIDForm.do'">
 			|
-			<input type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/findPW.do'">
+			<input type="button" value="비밀번호 찾기" onclick="location.href='findPWNoIDForm.do'">
 		</div>
 		<div class="login-btn">
 			<input type="button" value="회원가입" onclick="location.href='registerUserForm.do'">

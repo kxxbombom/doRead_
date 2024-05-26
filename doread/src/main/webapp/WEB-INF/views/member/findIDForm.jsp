@@ -84,8 +84,8 @@ $(function(){
 	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 	<div class="find-menu">
 		<div class="find-h">
-			<h2><a href="location.href='findIDForm.do'">아이디 찾기</a></h2>
-			<h4><a href="location.href='findPWFormN.do'">비밀번호 찾기</a></h4>
+			<h2><a href="findIDForm.do">아이디 찾기</a></h2>
+			<h4><a href="findPWNoIDForm.do">비밀번호 찾기</a></h4>
 		</div>
 	</div>
 	<hr size="1" noshade width="1000">

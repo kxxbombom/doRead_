@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${checkID_msg == 'IDNotFound'}">
+<script type="text/javascript">
+	alert('입력하신 아이디를 찾을 수 없습니다.');
+	history.go(-1);
+</script>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +17,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	
+	
 	let pwChecked = 0;
 	$('#passwd_checkmessage').hide();
 	
@@ -54,8 +64,8 @@ $(function(){
 	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 	<div class="find-menu">
 		<div class="find-h">
-			<h4><a href="location.href='findIDForm.do'">아이디 찾기</a></h4>
-			<h2><a href="location.href='findPWForm.do'">비밀번호 찾기</a></h2>
+			<h4><a href="findIDForm.do">아이디 찾기</a></h4>
+			<h2><a href="findPWNoIDForm.do">비밀번호 찾기</a></h2>
 		</div>
 	</div>
 	<hr size="1" noshade width="1000">
@@ -65,6 +75,7 @@ $(function(){
 	</div>
 	<div class="findPW-main">
 		<form id="findPW_form" action="findPW.do" method="post" class="register-member">
+			<input type="hidden" name="num" value="${num}">
 			<input type="hidden" name="id" value="${id}">
 			<ul>
 				<li class="ID-setted">

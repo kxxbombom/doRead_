@@ -4,8 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 
-public class FindPWFormAction implements Action{
+public class CheckIDAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -13,23 +15,22 @@ public class FindPWFormAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("id");
-		Integer num;
-		String numParam = request.getParameter("num");
-		if(numParam != null && !numParam.isEmpty()) {
-			num = Integer.parseInt(numParam);
-		}else {
-			num = null;
-		}
 		
-		if(id == null || num == null) {
+		if(id == null) {
 			request.setAttribute("notice_msg", "잘못된 접근입니다");
 			request.setAttribute("notice_url", request.getContextPath() + "/main/main.do");
 			return "/WEB-INF/views/common/alert_view.jsp";
 		}
-			
-		request.setAttribute("id", id);
-		request.setAttribute("num", num);
 		
+		MemberDAO dao = MemberDAO.getInstance();
+		MemberVO member = dao.checkMember(id);
+		
+		if(member == null) {
+			request.setAttribute("checkID_msg", "IDNotFound");
+		}else {
+			request.setAttribute("id", id);
+			request.setAttribute("num", member.getMem_num());
+		}
 		return "/WEB-INF/views/member/findPWForm.jsp";
 	}
 

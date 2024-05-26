@@ -135,13 +135,35 @@ public class MemberDAO {
 		}
 		return member;
 	}
+	
+	//비밀번호찾기-비밀번호 재설정
+	public void resetPW(String passwd, int mem_num)throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE member_detail SET mem_pw=? WHERE mem_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, passwd);
+			pstmt.setInt(2, mem_num);
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//회원상세정보
 	public MemberVO getMember(int mem_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberVO member = null;
-		String sql = "";
+		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
 			
