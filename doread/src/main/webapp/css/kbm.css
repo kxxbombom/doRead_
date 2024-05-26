@@ -3,7 +3,7 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:1400px;
+	width:960px;
 	margin:0 auto;
 	background:#FFFFFF;
 }
@@ -37,7 +37,7 @@ a:hover{
 ---------------------*/
 .result-display{
 	width:400px;
-	height:200px;
+	height:160px;
 	margin:50px auto;
 	display:flex;
 	flex-direction:column;
@@ -72,9 +72,10 @@ form ul li{
 	clear:both;
 }
 form ul li label{
-	margin-right:20px;;
-	width:140px;
+	margin-right:0px;
+	width:120px;
 	float:left; /*태그를 왼쪽으로 정렬*/
+	padding:0;
 }
 ul {
 	list-style:none;
@@ -86,7 +87,7 @@ input{
 	border:1px solid rgb(182, 186, 183);
 }
 input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"]{
-	width:250px;
+	width:200px;
 	border-radius:5px;
 }
 
@@ -109,19 +110,19 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 /* 회원가입
 ---------------------*/
 .register-header h2{
-	padding:0 180px;
+	padding:0 140px;
 }
 .register-top{
 	text-align:center;
 }
 .background-box{
 	display:inline-block;
-	padding:8px 90px;
+	padding:8px 60px;
 	border-radius:4px;
 	background-color:rgb(26, 77, 46);
 }
 .register-top .background-box span {
-	font-size: 20px;
+	font-size: 18px;
 	color: #FFF;
 }
 
@@ -132,15 +133,19 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 }
 
 .register-main > span{
-	padding:10px 0 0 180px;
+	padding:10px 0 0 140px;
 	font-size:18px;
 	font-weight:bold;
 	color:rgb(26, 77, 46);
+	width:180px;
 }
 .register-member label{
 	font-size:15px;
 	font-weight:bold;
 	color:rgb(26, 77, 46);
+}
+#register_form{
+	margin:0 30px;
 }
 #register_form input:focus{
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
@@ -172,16 +177,13 @@ input[value="우편번호 찾기"]{
 }
 
 #register_form input[id="id"]{
-	width:250px;
+	width:200px;
 	margin-bottom:0;
 }
 
-input[type="number"]{
-	width:100px;
-}
 .form-notice1{
 	font-size:14px;
-	margin:0 0 20px 160px;
+	margin:0 0 20px 120px;
 	color:rgb(89, 89, 89);
 }	
 .register-phone{
@@ -194,7 +196,7 @@ input[type="number"]{
 }
 /*radio*/
 .test{
-	width:150px;
+	width:120px;
 	display:flex;
 	float:left;
 }
@@ -212,15 +214,15 @@ input[type="number"]{
 }
 .container{
 	float:left;
-	margin-bottom:30px;
+	margin-bottom:20px;
 }
 
 
 #register_form hr{
-	margin-left:-250px;
+	margin-left:-165px;
 }
 .register-button{
-	padding:40px 160px;
+	padding:40px 70px;
 }
 /*회원가입,홈으로 버튼*/
 .register-button input[type="submit"]{
@@ -331,7 +333,7 @@ input[type="number"]{
 	color:rgb(26, 77, 46);
 }
 .login-help-btn{
-	margin:0 0 0 660px;
+	margin:0 0 0 440px;
 }
 .login-help-btn input{
 	border:none;
@@ -383,7 +385,7 @@ input[type="number"]{
 	border:none;
 	border-radius: 5px;
 	font-size: 15px;
-	margin-top:10px;
+	margin:0 10px;
 	cursor:pointer;
 }
 
@@ -403,7 +405,7 @@ input[type="number"]{
 	
 }
 .find-menu2{
-	margin:20px 240px;
+	margin:20px 200px;
 	display: flex;
 	flex-direction: column;
 }
@@ -427,19 +429,22 @@ div.findPW-main{
 	border:none;
 }
 #findPW_form{
-	width:500px;
+	width:400px;
 	margin:0 auto;
 	padding-left:0spx;
 	border:none;
 }
 #findPWNoID_form{
-	width:500px;
+	width:400px;
 	margin:55px auto;
 	padding:0;
 	border:none;
 	margin-bottom:30px;
 }
-
+#findPWNoID_form ul li label{
+	width:80px;
+	padding-left:30px;
+}
 #findID_form ul {
 	padding: 0;
 }
@@ -447,14 +452,15 @@ div.findPW-main{
 #findID_form ul li{
 	display:flex;
 }
-#findID_form ul li label, #findPW_form ul li label{
-	width:100px;
-	margin-right:20px;
+#findID_form ul li label{
+	width:90px;
+	margin-right:0px;
 	padding-right:0px;
+	padding-left:20px;
 }
 
 #findID_form input[type="text"], #findID_form input[type="email"] {
-	width:550px;
+	width:200px;
 	height:35px;
     padding: 10px;
     border:1px solid rgb(182, 186, 183);

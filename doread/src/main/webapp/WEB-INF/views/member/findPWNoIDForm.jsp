@@ -31,7 +31,7 @@ $(function(){
 			<h2><a href="findPWNoIDForm.do">비밀번호 찾기</a></h2>
 		</div>
 	</div>
-	<hr size="1" noshade width="1000">
+	<hr size="1" noshade width="560">
 	<div class="find-menu2">
 		<span>비밀번호를 찾고자하는 아이디를 입력해주세요.</span>
 	</div>
@@ -48,7 +48,7 @@ $(function(){
 				<input type="submit" value="다음">
 			</div>
 		</form>
-		<hr size="1" noshade width="1000">
+		<hr size="1" noshade width="560">
 	</div>
 	</div>
 </div>

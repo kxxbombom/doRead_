@@ -89,7 +89,7 @@
 			<a href="${pageContext.request.contextPath}/board/newsList.do" class="nav">뉴스</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/eventList.do" class="nav">이벤트</a>
+			<a href="${pageContext.request.contextPath}/event/eventmain.do " class="nav">이벤트</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/usedList.do" class="nav" >중고</a>

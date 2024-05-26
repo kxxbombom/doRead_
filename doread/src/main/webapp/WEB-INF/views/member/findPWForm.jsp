@@ -17,8 +17,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	
-	
 	let pwChecked = 0;
 	$('#passwd_checkmessage').hide();
 	
@@ -68,7 +66,7 @@ $(function(){
 			<h2><a href="findPWNoIDForm.do">비밀번호 찾기</a></h2>
 		</div>
 	</div>
-	<hr size="1" noshade width="1000">
+	<hr size="1" noshade width="560">
 	<div class="find-menu2">
 		<h3>비밀번호 재설정</h3>
 		<span>비밀번호를 변경해주세요</span>
@@ -99,7 +97,7 @@ $(function(){
 				<input type="submit" value="확인">
 			</div>
 		</form>
-		<hr size="1" noshade width="1000">
+		<hr size="1" noshade width="560">
 	</div>
 	</div>
 </div>
