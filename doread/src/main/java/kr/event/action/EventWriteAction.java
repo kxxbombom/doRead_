@@ -43,7 +43,7 @@ public class EventWriteAction implements Action{
 		event.setE_item(e_item);
 		dao.eventWrite(event);
 		
-		return "/WEB-INF/views/event/eventMain.jsp";
+		return "redirect:/event/eventmain.do";
 	}
 
 }

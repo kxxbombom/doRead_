@@ -25,8 +25,8 @@
 				
 			}
 			if(inputcheck[i].id=='e_deadline'){
-				if(!/^[2-9][0-9]{3}[/][0-9]{2}[/][0-9]{2}$/.test(inputcheck[i].value)){
-					alert('이벤트 종료일은 2024/05/26 형식으로 입력하세요');
+				if(!/^[2-9][0-9]{3}[-][0-9]{2}[-][0-9]{2}$/.test(inputcheck[i].value)){
+					alert('이벤트 종료일은 2024-05-26 형식으로 입력하세요');
 					inputcheck[i].focus();
 					return false;
 					
@@ -63,9 +63,7 @@
 			<input type="text" name="e_deadline" class="inputcheck input-style " id="e_deadline" maxlength="10">
 		</li>
 		<li><label for="e_content">이벤트 내용</label>
-			<textarea id="e_content" name="e_content">
-			
-			</textarea>
+			<textarea id="e_content" name="e_content"></textarea>
 		</li>
 		
 		<li>
