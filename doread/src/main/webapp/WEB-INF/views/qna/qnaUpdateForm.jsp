@@ -37,6 +37,7 @@ window.onload=function(){
 		<h2>문의 수정</h2>
 		<form id="write_form" action="qnaUpdate.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="q_num" value="${qna.q_num}">
+
 			<ul>
 				<li>
 					<label for="q_title">제목</label>
