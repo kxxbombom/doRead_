@@ -45,8 +45,11 @@
 				</c:if>
 				작성일 : ${qna.q_rdate}
 				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정, 삭제 가능 --%>
+				<c:if test="${qna.mem_auth == 9}">
+				<input type="button" value="답변하기" onclick="location.href='qnaAnswerForm.do?q_num=${qna.q_num}'">				
+				</c:if>
 				<c:if test="${user_num == qna.mem_num}">
-				<input type="button" value="수정" onclick="location.href='updateForm.do?q_num=${qna.q_num}'">
+				<input type="button" value="수정" onclick="location.href='qnaUpdateForm.do?q_num=${qna.q_num}'">
 				<input type="button" value="삭제" id="delete_btn">
 				<script type="text/javascript">
 					const delete_btn=document.getElementById('delete_btn');
@@ -54,7 +57,7 @@
 					delete_btn.onclick=function(){
 						let choice = confirm('삭제하시겠습니까?');
 						if(choice){
-							location.replace('delete.do?q_num=${qna.q_num}');
+							location.replace('qnaDelete.do?q_num=${qna.q_num}');
 						}
 					};
 				</script>

@@ -167,6 +167,7 @@ public class QnaDAO {
 	
 					//로그인한 회원번호와 조건 체크를 해야하기 때문에 mem_num필요
 					qna.setMem_num(rs.getInt("mem_num"));
+					qna.setMem_auth(rs.getInt("mem_auth"));
 				}
 				
 			}catch(Exception e) {
@@ -176,5 +177,39 @@ public class QnaDAO {
 			}
 			
 			return qna;
+		}
+		//글 수정
+		public void updateQna(QnaVO qna)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			String sub_sql = "";
+			int cnt = 0;
+			try {
+				//커넥션 풀에서 커넥션 할당
+				conn = DBUtil.getConnection();
+				if(qna.getQ_image()!=null && !"".equals(qna.getQ_image())) { 
+					sub_sql+=",q_image=?";
+				}
+				//SQL문 작성
+				sql = "UPDATE qna SET q_title=?,q_content=?,q_mdate=SYSDATE,q_ip=?" + sub_sql + " WHERE q_num=?";
+				//pstmt 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//데이터바인딩
+				pstmt.setString(++cnt, qna.getQ_title());
+				pstmt.setString(++cnt, qna.getQ_content());
+				pstmt.setString(++cnt, qna.getQ_ip());
+				if(qna.getQ_image()!=null && !"".equals(qna.getQ_image())) {
+					pstmt.setString(++cnt, qna.getQ_image());				
+				}
+				pstmt.setInt(++cnt, qna.getQ_num());				
+				//SQL문 실행
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
 		}
 }

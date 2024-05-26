@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의하기</title>
+<title>문의 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript">
@@ -34,16 +34,16 @@ window.onload=function(){
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
-		<h2>문의하기</h2>
-		<form id="write_form" action="qnaWrite.do" method="post" enctype="multipart/form-data">
+		<h2>문의 수정</h2>
+		<form id="write_form" action="qnaUpdate.do" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
 					<label for="q_title">제목</label>
-					<input type="text" name="q_title" id="q_title" maxlength="50">
+					<input type="text" name="q_title" id="q_title" maxlength="50" value="${qna.q_title }">
 				</li>
 				<li>
 					<label for="q_content">내용</label>
-					<textarea rows="5" cols="40"  name="q_content" id="q_content"></textarea>
+					<textarea rows="5" cols="40"  name="q_content" id="q_content" >${qna.q_content}</textarea>
 				</li>
 				<li>
 					<label for="q_image">이미지</label>
@@ -57,7 +57,7 @@ window.onload=function(){
 				</li>
 			</ul>
 			<div class="align-center">
-				<input type="submit" value="등록">
+				<input type="submit" value="수정">
 				<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			</div>
 		</form>

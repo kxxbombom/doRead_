@@ -12,9 +12,17 @@ public class QnaVO {
 	private String q_ip;			//작성자ip
 	private int q_auth;				//문의 유형
 	private String q_image;			//문의 사진
-	private int  mem_num;			//작성자
+	private int mem_num;			//작성자
+	
+	private int mem_auth; 			//관리자 구분
 	
 	
+	public int getMem_auth() {
+		return mem_auth;
+	}
+	public void setMem_auth(int mem_auth) {
+		this.mem_auth = mem_auth;
+	}
 	public int getQ_num() {
 		return q_num;
 	}
