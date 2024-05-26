@@ -1,23 +1,51 @@
 @charset "UTF-8";
 
+body{
+	width:960px;
+	margin:0 auto;
+	background:#FFFFFF;
+}
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+.page-main{
+	width:100%;
+	background:#FFFFFF;
+	margin:40px auto;
+	border:none;
+	min-height:650px;
+}
+
+ul {
+	list-style:none;
+}
 .mypage-div{
-	width:900px;
+	width:1200px;
 	background-color:#1a4d2e;
 	display:flex;
-	margin: 8px ;
-	text-align:center;
+	float: left;
+	margin-left:-200px;
+	
 }
 .mypage-div ul{
 	margin:0;
-	padding:2px 20px 20px 20px;
+	padding:2px 30px 20px 30px;
 	white-space: nowrap;
+	float: left;
+	text-align:left;
 }
 .mypage-div ul li{
+	margin:0;
 	padding-top:8px;
 	font-size:14px;
 	color:#FFFFFF;
-	
-	
+	text-align:left;
+	float: left;
 }
 .mypage-div ul li.page-name{
 	font-size:30px;
@@ -29,18 +57,74 @@
 }
 .mypage-title{
 	font-size:20px;
+	display:flex;
+	padding-right:-100px;
+	margin-right:50px;
 }
-.outer-main{
+.mypage-left{
+	float:left;
+	display:flex;
+}
+.mypage-left ul{
 	float: left;
 }
-.mypage-button{
-	float: left;
+.mypage-left ul li{
+	display:flex;
+	float:left;
+}
+.align-center input[type="file"]{
+	margin:0;
+}
+.mypage-right{
+	margin:0;
+	display:flex;
+}
+.mypage-right ul{
+	float:left;
+	white-space: nowrap;
+}
+
+.mypage-right ul li.page-name{
+	margin-left:-200px;
 }
 .inner-menu > a{
 	vertical-align:middle;
 	text-decoration-line: none;
 	color:#FFFFFF;
+	text-align:center;
+	line-height:150%;
+	margin-left:-20px;
 }
 #main_nav{
 	display:none;
+}
+.mypage-button{
+	margin-left:-130px;
+}
+.mypage-button input[type="button"]{
+	margin-top: 20px;
+	width:80px;
+	height:40px;
+	border-radius:5px;
+	background-color:#1a4d2e;
+	color:#FFFFFF;
+	font-size:15px;
+}
+
+.page-name{
+	float: left;
+	text-align:left;
+}
+.outer-main{
+	float: left;
+}
+
+.my-photo{
+	object-fit:cover;
+	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+	object-position:top;
+	/*사각형의 모서리 둥근 정도를 지정하는 속성,50%를 지정하면 완전한 원*/
+	border-radius:50%;
+	margin-right:50px;
+	z-index:1;
 }
