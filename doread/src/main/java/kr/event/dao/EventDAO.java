@@ -99,6 +99,47 @@ public class EventDAO {
 		return list;
 	}
 	
+		public EventVO getEvent(int e_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			EventVO event = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql="select * from eventboard where e_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, e_num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					event = new EventVO();
+					
+					event.setE_title(rs.getString("e_title"));
+					event.setE_content(rs.getString("e_content"));
+					event.setE_deadline(rs.getString("e_deadline"));
+					event.setE_image(rs.getString("e_image"));
+					event.setE_num(e_num);
+					event.setMem_num(rs.getInt("mem_num"));
+					event.setE_rdate(rs.getDate("e_rdate"));
+					event.setE_mdate(rs.getDate("e_mdate"));
+					event.setE_hit(rs.getInt("e_hit"));
+					event.setE_item(rs.getString("e_item"));
+					event.setE_mem_num(rs.getInt("e_mem_num"));
+					
+					
+				}
+			}catch(Exception e) {
+				
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			
+			return event;
+			
+		}
 	 
 	 
 

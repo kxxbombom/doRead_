@@ -64,7 +64,15 @@ div.page-center ul li{
 .align-right{
 	text-align:right;
 }
-
+.align-left{
+	text-align:left;
+	margin-left:40px;
+}
+div.align-left b{
+	text-align:left;
+	margin-left:0px;
+	font-size:25pt;
+}
 /*관리자 페이지 상단바*/
 #adminpage{
 	
@@ -398,4 +406,43 @@ span#e_title{
 span#e_title{
 	font-size:20pt;
 	
+}
+.eventbutton {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: rgb(255, 239, 214);
+  margin:0 5px;
+  padding: 0.4em 1.0em;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 0.3em;
+  background: rgb(26, 77, 46);
+  border: 1px solid rgb(26, 77, 46);
+  width:340px;
+  height:80px;
+  margin:40px;
+  font-weight:bold;
+  font-size:25pt;
+
+}
+
+.eventbutton2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: rgb(255, 239, 214);
+  margin:0 5px;
+  padding: 0.4em 1.0em;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 0.3em;
+  background: rgb(22, 160, 133);
+  border: 1px solid rgb(22, 160, 133);
+	margin:15px;
+  font-weight:bold;
 }

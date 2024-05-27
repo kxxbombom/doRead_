@@ -14,3 +14,15 @@ CREATE TABLE eventboard (
 );
 
 create sequence event_num;
+
+
+
+CREATE TABLE event_detail (
+	ed_num	number	NOT NULL,
+	mem_num	number	NOT NULL,
+	ed_result	varchar2(20)	NULL,
+	e_num	number	NOT NULL,
+	constraint ed_pk primary key (ed_num),
+	constraint ed_fk1 foreign key (mem_num) references member(mem_num),
+	constraint ed_fk2 foreign key (e_num) references eventboard(e_num)
+	);

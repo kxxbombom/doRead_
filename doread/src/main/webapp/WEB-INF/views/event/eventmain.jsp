@@ -16,12 +16,13 @@
 			<div class="eventvar">
  	<h1>EVENT</h1>
  </div>
-<div>
+
 <div class="align-center">
  			<form>
  			<input type="text" name="eventsearch" class="inputcheck input-style" id="eventsearch" maxlength="30" >
  			<input type="submit" value="검색" class="button2">
 				<select>
+				<option value="1">진행중이벤트</option>
  				<option value="2">종료된이벤트</option>
  				<option value="3">당첨자보기</option>
  				</select>
@@ -50,13 +51,13 @@
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
 		</div>
- 			
+ 			<input type="button" value="이벤트목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">
  </div>
  	
 			
 			
 			
-</div>
+
 	
 </div>
 </body>
