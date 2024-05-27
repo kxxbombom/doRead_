@@ -15,6 +15,7 @@ public class MemberVO {
 	private int mem_auth;
 	private Date mem_rdate;
 	private Date mem_mdate;
+	private String mem_photo;
 	private Integer book_category;
 	
 	public boolean isCheckedPassword(String userpw) {
@@ -22,7 +23,17 @@ public class MemberVO {
 			return true;
 		}
 		return false;
-	} 
+	}
+	
+	public String getMem_photo() {
+		return mem_photo;
+	}
+
+	public void setMem_photo(String mem_photo) {
+		this.mem_photo = mem_photo;
+	}
+
+	
 		
 	public Integer getBook_category() {
 		return book_category;

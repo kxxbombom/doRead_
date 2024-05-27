@@ -46,7 +46,7 @@ a:hover{
 	font-size:16px;
 }
 
-공통 정렬
+/*공통 정렬
 ---------------------
 .align-center{
 	text-align:center;
@@ -91,6 +91,8 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	border-radius:5px;
 }
 
+
+
 /* 회원가입,로그인,회원정보찾기 헤더
 ---------------------*/
 #header_login img, #header_login hr{
@@ -106,6 +108,7 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 #header_login h1 a{
 		color:rgb(26, 77, 46);
 }
+
 
 /* 회원가입
 ---------------------*/
