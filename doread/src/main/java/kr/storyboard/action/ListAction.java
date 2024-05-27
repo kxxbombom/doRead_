@@ -23,7 +23,7 @@ public class ListAction implements Action{
 		int count = dao.getStoryBoardCount(keyfield, keyword);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 20,10,"StoryBoardList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 20,10,"storyBoardList.do");
 		List<StoryBoardVO> list = null;
 		if(count > 0) {
 			list = dao.getListStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword);
@@ -33,6 +33,6 @@ public class ListAction implements Action{
 		request.setAttribute("page", page.getPage());
 		
 		// JSP 경로 반환
-		return "/WEB-INF/views/qna/list.jsp";
+		return "/WEB-INF/views/story/list.jsp";
 	}
 }

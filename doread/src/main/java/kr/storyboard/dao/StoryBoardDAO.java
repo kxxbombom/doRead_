@@ -89,13 +89,13 @@ public class StoryBoardDAO {
 					list = new ArrayList<StoryBoardVO>();
 					while(rs.next()) {
 						StoryBoardVO sv = new StoryBoardVO();
-						sv.setS_num(rs.getInt("q_num"));
-						sv.setS_title(StringUtil.useBrNoHTML(rs.getString("q_title")));//html 태그 허용 x
-						sv.setS_content(rs.getString("q_content"));
-						sv.setS_auth(rs.getInt("q_auth"));
-						sv.setS_image(rs.getString("q_image"));
-						sv.setS_rdate(rs.getDate("q_rdate"));
-						
+						sv.setS_num(rs.getInt("s_num"));
+						sv.setS_title(StringUtil.useBrNoHTML(rs.getString("s_title")));//html 태그 허용 x
+						sv.setS_content(rs.getString("s_content"));
+						sv.setS_auth(rs.getInt("s_auth"));
+						sv.setS_image(rs.getString("s_image"));
+						sv.setS_rdate(rs.getDate("s_rdate"));
+						sv.setBook_num(rs.getInt("book_nu,"));
 						
 						list.add(sv);
 					}

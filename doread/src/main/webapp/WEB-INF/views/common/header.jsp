@@ -95,7 +95,7 @@
 			<a href="${pageContext.request.contextPath}/used/usedList.do" class="nav" >중고</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">스토리</a>
+			<a href="${pageContext.request.contextPath}/story/storyBoardList.do" class="nav">스토리</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/qna/qnaList.do" class="nav">QnA</a>
