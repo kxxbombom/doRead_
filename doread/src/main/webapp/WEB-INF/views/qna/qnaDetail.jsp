@@ -46,8 +46,11 @@
 				작성일 : ${qna.q_rdate}
 				<%-- 관리자 등급만 답변 가능--%>
 				<%-- 관리자가 작성한 글만 수정 가능?--%>
-				<c:if test="${!empty user_num && user_auth == 9}">
+				<c:if test="${!empty user_num && user_auth == 9&& empty qna.q_answer}}">
 				<input type="button" value="답변하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'">				
+				</c:if> 
+				<c:if test="${!empty user_num && user_auth == 9 && !empty qna.q_answer}">
+				<input type="button" value="답변수정하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'">				
 				</c:if> 
 				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정, 삭제 가능 --%>
 				<c:if test="${user_num == qna.mem_num}">

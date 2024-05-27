@@ -32,3 +32,19 @@ div#category_items>ul{
 div#main_nav>ul>li:hover div#category_items{
 	display:block;
 }
+
+/* 메인
+---------------------*/
+.image-space .horizontal-area{
+	margin:2px;
+	padding:3px;
+	width:220px;
+	height:240px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+
+.image-space .float-clear{
+	clear:both;
+}

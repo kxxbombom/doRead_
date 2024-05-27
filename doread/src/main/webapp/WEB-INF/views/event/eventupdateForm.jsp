@@ -46,24 +46,25 @@
 <jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
 <div class="page-main">
 <div class="eventvar">
-	<h1>EVENT 글쓰기</h1>
+	<h1>EVENT 글수정</h1>
 </div>
 <div>
-<form action="eventcreate.do" method="post" id="event_form" enctype="multipart/form-data" >
+<form action="eventupdate.do" method="post" id="event_form" enctype="multipart/form-data" >
 	<div class="formdiv">
+	<input type="hidden" name="e_num" value="${event.e_num}">
 	<ul>
 		<li><label for="e_title">이벤트 제목</label>
-			<input type="text" name="e_title" class="inputcheck input-style" id="e_title" maxlength="30" >
+			<input type="text" name="e_title" class="inputcheck input-style" id="e_title" maxlength="30"  value="${event.e_title}">
 		</li>
 		<li><label for="e_item">이벤트 상품</label>
-			<input type="text" name="e_item" class="inputcheck input-style "  id="e_item" maxlength="10">
+			<input type="text" name="e_item" class="inputcheck input-style "  id="e_item" maxlength="10" value="${event.e_item}">
 		</li>
 		
 		<li><label for="e_deadline">이벤트종료일(발표일)</label>
-			<input type="text" name="e_deadline" class="inputcheck input-style " id="e_deadline" maxlength="10">
+			<input type="text" name="e_deadline" class="inputcheck input-style " id="e_deadline" maxlength="10" value="${event.e_deadline}">
 		</li>
 		<li><label for="e_content">이벤트 내용</label>
-			<textarea class="inputcheck input-style" style="height:150px"  id="e_content" name="e_content"></textarea>
+			<textarea class="inputcheck input-style" style="height:150px"  id="e_content" name="e_content">${event.e_content}</textarea>
 		</li>
 		
 		<li>
@@ -74,7 +75,7 @@
 	</ul>
 	</div>
 	<div class="align-center">
-	<input type="submit" value="등록" class="button2">
+	<input type="submit" value="수정" class="button2">
 	<input type="button" value="이벤트목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">
 	
 	</div>

@@ -7,11 +7,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.event.vo.EventDetailVO;
 import kr.event.vo.EventVO;
 import kr.util.DBUtil;
 
 public class EventDAO {
-	
+	//이벤트글작성
 	private static EventDAO instance = new EventDAO();
 	public static EventDAO getInstance() {		return instance;
 	}
@@ -99,6 +100,7 @@ public class EventDAO {
 		return list;
 	}
 	
+		//이벤트 상세 페이지
 		public EventVO getEvent(int e_num) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -140,8 +142,292 @@ public class EventDAO {
 			return event;
 			
 		}
-	 
-	 
+		//이벤트게시글 수카운트 페이지처리
+		public int getEventCount() throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql="select count(*) from eventboard ";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+					
+					
+				}
+			}catch(Exception e) {
+				
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return count;
+			
+			
+		}
+		//이벤트 글수정
+		public void updateEvent(EventVO event) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql = "update eventboard set e_title=?,e_content=?,e_mdate=sysdate,e_deadline=?,e_image=?,e_item=? where e_num=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, event.getE_title());
+				pstmt.setString(2, event.getE_content());
+				pstmt.setString(3,event.getE_deadline());
+				pstmt.setString(4, event.getE_image());
+				pstmt.setString(5, event.getE_item());
+				pstmt.setInt(6, event.getE_num());
+				
+				
+				
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
+		
+	 //이벤트 글삭제
+				public void deleteEvent(int e_num) throws Exception{
+					Connection conn = null;
+					
+					PreparedStatement pstmt = null;
+					PreparedStatement pstmt2 = null;
+					String sql = null;
+					try {
+						conn = DBUtil.getConnection();
+						conn.setAutoCommit(false);
+						sql = "delete from event_detail where e_num=?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, e_num);
+						pstmt.executeUpdate();
+						sql = "delete from eventboard where e_num=?";
+						pstmt2 = conn.prepareStatement(sql);
+						pstmt2.setInt(1, e_num);
+						pstmt2.executeUpdate();
+						
+						conn.commit();
+					}catch(Exception e) {
+						conn.rollback();
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(null, pstmt2, null);
+						DBUtil.executeClose(null, pstmt, conn);
+					}
+				}
+		
+	 //이벤트 응모
+		public void eventDetailWrite(EventDetailVO event) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql = "INSERT INTO event_detail (ed_num, e_num, mem_num) VALUES (event_detail_seq.nextval,?,?)";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, event.getE_num());
+				pstmt.setInt(2, event.getMem_num());
+				
+				
+				
+				pstmt.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
+	
+	//이벤트 응모확인
+		public EventDetailVO getEventdetail(int mem_num,int e_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			EventDetailVO event = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql="select * from event_detail where e_num=? and mem_num=? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, e_num);
+				pstmt.setInt(2,mem_num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					event = new EventDetailVO();
+					event.setEd_num(rs.getInt("ed_num"));
+					event.setE_num(rs.getInt("e_num"));
+					event.setMem_num(rs.getInt("mem_num"));
+					event.setEd_result(rs.getString("ed_result"));
+					
+					
+				}
+			}catch(Exception e) {
+				
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return event;
+			
+			
+		}
+		//이벤트 응모 종료확인
+				public EventDetailVO getEventdead(int e_num) throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					EventDetailVO event = null;
+					
+					try {
+						conn = DBUtil.getConnection();
+						sql="select * from event_detail join eventboard using(e_num) where e_num=?  and e_mem_num  is not null ";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, e_num);
+						
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							event = new EventDetailVO();
+							event.setEd_num(rs.getInt("ed_num"));
+							event.setE_num(rs.getInt("e_num"));
+							event.setMem_num(rs.getInt("mem_num"));
+							event.setEd_result(rs.getString("ed_result"));
+							
+							
+						}
+					}catch(Exception e) {
+						
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(rs, pstmt, conn);
+					}
+					
+					return event;
+					
+					
+				}
+		//이벤트 응모기록
+		public List<EventDetailVO> getEventdetailUser(int start, int end, int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			List<EventDetailVO> list = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql="select * from (select rownum alnum , a.* from (select * from event_detail where mem_num=? order by ed_num desc)a ) where alnum between ? and ? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, mem_num);
+				pstmt.setInt(2,start);
+				pstmt.setInt(3,end);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					list = new ArrayList<EventDetailVO>();
+					do {
+						EventDetailVO event = new EventDetailVO();
+						event.setEd_num(rs.getInt("ed_num"));
+						event.setE_num(rs.getInt("e_num"));
+						event.setMem_num(rs.getInt("mem_num"));
+						event.setEd_result(rs.getString("ed_result"));
+						list.add(event);
+					}while(rs.next());
+					
+				}
+			}catch(Exception e) {
+				
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return list;
+			
+			
+		}
+		//이벤트응모 수카운트 페이지처리
+				public int getEvenDetailCount(int mem_num) throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					int count = 0;
+					
+					try {
+						conn = DBUtil.getConnection();
+						sql="select count(*) from event_detail where mem_num=? ";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, mem_num);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							count = rs.getInt(1);
+							
+							
+						}
+					}catch(Exception e) {
+						
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(rs, pstmt, conn);
+					}
+					
+					return count;
+					
+					
+				}
+	//이벤트 당첨자 발표!!
+				public void updateEventPresent(EventVO event) throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					PreparedStatement pstmt2 = null;
+					String sql = null;
+					try {
+						conn = DBUtil.getConnection();
+						conn.setAutoCommit(false);
+						sql = "update eventboard set e_mem_num=?, e_title=?,e_content=?,e_mdate=sysdate where e_num=?";
+						
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, event.getE_mem_num());
+						pstmt.setString(2, "종료된 이벤트 입니다.");
+						pstmt.setString(3, "종료된 이벤트 입니다.");
+						pstmt.setInt(4, event.getE_num());
+						pstmt.executeUpdate();
+						sql = "update event_detail set ed_result=? where e_num=? and mem_num=?";
+						
+						pstmt2 = conn.prepareStatement(sql);
+						pstmt2.setString(1, "당첨");
+						pstmt2.setInt(2, event.getE_num());
+						pstmt2.setInt(3, event.getE_mem_num());
+						
+					
+					
+						pstmt.executeUpdate();
+						
+						
+						conn.commit();
+					}catch(Exception e) {
+						conn.rollback();
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(null, pstmt2, null);
+						DBUtil.executeClose(null, pstmt, conn);
+					}
+				}
 
 	
 }
