@@ -32,7 +32,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
 		<h2>뉴스게시판</h2>
-		<form id="search_form" action="newslist.do" method="get">
+		<form id="search_form" action="newsList.do" method="get">
 			<ul class="search">
 				<li>
 					<select name="keyfield">
@@ -53,7 +53,7 @@
 			<c:if test="${!empty user_num && user_auth == 9}">
 			<input type="button" value="글쓰기" onclick="location.href='newsWriteForm.do'">
 			</c:if>
-			<input type="button" value="목록" onclick="location.href='newslist.do'">
+			<input type="button" value="목록" onclick="location.href='newsList.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
 		</div>
 		<c:if test="${count == 0}">
@@ -73,7 +73,7 @@
 			<c:forEach var="news" items="${list}">
 			<tr>
 				<td>${news.news_num}</td>
-				<td><a href="detail.do?news_num=${news.news_num}">${news.news_title}</a></td>
+				<td><a href="newsDetail.do?news_num=${news.news_num}">${news.news_title}</a></td>
 				<td>${news.mem_id}</td>
 				<td>${news.news_rdate}</td>
 				<td>${news.news_hit}</td>
