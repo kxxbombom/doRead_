@@ -54,3 +54,18 @@ div#main_nav>ul>li:hover div#category_items{
 .image-space .float-clear{
 	clear:both;
 }
+
+
+/* 도서 상세 페이지
+---------------------*/
+.category-tag{
+	width:30px;
+	text-align:center;
+	background-color:rgb(224, 224, 224);
+	color:rgb(26, 77, 46);
+}
+.book-image{
+	width:400px;
+	margin:0 0 10px 0;
+	float:left;
+}
