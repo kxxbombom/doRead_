@@ -156,6 +156,7 @@ div#adminpage div.adminnav ul li a{
   font-size: 16px;
   color: #555;
   outline: none;
+  
 }
 
 .input-style:focus {
@@ -445,4 +446,75 @@ span#e_title{
   border: 1px solid rgb(22, 160, 133);
 	margin:15px;
   font-weight:bold;
+}
+/*
+
+page util*/
+a#pre{
+	padding:4px;
+
+	width:37px;
+	height: 45px;
+	background:rgb(232, 223, 202);
+	color:rgb(127, 127, 127);
+	font-weight:bold;
+	border-radius:10%;
+	
+}
+a#next{
+	padding:4px;
+	
+	width:37px;
+	height: 45px;
+	background:rgb(232, 223, 202);
+	color:rgb(127, 127, 127);
+	font-weight:bold;
+	border-radius:10%;
+}
+a.pagebtn{
+	padding:4px;
+	width:37px;
+	height: 45px;
+	background:rgb(232, 223, 202);
+	color:rgb(127, 127, 127);
+	font-weight:bold;
+	border-radius:10%;
+}
+span#currentbtn{
+	padding:4px;
+	
+	width:37px;
+	height: 45px;
+	background:rgb(26, 77, 46);
+	color: rgb(255, 255, 255) !important;
+	font-weight:bold;
+	border-radius:10%;
+}
+
+.hide {display:none; }
+hr{
+	z-index:1;
+	
+}
+img{
+	z-index:1;
+	
+}
+ul.siteLink{
+	z-index:999;
+
+}
+textarea{
+	resize:none;
+	width:100%;
+}
+form#event_form input.inputcheck{
+	height:25px;
+	width:100%;
+}
+form#event_form{
+	margin:0 auto;
+	width:700px;
+	
+	
 }

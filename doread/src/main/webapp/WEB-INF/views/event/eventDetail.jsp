@@ -8,17 +8,7 @@
 <title>이벤트 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
-<script type="text/javascript">
-	window.onload = function(){
-		const event = document.getElementById('eventUser');
-		
-		event.onclick = function(){
-			window.open('www.naver.com','팝업','width=500,height=500');       
-		}
-		
-	}
-
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
@@ -33,7 +23,49 @@
 			진행기간 ${event.e_rdate}~${event.e_deadline} 조회수:${event.e_hit}
 
 </div>
-			
+	<div class="align-right">
+	<c:if test="${!empty user_num && user_auth == 9}">
+		<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+        
+        <ul class="siteLink hide">
+            <li class=""><a href="${pageContext.request.contextPath}/event/updateFormEvent.do?e_num=${event.e_num}" target="_blank">수정</a></li>
+            <li class=""><a id ="delbtn"  href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}" target="_blank">삭제</a></li>
+            <li class=""><a id ="eventbtn" href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}" target="_blank">이벤트발표</a></li>
+        </ul>
+       
+        <script type="text/javascript">
+    	$(".global_site a").click(function() {
+        if($('.siteLink').hasClass('hide')){
+            $('.siteLink').removeClass('hide');
+        }else{
+            $('.siteLink').addClass('hide');
+    	    }
+  	  });
+    	
+    	$('#delbtn').click(function(event){
+    		const choose =confirm('정말삭제하시겠습니까?');
+    		
+    		if(choose){
+    			location.href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}"
+    		}
+    		event.preventDefault();
+    	})
+    	
+    	$('#eventbtn').click(function(event){
+    		const choose =prompt('당첨 멤버 번호를 입력하세요');
+    		
+    		if(choose){
+    			location.href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}&e_mem_num="+choose;
+    		}
+    		event.preventDefault();
+    	})
+		</script>
+
+
+        
+		</c:if>
+		
+	</div>		
 <div class="align-center">
 
  			<div class="float-clear">

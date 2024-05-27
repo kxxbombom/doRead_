@@ -51,7 +51,8 @@
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
 		</div>
- 			<input type="button" value="이벤트목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">
+		
+ 			${page}
  </div>
  	
 			
