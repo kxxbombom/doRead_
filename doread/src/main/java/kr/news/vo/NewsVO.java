@@ -12,6 +12,21 @@ public class NewsVO {
 	private String news_image;
 	private int mem_num;
 	
+	private String mem_id;
+	private String mem_photo;
+	
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+	public String getMem_photo() {
+		return mem_photo;
+	}
+	public void setMem_photo(String mem_photo) {
+		this.mem_photo = mem_photo;
+	}
 	public int getNews_num() {
 		return news_num;
 	}

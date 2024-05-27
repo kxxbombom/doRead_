@@ -86,13 +86,13 @@
 			</div>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/newsList.do" class="nav">뉴스</a>
+			<a href="${pageContext.request.contextPath}/news/newsList.do" class="nav">뉴스</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/event/eventmain.do " class="nav">이벤트</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/board/usedList.do" class="nav" >중고</a>
+			<a href="${pageContext.request.contextPath}/used/usedList.do" class="nav" >중고</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/board/list.do" class="nav">스토리</a>
