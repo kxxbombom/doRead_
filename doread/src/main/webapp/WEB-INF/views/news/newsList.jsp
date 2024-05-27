@@ -51,9 +51,9 @@
 		<div class="list-space align-right">
 			
 			<c:if test="${!empty user_num && user_auth == 9}">
-			<input type="button" value="글쓰기" onclick="location.href='writeNewsForm.do'">
+			<input type="button" value="글쓰기" onclick="location.href='newsWriteForm.do'">
 			</c:if>
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="button" value="목록" onclick="location.href='newslist.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
 		</div>
 		<c:if test="${count == 0}">
@@ -70,13 +70,13 @@
 				<th>작성일</th>
 				<th>조회</th>
 			</tr>
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="news" items="${list}">
 			<tr>
-				<td>${board.board_num}</td>
-				<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
-				<td>${board.id}</td>
-				<td>${board.reg_date}</td>
-				<td>${board.hit}</td>
+				<td>${news.news_num}</td>
+				<td><a href="detail.do?news_num=${news.news_num}">${news.news_title}</a></td>
+				<td>${news.mem_id}</td>
+				<td>${news.news_rdate}</td>
+				<td>${news.news_hit}</td>
 			</tr>
 			</c:forEach>
 		</table>

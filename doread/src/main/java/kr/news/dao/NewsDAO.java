@@ -28,7 +28,7 @@ public class NewsDAO {
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "INSERT INTO newsboard (news_num,news_title,news_content,news_hit,news_image,mem_num) VALUES (news_seq.nextval,?,?,?,?,?)";
+			sql = "INSERT INTO newsboard (news_num,news_title,news_content,news_hit,news_image,mem_num) VALUES (newsboard_seq.nextval,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -99,7 +99,7 @@ public class NewsDAO {
 			}
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM newsboard JOIN member USING (mem_num) " +sub_sql
-					+ "ORDER BY new_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+					+ "ORDER BY news_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			if(keyword != null && !"".equals(keyword)) {
@@ -115,7 +115,7 @@ public class NewsDAO {
 				news.setNews_num(rs.getInt("news_num"));
 				news.setNews_title(StringUtil.useNoHTML(rs.getString("news_title")));
 				news.setNews_content(rs.getString("news_content"));
-				news.setNews_rdate(rs.getDate("reg_date"));
+				news.setNews_rdate(rs.getDate("news_rdate"));
 				news.setMem_id(rs.getString("mem_id"));
 				
 				list.add(news);
