@@ -66,21 +66,21 @@
 <div id="main_nav">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}" class="nav" id="book_category">책 카테고리</a>
+			<a href="${pageContext.request.contextPath}/book/bookList.do" class="nav" id="book_category">책 카테고리</a>
 			<div id="category_items">
 				<ul>
 					<li>도서 전체</li>
-					<li><a href="/WEB-INF/views/book/list.jsp">소설</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">시/에세이</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">인문</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">정치/사회</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">과학/공학</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">IT/프로그래밍</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">자기계발</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">외국어</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">수험서/취업</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">만화</a></li>
-					<li><a href="/WEB-INF/views/book/list.jsp">취미/스포츠</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=1">소설</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=2">시/에세이</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=3">인문</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=4">정치/사회</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=5">과학/공학</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=6">IT/프로그래밍</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=7">자기계발</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=8">외국어</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=9">수험서/취업</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=10">만화</a></li>
+					<li><a href="{pageContext.request.contextPath}/book/bookList.do?book_category=11">취미/스포츠</a></li>
 					
 				</ul>
 			</div>
