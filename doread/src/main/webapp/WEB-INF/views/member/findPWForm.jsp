@@ -66,7 +66,7 @@ $(function(){
 			<h2><a href="findPWNoIDForm.do">비밀번호 찾기</a></h2>
 		</div>
 	</div>
-	<hr size="1" noshade width="560">
+	<hr size="1" noshade width="800">
 	<div class="find-menu2">
 		<h3>비밀번호 재설정</h3>
 		<span>비밀번호를 변경해주세요</span>
@@ -97,7 +97,7 @@ $(function(){
 				<input type="submit" value="확인">
 			</div>
 		</form>
-		<hr size="1" noshade width="560">
+		<hr size="1" noshade width="800">
 	</div>
 	</div>
 </div>

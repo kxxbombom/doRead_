@@ -18,13 +18,13 @@
 	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 	<div class="content-main login-info">
 		<h2>회원정보</h2>
-		<hr size="1" noshade width="560">
+		<hr size="1" noshade width=800">
 		<div class="result-display">
 			정지된 회원입니다
 			<p>
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
-		<hr size="1" noshade width="560">
+		<hr size="1" noshade width="800">
 	</div>
 </div>
 </body>

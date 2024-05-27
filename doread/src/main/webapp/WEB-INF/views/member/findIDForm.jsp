@@ -88,7 +88,7 @@ $(function(){
 			<h4><a href="findPWNoIDForm.do">비밀번호 찾기</a></h4>
 		</div>
 	</div>
-	<hr size="1" noshade width="560">
+	<hr size="1" noshade width="800">
 	<div class="find-menu2">
 		<h3>아이디 찾기</h3>
 		<span>본인확인 이메일 주소와 입력한 이메일 주소가 같아야합니다.</span>
@@ -109,7 +109,7 @@ $(function(){
 				<input type="submit" value="아이디 찾기">
 			</div>
 		</form>
-		<hr size="1" noshade width="560">
+		<hr size="1" noshade width="800">
 		<div id="findID-result">
 			<span id="result_msg1"></span>
 			<p>

@@ -3,7 +3,7 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:960px;
+	width:1200px;
 	margin:0 auto;
 	background:#FFFFFF;
 }
@@ -38,7 +38,7 @@ a:hover{
 .result-display{
 	width:400px;
 	height:160px;
-	margin:50px auto;
+	margin:100px auto;
 	display:flex;
 	flex-direction:column;
 	align-items:center; /* 세로정렬 */
@@ -219,7 +219,7 @@ input[value="우편번호 찾기"]{
 
 
 #register_form hr{
-	margin-left:-165px;
+	margin-left:-350px;
 }
 .register-button{
 	padding:40px 70px;
@@ -333,7 +333,7 @@ input[value="우편번호 찾기"]{
 	color:rgb(26, 77, 46);
 }
 .login-help-btn{
-	margin:0 0 0 440px;
+	margin:0 0 0 550px;
 }
 .login-help-btn input{
 	border:none;
@@ -385,7 +385,7 @@ input[value="우편번호 찾기"]{
 	border:none;
 	border-radius: 5px;
 	font-size: 15px;
-	margin:0 10px;
+	margin:10px;
 	cursor:pointer;
 }
 
@@ -405,7 +405,7 @@ input[value="우편번호 찾기"]{
 	
 }
 .find-menu2{
-	margin:20px 200px;
+	margin:50px 200px;
 	display: flex;
 	flex-direction: column;
 }

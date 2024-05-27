@@ -127,7 +127,7 @@ $(function(){
   	 		 </div>
 		</div>
 	</div>
-	<hr size="1" noshade width="650">
+	<%-- <hr size="1" noshade width="650"> --%>
 	<div class="register-main">
 		<span>기본 정보 입력</span>
 		<form id="register_form" action="registerUser.do" method="post" class="register-member">
@@ -236,7 +236,7 @@ $(function(){
 					</div>
 				</li>
 			</ul>
-			<hr size="1" noshade width="650">
+			<hr size="1" noshade width="145%">
 			<div class="register-button">
 				<input type="submit" value="회원가입">
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
