@@ -24,69 +24,56 @@ a:visited{
 ul {
 	list-style:none;
 }
-.mypage-div{
-	width:1200px;
-	background-color:#1a4d2e;
-	display:flex;
-	float: left;
-	margin-left:-200px;
+/*마이페이지 header
+-----------------------*/
+#mypage-main{
+	margin:0 auto;
+	width:1000px;
+	height:200px;
+	background:rgb(26, 77, 46);
+	color:rgb(255, 255, 255) !important;	
+}
+div.mypage-div ul{
+	list-style:none ;
+	margin-top:26px;
+	text-align:right;
+	color:rgb(255, 255, 255) !important;
+}
+div.mypage-div ul li{
+	display:inline-block;
+	text-align:center;
+	vertical-align:top;
+	width:150px;
+	margin-top:15px;
+	font-size:16pt;
+	clear:both;
+	position:relative;
+	bottom:60px;
+	right:70px;
+}
+div.mypage-div ul li#myphoto{
+	position:relative;
+	bottom:40px;
+	right:50px;
+}
+div.myul ul{
+	margin-top:50px;
+	margin-left:70px;
+	
 	
 }
-.mypage-div ul{
-	margin:0;
-	padding:2px 30px 20px 30px;
-	white-space: nowrap;
-	float: left;
+div.myul ul li{
+	font-size:12pt !important;
 	text-align:left;
-}
-.mypage-div ul li{
-	margin:0;
-	padding-top:8px;
-	font-size:14px;
-	color:#FFFFFF;
-	text-align:left;
-	float: left;
-}
-.mypage-div ul li.page-name{
-	font-size:30px;
-	white-space: nowrap;
-	float: left;
-}
-.mypage-div ul li.mypage-mid{
-	font-size:30px;
-}
-.mypage-title{
-	font-size:20px;
-	display:flex;
-	padding-right:-100px;
-	margin-right:50px;
-}
-.mypage-left{
-	float:left;
-	display:flex;
-}
-.mypage-left ul{
-	float: left;
-}
-.mypage-left ul li{
-	display:flex;
-	float:left;
+	
+ }
+div#mypage-main div.mypage-div ul li a{
+	color:rgb(255, 255, 255) !important;
 }
 .align-center input[type="file"]{
 	margin:0;
 }
-.mypage-right{
-	margin:0;
-	display:flex;
-}
-.mypage-right ul{
-	float:left;
-	white-space: nowrap;
-}
 
-.mypage-right ul li.page-name{
-	margin-left:-200px;
-}
 .inner-menu > a{
 	vertical-align:middle;
 	text-decoration-line: none;
@@ -99,7 +86,7 @@ ul {
 	display:none;
 }
 .mypage-button{
-	margin-left:-130px;
+	margin:30px;
 }
 .mypage-button input[type="button"]{
 	margin-top: 20px;
@@ -110,15 +97,6 @@ ul {
 	color:#FFFFFF;
 	font-size:15px;
 }
-
-.page-name{
-	float: left;
-	text-align:left;
-}
-.outer-main{
-	float: left;
-}
-
 .my-photo{
 	object-fit:cover;
 	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
@@ -127,4 +105,47 @@ ul {
 	border-radius:50%;
 	margin-right:50px;
 	z-index:1;
+}
+img#penimage{
+	position:relative;
+	top:100px;
+	left:110px;
+	z-index:999;
+	border-radius:50%;
+	background:white;
+	cursor:pointer;
+}
+
+
+/*회원 상세정보*/
+.detail-content{
+	text-align:left;
+}
+.detail-content ul{
+	margin-top:10px;
+	margin-left:150px;
+	font-size:18px;
+	line-height:500%;	
+	color:rgb(26, 77, 46);
+	font-weight:bold;
+	
+}
+.detail-button{
+	margin-left:300px;
+	padding:40px 70px;
+	
+}
+.detail-button input[type="button"]{
+	width:95px;
+	height:40px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.detail-button input[type="button"]:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
