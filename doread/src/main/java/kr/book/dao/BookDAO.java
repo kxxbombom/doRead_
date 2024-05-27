@@ -44,39 +44,25 @@ public class BookDAO {
 		}
 	};
 	
-	//도서 목록
-	public List<BookVO> getListBook(int start, int end, String keyfield, String keyword, int book_category) throws Exception{
+	//도서 목록- 책 카테고리 메뉴 클릭
+	public List<BookVO> getListBook(int start, int end, String keyfield, String keyword) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
 		List<BookVO> list = null;
-		String sub_sql = "";
+
 		
 		try {
 			conn = DBUtil.getConnection();
 			
-			if(book_category==1) sub_sql="WHERE book_category=1";
-			else if(book_category==2) sub_sql="WHERE book_category=2";
-			else if(book_category==3) sub_sql="WHERE book_category=3";
-			else if(book_category==4) sub_sql="WHERE book_category=4";
-			else if(book_category==5) sub_sql="WHERE book_category=5";
-			else if(book_category==6) sub_sql="WHERE book_category=6";
-			else if(book_category==7) sub_sql="WHERE book_category=7";
-			else if(book_category==8) sub_sql="WHERE book_category=8";
-			else if(book_category==9) sub_sql="WHERE book_category=9";
-			else if(book_category==10) sub_sql="WHERE book_category=10";
-			else if(book_category==11) sub_sql="WHERE book_category=11";
-			else sub_sql="";
-		
-			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-					+ "(SELECT * FROM book " +sub_sql+ " ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+					+ "(SELECT * FROM book ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
+		
 			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<BookVO>();
@@ -106,4 +92,55 @@ public class BookDAO {
 		
 		return list;
 	}
+	
+	//도서 목록- 카테고리별
+	public List<BookVO> getCategoryListBook(int start, int end, String keyfield, String keyword, int book_category) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		List<BookVO> list = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+					+ "(SELECT * FROM book WHERE book_category=? ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_category);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+		
+			
+			rs = pstmt.executeQuery();
+			list = new ArrayList<BookVO>();
+			
+			while(rs.next()) {
+				BookVO book = new BookVO();
+				book.setBook_num(rs.getInt("book_num"));
+				book.setBook_name(rs.getString("book_name"));
+				book.setAuthor(rs.getString("Author"));
+				book.setPrice(rs.getInt("price"));
+				book.setStock(rs.getInt("stock"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublish_date(rs.getString("publish_date"));
+				book.setBook_img(rs.getString("book_img"));
+				book.setBook_category(rs.getInt("book_category"));
+				
+				list.add(book);
+			}
+			
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		
+		return list;
+	}
+	
+	
 }

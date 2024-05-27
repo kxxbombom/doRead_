@@ -9,16 +9,18 @@ import kr.book.dao.BookDAO;
 import kr.book.vo.BookVO;
 import kr.controller.Action;
 
-public class BookListAction implements Action{
+public class BookListCategoryAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int book_category = Integer.parseInt(request.getParameter("book_category"));
 		BookDAO dao = BookDAO.getInstance();
-		List<BookVO> bookList = dao.getListBook(1, 5, null, null);
+		List<BookVO> bookList = dao.getCategoryListBook(1, 5, null, null, book_category);
+		
 		
 		request.setAttribute("bookList", bookList);
 		
-		return "/WEB-INF/views/book/list.jsp";
+		return "/WEB-INF/views/book/list_category.jsp";
 	}
 
 }
