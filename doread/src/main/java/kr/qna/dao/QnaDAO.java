@@ -11,7 +11,7 @@ import kr.util.DBUtil;
 import kr.util.StringUtil;
 
 public class QnaDAO {
-	//싱글턴 패턴
+		//싱글턴 패턴
 		private static QnaDAO instance = new QnaDAO();
 		
 		public static QnaDAO getInstance() {
