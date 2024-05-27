@@ -11,22 +11,18 @@
 
 </head>
 <body>
-
 <jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
 
-	<h2>회원 관리</h2>
+	<h2>정지 회원</h2>
 	
 	<hr size="1.5" width="80%" noshade="noshade">
 	
-	<c:if test="${empty member}">
-		가입된 회원이 없습니다.
-	</c:if>
- 	
-
 	<div class="content-main">
-	
+		<c:if test="${empty member }">
+		정지된 회원이 없습니다.
+		</c:if>
 		<c:if test="${!empty member}">
 		<table>
 			<tr>
@@ -39,7 +35,7 @@
 			<th>회원가입일</th>
 			</tr>
 		<c:forEach var="i" items="${member}">
-			
+			<c:if test="${i.mem_auth==1}">
 			<tr>
 			<td>${i.mem_num}</td>
 			<td>${i.mem_name}</td>
@@ -49,10 +45,11 @@
 			<td>${i.mem_email}</td>
 			<td>${i.mem_rdate}</td>
 			</tr>
+			</c:if>
 		</c:forEach>
 		</table>
 		</c:if>
-
+	
 	</div>
 	<div class="align-center">
 

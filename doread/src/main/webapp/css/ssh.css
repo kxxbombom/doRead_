@@ -7,6 +7,7 @@ body{
 	
 	font-family:"Noto Sans KR", sans-serif;
 }
+
 a:link{
 	text-decoration:none;
 	color:black;
@@ -44,6 +45,7 @@ h2{
 ul{
 	list-style:none;
 }
+
 .page-center{
 	margin-left:200px;
 	
@@ -65,6 +67,7 @@ div.page-center ul li{
 
 /*관리자 페이지 상단바*/
 #adminpage{
+	
 	margin:0 auto;
 	width:1000px;
 	height:163px;
@@ -88,6 +91,7 @@ img#penimage{
 	z-index:999;
 	border-radius:50%;
 	background:white;
+	cursor:pointer;
 }
 
 div.adminnav ul{
@@ -99,9 +103,9 @@ div.adminnav ul{
 div.adminnav ul li{
 	display:inline-block;
 	text-align:center;
-	vertical-align:middle;
+	vertical-align:top;
 	width:150px;
-	padding-top:8px;
+	margin-top:15px;
 	font-size:16pt;
 	clear:both;
 	position:relative;
@@ -178,7 +182,7 @@ hr{
   line-height: 28px;
   align-items: center;
   position: relative;
-  max-width: 190px;
+  max-width: 500px;
 }
 
 .input {
@@ -215,7 +219,18 @@ input:hover {
   width: 1rem;
   height: 1rem;
 }
-
+div.subul ul{
+	margin-top:50px;
+	margin-left:70px;
+	
+	
+}
+div.subul ul li{
+	font-size:12pt !important;
+	text-align:left;
+	
+	
+ }
 
 
 
@@ -265,4 +280,122 @@ th,td{
 }
 img#modifyauth{
 	cursor:pointer;
+}
+.image-space{
+	margin: 0 70px;
+}
+.image-space .horizontal-area{
+	margin:6px;
+	padding:3px;
+	width:387px;
+	height:420px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+.image-space .horizontal-area img{
+	width:382px;
+	height:285px;
+}
+.image-space .float-clear{
+	clear:both;
+}
+span#e_title{
+	font-size:20pt;
+	
+}
+
+/*
+이벤트 헤더
+*/
+
+.radio-inputs {
+  position: relative;
+  display: flex;
+  border-radius: 0.5rem;
+  background-color: rgb(26, 77, 46);
+  box-sizing: border-box;
+  font-size: 18px;
+  color:white;
+  width: 90%;
+  padding: 1rem 1rem 0 1rem;
+  margin:0 auto;
+}
+
+.radio-inputs .radio input {
+  display: none;
+ 
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+ 
+  border: none;
+  padding: 0.5rem 0.8rem;
+  
+  transition: all 0.15s ease-in-out;
+  position: relative;
+   margin-left:30px !important;
+}
+
+.radio-inputs .radio input:checked + .name {
+  background-color: rgb(245, 239, 230);
+  color:rgb(26, 77, 46);
+  font-weight: 600;
+  
+}
+.radio-inputs .radio input + .name:hover {
+  color: #fff;
+}
+.radio-inputs .radio input:checked + .name:hover {
+  color: #1d1d29;
+}
+
+
+
+.radio-inputs .radio input:checked + .name::after {
+  right: -10px;
+  border-bottom-left-radius: 300px;
+  box-shadow: -3px 3px 0px 3px rgb(232, 223, 202);
+}
+.radio-inputs .radio input:checked + .name::before {
+  left: -10px;
+  border-bottom-right-radius: 300px;
+  box-shadow: 3px 3px 0px 3px rgb(232, 223, 202);
+}
+/*이벤트 메인*/
+.eventvar{
+	width:90%;
+	height:51px;
+	background: rgb(245, 239, 230);
+	color:rgb(26, 77, 46);
+	text-align:center;
+	margin: 0 auto;
+}
+.image-space{
+	margin: 0 70px;
+}
+.image-space .horizontal-area{
+	margin:6px;
+	padding:3px;
+	width:387px;
+	height:420px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+.image-space .horizontal-area img{
+	width:382px;
+	height:285px;
+}
+.image-space .float-clear{
+	clear:both;
+}
+span#e_title{
+	font-size:20pt;
+	
 }
