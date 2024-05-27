@@ -23,7 +23,7 @@
 						<li><a href="${pageContext.request.contextPath}/member/memberdetail.do">È¸¿ø »ó¼¼ ³»¿ë</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/alarm.do">È¸¿ø ¾Ë¸²</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/likelist.do">È¸¿ø Âò ¸ñ·Ï</a></li>
-						<li><a href="${pageContext.request.contextPath}/member/delete.do">È¸¿ø Å»Åð</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/deleteUserForm.do">È¸¿ø Å»Åð</a></li>
 					</ul>
 				</div></li>
 			<li>
