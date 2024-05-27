@@ -39,7 +39,7 @@ public class NewsDAO {
 			pstmt.setInt(5, news.getMem_num());
 			
 			pstmt.executeUpdate();
-				pstmt.executeUpdate();
+	
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
