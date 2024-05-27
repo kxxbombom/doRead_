@@ -77,7 +77,7 @@ $(function(){
 			</ul>    
 			<div class="align-center">
 				<input type="submit" value="회원탈퇴">
-				<input type="button" value="My페이지"
+				<input type="button" value="마이페이지"
 				    onclick="location.href='mypage.do'">
 			</div>                                  
 		</form>

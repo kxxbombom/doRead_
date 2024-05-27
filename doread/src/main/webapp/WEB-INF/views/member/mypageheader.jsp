@@ -6,13 +6,24 @@
 	<div class="mypage-div">
 		<ul>
 			<li id="myphoto">
-				<c:if test="${empty mem_photo}">
+				<c:if test="${empty member.mem_photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png"
 						width="100" height="100" class="my-photo">
-				</c:if> <c:if test="${!empty mem_photo}">
-					<img src="${pageContext.request.contextPath}/upload/${member.photo}"
+				</c:if>
+				<c:if test="${!empty member.mem_photo}">
+				<img src="${pageContext.request.contextPath}/upload/${member.mem_photo}"
 						width="100" height="100" class="my-photo">
 				</c:if>
+				<div class="updatephoto">
+						<input type="button" value="수정"
+						                     id="photo_btn">
+					</div>
+					<div id="photo_choice" style="display:none;">
+						<input type="file" id="photo"
+						          accept="image/gif,image/png,image/jpeg">
+						<input type="button" value="전송" id="photo_submit">
+						<input type="button" value="취소" id="photo_reset">          
+					</div>
 			</li>
 			<li style="padding-top: 40px; font-size: 19pt; text-align: left;">${user_id}님<br>어서오세요
 			</li>
