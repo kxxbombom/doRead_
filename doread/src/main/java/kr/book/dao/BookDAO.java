@@ -2,6 +2,7 @@ package kr.book.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 import kr.book.vo.BookVO;
 import kr.util.DBUtil;
@@ -14,7 +15,7 @@ public class BookDAO {
 	}
 	private BookDAO() {};
 	
-	//책 정보 삽입
+	//도서 정보 삽입
 	public void InsertBook(BookVO book) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -40,4 +41,27 @@ public class BookDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	};
+	
+	//도서 목록
+	public List<BookVO> getListBook(int start, int end, String keyfield, String keyword, int status) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		List<BookVO> list = null;
+		String sub_sql = "";
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		
+		return list;
+	}
 }
