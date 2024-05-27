@@ -19,7 +19,8 @@ create table member_detail{
  mem_address2 varchar2(50) not null,
  mem_date date default sysdate not null,
  mem_mdate date,
- book_category varchar2(12)
+ book_category varchar2(12),
+ mem_photo varchar(400),
  constraint member_detail_pk primary key (mem_num),
  constraint member_detail_fk foreign key (mem_num) references zmember (mem_num)
 };

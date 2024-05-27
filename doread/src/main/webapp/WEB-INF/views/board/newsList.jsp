@@ -32,7 +32,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
 		<h2>뉴스게시판</h2>
-		<form id="search_form" action="list.do" method="get">
+		<form id="search_form" action="newslist.do" method="get">
 			<ul class="search">
 				<li>
 					<select name="keyfield">
@@ -49,9 +49,10 @@
 			</ul>
 		</form>
 		<div class="list-space align-right">
-			<input type="button" value="글쓰기" onclick="location.href='writeForm.do'"
-				<c:if test="${empty user_num}">disabled="disabled"</c:if>
-			>
+			
+			<c:if test="${!empty user_num && user_auth == 9}">
+			<input type="button" value="글쓰기" onclick="location.href='writeNewsForm.do'">
+			</c:if>
 			<input type="button" value="목록" onclick="location.href='list.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
 		</div>
