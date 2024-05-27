@@ -45,6 +45,12 @@ div#main_nav>ul>li:hover div#category_items{
 	text-align:center;
 }
 
+.image-space .horizontal-area img{
+	width:215px;
+	height:195px;
+}
+
+
 .image-space .float-clear{
 	clear:both;
 }

@@ -20,9 +20,10 @@
 			<c:forEach var="book" items="${bookList}">
 				<div class="horizontal-area">
 					<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${book.book_num}">
-					<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
-					<br>
-					<b><fmt:formatNumber value="${book.price}"/>원</b>
+						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
+						<span>${book.book_name}</span>
+						<br>
+						<b><fmt:formatNumber value="${book.price}"/>원</b>
 					</a>
 				</div>
 			</c:forEach>

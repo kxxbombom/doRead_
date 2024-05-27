@@ -14,7 +14,7 @@ public class BookListAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BookDAO dao = BookDAO.getInstance();
-		List<BookVO> bookList = dao.getListBook(1, 5, null, null);
+		List<BookVO> bookList = dao.getListBook(1, 20, null, null);
 		
 		request.setAttribute("bookList", bookList);
 		
