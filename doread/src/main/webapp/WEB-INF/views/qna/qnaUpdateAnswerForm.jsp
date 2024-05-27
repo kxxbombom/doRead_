@@ -58,6 +58,9 @@ window.onload=function(){
 					<c:if test="${qna.q_auth == 2}">
 					<input type="radio" name="q_auth" value="2" id="auth2" checked>정지
 					</c:if>
+					<c:if test="${qna.q_auth == 3}">
+					<input type="radio" name="q_auth" value="3" id="auth3" checked>도서신청
+					</c:if>
 					<hr size="1" noshade="noshade" width="100%">
 				</li>
 				<li>
