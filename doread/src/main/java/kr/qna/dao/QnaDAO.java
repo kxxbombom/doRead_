@@ -212,4 +212,57 @@ public class QnaDAO {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 		}
+		//글 삭제
+		public void deleteQna(int q_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				//커넥션 풀에서 커넥션 할당
+				conn = DBUtil.getConnection();
+				//오토커밋 해제
+				conn.setAutoCommit(false);
+				
+				//부모글 삭제
+				sql="DELETE FROM qna WHERE q_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, q_num);
+				pstmt.executeUpdate();
+				
+				//예외발생 없이 정상적으로 SQL문 실행
+				conn.commit();
+				
+			}catch(Exception e) {
+				//예외 발생
+				conn.rollback();
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			
+		}
+		//답변 수정
+		public void updateQnaAnswer(QnaVO qna)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				//커넥션 풀에서 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "UPDATE qna SET q_answer=? WHERE q_num=?";
+				//pstmt 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//데이터바인딩
+				pstmt.setString(1, qna.getQ_answer());				
+				pstmt.setInt(2, qna.getQ_num());				
+				//SQL문 실행
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+		}
 }

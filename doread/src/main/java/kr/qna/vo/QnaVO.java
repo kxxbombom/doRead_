@@ -2,6 +2,8 @@ package kr.qna.vo;
 
 import java.sql.Date;
 
+import kr.member.vo.MemberVO;
+
 public class QnaVO {
 	private int q_num;				//문의글 번호
 	private String q_title;			//문의글 제목
@@ -14,8 +16,7 @@ public class QnaVO {
 	private String q_image;			//문의 사진
 	private int mem_num;			//작성자
 	
-	private int mem_auth; 			//관리자 구분
-	
+	private int mem_auth;
 	
 	public int getMem_auth() {
 		return mem_auth;
