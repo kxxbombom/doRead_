@@ -390,7 +390,7 @@ public class EventDAO {
 					
 					
 				}
-	//이벤트 당첨자 발표!!
+				//이벤트 당첨자 발표!!
 				public void updateEventPresent(EventVO event) throws Exception{
 					Connection conn = null;
 					PreparedStatement pstmt = null;
