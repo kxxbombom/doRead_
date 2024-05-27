@@ -29,7 +29,7 @@ window.onload=function(){
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
 		<h2>문의 수정</h2>
-		<form id="write_form" action="qnaUpdate.do" method="post" enctype="multipart/form-data">
+		<form id="write_form" action="qnaUpdateAnswer.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="q_num" value="${qna.q_num}">
 
 			<ul>
