@@ -13,9 +13,13 @@ public class EventDetailAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		int e_num = Integer.parseInt(request.getParameter("e_num"));
-		EventVO event = new EventVO();
 		EventDAO dao = EventDAO.getInstance();
+		dao.hitEvent(e_num);
+		EventVO event = new EventVO();
+		
 		event = dao.getEvent(e_num);
+		
+		
 		request.setAttribute("event", event);
 		return "/WEB-INF/views/event/eventDetail.jsp";
 	}

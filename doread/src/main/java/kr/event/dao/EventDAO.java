@@ -429,5 +429,22 @@ public class EventDAO {
 					}
 				}
 
-	
+	//조회수
+				public void hitEvent(int e_num) throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					String sql = null;
+					try {
+						conn = DBUtil.getConnection();
+						sql = "update eventboard set e_hit=e_hit+1 where e_num=?";
+						
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, e_num);
+						pstmt.executeUpdate();
+					}catch(Exception e) {
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(null, pstmt, conn);
+					}
+				}
 }
