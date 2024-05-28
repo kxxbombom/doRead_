@@ -43,7 +43,9 @@
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
+				<c:if test="${user_auth == 9}">
 				<th>작성자</th>
+				</c:if>
 				<th>작성일</th>
 				<th>수정일</th>
 				<th>조회</th>
@@ -52,7 +54,9 @@
 			<tr>
 				<td>${news.news_num}</td>
 				<td><a href="newsDetail.do?news_num=${news.news_num}">${news.news_title}</a></td>
+				<c:if test="${user_auth == 9}">
 				<td>${news.mem_id}</td>
+				</c:if>
 				<td>${news.news_rdate}</td>
 				<td>${news.news_mdate}</td>
 				<td>${news.news_hit}</td>

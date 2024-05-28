@@ -28,14 +28,25 @@
 			</li>
 			<li>조회 : ${news.news_hit}</li>
 		</ul>
-		
-		<span class="board-btn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
-		<ul class="btn-hide">
-            <li class=""><a href="${pageContext.request.contextPath}/event/updateFormEvent.do?e_num=${event.e_num}" target="_blank">수정</a></li>
-            <li class=""><a id ="delbtn"  href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}" target="_blank">삭제</a></li>
-            <li class=""><a id ="eventbtn" href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}" target="_blank">이벤트발표</a></li>
-        </ul>
-		
+		<c:if test="${user_auth == 9}">
+			<div class="board-btn-container">
+				<span class="board-btn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+	
+				<ul class="btn-hide">
+	            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
+	            	<li><a href="${pageContext.request.contextPath}/news/newsDelete.do?news_num=${news.news_num}" id ="delete_btn">삭제</a></li>
+	        	</ul>
+	        	<script type="text/javascript">
+					const delete_btn = document.getElementById('delete_btn');
+					delete_btn.onclick=function(){
+						let choice = confirm('삭제하시겠습니까?');
+						if(choice){
+							location.replace('newsDelete.do?news_num=${news.news_num}');
+						}
+					};
+				</script>
+			</div>
+		</c:if>
 		<hr size="1" noshade width="100%">
 		
 		<c:if test="${!empty news.news_image}">
@@ -47,22 +58,16 @@
 			${news.news_content}
 		</p>
 		<hr size="1" noshade width="100%">
+		<div>
+			<span>
+				<c:if test="${!empty news.news_mdate}">
+					수정일 : ${news.news_mdate}
+				</c:if>
+			</span>
+		</div>
 		<div class="align-center">
 			<input type="button" value="목록" onclick="location.href='newsList.do'">
-			<c:if test="${user_auth == 9}">
-			 <input type="button" value="수정" onclick="location.href='newsUpdateForm.do?news_num=${news.news_num}'">
-			 <input type="button" value="삭제" id="delete_btn">
 			
-			<script type="text/javascript">
-				const delete_btn = document.getElementById('delete-btn');
-				delete_btn.onclick=function(){
-					let choice = cofirm('삭제하시겠습니까?');
-					if(choice){
-						location.replace('delete.do?news_num=${news.news_num}');
-					}
-				};
-			</script>
-			</c:if>
 		</div>
 	</div>
 </div>

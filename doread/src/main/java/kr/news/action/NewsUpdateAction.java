@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 import kr.controller.Action;
 import kr.news.dao.NewsDAO;
 import kr.news.vo.NewsVO;
-import kr.util.StringUtil;
+import kr.util.FileUtil;
 
-public class NewsUpdateFormAction implements Action{
+public class NewsUpdateAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -26,17 +26,25 @@ public class NewsUpdateFormAction implements Action{
 			request.setAttribute("notice_url", request.getContextPath() + "/main/main.do");
 			return "/WEB-INF/views/common/alert_view.jsp";
 		}
-		//관리자 로그인
+		request.setCharacterEncoding("utf-8");
+		
 		int news_num = Integer.parseInt(request.getParameter("news_num"));
 		
 		NewsDAO dao = NewsDAO.getInstance();
-		NewsVO news = dao.getNews(news_num);
+		NewsVO db_news = dao.getNews(news_num);
+		NewsVO news = new NewsVO();
+		news.setNews_num(news_num);
+		news.setNews_title(request.getParameter("news_title"));
+		news.setNews_content(request.getParameter("news_content"));
+		news.setNews_image(FileUtil.createFile(request, "news_image"));
 		
-		news.setNews_title(StringUtil.parseQuot(news.getNews_title()));
+		dao.updateNews(news);
 		
-		request.setAttribute("news", news);
+		if(news.getNews_image() != null && !"".equals(news.getNews_image())) {
+			FileUtil.removeFile(request, db_news.getNews_image());
+		}
 		
-		return "/WEB-INF/views/news/newsUpdateForm.jsp";
+		return "redirect:/news/newsDetail.do?news_num=" + news_num;
 	}
 
 }

@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 import kr.controller.Action;
 import kr.news.dao.NewsDAO;
 import kr.news.vo.NewsVO;
-import kr.util.StringUtil;
+import kr.util.FileUtil;
 
-public class NewsUpdateFormAction implements Action{
+public class NewsDeleteAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		Integer user_auth = (Integer)session.getAttribute("user_auth");
@@ -26,17 +26,16 @@ public class NewsUpdateFormAction implements Action{
 			request.setAttribute("notice_url", request.getContextPath() + "/main/main.do");
 			return "/WEB-INF/views/common/alert_view.jsp";
 		}
-		//관리자 로그인
 		int news_num = Integer.parseInt(request.getParameter("news_num"));
-		
 		NewsDAO dao = NewsDAO.getInstance();
-		NewsVO news = dao.getNews(news_num);
+		NewsVO db_news = dao.getNews(news_num);
+		dao.deleteNews(news_num);
+		FileUtil.removeFile(request, db_news.getNews_image());
 		
-		news.setNews_title(StringUtil.parseQuot(news.getNews_title()));
+		request.setAttribute("notice_msg", "글 삭제 완료");
+		request.setAttribute("notice_url", request.getContextPath() + "/news/newsList.do");
 		
-		request.setAttribute("news", news);
-		
-		return "/WEB-INF/views/news/newsUpdateForm.jsp";
+		return "/WEB-INF/views/common/alert_view.jsp";
 	}
 
 }
