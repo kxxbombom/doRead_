@@ -27,7 +27,7 @@
 				<select id="selectlist" name ="sel" class="input-style">
 				<option value="1" <c:if test="${check == 1}">selected</c:if>>판매중</option>
  				<option value="2" <c:if test="${check == 2}">selected</c:if>>거래중</option>
- 				<option value="3" <c:if test="${check == 3}">selected</c:if>>판매완.ㄹ</option>
+ 				<option value="3" <c:if test="${check == 3}">selected</c:if>>판매완료</option>
  				</select>
  				<input type="text" name="search" class="inputcheck input-style" id="search" maxlength="30" placeholder="제목 또는 내용으로 검색가능">
  				<input id="subbtn" type="submit" value="검색" class="button2">
@@ -45,6 +45,37 @@
  			<div class="align-right">
  			<c:if test="${!empty user_num}">
  				<input type="button" value="글쓰기" class="button2" onclick="location.href='${pageContext.request.contextPath}/used/usedWriteForm.do'">
+ 			</c:if>
+ 			
+ 			
+ 			<c:if test="${empty list}">
+ 				작성 게시글이 없습니다
+ 			</c:if>
+ 			<c:if test="${!empty list}">
+ 				<table  id="usedtable">
+ 					<tr>
+ 						<th>no.</th>
+ 						<th>책제목</th>
+ 						<th>글 제목 </th>
+ 						<th>판매상태</th>
+ 						<th>작성자</th>
+ 						<th>조회수</th>
+ 					</tr>
+ 				<c:forEach var="i" items="${list}">
+ 					<tr>
+ 						<td>${i.u_num}</td>
+ 						<td>${i.book_name}</td>
+ 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title}</a></td>
+ 						<td><c:if test="${i.u_state ==1}">판매중</c:if>
+ 							<c:if test="${i.u_state ==2}">거래중</c:if>
+ 							<c:if test="${i.u_state ==3}">판매완료</c:if>
+ 						</td>
+ 						<td>${i.id}</td>
+ 						<td>${i.u_hit}</td>
+ 					</tr>
+ 				
+ 				</c:forEach>
+ 				</table>
  			</c:if>
 			</div>
 		

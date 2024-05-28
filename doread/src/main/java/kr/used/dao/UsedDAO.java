@@ -31,15 +31,12 @@ public class UsedDAO {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, used.getU_title());
 			ps.setString(2, used.getU_content());
-			ps.setInt(3, used.getU_hit());
-			ps.setString(4, used.getU_image());
-			ps.setString(5, used.getU_ip());
-			ps.setInt(6, used.getU_auth());
-			ps.setInt(7, used.getBook_num());
-			ps.setInt(8, used.getU_condition());
-			ps.setInt(9, used.getU_state());
-			ps.setInt(10, used.getU_price());
-			ps.setInt(11, used.getMem_num() );
+			ps.setString(3, used.getU_image());
+			ps.setString(4, used.getU_ip());
+			ps.setInt(5, used.getBook_num());
+			ps.setInt(6, used.getU_condition());
+			ps.setInt(7, used.getU_price());
+			ps.setInt(8, used.getMem_num() );
 			
 			ps.executeUpdate();
 			
@@ -51,17 +48,30 @@ public class UsedDAO {
 		
 	}
 	//글 갯수
-	public int countUsed(String keyf,String keyw) throws Exception{
+	public int countUsed(String keys, String keyf,String keyw) throws Exception{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet re = null;
 		int count = 0;
+		String sub_sql="";
 		String sql=null;
+		if(keys.equals("0")) sub_sql += " where u_num is not null ";
+		else if(keys.equals("1")) sub_sql += " where u_state = 1 ";
+		else if(keys.equals("2")) sub_sql += " where u_state = 2";
+		else if(keys.equals("3")) sub_sql += " where u_state = 3";
+		if(keyw != null && !"".equals(keyw)) {
+			if(keyf.equals("1")) sub_sql += " and u_title Like '%' || ? || '%' ";
+			else if(keyf.equals("2")) sub_sql += " and u_content Like '%' || ? || '%' ";
+			else if(keyf.equals("3")) sub_sql += " and mem_id Like '%' || ? || '%' ";
+		}
 		try {
 			conn = DBUtil.getConnection();
-			sql="select count(*) from usedbookboard ";
+			sql="select count(*) from usedbookboard join member using(mem_num) ";
 			ps = conn.prepareStatement(sql);
-			
+			if(keyw != null && !"".equals(keyw)) {
+				
+				ps.setString(1, keyw);
+			}
 			re = ps.executeQuery();
 			if(re.next()) {
 				
@@ -77,19 +87,52 @@ public class UsedDAO {
 		return count;
 	}
 	//글 리스트
-	public List<UsedVO> listUsed(int start, int end, String keyf,String keyw) throws Exception{
+	public List<UsedVO> listUsed(int start, int end,String keys, String keyf,String keyw) throws Exception{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet re = null;
 		List<UsedVO> list = null;
 		String sql=null;
+		String sub_sql = "";
+		int cnt =0;
+		if(keys.equals("0")) sub_sql += " where u_num is not null ";
+		else if(keys.equals("1")) sub_sql += " where u_state = 1 ";
+		else if(keys.equals("2")) sub_sql += " where u_state = 2";
+		else if(keys.equals("3")) sub_sql += " where u_state = 3";
+		if(keyw != null && !"".equals(keyw)) {
+			if(keyf.equals("1")) sub_sql += " and u_title Like '%' || ? || '%' ";
+			else if(keyf.equals("2")) sub_sql += " and u_content Like '%' || ? || '%' ";
+			else if(keyf.equals("3")) sub_sql += " and mem_id Like '%' || ? || '%' ";
+		}
 		try {
 			conn = DBUtil.getConnection();
-			sql="select count(*) from usedbookboard ";
+			sql="select * from (select rownum alnum, a.* from (select * from (usedbookboard join book using(book_num))join member using(mem_num) "+sub_sql +" order by u_num desc) a ) where alnum >= ? and alnum <= ?";
 			ps = conn.prepareStatement(sql);
-			
+			if(keyw != null && !"".equals(keyw)) {
+				
+				ps.setString(++cnt, keyw);
+			}
+			ps.setInt(++cnt, start);
+			ps.setInt(++cnt, end);
 			re = ps.executeQuery();
 			if(re.next()) {
+				list = new ArrayList<UsedVO>();
+				do{
+					UsedVO used = new UsedVO();
+					used.setBook_num(re.getInt("book_num"));
+					used.setU_num(re.getInt("u_num"));
+					used.setU_hit(re.getInt("u_hit"));
+					used.setU_state(re.getInt("u_state"));
+					used.setU_title(re.getString("u_title"));
+					used.setU_content(re.getString("u_content"));
+					used.setId(re.getString("mem_id"));
+					used.setU_price(re.getInt("u_price"));
+					used.setU_auth(re.getInt("u_auth"));
+					used.setU_rdate(re.getDate("u_rdate"));
+					used.setBook_name(re.getString("book_name"));
+					
+					list.add(used);
+				}while(re.next());
 				
 			
 				

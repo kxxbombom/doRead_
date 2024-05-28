@@ -57,13 +57,22 @@
 					<input type="text" name="u_title" class="inputcheck input-style" id="u_title" maxlength="30" >
 				</li>
 				<li><label for="book_num">책 이름</label><div class="align-right"><input type="button" id ="book_numbtn" value="책선택" class="button2"></div>
-					<input type="text" name="book_num" class="inputcheck input-style "  id="book_num" maxlength="10" disabled="disabled">
-	
+					<input type="text" name="book_name" class="inputcheck input-style "  id="book_name" maxlength="10" readonly="readonly"  >
+					<input type="hidden" name="book_num" class="inputcheck input-style "  id="book_num" >
 				</li>
 				
 				
 				<li><label for="u_price">책 가격</label>
 					<input type="number" name="u_price" class="inputcheck input-style " id="u_price" maxlength="10">
+				</li>
+				<li><label for="selectlist">책 상태</label>
+					<select id="selectlist" name ="sel" class="input-style">
+					<option value="1" >미개봉</option>
+ 					<option value="2" >개봉,사용감없음</option>
+ 					<option value="3">개봉, 2개이하의 파손이나 낙서</option>
+ 					<option value="4" >개봉, 4개이하의 파손이나 낙서</option>
+ 					<option value="5" >개봉, 5개이상의 파손이나 낙서</option>
+ 				</select>
 				</li>
 				<li><label for="u_content">내용</label>
 					<textarea class="inputcheck input-style" style="height:150px"  id="u_content" name="u_content"></textarea>
@@ -105,6 +114,7 @@
 			            $('.modal').addClass('hide');
 			    	    }
 			  	  		});
+			    	
 			    	$("#bookbtn2").click(function() {
 			    		 $('.modal').addClass('hide');
 	
@@ -119,15 +129,15 @@
 			    				if(param.result=='none'){
 			    					$('#add').empty();
 			    					$('#add').append('찾으시는 제목의 책이 없습니다.');
-			    					$('#add').append('<input type="button" value="책등록요청하러가기">');
-			    					return;
+			    					$('#add').append('<br><input type="button" class="input-style" value="책등록요청하러가기">');
+			    					
 			    				}else if(param.result=='success'){
 			    					$('#add').empty();
 			    					let output = '';
 			    						
 			    					$(param.list).each(function(index,item){
 			    					
-			    						output += '<input type="text" value="'+item.book_name+'" class="booksh input-style" id="'+item.book_num+'"><input type="button" value="선택" class="button2 selectbtn" >';
+			    						output += '<input type="text" value="'+item.book_name+'" readonly="readonly" class="booksh" id="'+item.book_num+'">';
 			    						output +='<br>';
 			    						
 			    					})
@@ -143,10 +153,22 @@
 			    			
 			    			
 			    			
-			    		})
+			    		});
 			    		
 			    		event.preventDefault();
-			    	})
+			    	});
+			    	
+			    $(function(){$(document).on('click','.booksh',function(){
+			    	
+		    		$('#book_name').val(this.value);
+		    		$('#book_num').val(this.id);
+		    		 $('.modal').addClass('hide');
+		    		
+	        });});
+
+			    	
+			   
+			    
 			    	
 			    </script>	
 			

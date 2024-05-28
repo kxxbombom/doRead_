@@ -547,12 +547,17 @@ form#event_form{
 	position:absolute;
 	z-index:999;
 	background:white;
-	left:40%;
+	left:35%;
 	top:300px;
 	width:500px;
-	height:300px;
-	margin:auto;
+	
+	margin-bottom:8px !important;
 	border-radius:15px;
 	border:1px solid  rgb(232, 223, 202);
 	
+}
+
+.booksh{
+	border:none;
+	margin-bottom:8px;
 }

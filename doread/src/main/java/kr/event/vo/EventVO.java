@@ -15,6 +15,7 @@ public class EventVO {
 	private int mem_num;
 	private String e_deadline;
 	private String id;
+	
 	public String getId() {
 		return id;
 	}

@@ -17,7 +17,13 @@ public class UsedVO {
 	private int u_state;
 	private int u_price;
 	private int mem_num;
-	
+	private String book_name;
+	public String getBook_name() {
+		return book_name;
+	}
+	public void setBook_name(String book_name) {
+		this.book_name = book_name;
+	}
 	private String id;			//회원아이디
 	public int getU_num() {
 		return u_num;
