@@ -11,27 +11,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 
-<script type="text/javascript">
-	window.onload=function(){
-		const myForm = document.getElementById('search_form');
-
-		myForm.onsubmit=function(){
-			const keyword = document.getElementById('keyword');
-			if(keyword.value.trim() == ''){
-				alert('검색어를 입력하세요');
-				keyword.value = '';
-				keyword.focus();
-				return false;
-			}
-		};
-	};
-</script>
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main newsHead">
-		<h2>뉴스게시판</h2>
+		<h2><a href="newsList.do">뉴스게시판</a></h2>
 		
 		<c:if test="${count == 0}">
 			<div class="result-display">
@@ -55,45 +40,66 @@
 				<td>${news.news_num}</td>
 				<td><a href="newsDetail.do?news_num=${news.news_num}">${news.news_title}</a></td>
 				<c:if test="${user_auth == 9}">
-				<td>${news.mem_id}</td>
+				<td class="text-center">${news.mem_id}</td>
 				</c:if>
-				<td>${news.news_rdate}</td>
-				<td>${news.news_mdate}</td>
+				<td class="text-center">${news.news_rdate}</td>
+				<td class="text-center">${news.news_mdate}</td>
 				<td>${news.news_hit}</td>
 			</tr>
 			</c:forEach>
 		</table>
-		<hr size="1" noshade width="100%">
-		<form id="search_form" action="newsList.do" method="get">
-			<ul class="search">
+		<%-- <hr size="1" noshade width="100%"> --%>
+		
+		<div class="search-form-center">
+		<form id="list_search_form" action="newsList.do" method="get">
+			<ul class="list_search">
 				<li>
-					<select name="keyfield">
+					<select name="keyfield" class="list_search">
 						<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
 						<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>내용</option>
 					</select>
 				</li>
 				<li>
-					<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">
+					<input type="search"  class="list_search" size="16" name="keyword" id="keyword" value="${param.keyword}">
 				</li>
 				<li>
-					<input type="submit" value="검색">
+					<input type="submit" value="검색" class="list_search">
 				</li>
 			</ul>
 		</form>
 		
 		<div class="list-space align-right">
-			
+			<div class="list-btn">
 			<c:if test="${!empty user_num && user_auth == 9}">
 			<input type="button" value="글쓰기" onclick="location.href='newsWriteForm.do'">
 			</c:if>
+			
 			<input type="button" value="목록" onclick="location.href='newsList.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
+			</div>
 		</div>
-		
+		</div>
 		
 		<div class="align-center">${page}</div>
 		</c:if>
-	</div>
+		
+		</div>
 </div>
+
+<script type="text/javascript">
+	window.onload=function(){
+		const myForm = document.getElementById('search_form');
+
+		myForm.onsubmit=function(){
+			const keyword = document.getElementById('keyword');
+			if(keyword.value.trim() == ''){
+				alert('검색어를 입력하세요');
+				keyword.value = '';
+				keyword.focus();
+				return false;
+			}
+		};
+	};
+</script>
 </body>
 </html>

@@ -10,6 +10,28 @@
 <title>뉴스글 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // btn-hide 클래스를 가진 요소를 숨김
+    $('.btn-hide').hide();
+
+    // .board-cbtn 클래스를 가진 요소를 클릭했을 때
+    $('.board-cbtn').click(function() {
+        // 클릭된 요소의 부모 요소인 li를 찾고 그 하위의 .btn-hide 요소를 토글
+        $(this).parent().find('.btn-hide').toggle();
+    });
+
+    // 삭제 버튼 클릭 시
+    $('#delete_btn').click(function() {
+        let choice = confirm('삭제하시겠습니까?');
+        if (choice) {
+            location.replace('newsDelete.do?news_num=${news.news_num}');
+        }
+    });
+});s
+</script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
@@ -29,23 +51,19 @@
 			<li>조회 : ${news.news_hit}</li>
 		</ul>
 		<c:if test="${user_auth == 9}">
-			<div class="board-btn-container">
-				<span class="board-btn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
-	
-				<ul class="btn-hide">
-	            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
-	            	<li><a href="${pageContext.request.contextPath}/news/newsDelete.do?news_num=${news.news_num}" id ="delete_btn">삭제</a></li>
-	        	</ul>
-	        	<script type="text/javascript">
-					const delete_btn = document.getElementById('delete_btn');
-					delete_btn.onclick=function(){
-						let choice = confirm('삭제하시겠습니까?');
-						if(choice){
-							location.replace('newsDelete.do?news_num=${news.news_num}');
-						}
-					};
-				</script>
-			</div>
+			
+			<ul class="board-btn-container">
+				<li class="board-btn">
+					<span class="board-cbtn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+		
+					<ul class="btn-hide">
+		            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
+		            	<li><a href="newsDelete.do?news_num=${news.news_num}" id ="delete_btn">삭제</a></li>
+		        	</ul>
+		        	
+				</li>
+			</ul>	
+			
 		</c:if>
 		<hr size="1" noshade width="100%">
 		
@@ -54,7 +72,7 @@
 		 	<img src="${pageContext.request.contextPath}/upload/${news.news_image}" class="detail-img">
 		 </div>
 		</c:if>
-		<p>
+		<p id="board_content">
 			${news.news_content}
 		</p>
 		<hr size="1" noshade width="100%">
@@ -65,7 +83,7 @@
 				</c:if>
 			</span>
 		</div>
-		<div class="align-center">
+		<div class="align-center list-btn">
 			<input type="button" value="목록" onclick="location.href='newsList.do'">
 			
 		</div>

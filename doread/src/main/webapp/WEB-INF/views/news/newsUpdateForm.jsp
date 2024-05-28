@@ -52,7 +52,7 @@
 					<input type="file" name="news_image" id="news_image" accept="image/gif, image/png, image/jpeg">
 					<c:if test="${!empty news.news_image}">
 						<div id="file_detail">
-							<img src="${pageContext.request.contextPath}/upload/${news.news_image}" width="100">
+							<img src="${pageContext.request.contextPath}/upload/${news.news_image}" width="140">
 							<br>
 							<input type="button" value="이미지 삭제" id="image_del">
 							<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
@@ -92,7 +92,7 @@
 				
 				
 			</ul>
-			<div class="align-center">
+			<div class="align-center list-btn">
 				<input type="submit" value="수정">
 				<input type="button" value="목록" onclick="location.href='newsList.do'">
 			</div>

@@ -574,33 +574,88 @@ div.findPW-main{
 } */
 /* 공통 목록
 ---------------------*/
-form#search_form{
+form#list_search_form{
 	border:none;
+	margin:0 auto;
+	width:500px;
 }
-ul.search{
-	width:340px;
+.search-form-center{
+	display:inline;
+	width:600px;
+	
+}
+ul.list_search{
+	width:350px;
 	list-style:none;
 	padding:0;
 	margin:0 auto;
+	text-align:center;
 }
-ul.search li{
-	margin:0 0 9px 0;
+ul.list_search li{
+	margin:0 auto;
 	padding:0;
-	display:inline;
+	display:inline-block;
 }
+input[type="search"]{
+	width:200px;
+	box-sizing: border-box;
+}
+input[type="submit"].list_search, select.search{
+	width:55px;
+}
+.list_search{
+	height:30px;
+	border-radius:5px;
+}
+
 .list-space{
 	margin-bottom:10px;
 }
+
 table{
 	width:100%;
-	border:1px solid #000;
-	border-collapse:collapse;
-	margin-top:5px;
+	border-collapse: collapse;
+	margin:50px 0;
 }
 table td, table th{
-	border:1px solid #000;
+	border:1px solid #d4d2d2;
 	padding:5px;
+	border-left:0;
+	border-right: 0;
 }
+
+table tr{
+	line-height:3rem;
+	height:50px;
+}
+table td:first-child, table td:last-child, td.text-center{
+	text-align:center;
+}
+
+
+/*뉴스게시판 리스트*/
+
+.list-btn{
+	margin-right:20px;
+}
+
+/*게시판 버튼*/
+.list-btn input, #list_search_form input[type="submit"]{
+	width:60px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.list-btn input:hover, #list_search_form input[type="submit"]:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
 /* 게시판 글상세
 ---------------------*/
 ul.detail-info li{
@@ -608,6 +663,7 @@ ul.detail-info li{
 }
 .detail-img{
 	max-width:500px;
+	margin-left:30px;
 }
 ul.detail-sub{
 	margin:0;
@@ -626,7 +682,63 @@ ul.detail-sub li:last-child{
 	text-align:right;
 	line-height:250%;
 }
-#output_fav{
+
+
+p#board_content{
+	padding-right:20px;
+	word-wrap: break-word;
+}
+
+/*글상세 수정 삭제 버튼*/
+ul.btn-hide{
+	border:1px solid #000;
+	border-radius:5px;
+	display:inline-block;
+	width:80px;
+	height:60px;
+	text-align:right;
+	padding-right: 10px; /* 오른쪽 패딩만 설정합니다 */
+    position: absolute; /* 절대 위치 지정 */
+    top: 100%; /* 부모 요소 아래에 위치하도록 지정합니다 */
+    z-index: 1;
+    display: none;
+    background:#FFF;
+}
+.board-btn{
+	display: flex;
+	flex-direction:column;
+	align-items:flex-end;
+	position: relative;
+}
+.btn-hide li {
+	margin-top:5px;
+}
+
+
+/*뉴스게시판 글 수정*/
+input[type="file"]{
+	border:none;
+	margin-top:10px;
+	
+	font-size:14px;
+	font-weight:bold;
+}
+#file_detail input[type="button"]{
+	width:90px;
+	height:25px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+#file_detail input[type="button"]:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+/* #output_fav{
 	cursor:pointer;
 }
 div#reply_div{
@@ -675,7 +787,7 @@ div#output{
 form#mre_form{
 	border:none;
 	margin:5px;
-}
+} */
 
 
 
