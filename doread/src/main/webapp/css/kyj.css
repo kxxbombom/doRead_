@@ -163,3 +163,16 @@ input#book_quantity{
 	color:white;
 	float:right;
 }
+
+
+#fav-tag{
+	border:none;
+	border-radius:50%;
+	width:30px;
+	height:30px;
+	background-color:rgb(232,223,202);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin: 5px;
+}

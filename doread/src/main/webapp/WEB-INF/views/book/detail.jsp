@@ -10,8 +10,15 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-
+$('#wish').onclick(function(){
+	$.ajax({
+		url:'bookfav.do',
+		type:'post',
+		data:{book_num:$(this).}
+	})
+});
 </script>
 </head>
 <body>
@@ -33,7 +40,7 @@
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
 				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
 				<ul>
-					<li>
+					<li id="book-tagtop">
 						<div class="category-tag">
 							<c:if test="${book.book_category==1}">소설</c:if>
 							<c:if test="${book.book_category==2}">시/에세이</c:if>
@@ -47,6 +54,9 @@
 							<c:if test="${book.book_category==10}">만화</c:if>
 							<c:if test="${book.book_category==11}">취미/스포츠</c:if>
 						</div>
+						<div id="fav-tag">
+							<img id="bookfav" src="${pageContext.request.contextPath}/images/bookfav_before.png" width="20px">
+						</div>
 					</li>
 					<li><h1>${book.book_name}</h1></li>
 					<li>${book.author} / ${book.publisher}</li>
@@ -58,9 +68,6 @@
 							<input type="number" name="book_quantity" id="book_quantity" min="1" max="${book.stock}">
 						</li>
 						<li id="button-margin">
-							<input type="button" value="찜목록에 추가" id="wish" class="wish-button">
-						</li>
-						<li>
 							<input type="button" value="바로 구매" id="order" class="order-button">
 							<input type="button" value="장바구니" id="insert_cart" class="order-button">
 						</li>
