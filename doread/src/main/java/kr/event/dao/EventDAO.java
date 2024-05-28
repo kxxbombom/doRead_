@@ -68,13 +68,12 @@ public class EventDAO {
 			else if (keyfield.equals("2")) sub_sql += "WHERE  e_deadline < sysdate ";
 			else if (keyfield.equals("3")) sub_sql += "WHERE e_mem_num is not null ";
 			if(keyword !=null && !"".equals(keyword)) {
-				sub_sql += " and  (e_title Like '%' || ? || '%' or e_content Like '%' || ? || '%')";
+				sub_sql += " and  (e_title Like '%' || ? || '%' or e_content Like '%' || ? || '%' )";
 		
 			}
 			
 			//SQL문 작성
-			//status가 0이면, 1(미표시),2(표시) 모두 호출 -> 관리자용
-			//status가 1이면, 2(표시) 호출 -> 사용자용
+			
 			sql = " SELECT * FROM (SELECT a.*, rownum rnum FROM "
 				+ " (SELECT * FROM eventboard " + sub_sql
 				+ " ORDER BY e_num DESC)a) "
@@ -122,13 +121,15 @@ public class EventDAO {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String sql = null;
-			int count = 0;
+			
 			EventVO event = null;
 			try {
 				conn = DBUtil.getConnection();
 				sql="select * from eventboard where e_num=?";
 				pstmt = conn.prepareStatement(sql);
+				
 				pstmt.setInt(1, e_num);
+				
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					event = new EventVO();
@@ -159,17 +160,31 @@ public class EventDAO {
 			
 		}
 		//이벤트게시글 수카운트 페이지처리
-		public int getEventCount() throws Exception{
+		public int getEventCount(String keyfield,
+			     String keyword) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String sql = null;
+			String sub_sql="";
 			int count = 0;
-			
+			if(keyfield.equals("1")) sub_sql += "WHERE e_deadline >= sysdate ";
+			else if (keyfield.equals("2")) sub_sql += "WHERE  e_deadline < sysdate ";
+			else if (keyfield.equals("3")) sub_sql += "WHERE e_mem_num is not null ";
+			if(keyword !=null && !"".equals(keyword)) {
+				sub_sql += " and  (e_title Like '%' || ? || '%' or e_content Like '%' || ? || '%' )";
+		
+			}
 			try {
 				conn = DBUtil.getConnection();
-				sql="select count(*) from eventboard ";
+				sql="select count(*) from eventboard "+ sub_sql;
 				pstmt = conn.prepareStatement(sql);
+				
+				if(keyword !=null && !"".equals(keyword)) {
+					pstmt.setString(1, keyword);
+					pstmt.setString(2, keyword);
+			
+				}
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					count = rs.getInt(1);

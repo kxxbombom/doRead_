@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
 <div class="page-main">
 	
 	<div class="eventvar">

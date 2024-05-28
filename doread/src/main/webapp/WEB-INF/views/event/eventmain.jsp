@@ -11,7 +11,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
 <div class="page-main">
 
 			<div class="eventvar">
@@ -20,13 +20,13 @@
 
 <div class="align-center">
  			<form id="eventmainForm" action="eventmain.do" method="get">
- 			<input type="text" name="eventsearch" class="inputcheck input-style" id="eventsearch" maxlength="30" >
- 			<input id="subbtn" type="submit" value="검색" class="button2">
 				<select id="selectlist" name ="sel" class="input-style">
 				<option value="1" <c:if test="${check == 1}">selected</c:if>>진행중이벤트</option>
  				<option value="2" <c:if test="${check == 2}">selected</c:if> >종료된이벤트</option>
  				<option value="3" <c:if test="${check == 3}">selected</c:if>>당첨자보기</option>
  				</select>
+ 				<input type="text" name="eventsearch" class="inputcheck input-style" id="eventsearch" maxlength="30" placeholder="제목 또는 내용으로 검색가능">
+ 				<input id="subbtn" type="submit" value="검색" class="button2">
 			</form>
 			<script type="text/javascript">
 				$('#selectlist').change(function(){

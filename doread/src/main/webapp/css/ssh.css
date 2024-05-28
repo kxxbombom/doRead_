@@ -7,7 +7,13 @@ body{
 	
 	font-family:"Noto Sans KR", sans-serif;
 }
-
+span.name a{
+	color:white !important;
+	width:100%;
+}
+input:checked + span.name a{
+	color: rgb(26, 77, 46)!important;
+}
 a:link{
 	text-decoration:none;
 	color:black;
@@ -325,9 +331,9 @@ span#e_title{
   background-color: rgb(26, 77, 46);
   box-sizing: border-box;
   font-size: 18px;
-  color:white;
+  color:white ;
   width: 90%;
-  padding: 1rem 1rem 0 1rem;
+  padding: 0.8rem 0.8rem 0 1rem;
   margin:0 auto;
 }
 
@@ -353,7 +359,7 @@ span#e_title{
 
 .radio-inputs .radio input:checked + .name {
   background-color: rgb(245, 239, 230);
-  color:rgb(26, 77, 46);
+  color:rgb(26, 77, 46) !important;
   font-weight: 600;
   
 }
@@ -516,5 +522,37 @@ form#event_form{
 	margin:0 auto;
 	width:700px;
 	
+	
+}
+/*중고게시판*/
+
+
+#usedForm{
+	
+	width: 800px;
+}
+.formdiv2{
+	position:relative;
+	margin:0 auto;
+	z-index:1;
+}
+.formdiv2 ul li{
+	z-index:1;
+}
+.formdiv2 ul li label{
+	font-size:13pt;
+	text-align:left;
+}
+.modal{
+	position:absolute;
+	z-index:999;
+	background:white;
+	left:40%;
+	top:300px;
+	width:500px;
+	height:300px;
+	margin:auto;
+	border-radius:15px;
+	border:1px solid  rgb(232, 223, 202);
 	
 }

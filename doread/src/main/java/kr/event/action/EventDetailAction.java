@@ -21,6 +21,7 @@ public class EventDetailAction implements Action{
 		
 		
 		request.setAttribute("event", event);
+		request.setAttribute("menu", "event");
 		return "/WEB-INF/views/event/eventDetail.jsp";
 	}
 

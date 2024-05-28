@@ -38,7 +38,7 @@
 		</li>
 
 		<li >
-			<a href="${pageContext.request.contextPath}/event/eventmain.do" >판매내역</a>
+			<a href="${pageContext.request.contextPath}" >판매내역</a>
 			<div class="subul">
 			<ul>
 				<li><a href="#">-일별</a></li>

@@ -51,34 +51,34 @@
 <div class="radio-inputs">
   <label class="radio">
     <input type="radio" name="radio" />
-    <span class="name">책카테고리</span>
+    <span class="name"><a href="${pageContext.request.contextPath}/book/list.do"  id="book_category">책카테고리</a></span>
   </label>
   <label class="radio">
     <input type="radio" name="radio" />
-    <span class="name">뉴스</span>
+    <span class="name"><a href="${pageContext.request.contextPath}/news/newsList.do" >뉴스</a></span>
   </label>
 
   <label class="radio">
-    <input type="radio" name="radio" <c:if test="${!empty user_num}">checked=""</c:if> />
-    <span class="name">이벤트</span>
+    <input type="radio" name="radio" <c:if test="${menu == 'event'}">checked=""</c:if> />
+    <span class="name"><a href="${pageContext.request.contextPath}/event/eventmain.do " >이벤트</a></span>
   </label>
   <label class="radio">
-    <input type="radio" name="radio"  />
-        <span class="name">중고</span>
+    <input type="radio" name="radio" <c:if test="${menu == 'used'}">checked=""</c:if> />
+      <span class="name"><a href="${pageContext.request.contextPath}/used/usedList.do" >중고</a></span>
   </label>
   <label class="radio">
     <input type="radio" name="radio" />
-    <span class="name">스토리</span>
+    <span class="name"><a href="${pageContext.request.contextPath}/story/storyBoardList.do" >스토리</a></span>
   </label>
 
   <label class="radio">
     <input type="radio" name="radio" />
-    <span class="name">QnA</span>
+    <span class="name"><a href="${pageContext.request.contextPath}/qna/qnaList.do" >QnA</a></span>
   </label>
  	<c:if test="${!empty user_num && user_auth == 9}">
 	<label class="radio">
     <input type="radio" name="radio" />
-    <span class="name">관리자페이지</span>
+    <span class="name"><a href="${pageContext.request.contextPath}/adminster/adminPage.do" >관리자페이지</a></span>
   </label>
 	</c:if>
 </div>

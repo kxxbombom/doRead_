@@ -46,7 +46,7 @@ public class EventupdateAction implements Action{
 		event.setE_deadline(e_deadline);
 		event.setE_item(e_item);
 		dao.updateEvent(event);
-		
+		request.setAttribute("menu", "event");
 		return "redirect:/event/detailEvent.do?e_num="+e_num;
 	}
 	

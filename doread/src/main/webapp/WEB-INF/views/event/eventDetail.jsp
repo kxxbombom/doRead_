@@ -11,7 +11,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
 <div class="page-main">
 
 			<div class="eventvar">

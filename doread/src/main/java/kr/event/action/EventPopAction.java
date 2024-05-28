@@ -40,7 +40,8 @@ public class EventPopAction implements Action{
 			}
 		}
 		request.setAttribute("e_num", e_num);
-		return "/WEB-INF/views/event/eventPop.jsp?";
+		request.setAttribute("menu", "event");
+		return "/WEB-INF/views/event/eventPop.jsp";
 	}
 
 }

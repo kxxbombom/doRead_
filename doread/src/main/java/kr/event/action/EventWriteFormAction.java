@@ -22,6 +22,7 @@ public class EventWriteFormAction implements Action {
 		if(user_auth != 9) {//관리자로 로그인하지 않은 경우
 			return "/WEB-INF/views/common/notice.jsp";
 		}
+		request.setAttribute("menu", "event");
 		return "/WEB-INF/views/event/eventWriteForm.jsp";
 	}
 

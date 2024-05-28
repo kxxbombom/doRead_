@@ -30,6 +30,7 @@ public class EventupdateFormAction implements Action{
 		EventDAO dao = EventDAO.getInstance();
 		EventVO event = dao.getEvent(e_num);
 		request.setAttribute("event", event);
+		request.setAttribute("menu", "event");
 		return "/WEB-INF/views/event/eventupdateForm.jsp";
 	}
 

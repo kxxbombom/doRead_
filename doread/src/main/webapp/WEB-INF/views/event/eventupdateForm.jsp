@@ -43,7 +43,7 @@
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
 <div class="page-main">
 <div class="eventvar">
 	<h1>EVENT 글수정</h1>
