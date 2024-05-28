@@ -2,7 +2,7 @@ package kr.util;
 
 public class StringUtil {
 	//HTML 태그를 허용하면서 줄바꿈
-	public static String useBrHtml(String str) {
+	public static String useBrHTML(String str) {
 		if(str == null) return null;
 		
 		return str.replaceAll("\r\n", "<br>")

@@ -35,6 +35,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main newsWrite">
 		<h2>뉴스게시판 작성</h2>
+		<hr size="1" noshade width="100%">
 		<form id="newsWrite_form" action="newsWrite.do" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>

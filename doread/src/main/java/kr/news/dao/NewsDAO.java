@@ -116,6 +116,7 @@ public class NewsDAO {
 				news.setNews_title(StringUtil.useNoHTML(rs.getString("news_title")));
 				news.setNews_content(rs.getString("news_content"));
 				news.setNews_rdate(rs.getDate("news_rdate"));
+				news.setNews_mdate(rs.getDate("news_mdate"));
 				news.setMem_id(rs.getString("mem_id"));
 				
 				list.add(news);
@@ -128,7 +129,60 @@ public class NewsDAO {
 		return list;
 	}
 	//뉴스 상세
+	public NewsVO getNews(int news_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		NewsVO news = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM newsboard JOIN member USING(mem_num) LEFT OUTER JOIN member_detail USING(mem_num) WHERE news_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				news = new NewsVO();
+				news.setNews_num(rs.getInt("news_num"));
+				news.setNews_title(rs.getString("news_title"));
+				news.setNews_content(rs.getString("news_content"));
+				news.setNews_hit(rs.getInt("news_hit"));
+				news.setNews_rdate(rs.getDate("news_rdate"));
+				news.setNews_mdate(rs.getDate("news_mdate"));
+				news.setNews_image(rs.getString("news_image"));
+				news.setMem_id(rs.getString("mem_id"));
+				news.setMem_num(rs.getInt("mem_num"));
+				news.setMem_photo(rs.getString("mem_photo"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return news;
+	}
 	//조회수 증가
+	public void updateReadCount(int news_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE newsboard SET news_hit=news_hit+1 WHERE news_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, news_num);
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//파일 삭제 (글 남기고 파일만
 	//뉴스 수정
 	//뉴스 삭제
