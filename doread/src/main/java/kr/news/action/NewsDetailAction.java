@@ -25,7 +25,9 @@ public class NewsDetailAction implements Action{
 		news.setNews_title(StringUtil.useNoHTML(news.getNews_title()));
 		news.setNews_content(StringUtil.useBrHTML(news.getNews_content()));
 		
-		return null;
+		request.setAttribute("news", news);
+		
+		return "/WEB-INF/views/news/newsDetail.jsp";
 	}
 
 }

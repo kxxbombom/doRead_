@@ -269,7 +269,7 @@ input[value="우편번호 찾기"]{
 	color:rgb(26, 77, 46);
 }
 
-#login_form, newsWrite_form{
+#login_form, newsHead_form{
 	width:300px;
 	margin:0 auto;
 	padding:0;
@@ -548,10 +548,10 @@ div.findPW-main{
 }
 
 /*뉴스게시판*/
-.newsWrite h2{
+.newsHead h2{
 	text-align:center;
 }
-.newsWrite form{
+.newsHead form{
 	
 }
 
@@ -676,6 +676,9 @@ form#mre_form{
 	border:none;
 	margin:5px;
 }
+
+
+
 /* 게시판 글 수정
 ---------------------*/
 #file_detail{

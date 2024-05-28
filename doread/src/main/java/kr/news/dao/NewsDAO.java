@@ -141,6 +141,7 @@ public class NewsDAO {
 			sql = "SELECT * FROM newsboard JOIN member USING(mem_num) LEFT OUTER JOIN member_detail USING(mem_num) WHERE news_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, news_num);
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -184,6 +185,57 @@ public class NewsDAO {
 		}
 	}
 	//파일 삭제 (글 남기고 파일만
+	public void deleteImage(int news_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE newsboard SET news_image='' WHERE news_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, news_num);
+
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//뉴스 수정
+	public void updateNews(NewsVO news)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		String sub_sql = "";// 파일 업로드하지 않을 때
+		int cnt = 0;
+		try {
+			conn = DBUtil.getConnection();
+			
+			if(news.getNews_image() != null && !"".equals(news.getNews_image())) {
+				sub_sql += ",news_image=?";
+			}
+
+			sql = "UPDATE newsboard SET news_title=?,news_content=?,news_mdate=SYSDATE " + sub_sql + " WHERE news_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(++cnt, news.getNews_title());
+			pstmt.setString(++cnt, news.getNews_content());
+			if(news.getNews_image() != null && !"".equals(news.getNews_image())) {
+				pstmt.setString(++cnt, news.getNews_image());
+			}
+			pstmt.setInt(++cnt, news.getNews_num());
+
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//뉴스 삭제
 }
