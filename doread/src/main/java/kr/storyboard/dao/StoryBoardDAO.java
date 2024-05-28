@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.qna.vo.QnaVO;
+import kr.book.vo.BookVO;
 import kr.storyboard.vo.StoryBoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
@@ -107,4 +107,66 @@ public class StoryBoardDAO {
 				}
 				return list;
 			}
+			//글등록
+			public void insertStoryBoard(StoryBoardVO sb)throws Exception {
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "INSERT INTO storyboard (s_num,s_title,s_content,s_ip,s_image,mem_num,book_num) "
+							+ "VALUES (storyboard_seq.nextval,?,?,?,?,?,?)";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터 바인딩	
+					pstmt.setString(1, sb.getS_title());
+					pstmt.setString(2, sb.getS_content());
+					pstmt.setString(3, sb.getS_ip());
+					pstmt.setString(4, sb.getS_image());
+					pstmt.setInt(5, sb.getMem_num());
+					pstmt.setInt(6, sb.getBook_num());
+					//SQL문 실행
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+			}
+			//글 목록,검색 글 목록
+			public List<BookVO> getListBookByStory() throws Exception {
+			    Connection conn = null;
+			    PreparedStatement pstmt = null;
+			    ResultSet rs = null;
+			    List<BookVO> list = new ArrayList<>();
+			    String sql = "SELECT * FROM book ORDER BY book_name ASC";
+
+			    try {
+			        // 커넥션풀로부터 커넥션 할당
+			        conn = DBUtil.getConnection();
+			        
+			        // SQL문 작성 및 실행
+			        pstmt = conn.prepareStatement(sql);
+			        rs = pstmt.executeQuery();
+
+			        // 결과 처리
+			        while (rs.next()) {
+			            BookVO book = new BookVO();
+			            book.setBook_num(rs.getInt("book_num"));
+			            book.setBook_name(rs.getString("book_name"));
+			            list.add(book);
+			        }
+
+			    } catch (Exception e) {
+			        throw new Exception(e);
+			    } finally {
+			        DBUtil.executeClose(rs, pstmt, conn);
+			    }
+
+			    return list;
+			}
+
 }

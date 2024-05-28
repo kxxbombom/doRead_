@@ -19,7 +19,7 @@ create table storyboard(
  s_num number not null,
  s_title varchar2(150) not null,
  s_content clob not null,
- s_hit number(10) not null,
+ s_hit number(10) default 0 not null,
  s_rdate date default sysdate not null,
  s_mdate date,
  s_ip varchar2(40) not null,
