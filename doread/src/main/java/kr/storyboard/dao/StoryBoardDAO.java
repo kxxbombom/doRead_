@@ -95,7 +95,7 @@ public class StoryBoardDAO {
 						sv.setS_auth(rs.getInt("s_auth"));
 						sv.setS_image(rs.getString("s_image"));
 						sv.setS_rdate(rs.getDate("s_rdate"));
-						sv.setBook_num(rs.getInt("book_nu,"));
+						sv.setBook_num(rs.getInt("book_num"));
 						
 						list.add(sv);
 					}

@@ -28,6 +28,7 @@ public class StoryWriteAction implements Action{
 		sb.setS_ip(request.getRemoteAddr());
 		sb.setS_image(FileUtil.createFile(request, "s_image"));
 		sb.setMem_num(user_num); //작성자 회원번호
+		sb.setBook_num(Integer.parseInt(request.getParameter("book_num")));
 		
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
 		dao.insertStoryBoard(sb);
