@@ -90,6 +90,7 @@ div#mypage-main div.mypage-div ul li a{
 }
 .mypage-button{
 	margin:30px;
+	
 }
 .mypage-button input[type="button"]{
 	margin-top: 20px;
@@ -99,6 +100,7 @@ div#mypage-main div.mypage-div ul li a{
 	background-color:#1a4d2e;
 	color:#FFFFFF;
 	font-size:15px;
+	cursor:pointer;
 }
 .my-photo{
 	object-fit:cover;
@@ -120,7 +122,7 @@ img#penimage{
 }
 .updatephoto input[type="button"]{
 	margin-left:50px;
-	
+	cursor:pointer;	
 }
 
 
@@ -156,3 +158,85 @@ img#penimage{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
+
+/*회원 알림*/
+table{
+	width:70%;
+	border:1px solid #000;
+	border-collapse:collapse;
+	margin-top:5px;
+	margin-left:150px;
+}
+table th{
+	background:#E0E0E0;
+}
+table td, table th{
+	border:1px solid #000;
+	padding:5px;
+	text-align:center;
+}
+/*회원 수정*/
+#modify_form{
+	margin-left:400px;
+}
+.modify-button{
+	margin-left:100px;
+}
+.modify-button input[type="button"]{
+	width:95px;
+	height:40px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.modify-button input[type="submit"]{
+	width:95px;
+	height:40px;
+	border-radius:5px;
+	border:1px solid #4F6F52;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	margin-right:10px;
+	font-weight:bold;
+}
+/*회원 탈퇴*/
+#delete_form{
+	margin-left:400px;
+}
+.delete-button{
+	margin-left:100px;
+}
+.delete-button input[type="button"]{
+	width:95px;
+	height:40px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+	cursor:pointer;
+}
+.delete-button input[type="submit"]{
+	width:95px;
+	height:40px;
+	border-radius:5px;
+	border:1px solid #4F6F52;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	margin-right:10px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+
+
+
+
+
+

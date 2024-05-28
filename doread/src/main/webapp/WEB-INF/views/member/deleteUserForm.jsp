@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -52,7 +54,8 @@ $(function(){
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="content-main">
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
+	<div class="content-main register-header">
 		<h2>회원탈퇴</h2>
 		<form id="delete_form" action="deleteUser.do"
 		                                      method="post">
@@ -75,7 +78,7 @@ $(function(){
 					<span id="message_cpasswd"></span>       
 				</li>
 			</ul>    
-			<div class="align-center">
+			<div class="delete-button">
 				<input type="submit" value="회원탈퇴">
 				<input type="button" value="마이페이지"
 				    onclick="location.href='mypage.do'">

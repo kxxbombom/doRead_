@@ -69,10 +69,14 @@ CREATE TABLE cart (
 	book_num	number	NOT NULL
 );
 
-CREATE TABLE like (
-	w_num	number	NOT NULL,
-	mem_num	number	NOT NULL,
-	book_num	number	NOT NULL
+CREATE TABLE book_fav (
+	w_num number	NOT NULL primary key,
+	mem_num number not null,
+	book_num number not null,
+	constraint book_fav_fk1 foreign key (mem_num)
+ 						references member (mem_num),
+  	constraint book_fav_fk2 foreign key (book_num)
+ 						references book (book_num)
 );
 
 CREATE TABLE book_order (

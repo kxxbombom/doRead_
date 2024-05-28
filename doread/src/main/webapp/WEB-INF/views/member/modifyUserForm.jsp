@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -44,7 +46,8 @@ $(function(){
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="content-main">
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
+	<div class="content-main register-header">
 		<h2>회원정보 수정</h2>
 		<form id="modify_form" action="modifyUser.do"
 		                                      method="post">
@@ -83,7 +86,7 @@ $(function(){
 					 value="${member.mem_address2}" maxlength="30" class="input-check">
 				</li>
 			</ul>    
-			<div class="align-center">
+			<div class="modify-button">
 				<input type="submit" value="수정">
 				<input type="button" value="My페이지"	
 				    onclick="location.href='mypage.do'">

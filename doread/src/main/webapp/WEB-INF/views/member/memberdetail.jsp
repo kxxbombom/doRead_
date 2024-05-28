@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 상세 내용</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
