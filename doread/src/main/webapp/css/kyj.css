@@ -139,6 +139,13 @@ label#quantity_label{
 input#book_quantity{
 	width:200px;
 }
+.book-info{
+	padding:0px;
+}
+
+.book-info h3,p,ol li{
+	margin-left:30px;
+}
 
 .info-tab a{
 	padding:0 10px 0 10px;

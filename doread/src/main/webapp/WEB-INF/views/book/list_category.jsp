@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
+</script>
 </head>
 <body>
 <div class="page-main">

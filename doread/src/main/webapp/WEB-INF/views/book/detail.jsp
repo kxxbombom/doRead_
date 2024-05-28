@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 <div class="page-main">
@@ -79,15 +82,15 @@
 	<div class="float-clear">
 		<hr width="100%" size="1" noshade="noshade">
 	</div>
-		<ul>
+		<ul class="book-info">
 			<li id="book_review">
 				<h3>서평</h3>
 				
-				<hr width="80%" size="1" noshade="noshade">
+				<hr width="100%" size="1" noshade="noshade">
 			</li>
 			<li id="change_info">
 				<h3>교환/반품/품절 안내</h3>
-				<hr width="80%" size="1" noshade="noshade">
+				<hr width="100%" size="1" noshade="noshade">
 				<input type="button" value="교환/반품 신청" onclick="location.href='${pageContext.request.contextPath}/qna/qnaWriteForm.do'">
 				<p><b>반품/교환 방법</b></p>
 				<p>
