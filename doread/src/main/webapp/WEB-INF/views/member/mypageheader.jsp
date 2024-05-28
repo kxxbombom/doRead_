@@ -58,9 +58,7 @@
 				<a>QnA</a>
 				<div class="myul">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/qna/qnaWriteForm.do">1:1문의</a></li>
-						<li><a href="${pageContext.request.contextPath}/member/bookrequest.do">도서 신청</a></li>
-				
+						<li><a href="${pageContext.request.contextPath}/qna/qnaWriteForm.do">1:1문의/도서신청</a></li>
 					</ul>
 				</div></li>
 		</ul>
