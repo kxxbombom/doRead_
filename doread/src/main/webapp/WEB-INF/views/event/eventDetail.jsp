@@ -80,6 +80,7 @@
 
 사은품 선택 시 할인쿠폰 사용에 제한이 있을 수 있습니다.<br>
 (할인쿠폰 사용으로 적립예정 포인트가 사은품 선사용 포인트에 미달할 경우)<br>
+이벤트발표는 검색>당첨자보기 또는 마이페이지>이벤트내역에서 확인할 수 있습니다 <br>
 	
 	<input id="eventUser" type="button" value="이벤트 응모하기"	  class="eventbutton" onclick="location.href='${pageContext.request.contextPath}/event/eventUserForm.do?e_num=${event.e_num}'">		
  			

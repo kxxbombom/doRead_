@@ -28,22 +28,19 @@ public class EventPopAction implements Action{
 		detail = dao.getEventdetail(mem_num, e_num);
 		if(detail != null) {
 			request.setAttribute("notice_msg", "이미 참여하신 이벤트 입니다.");
+			request.setAttribute("notice_url", request.getContextPath()+"/event/eventmain.do");
+			return "/WEB-INF/views/common/alert_view.jsp";
 			
 		}else {
 			deaddetail = dao.getEventdead(e_num);
-			if(deaddetail != null) {
+			if(deaddetail == null) {
 				request.setAttribute("notice_msg", "이미 종료된 이벤트입니다.");
-			}else {
-				EventDetailVO detailevent = new EventDetailVO();
-				detailevent.setE_num(e_num);
-				detailevent.setMem_num(mem_num);
-				dao.eventDetailWrite(detailevent);
-				request.setAttribute("notice_msg", "이벤트에 응모되었습니다.");
+				request.setAttribute("notice_url", request.getContextPath()+"/event/eventmain.do");
+				return "/WEB-INF/views/common/alert_view.jsp";
 			}
-			
 		}
-		request.setAttribute("notice_url", request.getContextPath()+"/event/eventmain.do");
-		return "/WEB-INF/views/common/alert_view.jsp";
+		request.setAttribute("e_num", e_num);
+		return "/WEB-INF/views/event/eventPop.jsp?";
 	}
 
 }

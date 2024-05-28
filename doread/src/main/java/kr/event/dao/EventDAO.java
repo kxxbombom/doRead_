@@ -9,6 +9,8 @@ import java.util.List;
 
 import kr.event.vo.EventDetailVO;
 import kr.event.vo.EventVO;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 
 public class EventDAO {
@@ -60,37 +62,51 @@ public class EventDAO {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			
-			if(keyword !=null && !"".equals(keyword)) {
+			
 				//검색 처리
-				if(keyfield.equals("1")) sub_sql += "WHERE e_mem_num is null";
-				else if (keyfield.equals("2")) sub_sql += "WHERE e_mem_num is not null";
+			if(keyfield.equals("1")) sub_sql += "WHERE e_deadline >= sysdate ";
+			else if (keyfield.equals("2")) sub_sql += "WHERE  e_deadline < sysdate ";
+			else if (keyfield.equals("3")) sub_sql += "WHERE e_mem_num is not null ";
+			if(keyword !=null && !"".equals(keyword)) {
+				sub_sql += " and  (e_title Like '%' || ? || '%' or e_content Like '%' || ? || '%')";
+		
 			}
 			
 			//SQL문 작성
 			//status가 0이면, 1(미표시),2(표시) 모두 호출 -> 관리자용
 			//status가 1이면, 2(표시) 호출 -> 사용자용
-			sql = "SELECT * FROM (SELECT a.*,rownum rnum FROM "
-				+ "(SELECT * FROM eventboard  " + sub_sql
+			sql = " SELECT * FROM (SELECT a.*, rownum rnum FROM "
+				+ " (SELECT * FROM eventboard " + sub_sql
 				+ " ORDER BY e_num DESC)a) "
-				+ "WHERE rnum >= ? AND rnum <= ?";
+				+ " WHERE rnum >= ? AND rnum <= ?";
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
-			
+			if(keyword !=null && !"".equals(keyword)) {
+				pstmt.setString(++cnt, keyword);
+				pstmt.setString(++cnt, keyword);
+		
+			}
 			pstmt.setInt(++cnt, start);
 			pstmt.setInt(++cnt, end);
 			//SQL문 실행
 			rs = pstmt.executeQuery();
+			if(rs.next()) {
 			list = new ArrayList<EventVO>();
-			while(rs.next()) {
+			do{
 				EventVO item = new EventVO();
 				item.setE_num(rs.getInt("e_num"));
 				item.setE_title(rs.getString("e_title"));
 				item.setE_image(rs.getString("e_image"));
 				item.setE_rdate(rs.getDate("e_rdate"));
 				item.setE_deadline(rs.getString("e_deadline"));
-				
+				item.setE_mem_num(rs.getInt("e_mem_num"));
+				MemberDAO dao= MemberDAO.getInstance();
+				MemberVO member =dao.getMember(item.getE_mem_num());
+				if(member != null)
+				item.setId(member.getMem_id());
 				list.add(item);
+			}while(rs.next());
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -296,17 +312,17 @@ public class EventDAO {
 					
 					try {
 						conn = DBUtil.getConnection();
-						sql="select * from event_detail join eventboard using(e_num) where e_num=?  and e_mem_num  is not null ";
+						sql="select * from eventboard where e_deadline >= sysdate and e_num=?";
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setInt(1, e_num);
 						
 						rs = pstmt.executeQuery();
 						if(rs.next()) {
 							event = new EventDetailVO();
-							event.setEd_num(rs.getInt("ed_num"));
+							
 							event.setE_num(rs.getInt("e_num"));
 							event.setMem_num(rs.getInt("mem_num"));
-							event.setEd_result(rs.getString("ed_result"));
+							
 							
 							
 						}
@@ -399,13 +415,11 @@ public class EventDAO {
 					try {
 						conn = DBUtil.getConnection();
 						conn.setAutoCommit(false);
-						sql = "update eventboard set e_mem_num=?, e_title=?,e_content=?,e_mdate=sysdate where e_num=?";
+						sql = "update eventboard set e_mem_num=?,e_deadline=sysdate ,e_content=CONCAT('(종료된이벤트입니다 )',e_content),e_mdate=sysdate where e_num=?";
 						
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setInt(1, event.getE_mem_num());
-						pstmt.setString(2, "종료된 이벤트 입니다.");
-						pstmt.setString(3, "종료된 이벤트 입니다.");
-						pstmt.setInt(4, event.getE_num());
+						pstmt.setInt(2, event.getE_num());
 						pstmt.executeUpdate();
 						sql = "update event_detail set ed_result=? where e_num=? and mem_num=?";
 						
@@ -416,7 +430,7 @@ public class EventDAO {
 						
 					
 					
-						pstmt.executeUpdate();
+						pstmt2.executeUpdate();
 						
 						
 						conn.commit();

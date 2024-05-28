@@ -5,17 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 팝업</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 </head>
 <body>
-<div class="popup">
+<jsp:include page="/WEB-INF/views/event/eventheader.jsp"/>
+<div class="page-main">
 	
 	<div class="eventvar">
  	<h1>EVENT 응모</h1>
  	</div>
-	이벤트에 응모 하시겠습니까?
-	<input type="button" value="응모" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventdetailinsert.do?e_num='">		
-	<input type="button" value="취소" class="eventbutton2" >		
-
+ 	<p>
+ 	<div class="align-center">
+	이벤트에 응모 하시겠습니까?<p>
+	<input type="button" value="응모" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventsucess.do?e_num=${e_num}'">		
+	<input type="button" value="취소" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">		
+	</div>
 </div>
 
 </body>

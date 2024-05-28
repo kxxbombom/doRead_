@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.event.dao.EventDAO;
+import kr.event.vo.EventDetailVO;
 import kr.event.vo.EventVO;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
@@ -37,7 +38,15 @@ public class EventPresentAction implements Action{
 			return "/WEB-INF/views/common/alert_view.jsp";
 			
 		}else {
+			 
 			EventDAO eventdao = EventDAO.getInstance();
+			EventDetailVO check = eventdao.getEventdetail(e_mem_num, e_num);
+			if(check == null) {
+				request.setAttribute("notice_msg", "이벤트에 응모한 회원번호가 아닙니다.");
+				request.setAttribute("notice_url", request.getContextPath()+"/event/eventmain.do");
+				return "/WEB-INF/views/common/alert_view.jsp";
+				
+			}
 			EventVO eventvo = new EventVO();
 			eventvo.setE_num(e_num);
 			eventvo.setE_mem_num(e_mem_num);
