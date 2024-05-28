@@ -176,3 +176,8 @@ input#book_quantity{
 	align-items:center;
 	margin: 5px;
 }
+
+#book_review table{
+	width:800px;
+	margin-left:30px;
+}

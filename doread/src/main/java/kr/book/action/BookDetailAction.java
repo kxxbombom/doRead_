@@ -1,11 +1,14 @@
 package kr.book.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.book.dao.BookDAO;
 import kr.book.vo.BookVO;
 import kr.controller.Action;
+import kr.storyboard.vo.StoryBoardVO;
 import kr.util.StringUtil;
 
 public class BookDetailAction implements Action{
@@ -17,7 +20,10 @@ public class BookDetailAction implements Action{
 		BookVO book = dao.getBookDetail(book_num);
 		book.setBook_name(StringUtil.useNoHTML(book.getBook_name()));
 		
+		List<StoryBoardVO> story = dao.getBookStory(book_num);
+		
 		request.setAttribute("book", book);
+		request.setAttribute("story", story);
 		
 		return "/WEB-INF/views/book/detail.jsp";
 	}

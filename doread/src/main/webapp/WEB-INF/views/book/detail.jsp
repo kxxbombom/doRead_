@@ -76,7 +76,7 @@
 	</div>
 	<div class="content-main">
 		<div class="info-tab">
-			<a href="#book_review"><b>서평</b></a>
+			<a href="#book_review"><b>리뷰</b></a>
 			<a href="#change_info"><b>교환/반품/품절 안내</b></a>
 		</div>
 	<div class="float-clear">
@@ -84,8 +84,23 @@
 	</div>
 		<ul class="book-info">
 			<li id="book_review">
-				<h3>서평</h3>
-				
+				<h3>이 책의 리뷰</h3>
+				<table>
+					<tr>
+						<th>글 번호</th>
+						<th>제목</th>
+						<th>작성일</th>
+						<th>조회</th>
+					</tr>
+					<c:forEach var="story" items="${story}">
+					<tr>	
+						<td>${story.s_num}</td>
+						<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
+						<td>${story.s_rdate}</td>
+						<td>${story.hit}</td>
+					</tr>
+					</c:forEach>
+				</table>
 				<hr width="100%" size="1" noshade="noshade">
 			</li>
 			<li id="change_info">

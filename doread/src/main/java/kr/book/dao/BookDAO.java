@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.book.vo.BookVO;
 import kr.member.vo.BookFavVO;
+import kr.storyboard.vo.StoryBoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
 
@@ -326,4 +327,37 @@ public class BookDAO {
 			}
 		}
 		
+		public List<StoryBoardVO> getBookStory(int book_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			List<StoryBoardVO> list = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql = "SELECT * FROM storyboard WHERE book_num=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, book_num);
+				
+				rs = pstmt.executeQuery();
+				list = new ArrayList<StoryBoardVO>();
+				while(rs.next()) {
+					StoryBoardVO story = new StoryBoardVO();
+					story.setS_num(rs.getInt("s_num"));
+					story.setS_title(rs.getString("s_title"));
+					story.setHit(rs.getInt("s_hit"));
+					story.setS_rdate(rs.getDate("s_rdate"));
+					story.setMem_num(rs.getInt("mem_num"));
+					
+					list.add(story);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
 }
