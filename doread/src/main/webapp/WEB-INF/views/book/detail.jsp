@@ -11,15 +11,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-$('#wish').onclick(function(){
-	$.ajax({
-		url:'bookfav.do',
-		type:'post',
-		data:{book_num:$(this).}
-	})
-});
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/book.fav.js"></script>
+
 </head>
 <body>
 <div class="page-main">
@@ -55,7 +48,7 @@ $('#wish').onclick(function(){
 							<c:if test="${book.book_category==11}">취미/스포츠</c:if>
 						</div>
 						<div id="fav-tag">
-							<img id="bookfav" src="${pageContext.request.contextPath}/images/bookfav_before.png" width="20px">
+							<img id="bookfav" src="${pageContext.request.contextPath}/images/bookfav_before.png" width="20px" data-num="${book.book_num}">
 						</div>
 					</li>
 					<li><h1>${book.book_name}</h1></li>
