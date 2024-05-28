@@ -15,8 +15,15 @@ public class StoryBoardVO {
 	
 	private int mem_num;		//작성자 정보
 	private int book_num;		//도서 정보
+	private String book_name;
 	
 	
+	public String getBook_name() {
+		return book_name;
+	}
+	public void setBook_name(String book_name) {
+		this.book_name = book_name;
+	}
 	public int getS_num() {
 		return s_num;
 	}

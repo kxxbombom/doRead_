@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.book.vo.BookVO;
+import kr.qna.vo.QnaVO;
 import kr.storyboard.vo.StoryBoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
@@ -136,7 +137,7 @@ public class StoryBoardDAO {
 					DBUtil.executeClose(null, pstmt, conn);
 				}
 			}
-			//글 목록,검색 글 목록
+			//도서 목록
 			public List<BookVO> getListBookByStory() throws Exception {
 			    Connection conn = null;
 			    PreparedStatement pstmt = null;
@@ -167,6 +168,113 @@ public class StoryBoardDAO {
 			    }
 
 			    return list;
+			}
+			//story 상세
+			public StoryBoardVO getStoryBoard(int s_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt =null;
+				ResultSet rs = null;
+				StoryBoardVO sb = null;
+				String sql=null;
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//sql문 작성
+					//(주의) 회원 탈퇴를 하게되면 member_detail의 레코드를 지우기 때문에 조인시 데이터 누락 방지를 위해 outer join을 사용
+					sql= "SELECT * FROM storyboard JOIN member USING(mem_num) FULL OUTER JOIN book USING(book_num) "
+							+ "WHERE s_num=?";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터바인딩
+					pstmt.setInt(1, s_num);
+					//sql문 실행
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						sb = new StoryBoardVO();
+						sb.setS_num(rs.getInt("s_num"));
+						sb.setS_title(rs.getString("s_title"));
+						sb.setS_content(rs.getString("s_content"));
+						sb.setS_rdate(rs.getDate("s_rdate"));
+						sb.setS_mdate(rs.getDate("s_mdate"));
+						sb.setS_image(rs.getString("s_image"));
+						
+						//로그인한 회원번호와 조건 체크를 해야하기 때문에 mem_num필요
+						sb.setMem_num(rs.getInt("mem_num"));
+						sb.setBook_num(rs.getInt("book_num"));
+						sb.setBook_name(rs.getString("book_name"));
+					}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				
+				return sb;
+			}
+			//글 수정
+			public void updateStory(StoryBoardVO sb)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				String sub_sql = "";
+				int cnt = 0;
+				try {
+					//커넥션 풀에서 커넥션 할당
+					conn = DBUtil.getConnection();
+					if(sb.getS_image()!=null && !"".equals(sb.getS_image())) { 
+						sub_sql+=",s_image=?";
+					}
+					//SQL문 작성
+					sql = "UPDATE storyboard SET s_title=?,s_content=?,s_mdate=SYSDATE,s_ip=?,book_num=?" + sub_sql + " WHERE s_num=?";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터바인딩
+					pstmt.setString(++cnt, sb.getS_title());
+					pstmt.setString(++cnt, sb.getS_content());
+					pstmt.setString(++cnt, sb.getS_ip());
+					pstmt.setInt(++cnt, sb.getBook_num());
+					if(sb.getS_image()!=null && !"".equals(sb.getS_image())) {
+						pstmt.setString(++cnt, sb.getS_image());				
+					}
+					pstmt.setInt(++cnt, sb.getS_num());				
+					//SQL문 실행
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+			}
+			//글 삭제
+			public void deleteStory(int s_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				try {
+					//커넥션 풀에서 커넥션 할당
+					conn = DBUtil.getConnection();
+					//오토커밋 해제
+					conn.setAutoCommit(false);
+					
+					//부모글 삭제
+					sql="DELETE FROM storyboard WHERE s_num=?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, s_num);
+					pstmt.executeUpdate();
+					
+					//예외발생 없이 정상적으로 SQL문 실행
+					conn.commit();
+					
+				}catch(Exception e) {
+					//예외 발생
+					conn.rollback();
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+				
 			}
 
 }
