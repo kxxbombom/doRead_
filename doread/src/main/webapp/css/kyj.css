@@ -48,6 +48,7 @@ div#main_nav>ul>li:hover div#category_items{
 .image-space .horizontal-area img{
 	width:215px;
 	height:195px;
+	object-fit:contain;
 }
 
 
@@ -68,9 +69,25 @@ div.category-tag{
 }
 .book-image{
 	width:400px;
+	height:400px;
 	margin:0 0 10px 0;
 	float:left;
 }
+
+.book-image ul{
+	margin:0px;
+}
+
+.book-image li{
+	padding:0px;
+}
+
+.book-image img{
+	width:400px;
+	height:400px;
+	object-fit:contain;
+}
+
 
 .book-detail form{
 	border:none;
@@ -79,9 +96,6 @@ div.category-tag{
 	float:left;
 }
 
-.book-detail ul li#button-margin{
-	margin-top: 25px;
-}
 .book-detail h1,h3{
 	margin: 10px 0 10px;	
 }
@@ -92,6 +106,7 @@ div.category-tag{
 	border-radius:30px;
 	background-color:rgb(26, 77, 46);
 	color:rgb(232,223,202);
+	font-size:15pt;
 	border:none;
 	box-shadow:none;
 }
@@ -101,8 +116,21 @@ div.category-tag{
 	color:rgb(26, 77, 46);
 }
 
-.book-image img{
-	height:342px;
+#wish{
+	width:430px;
+	height:30px;
+	background-color:rgb(232,223,202);
+	color:rgb(26, 77, 46);
+	border:none;
+	margin-bottom:5px;
+}
+
+#wish:hover{
+	background-color:#EEEEEE;
+}
+
+#button-margin{
+margin-top: 25px;
 }
 
 label#quantity_label{
@@ -110,4 +138,21 @@ label#quantity_label{
 }
 input#book_quantity{
 	width:200px;
+}
+
+.info-tab a{
+	padding:0 10px 0 10px;
+	text-decoration:none;
+	color:rgb(26, 77, 46);
+	font-size: 15pt;
+}
+
+#change_info input{
+	border:none;
+	border-radius:30px;
+	width:200px;
+	height:25px;
+	background-color:rgb(26, 77, 46);
+	color:white;
+	float:right;
 }
