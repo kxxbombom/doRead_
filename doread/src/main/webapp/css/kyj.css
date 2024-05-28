@@ -58,14 +58,56 @@ div#main_nav>ul>li:hover div#category_items{
 
 /* 도서 상세 페이지
 ---------------------*/
-.category-tag{
-	width:30px;
+div.category-tag{
+	width:100px;
+	height:23px;
 	text-align:center;
-	background-color:rgb(224, 224, 224);
+	background-color:rgb(232,223,202);
 	color:rgb(26, 77, 46);
+	border-radius: 10px;
 }
 .book-image{
 	width:400px;
 	margin:0 0 10px 0;
 	float:left;
+}
+
+.book-detail form{
+	border:none;
+	width:470px;
+	margin:0;
+	float:left;
+}
+
+.book-detail ul li#button-margin{
+	margin-top: 25px;
+}
+.book-detail h1,h3{
+	margin: 10px 0 10px;	
+}
+
+.order-button{
+	width:210px;
+	height:70px;
+	border-radius:30px;
+	background-color:rgb(26, 77, 46);
+	color:rgb(232,223,202);
+	border:none;
+	box-shadow:none;
+}
+
+.order-button:hover{
+	background-color:rgb(232,223,202);
+	color:rgb(26, 77, 46);
+}
+
+.book-image img{
+	height:342px;
+}
+
+label#quantity_label{
+	width:70px;
+}
+input#book_quantity{
+	width:200px;
 }

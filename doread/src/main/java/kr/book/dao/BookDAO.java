@@ -182,4 +182,39 @@ public class BookDAO {
 	}
 	
 	
+	public BookVO getBookDetail(int book_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BookVO book = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM book WHERE book_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				book = new BookVO();
+				book.setBook_num(rs.getInt("book_num"));
+				book.setBook_name(rs.getString("book_name"));
+				book.setAuthor(rs.getString("author"));
+				book.setPrice(rs.getInt("price"));
+				book.setStock(rs.getInt("stock"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublish_date(rs.getString("publish_date"));
+				book.setBook_img(rs.getString("book_img"));
+				book.setBook_category(rs.getInt("book_category"));
+			}
+			return book;
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+	}
+	
 }
