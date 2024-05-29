@@ -61,6 +61,8 @@ public class BookDAO {
 			
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql += "WHERE book_name LIKE '%' || ? || '%'";
+				else if(keyfield.equals("2")) sub_sql += "WHERE author LIKE '%' || ? || '%'";
+				else if(keyfield.equals("3")) sub_sql += "WHERE publisher LIKE '%' || ? || '%'";
 			}
 			
 			sql = "SELECT COUNT(*) FROM book "+sub_sql;
@@ -92,18 +94,27 @@ public class BookDAO {
 		ResultSet rs = null;
 		String sql = null;
 		List<BookVO> list = null;
+		String sub_sql = "";
 		int cnt = 0;
 		
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-					+ "(SELECT * FROM book ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			if(keyword!=null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql += "WHERE book_name LIKE '%' || ? || '%'";
+				else if(keyfield.equals("2")) sub_sql += "WHERE author LIKE '%' || ? || '%'";
+				else if(keyfield.equals("3")) sub_sql += "WHERE publisher LIKE '%' || ? || '%'";
+			}
+			
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM book "+sub_sql+" ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			if((keyword!=null)&&!"".equals(keyword)){
+				pstmt.setString(++cnt,keyword);
+			}
+			pstmt.setInt(++cnt, start);
+			pstmt.setInt(++cnt, end);
 		
 			
 			rs = pstmt.executeQuery();
@@ -141,20 +152,33 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		String sub_sql = "";
 		List<BookVO> list = null;
+		int cnt = 0;
 		
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-					+ "(SELECT * FROM book WHERE book_category=? ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			if(keyword!=null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql += "AND book_name LIKE '%' || ? || '%'";
+				else if(keyfield.equals("2")) sub_sql += "AND author LIKE '%' || ? || '%'";
+				else if(keyfield.equals("3")) sub_sql += "AND publisher LIKE '%' || ? || '%'";
+			}
+			
+			
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM book WHERE book_category=? "+sub_sql+" ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, book_category);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
-		
 			
+			pstmt.setInt(++cnt, book_category);
+			
+			if((keyword!=null)&&!"".equals(keyword)){
+				pstmt.setString(++cnt,keyword);
+			}
+			
+			pstmt.setInt(++cnt, start);
+			pstmt.setInt(++cnt, end);
+	
 			rs = pstmt.executeQuery();
 			list = new ArrayList<BookVO>();
 			

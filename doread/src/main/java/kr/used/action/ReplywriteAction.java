@@ -39,6 +39,7 @@ public class ReplywriteAction implements Action{
 			map.put("result","success");
 			
 			
+			
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(map);
