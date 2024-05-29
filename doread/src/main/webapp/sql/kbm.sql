@@ -55,3 +55,31 @@ create table book(
 );
  
 create sequence newsboard_seq;
+
+
+--장바구니
+CREATE TABLE cart (
+ c_num number NOT NULL,
+ c_quantity number(8) NOT NULL,
+ book_num number NOT NULL,
+ mem_num number NOT NULL,
+ c_rdate date default sysdate not null,
+ constraint cart_pk primary key (c_num),
+ constraint cart_fk1 foreign key (book_num) references book (book_num),
+ constraint cart_fk2 foreign key (mem_num) references member (mem_num)
+);
+
+create sequence cart_seq;
+
+
+
+
+
+
+
+
+
+
+
+
+
