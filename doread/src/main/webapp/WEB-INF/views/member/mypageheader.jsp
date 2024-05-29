@@ -50,7 +50,7 @@
 				<a>활동내역</a>
 				<div class="myul">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/member/post.do">게시글 내역</a></li>
+							<li><a href="${pageContext.request.contextPath}/post/postlist.do">게시글 내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/member/comment.do">댓글 내역</a></li>
 						</ul>
 				</div>

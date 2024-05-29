@@ -234,9 +234,11 @@ table td, table th{
 	cursor:pointer;
 }
 
+/*활동내역*/
 
-
-
+.post-header h2{
+	margin-left:400px;
+}
 
 
 
