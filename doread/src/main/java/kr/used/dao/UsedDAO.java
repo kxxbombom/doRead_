@@ -145,6 +145,56 @@ public class UsedDAO {
 		}
 		return list;
 	}
+	//글 상세
+	public UsedVO detatilUsed(int u_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet re = null;
+		UsedVO used = null;
+		String sql=null;
+		try {
+			conn = DBUtil.getConnection();
+			sql="select * from ((usedbookboard join book using(book_num))join member using(mem_num)) join member_detail using(mem_num) where u_num=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, u_num);
+			re = ps.executeQuery();
+			
+			if(re.next()) {
+				
+				used = new UsedVO();
+				used.setU_num(re.getInt("u_num"));
+				used.setU_hit(re.getInt("u_hit"));
+				used.setU_auth(re.getInt("u_auth"));
+				used.setU_condition(re.getInt("u_condition"));
+				used.setU_state(re.getInt("u_state"));
+				used.setU_price(re.getInt("u_price"));
+				used.setMem_num(re.getInt("mem_num"));
+				used.setU_title(re.getString("u_title"));
+				used.setU_content(re.getString("u_content"));
+				used.setU_rdate(re.getDate("u_rdate"));
+				used.setU_mdate(re.getDate("u_mdate"));
+				used.setU_image(re.getString("u_image"));
+				used.setU_ip(re.getString("u_ip"));
+				used.setBook_name(re.getString("book_name"));
+				used.setUser_image(re.getString("mem_photo"));
+				used.setId(re.getString("mem_id"));
+				
+				
+				
+				
+			}
+			
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(re, ps, conn);
+		}
+		
+		
+		return used;
+		
+	}
 	//글 수정 
 	// 글 삭제
 	//글검색

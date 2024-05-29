@@ -453,7 +453,33 @@ span#e_title{
 	margin:15px;
   font-weight:bold;
 }
+#updel{
+	
+	z-index:999 !important;
+	border-radius:15px;
+	border:1px solid #d4d2d2;
+	background:white;
+	text-align:center;
+	padding-left:0px;
+	padding-right:10px;
+	margin-left:800px;
+	width:200px;
+	
+	
+}
+#z{
+z-index:1;
+
+}
+.siteLink{
+	
+	z-index:999 !important;
+}
+hr{
+	z-index:1;
+}
 /*
+
 
 page util*/
 a#pre{
@@ -560,4 +586,24 @@ form#event_form{
 .booksh{
 	border:none;
 	margin-bottom:8px;
+}
+
+table#usedtable{
+	width:100%;
+	border-collapse: collapse;
+	margin:50px 0;
+}
+table#usedtable td, table th{
+	border:1px solid #d4d2d2;
+	padding:5px;
+	border-left:0;
+	border-right: 0;
+}
+
+table#usedtable tr{
+	line-height:3rem;
+	height:50px;
+}
+table#usedtable td:first-child, table#usedtable td:last-child, td.text-center{
+	text-align:center;
 }

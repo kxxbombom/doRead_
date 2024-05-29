@@ -56,7 +56,7 @@
 				<li><label for="u_title">제목</label>
 					<input type="text" name="u_title" class="inputcheck input-style" id="u_title" maxlength="30" >
 				</li>
-				<li><label for="book_num">책 이름</label><div class="align-right"><input type="button" id ="book_numbtn" value="책선택" class="button2"></div>
+				<li><label for="book_name">책 이름</label><div class="align-right"><input type="button" id ="book_numbtn" value="책선택" class="button2"></div>
 					<input type="text" name="book_name" class="inputcheck input-style "  id="book_name" maxlength="10" readonly="readonly"  >
 					<input type="hidden" name="book_num" class="inputcheck input-style "  id="book_num" >
 				</li>

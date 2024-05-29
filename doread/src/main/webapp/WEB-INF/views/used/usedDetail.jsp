@@ -1,31 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 상세</title>
+<title>중고게시판 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
-<div id="z">
 <div class="page-main">
 
-			<div class="eventvar">
- 	<h1>EVENT</h1>
- </div>
+		
 
-<div class="align-left">
-<b>${event.e_title}</b><br>
-			진행기간 ${event.e_rdate}~${event.e_deadline} 조회수:${event.e_hit}
-
+<div class="align-center">
+ 		<h2>중고게시판</h2>	
+ 		<div class="float-clear">
+				<hr width="100%" size="1" noshade="noshade">
+		</div>
 </div>
-	<div class="align-right">
-	<c:if test="${!empty user_num && user_auth == 9}">
+		<div id="profileboard align-left">
+		<c:if test="${!empty used.user_image }">
+		<img src="${pageContext.request.contextPath}/upload/${used.mem_photo}" class="my-photo" width="46" height="43">
+		</c:if>
+		<c:if test="${empty used.user_image}">
+		<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo" width="46" height="43">
+		</c:if>
+		${used.id}<br>
+		${used.u_rdate} &nbsp; 조회수:${used.u_hit}
+		
+		</div>
+		<div class="align-right">
+		
+	
 		<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
 <div id="updel" class="hide">
         <ul class="siteLink">
@@ -61,43 +72,50 @@
     		event.preventDefault();
     	})
 		</script>
-
-        
+		
+		</div>
+		<div class="float-clear">
+				<hr width="100%" size="1" noshade="noshade">
+		</div>
+		
+		<div id="usedimage">
+		<c:if test="${!empty used.user_image }">
+		<img src="${pageContext.request.contextPath}/upload/${used.u_image}" width="255" height="293">
 		</c:if>
-		
-		
-<div class="align-center">
-
- 		
-				<hr width="100%" size="1" noshade="noshade">
+		<c:if test="${empty used.user_image}">
+		<img src="${pageContext.request.contextPath}/images/face.png" width="255" height="293">
+		</c:if>
 			
-	<img  src="${pageContext.request.contextPath}/upload/${event.e_image}"	width="600" height="600">
-	 <br>이벤트내용 : ${event.e_content}<br>
-	 이벤트 유의사항:이벤트 대상 상품 1건 이상 포함,<br>
-국내도서·외국도서 5만원 이상 구입 시 또는 전자책 3만원 이상 구입 시 (택1)<br>
-
-사은품의 수량이 한정되어 있으므로, 조기품절 될 수 있습니다.<br>
-
-사은품 선택 시 할인쿠폰 사용에 제한이 있을 수 있습니다.<br>
-(할인쿠폰 사용으로 적립예정 포인트가 사은품 선사용 포인트에 미달할 경우)<br>
-이벤트발표는 검색>당첨자보기 또는 마이페이지>이벤트내역에서 확인할 수 있습니다 <br>
-	
-	<input id="eventUser" type="button" value="이벤트 응모하기"	  class="eventbutton" onclick="location.href='${pageContext.request.contextPath}/event/eventUserForm.do?e_num=${event.e_num}'">		
- 			
- </div>
- </div>
+			
+		</div>
+		<div id="usedcontent">
+			<div class="float-clear">
+			<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${used.book_num}"><b>[중고]${used.book_name}</b> <br></a>
+			
+			가격(배송비포함명시) <fmt:formatNumber value="${used.u_price}"/>원<br>
+			Do READ 중고 품질 판정 가이드:<b>
+			<c:if test="${used.u_condition == 1}">미개봉</c:if>
+			<c:if test="${used.u_condition == 2}">최상</c:if>
+			<c:if test="${used.u_condition == 3}">상</c:if>
+			<c:if test="${used.u_condition == 4}">중</c:if>
+			<c:if test="${used.u_condition == 5}">하</c:if>
+			<img src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
+			</b><br>
+			<br>
+			<p>
+			${used.u_content}
  	
-	
+		</div>
+		</div>
 				<hr width="100%" size="1" noshade="noshade">
-			</div>
-			<div class="align-center">
-			<input type="button" value="목록" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">		
-			
+		
+			<input type="button" value="목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/used/usedList.do'">
 
 	
 </div>
- </div>	
+
 
 </body>
 </html>
 
+		

@@ -18,6 +18,14 @@ public class UsedVO {
 	private int u_price;
 	private int mem_num;
 	private String book_name;
+
+	public String getUser_image() {
+		return user_image;
+	}
+	public void setUser_image(String user_image) {
+		this.user_image = user_image;
+	}
+	private String user_image;
 	public String getBook_name() {
 		return book_name;
 	}

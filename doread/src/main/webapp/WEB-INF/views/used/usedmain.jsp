@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +31,12 @@
  				<option value="2" <c:if test="${check == 2}">selected</c:if>>거래중</option>
  				<option value="3" <c:if test="${check == 3}">selected</c:if>>판매완료</option>
  				</select>
- 				<input type="text" name="search" class="inputcheck input-style" id="search" maxlength="30" placeholder="제목 또는 내용으로 검색가능">
+ 				<select id="selectlist2" name ="sel2" class="input-style">
+				<option value="1" <c:if test="${check == 1}">selected</c:if>>제목</option>
+ 				<option value="2" <c:if test="${check == 2}">selected</c:if>>내용</option>
+ 				<option value="3" <c:if test="${check == 3}">selected</c:if>>아이디</option>
+ 				</select>
+ 				<input type="text" name="search" class="inputcheck input-style" id="search" maxlength="30" placeholder="검색내용입력">
  				<input id="subbtn" type="submit" value="검색" class="button2">
 			</form>
 			<script type="text/javascript">
@@ -57,6 +64,7 @@
  						<th>no.</th>
  						<th>책제목</th>
  						<th>글 제목 </th>
+ 						<th>가격</th>
  						<th>판매상태</th>
  						<th>작성자</th>
  						<th>조회수</th>
@@ -65,6 +73,7 @@
  					<tr>
  						<td>${i.u_num}</td>
  						<td>${i.book_name}</td>
+ 						<td><fmt:formatNumber value="${i.u_price}"/>원</td>
  						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title}</a></td>
  						<td><c:if test="${i.u_state ==1}">판매중</c:if>
  							<c:if test="${i.u_state ==2}">거래중</c:if>
