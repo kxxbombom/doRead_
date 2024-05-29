@@ -3,7 +3,7 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:1200px;
+	width:1000px;
 	margin:0 auto;
 	background:#FFFFFF;
 }
@@ -34,7 +34,7 @@ a:hover{
 }
 
 .m-top{
-	margin-top:20px;;
+	margin-top:20px;
 }
 
 /* 공통 메시지
@@ -555,9 +555,7 @@ div.findPW-main{
 .newsHead h2{
 	text-align:center;
 }
-.newsHead form{
-	
-}
+
 
 /* MY페이지
 ---------------------*/
@@ -691,8 +689,8 @@ ul.detail-sub li:last-child{
 p#board_content{
 	padding-right:20px;
 	word-wrap:break-word;
-	height:500px;
-	overflow:scroll;
+	min-height:400px;
+	/* overflow:auto; */
 }
 
 /*글상세 수정 삭제 버튼*/

@@ -28,7 +28,7 @@ public class NewsListAction implements Action{
 		
 		List<NewsVO> list = null;
 		if(count > 0) {
-			list = dao.getListNews(page.getStartRow(), page.getEndRow(), keyfield, keyword);
+			list = dao.getNewsList(page.getStartRow(), page.getEndRow(), keyfield, keyword);
 		}
 		
 		request.setAttribute("count", count);

@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+body{
+	width:1000px;
+	margin:0 auto;
+	background:#FFF;
+}
+.page-main{
+	background:#FFFFFF;
+	margin:40px 0;
+	min-height:650px;
+}
+.content-main{
+	padding:10px 20px;
+}
+
+
+
+/* 정렬 */
+.align-left{
+	text-align:left;
+}
+/* 최상단 nav 바 */
+#mini_nav{
+	float:right;
+}
+#mini_nav ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#mini_nav ul li{
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle; 
+	padding-top:10px;
+	margin-right:5px;
+}
+.nav:visited, .nav:link, .inner-menu a{
+	text-decoration:none;
+	color:#336633;
+}
+
+.nav:visited, .nav:visited, .inner-menu a{
+	text-decoration:none;
+	color:#336633;
+} 
+.nav:visited, .top-nav:link, .inner-menu a{
+	text-decoration:none;
+	color:#336633;
+}
+
+.nav:visited, .top-nav:visited, .inner-menu a{
+	text-decoration:none;
+	color:#336633;
+}
+
+
+#main_logo a{
+	font-size:40px;
+	font-weight:bold;
+}
+#main_logo a img{
+	margin-right:10px;
+}
+#main_logo ul{
+	list-style:none;
+	display:flex;
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	justify-content: space-between;  
+}
+#main_logo ul li{
+	margin-top:10px;
+}
+#main_logo ul li:first-child {
+	margin-right:auto;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#main_logo ul li:nth-child(2){
+	margin-left: auto;
+	margin-right:10px;
+	margin-top:20px;
+}
+#main_logo ul li:last-child{
+	margin-right:10px;
+	margin-top:20px;
+}
+
+
+/* nav */
+
+.main-nav-container{
+	text-align:center;
+}
+
+#main_nav{
+	margin:0 auto;
+	margin-top:10px;
+	padding:20px 0;
+	list-style:none;
+	text-align:center;
+	display:table;
+}
+#category_items{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#main_nav > li{
+	float:left;
+	height:40px;
+	vertical-align: middle;
+	display: table-cell;
+	border-top:1px solid #C8C8C8;
+	border-bottom:1px solid #C8C8C8;
+}
+#main_nav > li:hover{
+	background:#336633;
+}
+#main_nav > li:hover > a{
+	color:#FFF;
+}
+
+#main_nav > li > a{
+	font-size:1.15rem;
+	text-align:center;
+	text-decoration:none;
+	letter-spacing:0.05rem;
+	display:block;
+	width:160px;
+	padding:8px 0;
+}
+#category_items{
+	position:absolute;
+	background:white;
+	text-align:center;
+	display:none;
+}
+#category_items > li{
+	padding:9px 30.4px;
+	text-decoration:none;
+}
+#category_items > li a{
+	color:#336633;
+}
+#main_nav > li:hover #category_items{
+	display:block;
+}
+#category_items > li:hover{
+	background:#336633;
+}
+#category_items > li:hover a{
+	color:#FFF;
+}
+
+
+
+
+

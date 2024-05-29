@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>뉴스 글수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript">
 	window.onload=function(){
 		const myForm = document.getElementById('newsUpdate_form');
@@ -35,9 +35,9 @@
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="test_header.jsp"/>
 	<div class="content-main newsHead">
-		<h2>뉴스게시판 글 수정</h2>
+		<h2><a href="newsList.do">뉴스게시판 수정</a></h2>
 		<hr size="1" noshade width="100%">
 		<form id="newsUpdate_form" action="newsUpdate.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="news_num" value="${news.news_num}">

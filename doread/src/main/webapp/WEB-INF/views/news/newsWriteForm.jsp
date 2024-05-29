@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>뉴스게시판 글쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript">
 	window.onload=function(){
 		const myForm = document.getElementById('newsWrite_form');
@@ -32,7 +32,7 @@
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="test_header.jsp"/>
 	<div class="content-main newsHead">
 		<h2>뉴스게시판 작성</h2>
 		<hr size="1" noshade width="100%">

@@ -9,14 +9,14 @@
 <meta charset="UTF-8">
 <title>뉴스글 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="test_header.jsp"/>
 	<div class="content-main newsHead">
-		<h2>뉴스게시판</h2>
+		<h2><a href="newsList.do">뉴스게시판</a></h2>
 		<h3>${news.news_title}</h3>
 		<ul class="detail-info">
 			<li>

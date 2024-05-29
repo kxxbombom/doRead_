@@ -8,12 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>뉴스게시판 목록</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="test_header.jsp"/>
 	<div class="content-main newsHead">
 		<h2><a href="newsList.do">뉴스게시판</a></h2>
 		

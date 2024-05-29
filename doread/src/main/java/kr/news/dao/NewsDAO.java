@@ -82,7 +82,7 @@ public class NewsDAO {
 		return count;
 	}
 	//뉴스 목록, 검색 목록
-	public List<NewsVO> getListNews(int start, int end, String keyfield, String keyword)throws Exception{
+	public List<NewsVO> getNewsList(int start, int end, String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -118,7 +118,7 @@ public class NewsDAO {
 				news.setNews_rdate(rs.getDate("news_rdate"));
 				news.setNews_mdate(rs.getDate("news_mdate"));
 				news.setMem_id(rs.getString("mem_id"));
-				
+				news.setNews_hit(rs.getInt("news_hit"));			
 				list.add(news);
 			}
 		}catch(Exception e) {
