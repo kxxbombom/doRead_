@@ -8,7 +8,6 @@
 <title>문의 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/story.reply.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -58,7 +57,7 @@
 				<c:if test="${empty user_num}">disabled="disabled"</c:if> 
 				id="sc_content" class="rep-content"><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다</c:if></textarea>
 				<c:if test="${!empty user_num}">
-				<div id="sc_first">
+				<div id="re_first">
 					<span class="letter-count">300/300</span>
 				</div>
 				<div id="re_second" class="align-right">
