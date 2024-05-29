@@ -2,29 +2,28 @@
 
 div#category_items{
 	display:none;
+	width:120px;
 	margin-top:10px;
 	background-color:white;
-	position:relative;
+	position:fixed;
 	z-index: 50;
 };
 
-div#category_items>ul{
-	list-style:none;	
-}
-
-#category_items>ul li{
+div.category_item{
+	padding:20px;
+	text-align:cetner;
 	border:initial;
 	vertical-align:middle;
 	background-color:white;
 	color:black;
 }
  
-#category_items>ul li a{
+div.category_item a{
 	text-decoration: none;
 	color:black;
 }
 
-#category_items>ul li a:hover{
+div.category_item a:hover{
 	text-decoration: none;
 	color:#6C6C6C;
 }
@@ -32,6 +31,7 @@ div#category_items>ul{
 div#main_nav>ul>li:hover div#category_items{
 	display:block;
 }
+
 
 /* 메인
 ---------------------*/

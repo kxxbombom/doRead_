@@ -98,7 +98,7 @@
 						<td>${story.s_num}</td>
 						<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
 						<td>${story.s_rdate}</td>
-						<td>${story.hit}</td>
+						<td>${story.s_hit}</td>
 					</tr>
 					</c:forEach>
 				</table>
