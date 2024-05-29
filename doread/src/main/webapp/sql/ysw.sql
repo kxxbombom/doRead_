@@ -37,7 +37,7 @@ create sequence storyboard_seq;
 create table story_comment(
  sc_num number not null,
  sc_content varchar2(3000) not null,
- sc_auth number(1) not null,
+ sc_auth number(1) default 0 not null,
  sc_rdate date default SYSDATE not null,
  sc_mdate date,
  mem_num number not null,

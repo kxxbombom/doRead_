@@ -355,7 +355,7 @@ public class StoryBoardDAO {
 						comment.setSc_num(rs.getInt("sc_num"));
 						//날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
 						comment.setSc_rdate(DurationFromNow.getTimeDiffLabel(rs.getString("sc_rdate")));
-						if(rs.getString("re_modifydate")!=null) {
+						if(rs.getString("sc_mdate")!=null) {
 							comment.setSc_mdate(DurationFromNow.getTimeDiffLabel(rs.getString("sc_mdate")));					
 						}
 						comment.setSc_content(StringUtil.useBrNoHTML(rs.getString("sc_content")));
@@ -403,5 +403,83 @@ public class StoryBoardDAO {
 				}
 				
 				return count;
+			}
+			//댓글 상세(댓글 수정, 삭제시 작성자 회원 번호 체크 용도로 사용)
+			public SCommentVO getCommentStory(int sc_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				SCommentVO sc = null;
+				String sql = null;
+				try {
+					//커넥션 풀로부터 커넥션을 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "SELECT * FROM story_comment WHERE sc_num=?";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//?에 데이터 바인딩
+					pstmt.setInt(1, sc_num);
+					//SQL실행
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						sc = new SCommentVO();
+						sc.setSc_num(rs.getInt("sc_num"));
+						sc.setMem_num(rs.getInt("mem_num"));
+					}
+					
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				
+				return sc;
+			}
+			//댓글 수정
+			public void updateCommentStory(SCommentVO sc) throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "UPDATE story_comment SET sc_content=?,sc_mdate=SYSDATE WHERE sc_num=?";
+					//pstmt객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//?데이터 바인딩
+					pstmt.setString(1, sc.getSc_content());
+					pstmt.setInt(2, sc.getSc_num());
+					//SQL문 실행
+					pstmt.executeUpdate();
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+			}
+			//댓글 삭제
+			public void deleteCommentStory(int sc_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				try {
+					//커넥션 풀로부터 커넥션을 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "DELETE FROM story_comment WHERE sc_num=?";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//?에 데이터 바인딩
+					pstmt.setInt(1, sc_num);
+					//SQL문 실행
+					pstmt.executeUpdate();
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
 			}
 }

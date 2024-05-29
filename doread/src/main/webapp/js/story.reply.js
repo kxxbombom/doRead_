@@ -115,16 +115,16 @@ $(function(){
 	/*=======================================================
 	 * 댓글 수정
 	 *=======================================================*/
-	/*$(document).on('click','.modify-btn',function(){
+	$(document).on('click','.modify-btn',function(){
 		//댓글 번호
-		let re_num = $(this).attr('data-renum');
+		let sc_num = $(this).attr('data-renum');
 		//댓글 내용
 		let content = $(this).parent().find('p').html().replace(/<br>/gi,'\n');
 																//g: 지정문자열 전부,i:대소문자 무시
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">'
-		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="'+re_num+'">';
-		modifyUI += '<textarea rows="3" cols="50" name="re_content" id ="mre_content" class="rep-content">'+content+'</textarea>';
+		modifyUI += '<input type="hidden" name="sc_num" id="mre_num" value="'+sc_num+'">';
+		modifyUI += '<textarea rows="3" cols="50" name="sc_content" id ="mre_content" class="rep-content">'+content+'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
 		modifyUI += ' <input type="submit" value="수정">';
@@ -150,30 +150,29 @@ $(function(){
 		//문서 객체에 반영
 		$('#mre_first .letter-count').text(remain);
 	});
-	*/
 	//댓글 수정폼 초기화
-	/*function initModifyForm(){
+	function initModifyForm(){
 		$('.sub-item').show();
 		$('#mre_form').remove();
-	}*/
+	}
 	//수정폼에서 취소 버튼 클릭시 수정 폼 초기화
-/*	$(document).on('click','.re-reset',function(){
+	$(document).on('click','.re-reset',function(){
 		initModifyForm();
-	});*/
+	});
 	//댓글 수정
-	/*$(document).on('submit','#mre_form',function(event){
+	$(document).on('submit','#mre_form',function(event){
 		if($('#mre_content').val().trim()==''){
 			alert('내용을 입력하세요');
 			$('#mre_content').val('').focus();
 			return false;
 		}
-		*/
+		
 		//폼에 입력한 데이터 반환
-		/*let form_data = $(this).serialize();*/
+		let form_data = $(this).serialize();
 		
 		//서버와 통신
-		/*$.ajax({
-			url:'updateReply.do',
+		$.ajax({
+			url:'updateSComment.do',
 			type:'post',
 			data:form_data,
 			dataType:'json',
@@ -200,7 +199,7 @@ $(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-	*/
+	
 	
 	/*=======================================================
 	 * 댓글 등록 및 수정 공통
@@ -227,14 +226,14 @@ $(function(){
 	/*=======================================================
 	 * 댓글 삭제
 	 *=======================================================*/
-	/*$(document).on('click','.delete-btn',function(){
+	$(document).on('click','.delete-btn',function(){
 		//댓글 번호
-		let re_num=$(this).attr('data-renum');
+		let sc_num=$(this).attr('data-renum');
 		//서버와 통신
 		$.ajax({
-			url:'deleteReply.do',
+			url:'deleteSComment.do',
 			type:'post',
-			data:{re_num:re_num},
+			data:{sc_num:sc_num},
 			dataType:'json',
 			success:function(param){
 				if(param.result == 'logout'){
@@ -252,7 +251,7 @@ $(function(){
 				alert('네트워크 오류 발생');
 			}
 		})
-	});*/
+	});
 	/*=======================================================
 	 * 초기 데이터 (목록) 호출
 	 *=======================================================*/
