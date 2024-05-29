@@ -87,6 +87,47 @@ public class BookDAO {
 		return count;
 	}
 	
+	public int getCategoryBookCount(String keyfield, String keyword, int book_category) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String sub_sql = "";
+		int count = 0;
+		int cnt = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			if(keyword!=null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql += " book_name LIKE '%' || ? || '%' AND";
+				else if(keyfield.equals("2")) sub_sql += " author LIKE '%' || ? || '%' AND";
+				else if(keyfield.equals("3")) sub_sql += " publisher LIKE '%' || ? || '%' AND";
+			}
+			
+			sql = "SELECT COUNT(*) FROM book WHERE"+sub_sql+" book_category=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			if(keyword!=null && !"".equals(keyword)) {
+				pstmt.setString(++cnt, keyword);
+			}
+			pstmt.setInt(++cnt, book_category);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+	
 	//도서 목록- 책 카테고리 메뉴 클릭
 	public List<BookVO> getListBook(int start, int end, String keyfield, String keyword) throws Exception{
 		Connection conn = null;

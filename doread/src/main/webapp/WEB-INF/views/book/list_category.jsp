@@ -31,7 +31,7 @@ window.onload=function(){
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
 		<h2>도서 목록</h2>
-		<form id="book_search" action="bookList.do" method="get">
+		<form id="book_search" action="listCategory.do" method="get">
 			<ul>
 				<li>
 					<select name="keyfield">

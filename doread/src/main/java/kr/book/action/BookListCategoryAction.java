@@ -22,7 +22,7 @@ public class BookListCategoryAction implements Action{
 		String keyword=request.getParameter("keyword");
 		
 		BookDAO dao = BookDAO.getInstance();
-		int count = dao.getBookCount(keyfield, keyword);
+		int count = dao.getCategoryBookCount(keyfield, keyword, book_category);
 		
 		PagingUtil page = new PagingUtil(keyfield,keyword,Integer.parseInt(pageNum),count,20,10,"listCategory.do");
 		
