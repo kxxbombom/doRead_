@@ -36,3 +36,25 @@ CREATE TABLE event_detail (
 	mem_num	number		NOT NULL,
 	constraint ub_fk2 foreign key (u_num) references usedbookboard(u_num)
 );
+
+CREATE TABLE story_report (
+	sr_num	number		NOT NULL primary key,
+	sr_content	varchar2(300)		NOT NULL,
+	sr_category	number(1)		NOT NULL,
+	mem_num	number		NOT NULL,
+	s_num	number		NOT NULL,
+	constraint sr_fk1 foreign key (mem_num) references member(mem_num),
+	constraint sr_fk2 foreign key (s_num) references storyboard(s_num)
+	
+	);
+CREATE TABLE st_comm_report (
+	src_num	number		NOT NULL primary key,
+	src_re_content	varchar2(300)		NOT NULL,
+	src_category	number(1)		NOT NULL,
+	mem_num	number		NOT NULL,
+	sc_num	number		NOT NULL,
+	constraint sr_fk1 foreign key (mem_num) references member(mem_num),
+	constraint sr_fk2 foreign key (sc_num) references story_comment(sc_num)
+);
+create sequence sr_seq;
+create sequence src_seq;

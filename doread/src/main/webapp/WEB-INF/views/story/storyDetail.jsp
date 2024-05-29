@@ -49,6 +49,9 @@
 					};
 				</script>
 				</c:if>
+				<div class="align-right">
+					<a class="report" data-id="${sb.s_num}" href="#" data-name="s_num" >신고</a>
+				</div>
 			</li>
 		</ul>
 		<!-- 댓글시작 -->
@@ -71,7 +74,7 @@
 		</div>
 		<!-- 댓글 목록 출력 시작 -->
 		<div id="output"></div>
-		<div class="paging-button" style="display:none;">
+		<div class="paging-button" style="display:none;" >
 			<input type="button" value="다음글 보기">
 		</div>
 		<div id="loading" style="display:none;">
@@ -79,6 +82,23 @@
 		</div>
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글끝 -->
+	</div>
+	<div class="hide reportdiv" style="width:300px; position:fixed;
+z-index:999 !important;
+bottom:400px;border:1px solid #999 !important;
+background:white;">
+		<h3>신고하기</h3>
+		<span> </span>
+		<hr size="1" width="100%" >
+		<input type="radio" name="reportcategory" class="inputcheck input-style radio2" value="1" />스팸홍보글/도배글<br>
+		<input  type="radio" name="reportcategory" value="2" class="inputcheck input-style radio2"  /> 음란물<br>
+		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="3"  />불법정보<br>
+		<input type="radio" name="reportcategory" class="inputcheck input-style radio2" value="4" />청소년에게 유해한내용<br>
+		<input  type="radio" name="reportcategory" value="5" class="inputcheck input-style radio2"  /> 욕설/생명경시/혐오/차별적표현<br>
+		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="6"  />개인정보노출<br>
+		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="7"  />불쾌한 표현이 있습니다.<br>
+		<textarea class="textareareport"></textarea><br>
+		<input type="button" class="rebtn" value="신고하기" ><input class="redelbtn" type="button" id="rebtn" value="취소">
 	</div>
 </div>
 </body>

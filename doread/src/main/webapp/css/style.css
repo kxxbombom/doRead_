@@ -293,8 +293,19 @@ form#mre_form{
 }
 
 
-
-
+/*
+신고창
+*/
+.hide {
+display:none; 
+width:600px !important;
+position:fixed;
+z-index:999 !important;
+bottom:400px;
+margin-bottom:400px;
+border:1px solid #999 !important;
+background:white;
+}
 
 
 

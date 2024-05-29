@@ -32,6 +32,7 @@ $(function(){
 					output += '<h4>' + item.mem_id + '</h4>';
 					output += '<div class="sub-item">';
 					output += '<p>'+item.sc_content+ '</p>';
+					output+='<div class="align-right"><a class="report" data-name="sc_num" data-id="'+item.sc_num+'"  href="#">신고</a></div>';
 					if(item.sc_mdate){
 						output+= '<span class="modify-date">최근 수정일 : '+ item.sc_mdate+ '</span>';
 					}else{
@@ -256,6 +257,57 @@ $(function(){
 	 * 초기 데이터 (목록) 호출
 	 *=======================================================*/
 	selectList(1);
+	$(document).on('click', '.report',function(){
+		if($('.reportdiv').hasClass('hide')){
+            $('.reportdiv').removeClass('hide');
+             $('.rebtn').attr('data-id',$(this).attr('data-id'));
+            $('.rebtn').attr('data-name',$(this).attr('data-name'));
+             
+        }else{
+            $('.reportdiv').addClass('hide');
+           $('.rebtn').attr('data-id','');
+             $('.rebtn').attr('data-name','');
+    	    }
+		
+	});
+	$(document).on('click', '.redelbtn',function(){
+		
+            $('.reportdiv').addClass('hide');
+            $('.rebtn').attr('data-id','');
+            $('.rebtn').attr('data-name','');
+    	    
+		
+	});
+	$('.rebtn').click(function(){
+		if($('.textareareport').val().trim() ==''){
+			alert('신고사유를 입력해주세요');
+			$('.textareareport').val('').trim();
+			return;
+		}
+		
+		$.ajax({
+			url:'reportMain.do',
+			data:{num:$(this).attr('data-id'),content:$('.textareareport').val(),cate:$(this).attr('data-name'),category:$('input[type="radio"]:checked').val()},
+			type:'post',
+			dataType:'json',
+			success:function(param){
+				if(param.result=='logout'){
+					alert('로그인 후 사용해주세요');
+					
+				}else if(param.result=='success'){
+					alert('신고가 접수되었습니다.');
+				}else{
+					alert('신고 접수 에러');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류');
+			}
+		})
+		
+	})
+  	
+	
 	
 
 });
