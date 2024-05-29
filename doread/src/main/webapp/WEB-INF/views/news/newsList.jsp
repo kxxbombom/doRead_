@@ -10,7 +10,6 @@
 <title>뉴스게시판 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
-
 </head>
 <body>
 <div class="page-main">
@@ -23,6 +22,7 @@
 				표시할 게시물이 없습니다.
 			</div>
 		</c:if>
+		
 		<c:if test="${count > 0}">
 		<table>
 			<tr>
@@ -50,6 +50,7 @@
 		</table>
 		<%-- <hr size="1" noshade width="100%"> --%>
 		
+		
 		<div class="search-form-center">
 		<form id="list_search_form" action="newsList.do" method="get">
 			<ul class="list_search">
@@ -60,14 +61,29 @@
 					</select>
 				</li>
 				<li>
-					<input type="search"  class="list_search" size="16" name="keyword" id="keyword" value="${param.keyword}">
+					<input type="search"  class="list_search" size="16" name="keyword" id="keyword2" value="${param.keyword}">
 				</li>
 				<li>
 					<input type="submit" value="검색" class="list_search">
 				</li>
 			</ul>
 		</form>
+		<script type="text/javascript">
 		
+			const myForm = document.getElementById('list_search_form');
+	
+			myForm.onsubmit=function(){
+				const keyword = document.getElementById('keyword2');
+				if(keyword.value.trim() == ''){
+					alert('검색어를 입력하세요');
+					keyword.value = '';
+					keyword.focus();
+					return false;
+				}
+			};
+		
+</script>
+		</c:if>
 		<div class="list-space align-right">
 			<div class="list-btn">
 			<c:if test="${!empty user_num && user_auth == 9}">
@@ -81,25 +97,9 @@
 		</div>
 		
 		<div class="align-center">${page}</div>
-		</c:if>
 		
-		</div>
 </div>
 
-<script type="text/javascript">
-	window.onload=function(){
-		const myForm = document.getElementById('list_search_form');
 
-		myForm.onsubmit=function(){
-			const keyword = document.getElementById('keyword');
-			if(keyword.value.trim() == ''){
-				alert('검색어를 입력하세요');
-				keyword.value = '';
-				keyword.focus();
-				return false;
-			}
-		};
-	};
-</script>
 </body>
 </html>

@@ -24,7 +24,7 @@ public class NewsListAction implements Action{
 		NewsDAO dao = NewsDAO.getInstance();
 		int count = dao.getNewsCount(keyfield, keyword);
 		
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "newslist.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "newsList.do");
 		
 		List<NewsVO> list = null;
 		if(count > 0) {
