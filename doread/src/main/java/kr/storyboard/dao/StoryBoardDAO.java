@@ -311,7 +311,7 @@ public class StoryBoardDAO {
 					conn = DBUtil.getConnection();
 					//SQL문 작성
 					sql = "INSERT INTO story_comment (sc_num,sc_content,mem_num,s_num) VALUES "
-							+ "(zreply_seq.nextval,?,?,?)";
+							+ "(story_comment_seq.nextval,?,?,?)";
 					//pstmt객체 생성
 					pstmt = conn.prepareStatement(sql);
 					//데이터 바인딩
@@ -339,7 +339,7 @@ public class StoryBoardDAO {
 					//커넥션 풀로부터 커넥션 할당
 					conn = DBUtil.getConnection();
 					//SQL문 작성
-					sql = "SELECT * FROM (SELECT a.*, rownum rnum FR OM (SELECT * FROM story_comment JOIN member USING(mem_num) "
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM story_comment JOIN member USING(mem_num) "
 							+ "WHERE s_num=? ORDER BY sc_num DESC)a) WHERE rnum>=? AND rnum<=?";
 					//pstmt 객체 생성
 					pstmt = conn.prepareStatement(sql);
