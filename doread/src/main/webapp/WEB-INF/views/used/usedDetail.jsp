@@ -12,15 +12,35 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	$(".global_site a").click(function() {
+        if($('#updel').hasClass('hide')){
+            $('#updel').removeClass('hide');
+        }else{
+            $('#updel').addClass('hide');
+    	    }
+  	  });
+    	
+    	$('#delbtn').click(function(event){
+    		const choose =confirm('정말삭제하시겠습니까?');
+    		
+    		if(choose){
+    			location.href=href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}";
+    		}
+    		event.preventDefault();
+    	});
+    	
+    	
+    	$('#gideimage').hover(function(){
+    		$('.gide').removeClass('hide');
+    	},function(){
+    		$('.gide').addClass('hide');
+    		
+    	})
 	  let rowCount = 10;
 	  let currentPage;
 	  let count;
 	  
-	  function selectList(pageNum){
-		   
-		  
-	  }
-	  
+	
 	  $('#used_re').submit(function(event){
 		  if(('#replyd').val().trim() == ''){
 			  alert('내용을 입력하세요');
@@ -29,20 +49,20 @@ $(function(){
 			  
 		  }
 		  
-		  let form_data = $(this).serialize();
+		  
 		  
 		  $.ajax({
 			  url:'writeUsedReply.do',
 			  type:'post',
-			  data:form_data,
+			  data:{uc_content:$('#replyd').val(),u_num:$('#unum').val()},
 			  dataType:'json',
 			  success:function(param){
 				  if(param.result =='logout'){
 					  alert('로그인후 작성가능');
 				  }else if(param.result=='success'){
 					  alert('댓글작성');
-					  initForm();
-					  selectList(1);
+					  
+					
 				  }else{
 					  alert('댓글쓰기오류');
 				  }
@@ -62,16 +82,11 @@ $(function(){
 		  event.preventDefault();
 	  });
 	  
-	  function initForm(){
-		  $('textarea').val('');
-		  $('#re_count').text('1000/1000');
-		  
-	  }
+
 	  
 	  
 	  
 	  
-	  selectList(1);
 	  
 });
 
@@ -167,39 +182,14 @@ $(function(){
 	<div class="rediv">	
 	<form id="used_re">
 	
-			<input  type="hidden" name="u_num" value="${used.u_num}">
+			<input  type="hidden" name="u_num" id="unum" value="${used.u_num}">
 			<textarea id="replyd" name="uc_content" ></textarea><input type="submit" value="등록" class="button2">
 			<br><span id="re_count">1000/1000</span>
 		
 	</form>
 	</div>
 </div>
-<script type="text/javascript">
-    	$(".global_site a").click(function() {
-        if($('#updel').hasClass('hide')){
-            $('#updel').removeClass('hide');
-        }else{
-            $('#updel').addClass('hide');
-    	    }
-  	  });
-    	
-    	$('#delbtn').click(function(event){
-    		const choose =confirm('정말삭제하시겠습니까?');
-    		
-    		if(choose){
-    			location.href=href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}";
-    		}
-    		event.preventDefault();
-    	})
-    	
-    	
-    	$('#gideimage').hover(function(){
-    		$('.gide').removeClass('hide');
-    	},function(){
-    		$('.gide').addClass('hide');
-    		
-    	})
-		</script>
+
 		
 
 </body>
