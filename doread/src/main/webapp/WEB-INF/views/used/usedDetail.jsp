@@ -10,7 +10,72 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/usedboard.reply.js"></script>
+<script type="text/javascript">
+$(function(){
+	  let rowCount = 10;
+	  let currentPage;
+	  let count;
+	  
+	  function selectList(pageNum){
+		   
+		  
+	  }
+	  
+	  $('#used_re').submit(function(event){
+		  if(('#replyd').val().trim() == ''){
+			  alert('내용을 입력하세요');
+			  $('#replyd').val('').focus();
+			  return false;
+			  
+		  }
+		  
+		  let form_data = $(this).serialize();
+		  
+		  $.ajax({
+			  url:'writeUsedReply.do',
+			  type:'post',
+			  data:form_data,
+			  dataType:'json',
+			  success:function(param){
+				  if(param.result =='logout'){
+					  alert('로그인후 작성가능');
+				  }else if(param.result=='success'){
+					  alert('댓글작성');
+					  initForm();
+					  selectList(1);
+				  }else{
+					  alert('댓글쓰기오류');
+				  }
+			  },error:function(){
+				   alert('네트워크오류');
+			  }
+			  
+			  
+			  
+			  
+		  });
+		  
+		  
+		  
+		  
+		  
+		  event.preventDefault();
+	  });
+	  
+	  function initForm(){
+		  $('textarea').val('');
+		  $('#re_count').text('1000/1000');
+		  
+	  }
+	  
+	  
+	  
+	  
+	  selectList(1);
+	  
+});
+
+</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
@@ -102,9 +167,9 @@
 	<div class="rediv">	
 	<form id="used_re">
 	
-			
-			<textarea id="replyd" ></textarea><input type="submit" value="등록" class="button2">
-		
+			<input  type="hidden" name="u_num" value="${used.u_num}">
+			<textarea id="replyd" name="uc_content" ></textarea><input type="submit" value="등록" class="button2">
+			<br><span id="re_count">1000/1000</span>
 		
 	</form>
 	</div>

@@ -26,3 +26,13 @@ CREATE TABLE event_detail (
 	constraint ed_fk1 foreign key (mem_num) references member(mem_num),
 	constraint ed_fk2 foreign key (e_num) references eventboard(e_num)
 	);
+	CREATE TABLE ub_comment (
+	uc_num	number		NOT NULL primary key,
+	uc_auth	number	DEFAULT 0	NOT NULL,
+	uc_content	varchar2(3000)		NOT NULL,
+	uc_rdate	date	DEFAULT SYSDATE	 not NULL,
+	uc_mdate	date	NULL,
+	ub_num number		NOT NULL,
+	mem_num	number		NOT NULL,
+	constraint ub_fk2 foreign key (u_num) references usedbookboard(u_num)
+);

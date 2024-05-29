@@ -58,7 +58,7 @@
  			<c:if test="${empty list}">
  				작성 게시글이 없습니다
  			</c:if>
- 			<c:if test="${!empty list}">
+ 			<c:if test="${!empty list }">
  				<table  id="usedtable">
  					<tr>
  						<th>no.</th>
@@ -70,6 +70,7 @@
  						<th>조회수</th>
  					</tr>
  				<c:forEach var="i" items="${list}">
+ 					<c:if test="${i.u_auth == 0}">
  					<tr>
  						<td>${i.u_num}</td>
  						<td>${i.book_name}</td>
@@ -82,7 +83,7 @@
  						<td>${i.id}</td>
  						<td>${i.u_hit}</td>
  					</tr>
- 				
+ 					</c:if>
  				</c:forEach>
  				</table>
  			</c:if>

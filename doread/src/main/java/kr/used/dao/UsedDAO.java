@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.book.vo.BookVO;
+import kr.used.vo.ReplyUsedVO;
 import kr.used.vo.UsedVO;
 import kr.util.DBUtil;
 
@@ -268,6 +269,29 @@ public class UsedDAO {
 		
 	}
 	//댓글작성
+	public void replyUsedinsert(ReplyUsedVO reply) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql="insert into ub_comment(uc_num,uc_content,u_num,mem_num) values(uc_comment_seq.nextval,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,reply.getUc_content());
+			pstmt.setInt(2, reply.getU_num());
+			pstmt.setInt(3, reply.getMem_num());
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+			
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
+	
 	//댓글수정
 	//댓글 삭제
 	//댓글목록
