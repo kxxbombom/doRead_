@@ -32,7 +32,6 @@
 				<div class="myul">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/member/memberdetail.do">회원 상세 내용</a></li>
-						<li><a href="${pageContext.request.contextPath}/member/membernotice.do">회원 알림</a></li>
 						<li><a href="${pageContext.request.contextPath}/book/bookfav.do">회원 찜 목록</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/deleteUserForm.do">회원 탈퇴</a></li>
 					</ul>
