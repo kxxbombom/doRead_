@@ -1,13 +1,12 @@
 package kr.used.vo;
 
-import java.sql.Date;
 
-public class ReplyUsedVO {
+public class UBCommentVO {
 	private int uc_num;
 	private int uc_auth;
 	private String uc_content;
-	private Date uc_rdate;
-	private Date uc_mdate;
+	private String uc_rdate;
+	private String uc_mdate;
 	private int u_num;
 	private int mem_num;
 	
@@ -37,19 +36,20 @@ public class ReplyUsedVO {
 		this.uc_content = uc_content;
 	}
 
-	public Date getUc_rdate() {
+
+	public String getUc_rdate() {
 		return uc_rdate;
 	}
 
-	public void setUc_rdate(Date uc_rdate) {
+	public void setUc_rdate(String uc_rdate) {
 		this.uc_rdate = uc_rdate;
 	}
 
-	public Date getUc_mdate() {
+	public String getUc_mdate() {
 		return uc_mdate;
 	}
 
-	public void setUc_mdate(Date uc_mdate) {
+	public void setUc_mdate(String uc_mdate) {
 		this.uc_mdate = uc_mdate;
 	}
 

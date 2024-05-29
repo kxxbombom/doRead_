@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.book.vo.BookVO;
-import kr.used.vo.ReplyUsedVO;
+import kr.storyboard.vo.SCommentVO;
+import kr.used.vo.UBCommentVO;
 import kr.used.vo.UsedVO;
 import kr.util.DBUtil;
+import kr.util.DurationFromNow;
+import kr.util.StringUtil;
 
 public class UsedDAO {
 	
@@ -268,14 +271,47 @@ public class UsedDAO {
 		
 		
 	}
+	//댓글 상세(댓글 수정, 삭제시 작성자 회원 번호 체크 용도로 사용)
+	public UBCommentVO getCommentUsed(int uc_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UBCommentVO ub = null;
+		String sql = null;
+		try {
+			//커넥션 풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT * FROM UB_comment WHERE uc_num=?";
+			//pstmt 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, uc_num);
+			//SQL실행
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ub = new UBCommentVO();
+				ub.setUc_num(rs.getInt("uc_num"));
+				ub.setMem_num(rs.getInt("mem_num"));
+			}
+			
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return ub;
+	}
 	//댓글작성
-	public void replyUsedinsert(ReplyUsedVO reply) throws Exception{
+	public void insertCommentUsed(UBCommentVO reply) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql="insert into ub_comment(uc_num,uc_content,u_num,mem_num) values(uc_comment_seq.nextval,?,?,?)";
+			sql="insert into ub_comment(uc_num,uc_content,u_num,mem_num) values(ub_comment_seq.nextval,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1,reply.getUc_content());
@@ -293,9 +329,127 @@ public class UsedDAO {
 	}
 	
 	//댓글수정
+	public void updateCommentUsed(UBCommentVO ub) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			//커넥션 풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "UPDATE UB_comment SET uc_content=?,uc_mdate=SYSDATE WHERE uc_num=?";
+			//pstmt객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?데이터 바인딩
+			pstmt.setString(1, ub.getUc_content());
+			pstmt.setInt(2, ub.getUc_num());
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//댓글 삭제
-	//댓글목록
-	//댓글?
+	public void deleteCommentUsed(int uc_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			//커넥션 풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "DELETE FROM UB_comment WHERE uc_num=?";
+			//pstmt 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터 바인딩
+			pstmt.setInt(1, uc_num);
+			//SQL문 실행
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//댓글 목록
+	public List<UBCommentVO> getListCommentUsed(int start, int end, int u_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<UBCommentVO> list = null;
+		String sql = null;
+		
+		try {
+			//커넥션 풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM ub_comment JOIN member USING(mem_num) "
+					+ "WHERE u_num=? ORDER BY uc_num DESC)a) WHERE rnum>=? AND rnum<=?";
+			//pstmt 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//데이터 바인딩
+			pstmt.setInt(1, u_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			//sql문 실행
+			rs = pstmt.executeQuery();
+			list = new ArrayList<UBCommentVO>();
+			while(rs.next()) {
+				UBCommentVO ub = new UBCommentVO();
+				ub.setUc_num(rs.getInt("uc_num"));
+				//날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+				ub.setUc_rdate(DurationFromNow.getTimeDiffLabel(rs.getString("uc_rdate")));
+				if(rs.getString("uc_mdate")!=null) {
+					ub.setUc_mdate(DurationFromNow.getTimeDiffLabel(rs.getString("uc_mdate")));					
+				}
+				ub.setUc_content(StringUtil.useBrNoHTML(rs.getString("uc_content")));
+				ub.setUc_num(rs.getInt("uc_num"));
+				ub.setMem_num(rs.getInt("mem_num"));//작성자 회원번호
+				ub.setMem_id(rs.getString("mem_id"));//작성자 아이디
+				
+				list.add(ub);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
+	//댓글 개수
+	public int getCommentUsedCount(int u_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0 ;
+		try {
+			//커넥션 풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "SELECT COUNT(*) FROM UB_comment WHERE u_num=?";
+			//pstmt 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//데이터 바인딩
+			pstmt.setInt(1, u_num);
+			//SQL문 실행
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return count;
+	}
 	
 	//책검색
 	public List<BookVO> getCategoryListBook(String keyfield) throws Exception{

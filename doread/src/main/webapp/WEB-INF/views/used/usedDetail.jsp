@@ -10,87 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	$(".global_site a").click(function() {
-        if($('#updel').hasClass('hide')){
-            $('#updel').removeClass('hide');
-        }else{
-            $('#updel').addClass('hide');
-    	    }
-  	  });
-    	
-    	$('#delbtn').click(function(event){
-    		const choose =confirm('정말삭제하시겠습니까?');
-    		
-    		if(choose){
-    			location.href=href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}";
-    		}
-    		event.preventDefault();
-    	});
-    	
-    	
-    	$('#gideimage').hover(function(){
-    		$('.gide').removeClass('hide');
-    	},function(){
-    		$('.gide').addClass('hide');
-    		
-    	})
-	  let rowCount = 10;
-	  let currentPage;
-	  let count;
-	  
-	
-	  $('#used_re').submit(function(event){
-		  if(('#replyd').val().trim() == ''){
-			  alert('내용을 입력하세요');
-			  $('#replyd').val('').focus();
-			  return false;
-			  
-		  }
-		  
-		  
-		  
-		  $.ajax({
-			  url:'writeUsedReply.do',
-			  type:'post',
-			  data:{uc_content:$('#replyd').val(),u_num:$('#unum').val()},
-			  dataType:'json',
-			  success:function(param){
-				  if(param.result =='logout'){
-					  alert('로그인후 작성가능');
-				  }else if(param.result=='success'){
-					  alert('댓글작성');
-					  
-					
-				  }else{
-					  alert('댓글쓰기오류');
-				  }
-			  },error:function(){
-				   alert('네트워크오류');
-			  }
-			  
-			  
-			  
-			  
-		  });
-		  
-		  
-		  
-		  
-		  
-		  event.preventDefault();
-	  });
-	  
-
-	  
-	  
-	  
-	  
-	  
-});
-
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/usedboard.reply.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
@@ -175,19 +95,35 @@ $(function(){
  	
 		</div>
 		</div>
-				<hr width="100%" size="1" noshade="noshade">
-		<div class="align-center">
-			<input type="button" value="목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/used/usedList.do'">
+		<hr width="100%" size="1" noshade="noshade">
+	<!-- 댓글시작 -->
+		<div id="reply_div">
+			<span class="uc-title">댓글 달기</span>
+			<form id="uc_form">
+				<input type="hidden" name="u_num" value="${used.u_num}" id="u_num">
+				<textarea rows="3" cols="50" name="uc_content" 
+				<c:if test="${empty user_num}">disabled="disabled"</c:if> 
+				id="uc_content" class="rep-content"><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다</c:if></textarea>
+				<c:if test="${!empty user_num}">
+				<div id="re_first">
+					<span class="letter-count">300/300</span>
+				</div>
+				<div id="re_second" class="align-right">
+					<input type="submit" value="전송">
+				</div>
+				</c:if>
+			</form>
 		</div>
-	<div class="rediv">	
-	<form id="used_re">
-	
-			<input  type="hidden" name="u_num" id="unum" value="${used.u_num}">
-			<textarea id="replyd" name="uc_content" ></textarea><input type="submit" value="등록" class="button2">
-			<br><span id="re_count">1000/1000</span>
-		
-	</form>
-	</div>
+		<!-- 댓글 목록 출력 시작 -->
+		<div id="output"></div>
+		<div class="paging-button" style="display:none;" >
+			<input type="button" value="다음글 보기">
+		</div>
+		<div id="loading" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
+		</div>
+		<!-- 댓글 목록 출력 끝 -->
+		<!-- 댓글끝 -->
 </div>
 
 		

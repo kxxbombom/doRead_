@@ -6,21 +6,26 @@ import javax.servlet.http.HttpServletResponse;
 import kr.controller.Action;
 import kr.used.dao.UsedDAO;
 import kr.used.vo.UsedVO;
+import kr.util.StringUtil;
 
 public class UsedDetailAction implements Action	{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		UsedDAO dao = UsedDAO.getInstance();
+		
 		int u_num = Integer.parseInt(request.getParameter("u_num"));
+		
+		UsedDAO dao = UsedDAO.getInstance();
+		
 		dao.hitUsed(u_num);
 		UsedVO used = dao.detatilUsed(u_num);
-	
+		//HTML허용하지 않음
+		used.setU_title(StringUtil.useNoHTML(used.getU_title()));
+		//HTML을 허용하지 않으면서 줄바꿈
+		used.setU_content(StringUtil.useBrNoHTML(used.getU_content()));
+		
 		request.setAttribute("used", used);
 		
-		request.setAttribute("menu", "used");
 		return "/WEB-INF/views/used/usedDetail.jsp";
 	}
 
