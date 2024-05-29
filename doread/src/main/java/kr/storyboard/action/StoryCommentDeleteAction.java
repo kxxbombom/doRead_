@@ -18,7 +18,7 @@ public class StoryCommentDeleteAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//전송된 데이터 인코딩 타입 지정
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");  
 		//댓글 번호
 		int sc_num = Integer.parseInt(request.getParameter("sc_num"));
 		
