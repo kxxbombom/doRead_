@@ -88,7 +88,7 @@
 
 <script type="text/javascript">
 	window.onload=function(){
-		const myForm = document.getElementById('search_form');
+		const myForm = document.getElementById('list_search_form');
 
 		myForm.onsubmit=function(){
 			const keyword = document.getElementById('keyword');

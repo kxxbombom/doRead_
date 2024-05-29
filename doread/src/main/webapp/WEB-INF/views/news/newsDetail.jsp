@@ -14,26 +14,24 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    // btn-hide 클래스를 가진 요소를 숨김
-    $('.btn-hide').hide();
 
-    // .board-cbtn 클래스를 가진 요소를 클릭했을 때
-    $('.board-cbtn').click(function() {
-        // 클릭된 요소의 부모 요소인 li를 찾고 그 하위의 .btn-hide 요소를 토글
-        $(this).parent().find('.btn-hide').toggle();
+	$('.btn-hide').hide();
+
+    
+	$('.board-cbtn').click(function() {
+       $(this).parent().find('.btn-hide').toggle();
     });
 
-    // 삭제 버튼 클릭 시
-    $('#delete_btn').click(function() {
-        let choice = confirm('삭제하시겠습니까?');
-        if (choice) {
-            location.replace('newsDelete.do?news_num=${news.news_num}');
-        }
-    });
-});s
+
+	$('#delete_btn').click(function() {
+		let choice = confirm('삭제하시겠습니까?');
+		if(choice){
+			location.replace('newsDelete.do?news_num=${news.news_num}');
+		}
+	});
+});
 </script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div class="page-main">

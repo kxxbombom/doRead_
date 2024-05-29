@@ -614,7 +614,7 @@ input[type="submit"].list_search, select.search{
 
 table{
 	width:100%;
-	border-collapse: collapse;
+	border-collapse:collapse;
 	margin:50px 0;
 }
 table td, table th{
@@ -625,8 +625,8 @@ table td, table th{
 }
 
 table tr{
-	line-height:3rem;
-	height:50px;
+	line-height:2.5rem;
+	height:40px;
 }
 table td:first-child, table td:last-child, td.text-center{
 	text-align:center;
@@ -686,7 +686,7 @@ ul.detail-sub li:last-child{
 
 p#board_content{
 	padding-right:20px;
-	word-wrap: break-word;
+	word-wrap:break-word;
 }
 
 /*글상세 수정 삭제 버튼*/
@@ -721,7 +721,7 @@ input[type="file"]{
 	margin-top:10px;
 	
 	font-size:14px;
-	font-weight:bold;
+	
 }
 #file_detail input[type="button"]{
 	width:90px;

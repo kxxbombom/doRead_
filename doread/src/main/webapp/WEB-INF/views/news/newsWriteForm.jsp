@@ -48,7 +48,7 @@
 					<input type="file" name="news_image" id="news_image" accept="image/gif, image/png, image/jpeg">
 				</li>
 			</ul>
-			<div class="align-center">
+			<div class="align-center list-btn">
 				<input type="submit" value="등록">
 				<input type="button" value="목록" onclick="location.href='newsList.do'">
 			</div>
