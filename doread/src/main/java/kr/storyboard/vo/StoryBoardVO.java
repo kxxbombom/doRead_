@@ -6,7 +6,7 @@ public class StoryBoardVO {
 	private int s_num;			//스토리 번호
 	private String s_title;		//스토리 제목
 	private String s_content;	//스토리 내용
-	private int hit;			//스토리 조회수
+	private int s_hit;			//스토리 조회수
 	private Date s_rdate;		//스토리 등록일
 	private Date s_mdate;		//스토리 수정일
 	private String s_ip;		//스토리 IP
@@ -42,11 +42,11 @@ public class StoryBoardVO {
 	public void setS_content(String s_content) {
 		this.s_content = s_content;
 	}
-	public int getHit() {
-		return hit;
+	public int getS_hit() {
+		return s_hit;
 	}
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setS_hit(int s_hit) {
+		this.s_hit = s_hit;
 	}
 	public Date getS_rdate() {
 		return s_rdate;

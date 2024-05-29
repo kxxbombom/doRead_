@@ -16,7 +16,8 @@ public class StoryDetailAction implements Action{
 		int s_num = Integer.parseInt(request.getParameter("s_num"));
 						
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
-						
+		//조회수 증가
+		dao.updateReadcount(s_num);
 		StoryBoardVO sb = dao.getStoryBoard(s_num);
 		//HTML허용하지 않음
 		sb.setS_title(StringUtil.useNoHTML(sb.getS_title()));

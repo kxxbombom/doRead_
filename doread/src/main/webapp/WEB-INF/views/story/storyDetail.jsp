@@ -14,6 +14,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
 		<h2>스토리 제목 :  ${sb.s_title}</h2>
+		조회 : ${sb.s_hit}
 		<h3>리뷰 도서 : ${sb.book_name }</h3>
 		<hr size="1" noshade="noshade" width="100%">
 		<c:if test="${!empty sb.s_image}">

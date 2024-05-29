@@ -347,7 +347,7 @@ public class BookDAO {
 					StoryBoardVO story = new StoryBoardVO();
 					story.setS_num(rs.getInt("s_num"));
 					story.setS_title(rs.getString("s_title"));
-					story.setHit(rs.getInt("s_hit"));
+					story.setS_hit(rs.getInt("s_hit"));
 					story.setS_rdate(rs.getDate("s_rdate"));
 					story.setMem_num(rs.getInt("mem_num"));
 					

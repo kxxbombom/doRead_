@@ -95,6 +95,7 @@ public class StoryBoardDAO {
 						sv.setS_title(StringUtil.useBrNoHTML(rs.getString("s_title")));//html 태그 허용 x
 						sv.setS_content(rs.getString("s_content"));
 						sv.setS_auth(rs.getInt("s_auth"));
+						sv.setS_hit(rs.getInt("s_hit"));
 						sv.setS_image(rs.getString("s_image"));
 						sv.setS_rdate(rs.getDate("s_rdate"));
 						sv.setBook_num(rs.getInt("book_num"));
@@ -198,7 +199,7 @@ public class StoryBoardDAO {
 						sb.setS_rdate(rs.getDate("s_rdate"));
 						sb.setS_mdate(rs.getDate("s_mdate"));
 						sb.setS_image(rs.getString("s_image"));
-						
+						sb.setS_hit(rs.getInt("s_hit"));
 						//로그인한 회원번호와 조건 체크를 해야하기 때문에 mem_num필요
 						sb.setMem_num(rs.getInt("mem_num"));
 						sb.setBook_num(rs.getInt("book_num"));
@@ -276,6 +277,29 @@ public class StoryBoardDAO {
 					DBUtil.executeClose(null, pstmt, conn);
 				}
 				
+			}
+			//조회수 증가
+			public void updateReadcount(int s_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				try {
+					//커넥션풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql ="UPDATE storyboard SET s_hit=s_hit+1 WHERE s_num=?";
+					//pstmt  객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터 바인딩
+					pstmt.setInt(1, s_num);
+					//SQL 문 실행
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
 			}
 			//댓글 등록
 			public void insertCommentStory(SCommentVO SComment) throws Exception{
