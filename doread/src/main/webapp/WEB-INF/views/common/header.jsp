@@ -37,19 +37,7 @@
 		<li>
 			<form id="search_form" action="list.do" method="get">
 					<ul class="search">
-						<%-- <li>
-							<select name="keyfield">
-								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>도서명</option>
-								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>제목</option>
-								<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>내용</option>
-							</select>
-						</li>
-						<li>
-							<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">				
-						</li>
-						<li>
-							<input type="submit" value="검색">
-						</li> --%>
+						
 						<li id="menu-cart">
 							<img src="${pageContext.request.contextPath}/images/cart.png" width="25" 
 							height="25" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'" class="click-image">

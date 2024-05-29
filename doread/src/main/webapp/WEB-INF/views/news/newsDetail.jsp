@@ -11,27 +11,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-
-	$('.btn-hide').hide();
-
-    
-	$('.board-cbtn').click(function() {
-       $(this).parent().find('.btn-hide').toggle();
-    });
-
-
-	$('#delete_btn').click(function() {
-		let choice = confirm('삭제하시겠습니까?');
-		if(choice){
-			location.replace('newsDelete.do?news_num=${news.news_num}');
-		}
-	});
-});
-</script>
-
 </head>
 <body>
 <div class="page-main">
@@ -56,9 +35,22 @@ $(document).ready(function() {
 		
 					<ul class="btn-hide">
 		            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
-		            	<li><a href="newsDelete.do?news_num=${news.news_num}" id ="delete_btn">삭제</a></li>
+		            	<li><a href="#" id ="delete_btn">삭제</a></li>
 		        	</ul>
-		        	
+		        	<script type="text/javascript">
+		        	$('.btn-hide').hide();
+		        	$('.board-cbtn').click(function() {
+		        	    $(this).parent().find('.btn-hide').toggle();
+		        	});
+		        	$('#delete_btn').click(function(event) {
+			        	let choice = confirm('삭제하시겠습니까?');
+			    		if(choice){
+			    			location.replace('newsDelete.do?news_num=${news.news_num}');
+			    		}
+			    		//기본 이벤트 제거
+			    		event.preventDefault();
+		        	});
+		        	</script>
 				</li>
 			</ul>	
 			
@@ -81,7 +73,7 @@ $(document).ready(function() {
 				</c:if>
 			</span>
 		</div>
-		<div class="align-center list-btn">
+		<div class="align-center list-btn m-top">
 			<input type="button" value="목록" onclick="location.href='newsList.do'">
 			
 		</div>
