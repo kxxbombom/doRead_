@@ -34,7 +34,7 @@ public class UsedWriteAction implements Action{
 		used.setU_ip(request.getRemoteAddr());
 		used.setMem_num(mem_num);
 		used.setBook_num(book_num);
-		used.setPhoto(FileUtil.createFile(request, "u_image"));
+		used.setU_image(FileUtil.createFile(request, "u_image"));
 		used.setU_condition(u_condition);
 		used.setU_title(u_title);
 		used.setU_content(u_content);

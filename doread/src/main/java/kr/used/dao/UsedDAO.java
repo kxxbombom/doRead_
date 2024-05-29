@@ -60,13 +60,13 @@ public class UsedDAO {
 		else if(keys.equals("2")) sub_sql += " where u_state = 2";
 		else if(keys.equals("3")) sub_sql += " where u_state = 3";
 		if(keyw != null && !"".equals(keyw)) {
-			if(keyf.equals("1")) sub_sql += " and u_title Like '%' || ? || '%' ";
-			else if(keyf.equals("2")) sub_sql += " and u_content Like '%' || ? || '%' ";
-			else if(keyf.equals("3")) sub_sql += " and mem_id Like '%' || ? || '%' ";
+			if(keyf.equals("1")) sub_sql += " and ( book_name Like '%' || ? || '%' ) ";
+			else if(keyf.equals("2")) sub_sql += " and ( u_title Like '%' || ? || '%' ) ";
+			else if(keyf.equals("3")) sub_sql += " and ( mem_id Like '%' || ? || '%' ) ";
 		}
 		try {
 			conn = DBUtil.getConnection();
-			sql="select count(*) from usedbookboard join member using(mem_num) ";
+			sql="select count(*) from (usedbookboard join member using(mem_num))join book using(book_num) "+sub_sql;
 			ps = conn.prepareStatement(sql);
 			if(keyw != null && !"".equals(keyw)) {
 				
@@ -100,9 +100,9 @@ public class UsedDAO {
 		else if(keys.equals("2")) sub_sql += " where u_state = 2";
 		else if(keys.equals("3")) sub_sql += " where u_state = 3";
 		if(keyw != null && !"".equals(keyw)) {
-			if(keyf.equals("1")) sub_sql += " and u_title Like '%' || ? || '%' ";
-			else if(keyf.equals("2")) sub_sql += " and u_content Like '%' || ? || '%' ";
-			else if(keyf.equals("3")) sub_sql += " and mem_id Like '%' || ? || '%' ";
+			if(keyf.equals("1")) sub_sql += " and ( book_name Like '%' || ? || '%' ) ";
+			else if(keyf.equals("2")) sub_sql += " and ( u_title Like '%' || ? || '%' ) ";
+			else if(keyf.equals("3")) sub_sql += " and ( mem_id Like '%' || ? || '%' )";
 		}
 		try {
 			conn = DBUtil.getConnection();
@@ -195,16 +195,85 @@ public class UsedDAO {
 		return used;
 		
 	}
-	//글 수정 
+	//글 수정
+	public void updateUsed(UsedVO used) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql="update usedbookboard set u_title=?, u_content=?, u_state=?, u_ip=?, u_image=?, u_price=?, book_num=?, u_condition=?, u_mdate=sysdate  where u_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, used.getU_title());
+			pstmt.setString(2, used.getU_content());
+			pstmt.setInt(3, used.getU_state());
+			pstmt.setString(4, used.getU_ip());
+			pstmt.setString(5, used.getU_image());
+			pstmt.setInt(6, used.getU_price());
+			pstmt.setInt(7, used.getBook_num());
+			pstmt.setInt(8, used.getU_condition());
+			pstmt.setInt(9, used.getU_num() );
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+			
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
+	
+	
 	// 글 삭제
-	//글검색
+	public void deleteUsed(int u_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql="delete from usedbookboard where u_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, u_num);
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+			
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		
+	}
+	//글조회수
+	public void hitUsed(int u_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql="update usedbookboard set u_hit=u_hit+1 where u_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, u_num);
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+			
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		
+	}
 	//댓글작성
 	//댓글수정
 	//댓글 삭제
 	//댓글목록
 	//댓글?
 	
-	
+	//책검색
 	public List<BookVO> getCategoryListBook(String keyfield) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -123,12 +123,6 @@ public class UsedVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	private String photo;
+
 
 }

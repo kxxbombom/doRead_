@@ -532,7 +532,7 @@ img{
 	z-index:1;
 	
 }
-ul.siteLink{
+.siteLink{
 	z-index:999;
 
 }
@@ -606,4 +606,21 @@ table#usedtable tr{
 }
 table#usedtable td:first-child, table#usedtable td:last-child, td.text-center{
 	text-align:center;
+}
+.gide{
+	z-index:999;
+	border:1px solid #d4d2d2;
+	border-radius:15px;
+	width:250px;
+}
+.radio2{
+	width:100px !important; 
+}
+
+
+/*usedboard 댓글*/
+textarea#replyd{
+	resize:none;
+	width:816px;
+	height:80px;
 }

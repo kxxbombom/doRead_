@@ -19,8 +19,8 @@ public class UsedmainAction implements Action{
 		UsedDAO dao = UsedDAO.getInstance();
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) pageNum="1";
-		String keys = request.getParameter("keys");
-		String keyf= request.getParameter("keyf");
+		String keys = request.getParameter("sel");
+		String keyf= request.getParameter("sel2");
 		String keyw = request.getParameter("keyw");
 		if(keys == null) keys="0";
 		
@@ -32,6 +32,8 @@ public class UsedmainAction implements Action{
 		request.setAttribute("count",count);
 		request.setAttribute("page",page.getPage());
 		request.setAttribute("menu", "used");
+		request.setAttribute("check", keys);
+		request.setAttribute("check2", keyf);
 		return "/WEB-INF/views/used/usedmain.jsp";
 	}
 

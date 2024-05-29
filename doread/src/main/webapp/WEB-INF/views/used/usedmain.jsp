@@ -27,14 +27,14 @@
 	
  			<form id="usedForm" action="usedList.do" method="get">
 				<select id="selectlist" name ="sel" class="input-style">
-				<option value="1" <c:if test="${check == 1}">selected</c:if>>판매중</option>
- 				<option value="2" <c:if test="${check == 2}">selected</c:if>>거래중</option>
- 				<option value="3" <c:if test="${check == 3}">selected</c:if>>판매완료</option>
+				<option value="1" <c:if test="${check =='1'}">selected</c:if>>판매중</option>
+ 				<option value="2" <c:if test="${check =='2'}">selected</c:if>>거래중</option>
+ 				<option value="3" <c:if test="${check == '3'}">selected</c:if>>판매완료</option>
  				</select>
  				<select id="selectlist2" name ="sel2" class="input-style">
-				<option value="1" <c:if test="${check == 1}">selected</c:if>>제목</option>
- 				<option value="2" <c:if test="${check == 2}">selected</c:if>>내용</option>
- 				<option value="3" <c:if test="${check == 3}">selected</c:if>>아이디</option>
+				<option value="1" <c:if test="${check2 == '1'}">selected</c:if>>책제목</option>
+ 				<option value="2" <c:if test="${check2 == '2'}">selected</c:if>>글제목</option>
+ 				<option value="3" <c:if test="${check2 == '3'}">selected</c:if>>아이디</option>
  				</select>
  				<input type="text" name="search" class="inputcheck input-style" id="search" maxlength="30" placeholder="검색내용입력">
  				<input id="subbtn" type="submit" value="검색" class="button2">
@@ -63,8 +63,8 @@
  					<tr>
  						<th>no.</th>
  						<th>책제목</th>
- 						<th>글 제목 </th>
  						<th>가격</th>
+ 						<th>글 제목 </th>
  						<th>판매상태</th>
  						<th>작성자</th>
  						<th>조회수</th>

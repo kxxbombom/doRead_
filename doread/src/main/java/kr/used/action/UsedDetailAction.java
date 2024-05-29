@@ -15,11 +15,12 @@ public class UsedDetailAction implements Action	{
 		request.setCharacterEncoding("utf-8");
 		UsedDAO dao = UsedDAO.getInstance();
 		int u_num = Integer.parseInt(request.getParameter("u_num"));
+		dao.hitUsed(u_num);
 		UsedVO used = dao.detatilUsed(u_num);
-		
+	
 		request.setAttribute("used", used);
 		
-		
+		request.setAttribute("menu", "used");
 		return "/WEB-INF/views/used/usedDetail.jsp";
 	}
 
