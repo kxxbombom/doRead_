@@ -66,6 +66,9 @@ div.category-tag{
 	background-color:rgb(232,223,202);
 	color:rgb(26, 77, 46);
 	border-radius: 10px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 .book-image{
 	width:400px;
@@ -105,7 +108,7 @@ div.category-tag{
 	height:70px;
 	border-radius:30px;
 	background-color:rgb(26, 77, 46);
-	color:rgb(232,223,202);
+	color:white;;
 	font-size:15pt;
 	border:none;
 	box-shadow:none;
@@ -164,18 +167,6 @@ input#book_quantity{
 	float:right;
 }
 
-
-#fav-tag{
-	border:none;
-	border-radius:50%;
-	width:30px;
-	height:30px;
-	background-color:rgb(232,223,202);
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	margin: 5px;
-}
 
 #book_review table{
 	width:800px;

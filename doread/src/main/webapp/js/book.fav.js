@@ -1,14 +1,28 @@
 $(function(){
-	
-	//찜목록 등록
-	$('#wish').click(function(){
+	function selectFav(){
 		$.ajax({
 			url:'bookfav.do',
+			type:'post',
+			data:{book_num:$('#bookfav').attr('data-num')},
+			dataType:'json',
+			success:function(param){
+				displayFav(param);
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	}
+	
+	//찜목록 등록
+	$('#bookfav').click(function(){
+		$.ajax({
+			url:'writeFav.do',
 			type:'post',
 			data:{book_num:$(this).attr('data-num')},
 			dataType:'json',
 			success:function(param){
-				if(param.result == "logout"){
+				if(param.result == 'logout'){
 					alert('로그인 후 찜목록에 추가할 수 있습니다');
 				}else if(param.result == 'success'){
 					displayFav(param);
@@ -28,10 +42,12 @@ $(function(){
 		if(param.status == 'yesFav'){
 			book_fav = '../images/bookfav_after.png';
 		}else{
-			book_fav='..images/bookfav_before.png';
+			book_fav='../images/bookfav_before.png';
 		}
 		$('#bookfav').attr('src',book_fav);
 		
 	}
 	
+	
+	selectFav();
 });

@@ -35,6 +35,7 @@
 				<ul>
 					<li id="book-tagtop">
 						<div class="category-tag">
+							<b>
 							<c:if test="${book.book_category==1}">소설</c:if>
 							<c:if test="${book.book_category==2}">시/에세이</c:if>
 							<c:if test="${book.book_category==3}">인문</c:if>
@@ -46,10 +47,10 @@
 							<c:if test="${book.book_category==9}">수험서/취업</c:if>
 							<c:if test="${book.book_category==10}">만화</c:if>
 							<c:if test="${book.book_category==11}">취미/스포츠</c:if>
+							</b>
 						</div>
-						<div id="fav-tag">
+						<br>
 							<img id="bookfav" src="${pageContext.request.contextPath}/images/bookfav_before.png" width="20px" data-num="${book.book_num}">
-						</div>
 					</li>
 					<li><h1>${book.book_name}</h1></li>
 					<li>${book.author} / ${book.publisher}</li>

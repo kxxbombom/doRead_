@@ -45,7 +45,6 @@ public class WriteFavAction implements Action{
 				mapAjax.put("status", "yesFav");
 			}
 			mapAjax.put("result", "success");
-			mapAjax.put("count", dao.selectFavCount(book_num));
 		}
 		
 		//JSON 데이터 생성

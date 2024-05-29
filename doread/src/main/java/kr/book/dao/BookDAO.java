@@ -228,7 +228,7 @@ public class BookDAO {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = "INSERT INTO book_fav (book_num,mem_num) VALUES(?,?)";
+				sql = "INSERT INTO book_fav (w_num,book_num,mem_num) VALUES(bookfav_seq.nextval,?,?)";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
@@ -292,7 +292,7 @@ public class BookDAO {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					fav = new BookFavVO();
-					fav.setBook_num(rs.getInt("board_num"));
+					fav.setBook_num(rs.getInt("book_num"));
 					fav.setMem_num(rs.getInt("mem_num"));
 				}
 			}catch(Exception e) {
