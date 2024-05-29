@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.book.vo.BookVO;
-import kr.qna.vo.QnaVO;
+import kr.storyboard.vo.SCommentVO;
 import kr.storyboard.vo.StoryBoardVO;
 import kr.util.DBUtil;
+import kr.util.DurationFromNow;
 import kr.util.StringUtil;
 
 public class StoryBoardDAO {
@@ -276,5 +277,107 @@ public class StoryBoardDAO {
 				}
 				
 			}
-
+			//댓글 등록
+			public void insertCommentStory(SCommentVO SComment) throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "INSERT INTO story_comment (sc_num,sc_content,mem_num,s_num) VALUES "
+							+ "(zreply_seq.nextval,?,?,?)";
+					//pstmt객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터 바인딩
+					pstmt.setString(1,SComment.getSc_content());
+					pstmt.setInt(2,SComment.getMem_num());
+					pstmt.setInt(3,SComment.getS_num());
+					//SQL문실행
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+			}
+			//댓글 목록
+			public List<SCommentVO> getListCommentStory(int start, int end, int s_num) throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<SCommentVO> list = null;
+				String sql = null;
+				
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FR OM (SELECT * FROM story_comment JOIN member USING(mem_num) "
+							+ "WHERE s_num=? ORDER BY sc_num DESC)a) WHERE rnum>=? AND rnum<=?";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터 바인딩
+					pstmt.setInt(1, s_num);
+					pstmt.setInt(2, start);
+					pstmt.setInt(3, end);
+					//sql문 실행
+					rs = pstmt.executeQuery();
+					list = new ArrayList<SCommentVO>();
+					while(rs.next()) {
+						SCommentVO comment = new SCommentVO();
+						comment.setSc_num(rs.getInt("sc_num"));
+						//날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+						comment.setSc_rdate(DurationFromNow.getTimeDiffLabel(rs.getString("sc_rdate")));
+						if(rs.getString("re_modifydate")!=null) {
+							comment.setSc_mdate(DurationFromNow.getTimeDiffLabel(rs.getString("sc_mdate")));					
+						}
+						comment.setSc_content(StringUtil.useBrNoHTML(rs.getString("sc_content")));
+						comment.setSc_num(rs.getInt("sc_num"));
+						comment.setMem_num(rs.getInt("mem_num"));//작성자 회원번호
+						comment.setMem_id(rs.getString("mem_id"));//작성자 아이디
+						
+						list.add(comment);
+					}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				
+				return list;
+			}
+			//댓글 개수
+			public int getCommentStoryCount(int s_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int count = 0 ;
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "SELECT COUNT(*) FROM story_comment WHERE s_num=?";
+					//pstmt 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//데이터 바인딩
+					pstmt.setInt(1, s_num);
+					//SQL문 실행
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						count = rs.getInt(1);
+					}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				
+				return count;
+			}
 }

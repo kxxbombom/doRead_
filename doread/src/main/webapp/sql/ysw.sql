@@ -33,3 +33,18 @@ create table storyboard(
 );
 
 create sequence storyboard_seq;
+
+create table story_comment(
+ sc_num number not null,
+ sc_content varchar2(3000) not null,
+ sc_auth number(1) not null,
+ sc_rdate date default SYSDATE not null,
+ sc_mdate date,
+ mem_num number not null,
+ s_num number not null,
+ constraint story_comment_pk primary key (sc_num),
+ constraint story_comment_fk1 foreign key (mem_num) references member(mem_num),
+ constraint story_comment_fk2 foreign key (s_num) references storyboard (s_num)
+);
+
+create sequence story_comment_seq;
