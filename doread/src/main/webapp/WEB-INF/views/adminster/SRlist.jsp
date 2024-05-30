@@ -141,17 +141,17 @@ $('.rebtn').click(function(){
 	
 	
 })
-$('#delbtn').click(function(event){
+$('.delbtn').click(function(){
     		const choose =confirm('정말삭제하시겠습니까?');
     		
     		if(choose){
-   			location.href="${pageContext.request.contextPath}/adminster/deleteReport.do?sr_num="+$(this).attr('data-id');
+   			location.href="${pageContext.request.contextPath}/adminster/deleteReport.do?num="+$(this).attr('data-id')+"&name="+$(this).attr('data-name');
     		}
-    		event.preventDefault();
+    		
     	})
     	
 	
-})
+
 
 
 </script>

@@ -59,6 +59,7 @@
 	 			</td>
 	 			<td>
 	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.uc_num}" data-name="uc_num" data-auth="${i.auth}">
+	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.urc_num}" data-name="urc_num" ">
 	 			</td>
 	 		</tr>
 	 		</c:if>
@@ -145,7 +146,14 @@ $('.rebtn').click(function(){
 	
 	
 })
-
+$('.delbtn').click(function(){
+    		const choose =confirm('정말삭제하시겠습니까?');
+    		
+    		if(choose){
+   			location.href="${pageContext.request.contextPath}/adminster/deleteReport.do?num="+$(this).attr('data-id')+"&name="+$(this).attr('data-name');
+    		}
+    		
+    	})
 
 </script>
 
