@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 글쓰기</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript">
 	window.onload = function(){
 		const inputcheck = document.getElementsByClassName('inputcheck');
@@ -43,7 +43,7 @@
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 <div class="page-main">
 <div class="eventvar">
 	<h1>EVENT 글수정</h1>

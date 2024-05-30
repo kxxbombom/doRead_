@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 팝업</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 <div class="page-main">
 	
 	<div class="eventvar">

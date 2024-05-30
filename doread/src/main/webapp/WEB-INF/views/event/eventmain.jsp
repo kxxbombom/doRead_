@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 메인</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 <div class="page-main">
 
 			<div class="eventvar">
@@ -52,7 +52,7 @@
 			<c:forEach var="event" items="${List}">
 			<div class="horizontal-area">
 				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
-					<img src="${pageContext.request.contextPath}/upload/${event.e_image}">
+					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="260px" height="320">
 					<span id ="e_title"><b>${event.e_title}</b></span>
 					<br>
 					이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
@@ -65,7 +65,7 @@
 			<c:forEach var="event" items="${List}">
 			<div class="horizontal-area">
 				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
-					<img src="${pageContext.request.contextPath}/upload/${event.e_image}">
+					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="260px" height="320">
 					<span id ="e_title"><b>${event.e_title}</b></span>
 					<br>
 					이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
