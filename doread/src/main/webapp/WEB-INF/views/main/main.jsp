@@ -27,20 +27,22 @@ setInterval(function() {
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h4>이벤트</h4>
-		<div class="slider-space">
-			<div class="arrow-button"><img src="${pageContext.request.contextPath}/images/prev.png" width="50"></div>
-			<c:forEach var="event" items="${eventList}">
-				<div class="image-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
-					<div class="event-item"><img src="${pageContext.request.contextPath}/upload/${event.e_image}"></div>
-					<div class="event-item">
-						<ul>
-							<li><h2>${event.e_title}</h2></li>
-							<li>${event.e_rdate}~${event.e_deadline}</li>
-						</ul>		
+		<div class="event-space">
+		<div class="arrow-button" id="button_prev"><img src="${pageContext.request.contextPath}/images/prev.png" width="30"></div>
+			<div class="slider-space">
+				<c:forEach var="event" items="${eventList}">
+					<div class="image-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
+						<div class="event-item"><img src="${pageContext.request.contextPath}/upload/${event.e_image}"></div>
+						<div class="event-item">
+							<ul>
+								<li><h2>${event.e_title}</h2></li>
+								<li>${event.e_rdate}~${event.e_deadline}</li>
+							</ul>		
+						</div>
 					</div>
-				</div>
-			</c:forEach>
-			<div class="arrow-button"><img src="${pageContext.request.contextPath}/images/next.png" width="50"></div>
+				</c:forEach>
+			</div>
+				<div class="arrow-button" id="button_next"><img src="${pageContext.request.contextPath}/images/next.png" width="30"></div>
 		</div>
 		<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">

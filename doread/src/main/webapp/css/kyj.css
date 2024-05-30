@@ -181,9 +181,24 @@ form#book_search ul li{
 	display:inline;
 }
 
+.event-space{
+	text-align:center;
+}
+
+.event-space div{
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.event-space .arrow-button{
+	width:40px;
+}
+
 .slider-space{
 	position:relative;
 	text-align:center;
+	width:800px;
 	height:300px;
 	overflow:hidden;
 }
