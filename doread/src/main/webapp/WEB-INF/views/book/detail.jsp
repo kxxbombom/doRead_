@@ -13,6 +13,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/book.fav.js"></script>
 
+
 </head>
 <body>
 <div class="page-main">
@@ -28,7 +29,7 @@
 			</ul>
 		</div>
 		<div class="book-detail">
-			<form id="book_cart">
+			<form id="book_cart" action="">
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
 				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
@@ -61,10 +62,27 @@
 							<label for=book_quantity id="quantity_label">구매수량</label>
 							<input type="number" name="book_quantity" id="book_quantity" min="1" max="${book.stock}">
 						</li>
+						
 						<li id="button-margin">
-							<input type="button" value="바로 구매" id="order" class="order-button">
+							<input type="submit" value="바로구매" id="order" class="order-button">
 							<input type="button" value="장바구니" id="insert_cart" class="order-button">
 						</li>
+						
+						<script type="text/javascript">
+							$(function(){
+								$('#book_cart').submit=function(){
+									
+								};
+						
+								
+								$('#insert_cart').click=function(){
+									const items = document.querySelectorAll('')
+								};
+								
+							});
+
+						</script>
+						
 					</c:if>
 				</ul>
 			</form>

@@ -49,8 +49,7 @@
 			</c:forEach>
 		</table>
 		<%-- <hr size="1" noshade width="100%"> --%>
-		
-		
+
 		<form id="list_search_form" action="newsList.do" method="get">
 			<ul class="list_search">
 				<li>

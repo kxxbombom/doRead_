@@ -83,10 +83,8 @@
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글끝 -->
 	</div>
-	<div class="hide reportdiv" style="width:300px; position:fixed;
-z-index:999 !important;
-bottom:400px;border:1px solid #999 !important;
-background:white;">
+	<div class="hide reportdiv" style="width:300px; position:fixed; z-index:999 !important;
+	bottom:400px;border:1px solid #999 !important;background:white;">
 		<h3>신고하기</h3>
 		<span> </span>
 		<hr size="1" width="100%" >
