@@ -22,7 +22,7 @@
 			<a href="${pageContext.request.contextPath}/member/logout.do" class="top-nav">로그아웃</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/member/loginForm.do" class="top-nav" >마이페이지</a>
+			<a href="${pageContext.request.contextPath}/member/mypage.do" class="top-nav" >마이페이지</a>
 		</li>
 		</c:if>
 		

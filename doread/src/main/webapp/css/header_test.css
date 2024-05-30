@@ -157,24 +157,44 @@ body{
 	position:absolute;
 	background:white;
 	text-align:center;
-	display:none;
+	/* display:none; */
+	border-radius:0 0 7px 7px;
+	
+	display: block; /* display를 block으로 변경 */
+    visibility: hidden;
+	opacity:0.1;
+	transform:translateY(-10%);
+	
 }
 #category_items > li{
-	padding:9px 30.4px;
+	padding:9.5px 33px;
 	text-decoration:none;
+	box-sizing:border-box;
 }
 #category_items > li a{
 	color:#336633;
 }
 #main_nav > li:hover #category_items{
 	display:block;
+	visibility:visible;
+	z-index:100;
+	opacity:1;
+	transform:translateY(0);
+	transition:opacity 0.8s ease, transform 0.5s ease;
 }
+#main_nav:first-child:hover #category_items{
+	box-shadow:0 0 4px rgba(0, 0, 0, 0.5);
+}
+
 #category_items > li:hover{
 	background:#336633;
-	border:4px solid #d7deaf;
+	border:1px solid #C5DEDA;
+	border-radius:5px;
+	padding:8.5px 32px;
+	transition:border 0.2s ease;
 }
 #category_items > li:hover a{
-	color:#FFF;
+	color:#f0eded;
 }
 
 

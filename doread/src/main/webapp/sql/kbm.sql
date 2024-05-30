@@ -72,11 +72,47 @@ CREATE TABLE cart (
 create sequence cart_seq;
 
 
+--주문
+create table order(
+
+);
+
+create table book_order(
+ order_num number NOT NULL,
+ order_total number(8) NOT NULL,
+ order_date date default sysdate NOT NULL,
+ order_name varchar2(30) NOT NULL, -- 수령인
+ order_zipcode varchar2(5) NOT NULL,
+ order_address1 varchar2(40) NOT NULL,
+ order_address2 varchar2(40) NOT NULL,
+ order_phone varchar2(15) NOT NULL,
+ order_msg varchar2(300),
+ order_payment number(1) NOT NULL, -- 1.계좌입금,2.신용카드
+ order_status number(1) default 1 NOT NULL --COMMENT '1.결제완료,2.배송시작,3.배송중,4.배송완료',
+ --book_num number NOT NULL,
+ mem_num number	NOT NULL
+ constraint order_pk primary key (order_num),
+ constraint order_fk foreign key (mem_num) references member (mem_num)
+);
+
+create sequence order_seq;
 
 
+--주문상세
+create table book_order_detail(
+ detail_num number NOT NULL,
+ book_price number(8) NOT NULL,
+ book_total number(8) NOT NULL,
+ order_quantity number(8) NOT NULL,
+ order_num number NOT NULL,
+ book_num number NOT NULL,
+ book_name varchar2(30) NOT NULL,
+ constraint order_detail_pk primary key (detail_num),
+ constraint order_detail_fk1 foreign key (order_num) references book_order (order_num),
+ -- constraint order_detail_fk2 foreign key (book_num) references book (book_num)
+);
 
-
-
+create sequence order_detail_seq;
 
 
 
