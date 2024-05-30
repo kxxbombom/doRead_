@@ -33,8 +33,12 @@ div#main_nav>ul>li:hover div#category_items{
 }
 
 
-/* 메인
+/* 도서정보
 ---------------------*/
+.content-main h2,form{
+	text-align:center;
+}
+
 .image-space .horizontal-area{
 	margin:2px;
 	padding:3px;
