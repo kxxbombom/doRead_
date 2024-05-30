@@ -41,6 +41,7 @@ window.onload=function(){
 					</select>
 				</li>
 				<li>
+					<input type="hidden" name="book_category" id="book_category" value="${param.book_category}">
 					<input type="search" size="30" name="keyword" id="keyword" value="${param.keyword}">
 				</li>
 				<li>
