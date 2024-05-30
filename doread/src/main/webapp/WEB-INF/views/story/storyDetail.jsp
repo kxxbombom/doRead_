@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>문의 상세</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/story.reply.js"></script>
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2>스토리 제목 :  ${sb.s_title}</h2>
 		조회 : ${sb.s_hit}
