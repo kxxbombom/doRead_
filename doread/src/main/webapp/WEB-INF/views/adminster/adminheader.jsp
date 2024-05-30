@@ -47,11 +47,11 @@
 			</div>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/adminster/adminreport.do" >중고보드신고내역</a>
+			<a href="${pageContext.request.contextPath}/adminster/ulist.do" >중고보드신고내역</a>
 			<div class="subul">
 			<ul style="font-size:12px;" >
-				<li><a href="#">/신고게시글</a><a href="${pageContext.request.contextPath}/adminster/srclist.do">/신고댓글</a></li>
-				<li><a href="${pageContext.request.contextPath}/adminster/limitlist.do">/정지게시글</a><a href="${pageContext.request.contextPath}/adminster/limitcommlist.do">/정지댓글</a></li>
+				<li><a href="${pageContext.request.contextPath}/adminster/ulist.do">/신고게시글</a><a href="${pageContext.request.contextPath}/adminster/uclist.do">/신고댓글</a></li>
+				<li><a href="${pageContext.request.contextPath}/adminster/ulimitlist.do">/정지게시글</a><a href="${pageContext.request.contextPath}/adminster/uclimitlist.do">/정지댓글</a></li>
 				
 			</ul>
 			</div>

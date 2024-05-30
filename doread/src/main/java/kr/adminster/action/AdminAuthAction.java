@@ -41,6 +41,18 @@ public class AdminAuthAction implements Action{
 				
 				map.put("result", "success");
 				
+			}else if(name.equals("u_num")) {
+				
+				dao.updateAuthU(auth, num);
+				
+				map.put("result", "success");
+				
+			}else if(name.equals("uc_num")) {
+				
+				dao.updateAuthUC(auth, num);
+				
+				map.put("result", "success");
+				
 			}
 			
 		}

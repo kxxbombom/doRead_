@@ -16,7 +16,7 @@
 <jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
-<h2>스토리 보드 신고된 게시글 관리</h2>
+<h2>USED 보드 신고된 게시글 관리</h2>
 	<c:if test="${empty list}">
 	 신고등록된 게시글이 없습니다.
 	</c:if>
@@ -33,19 +33,19 @@
 	 	<c:forEach var="i" items="${list}">
 	 		<c:if test="${i.auth == 0}">
 	 		<tr>
-	 			<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${i.s_num}">${i.s_num}</a></td>
+	 			<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_num}</a></td>
 	 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
-	 			<td><c:if test="${i.sr_category ==1 }">스팸홍보글/도배글</c:if>
-	 				<c:if test="${i.sr_category ==2 }">음란물</c:if>
-	 				<c:if test="${i.sr_category ==3 }">불법정보</c:if>
-	 				<c:if test="${i.sr_category ==4 }">청소년에게 유해한내용</c:if>
-	 				<c:if test="${i.sr_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
-	 				<c:if test="${i.sr_category ==6 }">개인정보노출</c:if>
-	 				<c:if test="${i.sr_category ==7 }">불쾌한 표현이 있습니다.</c:if>
+	 			<td><c:if test="${i.ur_category ==1 }">스팸홍보글/도배글</c:if>
+	 				<c:if test="${i.ur_category ==2 }">음란물</c:if>
+	 				<c:if test="${i.ur_category ==3 }">불법정보</c:if>
+	 				<c:if test="${i.ur_category ==4 }">청소년에게 유해한내용</c:if>
+	 				<c:if test="${i.ur_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
+	 				<c:if test="${i.ur_category ==6 }">개인정보노출</c:if>
+	 				<c:if test="${i.ur_category ==7 }">불쾌한 표현이 있습니다.</c:if>
 	 				
 	 			</td>
 	 			<td>
-	 				${i.sr_content}
+	 				${i.ur_content}
 	 			</td>
 	 			<td>
 	 				<c:if test="${i.auth ==0 }">일반</c:if>
@@ -53,8 +53,7 @@
 	 				<c:if test="${i.auth ==2 }">정지</c:if>
 	 			</td>
 	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.s_num}" data-name="s_num" data-auth="${i.auth}">
-	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.sr_num}" data-name="sr_num" ">
+	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
 	 			</td>
 	 		</tr>
 	 		</c:if>
@@ -117,7 +116,7 @@ $('.rebtn').click(function(){
 	}
 	
 	$.ajax({
-		url:'updateAuth.do',
+		url:'updateAuth2.do',
 		data:{num:$(this).attr('data-id'),name:$(this).attr('data-name'),auth:$('input[type="radio"]:checked').val()},
 		type:'post',
 		dataType:'json',
@@ -129,7 +128,7 @@ $('.rebtn').click(function(){
 				alert('등급이 변경되었습니다.');
 				
 				$('.authupdate').addClass('hide');
-				location.href="adminreport.do";
+				location.href="ulist.do";
 			}else{
 				alert('신고 접수 에러');
 			}
@@ -139,17 +138,6 @@ $('.rebtn').click(function(){
 		}
 	})
 	
-	
-})
-$('#delbtn').click(function(event){
-    		const choose =confirm('정말삭제하시겠습니까?');
-    		
-    		if(choose){
-   			location.href="${pageContext.request.contextPath}/adminster/deleteReport.do?sr_num="+$(this).attr('data-id');
-    		}
-    		event.preventDefault();
-    	})
-    	
 	
 })
 

@@ -13,6 +13,8 @@ import kr.controller.Action;
 import kr.report.dao.ReportDAO;
 import kr.report.vo.ScreportVO;
 import kr.report.vo.SreportVO;
+import kr.report.vo.UcReportVO;
+import kr.report.vo.UsedReportVO;
 
 public class ReportMainAction implements Action{
 
@@ -70,6 +72,46 @@ public class ReportMainAction implements Action{
 			dao.insertSCtroyre(sr);
 			map.put("result", "success");
 			
+			}
+		}else if(cate.equals("u_num")) {
+			int s_num = Integer.parseInt(request.getParameter("num"));
+			int s_category = Integer.parseInt(request.getParameter("category"));
+			if(dao.checkedU(s_num, mem_num)!=null ) {
+				map.put("result", "duple");
+				
+			}else {
+			
+			String content = request.getParameter("content");
+			UsedReportVO sr = new UsedReportVO();
+			sr.setMem_num(mem_num);
+			sr.setU_num(s_num);
+			sr.setUr_content(content);
+			sr.setUr_category(s_category);
+			
+			
+			
+			dao.insertUR(sr);
+			map.put("result", "success");
+			}
+		}else if(cate.equals("uc_num")) {
+			int s_num = Integer.parseInt(request.getParameter("num"));
+			int s_category = Integer.parseInt(request.getParameter("category"));
+			if(dao.checkedUC(s_num, mem_num)!=null ) {
+				map.put("result", "duple");
+				
+			}else {
+			
+			String content = request.getParameter("content");
+			UcReportVO sr = new UcReportVO();
+			sr.setMem_num(mem_num);
+			sr.setUc_num(s_num);
+			sr.setUrc_content(content);
+			sr.setUrc_category(s_category);
+			
+			
+			
+			dao.insertURC(sr);
+			map.put("result", "success");
 			}
 		}
 		

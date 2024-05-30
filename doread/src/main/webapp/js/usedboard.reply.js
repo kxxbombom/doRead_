@@ -1,4 +1,7 @@
   $(function(){  
+
+	
+	
 	let rowCount = 10;
 	let currentPage;
 	let count;
@@ -29,6 +32,7 @@
 				
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
+					if(item.ㅕc_auth == 0){
 					output += '<h4>' + item.mem_id + '</h4>';
 					output += '<div class="sub-item">';
 					output += '<p>'+item.uc_content+ '</p>';
@@ -45,6 +49,7 @@
 					}
 					output+= '<hr size="1" noshade width="100%">';
 					output+= '</div>';
+					}
 					output+= '</div>';
 					
 					//문서 객체에 추가
@@ -257,6 +262,9 @@
 	 * 초기 데이터 (목록) 호출
 	 *=======================================================*/
 	selectList(1);
+	
+	
+	
 	$(document).on('click', '.report',function(){
 		if($('.reportdiv').hasClass('hide')){
             $('.reportdiv').removeClass('hide');
@@ -267,6 +275,7 @@
             $('.reportdiv').addClass('hide');
            $('.rebtn').attr('data-id','');
              $('.rebtn').attr('data-name','');
+              $('.textareareport').val('');
     	    }
 		
 	});
@@ -275,10 +284,15 @@
             $('.reportdiv').addClass('hide');
             $('.rebtn').attr('data-id','');
             $('.rebtn').attr('data-name','');
+             $('.textareareport').val('');
     	    
 		
 	});
 	$('.rebtn').click(function(){
+		if($('input[type="radio"]:checked').length <1){
+			alert('신고사유를 클릭해주세요');
+			$('.textareareport').val('').trim();
+			return;}
 		if($('.textareareport').val().trim() ==''){
 			alert('신고사유를 입력해주세요');
 			$('.textareareport').val('').trim();
@@ -286,7 +300,7 @@
 		}
 		
 		$.ajax({
-			url:'reportMain.do',
+			url:'usedreport.do',
 			data:{num:$(this).attr('data-id'),content:$('.textareareport').val(),cate:$(this).attr('data-name'),category:$('input[type="radio"]:checked').val()},
 			type:'post',
 			dataType:'json',
@@ -296,7 +310,16 @@
 					
 				}else if(param.result=='success'){
 					alert('신고가 접수되었습니다.');
-				}else{
+					$('.textareareport').val('');
+					$('input[type="radio"]:checked').attr('checked','false');
+					$('.reportdiv').addClass('hide');
+				}else if(param.result=='duple'){
+					alert('이미 신고접수된 글/댓글 입니다.');
+					$('.textareareport').val('');
+					$('input[type="radio"]:checked').attr('checked','false');
+					$('.reportdiv').addClass('hide');
+				}
+				else{
 					alert('신고 접수 에러');
 				}
 			},

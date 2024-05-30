@@ -269,6 +269,7 @@ $(function(){
             $('.reportdiv').addClass('hide');
            $('.rebtn').attr('data-id','');
              $('.rebtn').attr('data-name','');
+             $('.textareareport').val('');
              $('input[type="radio"]:checked').attr('checked','false');
     	    }
 		
@@ -278,11 +279,17 @@ $(function(){
             $('.reportdiv').addClass('hide');
             $('.rebtn').attr('data-id','');
             $('.rebtn').attr('data-name','');
+            $('.textareareport').val('');
             $('input[type="radio"]:checked').attr('checked','false');
     	    
 		
 	});
+	
 	$('.rebtn').click(function(){
+		if($('input[type="radio"]:checked').length <1){
+			alert('신고사유를 클릭해주세요');
+			$('.textareareport').val('').trim();
+			return;}
 		if($('.textareareport').val().trim() ==''){
 			alert('신고사유를 입력해주세요');
 			$('.textareareport').val('').trim();

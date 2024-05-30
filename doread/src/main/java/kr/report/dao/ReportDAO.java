@@ -8,6 +8,8 @@ import java.util.List;
 
 import kr.report.vo.ScreportVO;
 import kr.report.vo.SreportVO;
+import kr.report.vo.UcReportVO;
+import kr.report.vo.UsedReportVO;
 import kr.util.DBUtil;
 
 public class ReportDAO {
@@ -376,7 +378,389 @@ public class ReportDAO {
 			
 		}
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//-------------------------------------------------------------------------
+		
+		public void insertUR(UsedReportVO report) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			String sql=null;
+			try {
+				conn = DBUtil.getConnection();
+				sql="insert into used_report(ur_num,ur_content,ur_category,mem_num,u_num) values(ur_seq.nextval,?,?,?,?)";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, report.getUr_content());
+				ps.setInt(2, report.getUr_category());
+				ps.setInt(3, report.getMem_num());
+				ps.setInt(4, report.getU_num());
+				
+				ps.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.getConnection();
+			}
+			}
+			
+		//
+			public void insertURC(UcReportVO report) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				String sql=null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="insert into used_comm_report(urc_num,urc_content,urc_category,mem_num,uc_num) values(sr_seq.nextval,?,?,?,?)";
+					
+					ps = conn.prepareStatement(sql);
+					ps.setString(1, report.getUrc_content());
+					ps.setInt(2, report.getUrc_category());
+					ps.setInt(3, report.getMem_num());
+					ps.setInt(4, report.getUc_num());
+					
+					ps.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.getConnection();
+				}
+			}
+		
 	
+			
+			//신고 중복체크?
+			public UsedReportVO checkedU(int u_num, int mem_num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				UsedReportVO report = null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="select * from used_report where u_num=? and mem_num=?";
+					
+					ps = conn.prepareStatement(sql);
+					
+					ps.setInt(1, u_num);
+					ps.setInt(2, mem_num);
+					re=ps.executeQuery();
+					
+					if(re.next()) {
+						report =new UsedReportVO();
+						report.setMem_num(mem_num);
+						report.setU_num(u_num);
+						report.setUr_category(re.getInt("ur_category"));
+						report.setUr_content(re.getString("ur_content"));
+						report.setUr_num(re.getInt("ur_num"));
+						
+						
+						
+					}
+					
+					
+				}catch(Exception e) {
+				throw new Exception(e);	
+				
+				}finally{
+					DBUtil.executeClose(re, ps, conn);
+				}
+				
+				
+				return report;
+				
+				
+			}
+			public UcReportVO checkedUC(int uc_num, int mem_num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				UcReportVO report = null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="select * from used_comm_report where uc_num=? and mem_num=?";
+					
+					ps = conn.prepareStatement(sql);
+					
+					ps.setInt(1, uc_num);
+					ps.setInt(2, mem_num);
+					re=ps.executeQuery();
+					
+					if(re.next()) {
+						report =new UcReportVO();
+						report.setMem_num(mem_num);
+						report.setUc_num(uc_num);
+						report.setUrc_category(re.getInt("urc_category"));
+						report.setUrc_content(re.getString("urc_content"));
+						report.setUrc_num(re.getInt("Urc_num"));
+						
+						
+						
+					}
+					
+					
+				}catch(Exception e) {
+				throw new Exception(e);	
+				
+				}finally{
+					DBUtil.executeClose(re, ps, conn);
+				}
+				
+				
+				return report;
+				
+				
+			}
+			
+			//관리자 전용 게시글 등급 수정
+			public void updateAuthU(int auth, int num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				String sql=null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="update usedbookboard set u_auth=?  where u_num=?";
+					
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, auth);
+					ps.setInt(2, num);
+					
+					ps.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.getConnection();
+				}
+				
+			}
+			
+			public void updateAuthUC(int auth, int num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				String sql=null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="update ub_comment set uc_auth=?  where uc_num=?";
+					
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, auth);
+					ps.setInt(2, num);
+					
+					ps.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.getConnection();
+				}
+				
+			}
+			
+				//관리자 전용 신고 삭제
+			public void deleteUr(int num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				String sql=null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="delete from used_report where ur_num=?";
+					
+					ps = conn.prepareStatement(sql);
+					
+					ps.setInt(1, num);
+					
+					ps.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.getConnection();
+				}
+				
+			}
+			
+			public void deleteUC(int num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				String sql=null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="delete from used_comm_report where urc_num=?";
+					
+					ps = conn.prepareStatement(sql);
+					
+					ps.setInt(1, num);
+					
+					ps.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.getConnection();
+				}
+				
+			}
+			
+			
+			
+			
+			//신고 목록 갯수
+			public int countU() throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				int count =0;
+				try {
+					conn= DBUtil.getConnection();
+					sql="select count(*) from used_report";
+					ps = conn.prepareStatement(sql);
+					re = ps.executeQuery();
+					
+					if(re.next()) {
+						count = re.getInt(1);
+						
+					}
+				}catch(Exception e) {
+					
+				}finally {
+					DBUtil.executeClose(re, ps, conn);
+				}
+				return count;
+				
+				
+			}
+			public int countUC() throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				int count =0;
+				try {
+					conn= DBUtil.getConnection();
+					sql="select count(*) from used_comm_report";
+					ps = conn.prepareStatement(sql);
+					re = ps.executeQuery();
+					
+					if(re.next()) {
+						count = re.getInt(1);
+						
+					}
+				}catch(Exception e) {
+					
+				}finally {
+					DBUtil.executeClose(re, ps, conn);
+				}
+				return count;
+				
+				
+			}
+			//신고 목록보기
+			public List<UsedReportVO> listU(int start,int end) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				List<UsedReportVO> list = null;
+				
+				try {
+					conn= DBUtil.getConnection();
+					sql="select * from (select rownum alnum, a.* from(select * from used_report join usedbookboard using(u_num) order by ur_num desc) a ) where alnum between ? and ? ";
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, start);
+					ps.setInt(2, end);
+					re = ps.executeQuery();
+					
+					if(re.next()) {
+						list = new ArrayList<UsedReportVO>();
+						do {
+							
+							UsedReportVO report =new UsedReportVO();
+							report.setMem_num(re.getInt("mem_num"));
+							report.setU_num(re.getInt("u_num"));
+							report.setUr_category(re.getInt("ur_category"));
+							report.setUr_content(re.getString("ur_content"));
+							report.setUr_num(re.getInt("ur_num"));
+							report.setAuth(re.getInt("u_auth"));
+							list.add(report);
+							
+						}while(re.next());
+						
+						
+					}
+				}catch(Exception e) {
+					
+				}finally {
+					DBUtil.executeClose(re, ps, conn);
+				}
+				return list;
+				
+				
+			}
+			
+			public List<UcReportVO> listUC(int start,int end) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				List<UcReportVO> list = null;
+			
+				try {
+					conn= DBUtil.getConnection();
+					sql="select * from (select rownum alnum, a.* from(select * from used_comm_report join ub_comment using(uc_num) order by urc_num desc) a ) where alnum between ? and ? ";
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, start);
+					ps.setInt(2, end);
+					re = ps.executeQuery();
+					
+					if(re.next()) {
+						list = new ArrayList<UcReportVO>();
+						do {
+							
+							UcReportVO report =new UcReportVO();
+							report.setMem_num(re.getInt("mem_num"));
+							report.setUc_num(re.getInt("uc_num"));
+							report.setUrc_category(re.getInt("urc_category"));
+							report.setUrc_content(re.getString("urc_content"));
+							report.setUrc_num(re.getInt("urc_num"));
+							report.setAuth(re.getInt("uc_auth"));
+							report.setContent(re.getString("uc_content"));
+							report.setU_num(re.getInt("u_num"));
+							list.add(report);
+							
+						}while(re.next());
+						
+						
+					}
+				}catch(Exception e) {
+					
+				}finally {
+					DBUtil.executeClose(re, ps, conn);
+				}
+				return list;
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 		
 

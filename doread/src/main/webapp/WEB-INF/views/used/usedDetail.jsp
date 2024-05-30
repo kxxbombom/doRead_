@@ -47,6 +47,34 @@
            	
         </ul>
        </div>
+       	<script type="text/javascript">
+    	$(".global_site a").click(function() {
+        if($('#updel').hasClass('hide')){
+            $('#updel').removeClass('hide');
+        }else{
+            $('#updel').addClass('hide');
+    	    }
+  	  });
+    	
+    	$('#delbtn').click(function(event){
+    		const choose =confirm('정말삭제하시겠습니까?');
+    		
+    		if(choose){
+   			location.href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}"
+    		}
+    		event.preventDefault();
+    	})
+    	
+   	$('#eventbtn').click(function(event){
+    		const choose =prompt('당첨 멤버 번호를 입력하세요');
+    		
+    		if(choose){
+    			location.href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}&e_mem_num="+choose;
+    		}
+    		event.preventDefault();
+    	})
+		</script>
+		
         
 		</div>
 		</c:if>
@@ -95,6 +123,9 @@
  	
 		</div>
 		</div>
+		<div class="align-right">
+					<a class="report" data-id="${used.u_num}" href="#" data-name="u_num" >신고</a>
+				</div>
 		<hr width="100%" size="1" noshade="noshade">
 	<!-- 댓글시작 -->
 		<div id="reply_div">
@@ -125,7 +156,21 @@
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글끝 -->
 </div>
-
+<div class="hide reportdiv" style="width:400px; position:fixed; z-index:999 !important;
+	bottom:400px;border:1px solid #999 !important;background:white;">
+		<h3>신고하기</h3>
+		<span> </span>
+		<hr size="1" width="100%" >
+		<input type="radio" name="reportcategory" class="inputcheck input-style radio2" value="1" />스팸홍보글/도배글<br>
+		<input  type="radio" name="reportcategory" value="2" class="inputcheck input-style radio2"  /> 음란물<br>
+		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="3"  />불법정보<br>
+		<input type="radio" name="reportcategory" class="inputcheck input-style radio2" value="4" />청소년에게 유해한내용<br>
+		<input  type="radio" name="reportcategory" value="5" class="inputcheck input-style radio2"  /> 욕설/생명경시/혐오/차별적표현<br>
+		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="6"  />개인정보노출<br>
+		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="7"  />불쾌한 표현이 있습니다.<br>
+		<textarea class="textareareport"></textarea><br>
+		<input type="button" class="rebtn" value="신고하기" ><input class="redelbtn" type="button" id="rebtn" value="취소">
+	</div>
 		
 
 </body>
