@@ -18,21 +18,37 @@
 			<h2>내가 쓴 댓글</h2>
 			<hr size="1" noshade width="100%">
 		</div>
-		<h4>스토리 게시판</h4>
+		<h4>스토리 게시판 댓글</h4>
 		<table>
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
 				<th>작성일</th>
 			</tr>
-			<c:forEach var="story" items="${storylist}">
+			<c:forEach var="SCommentList" items="${SCommentList}">
 			<tr>
-				<td>${story.s_num}</td>
-				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
-				<td>${story.s_rdate}</td>
+				<td>${SCommentList.sc_num}</td>
+				<td><a href="storyDetail.do?s_num=${SCommentList.s_num}">${SCommentList.sc_content}</a></td>
+				<td>${SCommentList.sc_rdate}</td>
 			</tr>
 			</c:forEach>	
 		</table>
-	</div>
+			<hr size="1" noshade width="100%">
+		<h4>스토리 게시판 댓글</h4>
+		<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성일</th>
+			</tr>
+			<c:forEach var="UBCList" items="${UBCList}">
+			<tr>
+				<td>${UBCList.uc_num}</td>
+				<td><a href="storyDetail.do?s_num=${UBCList.uc_num}">${UBCList.uc_content}</a></td>
+				<td>${UBCList.uc_rdate}</td>
+			</tr>
+			</c:forEach>	
+		</table>
+</div>
 </body>
 </html>
