@@ -155,6 +155,7 @@ body{
 }
 #category_items > li:hover{
 	background:#336633;
+	border:4px solid #d7deaf;
 }
 #category_items > li:hover a{
 	color:#FFF;

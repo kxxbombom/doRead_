@@ -12,7 +12,7 @@
 			<a href="${pageContext.request.contextPath}/member/loginForm.do" class="top-nav" >로그인</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/member/loginForm.do" class="top-nav" >마이페이지</a>
+			<a href="${pageContext.request.contextPath}/member/mypage.do" class="top-nav" >마이페이지</a>
 		</li>
 		</c:if>
 		
@@ -27,8 +27,12 @@
 		</c:if>
 		
 		<c:if test="${!empty user_num && user_auth == 9}">
+		<li class="menu-logout">
+			[<span>${user_id}</span>]
+			<a href="${pageContext.request.contextPath}/member/logout.do" class="top-nav">로그아웃</a>
+		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/member/adminList.do" class="top-nav">회원관리</a>
+			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" class="top-nav">관리자페이지</a>
 		</li>
 		</c:if>
 		
@@ -86,11 +90,6 @@
 		<li>
 			<a href="${pageContext.request.contextPath}/qna/qnaList.do" class="nav">QnA</a>
 		</li>
-		<c:if test="${!empty user_num && user_auth == 9}">
-		<li>
-			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" class="nav">관리자페이지</a>
-		</li>
-		</c:if>
 	</ul>
 </div>
 <!-- header 끝 -->
