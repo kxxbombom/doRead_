@@ -576,6 +576,9 @@ div.findPW-main{
 } */
 /* 공통 목록
 ---------------------*/
+.click-image{
+	cursor:pointer;
+}
 form#list_search_form{
 	border:none;
 	margin:0 auto;
