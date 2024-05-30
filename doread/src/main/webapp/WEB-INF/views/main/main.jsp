@@ -8,7 +8,10 @@
 <title>메인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
+<script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+</script>
 </head> 
 <body>
 <div class="page-main">
@@ -17,14 +20,12 @@
 		<h4>이벤트</h4>
 		<div class="image-space">
 			<c:forEach var="event" items="${eventList}">
-			<div class="horizontal-area">
-				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
-					<img src="${pageContext.request.contextPath}/upload/${event.e_image}">
-					<span>${event.e_title}</span>				
-					<br>
-				</a>
-			</div>
+				<div class="image-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
+					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" class="event-item">
+					<div class="event-item"><h2>${event.e_title}</h2></div>
+				</div>
 			</c:forEach>
+			
 			<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 			</div>

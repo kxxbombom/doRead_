@@ -24,7 +24,7 @@ public class MainAction implements Action{
 		
 		//이벤트 표시
 		EventDAO dao2 = EventDAO.getInstance();
-		List<EventVO> eventList = dao2.getListEvent(1, 1, "1", null); 
+		List<EventVO> eventList = dao2.getListEvent(1, 8, "1", null); 
 		
 		request.setAttribute("eventList", eventList);
 		

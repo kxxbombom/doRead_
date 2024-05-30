@@ -35,7 +35,7 @@ div#main_nav>ul>li:hover div#category_items{
 
 /* 도서정보
 ---------------------*/
-.content-main h2,form{
+ h2,form.content-center{
 	text-align:center;
 }
 
@@ -179,4 +179,14 @@ input#book_quantity{
 
 form#book_search ul li{
 	display:inline;
+}
+
+div.image-items{
+	width:900px;
+	height:500px;
+}
+
+div.image-items .event-item{
+	display:inline;
+	overflow:hidden;
 }
