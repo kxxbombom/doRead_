@@ -206,7 +206,7 @@ private static CartDAO instance = new CartDAO();
 		try {
 			conn = DBUtil.getConnection();
 
-			sql = "DELETE FROM zcart WHERE c_num=?";
+			sql = "DELETE FROM cart WHERE c_num=?";
 
 			pstmt = conn.prepareStatement(sql);
 

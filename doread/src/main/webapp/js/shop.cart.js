@@ -1,7 +1,47 @@
 $(function(){
-	/*================
-	 *	장바구니 상품 삭제
-	 *================*/
+	
+	/*	장바구니 수량 변경 */
+	
+	$('.cart-modify').on('click',function(){
+		const input_quantity = $(this).parent().find('input[name="c_quantity"]');
+		if(input_quantity.val() == ''){
+			alert('수량을 입력하세요');
+			input_quantity.focus();
+			return;
+		}
+		if(input_quantity.val() < 1){
+			alert('상품의 최소 수량은 1입니다.');
+			input_quantity.val(input_quantity.attr('value'));
+			return;
+		}
+
+		$.ajax({
+			url:'modifyCart.do',
+			type:'post',
+			data:{cart_num:$(this).attr('data-cartnum'),book_num:$(this).attr('data-booknum'),c_quantity:input_quantity.val()},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인 후 사용하세요');
+				}else if(param.result == 'overQuantity'){
+					alert('상품의 수량이 부족합니다.');
+					location.href='list.do';
+				}else if(param.result == 'success'){
+					alert('상품의 개수가 수정되었습니다.');
+					location.href='list.do';
+				}else{
+					alert('장바구니 상품 수량 수정 오류');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류');
+			}
+		});
+	});
+	
+	
+	/*	장바구니 상품 삭제*/
+	
 	$('.cart-del').on('click',function(){
 
 		$.ajax({
@@ -25,46 +65,4 @@ $(function(){
 		});
 	});
 	
-	/*===================
-	 *	장바구니 상품 수량 변경
-	 *===================*/
-	$('.cart-modify').on('click',function(){
-		const input_quantity = $(this).parent().find('input[name="c_quantity"]');
-		if(input_quantity.val() == ''){
-			alert('수량을 입력하세요');
-			input_quantity.focus();
-			return;
-		}
-		if(input_quantity.val() < 1){
-			alert('상품의 최소 수량은 1입니다.');
-			input_quantity.val(input_quantity.attr('value'));
-			return;
-		}
-
-		$.ajax({
-			url:'modifyCart.do',
-			type:'post',
-			data:{cart_num:$(this).attr('data-cartnum'),item_num:$(this).attr('data-itemnum'),c_quantity:c_quantity.val()},
-			dataType:'json',
-			success:function(param){
-				if(param.result == 'logout'){
-					alert('로그인 후 사용하세요');
-				}else if(param.result == 'noSale'){
-					alert('판매가 중지되었습니다.');
-					location.href='list.do';
-				}else if(param.result == 'overQuantity'){
-					alert('상품의 수량이 부족합니다.');
-					location.href='list.do';
-				}else if(param.result == 'success'){
-					alert('상품의 개수가 수정되었습니다.');
-					location.href='list.do';
-				}else{
-					alert('장바구니 상품 수량 수정 오류');
-				}
-			},
-			error:function(){
-				alert('네트워크 오류');
-			}
-		});
-	});
 });

@@ -41,6 +41,7 @@
 	 					<td>
 	 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
 	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="80">
+	 							<br>
 	 							${cart.bookVO.book_name}
 	 						</a>
 	 					</td>
@@ -49,7 +50,7 @@
 	 						<c:if test="${cart.bookVO.stock >= cart.c_quantity}">
 	 							<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width">
 	 							<br>												<%--커스텀 데이터--%>
-	 							<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.c_num}" data-itemnum="${cart.book_num}">
+	 							<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}">
 	 						</c:if>
 	 					</td>
 	 					<td class="align-center">
