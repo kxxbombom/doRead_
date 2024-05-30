@@ -31,7 +31,7 @@ public class InsertCartAction implements Action{
 			
 			CartVO cart = new CartVO();
 			cart.setBook_num(Integer.parseInt(request.getParameter("book_num")));
-			cart.setC_quantity(Integer.parseInt(request.getParameter("c_quantity")));
+			cart.setC_quantity(Integer.parseInt(request.getParameter("book_quantity")));
 			cart.setMem_num(user_num);
 			
 			// 동일 상품 유무 확인. 동일 상품일 경우 합치기 & 재고수량 확인

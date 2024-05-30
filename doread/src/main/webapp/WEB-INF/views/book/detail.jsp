@@ -29,7 +29,8 @@
 			</ul>
 		</div>
 		<div class="book-detail">
-			<form id="book_cart" action="">
+		
+			<form id="book_cart" action="${pageContext.request.contextPath}/order/orderForm.do" method="post">
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
 				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
@@ -70,17 +71,64 @@
 						
 						<script type="text/javascript">
 							$(function(){
-								$('#book_cart').submit=function(){
+								$('#book_quantity').on('keyup',function(){
+									if($('#book_quantity').val() == ''){
+										alert('수량은 1개 이상 선택');
+										$('#book_quantity').focus();
+										return;
+									}
+									if($('#book_quantity').val() <= 0){
+										alert('수량은 1개 이상 선택');
+										$('#book_quantity').val('');
+										return;
+									}
+									if(Number(${book.stock}) < $('#book_quantity').val()){
+										alert('수량이 부족합니다!');
+										$('#book_quantity').val('');
+										return;
+									}
+								});
+								<%--구매버튼--%>
+								$('#book_cart').submit(function(){
+									if($('#book_quantity').val().trim() == ''){
+										alert('수량을 입력하세요');
+										$('#book_quantity').val('').focus();
+										return false;
+									}
+								});
+								<%--장바구니담기--%>
+								$('#insert_cart').click(function(){
+									if($('#book_quantity').val() == ''){
+										alert('수량을 입력하세요');
+										$('#book_quantity').focus();
+										return;
+									}
+									$.ajax({
+										url:'../cart/insertCart.do',
+										type:'post',
+										data:{book_num:$('#book_num').val(),book_price:$('#book_price').val(),book_stock:$('#book_stock').val(),book_quantity:$('#book_quantity').val()},
+										dataType:'json',
+										success:function(param){
+											if(param.result == 'logout'){
+												alert('로그인 후 사용하세요');
+											}else if(param.result == 'success'){
+												alert('장바구니에 상품을 담았습니다.');
+												location.href='../cart/list.do';
+											}else if(param.result == 'overquantity'){
+												alert('기존에 주문한 상품입니다. 개수를 추가하면 재고가 부족합니다.');
+											}else{
+												alert('장바구니 담기 오류');
+											}
+										},
+										error:function(){
+											alert('네트워크 오류 발생');
+										}
 									
-								};
+									});
+								});
+								
+							});	
 						
-								
-								$('#insert_cart').click=function(){
-									const items = document.querySelectorAll('')
-								};
-								
-							});
-
 						</script>
 						
 					</c:if>
