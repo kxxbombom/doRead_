@@ -485,6 +485,7 @@ public class UsedDAO {
 				ub.setUc_num(rs.getInt("uc_num"));
 				ub.setMem_num(rs.getInt("mem_num"));//작성자 회원번호
 				ub.setMem_id(rs.getString("mem_id"));//작성자 아이디
+				ub.setU_num(rs.getInt("u_num"));//게시글 번호
 				
 				list.add(ub);
 			}

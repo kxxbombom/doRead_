@@ -32,7 +32,6 @@
 				<th>작성자</th>
 				</c:if>
 				<th>작성일</th>
-				<th>수정일</th>
 				<th>조회</th>
 			</tr>
 			<c:forEach var="news" items="${list}">
@@ -43,7 +42,6 @@
 				<td class="text-center">${news.mem_id}</td>
 				</c:if>
 				<td class="text-center">${news.news_rdate}</td>
-				<td class="text-center">${news.news_mdate}</td>
 				<td>${news.news_hit}</td>
 			</tr>
 			</c:forEach>

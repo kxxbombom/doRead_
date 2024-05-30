@@ -439,6 +439,7 @@ public class StoryBoardDAO {
 						comment.setSc_num(rs.getInt("sc_num"));
 						comment.setMem_num(rs.getInt("mem_num"));//작성자 회원번호
 						comment.setMem_id(rs.getString("mem_id"));//작성자 아이디
+						comment.setS_num(rs.getInt("s_num"));//story 번호
 						
 						list.add(comment);
 					}

@@ -21,30 +21,32 @@
 		<h4>스토리 게시판 댓글</h4>
 		<table>
 			<tr>
-				<th>글번호</th>
-				<th>제목</th>
+				<th>댓글 번호</th>
+				<th>내용</th>
 				<th>작성일</th>
 			</tr>
 			<c:forEach var="SCommentList" items="${SCommentList}">
+			<input type="hidden" name="s_num" id="s_num" value="${SCommentList.s_num}">
 			<tr>
 				<td>${SCommentList.sc_num}</td>
-				<td><a href="storyDetail.do?s_num=${SCommentList.s_num}">${SCommentList.sc_content}</a></td>
+				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${SCommentList.s_num}">${SCommentList.sc_content}</a></td>
 				<td>${SCommentList.sc_rdate}</td>
 			</tr>
 			</c:forEach>	
 		</table>
 			<hr size="1" noshade width="100%">
-		<h4>스토리 게시판 댓글</h4>
+		<h4>중고 게시판 댓글</h4>
 		<table>
 			<tr>
-				<th>글번호</th>
-				<th>제목</th>
+				<th>댓글 번호</th>
+				<th>내용</th>
 				<th>작성일</th>
 			</tr>
 			<c:forEach var="UBCList" items="${UBCList}">
+			<input type="hidden" name="u_num" id="u_num" value="${UBCList.u_num}">
 			<tr>
 				<td>${UBCList.uc_num}</td>
-				<td><a href="storyDetail.do?s_num=${UBCList.uc_num}">${UBCList.uc_content}</a></td>
+				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${UBCList.u_num}">${UBCList.uc_content}</a></td>
 				<td>${UBCList.uc_rdate}</td>
 			</tr>
 			</c:forEach>	
