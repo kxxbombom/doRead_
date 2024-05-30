@@ -36,11 +36,11 @@ public class UsedUpdateAction implements Action{
 		//String u_image = request.getParameter("u_image");
 		int u_condition = Integer.parseInt(request.getParameter("sel"));
 		
-		UsedVO usedvo = new UsedVO();
+		UsedVO usedvo = dao.detatilUsed(u_num);
 		usedvo.setU_ip(request.getRemoteAddr());
 		usedvo.setU_num(u_num);
 		usedvo.setMem_num(mem_num);
-		usedvo.setBook_num(book_num);
+		if(usedvo.getBook_num() == 0) {usedvo.setBook_num(book_num);}
 		if(used.getU_image()!= null) {
 			FileUtil.removeFile(request, used.getU_image());
 		}

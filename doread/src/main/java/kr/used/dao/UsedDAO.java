@@ -179,6 +179,7 @@ public class UsedDAO {
 				used.setU_mdate(re.getDate("u_mdate"));
 				used.setU_image(re.getString("u_image"));
 				used.setU_ip(re.getString("u_ip"));
+				used.setBook_num(re.getInt("book_num"));
 				used.setBook_name(re.getString("book_name"));
 				used.setUser_image(re.getString("mem_photo"));
 				used.setId(re.getString("mem_id"));

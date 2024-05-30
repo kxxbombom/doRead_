@@ -60,19 +60,12 @@
     		const choose =confirm('정말삭제하시겠습니까?');
     		
     		if(choose){
-   			location.href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}"
+   			location.href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}"
     		}
     		event.preventDefault();
     	})
     	
-   	$('#eventbtn').click(function(event){
-    		const choose =prompt('당첨 멤버 번호를 입력하세요');
-    		
-    		if(choose){
-    			location.href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}&e_mem_num="+choose;
-    		}
-    		event.preventDefault();
-    	})
+   	
 		</script>
 		
         

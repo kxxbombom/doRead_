@@ -147,6 +147,7 @@ public class EventDAO {
 					event.setE_mem_num(rs.getInt("e_mem_num"));
 					
 					
+					
 				}
 			}catch(Exception e) {
 				
