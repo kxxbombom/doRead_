@@ -581,11 +581,7 @@ form#list_search_form{
 	margin:0 auto;
 	width:500px;
 }
-.search-form-center{
-	display:inline;
-	width:600px;
-	
-}
+
 ul.list_search{
 	width:350px;
 	list-style:none;
