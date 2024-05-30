@@ -29,10 +29,16 @@ public class ReportMainAction implements Action{
 		Integer mem_num = (Integer) session.getAttribute("user_num");
 		request.setCharacterEncoding("utf-8");
 		String cate = request.getParameter("cate");
-		
+		ReportDAO dao = ReportDAO.getInstance();
+	
 		if(cate.equals("s_num")) {
 			int s_num = Integer.parseInt(request.getParameter("num"));
 			int s_category = Integer.parseInt(request.getParameter("category"));
+			if(dao.checkedSre(s_num, mem_num) != null) {
+				map.put("result", "duple");
+				
+			}else {
+			
 			String content = request.getParameter("content");
 			SreportVO sr = new SreportVO();
 			sr.setMem_num(mem_num);
@@ -41,12 +47,17 @@ public class ReportMainAction implements Action{
 			sr.setSr_category(s_category);
 			
 			
-			ReportDAO dao = ReportDAO.getInstance();
+			
 			dao.insertStroyre(sr);
 			map.put("result", "success");
+			}
 		}else if(cate.equals("sc_num")) {
 			int s_num = Integer.parseInt(request.getParameter("num"));
 			int s_category = Integer.parseInt(request.getParameter("category"));
+			if(dao.checkedSCre(s_num, mem_num) != null) {
+				map.put("result", "duple");
+				
+			}else {
 			String content = request.getParameter("content");
 			ScreportVO sr = new ScreportVO();
 			sr.setMem_num(mem_num);
@@ -55,11 +66,11 @@ public class ReportMainAction implements Action{
 			sr.setSrc_category(s_category);
 			
 			
-			ReportDAO dao = ReportDAO.getInstance();
+			
 			dao.insertSCtroyre(sr);
 			map.put("result", "success");
 			
-			
+			}
 		}
 		
 		}

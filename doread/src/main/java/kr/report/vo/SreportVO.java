@@ -6,6 +6,13 @@ public class SreportVO {
 	private int sr_category;
 	private int mem_num;
 	private int s_num;
+	private int auth;
+	public int getAuth() {
+		return auth;
+	}
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
 	public int getSr_num() {
 		return sr_num;
 	}

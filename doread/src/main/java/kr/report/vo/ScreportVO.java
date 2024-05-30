@@ -6,7 +6,29 @@ public class ScreportVO {
 	private int src_category;
 	private int mem_num;
 	private int sc_num;
+	private int auth;
+	private String content;
+	private int s_num;
 	
+
+	public int getS_num() {
+		return s_num;
+	}
+	public void setS_num(int s_num) {
+		this.s_num = s_num;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public int getAuth() {
+		return auth;
+	}
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
 	public int getSrc_num() {
 		return src_num;
 	}

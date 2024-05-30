@@ -29,6 +29,7 @@ $(function(){
 				
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
+					if(item.sc_auth == 0){
 					output += '<h4>' + item.mem_id + '</h4>';
 					output += '<div class="sub-item">';
 					output += '<p>'+item.sc_content+ '</p>';
@@ -45,6 +46,7 @@ $(function(){
 					}
 					output+= '<hr size="1" noshade width="100%">';
 					output+= '</div>';
+					}
 					output+= '</div>';
 					
 					//문서 객체에 추가
@@ -267,6 +269,7 @@ $(function(){
             $('.reportdiv').addClass('hide');
            $('.rebtn').attr('data-id','');
              $('.rebtn').attr('data-name','');
+             $('input[type="radio"]:checked').attr('checked','false');
     	    }
 		
 	});
@@ -275,6 +278,7 @@ $(function(){
             $('.reportdiv').addClass('hide');
             $('.rebtn').attr('data-id','');
             $('.rebtn').attr('data-name','');
+            $('input[type="radio"]:checked').attr('checked','false');
     	    
 		
 	});
@@ -296,6 +300,14 @@ $(function(){
 					
 				}else if(param.result=='success'){
 					alert('신고가 접수되었습니다.');
+					$('.textareareport').val('');
+					$('input[type="radio"]:checked').attr('checked','false');
+					$('.reportdiv').addClass('hide');
+				}else if(param.result=='duple'){
+					alert('이미 신고접수된 글/댓글 입니다.');
+					$('.textareareport').val('');
+					$('input[type="radio"]:checked').attr('checked','false');
+					$('.reportdiv').addClass('hide');
 				}else{
 					alert('신고 접수 에러');
 				}

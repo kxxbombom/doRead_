@@ -58,3 +58,26 @@ CREATE TABLE st_comm_report (
 );
 create sequence sr_seq;
 create sequence src_seq;
+
+CREATE TABLE used_report (
+	ur_num	number		NOT NULL primary key,
+	ur_content	varchar2(300)		NOT NULL,
+	ur_category	number(1)		NOT NULL,
+	mem_num	number		NOT NULL,
+	u_num	number		NOT NULL,
+	constraint u_fk1 foreign key (mem_num) references member(mem_num),
+	constraint u_fk2 foreign key (u_num) references usedbookboard(u_num)
+);
+create sequence ur_seq;
+create sequence urc_seq;
+
+CREATE TABLE used_comm_report (
+	urc_num	number		NOT NULL primary key,
+	urc_content	varchar2(300)		NOT NULL,
+	urc_category	number(1)		NOT NULL,
+	mem_num	number		NOT NULL,
+	uc_num	number		NOT NULL,
+	constraint uc_fk1 foreign key (mem_num) references member(mem_num),
+	constraint uc_fk2 foreign key (uc_num) references ub_comment(uc_num)
+);
+
