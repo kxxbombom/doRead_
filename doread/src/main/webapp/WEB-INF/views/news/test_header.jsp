@@ -41,7 +41,7 @@
 <div id="main_logo">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav" id="doread"><img src="../images/logo.png" width="40px">Do Read</a>
+			<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav" id="doread"><img src="../images/pngwing.com.png" width="40px">Do Read</a>
 
 		</li>
 
