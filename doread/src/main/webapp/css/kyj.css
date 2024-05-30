@@ -181,12 +181,26 @@ form#book_search ul li{
 	display:inline;
 }
 
-div.image-items{
-	width:900px;
-	height:500px;
+.slider-space{
+	position:relative;
+	text-align:center;
+	height:300px;
+	overflow:hidden;
+}
+
+div.slider-space .image-items{
+	position:relative;
+	display:inline-block;
+	text-align:center;	
+	width:800px;
+	height:300px;
 }
 
 div.image-items .event-item{
-	display:inline;
-	overflow:hidden;
+	position:relative;
+	display:inline-block;
+}
+
+.event-item ul li,h2{
+	text-align:left;
 }
