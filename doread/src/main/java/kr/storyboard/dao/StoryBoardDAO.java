@@ -560,4 +560,55 @@ public class StoryBoardDAO {
 					DBUtil.executeClose(null, pstmt, conn);
 				}
 			}
+			//my글 목록,검색 글 목록
+			public List<StoryBoardVO> getListMyStoryBoard(int start, int end, String keyfield, String keyword, int user_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<StoryBoardVO> list = null;
+				String sql = null;
+				String sub_sql = "";
+				int cnt = 0;
+				try {
+					//커넥션풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					if(keyword!=null && !"".equals(keyword)) {
+						if(keyfield.equals("1")) sub_sql +="WHERE s_title LIKE '%' || ? || '%'";
+						else if(keyfield.equals("2")) sub_sql +="WHERE s_content LIKE '%' || ? || '%'";
+					}
+					
+					//SQL문 작성
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard " + sub_sql
+							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=? AND mem_num=?" ;
+					pstmt = conn.prepareStatement(sql);
+					if(keyword!=null&&!"".equals(keyword)) {
+						pstmt.setString(++cnt, keyword);
+					}
+					pstmt.setInt(++cnt, start);
+					pstmt.setInt(++cnt, end);
+					pstmt.setInt(++cnt, user_num);
+					//sql문 실행
+					rs= pstmt.executeQuery();
+					list = new ArrayList<StoryBoardVO>();
+					while(rs.next()) {
+						StoryBoardVO sv = new StoryBoardVO();
+						sv.setS_num(rs.getInt("s_num"));
+						sv.setS_title(StringUtil.useBrNoHTML(rs.getString("s_title")));//html 태그 허용 x
+						sv.setS_content(rs.getString("s_content"));
+						sv.setS_auth(rs.getInt("s_auth"));
+						sv.setS_hit(rs.getInt("s_hit"));
+						sv.setS_image(rs.getString("s_image"));
+						sv.setS_rdate(rs.getDate("s_rdate"));
+						sv.setBook_num(rs.getInt("book_num"));
+						
+						list.add(sv);
+					}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return list;
+			}
 }

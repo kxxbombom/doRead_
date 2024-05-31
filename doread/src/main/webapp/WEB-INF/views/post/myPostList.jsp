@@ -32,7 +32,7 @@
 				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
 				<td>${story.s_rdate}</td>
 			</tr>
-			</c:forEach>	
+			</c:forEach>		
 		</table>
 		<h4>Qna 게시판</h4>
 		<table>
