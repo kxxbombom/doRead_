@@ -7,13 +7,13 @@
 <meta charset="UTF-8">
 <title>게시글 내역</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div id="post-main">
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="post-header">
 			<h2>내가 쓴 글</h2>

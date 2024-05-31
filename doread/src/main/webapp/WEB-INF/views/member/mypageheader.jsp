@@ -49,7 +49,7 @@
 				<a>활동내역</a>
 				<div class="myul">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/post/postlist.do">내가 쓴 게시글 내역</a></li>
+							<li><a href="${pageContext.request.contextPath}/post/myPostList.do">내가 쓴 게시글 내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/post/myCommentList.do">내가 쓴 댓글 내역</a></li>
 						</ul>
 				</div>

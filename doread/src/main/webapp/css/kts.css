@@ -90,6 +90,9 @@ div#mypage-main div.mypage-div ul li a{
 #main_nav{
 	display:none;
 }
+.main-nav-container{
+	display:none;
+}
 .mypage-button{
 	margin:30px;
 	
@@ -207,7 +210,7 @@ table td, table th{
 }
 /*회원 탈퇴*/
 #delete_form{
-	margin-left:400px;
+	margin-left:300px;
 }
 .delete-button{
 	margin-left:100px;

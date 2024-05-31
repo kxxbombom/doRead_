@@ -12,7 +12,7 @@ import kr.storyboard.dao.StoryBoardDAO;
 import kr.storyboard.vo.StoryBoardVO;
 import kr.util.PagingUtil;
   
-public class PostListAction implements Action{
+public class MyPostListAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pageNum = request.getParameter("pageNum");
@@ -36,13 +36,13 @@ public class PostListAction implements Action{
 		QnaDAO dao2 = QnaDAO.getInstance();
 		List<QnaVO> qnalist = null;
 		if(count > 0) {
-			qnalist = dao2.getListQna(page.getStartRow(), page.getEndRow(), keyfield, keyword);
+			qnalist = dao2.getListQnaForAdmin(page.getStartRow(), page.getEndRow(), keyfield, keyword);
 		}
 		
 		request.setAttribute("qnalist", qnalist);
 		
 		// JSP 경로 반환
-		return "/WEB-INF/views/post/postlist.jsp";
+		return "/WEB-INF/views/post/myPostList.jsp";
 	}
 	
 }

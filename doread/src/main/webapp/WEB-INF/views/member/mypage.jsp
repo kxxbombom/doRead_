@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>mypage</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -126,8 +126,8 @@ $(function(){
 		</c:if>
 		
 	</ul>
-	</div>
-	<div id="main_logo">
+</div>
+<div id="main_logo">
 	<ul>
 		<li>
 			<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav" id="doread"><img src="../images/pngwing.com.png" width="40px">Do Read</a>
@@ -135,8 +135,10 @@ $(function(){
 		</li>
 
 		<li id="menu-cart">
-			<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
+			<a href="${pageContext.request.contextPath}/cart/list.do">
+				<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
 					height="30" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'">
+			</a>
 		</li>
 		<li id="menu-mypage">
 			<img src="${pageContext.request.contextPath}/images/mypage.png" class="click-image" width="30" 
@@ -144,7 +146,7 @@ $(function(){
 		</li>
 		
 	</ul>
-	</div>
+</div>
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 			<div class="mypage-button">
 				<input type="button" value="찜" onclick="location.href='${like}'">
