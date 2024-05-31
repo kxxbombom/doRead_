@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+
 <script type="text/javascript">
 	window.onload = function(){
 		const inputcheck = document.getElementsByClassName('inputcheck');
@@ -33,8 +34,8 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
-<jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
+<jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
+
 <div class="page-main">
 
 	<h2>책 등록</h2>
