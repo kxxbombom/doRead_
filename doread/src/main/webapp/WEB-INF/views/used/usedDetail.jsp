@@ -7,13 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>중고게시판 상세</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/usedboard.reply.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/eventheader.jsp"/>
+<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 <div class="page-main">
 
 		
