@@ -23,15 +23,15 @@ public class BookFavAction implements Action{
 		Map<String,Object> mapAjax = new HashMap<String,Object>();
 		
 		HttpSession session = request.getSession();
-		Integer mem_num = (Integer)session.getAttribute("mem_num");
+		Integer user_num = (Integer)session.getAttribute("user_num");
 		
 		BookDAO dao = BookDAO.getInstance();
-		if(mem_num==null) {
+		if(user_num==null) {
 			//mem_num이 비어있는 경우 == 로그인이 되지 않은 경우
 			mapAjax.put("status", "noFav");
 		}else {
 			//로그인이 되어있는 경우
-			BookFavVO bookFav = dao.selectFav(new BookFavVO(book_num,mem_num));
+			BookFavVO bookFav = dao.selectFav(new BookFavVO(book_num,user_num));
 			
 			if(bookFav!=null) {
 				//로그인한 회원이 해당 도서를 찜한 상태
