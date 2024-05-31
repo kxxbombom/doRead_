@@ -23,7 +23,9 @@
 		
 		<c:if test="${empty list}">
 		 <div class="result-display">
+		 	<hr size="1" width="100%" noshade="noshade">
 			장바구니에 담은 상품이 없습니다.
+			<hr size="1" width="100%" noshade="noshade">
 		 </div>
 		</c:if>
 		
@@ -50,7 +52,7 @@
 	 						<c:if test="${cart.bookVO.stock >= cart.c_quantity}">
 	 							<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width">
 	 							<br>												<%--커스텀 데이터--%>
-	 							<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}">
+	 							<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}" data-total="${all_total}">
 	 						</c:if>
 	 					</td>
 	 					<td class="align-center">
@@ -68,8 +70,27 @@
 	 				<td class="align-center"><fmt:formatNumber value="${all_total}"/>원</td>
 	 			</tr>
 	 		</table>
+	 		
+	 		<div style="border:1px solid black;">
+	 			<ul>
+	 				<li>상품 금액 <span><fmt:formatNumber value="${all_total}"/>원</span></li>
+	 				<li>배송비 <img src="${pageContext.request.contextPath}/images/info.png" width="15px"> 
+	 					<span id="cart_deliveryFee">
+						<c:if test="${all_total >= 15000}">
+						0
+						</c:if>
+						<c:if test="${all_total< 15000}">
+						<fmt:formatNumber value="3000"/>
+						</c:if>원
+						</span>
+	 				</li>
+
+	 				<li>결제 예정 금액 <span id="cart_total">${all_total}</span></li>
+	 				<li>적립 예정 포인트 <img src="${pageContext.request.contextPath}/images/info.png" width="15px"> <span id="cart_point"></span></li>
+	 			</ul>
+	 		</div>
 	 		<div class="align-center">
-	 			<input type="submit" value="구매">
+	 			<input type="submit" value="결제하기">
 	 		</div>
 	 	</form>
 		</c:if>

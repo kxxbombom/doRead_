@@ -18,7 +18,7 @@ $(function(){
 		$.ajax({
 			url:'modifyCart.do',
 			type:'post',
-			data:{cart_num:$(this).attr('data-cartnum'),book_num:$(this).attr('data-booknum'),c_quantity:input_quantity.val()},
+			data:{cart_num:$(this).attr('data-cartnum'),book_num:$(this).attr('data-booknum'),c_quantity:input_quantity.val(),total:$(this).attr('data-total')},
 			dataType:'json',
 			success:function(param){
 				if(param.result == 'logout'){
@@ -29,6 +29,8 @@ $(function(){
 				}else if(param.result == 'success'){
 					alert('상품의 개수가 수정되었습니다.');
 					location.href='list.do';
+					$('#cart_total').text(param.total.toLocaleString() + '원');
+					
 				}else{
 					alert('장바구니 상품 수량 수정 오류');
 				}

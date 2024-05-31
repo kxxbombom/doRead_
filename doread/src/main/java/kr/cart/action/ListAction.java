@@ -20,6 +20,7 @@ public class ListAction implements Action{
 		if(user_num == null) {
 			return "redirect:/member/loginForm.do";
 		}
+		
 		CartDAO dao = CartDAO.getInstance();
 		//회원번호별 총 구매액
 		int all_total = dao.getTotalByMem_num(user_num);
