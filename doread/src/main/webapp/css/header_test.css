@@ -100,12 +100,12 @@ body{
 
 #main_logo ul li:nth-child(2){
 	margin-left: auto;
-	margin-right:10px;
+	margin-right:3px;
 	margin-top:20px;
 }
 #main_logo ul li:last-child{
 	margin-right:20px;
-	margin-top:20px;
+	margin-top:35px;
 }
 
 
@@ -117,7 +117,7 @@ body{
 
 #main_nav{
 	margin:0 auto;
-	margin-top:10px;
+	margin-top:30px;
 	padding:20px 0;
 	list-style:none;
 	text-align:center;
@@ -151,7 +151,7 @@ body{
 	letter-spacing:0.05rem;
 	display:block;
 	width:160px;
-	padding:8px 0;
+	padding:8px 2px;
 }
 #category_items{
 	position:absolute;

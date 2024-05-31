@@ -46,8 +46,10 @@
 		</li>
 
 		<li id="menu-cart">
-			<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
+			<a href="${pageContext.request.contextPath}/cart/list.do">
+				<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
 					height="30" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'">
+			</a>
 		</li>
 		<li id="menu-mypage">
 			<img src="${pageContext.request.contextPath}/images/mypage.png" class="click-image" width="30" 
