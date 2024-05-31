@@ -6,12 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>mypage</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#photo_btn').click(function(){
@@ -93,7 +90,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<div class="page-main">
+<div class="page-main">
 	<div id="mini_nav">
 	<ul>
 		<c:if test="${empty user_num}">
@@ -103,64 +100,57 @@ $(function(){
 		<li>
 			<a href="${pageContext.request.contextPath}/member/loginForm.do" class="top-nav" >로그인</a>
 		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/member/mypage.do" class="top-nav" >마이페이지</a>
+		</li>
 		</c:if>
-		<c:if test="${!empty user_num}">
-		<li class="menu-logout">
-		[<span>${user_id}</span>]
 		
+		<c:if test="${!empty user_num && user_auth != 9}">
+		<li class="menu-logout">
+			[<span>${user_id}</span>]
 			<a href="${pageContext.request.contextPath}/member/logout.do" class="top-nav">로그아웃</a>
 		</li>
-		</c:if>
-		<c:if test="${!empty user_num && user_auth == 9}">
 		<li>
-			<a href="${pageContext.request.contextPath}/member/adminList.do" class="top-nav">회원관리</a>
+			<a href="${pageContext.request.contextPath}/member/mypage.do" class="top-nav" >마이페이지</a>
 		</li>
 		</c:if>
+		
+		<c:if test="${!empty user_num && user_auth == 9}">
+		<li class="menu-logout">
+			[<span>${user_id}</span>]
+			<a href="${pageContext.request.contextPath}/member/logout.do" class="top-nav">로그아웃</a>
+		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" class="top-nav">관리자페이지</a>
+		</li>
+		</c:if>
+		
 	</ul>
-</div>	
-		<div id="header-search">
+	</div>
+	<div id="main_logo">
 	<ul>
 		<li>
-			<h1 class="home">
-				<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav">Do Read</a>
-			</h1>
+			<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav" id="doread"><img src="../images/pngwing.com.png" width="40px">Do Read</a>
+
 		</li>
-		<li>
-			<form id="search_form" action="list.do" method="get">
-					<ul class="search">
-						<li>
-							<select name="keyfield">
-								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>도서명</option>
-								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>제목</option>
-								<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>내용</option>
-							</select>
-						</li>
-						<li>
-							<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">				
-						</li>
-						<li>
-							<input type="submit" value="검색">
-						</li>
-						<li id="menu-cart">
-							<img src="${pageContext.request.contextPath}/images/cart.png" width="25" 
-							height="25" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'" class="click-image">
-						</li>
-						<li id="menu-mypage">
-							<img src="${pageContext.request.contextPath}/images/mypage.png" width="25" 
-							height="25" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'" class="click-image">
-						</li>
-					</ul>
-					<h2>마이페이지</h2>
-			</form>
+
+		<li id="menu-cart">
+			<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
+					height="30" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'">
 		</li>
+		<li id="menu-mypage">
+			<img src="${pageContext.request.contextPath}/images/mypage.png" class="click-image" width="30" 
+					height="30" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'">
+		</li>
+		
 	</ul>
-</div>
+	</div>
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 			<div class="mypage-button">
 				<input type="button" value="찜" onclick="location.href='${like}'">
 				<input type="button" value="추천" onclick="location.href='${best}'">
 			</div>
-	</div>
+</div>
 </body>
 </html>
 

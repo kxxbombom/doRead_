@@ -34,13 +34,15 @@ form#search_form h2{
 	width:1000px;
 	height:200px;
 	background:rgb(26, 77, 46);
-	color:rgb(255, 255, 255) !important;	
+	color:rgb(255, 255, 255) !important;
+	margin-top:50px;
 }
 div.mypage-div ul{
 	list-style:none ;
 	margin-top:26px;
 	text-align:right;
 	color:rgb(255, 255, 255) !important;
+	
 }
 div.mypage-div ul li{
 	display:inline-block;
