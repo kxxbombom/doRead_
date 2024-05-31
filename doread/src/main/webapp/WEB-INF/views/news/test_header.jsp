@@ -61,11 +61,11 @@
 		<li>
 		<div id="container">
         <input type="checkbox" id="toggle" hidden>
-        <label for="toggle" id="label">책 카테고리</label>
+        <label for="toggle" id="label">도서</label>
         		<ul id="menu">
            		 	<li class="menu-item"><a href="${pageContext.request.contextPath}/book/list.do">도서 전체</a></li>
           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=1">소설</a></li>
-            		<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=2">시/에세이</a><a href="#" class="menu-name">setting</a></li>
+            		<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=2">시/에세이</a></li>
            			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=3">인문</a></li>
            			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=4">정치/사회</a></li>
            			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=5">과학/공학</a></li>
