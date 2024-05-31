@@ -11,12 +11,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 <div class="page-main">
-
-			<div class="eventvar">
- 	<h1>EVENT</h1>
- </div>
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
+		<div class="eventvar">
+ 			<h1>EVENT</h1>
+ 		</div>
 
 <div class="align-center">
  			<form id="eventmainForm" action="eventmain.do" method="get">
