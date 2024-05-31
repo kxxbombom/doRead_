@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>문의하기</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript">
 window.onload=function(){
 	const myForm = document.getElementById('write_form');
@@ -32,7 +32,7 @@ window.onload=function(){
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2>문의하기</h2>
 		<form id="write_form" action="qnaWrite.do" method="post" enctype="multipart/form-data">
