@@ -164,6 +164,7 @@ body{
     visibility: hidden;
 	opacity:0.1;
 	transform:translateY(-10%);
+	transition:opacity 0.8s ease, transform 0.5s ease;
 	
 }
 #category_items > li{
@@ -197,6 +198,68 @@ body{
 	color:#f0eded;
 }
 
+/*  */
+:root {
+    --btn-width : 8vw;
+    --btn-min-width : 5px;
+    --btn-height : 4.4vh;
+    --btn-min-height : 5px;
+    --menu-height : calc(var(--btn-height) * 11);
+    --menu-min-height : calc(var(--btn-min-height) * 2);
+    --font-size : 1vw;
+}
+
+#container {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+} 
+#label {
+    width: var(--btn-width);
+    min-width: var(--btn-min-width);
+    height: var(--btn-height);
+    min-height: var(--btn-min-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#label:hover{
+	color:#FFF;
+}
+
+
+#menu {
+    width: var(--btn-width);
+    min-width: var(--btn-min-width);
+    height: 0;
+    background-color: whitesmoke;
+    border-radius: var(--border-rad);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    position: absolute;
+    top: calc(var(--btn-height) + 1vh);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+#toggle:checked ~ #menu{
+    height: var(--menu-height);
+    min-height: var(--menu-min-height);
+    opacity: 1;
+}
+.menu-name {
+    width: var(--btn-width);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: var(--font-size);
+    font-weight: 50;
+    line-height: 20px;
+}
+
+/* 글꼴 */
 
 *{
 	font-family: 'Noto Sans KR', serif;
