@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
 window.onload=function(){
-	const myForm = document.getElementById('search_form');
+	const myForm = document.getElementById('book_search');
 	//이벤트 연결
 	myForm.onsubmit=function(){
 		const keyword = document.getElementById('keyword');
@@ -61,10 +61,11 @@ window.onload=function(){
 				</div>
 			</c:forEach>
 			<div class="float-clear">
+				<br>
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
 		</div>
-		
+		<div class="align-center">${page}</div>
 	</div>
 </div>
 </body>

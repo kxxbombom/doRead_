@@ -22,13 +22,19 @@
 				inputcheck[i].value='';
 				inputcheck[i].focus();
 				return false;
-				
+				}
+			
+			if(inputcheck[i].id=='publish_date'){
+				if(!/^[2-9][0-9]{3}[-][0-9]{2}[-][0-9]{2}$/.test(inputcheck[i].value)){
+					alert('출판일은 0000-00-00 형식으로 입력하세요');
+					inputcheck[i].focus();
+					return false;
+				}			
 			}
-		
-			}
-		}
+		}//end of for
 		
 	};
+};
 
 </script>
 </head>

@@ -216,6 +216,11 @@ div.image-items .event-item{
 	display:inline-block;
 }
 
+.event-item ul{
+	list-style:none;
+}
+
+
 .event-item ul li,h2{
 	text-align:left;
 }
