@@ -39,15 +39,7 @@
  				<input type="text" name="search" class="inputcheck input-style" id="search" maxlength="30" placeholder="검색내용입력">
  				<input id="subbtn" type="submit" value="검색" class="button2">
 			</form>
-			<script type="text/javascript">
-				$('#selectlist').change(function(){
-								$('#subbtn').click();
-				});
-					
-					
-				
-			
-			</script>
+		
 			
  			<div class="align-right">
  			<c:if test="${!empty user_num}">

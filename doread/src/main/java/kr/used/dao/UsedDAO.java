@@ -59,10 +59,11 @@ public class UsedDAO {
 		int count = 0;
 		String sub_sql="";
 		String sql=null;
-		if(keys.equals("0")) sub_sql += " where u_num is not null ";
-		else if(keys.equals("1")) sub_sql += " where u_state = 1 ";
-		else if(keys.equals("2")) sub_sql += " where u_state = 2";
-		else if(keys.equals("3")) sub_sql += " where u_state = 3";
+		if(keys.equals("0")) { sub_sql += " where u_num is not null ";}
+		else if(keys.equals("1")) {sub_sql += " where u_state = 1 ";}
+		else if(keys.equals("2")) {sub_sql += " where u_state = 2";}
+		else if(keys.equals("3")) {sub_sql += " where u_state = 3";}
+		
 		if(keyw != null && !"".equals(keyw)) {
 			if(keyf.equals("1")) sub_sql += " and ( book_name Like '%' || ? || '%' ) ";
 			else if(keyf.equals("2")) sub_sql += " and ( u_title Like '%' || ? || '%' ) ";
@@ -91,7 +92,7 @@ public class UsedDAO {
 		return count;
 	}
 	//글 리스트
-	public List<UsedVO> listUsed(int start, int end,String keys, String keyf,String keyw) throws Exception{
+	public List<UsedVO> listUsed(int start, int end,String keys, String keyf, String keyw) throws Exception{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet re = null;
@@ -99,14 +100,15 @@ public class UsedDAO {
 		String sql=null;
 		String sub_sql = "";
 		int cnt =0;
-		if(keys.equals("0")) sub_sql += " where u_num is not null ";
-		else if(keys.equals("1")) sub_sql += " where u_state = 1 ";
-		else if(keys.equals("2")) sub_sql += " where u_state = 2";
-		else if(keys.equals("3")) sub_sql += " where u_state = 3";
+		if(keys.equals("0")) { sub_sql += " where u_num is not null ";}
+		else if(keys.equals("1")) {sub_sql += " where u_state = 1 ";}
+		else if(keys.equals("2")) {sub_sql += " where u_state = 2";}
+		else if(keys.equals("3")) {sub_sql += " where u_state = 3";}
+		
 		if(keyw != null && !"".equals(keyw)) {
 			if(keyf.equals("1")) sub_sql += " and ( book_name Like '%' || ? || '%' ) ";
 			else if(keyf.equals("2")) sub_sql += " and ( u_title Like '%' || ? || '%' ) ";
-			else if(keyf.equals("3")) sub_sql += " and ( mem_id Like '%' || ? || '%' )";
+			else if(keyf.equals("3")) sub_sql += " and ( mem_id Like '%' || ? || '%' ) ";
 		}
 		try {
 			conn = DBUtil.getConnection();

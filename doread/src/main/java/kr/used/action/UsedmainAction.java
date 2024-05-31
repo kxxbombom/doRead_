@@ -20,13 +20,13 @@ public class UsedmainAction implements Action{
 		
 		String keys = request.getParameter("sel");
 		String keyf= request.getParameter("sel2");
-		String keyw = request.getParameter("keyw");
+		String keyw = request.getParameter("search");
 		if(keys == null) keys="0";
 		
 		UsedDAO dao = UsedDAO.getInstance();
 		int count = dao.countUsed(keys, keyf, keyw);
 		
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"usedList.do");
+		PagingUtil page = new PagingUtil(keyf,keyw,Integer.parseInt(pageNum),count,10,10,"usedList.do");
 		List<UsedVO> list =null;
 		if(count > 0) {
 			list = dao.listUsed(page.getStartRow(), page.getEndRow(), keys, keyf, keyw); 
