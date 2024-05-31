@@ -25,7 +25,7 @@
 						<input type="button" value="취소" id="photo_reset">          
 					</div>
 			</li>
-			<li style="padding-top: 40px; font-size: 19pt; text-align: left;">${user_id}님<br>어서오세요
+			<li style="padding-top: 40px; font-size: 19pt; color:rgb(255, 255, 255) !important; text-align: left;">${user_id}님<br>어서오세요
 			</li>
 			<li>
 				<a>회원정보</a>
