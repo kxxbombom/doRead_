@@ -141,13 +141,13 @@ $(function(){
 		
 	</ul>
 	</div>
-<img id="penimage" src="${pageContext.request.contextPath}/images/pencil_1361912.png" width="30" height="30">
-	<div class="mypage-div">
+	<div class="mypage-div"  style="background:rgb(26, 77, 46);">
 		<ul>
 			<li id="myphoto">
 				<c:if test="${empty member.mem_photo}">
 				<img src="${pageContext.request.contextPath}/images/face.png"
 						width="100" height="100" class="my-photo">
+					<img id="penimage" src="${pageContext.request.contextPath}/images/pencil_1361912.png" width="30" height="30">
 				</c:if>
 				<c:if test="${!empty member.mem_photo}">
 				<img src="${pageContext.request.contextPath}/upload/${member.mem_photo}"

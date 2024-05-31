@@ -13,12 +13,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
+
 <div class="page-main">
-
-		
-
-<div class="align-center">
+<div class="content-main">
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
  		<h2>중고게시판</h2>	
  			<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
