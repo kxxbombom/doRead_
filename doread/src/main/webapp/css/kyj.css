@@ -219,3 +219,7 @@ div.image-items .event-item{
 .event-item ul li,h2{
 	text-align:left;
 }
+
+.event-item img{
+	object-fit:contain;
+}
