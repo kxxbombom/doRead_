@@ -379,8 +379,7 @@ public class BookDAO {
 			try {
 				conn = DBUtil.getConnection();
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-						+ "(SELECT * FROM book b JOIN member m USING (mem_num) "
-						+ "JOIN book_fav f USING(book_num) WHERE f.mem_num=? "
+						+ "(SELECT * FROM book b JOIN book_fav f USING(book_num) WHERE f.mem_num=? "
 						+ "ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1,mem_num);
@@ -388,8 +387,17 @@ public class BookDAO {
 				pstmt.setInt(3, end);
 				
 				rs = pstmt.executeQuery();
+				list = new ArrayList<BookVO>();
 				while(rs.next()) {
+					BookVO book = new BookVO();
+					book.setBook_num(rs.getInt("book_num"));
+					book.setBook_name(rs.getString("book_name"));
+					book.setAuthor(rs.getString("author"));
+					book.setPrice(rs.getInt("price"));
+					book.setPublisher(rs.getString("publisher"));
+					book.setPublish_date(rs.getString("publish_date"));
 					
+					list.add(book);
 				}
 			}catch(Exception e) {
 				throw new Exception(e);
