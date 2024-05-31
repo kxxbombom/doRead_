@@ -74,7 +74,7 @@
 	 		<div style="border:1px solid black;">
 	 			<ul>
 	 				<li>상품 금액 <span><fmt:formatNumber value="${all_total}"/>원</span></li>
-	 				<li>배송비 <img src="${pageContext.request.contextPath}/images/info.png" width="15px"> 
+	 				<li>배송비<img src="${pageContext.request.contextPath}/images/info.png" width="15px"> 
 	 					<span id="cart_deliveryFee">
 						<c:if test="${all_total >= 15000}">
 						0
@@ -85,7 +85,7 @@
 						</span>
 	 				</li>
 
-	 				<li>결제 예정 금액 <span id="cart_total">${all_total}</span></li>
+	 				<li>결제 예정 금액 <span><fmt:formatNumber value="${all_total_delivery}"/>원</span></li>
 	 				<li>적립 예정 포인트 <img src="${pageContext.request.contextPath}/images/info.png" width="15px"> <span id="cart_point"></span></li>
 	 			</ul>
 	 		</div>

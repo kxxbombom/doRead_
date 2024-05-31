@@ -21,7 +21,7 @@ public class ModifyCartAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		Map<String,Object> mapAjax = new HashMap<String,Object>();
-		int total = 0;
+		int total = Integer.parseInt(request.getParameter("total"));
 		
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
@@ -46,10 +46,6 @@ public class ModifyCartAction implements Action{
 				CartDAO cartDAO = CartDAO.getInstance();
 				cartDAO.updateCart(cart);
 				mapAjax.put("result", "success");
-				
-				total = cartDAO.getTotalByMem_num(user_num);
-				if(total < 15000) total = total+3000;
-				mapAjax.put("total", total);
 			}
 		}
 		ObjectMapper mapper = new ObjectMapper();

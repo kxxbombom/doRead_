@@ -28,9 +28,7 @@ $(function(){
 					location.href='list.do';
 				}else if(param.result == 'success'){
 					alert('상품의 개수가 수정되었습니다.');
-					location.href='list.do';
-					$('#cart_total').text(param.total.toLocaleString() + '원');
-					
+					location.href="list.do";
 				}else{
 					alert('장바구니 상품 수량 수정 오류');
 				}

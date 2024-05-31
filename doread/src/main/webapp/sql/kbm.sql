@@ -72,10 +72,26 @@ CREATE TABLE cart (
 create sequence cart_seq;
 
 
---주문
-create table order(
-
+create table point (
+ p_num number NOT NULL,
+ p_detail number NOT NULL,
+ p_point number	NOT NULL,
+ p_rdate date default sysdate NOT NULL,
+ mem_num number	NOT NULL,
+ constraint point_pk primary key (p_num),
+ constraint point_fk foreign key (mem_num) references member_detail (mem_num)
 );
+
+create sequence point_seq;
+
+
+
+
+
+
+
+
+--주문
 
 create table book_order(
  order_num number NOT NULL,
