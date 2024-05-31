@@ -22,12 +22,12 @@ $(function(){
 	
 	$('#findPW_form #cpasswd').keydown(function(){
 		pwChecked = 0;
-		$('#passwd_checkmessage').show();
+		$('#passwd_checkmessage').hide();
 	});
 	$('#findPW_form #cpasswd').keyup(function(){
 		if($('#passwd').val() == $('#cpasswd').val()){
 			pwChecked = 1;
-			$('#passwd_checkmessage').hide();
+			$('#passwd_checkmessage').show();
 		}
 	});
 	
@@ -90,7 +90,7 @@ $(function(){
 				<li>
 					<label for="cpasswd">새 비밀번호 확인</label>
 					<input type="password" name="cpasswd" id="cpasswd" maxlength="12" class="input-check">
-					<span id="passwd_checkmessage">비밀번호 불일치</span>
+					<span id="passwd_checkmessage">비밀번호 일치</span>
 				</li>
 			</ul>
 			<div class="findPW-button">

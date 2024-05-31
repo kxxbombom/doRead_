@@ -32,13 +32,14 @@ public class ListAction implements Action{
 		
 		//배송비 적용 총구매액
 		int all_total_delivery = all_total;
-		if(all_total < 15000) all_total_delivery += 3000;
+		if(all_total < 15000) all_total_delivery += 2500;
 		
 		//적립금
-		
+		int point = (int) (all_total * 0.03);
 		
 		request.setAttribute("all_total", all_total);
 		request.setAttribute("all_total_delivery", all_total_delivery);
+		request.setAttribute("point", point);
 		request.setAttribute("list", list);
 		
 		return "/WEB-INF/views/cart/list.jsp";

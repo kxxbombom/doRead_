@@ -23,11 +23,11 @@ $(function(){
 			success:function(param){
 				if(param.result == 'logout'){
 					alert('로그인 후 사용하세요');
+					location.href="loginForm.do"
 				}else if(param.result == 'overQuantity'){
 					alert('상품의 수량이 부족합니다.');
 					location.href='list.do';
 				}else if(param.result == 'success'){
-					alert('상품의 개수가 수정되었습니다.');
 					location.href="list.do";
 				}else{
 					alert('장바구니 상품 수량 수정 오류');

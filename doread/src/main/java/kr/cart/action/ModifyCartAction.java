@@ -33,7 +33,6 @@ public class ModifyCartAction implements Action{
 			int book_num = Integer.parseInt(request.getParameter("book_num"));
 			int c_quantity = Integer.parseInt(request.getParameter("c_quantity"));
 			
-			
 			BookDAO bookDAO = BookDAO.getInstance();
 			BookVO book = bookDAO.getBookDetail(book_num);
 			if(book.getStock() < c_quantity) {

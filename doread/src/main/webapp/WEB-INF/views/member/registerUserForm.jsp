@@ -11,12 +11,15 @@
 $(function(){
 	let idChecked = 0;
 	let pwChecked = 0;
+	let emailChecked = 0;
+	let phoneChecked = 0;
+
 	$('#passwd_checkmessage').hide();
 	
 	$('#id_check').click(function(){
 		if($('#id').val().length == 0){
 			alert('아이디를 입력하세요');
-			$('#id').focus();
+			$('#id').val('').focus();
 			return;
 		}
 		if($('#id').val().length < 4){
@@ -55,6 +58,81 @@ $(function(){
 		});
 	});
 	
+	
+	$('#email_check').click(function(){
+		if($('#email').val().length == 0){
+			alert('이메일을 입력하세요');
+			$('#email').val('').focus();
+			return;
+		}
+		if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($('#email').val())){
+			alert('이메일을 양식에 맞게 입력하세요');
+			$('#email').focus();
+			return;
+		}
+		
+		$.ajax({
+			url:'checkDuplicatedEmail.do',
+			type:'post',
+			data:{email:$('#email').val()},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'emailNotFound'){
+					idChecked = 1;
+					alert('사용 가능한 이메일입니다.');
+				}else if(param.result == 'emailDuplicated'){
+					emailChecked = 0;
+					alert('이미 사용 중인 이메일입니다.');
+					$('#email').focus();
+				}else{
+					emailChecked = 0;
+					alert('이메일 중복 체크 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+				emailChecked = 0;
+			}
+		});
+	});
+	
+	$('#phone_check').click(function(){
+		if($('#phone').val().length == 0){
+			alert('전화번호를 입력하세요');
+			$('#phone').val('').focus();
+			return;
+		}
+		if(!/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('#phone').val())){
+			alert('전화번호를 양식에 맞게 입력하세요');
+			$('#email').focus();
+			return;
+		}
+		
+		$.ajax({
+			url:'checkDuplicatedPhone.do',
+			type:'post',
+			data:{phone:$('#phone').val()},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'phoneNotFound'){
+					idChecked = 1;
+					alert('사용 가능한 전화번호입니다.');
+				}else if(param.result == 'phoneDuplicated'){
+					emailChecked = 0;
+					alert('이미 사용 중인 전화번호입니다.');
+					$('#phone').focus();
+				}else{
+					emailChecked = 0;
+					alert('전화번호 중복 체크 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+				emailChecked = 0;
+			}
+		});
+	});
+	
 	$('#register_form #id').keydown(function(){
 		idChecked = 0;
 		$('#id_checkmessage').text('');
@@ -62,13 +140,19 @@ $(function(){
 	
 	$('#register_form #cpasswd').keydown(function(){
 		pwChecked = 0;
-		$('#passwd_checkmessage').show();
+		$('#passwd_checkmessage').hide();
 	});
 	$('#register_form #cpasswd').keyup(function(){
 		if($('#passwd').val() == $('#cpasswd').val()){
 			pwChecked = 1;
-			$('#passwd_checkmessage').hide();
+			$('#passwd_checkmessage').show();
 		}
+	});
+	$('#register_form #email').keydown(function(){
+		emailChecked = 0;
+	});
+	$('#register_form #phone').keydown(function(){
+		phoneChecked = 0;
 	});
 	
 	$('#register_form').submit(function(){
@@ -100,9 +184,17 @@ $(function(){
 				$('#id').focus();
 				return false;
 			}
+			if(items[i].id == 'phone' && phoneChecked == 0){
+				alert('전화번호 중복 체크 필수');
+				return false;
+			}
 			if(items[i].id == 'email' && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($('#email').val())){
 				alert('이메일을 양식에 맞게 입력하세요');
 				$('#id').focus();
+				return false;
+			}
+			if(items[i].id == 'email' && emailChecked == 0){
+				alert('이메일 중복 체크 필수');
 				return false;
 			}
 			if(items[i].id == 'zipcode' && !/^[0-9]{5}$/.test($('#zipcode').val())){
@@ -141,7 +233,7 @@ $(function(){
 					<input type="text" name="id" id="id" maxlength="12" autocomplete="off" class="input-check">
 					<input type="button" value="ID중복체크" id="id_check">
 					<span id="id_checkmessage"></span>
-					<div class="form-notice1">*영문 또는 숫자(4자~12자)</div>
+					<div class="form-notice1">*영문 또는 숫자(4~12자)</div>
 				</li>
 				<li>
 					<label for="passwd">비밀번호</label>
@@ -150,18 +242,19 @@ $(function(){
 				<li>
 					<label for="cpasswd">비밀번호 확인</label>
 					<input type="password" name="cpasswd" id="cpasswd" maxlength="12" class="input-check">
-					<span id="passwd_checkmessage">비밀번호가 불일치합니다</span>
+					<span id="passwd_checkmessage">비밀번호 일치</span>
 				</li>
 				<li>
 					<label for="email">이메일</label>
-					<input type="email" name="email" id="email" maxlength="50" class="input-check">
+					<input type="email" name="email" id="email" maxlength="50" placeholder="example@example.com" class="input-check">
+					<input type="button" value="이메일 중복체크" id="email_check">
 				</li>
 				<li>
-					<div class="register-phone">
 					<label for="phone">전화번호</label>
 					<input type="text" name="phone" id="phone" maxlength="15" autocomplete="off" class="input-check">
+					<input type="button" value="전화번호 중복체크" id="phone_check">
 					<div class="form-notice2">*숫자만 입력</div>
-					</div>
+					
 				</li>
 				<li>
 					<label for="zipcode">우편번호</label>
@@ -236,7 +329,7 @@ $(function(){
 					</div>
 				</li>
 			</ul>
-			<hr size="1" noshade width="145%">
+			<hr size="1" noshade width="153%">
 			<div class="register-button">
 				<input type="submit" value="회원가입">
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">

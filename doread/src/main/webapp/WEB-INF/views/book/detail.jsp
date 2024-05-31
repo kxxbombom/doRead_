@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>도서 정보</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
@@ -19,8 +19,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="float-clear">
-		<br>
-		<hr width="100%" size="1" noshade="noshade">
+
 	</div>
 	<div class="content-main">
 		<div class="book-image">

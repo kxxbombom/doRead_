@@ -136,6 +136,72 @@ public class MemberDAO {
 		return member;
 	}
 	
+	//이메일 중복체크
+	public MemberVO checkEmail(String email)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		MemberVO member = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM member LEFT OUTER JOIN member_detail USING(mem_num) WHERE mem_email=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberVO();
+				member.setMem_num(rs.getInt("mem_num"));
+				member.setMem_id(rs.getString("mem_id"));
+				member.setMem_auth(rs.getInt("mem_auth"));
+				member.setMem_pw(rs.getString("mem_pw"));
+				member.setMem_email(rs.getString("mem_email"));
+				member.setMem_phone(rs.getString("mem_phone"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return member;
+	}
+	
+	//전화번호 중복체크
+	public MemberVO checkPhone(String phone)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		MemberVO member = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM member LEFT OUTER JOIN member_detail USING(mem_num) WHERE mem_phone=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberVO();
+				member.setMem_num(rs.getInt("mem_num"));
+				member.setMem_id(rs.getString("mem_id"));
+				member.setMem_auth(rs.getInt("mem_auth"));
+				member.setMem_pw(rs.getString("mem_pw"));
+				member.setMem_email(rs.getString("mem_email"));
+				member.setMem_phone(rs.getString("mem_phone"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return member;
+	}
+	
 	//비밀번호찾기-비밀번호 재설정
 	public void resetPW(String passwd, int mem_num)throws Exception {
 		Connection conn = null;

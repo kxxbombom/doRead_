@@ -22,18 +22,21 @@
 		<h2>장바구니</h2>
 		
 		<c:if test="${empty list}">
-		 <div class="result-display">
-		 	<hr size="1" width="100%" noshade="noshade">
-			장바구니에 담은 상품이 없습니다.
-			<hr size="1" width="100%" noshade="noshade">
-		 </div>
+			<div class="result-display">
+				<hr size="1" width="100%" noshade="noshade">
+					장바구니에 담은 상품이 없습니다.
+				<hr size="1" width="100%" noshade="noshade">
+			</div>
 		</c:if>
 		
 		<c:if test="${!empty list}">
+		
 	 	<form id="cart_order" action="${pageContext.request.contextPath}/order/orderForm.do" method="post">
-	 		<table>
+	 	<div id="cart_container">	
+	 		<table id="cartTable">
 	 			<tr>
 	 				<th>도서명</th>
+	 				<th></th>
 	 				<th>수량</th>
 	 				<th>도서가격</th>
 	 				<th>합계</th>
@@ -42,8 +45,11 @@
 	 				<tr>
 	 					<td>
 	 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
-	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="80">
-	 							<br>
+	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100">
+	 						</a>
+	 					</td>
+	 					<td>
+	 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
 	 							${cart.bookVO.book_name}
 	 						</a>
 	 					</td>
@@ -65,33 +71,47 @@
 	 					</td>
 	 				</tr>
 	 			</c:forEach>
-	 			<tr>
-	 				<td colspan="3" class="align-right"><b>총구매금액</b></td>
-	 				<td class="align-center"><fmt:formatNumber value="${all_total}"/>원</td>
-	 			</tr>
 	 		</table>
 	 		
-	 		<div style="border:1px solid black;">
-	 			<ul>
-	 				<li>상품 금액 <span><fmt:formatNumber value="${all_total}"/>원</span></li>
-	 				<li>배송비<img src="${pageContext.request.contextPath}/images/info.png" width="15px"> 
-	 					<span id="cart_deliveryFee">
-						<c:if test="${all_total >= 15000}">
-						0
-						</c:if>
-						<c:if test="${all_total< 15000}">
-						<fmt:formatNumber value="3000"/>
-						</c:if>원
-						</span>
-	 				</li>
-
-	 				<li>결제 예정 금액 <span><fmt:formatNumber value="${all_total_delivery}"/>원</span></li>
-	 				<li>적립 예정 포인트 <img src="${pageContext.request.contextPath}/images/info.png" width="15px"> <span id="cart_point"></span></li>
-	 			</ul>
+		 		<div class="cartList">
+		 			<ul>
+		 				<li>상품 금액 <span><b><fmt:formatNumber value="${all_total}"/></b>원</span></li>
+		 				<li>
+		 					<span class="tooltip-container">
+		 						배송비<img src="${pageContext.request.contextPath}/images/info.png" class="tooltip" width="15px">
+		 						<span class="tooltip-text">도서 1만5천원 이상 구매시 무료배송<br>
+									도서 1만5천원 미만 구매시 배송비 2,500원 부과</span>
+							</span>
+			 					<span>
+								<c:if test="${all_total >= 15000}">
+								0원
+								</c:if>
+								<c:if test="${all_total< 15000}">
+								<fmt:formatNumber value="2500"/>원
+								</c:if>
+								
+							</span>
+		 				</li>
+						<hr size="1" width="90%" align="left">
+		 				<li><b>결제 예정 금액 <span><fmt:formatNumber value="${all_total_delivery}"/></b>원</span></li>
+		 				<li>
+		 					<span class="tooltip-container">
+		 						적립 예정 포인트 <img src="${pageContext.request.contextPath}/images/info.png" class="tooltip" width="15px">
+		 						<span class="tooltip-text">상품 주문 시 적립 예정 포인트가 자동 합산되고 주문하신 상품이 발송완료 된 후에 자동으로 적립됩니다.<br>
+									상품구매시 구매액의 3%가 적립됩니다.</span>
+								</span>
+		 					<span><fmt:formatNumber value="${point}"/>P</span>
+		 				</li>
+		 			</ul>
+		 			
+		 			<div class="align-center cart-submit">
+	 					<input type="submit" value="주문하기">
+	 				</div>
+		 		</div>
 	 		</div>
-	 		<div class="align-center">
-	 			<input type="submit" value="결제하기">
-	 		</div>
+	 		
+	 		
+	 		
 	 	</form>
 		</c:if>
 	</div>
