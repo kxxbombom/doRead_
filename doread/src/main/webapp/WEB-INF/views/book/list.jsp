@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>도서 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 
 <script type="text/javascript">

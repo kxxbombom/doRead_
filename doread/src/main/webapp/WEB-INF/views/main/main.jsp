@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">

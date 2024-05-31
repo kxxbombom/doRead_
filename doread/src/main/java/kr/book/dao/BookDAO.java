@@ -249,7 +249,7 @@ public class BookDAO {
 		return list;
 	}
 	
-	
+	//도서 상세정보
 	public BookVO getBookDetail(int book_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -367,6 +367,38 @@ public class BookDAO {
 			}
 			return fav;
 		}
+		
+		//회원 찜목록
+		public List<BookVO> getListBookFav(int start, int end, int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			List<BookVO> list = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ "(SELECT * FROM book b JOIN member m USING (mem_num) "
+						+ "JOIN book_fav f USING(book_num) WHERE f.mem_num=? "
+						+ "ORDER BY book_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1,mem_num);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		};
+		
 		//(회원이 게시물을 호출했을 때 좋아요 선택 여부 표시)
 		//좋아요 삭제
 		public void deleteFav(BookFavVO favVO)throws Exception{
