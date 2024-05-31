@@ -65,24 +65,12 @@ window.onload= function(){
 				<th>조회수</th>
 			</tr>
 			<c:forEach var="story" items="${list}">
-			<c:if test="${story.s_auth == user_num}">
 			<tr>
 				<td>${story.s_num}</td>
 				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
 				<td>${story.s_rdate}</td>
 				<td>${story.s_hit}</td>
 			</tr>
-			</c:if>
-			</c:forEach>
-			<c:forEach var="story2" items="${list2}">
-			<c:if test="${story.s_auth == 9}">
-			<tr>
-				<td>${story2.s_num}</td>
-				<td><a href="storyDetail.do?s_num=${story2.s_num}">${story2.s_title}</a></td>
-				<td>${story2.s_rdate}</td>
-				<td>${story2.s_hit}</td>
-			</tr>
-			</c:if>
 			</c:forEach>
 		</table>
 		<div class="align-center">${page}</div>

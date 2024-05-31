@@ -16,7 +16,15 @@ public class QnaVO {
 	private String q_image;			//문의 사진
 	private int mem_num;			//작성자
 	
+	private String mem_id;
 	private int mem_auth;
+	
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
 	
 	public int getMem_auth() {
 		return mem_auth;

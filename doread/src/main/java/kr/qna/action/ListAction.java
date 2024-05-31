@@ -17,6 +17,7 @@ public class ListAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
+		Integer user_auth= (Integer)session.getAttribute("user_auth");
 		if(user_num==null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
@@ -41,6 +42,7 @@ public class ListAction implements Action{
 			list2 = dao.getListQnaForAdmin(page.getStartRow(), page.getEndRow(), keyfield, keyword);
 		}
 		request.setAttribute("user_num", user_num);
+		request.setAttribute("user_auth", user_auth);
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.setAttribute("list2", list2);

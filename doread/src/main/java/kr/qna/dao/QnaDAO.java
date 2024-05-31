@@ -103,7 +103,7 @@ public class QnaDAO {
 				}
 				
 				//SQL문 작성
-				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM QnA " + sub_sql
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM (SELECT * FROM QNA JOIN member USING (mem_num)) " + sub_sql
 						+" ORDER BY q_num DESC)a) WHERE rnum>=? AND rnum <=? AND mem_num=?";
 				pstmt = conn.prepareStatement(sql);
 				if(keyword!=null&&!"".equals(keyword)) {
@@ -124,6 +124,8 @@ public class QnaDAO {
 					qna.setQ_auth(rs.getInt("q_auth"));
 					qna.setQ_image(rs.getString("q_image"));
 					qna.setQ_rdate(rs.getDate("q_rdate"));
+					
+					qna.setMem_num(rs.getInt("mem_num"));
 					
 					
 					list.add(qna);
@@ -154,8 +156,8 @@ public class QnaDAO {
 				}
 				
 				//SQL문 작성
-				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM QnA " + sub_sql
-						+" ORDER BY q_num DESC)a) WHERE rnum>=? AND rnum <=? ";
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM (SELECT * FROM QNA JOIN member USING (mem_num)) " + sub_sql
+						+" ORDER BY q_num DESC)a) WHERE rnum>=? AND rnum <=?";
 				pstmt = conn.prepareStatement(sql);
 				if(keyword!=null&&!"".equals(keyword)) {
 					pstmt.setString(++cnt, keyword);
@@ -174,6 +176,10 @@ public class QnaDAO {
 					qna.setQ_auth(rs.getInt("q_auth"));
 					qna.setQ_image(rs.getString("q_image"));
 					qna.setQ_rdate(rs.getDate("q_rdate"));
+					
+					qna.setMem_num(rs.getInt("mem_num"));
+					qna.setMem_id(rs.getString("mem_id"));
+					
 					
 					
 					list.add(qna);
