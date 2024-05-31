@@ -47,7 +47,7 @@ window.onload= function(){
 		</form>
 		<div>
 			<input type="button" value="글쓰기" onclick="location.href='qnaWriteForm.do'"
-			<c:if test="${empty user_num}">disabled="disabled"</c:if>>
+			<c:if test="${empty user_num|| user_num == 5}">disabled="disabled"</c:if>>
 			<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>

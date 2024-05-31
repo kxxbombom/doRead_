@@ -47,7 +47,7 @@ window.onload= function(){
 		</form>
 		<div>
 			<input type="button" value="글쓰기" onclick="location.href='storyBoardWriteForm.do'"
-			<c:if test="${empty user_num}">disabled="disabled"</c:if>>
+			<c:if test="${empty user_num || user_num == 5}">disabled="disabled"</c:if>>
 			<input type="button" value="목록" onclick="location.href='storyBoardList.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
@@ -65,12 +65,22 @@ window.onload= function(){
 				<th>조회수</th>
 			</tr>
 			<c:forEach var="story" items="${list}">
-			<c:if test="${story.s_auth == 0}">
+			<c:if test="${story.s_auth == user_num}">
 			<tr>
 				<td>${story.s_num}</td>
 				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
 				<td>${story.s_rdate}</td>
 				<td>${story.s_hit}</td>
+			</tr>
+			</c:if>
+			</c:forEach>
+			<c:forEach var="story2" items="${list2}">
+			<c:if test="${story.s_auth == 9}">
+			<tr>
+				<td>${story2.s_num}</td>
+				<td><a href="storyDetail.do?s_num=${story2.s_num}">${story2.s_title}</a></td>
+				<td>${story2.s_rdate}</td>
+				<td>${story2.s_hit}</td>
 			</tr>
 			</c:if>
 			</c:forEach>

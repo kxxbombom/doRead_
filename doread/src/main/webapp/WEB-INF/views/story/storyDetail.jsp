@@ -18,6 +18,31 @@
 		<h2>스토리 제목 :  ${sb.s_title}</h2>
 		조회 : ${sb.s_hit}
 		<h3>리뷰 도서 : ${sb.book_name }</h3>
+			<ul class="board-btn-container">
+				<li class="board-btn">
+					<span class="board-cbtn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+					<c:if test="${user_num == sb.mem_num}">
+					<ul class="btn-hide">
+		            	<li><a href="storyUpdateForm.do?s_num=${sb.s_num}">수정</a></li>
+		            	<li><a href="#" id ="delete_btn">삭제</a></li>
+		        	</ul>
+		        	<script type="text/javascript">
+		        	$('.btn-hide').hide();
+		        	$('.board-cbtn').click(function() {
+		        	    $(this).parent().find('.btn-hide').toggle();
+		        	});
+		        	$('#delete_btn').click(function(event) {
+			        	let choice = confirm('삭제하시겠습니까?');
+			    		if(choice){
+			    			location.replace('storyDelete.do?s_num=${sb.s_num}');
+			    		}
+			    		//기본 이벤트 제거
+			    		event.preventDefault();
+		        	});
+		        	</script>
+					</c:if>
+				</li>
+			</ul>	
 		<hr size="1" noshade="noshade" width="100%">
 		<c:if test="${!empty sb.s_image}">
 		<div class="align-center">
@@ -34,21 +59,6 @@
 				최근 수정일 : ${sb.s_mdate}
 				</c:if>
 				작성일 : ${sb.s_rdate}
-				<%-- 로그인한 회원번호와 작성자 회원번호가 일치해야 수정, 삭제 가능 --%>
-				<c:if test="${user_num == sb.mem_num}">
-				<input type="button" value="수정" onclick="location.href='storyUpdateForm.do?s_num=${sb.s_num}'">
-				<input type="button" value="삭제" id="delete_btn">
-				<script type="text/javascript">
-					const delete_btn=document.getElementById('delete_btn');
-					//이벤트 연결
-					delete_btn.onclick=function(){
-						let choice = confirm('삭제하시겠습니까?');
-						if(choice){
-							location.replace('storyDelete.do?s_num=${sb.s_num}');
-						}
-					};
-				</script>
-				</c:if>
 				<div class="align-right">
 					<a class="report" data-id="${sb.s_num}" href="#" data-name="s_num" >신고</a>
 				</div>
