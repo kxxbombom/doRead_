@@ -160,7 +160,7 @@ body{
 	/* display:none; */
 	border-radius:0 0 7px 7px;
 	
-	display: block; /* display를 block으로 변경 */
+	display: block;
     visibility: hidden;
 	opacity:0.1;
 	transform:translateY(-10%);

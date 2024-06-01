@@ -41,7 +41,7 @@ a:hover{
 ---------------------*/
 .result-display{
 	width:400px;
-	height:160px;
+	height:140px;
 	margin:100px auto;
 	display:flex;
 	flex-direction:column;
@@ -110,7 +110,7 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	display:inline-block;
 }
 #header_login h1 a{
-		color:rgb(26, 77, 46);
+		color:#336633;
 }
 
 
@@ -126,7 +126,7 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	display:inline-block;
 	padding:8px 60px;
 	border-radius:7px;
-	background-color:rgb(26, 77, 46);
+	background-color:#336633;
 }
 .register-top .background-box span {
 	font-size: 18px;
@@ -168,9 +168,9 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 #id_check{
 	width:90px;
 	border-radius:30px;
-	border:1px solid rgb(26, 77, 46);
+	border:1px solid #336633;
 	background-color:#FFF;
-	color:rgb(26, 77, 46);
+	color:#336633;
 	margin-bottom:0;
 	cursor:pointer;
 	font-weight:bold;
@@ -178,9 +178,9 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 #email_check{
 	width:110px;
 	border-radius:30px;
-	border:1px solid rgb(26, 77, 46);
+	border:1px solid #336633;
 	background-color:#FFF;
-	color:rgb(26, 77, 46);
+	color:#336633;
 	margin-bottom:0;
 	cursor:pointer;
 	font-weight:bold;
@@ -188,9 +188,9 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 #phone_check{
 	width:125px;
 	border-radius:30px;
-	border:1px solid rgb(26, 77, 46);
+	border:1px solid #336633;
 	background-color:#FFF;
-	color:rgb(26, 77, 46);
+	color:#336633;
 	margin-bottom:0;
 	cursor:pointer;
 	font-weight:bold;
@@ -198,9 +198,9 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 input[value="우편번호 찾기"]{
 	width:105px;
 	border-radius:30px;
-	border:1px solid rgb(26, 77, 46);
+	border:1px solid #336633;
 	background-color:#FFF;
-	color:rgb(26, 77, 46);
+	color:#336633;
 	margin-bottom:0;
 	cursor:pointer;
 	font-weight:bold;
@@ -210,7 +210,7 @@ input[value="우편번호 찾기"]{
 	background-color:rgb(26, 77, 46);
 	color:#FFF;
 	box-shadow:0 0 5px rgba(0, 0, 0, 0.5); */
-	border:1px solid rgb(26, 77, 46);
+	border:1px solid #336633;
 	box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -300,18 +300,20 @@ input[value="우편번호 찾기"]{
 ---------------------*/
 .login-top{
 	font-size:25pt;
-	margin:50px;
+	margin:35px;
 	text-align:center;
+	font-family: 'Pacifico', serif;
 }
 .login-top a{
-	color:rgb(26, 77, 46);
+	color:#336633;
 }
+
 .login-top a:hover{
-	color:rgb(26, 77, 46);
+	color:#336633;
 }
 
 #login_form, newsHead_form{
-	width:300px;
+	width:280px;
 	margin:0 auto;
 	padding:0;
 	border:none;
@@ -323,7 +325,7 @@ input[value="우편번호 찾기"]{
 	position:relative;
 }
 .floating-label > .form-input{
-	width:300px;
+	width:260px;
 	height:32px;
 	padding:0.55rem 0.55rem;
 	border:1px solid rgb(182, 186, 183);
@@ -355,17 +357,17 @@ input[value="우편번호 찾기"]{
 }
 
 .login-submit{
-	width:300px;
+	width:280px;
 	margin:0 auto;
 	padding:0;
 }
 .login-submit input{
-	width:320px;
+	width:280px;
 	height:50px;
 	padding:0.55rem 0.55rem;
 	border-radius:5px;
 	border:none;
-	background-color:rgb(26, 77, 46);
+	background-color:#2d572f;
 	color:#FFF;
 	font-size:20px;
 	font-weight:bold;
@@ -377,7 +379,7 @@ input[value="우편번호 찾기"]{
 	color:rgb(26, 77, 46);
 }
 .login-help-btn{
-	margin:0 0 0 460px;
+	margin:0 0 0 445px;
 }
 .login-help-btn input{
 	border:none;
@@ -392,12 +394,12 @@ input[value="우편번호 찾기"]{
 	cursor:pointer;
 }
 .login-btn{
-	width:300px;
+	width:280px;
 	margin:60px auto;
 	padding:0;
 }
 .login-btn input{
-	width:320px;
+	width:280px;
 	height:50px;
 	padding:0.55rem 0.55rem;
 	border:1px solid #4F6F52;
@@ -416,13 +418,13 @@ input[value="우편번호 찾기"]{
 /* 로그인 실패 - 정지회원
 ---------------------*/
 .login-info h2{
-	padding:0 180px;
+	padding:0 150px;
 }
 .login-info{
 	font-weight: bold;
 }
 .login-info input{
-	width:90px;
+	width:80px;
 	height:35px;
 	background-color:rgb(26, 77, 46);
 	color:#FFF;
@@ -794,14 +796,22 @@ form#cart_order{
 #cartTable{
 	margin:0 10px;
 }
-
+#cartTable:first-child{
+	height:50px;
+}
+#cartTable tr th{
+	height:50px;
+	padding:0;
+}
+/*총 결제 예상 금액*/
 .cartList{
 	display:inline-block;
-	width:250px;
+	width:255px;
 	margin-left:0;
-	border:1px solid #99b1c9;
+	border:2px solid #d9d8d7;
 	border-radius:5px;
-	height:300px;
+	height:250px;
+	padding:5px;
 }
 .cart-submit{
 	clear:both;
@@ -817,7 +827,8 @@ form#cart_order{
 	visibility: hidden; 
 	position: absolute;
 	min-width:210px;
-	bottom: 95%;
+	left:80%;
+	bottom: 100%;
 	box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
 	border-radius: 5px;
 	padding: 5px;
@@ -829,58 +840,50 @@ form#cart_order{
 	visibility: visible; 
 }
 
+.list-header h2{
+	margin-left:25px;
+}
 
-/* #output_fav{
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+}
+/*장바구니 변경,삭제,주문 버튼*/
+.cart-modify, .cart-del{
+	width:50px;
+	height:25px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.cart-modify:hover, .cart-del:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
 	cursor:pointer;
 }
-div#reply_div{
-	padding:5px 10px 40px 10px;
-	margin-top:10px;
-	background-color:#EEEEEE;
+#cartTable input[type="number"]{
+	border-radius:7px;
+	width:55px;
+	height:25px;
+	margin-bottom:0;
 }
-form#re_form{
-	width:650px;
-	border:none;
+.cart-submit > input{
+	width:190px;
+	height:40px;
+	border-radius:7px;
+	background-color:#247527;
+	color:#FFF;
+	font-size:17px;
 }
-span.re-title{
-	color:#000;
-	font-size:12pt;
-	line-height:200%;
+.cart-submit > input:hover{
+	background-color:#255e27;
+	color:#FFF;
+	font-size:17px;
+	cursor:pointer;
 }
-span.letter-count{
-	font-size:10pt;
-	color:#999;
-}
-textarea.rep-content{
-	width:90%;
-	height:50px;
-	margin:10px;
-}
-div#re_first, div#mre_first{
-	float:left;
-	width:70%;
-	padding-left:15px;
-	margin-bottom:10px;
-}
-div#re_second, div#mre_second{
-	float:left;
-	width:19%;
-	margin-bottom:10px;
-}
-div#loading{
-	text-align:center;
-}
-div.paging-button{
-	text-align:right;
-}
-div#output{
-	clear:both;
-}
-form#mre_form{
-	border:none;
-	margin:5px;
-} */
-
 
 
 /* 게시판 글 수정
@@ -888,8 +891,6 @@ form#mre_form{
 #file_detail{
 	margin:5px 0 0 130px;
 }
-
-
 
 
 

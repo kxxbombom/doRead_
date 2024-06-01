@@ -24,10 +24,12 @@ public class ListAction implements Action{
 		CartDAO dao = CartDAO.getInstance();
 		//회원번호별 총 구매액
 		int all_total = dao.getTotalByMem_num(user_num);
+		int cart_count = 0;
 		
 		List<CartVO> list = null;
 		if(all_total > 0){
 			list = dao.getListCart(user_num);
+			cart_count = dao.getCartCount(user_num);
 		}
 		
 		//배송비 적용 총구매액
@@ -41,6 +43,7 @@ public class ListAction implements Action{
 		request.setAttribute("all_total_delivery", all_total_delivery);
 		request.setAttribute("point", point);
 		request.setAttribute("list", list);
+		request.setAttribute("cart_count", cart_count);
 		
 		return "/WEB-INF/views/cart/list.jsp";
 	}
