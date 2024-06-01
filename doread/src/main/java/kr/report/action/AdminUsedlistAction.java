@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.report.dao.ReportDAO;
+import kr.report.vo.Countvo;
 import kr.report.vo.ScreportVO;
 import kr.report.vo.SreportVO;
 import kr.report.vo.UcReportVO;
@@ -87,6 +88,8 @@ public class AdminUsedlistAction implements Action{
 		request.setAttribute("list3", list3);
 		request.setAttribute("count3", SRccount);
 		
+		List<Countvo> clist = redao.countFive();
+		request.setAttribute("clist", clist);
 		return "/WEB-INF/views/adminster/ulist.jsp";
 	}
 

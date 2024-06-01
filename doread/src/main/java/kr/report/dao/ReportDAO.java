@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.report.vo.Countvo;
 import kr.report.vo.ScreportVO;
 import kr.report.vo.SreportVO;
 import kr.report.vo.UcReportVO;
@@ -666,6 +667,7 @@ public class ReportDAO {
 				
 				
 			}
+			
 			//신고 목록보기
 			public List<UsedReportVO> listU(int start,int end) throws Exception{
 				Connection conn = null;
@@ -753,10 +755,141 @@ public class ReportDAO {
 				
 			}
 			
+			public List<UcReportVO> listUC5(int start,int end) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re = null;
+				String sql=null;
+				List<UcReportVO> list = null;
+			
+				try {
+					conn= DBUtil.getConnection();
+					sql="select count(*),uc_num from (select rownum alnum, a.* from(select * from used_comm_report join ub_comment using(uc_num) order by urc_num desc) a ) where alnum between ? and ? group by uc_num";
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, start);
+					ps.setInt(2, end);
+					re = ps.executeQuery();
+					
+					if(re.next()) {
+						list = new ArrayList<UcReportVO>();
+						do {
+							
+							UcReportVO report =new UcReportVO();
+							report.setMem_num(re.getInt("mem_num"));
+							report.setUc_num(re.getInt("uc_num"));
+							report.setUrc_category(re.getInt("urc_category"));
+							report.setUrc_content(re.getString("urc_content"));
+							report.setUrc_num(re.getInt("urc_num"));
+							report.setAuth(re.getInt("uc_auth"));
+							report.setContent(re.getString("uc_content"));
+							report.setU_num(re.getInt("u_num"));
+							list.add(report);
+							
+						}while(re.next());
+						
+						
+					}
+				}catch(Exception e) {
+					
+				}finally {
+					DBUtil.executeClose(re, ps, conn);
+				}
+				return list;
+				
+				
+			}
 			
 			
-			
-			
+			public List<Countvo> countFive() throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				PreparedStatement ps1 = null;
+				PreparedStatement ps2 = null;
+				PreparedStatement ps3 = null;
+				List<Countvo> list = new ArrayList<Countvo>();
+				ResultSet re = null;
+				String sql=null;
+				
+				try {
+					conn= DBUtil.getConnection();
+					conn.setAutoCommit(false);
+					sql="select count(*), uc_num from used_comm_report group by uc_num";
+					ps = conn.prepareStatement(sql);
+					re = ps.executeQuery();
+					
+					if(re.next()) {
+						
+						do {
+						Countvo count = new Countvo();
+						count.setNumber(re.getInt(2));
+						count.setSumcount(re.getInt(1));
+						count.setType("uc_num");
+						list.add(count);
+						}while(re.next());
+						
+					}
+					re.close();
+					sql="select count(*), u_num from used_report group by u_num";
+					ps1 = conn.prepareStatement(sql);
+					re = ps1.executeQuery();
+					
+					if(re.next()) {
+						
+						do {
+						Countvo count = new Countvo();
+						count.setNumber(re.getInt(2));
+						count.setSumcount(re.getInt(1));
+						count.setType("u_num");
+						list.add(count);
+						}while(re.next());
+						
+					}
+					re.close();
+					sql="select count(*), s_num from story_report group by s_num";
+					ps2 = conn.prepareStatement(sql);
+					re = ps2.executeQuery();
+					
+					if(re.next()) {
+						
+						do {
+						Countvo count = new Countvo();
+						count.setNumber(re.getInt(2));
+						count.setSumcount(re.getInt(1));
+						count.setType("s_num");
+						list.add(count);
+						}while(re.next());
+						
+					}
+					re.close();
+					sql="select count(*), sc_num from st_comm_report group by sc_num";
+					ps3 = conn.prepareStatement(sql);
+					re = ps3.executeQuery();
+					
+					if(re.next()) {
+						
+						do {
+						Countvo count = new Countvo();
+						count.setNumber(re.getInt(2));
+						count.setSumcount(re.getInt(1));
+						count.setType("sc_num");
+						list.add(count);
+						}while(re.next());
+						
+					}
+					conn.commit();
+				}catch(Exception e) {
+					conn.rollback();
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, ps3, null);
+					DBUtil.executeClose(null, ps2, null);
+					DBUtil.executeClose(null, ps1, null);
+					DBUtil.executeClose(re, ps, conn);
+				}
+				return list;
+				
+				
+			}
 			
 			
 			

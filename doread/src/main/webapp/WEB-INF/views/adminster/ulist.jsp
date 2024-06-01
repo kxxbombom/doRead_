@@ -16,6 +16,7 @@
 <jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
+<input type="button" value="누적신고 5회이상 확인" onclick="location.href='five.do'">
 <h2>USED 보드 신고된 게시글 관리</h2>
 	<c:if test="${empty list}">
 	 신고등록된 게시글이 없습니다.
@@ -200,7 +201,7 @@
 	 			</td>
 	 			<td>
 	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
-	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.src_num}" data-name="src_num" ">
+	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.src_num}" data-name="src_num" >
 	 			</td>
 	 		</tr>
 	 		</c:if>
