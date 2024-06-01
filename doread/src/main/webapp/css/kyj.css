@@ -49,11 +49,16 @@ div#main_nav>ul>li:hover div#category_items{
 	text-align:center;
 }
 
+#book_item{
+	height:300px;
+}
+
 .image-space .horizontal-area img{
 	width:215px;
 	height:195px;
 	object-fit:contain;
 }
+
 
 
 .image-space .float-clear{
@@ -100,6 +105,7 @@ div.category-tag{
 	border:none;
 	width:470px;
 	margin:0;
+	padding: 0px 20px;
 	float:left;
 }
 
@@ -227,4 +233,8 @@ div.image-items .event-item{
 
 .event-item img{
 	object-fit:contain;
+}
+
+.align-center{
+	text-align:center;
 }

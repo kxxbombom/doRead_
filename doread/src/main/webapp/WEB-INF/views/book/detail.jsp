@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,22 +154,30 @@
 		<ul class="book-info">
 			<li id="book_review">
 				<h3>이 책의 리뷰</h3>
-				<table>
-					<tr>
-						<th>글 번호</th>
-						<th>제목</th>
-						<th>작성일</th>
-						<th>조회</th>
-					</tr>
-					<c:forEach var="story" items="${story}">
-					<tr>	
-						<td>${story.s_num}</td>
-						<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
-						<td>${story.s_rdate}</td>
-						<td>${story.s_hit}</td>
-					</tr>
-					</c:forEach>
-				</table>
+				<hr width="100%" size="1" noshade="noshade">
+				<c:if test="${s_count==0}">
+					<div class="align-center">
+						<h3>표시할 리뷰가 없습니다.</h3>
+					</div>
+				</c:if>
+				<c:if test="${s_count!=0}">
+					<table>
+						<tr>
+							<th>글 번호</th>
+							<th>제목</th>
+							<th>작성일</th>
+							<th>조회</th>
+						</tr>
+						<c:forEach var="story" items="${story}">
+						<tr>	
+							<td>${story.s_num}</td>
+							<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
+							<td>${story.s_rdate}</td>
+							<td>${story.s_hit}</td>
+						</tr>
+						</c:forEach>
+					</table>
+				</c:if>
 				<hr width="100%" size="1" noshade="noshade">
 			</li>
 			<li id="change_info">

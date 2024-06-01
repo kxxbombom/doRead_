@@ -249,6 +249,35 @@ public class BookDAO {
 		return list;
 	}
 	
+	//해당 도서 리뷰 개수 구하기
+	public int getBookStoryCount(int book_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int s_count = 0;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT COUNT(*) FROM storyboard JOIN book USING (book_num) WHERE book_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				s_count = rs.getInt(1);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		return s_count;
+	}
+	
 	//도서 상세정보
 	public BookVO getBookDetail(int book_num) throws Exception{
 		Connection conn = null;
