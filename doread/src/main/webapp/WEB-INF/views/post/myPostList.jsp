@@ -58,6 +58,9 @@
 			</tr>
 			</c:forEach>		
 		</table>
+		<div style="text-align:center;">
+			${page}
+		</div>
 		<hr size="1" noshade width="100%">
 		<h4>Qna 게시판</h4>
 		<table>
@@ -77,6 +80,9 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<div style="text-align:center;">
+			${page3}
+		</div>
 		<hr size="1" noshade width="100%">
 			 
 		
@@ -102,7 +108,9 @@
 			</tr>
 			</c:forEach>		
 		</table>
-		
+		<div style="text-align:center;">
+			${page4}
+		</div>
 	</div>
 	<div class="hide gide" style="font-size:10pxt;  z-index:999; position:absolute; bottom:350px; left:20%; border:1px solid #d4d2d2; border-radius:15px; background:white;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>
 </body>

@@ -32,7 +32,7 @@
 				
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
-					if(item.ㅕc_auth == 0){
+					if(item.uc_auth == 0){
 					output += '<h4>' + item.mem_id + '</h4>';
 					output += '<div class="sub-item">';
 					output += '<p>'+item.uc_content+ '</p>';

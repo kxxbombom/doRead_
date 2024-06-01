@@ -61,7 +61,152 @@
 	 	</c:forEach>
 	 </table>
 	</c:if>
+	<h2>USED 보드 신고된 댓글 관리</h2>
+	<c:if test="${empty list1}">
+	 신고등록된 댓글이 없습니다.
+	</c:if>
+	<c:if test="${!empty list1}">
+	 <table>
+	 	<tr>
+	 	<th>글번호</th>
+	 	<th>댓글번호</th>
+	 	<th>댓글내용</th>
+	 	<th>신고한회원번호</th>
+	 	<th>신고카테고리</th>
+	 	<th>신고내용</th>
+	 	<th>현재등급</th>
+	 	<th>등급변경<th>
+	 	</tr>
+	 	<c:forEach var="i" items="${list1}">
+	 		<c:if test="${i.auth == 0}">
+	 		<tr>
+	 			<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_num}</a></td>
+	 			<td>${i.uc_num}</td>
+	 			<td>${i.content}</td>
+	 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
+	 			<td><c:if test="${i.urc_category ==1 }">스팸홍보글/도배글</c:if>
+	 				<c:if test="${i.urc_category ==2 }">음란물</c:if>
+	 				<c:if test="${i.urc_category ==3 }">불법정보</c:if>
+	 				<c:if test="${i.urc_category ==4 }">청소년에게 유해한내용</c:if>
+	 				<c:if test="${i.urc_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
+	 				<c:if test="${i.urc_category ==6 }">개인정보노출</c:if>
+	 				<c:if test="${i.urc_category ==7 }">불쾌한 표현이 있습니다.</c:if>
+	 				
+	 			</td>
+	 	
+	 			<td>
+	 				${i.urc_content}
+	 			</td>
+	 			<td>
+	 				<c:if test="${i.auth ==0 }">일반</c:if>
+	 				
+	 				<c:if test="${i.auth ==2 }">정지</c:if>
+	 			</td>
+	 			<td>
+	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.uc_num}" data-name="uc_num" data-auth="${i.auth}">
+	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.urc_num}" data-name="urc_num" ">
+	 			</td>
+	 		</tr>
+	 		</c:if>
+	 	</c:forEach>
+	 </table>
+	</c:if>
+	<h2>스토리 보드 신고된 게시글 관리</h2>
+	<c:if test="${empty list2}">
+	 신고등록된 게시글이 없습니다.
+	</c:if>
+	<c:if test="${!empty list2}">
+	 <table>
+	 	<tr>
+	 	<th>글번호</th>
+	 	<th>신고한회원번호</th>
+	 	<th>신고카테고리</th>
+	 	<th>신고내용</th>
+	 	<th>현재등급</th>
+	 	<th>등급변경<th>
+	 	</tr>
+	 	<c:forEach var="i" items="${list2}">
+	 		<c:if test="${i.auth == 0}">
+	 		<tr>
+	 			<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${i.s_num}">${i.s_num}</a></td>
+	 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
+	 			<td><c:if test="${i.sr_category ==1 }">스팸홍보글/도배글</c:if>
+	 				<c:if test="${i.sr_category ==2 }">음란물</c:if>
+	 				<c:if test="${i.sr_category ==3 }">불법정보</c:if>
+	 				<c:if test="${i.sr_category ==4 }">청소년에게 유해한내용</c:if>
+	 				<c:if test="${i.sr_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
+	 				<c:if test="${i.sr_category ==6 }">개인정보노출</c:if>
+	 				<c:if test="${i.sr_category ==7 }">불쾌한 표현이 있습니다.</c:if>
+	 				
+	 			</td>
+	 			<td>
+	 				${i.sr_content}
+	 			</td>
+	 			<td>
+	 				<c:if test="${i.auth ==0 }">일반</c:if>
+	 				
+	 				<c:if test="${i.auth ==2 }">정지</c:if>
+	 			</td>
+	 			<td>
+	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.s_num}" data-name="s_num" data-auth="${i.auth}">
+	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.sr_num}" data-name="sr_num" ">
+	 			</td>
+	 		</tr>
+	 		</c:if>
+	 	</c:forEach>
+	 </table>
+	</c:if>
 	
+	<h2>스토리보드 신고된 댓글 관리</h2>
+	<c:if test="${empty list3}">
+	 신고등록된 댓글이 없습니다.
+	</c:if>
+	<c:if test="${!empty list3}">
+	 <table>
+	 	<tr>
+	 	<th>글번호</th>
+	 	<th>댓글번호</th>
+	 	<th>댓글내용</th>
+	 	<th>신고한회원번호</th>
+	 	<th>신고카테고리</th>
+	 	<th>신고내용</th>
+	 	<th>현재등급</th>
+	 	<th>등급변경<th>
+	 	</tr>
+	 	<c:forEach var="i" items="${list3}">
+	 		<c:if test="${i.auth == 0}">
+	 		<tr>
+	 			<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${i.s_num}">${i.s_num}</a></td>
+	 			<td>${i.sc_num}</td>
+	 			<td>${i.content}</td>
+	 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
+	 			<td><c:if test="${i.src_category ==1 }">스팸홍보글/도배글</c:if>
+	 				<c:if test="${i.src_category ==2 }">음란물</c:if>
+	 				<c:if test="${i.src_category ==3 }">불법정보</c:if>
+	 				<c:if test="${i.src_category ==4 }">청소년에게 유해한내용</c:if>
+	 				<c:if test="${i.src_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
+	 				<c:if test="${i.src_category ==6 }">개인정보노출</c:if>
+	 				<c:if test="${i.src_category ==7 }">불쾌한 표현이 있습니다.</c:if>
+	 				
+	 			</td>
+	 	
+	 			<td>
+	 				${i.src_content}
+	 			</td>
+	 			<td>
+	 				<c:if test="${i.auth ==0 }">일반</c:if>
+	 				
+	 				<c:if test="${i.auth ==2 }">정지</c:if>
+	 			</td>
+	 			<td>
+	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
+	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.src_num}" data-name="src_num" ">
+	 			</td>
+	 		</tr>
+	 		</c:if>
+	 	</c:forEach>
+	 </table>
+	 </c:if>
 	<div class="align-center">
 	<input type="submit" value="등록" class="button2">
 	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">

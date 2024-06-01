@@ -15,24 +15,27 @@ public class PagingUtil {
 	 * */
 	public PagingUtil(int currentPage, int count, int rowCount,
 			int pageCount, String pageUrl) {
-		this(null,null,currentPage,count,rowCount,pageCount,pageUrl,null);
+		this(null,null,currentPage,count,rowCount,pageCount,pageUrl,null,null);
 	}
 	public PagingUtil(int currentPage, int count, int rowCount,
 			int pageCount, String pageUrl, String addKey) {
-		this(null,null,currentPage,count,rowCount,pageCount,pageUrl,addKey);
+		this(null,null,currentPage,count,rowCount,pageCount,pageUrl,addKey,null);
 	}
 	public PagingUtil(String keyfield, String keyword, int currentPage, int count, int rowCount,
 			int pageCount,String pageUrl) {
-		this(keyfield,keyword,currentPage,count,rowCount,pageCount,pageUrl,null);
+		this(keyfield,keyword,currentPage,count,rowCount,pageCount,pageUrl,null,null);
 	}
 	public PagingUtil(String keyfield, String keyword, int currentPage, int count, int rowCount,
-			int pageCount,String pageUrl,String addKey) {
+			int pageCount,String pageUrl,String addKey,String numbers) {
 		
+		String number ="";
+		if(numbers != null) number+=numbers;
 		String sub_url = "";
 		if(keyword != null) sub_url = "&keyfield="+keyfield+"&keyword="+keyword;
 		if(addKey != null) sub_url += addKey;
 		
 		// 전체 페이지 수
+		
 		int totalPage = (int) Math.ceil((double) count / rowCount);
 		if (totalPage == 0) {
 			totalPage = 1;
@@ -54,7 +57,7 @@ public class PagingUtil {
 		// 이전 block 페이지
 		page = new StringBuffer();
 		if (currentPage > pageCount) {
-			page.append("<a id='pre' href="+pageUrl+"?pageNum="+ (startPage - 1) + sub_url +">");
+			page.append("<a id='pre' href="+pageUrl+"?pageNum"+number+"="+ (startPage - 1) + sub_url +">");
 			page.append("<");
 			page.append("</a>");
 		}
@@ -68,7 +71,7 @@ public class PagingUtil {
 				page.append(i);
 				page.append("</span></b>");
 			} else {
-				page.append("&nbsp;<a class='pagebtn' href='"+pageUrl+"?pageNum=");
+				page.append("&nbsp;<a class='pagebtn' href='"+pageUrl+"?pageNum"+number+"=");
 				page.append(i);
 				page.append(sub_url+"'>");
 				page.append(i);
@@ -78,10 +81,12 @@ public class PagingUtil {
 		}
 		// 다음 block 페이지
 		if (totalPage - startPage >= pageCount) {
-			page.append("<a id='next' href="+pageUrl+"?pageNum="+ (endPage + 1) + sub_url +">");
+			page.append("<a id='next' href="+pageUrl+"?pageNum"+number+"="+ (endPage + 1) + sub_url +">");
 			page.append(">");
 			page.append("</a>");
 		}
+		
+		
 	}
 	public StringBuffer getPage() {
 		return page;
