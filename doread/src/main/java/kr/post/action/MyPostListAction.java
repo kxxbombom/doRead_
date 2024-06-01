@@ -11,6 +11,8 @@ import kr.qna.dao.QnaDAO;
 import kr.qna.vo.QnaVO;
 import kr.storyboard.dao.StoryBoardDAO;
 import kr.storyboard.vo.StoryBoardVO;
+import kr.used.dao.UsedDAO;
+import kr.used.vo.UsedVO;
 import kr.util.PagingUtil;
   
 public class MyPostListAction implements Action{
@@ -45,7 +47,9 @@ public class MyPostListAction implements Action{
 		}
 		
 		request.setAttribute("qnalist", qnalist);
-		
+		UsedDAO udao = UsedDAO.getInstance();
+		List<UsedVO> ulist =udao.mylistUsed(0, 10, user_num);
+		request.setAttribute("list", ulist);
 		// JSP 경로 반환
 		return "/WEB-INF/views/post/myPostList.jsp";
 	}

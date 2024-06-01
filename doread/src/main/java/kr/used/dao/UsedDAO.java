@@ -151,6 +151,54 @@ public class UsedDAO {
 		}
 		return list;
 	}
+	//내글리스트
+	public List<UsedVO> mylistUsed(int start, int end,int memnum) throws Exception{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet re = null;
+		List<UsedVO> list = null;
+		String sql=null;
+	
+		int cnt =0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql="select * from (select rownum alnum, a.* from (select * from (usedbookboard join book using(book_num))join member using(mem_num) where mem_num=? order by u_num desc) a ) where alnum >= ? and alnum <= ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(++cnt, memnum);
+			ps.setInt(++cnt, start);
+			ps.setInt(++cnt, end);
+			re = ps.executeQuery();
+			if(re.next()) {
+				list = new ArrayList<UsedVO>();
+				do{
+					UsedVO used = new UsedVO();
+					used.setBook_num(re.getInt("book_num"));
+					used.setU_num(re.getInt("u_num"));
+					used.setU_hit(re.getInt("u_hit"));
+					used.setU_state(re.getInt("u_state"));
+					used.setU_title(re.getString("u_title"));
+					used.setU_content(re.getString("u_content"));
+					used.setId(re.getString("mem_id"));
+					used.setU_price(re.getInt("u_price"));
+					used.setU_auth(re.getInt("u_auth"));
+					used.setU_rdate(re.getDate("u_rdate"));
+					used.setBook_name(re.getString("book_name"));
+					
+					list.add(used);
+				}while(re.next());
+				
+			
+				
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.getConnection();
+		}
+		return list;
+	}
 	//글 상세
 	public UsedVO detatilUsed(int u_num) throws Exception{
 		Connection conn = null;

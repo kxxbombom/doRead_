@@ -98,10 +98,10 @@
 			<c:if test="${used.u_condition == 5}">하</c:if>
 			<img id="gideimage" src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
 			</b><br>
-			<div class="hide gide siteLink">
-				&lt;Do READ 중고 품질 판정 가이드&gt;
+			<div class="hide gide siteLink" style="font-size:10pxt;  z-index:999; position:absolute; border:1px solid #d4d2d2; border-radius:15px; background:white;">
+				&lt;Do READ 중고 품질 판정 가이드&gt;<br>
 					
-					미개봉<br>
+					미개봉(개봉하지않았음)<br>
 					최상(개봉,사용감없음)<br>
 					상(개봉, 2개이하의 파손이나 낙서)<br>
 					중(개봉,4개이하의 파손이나 낙서)<br>

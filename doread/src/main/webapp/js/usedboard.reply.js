@@ -276,6 +276,7 @@
            $('.rebtn').attr('data-id','');
              $('.rebtn').attr('data-name','');
               $('.textareareport').val('');
+              $('input[type="radio"]:checked').attr('checked','flase');
     	    }
 		
 	});
@@ -285,6 +286,7 @@
             $('.rebtn').attr('data-id','');
             $('.rebtn').attr('data-name','');
              $('.textareareport').val('');
+              $('input[type="radio"]:checked').attr('checked','flase');
     	    
 		
 	});
@@ -314,7 +316,7 @@
 					$('input[type="radio"]:checked').attr('checked','false');
 					$('.reportdiv').addClass('hide');
 				}else if(param.result=='duple'){
-					alert('이미 신고접수된 글/댓글 입니다.');
+					alert('이미 신고접수한 글/댓글 입니다.');
 					$('.textareareport').val('');
 					$('input[type="radio"]:checked').attr('checked','false');
 					$('.reportdiv').addClass('hide');
@@ -330,7 +332,13 @@
 	
 	})
   
-	
+	$('#gideimage').hover(function(){
+    		 $('.gide').removeClass('hide');
+    	},function(){
+    		  $('.gide').addClass('hide');
+    		
+    	})
+    	
 	
 
 });
