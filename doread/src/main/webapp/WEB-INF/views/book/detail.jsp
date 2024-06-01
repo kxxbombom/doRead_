@@ -157,7 +157,7 @@
 				<hr width="100%" size="1" noshade="noshade">
 				<c:if test="${s_count==0}">
 					<div class="align-center">
-						<h3>표시할 리뷰가 없습니다.</h3>
+						<h4>표시할 리뷰가 없습니다.</h4>
 					</div>
 				</c:if>
 				<c:if test="${s_count!=0}">

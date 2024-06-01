@@ -135,7 +135,7 @@
 								<c:if test="${all_total >= 15000}">
 								0원
 								</c:if>
-								<c:if test="${all_total< 15000}">
+								<c:if test="${all_total < 15000}">
 								<fmt:formatNumber value="2500"/>원
 								</c:if>
 								

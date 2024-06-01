@@ -158,10 +158,13 @@ input[type="text"],input[type="password"],input[type="email"],input[id="zipcode"
 	margin-right:4px;
 }
 #register_form input:focus{
-	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
 }
-#register_form input[type="radio"]:focus{
+#register_form input[type="checkbox"]:focus{
 	box-shadow:none;
+}
+#register+form input[type="checkbox"]{
+	border:none;
 }
 
 /*아이디중복, 우편번호찾기, 이메일,전화번호 중복체크 버튼*/
@@ -238,7 +241,7 @@ input[value="우편번호 찾기"]{
 #register_form input[id="phone"]{
 	margin-bottom:0;
 }
-/*radio*/
+/*checkbox*/
 .test{
 	width:120px;
 	display:flex;

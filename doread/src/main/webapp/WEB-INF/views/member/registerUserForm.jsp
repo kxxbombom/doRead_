@@ -80,12 +80,12 @@ $(function(){
 			dataType:'json',
 			success:function(param){
 				if(param.result == 'emailNotFound'){
-					idChecked = 1;
+					emailChecked = 1;
 					alert('사용 가능한 이메일입니다.');
 				}else if(param.result == 'emailDuplicated'){
 					emailChecked = 0;
 					alert('이미 사용 중인 이메일입니다.');
-					$('#email').focus();
+					$('#email').val('').focus();
 				}else{
 					emailChecked = 0;
 					alert('이메일 중복 체크 오류 발생');
@@ -117,20 +117,20 @@ $(function(){
 			dataType:'json',
 			success:function(param){
 				if(param.result == 'phoneNotFound'){
-					idChecked = 1;
+					phoneChecked = 1;
 					alert('사용 가능한 전화번호입니다.');
 				}else if(param.result == 'phoneDuplicated'){
-					emailChecked = 0;
+					phoneChecked = 0;
 					alert('이미 사용 중인 전화번호입니다.');
-					$('#phone').focus();
+					$('#phone').val('').focus();
 				}else{
-					emailChecked = 0;
+					phoneChecked = 0;
 					alert('전화번호 중복 체크 오류 발생');
 				}
 			},
 			error:function(){
 				alert('네트워크 오류 발생');
-				emailChecked = 0;
+				phoneChecked = 0;
 			}
 		});
 	});
@@ -279,51 +279,51 @@ $(function(){
 					<div class="preference-box">
 						<div class="preference-group">
 							<div class="test">
-							<input type="radio" name="preference" value="1" id="preference1">
+							<input type="checkbox" name="preference" value="1" id="preference1">
 							<label for="preference1">소설</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="2" id="preference2">
+							<input type="checkbox" name="preference" value="2" id="preference2">
 							<label for="preference2">시/에세이</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="3" id="preference3">
+							<input type="checkbox" name="preference" value="3" id="preference3">
 							<label for="preference3">인문</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="4" id="preference4">
+							<input type="checkbox" name="preference" value="4" id="preference4">
 							<label for="preference4">정치/사회</label>
 							</div>
 						</div>
 						<div class="preference-group">
 							<div class="test">
-							<input type="radio" name="preference" value="5" id="preference5">
+							<input type="checkbox" name="preference" value="5" id="preference5">
 							<label for="preference5">과학/공학</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="6" id="preference6">
+							<input type="checkbox" name="preference" value="6" id="preference6">
 							<label for="preference6">IT/프로그래밍</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="7" id="preference7">
+							<input type="checkbox" name="preference" value="7" id="preference7">
 							<label for="preference7">자기계발</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="8" id="preference8">
+							<input type="checkbox" name="preference" value="8" id="preference8">
 							<label for="preference8">외국어</label>
 							</div>
 						</div>
 						<div class="preference-group">
 							<div class="test">
-							<input type="radio" name="preference" value="9" id="preference9">
+							<input type="checkbox" name="preference" value="9" id="preference9">
 							<label for="preference9">수험서/취업</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="10" id="preference10">
+							<input type="checkbox" name="preference" value="10" id="preference10">
 							<label for="preference10">만화</label>
 							</div>
 							<div class="test">
-							<input type="radio" name="preference" value="11" id="preference11">
+							<input type="checkbox" name="preference" value="11" id="preference11">
 							<label for="preference11">취미/스포츠</label>
 							</div>
 						</div>
