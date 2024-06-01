@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
-import kr.order.vo.OrderVO;
 import kr.qna.dao.QnaDAO;
 import kr.qna.vo.QnaVO;
 import kr.storyboard.dao.StoryBoardDAO;
@@ -23,25 +22,26 @@ public class MyPostListAction implements Action{
 		
 		String keyfield = request.getParameter("keyfield");
 		String keyword= request.getParameter("keyword");
-		Integer user_num = 
-				(Integer)session.getAttribute("user_num");
+		Integer user_num = (Integer)session.getAttribute("user_num");
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
 		int count = dao.getStoryBoardCount(keyfield, keyword);
 		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 20,10,"storyBoardList.do");
-		List<StoryBoardVO> storylist = null;
+		List<StoryBoardVO> Storylist = null;
 		
 		if(count > 0) {
-			storylist = dao.getListMyStoryBoard(1, 5, null, null, user_num);
+			Storylist = dao.getListMyStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
 		}
 		
-		request.setAttribute("storylist", storylist);
+		request.setAttribute("Storylist", Storylist);
 		
 		//qna
-		QnaDAO dao2 = QnaDAO.getInstance();
+		QnaDAO dao3 = QnaDAO.getInstance();
+		int count3 = dao3.getQnaCount(keyfield, keyword);
+		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 20,10,"qnaList.do");
 		List<QnaVO> qnalist = null;
-		if(count > 0) {
-			qnalist = dao2.getListQna(page.getStartRow(), page.getEndRow(), keyfield, keyword ,user_num);
+		if(count3 > 0) {
+			qnalist = dao3.getListQna(page3.getStartRow(), page3.getEndRow(), keyfield, keyword ,user_num);
 		}
 		
 		request.setAttribute("qnalist", qnalist);

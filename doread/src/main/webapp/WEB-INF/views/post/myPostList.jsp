@@ -26,14 +26,15 @@
 				<th>제목</th>
 				<th>작성일</th>
 			</tr>
-			<c:forEach var="story" items="${storylist}">
+			<c:forEach var="Storylist" items="${Storylist}">
 			<tr>
-				<td>${story.s_num}</td>
-				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
-				<td>${story.s_rdate}</td>
+				<td>${Storylist.s_num}</td>
+				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${Storylist.s_num}">${Storylist.s_title}</a></td>
+				<td>${Storylist.s_rdate}</td>
 			</tr>
 			</c:forEach>		
 		</table>
+		<hr size="1" noshade width="100%">
 		<h4>Qna 게시판</h4>
 		<table>
 			<tr>
@@ -44,7 +45,7 @@
 			<c:forEach var="qna" items="${qnalist}">
 			<tr>
 				<td>${qna.q_num}</td>
-				<td><a href="qnaDetail.do?q_num=${qna.q_num}">${qna.q_title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/qna/qnaDetail.do?q_num=${qna.q_num}">${qna.q_title}</a></td>
 				<td>${qna.q_rdate}</td>
 			</tr>
 			</c:forEach>
