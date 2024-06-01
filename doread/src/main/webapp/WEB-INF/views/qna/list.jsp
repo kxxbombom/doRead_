@@ -67,7 +67,7 @@ window.onload= function(){
 			<c:if test="${qna.mem_num == user_num}">
 			<tr>
 				<td>${qna.q_num}</td>
-				<td><a href="qnaDetail.do?s_num=${qna.q_num}">${qna.q_title}</a></td>
+				<td><a href="qnaDetail.do?q_num=${qna.q_num}">${qna.q_title}</a></td>
 				<td>${qna.q_rdate}</td>
 			</tr>
 			</c:if>
@@ -76,7 +76,7 @@ window.onload= function(){
 			<c:if test="${user_auth == 9}">
 			<tr>
 				<td>${qna2.q_num}</td>
-				<td><a href="qnaDetail.do?s_num=${qna2.q_num}">${qna2.q_title}</a></td>
+				<td><a href="qnaDetail.do?q_num=${qna2.q_num}">${qna2.q_title}</a></td>
 				<td>${qna2.q_rdate}</td>
 			</tr>
 			</c:if>
