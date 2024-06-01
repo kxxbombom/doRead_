@@ -26,12 +26,12 @@ setInterval(function() {
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h4>이벤트</h4>
-		<div class="event-space">
+		<div class="slider-container">
 			<div class="slider-space">
 				<c:forEach var="event" items="${eventList}">
-					<div class="image-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
-						<div class="event-item"><img src="${pageContext.request.contextPath}/upload/${event.e_image}" height="300"></div>
-						<div class="event-item">
+					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
+						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${event.e_image}" height="300"></div>
+						<div class="slider-image">
 							<ul>
 								<li><h2>${event.e_title}</h2></li>
 								<li>${event.e_rdate}~${event.e_deadline}</li>

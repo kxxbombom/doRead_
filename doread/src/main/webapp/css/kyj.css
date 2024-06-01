@@ -1,38 +1,5 @@
 @charset "UTF-8";
 
-div#category_items{
-	display:none;
-	width:120px;
-	margin-top:10px;
-	background-color:white;
-	position:fixed;
-	z-index: 50;
-};
-
-div.category_item{
-	padding:20px;
-	text-align:cetner;
-	border:initial;
-	vertical-align:middle;
-	background-color:white;
-	color:black;
-}
- 
-div.category_item a{
-	text-decoration: none;
-	color:black;
-}
-
-div.category_item a:hover{
-	text-decoration: none;
-	color:#6C6C6C;
-}
-
-div#main_nav>ul>li:hover div#category_items{
-	display:block;
-}
-
-
 /* 도서정보
 ---------------------*/
  h2,form.content-center{
@@ -187,18 +154,14 @@ form#book_search ul li{
 	display:inline;
 }
 
-.event-space{
+.slider-container{
 	text-align:center;
 }
 
-.event-space div{
+.slider-container div{
 	position:relative;
 	display:inline-block;
 	vertical-align:middle;
-}
-
-.event-space .arrow-button{
-	width:40px;
 }
 
 .slider-space{
@@ -209,7 +172,7 @@ form#book_search ul li{
 	overflow:hidden;
 }
 
-div.slider-space .image-items{
+div.slider-space .slider-items{
 	position:relative;
 	display:inline-block;
 	text-align:center;	
@@ -217,21 +180,21 @@ div.slider-space .image-items{
 	height:300px;
 }
 
-div.image-items .event-item{
+div.slider-items .slider-image{
 	position:relative;
 	display:inline-block;
 }
 
-.event-item ul{
+.slider-image ul{
 	list-style:none;
 }
 
 
-.event-item ul li,h2{
+.slider-image ul li,h2{
 	text-align:left;
 }
 
-.event-item img{
+.slider-image img{
 	object-fit:contain;
 }
 

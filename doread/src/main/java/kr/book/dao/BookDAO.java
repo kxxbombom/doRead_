@@ -461,6 +461,7 @@ public class BookDAO {
 			}
 		}
 		
+		//도서 리뷰 불러오기
 		public List<StoryBoardVO> getBookStory(int book_num)throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -494,4 +495,43 @@ public class BookDAO {
 			}
 			return list;
 		}
+	
+	//회원 선호 카테고리 도서 불러오기
+	public List<BookVO> getRecommendBook(int mem_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		List<BookVO> recommend = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM book b RIGHT OUTER JOIN member_detail m "
+					+ "ON b.book_category=m.book_category WHERE mem_num=?";
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_num);
+			
+			recommend = new ArrayList<BookVO>();
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BookVO book= new BookVO();
+				book.setBook_num(rs.getInt("book_num"));
+				book.setBook_name(rs.getString("book_name"));
+				book.setAuthor(rs.getString("Author"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setBook_img(rs.getString("book_img"));
+				
+				recommend.add(book);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return recommend;
+	}
+		
 }

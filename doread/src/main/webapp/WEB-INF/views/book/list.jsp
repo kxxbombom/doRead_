@@ -32,6 +32,7 @@ window.onload=function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2 class="content-center">도서 목록</h2>
+		<div class="center">
 		<form id="book_search" action="list.do" method="get" class="content-center">
 			<ul>
 				<li>
@@ -49,6 +50,7 @@ window.onload=function(){
 				</li>
 			</ul>
 		</form>
+		</div>
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">
 				<div class="horizontal-area" id="book_item">

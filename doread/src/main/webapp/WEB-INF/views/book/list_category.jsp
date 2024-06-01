@@ -31,6 +31,7 @@ window.onload=function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2>도서 목록</h2>
+		<div class="align-center">
 		<form id="book_search" action="listCategory.do" method="get">
 			<ul>
 				<li>
@@ -49,9 +50,10 @@ window.onload=function(){
 				</li>
 			</ul>
 		</form>
+		</div>
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">
-				<div class="horizontal-area">
+				<div class="horizontal-area" id="book_item">
 					<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${book.book_num}">
 						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
 						<span>${book.book_name}</span>
