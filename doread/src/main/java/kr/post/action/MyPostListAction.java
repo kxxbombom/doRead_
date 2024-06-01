@@ -40,7 +40,7 @@ public class MyPostListAction implements Action{
 		//qna
 		QnaDAO dao3 = QnaDAO.getInstance();
 		int count3 = dao3.getQnaCount(keyfield, keyword);
-		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 20,10,"qnaList.do");
+		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count3, 20,10,"qnaList.do");
 		List<QnaVO> qnalist = null;
 		if(count3 > 0) {
 			qnalist = dao3.getListQna(page3.getStartRow(), page3.getEndRow(), keyfield, keyword ,user_num);
@@ -48,7 +48,10 @@ public class MyPostListAction implements Action{
 		
 		request.setAttribute("qnalist", qnalist);
 		UsedDAO udao = UsedDAO.getInstance();
-		List<UsedVO> ulist =udao.mylistUsed(0, 10, user_num);
+		int countused = udao.myUsedCount(user_num);
+		PagingUtil page4 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),countused, 20,10,"qnaList.do");
+
+		List<UsedVO> ulist =udao.mylistUsed(page.getStartRow(),page.getEndRow(), user_num);
 		request.setAttribute("list", ulist);
 		// JSP 경로 반환
 		return "/WEB-INF/views/post/myPostList.jsp";
