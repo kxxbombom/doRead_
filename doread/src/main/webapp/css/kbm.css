@@ -793,18 +793,18 @@ input[type="file"]{
 
 
 /*장바구니*/
-div.cart-container{
+.cart-container{
 	width:100%;
 	display:flex;
 	margin:0;
 	padding:0;
 }
 form#cart_order{
-	width:900px;
+	width:1000px;
 	margin-left:5px;
 }
 #cartTable{
-	margin:0 10px;
+	margin:0 15px;
 	width:700px;
 }
 #cartTable:first-child{
@@ -901,7 +901,8 @@ form#cart_order{
 	margin-left:25px;
 }
 #order_form{
-	margin-left:30px;
+	margin-left:10px;
+	width:700px;
 }
 .order-info > div{
 	border:1px solid #d4d2d2;
@@ -910,6 +911,7 @@ form#cart_order{
 }
 div.order-info{
 	margin:0 15px;
+	width:700px;
 }
 .cart-container > div.order-info > div > *{
 	padding-left:10px;
