@@ -63,12 +63,15 @@ public class UserOrderFormAction implements Action{
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberVO member = memberDAO.getMember(user_num);
 		
-		
+		OrderDAO orderDAO = OrderDAO.getInstance();
+		int point = orderDAO.getPoint(user_num);
 				
 		request.setAttribute("list", cartList);
 		request.setAttribute("all_total", all_total);
 		request.setAttribute("all_total_delivery", all_total_delivery);
 		request.setAttribute("member", member);
+		request.setAttribute("point", point);
+		
 		return "/WEB-INF/views/order/user_orderForm.jsp";
 	}
 }

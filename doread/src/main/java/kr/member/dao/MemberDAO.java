@@ -316,30 +316,6 @@ public class MemberDAO {
 		}
 	}
 	
-	//포인트정보
-		public int getPoint(int mem_num)throws Exception{
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = null;
-			int point = 0;
-			try {
-				conn = DBUtil.getConnection();
-
-				sql = "SELECT p_point FROM point WHERE mem_num=?";
-				
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					point = rs.getInt(1);
-				}
-			}catch(Exception e) {
-				throw new Exception(e);
-			}finally {
-				DBUtil.executeClose(rs, pstmt, conn);
-			}
-			return point;
-		}
 	//프로필 사진 수정
 	public void updateMyPhoto(String mem_photo,int mem_num)throws Exception{
 		Connection conn = null;

@@ -113,7 +113,31 @@ public class OrderDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 	}
-	
+
+	//포인트정보
+	public int getPoint(int mem_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int point = 0;
+		try {
+			conn = DBUtil.getConnection();
+
+			sql = "SELECT p_point FROM point WHERE mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				point = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return point;
+	}
 	//관리자 - 전체/검색 주문 개수
 	//관리자 - 전체/검색 주문 목록
 	//사용자 - 전체/검색 주문 개수
