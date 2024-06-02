@@ -6,6 +6,7 @@ public class OrderVO {
 	private int order_num;
 	private int order_total;
 	private Date order_date;
+	private Date order_mdate;
 	private String receive_name;
 	private String receive_zipcode;
 	private String receive_address1;
@@ -14,7 +15,7 @@ public class OrderVO {
 	private String order_msg;
 	private int order_payment;	//1.계좌입금,2.신용카드
 	private int order_status;	//1.결제완료,2.배송시작,3.배송중,4.배송완료,5.주문취소
-	private int book_num;	/////////////////////
+	
 	private int mem_num;
 	
 	private String mem_id;
@@ -60,6 +61,12 @@ public class OrderVO {
 	public String getReceive_address2() {
 		return receive_address2;
 	}
+	public Date getOrder_mdate() {
+		return order_mdate;
+	}
+	public void setOrder_mdate(Date order_mdate) {
+		this.order_mdate = order_mdate;
+	}
 	public void setReceive_address2(String receive_address2) {
 		this.receive_address2 = receive_address2;
 	}
@@ -86,12 +93,6 @@ public class OrderVO {
 	}
 	public void setOrder_status(int order_status) {
 		this.order_status = order_status;
-	}
-	public int getBook_num() {
-		return book_num;
-	}
-	public void setBook_num(int book_num) {
-		this.book_num = book_num;
 	}
 	public int getMem_num() {
 		return mem_num;
