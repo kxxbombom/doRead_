@@ -13,7 +13,9 @@
 		const inputcheck = document.getElementsByClassName('inputcheck');
 		const form = document.getElementById('bookcreate_form');
 		
+       
 		form.onsubmit = function(){
+			
 			for(let i=0; i<inputcheck.length; i++){
 			const label = document.querySelector('label[for="'+inputcheck[i].id+'"]');
 			
@@ -29,7 +31,8 @@
 					alert('출판일은 0000-00-00 형식으로 입력하세요');
 					inputcheck[i].focus();
 					return false;
-				}			
+				}	
+				
 			}
 		}//end of for
 		
@@ -50,6 +53,12 @@
 	<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
 	<div class="content-main">
 	<ul>
+		<li><label for="book_auth">판매여부</label>
+			<select name="book_auth" id="book_auth" class="inputcheck input-style">
+				<option value="0">판매</option>
+				<option value="1">미판매</option>
+			</select>
+		</li>
 		<li><label for="book_name">책 이름</label>
 			<input type="text" name="book_name" class="inputcheck input-style" id="book_name" maxlength="30" >
 		</li>

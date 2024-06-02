@@ -23,13 +23,87 @@
 
 	</div>
 	<div class="content-main">
+	<c:if test="${book.book_auth !=0}">
+		<div style="opacity:0.4;">
 		<div class="book-image">
 			<ul>
-				<li><img src="${pageContext.request.contextPath}/upload/${book.book_img}" width="400"></li>
+				<li>
+				
+				<img src="${pageContext.request.contextPath}/upload/${book.book_img}" width="400">
+						
+				
+				</li>
 			</ul>
 		</div>
+		</div>
+	</c:if>
+	</div>
+	
 		<div class="book-detail">
 		
+				<c:if test="${book.book_auth != 0}">
+				<h2   style="readonly:readonly z-index:999; ">품절 되었습니다.</h2>
+				<div style="opacity:0.4;">
+				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
+				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
+				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
+				<ul>
+					<li id="book-tagtop">
+						<div class="category-tag">
+							<b>
+							<c:if test="${book.book_category==1}">소설</c:if>
+							<c:if test="${book.book_category==2}">시/에세이</c:if>
+							<c:if test="${book.book_category==3}">인문</c:if>
+							<c:if test="${book.book_category==4}">정치/사회</c:if>
+							<c:if test="${book.book_category==5}">과학/공학</c:if>
+							<c:if test="${book.book_category==6}">IT/프로그래밍</c:if>
+							<c:if test="${book.book_category==7}">자기계발</c:if>
+							<c:if test="${book.book_category==8}">외국어</c:if>
+							<c:if test="${book.book_category==9}">수험서/취업</c:if>
+							<c:if test="${book.book_category==10}">만화</c:if>
+							<c:if test="${book.book_category==11}">취미/스포츠</c:if>
+							</b>
+						</div>
+						<br>
+							<img id="bookfav" src="${pageContext.request.contextPath}/images/bookfav_before.png" width="20px" data-num="${book.book_num}">
+					</li>
+					<li><h1>${book.book_name}</h1></li>
+					<li>${book.author} / ${book.publisher}</li>
+					<li>${book.publish_date}</li>
+					<li><h3><b><fmt:formatNumber value="${book.price}"/>원</b> / 재고: <span><fmt:formatNumber value="${book.stock}"/>권</span></h3></li>
+					<c:if test="${book.stock>0}">
+						<li>
+							<label for=book_quantity id="quantity_label">구매수량</label>
+							<input type="number" name="book_quantity" id="book_quantity" min="1" max="${book.stock}">
+						</li>
+						
+						<li id="button-margin">
+							<input type="submit" value="바로구매" id="order" class="order-button">
+							<input type="button" value="장바구니" id="insert_cart" class="order-button">
+						</li>
+						
+						
+						
+		
+					</c:if>
+					</ul>
+					</div>
+					
+					</c:if>
+				
+		<c:if test="${book.book_auth == 0}">
+		<div class="content-main">
+		<div class="book-image">
+			<ul>
+				<li>
+				
+				<img src="${pageContext.request.contextPath}/upload/${book.book_img}" width="400">
+						
+				
+				</li>
+			</ul>
+		</div>
+		</div>
 			<form id="book_cart" action="${pageContext.request.contextPath}/order/orderForm.do" method="post">
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
@@ -136,9 +210,10 @@
 					</c:if>
 				</ul>
 			</form>
+		
+			</c:if>
 		</div>
 	</div>
-	
 	<div class="float-clear">
 			<br>
 			<hr width="100%" size="1" noshade="noshade">

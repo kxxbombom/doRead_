@@ -27,7 +27,7 @@ public class BookDAO {
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO book (book_num,book_name,author,publisher,publish_date,price,stock,book_category,book_img) VALUES (book_seq.nextval,?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO book (book_num,book_name,author,publisher,publish_date,price,stock,book_category,book_img,book_auth) VALUES (book_seq.nextval,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBook_name());
@@ -38,6 +38,7 @@ public class BookDAO {
 			pstmt.setInt(6, book.getStock());
 			pstmt.setInt(7, book.getBook_category());
 			pstmt.setString(8,book.getBook_img());
+			pstmt.setInt(9,book.getBook_auth());
 			
 			pstmt.executeUpdate();
 		}catch(Exception e) {
@@ -172,6 +173,7 @@ public class BookDAO {
 				book.setPublish_date(rs.getString("publish_date"));
 				book.setBook_img(rs.getString("book_img"));
 				book.setBook_category(rs.getInt("book_category"));
+				book.setBook_auth(rs.getInt("book_auth"));
 				
 				list.add(book);
 			}
@@ -234,6 +236,7 @@ public class BookDAO {
 				book.setPublish_date(rs.getString("publish_date"));
 				book.setBook_img(rs.getString("book_img"));
 				book.setBook_category(rs.getInt("book_category"));
+				book.setBook_auth(rs.getInt("book_auth"));
 				
 				list.add(book);
 			}
@@ -305,6 +308,7 @@ public class BookDAO {
 				book.setPublish_date(rs.getString("publish_date"));
 				book.setBook_img(rs.getString("book_img"));
 				book.setBook_category(rs.getInt("book_category"));
+				book.setBook_auth(rs.getInt("book_auth"));
 			}
 			return book;
 		}catch(Exception e) {
@@ -521,6 +525,7 @@ public class BookDAO {
 				book.setAuthor(rs.getString("Author"));
 				book.setPublisher(rs.getString("publisher"));
 				book.setBook_img(rs.getString("book_img"));
+				book.setBook_auth(rs.getInt("book_auth"));
 				
 				recommend.add(book);
 			}
