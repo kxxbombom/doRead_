@@ -19,6 +19,10 @@ public class MyPostListAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num==null) {//로그인 되지 않은 경우
+			return "redirect:/member/loginForm.do";
+		}
 		String pageNum = request.getParameter("pageNum");
 		String pageNum1 = request.getParameter("pageNum1");
 		String pageNum2= request.getParameter("pageNum2");
@@ -27,7 +31,7 @@ public class MyPostListAction implements Action{
 		if(pageNum2 == null) pageNum2 = "1";
 		String keyfield = request.getParameter("keyfield");
 		String keyword= request.getParameter("keyword");
-		Integer user_num = (Integer)session.getAttribute("user_num");
+		
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
 		int count = dao.getStoryBoardCount(keyfield, keyword);
