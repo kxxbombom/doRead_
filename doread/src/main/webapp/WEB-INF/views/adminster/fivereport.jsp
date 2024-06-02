@@ -13,7 +13,6 @@
 <script type="text/javascript">
 	$(function(){
 		$('.contentbtn').click(function(){
-			alert('f');
 			if($('span[data-id="'+$(this).attr('data-id')+'"]').hasClass('hide')){
 			$('span[data-id="'+$(this).attr('data-id')+'"]').removeClass('hide');
 			$(this).val('댓글닫기');
