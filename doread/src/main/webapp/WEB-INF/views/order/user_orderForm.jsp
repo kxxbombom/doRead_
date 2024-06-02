@@ -24,12 +24,12 @@
 			<div id="receive_info">
 				<ul>
 					<li>
-						<label>배송지 정보</label>
+						<span>배송지정보</span>
 						<div>
 							<ul>
-								<li>${member.mem_name}</li>
-								<li>${member.mem_phone}</li>
-								<li>${member.mem_zipcode} ${member.mem_address1} ${member.mem_address2}</li>
+								<li><input type="text" id="receive_name" name="receive_name" value="${member.mem_name}" class="hidden"><span id="displayName">${member.mem_name}</span></li>
+								<li><input type="text" id="receive_name" name="receive_phone" value="${member.mem_phone}" class="hidden"><span id="displayPhone">${member.mem_phone}</span></li>
+								<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${member.mem_zipcode}" class="hidden"><span id="displayZipcode">${member.mem_zipcode}</span> <input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden"><span id="displayAddress1">${member.mem_address1}</span> <input type="text" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden"><span id="displayAddress2">${member.mem_address2}</span></li>
 							</ul>
 						</div>
 					</li>
@@ -83,12 +83,18 @@
 			<div>
 			<ul>
 				<li>포인트</li>
-				<li>보유 원</li>
+				<li>보유 ${point}원</li>
 			</ul>
-			통합 포인트 원 <input type="number" min="0" max="">
+			통합 포인트 ${point}원 <input type="number" min="0" max="${point}" value="0">
 			<input type="button" name="pointpayment" value="사용">
 			</div>
 			
+			<div>
+				<label for="enter">결제수단</label>
+				<input type="radio" name="payment" value="1">신용카드<input type="text" name="enter_passwd" placeholder="카드번호">
+				<input type="radio" name="payment" value="2">계좌이체
+				<input type="radio" name="payment" value="3">휴대폰결제	
+		 	</div>
 			<div class="cartList">
 		 			<ul>
 		 				<li class="flex-container">상품 금액 <span><b><fmt:formatNumber value="${all_total}"/></b>원</span></li>
@@ -127,6 +133,7 @@
 	 					<input type="submit" value="결제하기">
 	 				</div>
 		 		</div>
+		 		
 		</form>
 	</div>	
 </div>

@@ -42,9 +42,8 @@ public class OrderDAO {
 			}
 			
 			//주문정보 처리
-			sql = "INSERT INTO book_order (order_num,order_total,receive_name,receive_zipcode,receive_address1,"
-					+ "receive_address2,receive_phone,order_msg,order_payment,mem_num"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO book_order (order_num, order_total, receive_name, receive_zipcode, receive_address1,"
+					+ "receive_address2, receive_phone, order_msg, order_payment, mem_num) VALUES (?,?,?,?,?,?,?,?,?,?)";
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(1, order_num);
 			pstmt2.setInt(2, order.getOrder_total());
@@ -59,7 +58,7 @@ public class OrderDAO {
 			pstmt2.executeUpdate();
 			
 			//주문상세정보
-			sql = "INSERT INTO book_order_detail (detail_num,book_price,book_total,order_quantity,order_num,book_num,book_name) "
+			sql = "INSERT INTO book_order_detail (detail_num, book_price, book_total, order_quantity, order_num, book_num, book_name) "
 					+ "VALUES (order_detail_seq.nextval,?,?,?,?,?,?)";
 			pstmt3 = conn.prepareStatement(sql);
 			
@@ -127,6 +126,8 @@ public class OrderDAO {
 			sql = "SELECT p_point FROM point WHERE mem_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_num);
+			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				point = rs.getInt(1);

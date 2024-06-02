@@ -749,9 +749,9 @@ ul.btn-hide{
 	width:80px;
 	height:60px;
 	text-align:right;
-	padding-right: 10px; /* 오른쪽 패딩만 설정합니다 */
-    position: absolute; /* 절대 위치 지정 */
-    top: 100%; /* 부모 요소 아래에 위치하도록 지정합니다 */
+	padding-right: 10px;
+    position: absolute;
+    top: 100%;
     z-index: 1;
     display: none;
     background:#FFF;
