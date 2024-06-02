@@ -60,7 +60,7 @@ window.onload= function(){
 				<th>조회수</th>
 			</tr>
 			<c:forEach var="story" items="${list}">
-			<tr>
+	 		<tr>
 				<td>${story.s_num}</td>
 				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
 				<td>${story.s_rdate}</td>
