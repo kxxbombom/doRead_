@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
@@ -31,7 +30,7 @@
 	<div class="content-main">
 	<jsp:include page="/WEB-INF/views/member/loginheader.jsp"/>
 		<div class="login-top">
-			<a href="${pageContext.request.contextPath}/main/main.do"><b>Do Read</b></a>
+			<a href="${pageContext.request.contextPath}/main/main.do" id="doread"><b>Do Read</b></a>
 		</div>
 		<form id="login_form" action="login.do" method="post">
 			<ul>

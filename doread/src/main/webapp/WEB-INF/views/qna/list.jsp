@@ -29,21 +29,16 @@ window.onload= function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2>QnA 목록</h2>
+		<div class="float-clear">
+			<hr width="100%" size="1" noshade="noshade">
+		</div>
 		<form id="search_form" action="qnaList.do" method="get">
-			<ul class="search">
-				<li>
-					<select name="keyfield">
-						<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
-						<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
-					</select>
-				</li>
-				<li>
-					<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">				
-				</li>
-				<li>
-					<input type="submit" value="검색">
-				</li>
-			</ul>
+			<select name="keyfield" class="input-style">
+				<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
+				<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
+			</select>
+			<input type="search" size="16" class="inputcheck input-style" name="keyword" id="keyword" value="${param.keyword}" placeholder="검색내용입력">				
+			<input type="submit" value="검색">
 		</form>
 		<div>
 			<input type="button" value="글쓰기" onclick="location.href='qnaWriteForm.do'"

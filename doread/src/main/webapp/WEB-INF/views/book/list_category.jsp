@@ -50,6 +50,9 @@ window.onload=function(){
 				</li>
 			</ul>
 		</form>
+		<div class="float-clear">
+			<hr width="100%" size="1" noshade="noshade">
+		</div>
 		</div>
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">

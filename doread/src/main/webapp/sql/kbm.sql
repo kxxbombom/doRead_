@@ -104,9 +104,9 @@ create table book_order(
  order_phone varchar2(15) NOT NULL,
  order_msg varchar2(300),
  order_payment number(1) NOT NULL, -- 1.계좌입금,2.신용카드
- order_status number(1) default 1 NOT NULL -- 1.결제완료,2.배송시작,3.배송중,4.배송완료,5.주문취소
+ order_status number(1) default 1 NOT NULL, -- 1.결제완료,2.배송시작,3.배송중,4.배송완료,5.주문취소
  --book_num number NOT NULL,
- mem_num number	NOT NULL
+ mem_num number	NOT NULL,
  constraint order_pk primary key (order_num),
  constraint order_fk foreign key (mem_num) references member (mem_num)
 );

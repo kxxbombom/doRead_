@@ -10,7 +10,7 @@ public class CartVO {
 	private int book_num;
 	private int mem_num;
 	private Date c_rdate;
-	private int sub_total; //동일 상품 구매금액
+	private int sub_total; //도서별 구매금액
 	
 	private BookVO bookVO;
 	

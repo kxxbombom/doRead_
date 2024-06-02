@@ -198,7 +198,7 @@ body{
 	color:#f0eded;
 }
 
-/*  */
+/* 도서 */
 :root {
     --btn-width : 8vw;
     --btn-min-width : 5px;
@@ -222,9 +222,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 6px;
+    font-size: 1.15rem;
+	color:#336633;
 }
 #label:hover{
 	color:#FFF;
+	cursor:pointer;
 }
 
 
@@ -249,6 +253,7 @@ body{
     height: var(--menu-height);
     min-height: var(--menu-min-height);
     opacity: 1;
+    color:#FFF;	
 }
 .menu-name {
     width: var(--btn-width);
@@ -256,7 +261,7 @@ body{
     text-decoration: none;
     font-size: var(--font-size);
     font-weight: 50;
-    line-height: 20px;
+    line-height: 20px;	
 }
 
 ul {

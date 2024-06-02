@@ -38,7 +38,7 @@
 	 					<td rowspan="4" colspan="5" style="height:200px;">
 	 						<img src="${pageContext.request.contextPath}/images/noItem.png" width="30px;">
 	 						<br>
-	 						<span>장바구니에 담은 상품이 없습니다.</span>
+	 						<span style="color:#666b66">장바구니에 담은 상품이 없습니다.</span>
 	 					</td>
 	 				</tr>
 	 		</table>
@@ -56,7 +56,7 @@
 		 				</li>
 		 				
 						<hr size="1" width="100%">
-		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><fmt:formatNumber value="${all_total_delivery}"/></b>원</span></li>
+		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b>0</b>원</span></li>
 		 				<li class="flex-container">
 		 					<span class="tooltip-container">
 		 						적립 예정 포인트 <img src="${pageContext.request.contextPath}/images/info.png" class="tooltip" width="15px">

@@ -813,7 +813,7 @@ public class ReportDAO {
 				try {
 					conn= DBUtil.getConnection();
 					conn.setAutoCommit(false);
-					sql="select count(*), uc_num from used_comm_report group by uc_num";
+					sql="select count(*), uc_num,ub_comment.mem_num from used_comm_report join  ub_comment using(uc_num) group by uc_num,ub_comment.mem_num";
 					ps = conn.prepareStatement(sql);
 					re = ps.executeQuery();
 					
@@ -823,13 +823,14 @@ public class ReportDAO {
 						Countvo count = new Countvo();
 						count.setNumber(re.getInt(2));
 						count.setSumcount(re.getInt(1));
+						count.setMem_num(re.getInt(3));
 						count.setType("uc_num");
 						list.add(count);
 						}while(re.next());
 						
 					}
 					re.close();
-					sql="select count(*), u_num from used_report group by u_num";
+					sql="select count(*), u_num, usedbookboard.mem_num from used_report join usedbookboard using(u_num) group by u_num,usedbookboard.mem_num";
 					ps1 = conn.prepareStatement(sql);
 					re = ps1.executeQuery();
 					
@@ -839,13 +840,14 @@ public class ReportDAO {
 						Countvo count = new Countvo();
 						count.setNumber(re.getInt(2));
 						count.setSumcount(re.getInt(1));
+						count.setMem_num(re.getInt(3));
 						count.setType("u_num");
 						list.add(count);
 						}while(re.next());
 						
 					}
 					re.close();
-					sql="select count(*), s_num from story_report group by s_num";
+					sql="select count(*), s_num,storyboard.mem_num from story_report join storyboard using(s_num) group by s_num,storyboard.mem_num ";
 					ps2 = conn.prepareStatement(sql);
 					re = ps2.executeQuery();
 					
@@ -855,13 +857,14 @@ public class ReportDAO {
 						Countvo count = new Countvo();
 						count.setNumber(re.getInt(2));
 						count.setSumcount(re.getInt(1));
+						count.setMem_num(re.getInt(3));
 						count.setType("s_num");
 						list.add(count);
 						}while(re.next());
 						
 					}
 					re.close();
-					sql="select count(*), sc_num from st_comm_report group by sc_num";
+					sql="select count(*), sc_num,story_comment.mem_num from st_comm_report join story_comment using(sc_num) group by sc_num,story_comment.mem_num";
 					ps3 = conn.prepareStatement(sql);
 					re = ps3.executeQuery();
 					
@@ -871,6 +874,7 @@ public class ReportDAO {
 						Countvo count = new Countvo();
 						count.setNumber(re.getInt(2));
 						count.setSumcount(re.getInt(1));
+						count.setMem_num(re.getInt(3));
 						count.setType("sc_num");
 						list.add(count);
 						}while(re.next());
