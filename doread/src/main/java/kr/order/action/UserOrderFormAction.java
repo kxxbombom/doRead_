@@ -63,6 +63,7 @@ public class UserOrderFormAction implements Action{
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberVO member = memberDAO.getMember(user_num);
 		
+		
 				
 		request.setAttribute("list", cartList);
 		request.setAttribute("all_total", all_total);

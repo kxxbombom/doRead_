@@ -42,8 +42,8 @@ public class OrderDAO {
 			}
 			
 			//주문정보 처리
-			sql = "INSERT INTO book_order (order_num,order_total,order_name,order_zipcode,order_address1,"
-					+ "order_address2,order_phone,order_msg,order_payment,mem_num"
+			sql = "INSERT INTO book_order (order_num,order_total,receive_name,receive_zipcode,receive_address1,"
+					+ "receive_address2,receive_phone,order_msg,order_payment,mem_num"
 					+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(1, order_num);
@@ -113,6 +113,7 @@ public class OrderDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 	}
+	
 	//관리자 - 전체/검색 주문 개수
 	//관리자 - 전체/검색 주문 목록
 	//사용자 - 전체/검색 주문 개수
