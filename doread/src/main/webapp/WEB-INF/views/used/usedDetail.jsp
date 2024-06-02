@@ -138,6 +138,9 @@
 				</c:if>
 			</form>
 		</div>
+		<div class="float-clear">
+			<hr width="100%" size="1" noshade="noshade">
+		</div>
 		<!-- 댓글 목록 출력 시작 -->
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;" >

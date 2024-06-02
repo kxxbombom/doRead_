@@ -65,6 +65,9 @@
 			</li>
 		</ul>
 		<!-- 댓글시작 -->
+		<div class="float-clear">
+			<hr width="100%" size="1" noshade="noshade">
+		</div>
 		<div id="reply_div">
 			<span class="sc-title">댓글 달기</span>
 			<form id="sc_form">
@@ -81,6 +84,9 @@
 				</div>
 				</c:if>
 			</form>
+		</div>
+		<div class="float-clear">
+			<hr width="100%" size="1" noshade="noshade">
 		</div>
 		<!-- 댓글 목록 출력 시작 -->
 		<div id="output"></div>
