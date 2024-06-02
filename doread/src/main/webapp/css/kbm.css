@@ -793,18 +793,19 @@ input[type="file"]{
 
 
 /*장바구니*/
-div#cart_container{
+div.cart-container{
 	width:100%;
 	display:flex;
 	margin:0;
 	padding:0;
 }
 form#cart_order{
-	width:950px;
+	width:900px;
 	margin-left:5px;
 }
 #cartTable{
 	margin:0 10px;
+	width:700px;
 }
 #cartTable:first-child{
 	height:50px;
@@ -816,7 +817,7 @@ form#cart_order{
 /*총 결제 예상 금액*/
 .cartList{
 	display:inline-block;
-	width:255px;
+	width:200px;
 	margin-left:0;
 	border:2px solid #d9d8d7;
 	border-radius:5px;
@@ -895,6 +896,32 @@ form#cart_order{
 	cursor:pointer;
 }
 
+/*주문 orderForm*/
+.order-form h2{
+	margin-left:25px;
+}
+#order_form{
+	margin-left:30px;
+}
+.order-info > div{
+	border:1px solid #d4d2d2;
+	border-radius:5px;
+	margin-bottom:25px;
+}
+div.order-info{
+	margin:0 15px;
+}
+.cart-container > div.order-info > div > *{
+	padding-left:10px;
+}
+
+#order_form div.cartList{
+	padding:10px;
+}
+
+.hidden {
+	display:none;
+}
 
 /* 게시판 글 수정
 ---------------------*/

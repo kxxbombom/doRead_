@@ -105,7 +105,7 @@ $(function(){
 		}
 		if(!/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('#phone').val())){
 			alert('전화번호를 양식에 맞게 입력하세요');
-			$('#email').focus();
+			$('#phone').focus();
 			return;
 		}
 		
@@ -335,6 +335,8 @@ $(function(){
 				<input type="submit" value="회원가입">
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
+			
+			
 			
 		<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">

@@ -24,7 +24,7 @@
 		<c:if test="${empty list}">
 		
 		<form id="cart_order">
-	 	<div id="cart_container">	
+	 	<div class="cart-container">	
 	 		<table id="cartTable">
 	 			<tr>
 	 				<th>도서명</th>
