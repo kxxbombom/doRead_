@@ -504,6 +504,8 @@ public class StoryBoardDAO {
 						sc = new SCommentVO();
 						sc.setSc_num(rs.getInt("sc_num"));
 						sc.setMem_num(rs.getInt("mem_num"));
+						sc.setSc_content(rs.getString("sc_content"));
+						sc.setS_num(rs.getInt("s_num"));
 					}
 					
 					

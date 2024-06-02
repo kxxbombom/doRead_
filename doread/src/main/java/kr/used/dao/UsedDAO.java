@@ -344,6 +344,8 @@ public class UsedDAO {
 				ub = new UBCommentVO();
 				ub.setUc_num(rs.getInt("uc_num"));
 				ub.setMem_num(rs.getInt("mem_num"));
+				ub.setUc_content(rs.getString("uc_content"));
+				ub.setU_num(rs.getInt("u_num"));
 			}
 			
 			
