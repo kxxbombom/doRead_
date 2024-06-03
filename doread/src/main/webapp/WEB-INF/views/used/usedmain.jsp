@@ -15,10 +15,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
- 		<h2>중고게시판</h2>	
- 			<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade">
-			</div>
+ 		<h2 style="text-align:center;">중고게시판</h2>	
 		
 	
  			<form id="usedForm" action="usedList.do" method="get">
@@ -42,6 +39,16 @@
  				<input type="button" value="글쓰기" class="button2" onclick="location.href='${pageContext.request.contextPath}/used/usedWriteForm.do'">
  			</c:if>
  			
+ 			<div class="list-space align-right">
+				<div class="list-btn">
+				<c:if test="${!empty user_num && user_auth == 9}">
+					<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/used/usedWriteForm.do'">
+				</c:if>
+			
+					<input type="button" value="목록" onclick="location.href='usedList.do'">
+					<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
+				</div>
+			</div>
  			
  			<c:if test="${empty list}">
  				작성 게시글이 없습니다
@@ -49,8 +56,8 @@
  			<c:if test="${!empty list }">
  				<table  id="usedtable">
  					<tr>
- 						<th>no.</th>
- 						<th>글 제목 </th>
+ 						<th>글번호</th>
+ 						<th>글제목 </th>
  						<th>책제목</th>
  						<th>가격</th>
  						<th>판매상태</th>

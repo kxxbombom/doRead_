@@ -50,7 +50,7 @@
 </div>
 <div>
 <form action="eventupdate.do" method="post" id="event_form" enctype="multipart/form-data" >
-	<div class="formdiv">
+	<div>
 	<input type="hidden" name="e_num" value="${event.e_num}">
 	<ul>
 		<li><label for="e_title">이벤트 제목</label>

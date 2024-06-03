@@ -23,7 +23,7 @@ public class ListAction implements Action{
 		int count = dao.getStoryBoardCount(keyfield, keyword);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 20,10,"storyBoardList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 10,10,"storyBoardList.do");
 		List<StoryBoardVO> list = null;
 		if(count > 0) {
 			list = dao.getListStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword);

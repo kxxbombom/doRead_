@@ -13,16 +13,13 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-		<div class="eventvar">
- 			<h1>EVENT</h1>
- 		</div>
-
-<div class="align-center">
+ 			<h2 style="text-align:center;">EVENT</h2>
+		<div class="align-center">
  			<form id="eventmainForm" action="eventmain.do" method="get">
 				<select id="selectlist" name ="sel" class="input-style">
-				<option value="1" <c:if test="${check == 1}">selected</c:if>>진행중이벤트</option>
- 				<option value="2" <c:if test="${check == 2}">selected</c:if> >종료된이벤트</option>
- 				<option value="3" <c:if test="${check == 3}">selected</c:if>>당첨자보기</option>
+					<option value="1" <c:if test="${check == 1}">selected</c:if>>진행중이벤트</option>
+ 					<option value="2" <c:if test="${check == 2}">selected</c:if> >종료된이벤트</option>
+ 					<option value="3" <c:if test="${check == 3}">selected</c:if>>당첨자보기</option>
  				</select>
  				<input type="text" name="eventsearch" class="inputcheck input-style" id="eventsearch" maxlength="30" placeholder="제목 또는 내용으로 검색가능">
  				<input id="subbtn" type="submit" value="검색" class="button2">
@@ -31,36 +28,33 @@
 				$('#selectlist').change(function(){
 								$('#subbtn').click();
 				});
-					
-					
-				
-			
 			</script>
+			
 			<div class="align-right">
  			<c:if test="${!empty user_num && user_auth == 9}">
  				<input type="button" value="글쓰기" class="button2" onclick="location.href='${pageContext.request.contextPath}/event/eventWrite.do'">
  			</c:if>
 			</div>
-		
+					<hr width="40%" size="1" noshade="noshade">
 			
-			
-			
-			<div class="image-space">
 			<c:if test="${check == 1}">
-			
 			<c:forEach var="event" items="${List}">
 			<div class="horizontal-area">
+				<p>
 				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
-					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="260px" height="320">
+					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="260px" height="320"><br>
 					<span id ="e_title"><b>${event.e_title}</b></span>
 					<br>
 					이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
 				</a>
+				</p>
+				<hr width="40%" size="1" noshade="noshade">
+				<br><br><br>
 			</div>
 			</c:forEach>
 			</c:if>
+			
 			<c:if test="${check == 2 }">
-			
 			<c:forEach var="event" items="${List}">
 			<div class="horizontal-area">
 				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
@@ -72,9 +66,8 @@
 			</div>
 			</c:forEach>
 			</c:if>
+			
 			<c:if test="${check == 3}">
-			
-			
 			<div class="horizontal-area">
 			<div class="align-center">
 			<c:if test="${empty List}">
@@ -86,10 +79,7 @@
 					<th>이벤트</th>
 					<th>당첨자 id</th>
 				</tr>
-				
-				
 					<c:forEach var="event" items="${List}">
-				
 					<tr>
 					<td>${event.e_title}</td>
 					<td>${event.id}</td>
@@ -106,9 +96,8 @@
 			<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
-		</div>
 		
- 			${page}
+ 			<span>${page}</span>
  </div>
  	
 			

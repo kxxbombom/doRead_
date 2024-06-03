@@ -25,6 +25,7 @@
 
 </div>
 	<div class="align-right">
+	
 	<c:if test="${!empty user_num && user_auth == 9}">
 		<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
 <div id="updel" class="hide">
@@ -34,6 +35,7 @@
             <li class=""><a id ="eventbtn" href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}" target="_blank">이벤트발표</a></li>
         </ul>
        </div>
+       
         <script type="text/javascript">
     	$(".global_site a").click(function() {
         if($('#updel').hasClass('hide')){
@@ -61,10 +63,7 @@
     		event.preventDefault();
     	})
 		</script>
-
-        
 		</c:if>
-		
 		
 <div class="align-center">
 

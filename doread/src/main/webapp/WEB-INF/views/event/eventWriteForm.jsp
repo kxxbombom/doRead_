@@ -59,7 +59,7 @@
 			<input type="text" name="e_item" class="inputcheck input-style "  id="e_item" maxlength="10">
 		</li>
 		
-		<li><label for="e_deadline">이벤트종료일(발표일)</label>
+		<li><label for="e_deadline">이벤트종료일</label>
 			<input type="date" name="e_deadline" class="inputcheck input-style " id="e_deadline" maxlength="10">
 		</li>
 		<li><label for="e_content">이벤트 내용</label>
