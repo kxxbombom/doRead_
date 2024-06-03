@@ -23,7 +23,7 @@ function editShippingInfo() {
     const spans = document.querySelectorAll('span.info-span');
     const completeButton = document.querySelector('input[type="button"][value="완료"]');
     const editButton = document.querySelector('button[onclick="editShippingInfo()"]');
-
+	
     inputs.forEach(input => {
         input.classList.remove('hidden');
     });
@@ -58,6 +58,25 @@ function saveShippingInfo() {
     
     return false;
 }
+
+$(function(){
+	$('#pointbtn').click(function(){
+		const span = document.getElementById('usedPoint');
+		const usedpoint = document.getElementById('pointval');
+		const total = document.getElementById('total');
+		const order_usepoint = document.getElementById('order_usepoint');
+		const inpoint = document.getElementById('inpoint');
+		
+		
+		span.textContent = usedpoint.value;
+		$('#order_usepoint').attr('value','sda');
+		total.textContent=total.textContent-usedpoint.value;
+		inpoint.textContent = Math.ceil(total.textContent*0.03);
+		$('#inpoint').val($('#total').textContent);
+		
+	})
+	
+})
 </script>
 </head>
 <body>
@@ -98,7 +117,7 @@ function saveShippingInfo() {
 							<textarea name="order_msg"></textarea>
 						</li>
 						<li>
-							<label for="enter">공동현관 출입방법</label>
+							<label>공동현관 출입방법</label>
 								<input type="radio" name="enter" value="passwd">공동현관 비밀번호
 								<input type="radio" name="enter" value="free" checked>자유출입 가능
 								<input type="text" name="enter_passwd" placeholder="정확한 공동현관 출입번호를 입력하세요">
@@ -137,8 +156,8 @@ function saveShippingInfo() {
 					<li>포인트</li>
 					<li>보유 ${point}원</li>
 				</ul>
-				통합 포인트 ${point}원 <input type="number" min="0" max="${point}" value="0">
-				<input type="button" name="pointpayment" value="사용">
+				통합 포인트 ${point}원 <input type="number" name ="usedpoint" id="pointval" min="0" max="${point}" maxlength ="${point}" value="0">
+				<input type="button" name="pointpayment" id="pointbtn" value="사용">
 				</div>
 				
 				<div>
@@ -168,18 +187,21 @@ function saveShippingInfo() {
 								
 							</span>
 		 				</li>
-		 				<li class="flex-container" style="margin-bottom:20px;">포인트 사용 <span><fmt:formatNumber value=""/>원</span></li>
+		 				<li class="flex-container" style="margin-bottom:20px;">포인트 사용 <span><span id="usedPoint" style="text-align:right;">0</span>원</span>
+		 				
+		 				</li>
 
 		 				
 						<hr size="1" width="100%">
-		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><fmt:formatNumber value="${all_total_delivery}"/></b>원</span></li>
+		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><c:set var="point" value="" scope="request"/><span id="total">${all_total_delivery}</span></b>원</span>
+		 				</li>
 		 				<li class="flex-container">
 		 					<span class="tooltip-container">
 		 						적립 예정 포인트 <img src="${pageContext.request.contextPath}/images/info.png" class="tooltip" width="15px">
 		 						<span class="tooltip-text">상품 주문 시 적립 예정 포인트가 자동 합산되고 주문하신 상품이 발송완료 된 후에 자동으로 적립됩니다.<br>
 									상품구매시 구매액의 3%가 적립됩니다.</span>
 								</span>
-		 					<span><fmt:formatNumber value="${point}"/>P</span>
+		 					<span><span id="inpoint">${all_total_delivery*0.03}</span>P</span>
 		 				</li>
 		 			</ul>
 		 			

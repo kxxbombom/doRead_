@@ -15,13 +15,19 @@ public class OrderVO {
 	private String order_msg;
 	private int order_payment;	//1.계좌입금,2.신용카드
 	private int order_status;	//1.결제완료,2.배송시작,3.배송중,4.배송완료,5.주문취소
+	private int order_usepoint;
 	
 	private int mem_num;
 	
 	private String mem_id;
 	private String book_name;
 	
-	
+	public int getOrder_usepoint() {
+		return order_usepoint;
+	}
+	public void setOrder_usepoint(int order_usepoint) {
+		this.order_usepoint = order_usepoint;
+	}
 	public int getOrder_num() {
 		return order_num;
 	}

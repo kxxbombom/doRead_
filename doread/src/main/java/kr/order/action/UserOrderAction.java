@@ -15,6 +15,7 @@ import kr.controller.Action;
 import kr.order.dao.OrderDAO;
 import kr.order.vo.OrderDetailVO;
 import kr.order.vo.OrderVO;
+import kr.order.vo.PointVO;
 
 public class UserOrderAction implements Action{
 
@@ -76,7 +77,7 @@ public class UserOrderAction implements Action{
 		
 		//구매정보 담기
 		OrderVO order = new OrderVO();
-		order.setOrder_total(all_total_delivery);
+		
 		order.setOrder_payment(Integer.parseInt(request.getParameter("payment")));//1신용카드2계좌이체3휴대폰결제
 		order.setReceive_name(request.getParameter("receive_name"));
 		order.setReceive_zipcode(request.getParameter("receive_zipcode"));
@@ -85,10 +86,18 @@ public class UserOrderAction implements Action{
 		order.setReceive_phone(request.getParameter("receive_phone"));
 		order.setOrder_msg(request.getParameter("order_msg"));
 		order.setMem_num(user_num);
+		String usedpoint = request.getParameter("usedpoint");
+		if(usedpoint != null) {
+		order.setOrder_usepoint(Integer.parseInt(usedpoint));
 		
+		order.setOrder_total(all_total_delivery - Integer.parseInt(usedpoint));}
+		else {
+		order.setOrder_total(all_total_delivery);
+		}
 		OrderDAO orderDAO = OrderDAO.getInstance();
 		orderDAO.insertOrder(order, orderDetailList);
 		
+	
 		request.setAttribute("result_title", "도서 주문 완료");
 		request.setAttribute("result_msg", "주문이 완료되었습니다.");
 		
