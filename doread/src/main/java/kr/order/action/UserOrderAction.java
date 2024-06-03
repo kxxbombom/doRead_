@@ -85,7 +85,10 @@ public class UserOrderAction implements Action{
 		order.setReceive_address2(request.getParameter("receive_address2"));
 		order.setReceive_phone(request.getParameter("receive_phone"));
 		order.setOrder_msg(request.getParameter("order_msg"));
+		order.setEnter(Integer.parseInt(request.getParameter("enter")));
+		order.setEnter_passwd(request.getParameter("enter_passwd"));
 		order.setMem_num(user_num);
+		
 		String usedpoint = request.getParameter("usedpoint");
 		if(usedpoint != null ) {
 		order.setOrder_usepoint(Integer.parseInt(usedpoint));
@@ -100,6 +103,7 @@ public class UserOrderAction implements Action{
 	
 		request.setAttribute("result_title", "도서 주문 완료");
 		request.setAttribute("result_msg", "주문이 완료되었습니다.");
+		request.setAttribute("result_url", request.getContextPath() + "/main/main.do");
 		
 		return "/WEB-INF/views/order/user_order.jsp";
 	}

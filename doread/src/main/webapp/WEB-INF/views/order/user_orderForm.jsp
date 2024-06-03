@@ -149,8 +149,8 @@ $(function(){
 						</li>
 						<li>
 							<label>공동현관 출입방법</label>
-								<input type="radio" name="enter" value="passwd">공동현관 비밀번호
-								<input type="radio" name="enter" value="free" checked>자유출입 가능
+								<input type="radio" name="enter" value="1">공동현관 비밀번호
+								<input type="radio" name="enter" value="2" checked>자유출입 가능
 								<input type="text" name="enter_passwd" placeholder="정확한 공동현관 출입번호를 입력하세요">
 						</li>
 					</ul>

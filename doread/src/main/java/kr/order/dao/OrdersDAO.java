@@ -232,9 +232,83 @@ public class OrdersDAO {
 		return list;
 	}
 	//개별 도서 목록
+	public List<OrderDetailVO> getListOrderDetail(int order_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrderDetailVO> list = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM book_order_detail WHERE order_num=? ORDER BY book_num DESC";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, order_num);
+
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<OrderDetailVO>();
+			while(rs.next()) {
+				OrderDetailVO detail = new OrderDetailVO();
+				detail.setBook_num(rs.getInt("book_num"));
+				detail.setBook_name(rs.getString("book_name"));
+				detail.setBook_price(rs.getInt("book_price"));
+				detail.setBook_total(rs.getInt("book_total"));
+				detail.setOrder_quantity(rs.getInt("order_quantity"));
+				detail.setOrder_num(rs.getInt("order_num"));
+				
+				list.add(detail);
+			}	
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
+	}
 	//주문삭제(주문 내역만 삭제. 재고 원상 복귀X)
 	//관리자/사용자 - 주문상세
-	
+	public OrderVO getOrder(int order_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		OrderVO order = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+
+			sql = "SELECT * FROM book_order WHERE order_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, order_num);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				order = new OrderVO();
+				order.setOrder_num(rs.getInt("order_num"));
+				order.setOrder_total(rs.getInt("order_total"));
+				order.setOrder_payment(rs.getInt("order_payment"));
+				order.setOrder_status(rs.getInt("order_status"));
+				order.setReceive_name(rs.getString("receive_name"));
+				order.setReceive_zipcode(rs.getString("receive_zipcode"));
+				order.setReceive_address1(rs.getString("receive_address1"));
+				order.setReceive_address2(rs.getString("receive_address2"));
+				order.setReceive_phone(rs.getString("receive_phone"));
+				order.setOrder_date(rs.getDate("order_date"));
+				order.setOrder_mdate(rs.getDate("order_mdate"));
+				order.setMem_num(rs.getInt("mem_num"));
+				order.setOrder_msg(rs.getString("order_msg"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return order;
+	}
 	//관리자/사용자 - 배송지정보 수정
 	//관리자 - 배송상태 수정
 	//사용자 - 주문 취소

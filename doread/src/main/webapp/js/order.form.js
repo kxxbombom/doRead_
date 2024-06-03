@@ -21,7 +21,7 @@ $(function(){
 	 });
 	 
 	 $('#order_form').submit(function() {
-        if ($('input[name="enter"]:checked').val() == 'passwd' && $('input[name="enter_passwd"]').val().trim() == '') {
+        if ($('input[name="enter"]:checked').val() == '1' && $('input[name="enter_passwd"]').val().trim() == '') {
             alert('공동현관 비밀번호를 입력하세요.');
             return false;
         }

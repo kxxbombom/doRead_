@@ -16,12 +16,28 @@ public class OrderVO {
 	private int order_payment;	//1.계좌입금,2.신용카드
 	private int order_status;	//1.결제완료,2.배송시작,3.배송중,4.배송완료,5.주문취소
 	private int order_usepoint;
+	private int enter;
+	private String enter_passwd;
 	
 	private int mem_num;
 	
 	private String mem_id;
 	private String book_name;
 	
+	
+	
+	public int getEnter() {
+		return enter;
+	}
+	public void setEnter(int enter) {
+		this.enter = enter;
+	}
+	public String getEnter_passwd() {
+		return enter_passwd;
+	}
+	public void setEnter_passwd(String enter_passwd) {
+		this.enter_passwd = enter_passwd;
+	}
 	public int getOrder_usepoint() {
 		return order_usepoint;
 	}
