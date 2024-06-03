@@ -22,8 +22,10 @@ public class MyPageAction implements Action{
 		
 		//추천 도서 표시
 		BookDAO book = BookDAO.getInstance();
+		int count = book.getRecommendBookCount(user_num);
 		List<BookVO> recommend = book.getRecommendBook(user_num);
 		
+		request.setAttribute("count", count);
 		request.setAttribute("recommend", recommend);
 		
 		return "/WEB-INF/views/member/mypage.jsp";

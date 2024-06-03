@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mypage</title>
+<title>my page</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#photo_btn').click(function(){	
+	$('#photo_btn').click(function(){
 		$('#photo_choice').show();
 		$(this).hide(); //수정 버튼 감추기
 	});
@@ -109,7 +108,13 @@ $(function(){
 		<h2>${user_id}님을 위한 추천도서</h2>
 		<hr width="100%" size="1" noshade="noshade">
 		<div class="slider-container">
-			<div class="slider-space">
+			<c:if test="${count==0}">
+				<div class="slider-items">
+					<h3>선호 도서 카테고리가 없어 추천도서를 표시할 수 없습니다</h3>
+				</div>
+			</c:if>
+		<div class="slider-space">
+			<c:if test="${count!=0}">
 				<c:forEach var="recommend" items="${recommend}">
 					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/book/detail.do?book_num=${recommend.book_num}'">
 						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${reccomend.book_img}" height="300"></div>
@@ -122,7 +127,8 @@ $(function(){
 						</div>
 					</div>
 				</c:forEach>
-			</div>
+			</c:if>
+		</div>
 			<hr width="100%" size="1" noshade="noshade">
 		</div>
 				<div class="mypage-button">
