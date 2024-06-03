@@ -53,26 +53,7 @@ $(function(){
 </head>
 <body>
 <div class="page-main">
-<div id="main_logo">
-	<ul>
-		<li>
-			<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav" id="doread"><img src="../images/pngwing.com.png" width="40px">Do Read</a>
-
-		</li>
-
-		<li id="menu-cart">
-			<a href="${pageContext.request.contextPath}/cart/list.do">
-				<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
-					height="30" onclick="location.href='${pageContext.request.contextPath}/member/cart.do'">
-			</a>
-		</li>
-		<li id="menu-mypage">
-			<img src="${pageContext.request.contextPath}/images/mypage.png" class="click-image" width="30" 
-					height="30" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'">
-		</li>
-		
-	</ul>
-</div>	
+<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<div class="content-main register-header">
 		<h2>회원탈퇴</h2>
