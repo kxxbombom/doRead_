@@ -251,7 +251,10 @@ cursor: pointer;
     opacity: 0;
     overflow: hidden;
     transition: 0.5s ease-in-out;
+    z-index:999;
 }
+
+	
 #toggle:checked ~ #menu{
     height: var(--menu-height);
     min-height: var(--menu-min-height);

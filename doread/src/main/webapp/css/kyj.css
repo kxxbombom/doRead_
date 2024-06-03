@@ -178,6 +178,8 @@ div.slider-space .slider-items{
 div.slider-items .slider-image{
 	position:relative;
 	display:inline-block;
+	vertical-align:top;
+	padding:10px;
 }
 
 .slider-image ul{

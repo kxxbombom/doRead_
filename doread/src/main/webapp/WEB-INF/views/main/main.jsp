@@ -33,7 +33,7 @@ setInterval(function() {
 						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${event.e_image}" height="300"></div>
 						<div class="slider-image">
 							<ul>
-								<li><h2>${event.e_title}</h2></li>
+								<li><h1>${event.e_title}</h1></li>
 								<li>${event.e_rdate}~${event.e_deadline}</li>
 							</ul>		
 						</div>
