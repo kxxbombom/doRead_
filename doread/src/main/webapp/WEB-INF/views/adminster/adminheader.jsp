@@ -17,7 +17,7 @@
 			</c:if>
 		
 		</li>
-		<li style="padding-top:40px; font-size:19pt; text-align:left;">
+		<li style="padding-top:40px; font-size:19pt; text-align:left;color:white;">
 			<b>관리자<br>페이지입니다.</b>
 		</li>
 		<li>
