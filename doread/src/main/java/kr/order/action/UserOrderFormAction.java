@@ -14,6 +14,7 @@ import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 import kr.order.dao.OrderDAO;
+import kr.order.dao.OrdersDAO;
 
 
 public class UserOrderFormAction implements Action{
@@ -57,6 +58,12 @@ public class UserOrderFormAction implements Action{
 				request.setAttribute("notice_url", request.getContextPath() + "/cart/list.do");
 				return "/WEB-INF/views/common/alert_view.jsp";
 			}
+			
+			if(book.getBook_auth() != 0) {
+				request.setAttribute("notice_msg", "[" + book.getBook_name() + "]판매 중지로 주문 불가");
+				request.setAttribute("notice_url", request.getContextPath() + "/cart/list.do");
+				return "/WEB-INF/views/common/alert_view.jsp";
+			}
 		}
 		
 		//기본배송지정보
@@ -64,6 +71,7 @@ public class UserOrderFormAction implements Action{
 		MemberVO member = memberDAO.getMember(user_num);
 		
 		OrderDAO orderDAO = OrderDAO.getInstance();
+		
 		int point = orderDAO.getPoint(user_num);
 				
 		request.setAttribute("list", cartList);
