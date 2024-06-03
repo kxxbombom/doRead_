@@ -67,7 +67,6 @@ function saveShippingInfo() {
 		<h2>주문/결제</h2>
 		<form id="order_form" action="order.do" method="post">
 			<div class="cart-container">
-			
 			<div class="order-info">
 				<div id="receive_info">
 					<ul>
