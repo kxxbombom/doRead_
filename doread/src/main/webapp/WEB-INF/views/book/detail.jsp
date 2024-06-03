@@ -42,7 +42,7 @@
 		<div class="book-detail">
 		
 				<c:if test="${book.book_auth != 0}">
-				<h2   style="readonly:readonly z-index:999; ">품절 되었습니다.</h2>
+				<h2   style="readonly:readonly z-index:999; ">현재 구매할 수 없는 도서입니다</h2>
 				<div style="opacity:0.4;">
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
@@ -78,8 +78,7 @@
 						</li>
 						
 						<li id="button-margin">
-							<input type="submit" value="바로구매" id="order" class="order-button">
-							<input type="button" value="장바구니" id="insert_cart" class="order-button">
+							<input type="submit" value="현재 구매할 수 없는 도서입니다" disabled id="order" class="order-button">
 						</li>
 						
 						

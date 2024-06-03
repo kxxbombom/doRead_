@@ -102,6 +102,16 @@ div.category-tag{
 	color:rgb(26, 77, 46);
 }
 
+.order-button:disabled{
+	width:400px;
+	height:70px;
+	border-radius:30px;
+	background-color:rgb(26, 77, 46);
+	color:white;;
+	font-size:15pt;
+	border:none;
+	box-shadow:none;
+}
 
 #button-margin{
 margin-top: 25px;
