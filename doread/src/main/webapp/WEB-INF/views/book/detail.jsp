@@ -70,21 +70,11 @@
 					<li><h1>${book.book_name}</h1></li>
 					<li>${book.author} / ${book.publisher}</li>
 					<li>${book.publish_date}</li>
-					<li><h3><b><fmt:formatNumber value="${book.price}"/>원</b> / 재고: <span><fmt:formatNumber value="${book.stock}"/>권</span></h3></li>
-					<c:if test="${book.stock>0}">
-						<li>
-							<label for=book_quantity id="quantity_label">구매수량</label>
-							<input type="number" name="book_quantity" id="book_quantity" min="1" max="${book.stock}">
-						</li>
-						
+					<li><h3><b><fmt:formatNumber value="${book.price}"/>원</b> </h3></li>
 						<li id="button-margin">
 							<input type="submit" value="현재 구매할 수 없는 도서입니다" disabled id="order" class="order-button">
 						</li>
-						
-						
-						
-		
-					</c:if>
+
 					</ul>
 					</div>
 					
