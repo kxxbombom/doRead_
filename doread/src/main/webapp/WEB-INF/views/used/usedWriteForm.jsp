@@ -23,12 +23,8 @@
 				inputcheck[i].value='';
 				inputcheck[i].focus();
 				return false;
-				
 			}
-			
-				
 			}
-		
 			}
 		
 		
@@ -42,8 +38,6 @@
 <jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 <div class="page-main">
 
-		
-
 <div class="align-center">
  	<h2>중고게시판</h2>	
  		<div class="float-clear">
@@ -51,14 +45,16 @@
 		</div>
 		<div class="formdiv2">
 		<form action="usedcreate.do" method="post" id="event_form" enctype="multipart/form-data" >
+		<input type="hidden" name="book_num" id="book_num" >
 			
-			<ul>
-				<li><label for="u_title">제목</label>
+			<ul class="align-left">
+				<li>
+					<label for="u_title">제목</label>
 					<input type="text" name="u_title" class="inputcheck input-style" id="u_title" maxlength="30" >
 				</li>
-				<li><label for="book_name">책 이름</label><div class="align-right"><input type="button" id ="book_numbtn" value="책선택" class="button2"></div>
+				<li><label for="book_name">책 이름</label>
 					<input type="text" name="book_name" class="inputcheck input-style "  id="book_name" maxlength="10" readonly="readonly"  >
-					<input type="hidden" name="book_num" class="inputcheck input-style "  id="book_num" >
+					<input type="button" id ="book_numbtn" value="책선택" class="button2">
 				</li>
 				
 				
