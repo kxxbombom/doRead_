@@ -82,7 +82,7 @@ $(function(){
 				</li>
 				<li>
 					<label for="phone">전화번호</label>
-					<input type="text" name="phone" id="phone" maxlength="15" class="input-check">
+					<input type="text" name="phone" id="phone" maxlength="15" class="input-check" placeholder="-없이 전화번호 입력">
 				</li>
 				<li>
 					<label for="passwd">새 비밀번호</label>

@@ -110,6 +110,10 @@ body{
 
 
 /* nav */
+.click-image{
+cursor: pointer;	
+
+}
 
 .main-nav-container{
 	text-align:center;
