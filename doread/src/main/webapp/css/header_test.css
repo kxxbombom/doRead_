@@ -222,7 +222,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 6px;
     font-size: 1.15rem;
 	color:#336633;
 }
