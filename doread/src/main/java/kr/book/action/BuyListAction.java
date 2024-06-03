@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
-import kr.order.dao.OrderDAO;
+import kr.order.dao.OrdersDAO;
 import kr.order.vo.OrderVO;
 import kr.util.PagingUtil;
 
@@ -22,13 +22,15 @@ public class BuyListAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 		
+		request.setCharacterEncoding("utf-8");
+		
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) pageNum = "1";
 		
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
 		
-		OrderDAO dao = OrderDAO.getInstance();
+		OrdersDAO dao = OrdersDAO.getInstance();
 		int count = dao.getOrderCount(keyfield, keyword, user_num);
 		
 		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "buylist.do");
