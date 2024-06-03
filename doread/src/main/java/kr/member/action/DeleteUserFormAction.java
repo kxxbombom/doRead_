@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 
 public class DeleteUserFormAction implements Action{
 
@@ -13,9 +15,16 @@ public class DeleteUserFormAction implements Action{
 		HttpSession session = request.getSession();
 		Integer user_num = 
 				(Integer)session.getAttribute("user_num");
+		
 		if(user_num == null) {//로그인이 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
+		//로그인이 된 경우
+		//회원정보
+		MemberDAO dao = MemberDAO.getInstance();
+		MemberVO member = dao.getMember(user_num);
+		
+		request.setAttribute("member", member);	
 		
 		return "/WEB-INF/views/member/deleteUserForm.jsp";
 	}

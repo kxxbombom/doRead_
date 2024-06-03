@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.qna.dao.QnaDAO;
 import kr.qna.vo.QnaVO;
 import kr.storyboard.dao.StoryBoardDAO;
@@ -20,6 +22,12 @@ public class MyPostListAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
+		//로그인이 된 경우
+		//회원정보
+		MemberDAO dao5 = MemberDAO.getInstance();
+		MemberVO member = dao5.getMember(user_num);
+		
+		request.setAttribute("member", member);	
 		if(user_num==null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
@@ -53,6 +61,8 @@ public class MyPostListAction implements Action{
 		}
 		request.setAttribute("page3", page3.getPage());
 		request.setAttribute("qnalist", qnalist);
+		
+		//used
 		UsedDAO udao = UsedDAO.getInstance();
 		int countused = udao.myUsedCount(user_num);
 		PagingUtil page4 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum2),countused, 10,10,"myPostList.do",null,"2");

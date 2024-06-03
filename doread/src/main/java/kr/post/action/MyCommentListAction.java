@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.storyboard.dao.StoryBoardDAO;
 import kr.storyboard.vo.SCommentVO;
 import kr.used.dao.UsedDAO;
@@ -28,8 +30,13 @@ public class MyCommentListAction implements Action{
 		if(user_num==null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
-		//로그인 된 경우
 		
+		//로그인이 된 경우
+		//회원정보
+		MemberDAO dao3 = MemberDAO.getInstance();
+		MemberVO member = dao3.getMember(user_num);
+		
+		request.setAttribute("member", member);	
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
 		int count = dao.getCommentStoryCountByUser_num(user_num);

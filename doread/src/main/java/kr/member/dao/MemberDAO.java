@@ -276,7 +276,7 @@ public class MemberDAO {
 			conn = DBUtil.getConnection();
 			
 			sql = "UPDATE member_detail SET mem_name=?, mem_phone=?, mem_email=?, mem_zipcode=?, mem_address1=?, mem_address2=?, mem_mdate=SYSDATE WHERE mem_num=?";
-
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getMem_name());
 			pstmt.setString(2, member.getMem_phone());
