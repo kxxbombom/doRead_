@@ -8,6 +8,7 @@
 <title>문의 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript">
 window.onload= function(){
 	const myForm = document.getElementById('search_form');
@@ -28,24 +29,8 @@ window.onload= function(){
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h2>스토리 목록</h2>
-		<div class="float-clear">
-			<hr width="100%" size="1" noshade="noshade">
-		</div>
-		<form id="search_form" action="storyBoardList.do" method="get">
-			<select name="keyfield" class="input-style">
-					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
-					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
-			</select>
-			<input type="search" size="16" class="inputcheck input-style" name="keyword" id="keyword" value="${param.keyword}" placeholder="검색내용입력">				
-			<input type="submit" value="검색">
-		</form>
-		<div>
-			<input type="button" value="글쓰기" onclick="location.href='storyBoardWriteForm.do'"
-			<c:if test="${empty user_num || user_num == 5}">disabled="disabled"</c:if>>
-			<input type="button" value="목록" onclick="location.href='storyBoardList.do'">
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-		</div>
+		<h2 style="text-align:center;">스토리 목록</h2>
+		
 		<c:if test="${count==0}">
 		<div class="result-display">
 			표시할 게시물이 없습니다.
@@ -68,8 +53,34 @@ window.onload= function(){
 			</tr>
 			</c:forEach>
 		</table>
-		<div class="align-center">${page}</div>
 		</c:if>
+		<form id="list_search_form" action="storyBoardList.do" method="get">
+			<ul class="list_search">
+				<li>
+					<select name="keyfield" class="input-style">
+							<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
+							<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
+					</select>
+				</li>
+				<li>
+					<input type="search" size="16" class="list_search" name="keyword" id="keyword" value="${param.keyword}" placeholder="검색내용입력">				
+				</li>
+				<li>
+					<input type="submit" value="검색" class="list_search">
+				</li>
+			</ul>
+		</form>
+		<div class="list-space align-right">
+			<div class="list-btn">
+			<c:if test="${!empty user_num && user_auth == 2}">
+			<input type="button" value="글쓰기" onclick="location.href='storyBoardWriteForm.do'">
+			</c:if>
+			
+			<input type="button" value="목록" onclick="location.href='storyBoardList.do'">
+			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
+			</div>
+		</div>
+		<div class="align-center">${page}</div>
 	</div>
 </div>
 </body>
