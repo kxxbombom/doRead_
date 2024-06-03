@@ -156,6 +156,15 @@ $(function(){
 		phoneChecked = 0;
 	});
 	
+	$('input[type="checkbox"]').on('click',function(){
+		let count = $('input:checked[type="checkbox"]').length;
+		
+		if(count>3){
+			this.checked=false;
+			alert("관심도서는 3개까지 선택할 수 있습니다.");
+		}
+	});
+	
 	$('#register_form').submit(function(){
 		const items = document.querySelectorAll('.input-check');
 		for(let i=0;i<items.length;i++){
