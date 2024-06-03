@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>my page</title>
+<title>mypage</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#photo_btn').click(function(){
+	$('#photo_btn').click(function(){	
 		$('#photo_choice').show();
 		$(this).hide(); //수정 버튼 감추기
 	});
@@ -21,6 +22,7 @@ $(function(){
 	//이미지 미리 보기
 	let photo_path = $('.my-photo').attr('src');//처음 화면에 보여지는 이미지 읽기
 	$('#photo').change(function(){
+		
 		let my_photo = this.files[0];
 		if(!my_photo){
 			//선택을 취소하면 원래 처음 화면으로 되돌림
@@ -35,6 +37,13 @@ $(function(){
 			$(this).val('');//선택한 파일 정보 지우기
 			return;
 		}
+		//화면에 이미지 미리 보기
+		const reader = new FileReader();
+		reader.readAsDataURL(my_photo);
+		
+		reader.onload=function(){
+			$('.my-photo').attr('src',reader.result);
+		};		
 	});//end of change
 	
 	//이미지 전송
@@ -103,38 +112,31 @@ $(function(){
 </head>
 <body>
 <div class="page-main">
-		<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
-		<h2>${user_id}님을 위한 추천도서</h2>
-		<hr width="100%" size="1" noshade="noshade">
-		<div class="slider-container">
-			<c:if test="${count==0}">
-				<div class="slider-items">
-					<h3>선호 도서 카테고리가 없어 추천도서를 표시할 수 없습니다</h3>
-				</div>
-			</c:if>
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
+	<h2>${user_id}님을 위한 추천도서</h2>
+	<hr width="100%" size="1" noshade="noshade">
+	<div class="slider-container">
 		<div class="slider-space">
-			<c:if test="${count!=0}">
-				<c:forEach var="recommend" items="${recommend}">
-					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/book/detail.do?book_num=${recommend.book_num}'">
-						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${reccomend.book_img}" height="300"></div>
-						<div class="slider-image">
-							<ul>
-								<li><h2>${recommend.book_name}</h2></li>
-								<li>${recommend.author}</li>
-								<li>${recommend.publisher}</li>
-							</ul>		
-						</div>
+			<c:forEach var="recommend" items="${recommend}">
+				<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/book/detail.do?book_num=${recommend.book_num}'">
+					<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${reccomend.book_img}" height="300"></div>
+					<div class="slider-image">
+						<ul>
+							<li><h2>${recommend.book_name}</h2></li>
+							<li>${recommend.author}</li>
+							<li>${recommend.publisher}</li>
+						</ul>		
 					</div>
-				</c:forEach>
-			</c:if>
-		</div>
-			<hr width="100%" size="1" noshade="noshade">
-		</div>
-				<div class="mypage-button">
-					<input type="button" value="찜" onclick="location.href='${like}'">
-					<input type="button" value="추천" onclick="location.href='${best}'">
 				</div>
+			</c:forEach>
+		</div>
+		<hr width="100%" size="1" noshade="noshade">
+	</div>
+			<div class="mypage-button">
+				<input type="button" value="찜" onclick="location.href='${like}'">
+				<input type="button" value="추천" onclick="location.href='${best}'">
+			</div>
 </div>
 </body>
 </html>
