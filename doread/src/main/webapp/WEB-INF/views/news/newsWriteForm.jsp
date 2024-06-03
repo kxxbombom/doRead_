@@ -39,12 +39,15 @@
 		<form id="newsWrite_form" action="newsWrite.do" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
+					<label>제목</label>
 					<input type="text" name="news_title" id="news_title" placeholder="제목을 입력하세요" maxlength="50">
 				</li>
 				<li>
+					<label>내용</label>
 					<textarea rows="25" cols="120" name="news_content" id="news_content" placeholder="내용을 입력하세요"></textarea>
 				</li>
 				<li>
+					<label>사진</label>
 					<input type="file" name="news_image" id="news_image" accept="image/gif, image/png, image/jpeg">
 				</li>
 			</ul>

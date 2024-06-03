@@ -108,10 +108,8 @@
  					<input id="bookbtn" type="submit" value="검색" class="button2"><input id="bookbtn2" type="button" value="취소" class="button2">
 					</form>
 					
-					<div id="add">
-					
-					</div>
-				</div>
+					<div id="add"></div>
+		</div>
 				 <script type="text/javascript">
 			    	$("#book_numbtn").click(function() {
 			    		
