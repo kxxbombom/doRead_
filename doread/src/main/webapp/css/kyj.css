@@ -26,12 +26,18 @@
 	object-fit:contain;
 }
 
-
-
 .image-space .float-clear{
 	clear:both;
 }
 
+#book_search input[type="search"]{
+	width:200px;
+	border-radius:5px;
+}
+
+#book_search input,select{
+	height:30px;
+}
 
 /* 도서 상세 페이지
 ---------------------*/
