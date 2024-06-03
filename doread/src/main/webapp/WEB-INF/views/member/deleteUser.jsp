@@ -7,11 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<div class="content-main">
 		<h2>회원탈퇴 완료</h2>
 		<div class="result-display">

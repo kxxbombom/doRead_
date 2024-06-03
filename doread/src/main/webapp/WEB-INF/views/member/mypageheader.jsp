@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="mypage-main">
 	<img id="penimage" src="${pageContext.request.contextPath}/images/pencil_1361912.png" width="30" height="30">
@@ -14,48 +14,51 @@
 					<img src="${pageContext.request.contextPath}/upload/${member.mem_photo}" width="100" height="100" class="my-photo">
 				</c:if>
 				<div class="updatephoto">
-						<input type="button" value="¼öÁ¤"
-						                     id="photo_btn">
+						<button type="button" id="photo_btn">
+  							<img id="penimage2" src="${pageContext.request.contextPath}/images/pencil_1361912.png" width="30" height="30">
+						</button>
+						
+						
 					</div>
 					<div id="photo_choice" style="display:none;">
 						<input type="file" id="photo"
 						          accept="image/gif,image/png,image/jpeg">
-						<input type="button" value="Àü¼Û" id="photo_submit">
-						<input type="button" value="Ãë¼Ò" id="photo_reset">          
+						<input type="button" value="ì „ì†¡" id="photo_submit">
+						<input type="button" value="ì·¨ì†Œ" id="photo_reset">          
 					</div>
 			</li>
-			<li style="padding-top: 40px; font-size: 19pt; color:rgb(255, 255, 255) !important; text-align: left;">${user_id}´Ô<br>¾î¼­¿À¼¼¿ä
+			<li style="padding-top: 40px; font-size: 19pt; color:rgb(255, 255, 255) !important; text-align: left;">${user_id}ë‹˜<br>ì–´ì„œì˜¤ì„¸ìš”
 			</li>
 			<li>
-				<a>È¸¿øÁ¤º¸</a>
+				<a>íšŒì›ì •ë³´</a>
 				<div class="myul">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/member/memberdetail.do">È¸¿ø »ó¼¼ ³»¿ë</a></li>
-						<li><a href="${pageContext.request.contextPath}/book/bookFavList.do">È¸¿ø Âò ¸ñ·Ï</a></li>
-						<li><a href="${pageContext.request.contextPath}/member/deleteUserForm.do">È¸¿ø Å»Åð</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/memberdetail.do">íšŒì› ìƒì„¸ ë‚´ìš©</a></li>
+						<li><a href="${pageContext.request.contextPath}/book/bookFavList.do">íšŒì› ì°œ ëª©ë¡</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/deleteUserForm.do">íšŒì› íƒˆí‡´</a></li>
 					</ul>
 				</div></li>
 			<li>
-				<a>¼îÇÎ</a>
+				<a>ì‡¼í•‘</a>
 				<div class="myul">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/shopping/buylist.do">ÁÖ¹®/¹è¼Û ¸ñ·Ï</a></li>
+						<li><a href="${pageContext.request.contextPath}/shopping/buylist.do">ì£¼ë¬¸/ë°°ì†¡ ëª©ë¡</a></li>
 					</ul>
 				</div></li>
 
 			<li>
-				<a>È°µ¿³»¿ª</a>
+				<a>í™œë™ë‚´ì—­</a>
 				<div class="myul">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/post/myPostList.do">³»°¡ ¾´ °Ô½Ã±Û ³»¿ª</a></li>
-							<li><a href="${pageContext.request.contextPath}/post/myCommentList.do">³»°¡ ¾´ ´ñ±Û ³»¿ª</a></li>
+							<li><a href="${pageContext.request.contextPath}/post/myPostList.do">ë‚´ê°€ ì“´ ê²Œì‹œê¸€ ë‚´ì—­</a></li>
+							<li><a href="${pageContext.request.contextPath}/post/myCommentList.do">ë‚´ê°€ ì“´ ëŒ“ê¸€ ë‚´ì—­</a></li>
 						</ul>
 				</div>
 			<li>
 				<a>QnA</a>
 				<div class="myul">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/qna/qnaWriteForm.do">1:1¹®ÀÇ/µµ¼­½ÅÃ»</a></li>
+						<li><a href="${pageContext.request.contextPath}/qna/qnaWriteForm.do">1:1ë¬¸ì˜/ë„ì„œì‹ ì²­</a></li>
 					</ul>
 				</div></li>
 		</ul>

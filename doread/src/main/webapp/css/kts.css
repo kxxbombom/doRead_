@@ -124,12 +124,27 @@ img#penimage{
 	border-radius:50%;
 	background:white;
 	cursor:pointer;
+	
 }
 .updatephoto input[type="button"]{
 	margin-left:50px;
 	cursor:pointer;	
 }
 
+#photo_btn{
+	padding: 0.5px 0.5px;
+	position:absolute;
+	top:58px;
+	left:71px;
+	z-index:999;
+	border-radius:50%;
+	cursor:pointer;
+}
+img#penimgae2{
+	top:55px;
+	left:300px;
+	border-radius:50%;
+}
 
 /*회원 상세정보*/
 .detail-content{
@@ -245,5 +260,17 @@ table td, table th{
 	margin-left:400px;
 }
 
-
-
+/*회원 찜 목록*/
+.fav-button input[type="button"]{
+	width:95px;
+	height:40px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+	cursor:pointer;
+	margin-top:100px;
+	margin-left:20px;
+}
