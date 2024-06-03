@@ -17,15 +17,15 @@ $(document).ready(function(){
     
     
     function toggleEnterPasswd(show) {
-    var enterPasswdInput = $('#re_enter_passwd');
-    if (show) {
-        enterPasswdInput.show();
-    } else {
-        enterPasswdInput.hide();
-    }
-}
+	    var enterPasswdInput = $('#re_enter_passwd');
+	    if (show) {
+	        enterPasswdInput.show();
+	    } else {
+	        enterPasswdInput.hide();
+	    }
+	}
 
-// 페이지 로드 시 초기 상태 설정
+	// 페이지 로드 시 초기 상태 설정
 
     var isEnter = $('input[name="re_enter"]:checked').val();
     toggleEnterPasswd(isEnter == 1);
@@ -91,4 +91,6 @@ $(document).ready(function(){
 	        });
 		}
     });
+    
+    
 });

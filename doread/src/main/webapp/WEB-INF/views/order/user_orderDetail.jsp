@@ -96,8 +96,19 @@
 			</ul>
 			<div class="align-center">
 				<input type="button" value="배송지수정" id="openModalBtn">
-				<input type="button" value="주문취소">
+				<input type="button" id="cancelOrder" value="주문취소">
 				<input type="button" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
+			
+				<script type="text/javascript">
+	                $('#cancelOrder').click(function(event){
+	            		let check = confirm('주문을 취소하시겠습니까?');
+	            		if(check){
+	            			location.href="cancelOrder.do?order_num=${order.order_num}";
+	            		}
+	            		event.preventDefault();
+	            	});
+                </script>
+			
 			</div>
 		</div>
 		
@@ -138,7 +149,6 @@
                 </ul>
                 <button type="submit">확인</button>
                 <input type="button" id="modify_cancel" value="취소" class="close">
-                
                 
                 
                <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
