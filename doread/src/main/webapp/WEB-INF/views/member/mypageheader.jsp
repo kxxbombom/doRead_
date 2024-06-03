@@ -40,8 +40,7 @@
 				<a>쇼핑</a>
 				<div class="myul">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/shopping/buylist.do">구매 내역 조회</a></li>
-						<li><a href="${pageContext.request.contextPath}">주문/배송 목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/shopping/buylist.do">주문/배송 목록</a></li>
 					</ul>
 				</div></li>
 

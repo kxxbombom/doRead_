@@ -793,6 +793,13 @@ input[type="file"]{
 
 
 /*장바구니*/
+#cart_container{
+	width:100%;
+	display:flex;
+	margin:0;
+	padding:0;
+}
+
 .cart-container{
 	width:100%;
 	display:flex;
