@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>도서 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 
 <script type="text/javascript">
@@ -50,6 +50,9 @@ window.onload=function(){
 				</li>
 			</ul>
 		</form>
+		<div class="float-clear">
+			<hr width="100%" size="1" noshade="noshade">
+		</div>
 		</div>
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">
@@ -60,7 +63,7 @@ window.onload=function(){
 						</c:if>
 						<c:if test="${book.book_auth !=0}">
 						<div style="opacity:0.4;">
-						<div style="postion:absolute; z-index:999;"">품절되었습니다</div>
+						<div style="postion:absolute; z-index:998;">품절되었습니다</div>
 						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
 						</div>
 						</c:if>
