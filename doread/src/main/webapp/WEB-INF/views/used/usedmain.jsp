@@ -50,9 +50,9 @@
  				<table  id="usedtable">
  					<tr>
  						<th>no.</th>
+ 						<th>글 제목 </th>
  						<th>책제목</th>
  						<th>가격</th>
- 						<th>글 제목 </th>
  						<th>판매상태</th>
  						<th>작성자</th>
  						<th>조회수</th>
@@ -61,9 +61,9 @@
  					<c:if test="${i.u_auth == 0}">
  					<tr>
  						<td>${i.u_num}</td>
+ 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title}</a></td>
  						<td>${i.book_name}</td>
  						<td><fmt:formatNumber value="${i.u_price}"/>원</td>
- 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title}</a></td>
  						<td><c:if test="${i.u_state ==1}">판매중</c:if>
  							<c:if test="${i.u_state ==2}">거래중</c:if>
  							<c:if test="${i.u_state ==3}">판매완료</c:if>
@@ -76,22 +76,14 @@
  				</table>
  			</c:if>
 			</div>
-		
-			
-			
-			
 			
 			<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
-		
-
- 	
 			
 			
-			
-
 	</div>
+	<div class="align-center">${page}</div>
 </div>
 </body>
 </html>

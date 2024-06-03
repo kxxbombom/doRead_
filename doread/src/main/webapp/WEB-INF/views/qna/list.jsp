@@ -83,7 +83,6 @@ window.onload= function(){
 			<c:if test="${!empty user_num && user_auth == 2}">
 			<input type="button" value="글쓰기" onclick="location.href='qnaWriteForm.do'">
 			</c:if>
-			
 			<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
 		</div>

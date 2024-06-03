@@ -58,16 +58,14 @@
 				<c:if test="${!empty sb.s_mdate}">
 				최근 수정일 : ${sb.s_mdate}
 				</c:if>
-				작성일 : ${sb.s_rdate}
-				<div class="align-right">
-					<a class="report" data-id="${sb.s_num}" href="#" data-name="s_num" >신고</a>
-				</div>
 			</li>
 		</ul>
-		<!-- 댓글시작 -->
-		<div class="float-clear">
-			<hr width="100%" size="1" noshade="noshade">
+		작성일 : ${sb.s_rdate}
+		<div class="align-right">
+			<a class="report" data-id="${sb.s_num}" href="#" data-name="s_num" >신고</a>
 		</div>
+		<hr width="100%" size="1" noshade="noshade">
+		<!-- 댓글시작 -->
 		<div id="reply_div">
 			<span class="sc-title">댓글 달기</span>
 			<form id="sc_form">
@@ -91,7 +89,7 @@
 		<!-- 댓글 목록 출력 시작 -->
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;" >
-			<input type="button" value="다음글 보기">
+			<input type="button" value="더 보기">
 		</div>
 		<div id="loading" style="display:none;">
 			<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">

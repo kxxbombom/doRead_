@@ -117,8 +117,8 @@
 		</div>
 		</div>
 		<div class="align-right">
-					<a class="report" data-id="${used.u_num}" href="#" data-name="u_num" >신고</a>
-				</div>
+			<a class="report" data-id="${used.u_num}" href="#" data-name="u_num" >신고</a>
+		</div>
 		<hr width="100%" size="1" noshade="noshade">
 	<!-- 댓글시작 -->
 		<div id="reply_div">

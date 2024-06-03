@@ -1,7 +1,4 @@
   $(function(){  
-
-	
-	
 	let rowCount = 10;
 	let currentPage;
 	let count;
@@ -72,9 +69,9 @@
 		
 	}
 	//페이지 처리 이벤트 연결(다음 댓글 보기 버튼 클릭시 데이터 추가)
-	/*$('.paging-button input').click(function(){
+	$('.paging-button input').click(function(){
 		selectList(currentPage + 1);
-	});*/
+	});
 	/*=======================================================
 	 * 댓글 등록
 	 *=======================================================*/
