@@ -510,8 +510,10 @@ public class BookDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			sql = "SELECT COUNT(book_num) FROM book b RIGHT OUTER JOIN member_detail m "
-					+ "ON b.book_category=m.book_category WHERE mem_num=?";
+			sql = "SELECT COUNT(*) FROM book b RIGHT OUTER JOIN member_detail m "
+					+ "ON b.book_category=m.book_category OR "
+					+ "b.book_category=m.book_category2 OR "
+					+ "b.book_category=m.book_category3 WHERE mem_num=?";
 
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_num);
@@ -538,7 +540,9 @@ public class BookDAO {
 		try {
 			conn = DBUtil.getConnection();
 			sql = "SELECT * FROM book b RIGHT OUTER JOIN member_detail m "
-					+ "ON b.book_category=m.book_category WHERE mem_num=?";
+					+ "ON b.book_category=m.book_category OR "
+					+ "b.book_category=m.book_category2 OR "
+					+ "b.book_category=m.book_category3 WHERE mem_num=?";
 			
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_num);
@@ -553,6 +557,7 @@ public class BookDAO {
 				book.setPublisher(rs.getString("publisher"));
 				book.setBook_img(rs.getString("book_img"));
 				book.setBook_auth(rs.getInt("book_auth"));
+				book.setBook_category(rs.getInt("book_category"));
 				
 				recommend.add(book);
 			}

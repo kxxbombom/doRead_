@@ -102,18 +102,6 @@ div.category-tag{
 	color:rgb(26, 77, 46);
 }
 
-#wish{
-	width:430px;
-	height:30px;
-	background-color:rgb(232,223,202);
-	color:rgb(26, 77, 46);
-	border:none;
-	margin-bottom:5px;
-}
-
-#wish:hover{
-	background-color:#EEEEEE;
-}
 
 #button-margin{
 margin-top: 25px;
