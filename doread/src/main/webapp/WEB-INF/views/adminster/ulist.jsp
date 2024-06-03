@@ -12,10 +12,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-
-<jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
+<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
+<div class="align-center">
 <input type="button" value="누적신고 5회이상 확인" onclick="location.href='five.do'">
 <h2>USED 보드 신고된 게시글 관리</h2>
 	<c:if test="${empty list}">
@@ -297,7 +299,7 @@ $('.delbtn').click(function(){
     	})
 
 </script>
-
+</div>
 </div>
 </body>
 </html>

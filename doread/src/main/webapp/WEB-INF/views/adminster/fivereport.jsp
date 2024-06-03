@@ -58,8 +58,9 @@
 </script>
 </head>
 <body>
-
-<jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
+<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
 <h2>누적 5회</h2>

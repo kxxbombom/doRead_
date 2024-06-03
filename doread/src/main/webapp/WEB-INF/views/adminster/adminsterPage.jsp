@@ -42,9 +42,10 @@
 </script>
 </head>
 <body>
-
+<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
-
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
 
 	<h2>책 등록</h2>

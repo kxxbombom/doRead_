@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
 <div id="adminpage">
 	<img id="penimage"src="${pageContext.request.contextPath}/images/pencil_1361912.png"  width="30" height="30">
 	<div class="adminnav">
@@ -39,8 +40,9 @@
 		<li >
 			<a href="#" >판매내역</a>
 			<div class="subul">
-			<ul  style="font-size:12px;">
-				
+			<ul >
+				<li><a href="${pageContext.request.contextPath}/order/adminList.do">-판매내역</a>
+				</li>
 			
 			</ul>
 			</div>

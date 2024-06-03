@@ -12,8 +12,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-
-<jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
+<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
 <h2>스토리보드 정지 게시글 관리</h2>

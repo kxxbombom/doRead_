@@ -12,7 +12,9 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/views/adminster/adheader2.jsp"/>
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
+<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
 
@@ -55,11 +57,16 @@
 
 	</div>
 	<div class="align-center">
-
+	${page}
+	
+	</div>
+	<div class="align-center">
+	<p>
+	<br>
 	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+	
 	</div>
 	
-
 
 </div>
 </body>

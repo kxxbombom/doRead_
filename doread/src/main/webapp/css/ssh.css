@@ -2,7 +2,9 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
 
 body{
-	width:960px;
+
+	
+	
 	margin:0 auto;
 	
 	font-family:"Noto Sans KR", sans-serif;
@@ -82,7 +84,7 @@ div.align-left b{
 /*관리자 페이지 상단바*/
 #adminpage{
 	
-	margin:0 auto;
+	
 	width:1000px;
 	height:163px;
 	background:rgb(26, 77, 46);
@@ -235,9 +237,9 @@ input:hover {
   height: 1rem;
 }
 div.subul ul{
-	margin-top:50px;
-	margin-left:70px;
-	
+	margin-top:50px !important;
+	margin-left:70px !important;
+	padding-left:30px !important;
 	
 }
 div.subul ul li{
@@ -286,12 +288,17 @@ div.subul ul li{
 }
 /*관리자 유저페이지*/
 table{
-	text-align:center;
-	margin:30px 0;
+	width:90% !important;
+	text-align:center !important;
+	margin:30px auto !important;
+	border:none !important;
 }
-
+tr{
+	border:none !important;
+}
 th,td{
 	width:150px;
+	border:none !important;
 }
 img#modifyauth{
 	cursor:pointer;

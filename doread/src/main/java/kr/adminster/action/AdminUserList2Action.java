@@ -11,6 +11,7 @@
 	import kr.controller.Action;
 
 	import kr.member.vo.MemberVO;
+import kr.util.PagingUtil;
 	
 	public class AdminUserList2Action implements Action{
 	
@@ -29,8 +30,12 @@
 					if(user_auth != 9) {//관리자로 로그인하지 않은 경우
 						return "/WEB-INF/views/common/notice.jsp";
 					}
+					String pageNum = request.getParameter("pageNum");
+					if(pageNum == null) pageNum="1";
 					AdminDAO dao = AdminDAO.getInstance();
-					List<MemberVO> list = dao.getListMemberByAdmin(0, 10, null, null);
+					int count = dao.getMemberCountByAdmin(null, null);
+					PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count,count, 10, request.getContextPath()+"/adminster/userList2.do");
+					List<MemberVO> list = dao.getListMemberByAdmin(page.getStartRow(), page.getEndRow(), null, null);
 					request.setAttribute("member", list);
 					
 					return "/WEB-INF/views/adminster/adminsterUser2List.jsp";

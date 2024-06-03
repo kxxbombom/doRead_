@@ -246,7 +246,94 @@ public class OrderDAO {
 			}
 
 	//관리자 - 전체/검색 주문 개수
+			public int getAdminOrderCount(String keyfield, String keyword)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				String sub_sql = "";
+				int count = 0;
+				int cnt =0;
+				try {
+					conn = DBUtil.getConnection();
+					
+					if(keyword != null && !"".equals(keyword)) {
+						if(keyfield.equals("1")) sub_sql += "WHERE book_name LIKE '%' || ? || '%'";
+						else if(keyfield.equals("2")) sub_sql += "WHERE order_num=?";
+						
+					}
+
+					sql = "SELECT COUNT(*) FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') WITHIN GROUP (ORDER BY book_name) book_name "
+							+ "FROM book_order_detail GROUP BY order_num) USING (order_num) " + sub_sql;
+
+					pstmt = conn.prepareStatement(sql);
+
+
+					if(keyword != null && !"".equals(keyword)) {
+						pstmt.setString(++cnt, keyword);
+					}
+					//SQL문 실행
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						count = rs.getInt(1);
+					}
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return count;
+			}
 	//관리자 - 전체/검색 주문 목록
+			public List<OrderVO> getAdminListOrderByMem_num(int start, int end, String keyfield, String keyword)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<OrderVO> list = null;
+				String sql = null;
+				String sub_sql = "";
+				int cnt = 0;
+				try {
+					conn = DBUtil.getConnection();
+					
+					if(keyword != null && !"".equals(keyword)) {
+						if(keyfield.equals("1")) sub_sql += "WHERE book_name LIKE '%' || ? || '%'";
+						else if(keyfield.equals("2")) sub_sql += "WHERE order_num=?";
+					}
+					
+
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM ("
+							+ "SELECT * FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') "
+							+ "WITHIN GROUP (ORDER BY book_name) book_name FROM book_order_detail GROUP BY order_num) "
+							+ "USING (order_num)  " + sub_sql
+							+ " ORDER BY order_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+
+					pstmt = conn.prepareStatement(sql);
+					if(keyword != null && !"".equals(keyword)) {
+						pstmt.setString(++cnt, keyword);
+					}
+					pstmt.setInt(++cnt, start);
+					pstmt.setInt(++cnt, end);
+					//SQL문 실행
+					rs = pstmt.executeQuery();
+					list = new ArrayList<OrderVO>();
+					while(rs.next()) {
+						OrderVO order = new OrderVO();
+						order.setOrder_num(rs.getInt("order_num"));
+						order.setOrder_total(rs.getInt("order_total"));
+						order.setBook_name(rs.getString("book_name"));
+						order.setOrder_status(rs.getInt("order_status"));
+						order.setOrder_date(rs.getDate("order_date"));
+						
+						list.add(order);
+					}
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return list;
+			}
 	//사용자 - 전체/검색 주문 개수
 	public int getOrderCount(String keyfield, String keyword, int mem_num)throws Exception{
 		Connection conn = null;
