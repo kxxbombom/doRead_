@@ -510,7 +510,7 @@ public class BookDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			sql = "SELECT COUNT(*) FROM book b RIGHT OUTER JOIN member_detail m "
+			sql = "SELECT COUNT(book_num) FROM book b RIGHT OUTER JOIN member_detail m "
 					+ "ON b.book_category=m.book_category OR "
 					+ "b.book_category=m.book_category2 OR "
 					+ "b.book_category=m.book_category3 WHERE mem_num=?";

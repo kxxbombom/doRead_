@@ -118,43 +118,46 @@ $(function(){
 	<hr width="100%" size="1" noshade="noshade">
 	<div class="slider-container">
 		<div class="slider-space">
-			<c:forEach var="recommend" items="${recommend}">
-				<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/book/detail.do?book_num=${recommend.book_num}'">
-					<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${recommend.book_img}" height="300"></div>
-					<div class="slider-image">
-						<ul>
-							<li><h2>${recommend.book_name}</h2></li>
-							<li id="book-tagtop">
-								<div class="category-tag">
-								<b>
-								<c:if test="${recommend.book_category==1}">소설</c:if>
-								<c:if test="${recommend.book_category==2}">시/에세이</c:if>
-								<c:if test="${recommend.book_category==3}">인문</c:if>
-								<c:if test="${recommend.book_category==4}">정치/사회</c:if>
-								<c:if test="${recommend.book_category==5}">과학/공학</c:if>
-								<c:if test="${recommend.book_category==6}">IT/프로그래밍</c:if>
-								<c:if test="${recommend.book_category==7}">자기계발</c:if>
-								<c:if test="${recommend.book_category==8}">외국어</c:if>
-								<c:if test="${recommend.book_category==9}">수험서/취업</c:if>
-								<c:if test="${recommend.book_category==10}">만화</c:if>
-								<c:if test="${recommend.book_category==11}">취미/스포츠</c:if>
-								</b>
-								</div>
-								<br>
-							</li>
-							<li>${recommend.author}</li>
-							<li>${recommend.publisher}</li>
-						</ul>		
-					</div>
+			<c:if test="${count==0}">
+				<div class="slider-items">
+					<h3>관심도서를 선택하지 않아 도서를 추천할 수 없습니다.</h3>
 				</div>
-			</c:forEach>
+			</c:if>
+			<c:if test="${count!=0}">
+				<c:forEach var="recommend" items="${recommend}">
+					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/book/detail.do?book_num=${recommend.book_num}'">
+						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${recommend.book_img}" height="300"></div>
+						<div class="slider-image">
+							<ul>
+								<li><h2>${recommend.book_name}</h2></li>
+								<li id="book-tagtop">
+									<div class="category-tag">
+									<b>
+									<c:if test="${recommend.book_category==1}">소설</c:if>
+									<c:if test="${recommend.book_category==2}">시/에세이</c:if>
+									<c:if test="${recommend.book_category==3}">인문</c:if>
+									<c:if test="${recommend.book_category==4}">정치/사회</c:if>
+									<c:if test="${recommend.book_category==5}">과학/공학</c:if>
+									<c:if test="${recommend.book_category==6}">IT/프로그래밍</c:if>
+									<c:if test="${recommend.book_category==7}">자기계발</c:if>
+									<c:if test="${recommend.book_category==8}">외국어</c:if>
+									<c:if test="${recommend.book_category==9}">수험서/취업</c:if>
+									<c:if test="${recommend.book_category==10}">만화</c:if>
+									<c:if test="${recommend.book_category==11}">취미/스포츠</c:if>
+									</b>
+									</div>
+									<br>
+								</li>
+								<li>${recommend.author}</li>
+								<li>${recommend.publisher}</li>
+							</ul>		
+						</div>
+					</div>
+				</c:forEach>
+			</c:if>
 		</div>
 		<hr width="100%" size="1" noshade="noshade">
 	</div>
-			<div class="mypage-button">
-				<input type="button" value="찜" onclick="location.href='${like}'">
-				<input type="button" value="추천" onclick="location.href='${best}'">
-			</div>
 </div>
 </body>
 </html>
