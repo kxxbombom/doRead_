@@ -29,18 +29,18 @@ public class BuyListAction implements Action{
 		String keyword = request.getParameter("keyword");
 		
 		OrderDAO dao = OrderDAO.getInstance();
-		//int count = dao.getOrderCount(keyfield, keyword, user_num);
+		int count = dao.getOrderCount(keyfield, keyword, user_num);
 		
-		//PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "buylist.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "buylist.do");
 		
 		List<OrderVO> list = null;
-//		if(count > 0) {
-//			list = dao.getListOrderByMem_num(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
-//		}
+		if(count > 0) {
+			list = dao.getListOrderByMem_num(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
+		}
 		
-		//request.setAttribute("count", count);
-		//request.setAttribute("list", list);
-		//request.setAttribute("page", page);
+		request.setAttribute("count", count);
+		request.setAttribute("list", list);
+		request.setAttribute("page", page);
 		
 		return "/WEB-INF/views/shopping/buylist.jsp";
 	}
