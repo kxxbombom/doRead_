@@ -312,6 +312,42 @@ public class OrdersDAO {
 		return order;
 	}
 	//관리자/사용자 - 배송지정보 수정
+	public void updateOrder(OrderVO order, int order_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+
+			sql = "UPDATE book_order SET receive_name=?, receive_phone=?, receive_zipcode=?, receive_address1=?, receive_address2=?, order_msg=?, enter=?, enter_passwd=? WHERE order_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, order.getReceive_name());
+			pstmt.setString(2, order.getReceive_phone());
+			pstmt.setString(3, order.getReceive_zipcode());
+			pstmt.setString(4, order.getReceive_address1());
+			pstmt.setString(5, order.getReceive_address2());
+			if(order.getOrder_msg() == null) {
+				pstmt.setNull(6, java.sql.Types.VARCHAR);
+			}else {
+				pstmt.setString(6, order.getOrder_msg());
+			}
+			pstmt.setInt(7, order.getEnter());
+			if (order.getEnter_passwd() == null) {
+			    pstmt.setNull(8, java.sql.Types.VARCHAR);
+			} else {
+			    pstmt.setString(8, order.getEnter_passwd());
+			}
+			pstmt.setInt(9, order_num);
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	//관리자 - 배송상태 수정
 	//사용자 - 주문 취소
 	
