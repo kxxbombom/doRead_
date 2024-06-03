@@ -48,7 +48,8 @@
 			<th>주문번호</th>
 			<th>주문이름</th>
 			<th>회원번호</th>
-			<th>주문금액</th> 
+			<th>주문금액</th>
+			<th>배송상태</th> 
 			<th>주문일</th>
 			
 			</tr>
@@ -59,6 +60,12 @@
 			<td><a href="detailOrder.do?order_num=${i.order_num}">${i.book_name}</a></td>
 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
 			<td> <fmt:formatNumber value="${i.order_total }"/>원</td>
+			<td>
+			<c:if test="${i.order_status == 1}">배송대기</c:if>
+			<c:if test="${i.order_status == 2}">배송준비중</c:if>
+			<c:if test="${i.order_status == 3}">배송중</c:if>
+			<c:if test="${i.order_status == 4}">배송완료</c:if><c:if test="${order.status == 5}"><span style="color:red;">주문 취소</span></c:if>
+			</td>
 			<td>${i.order_date}</td>
 			</tr>
 		</c:forEach>
