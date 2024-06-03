@@ -142,6 +142,38 @@ public class OrderDAO {
 	//관리자 - 전체/검색 주문 개수
 	//관리자 - 전체/검색 주문 목록
 	//사용자 - 전체/검색 주문 개수
+	public int getOrderCount(String keyfield, String keyword)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String sub_sql = "";
+		int count = 0;
+		try {
+			conn = DBUtil.getConnection();
+			
+			if(keyword != null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql = "WHERE book_name LIKE '%' || ? || '%'";
+			}
+			
+			sql = "SELECT COUNT(*) FROM newsboard JOIN member USING (mem_num) " + sub_sql;
+			
+			pstmt = conn.prepareStatement(sql);
+			if(keyword != null && !"".equals(keyword)) {
+				pstmt.setString(1, keyword);
+			}
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
 	//사용자 - 전체/검색 주문 목록
 	//개별 도서 목록
 	//주문삭제(주문 내역만 삭제. 재고 원상 복귀X)
