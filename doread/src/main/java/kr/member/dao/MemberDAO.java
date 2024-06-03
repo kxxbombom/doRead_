@@ -43,7 +43,7 @@ public class MemberDAO {
 			pstmt2.setString(2, member.getMem_id());
 			pstmt2.executeUpdate();
 			
-			sql = "INSERT INTO member_detail (mem_num, mem_name, mem_pw, mem_phone, mem_email, mem_zipcode, mem_address1, mem_address2, book_category) VALUES (?,?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO member_detail (mem_num, mem_name, mem_pw, mem_phone, mem_email, mem_zipcode, mem_address1, mem_address2, book_category, book_category2, book_category3) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt3 = conn.prepareStatement(sql);
 			
@@ -57,9 +57,19 @@ public class MemberDAO {
 			pstmt3.setString(8, member.getMem_address2());
 			if (member.getBook_category() != null) {
 	            pstmt3.setInt(9, member.getBook_category());
-	        } else {
-	            pstmt3.setNull(9, java.sql.Types.INTEGER);
-	        }
+			}else{
+		        pstmt3.setNull(9, java.sql.Types.INTEGER);
+		    }
+			if(member.getBook_category2()!=null) {
+	            pstmt3.setInt(10, member.getBook_category2());
+			}else {
+				pstmt3.setNull(10, java.sql.Types.INTEGER);
+			}
+			if(member.getBook_category3()!=null) {
+	            pstmt3.setInt(11, member.getBook_category3());
+			}else {
+				pstmt3.setNull(11, java.sql.Types.INTEGER);
+			}
 			
 			pstmt3.executeUpdate();
 			conn.commit();
@@ -250,7 +260,6 @@ public class MemberDAO {
 				member.setMem_zipcode(rs.getString("mem_zipcode"));
 				member.setMem_address1(rs.getString("mem_address1"));
 				member.setMem_address2(rs.getString("mem_address2"));
-				member.setMem_photo(rs.getString("mem_photo"));
 				member.setMem_rdate(rs.getDate("mem_rdate"));
 				member.setMem_mdate(rs.getDate("mem_mdate"));
 				Integer bookCategory = rs.getInt("book_category");
@@ -276,7 +285,7 @@ public class MemberDAO {
 			conn = DBUtil.getConnection();
 			
 			sql = "UPDATE member_detail SET mem_name=?, mem_phone=?, mem_email=?, mem_zipcode=?, mem_address1=?, mem_address2=?, mem_mdate=SYSDATE WHERE mem_num=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getMem_name());
 			pstmt.setString(2, member.getMem_phone());

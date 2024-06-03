@@ -17,7 +17,25 @@ public class MemberVO {
 	private Date mem_mdate;
 	private String mem_photo;
 	private Integer book_category;
+	private Integer book_category2;
+	private Integer book_category3;
 	
+	public Integer getBook_category2() {
+		return book_category2;
+	}
+
+	public void setBook_category2(Integer book_category2) {
+		this.book_category2 = book_category2;
+	}
+
+	public Integer getBook_category3() {
+		return book_category3;
+	}
+
+	public void setBook_category3(Integer book_category3) {
+		this.book_category3 = book_category3;
+	}
+
 	public boolean isCheckedPassword(String userpw) {
 		if(mem_auth > 1 && mem_pw.equals(userpw)) {
 			return true;
