@@ -87,7 +87,7 @@ public class UserOrderAction implements Action{
 		order.setOrder_msg(request.getParameter("order_msg"));
 		order.setMem_num(user_num);
 		String usedpoint = request.getParameter("usedpoint");
-		if(usedpoint != null) {
+		if(usedpoint != null ) {
 		order.setOrder_usepoint(Integer.parseInt(usedpoint));
 		
 		order.setOrder_total(all_total_delivery - Integer.parseInt(usedpoint));}

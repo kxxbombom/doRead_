@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.order.vo.OrderDetailVO;
 import kr.order.vo.OrderVO;
+import kr.order.vo.PointVO;
 import kr.util.DBUtil;
 
 public class OrderDAO {
@@ -26,6 +27,8 @@ public class OrderDAO {
 		PreparedStatement pstmt3 = null;
 		PreparedStatement pstmt4 = null;
 		PreparedStatement pstmt5 = null;
+		PreparedStatement pstmt6 = null;
+		PreparedStatement pstmt7 = null;
 		ResultSet rs = null;
 		String sql = null;
 		int order_num = 0; //시퀀스
@@ -100,12 +103,31 @@ public class OrderDAO {
 			pstmt5 = conn.prepareStatement(sql);
 			pstmt5.setInt(1, order.getMem_num());
 			pstmt5.executeUpdate();
-			
+			if(order.getOrder_usepoint() !=0) {
+				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+				pstmt6 = conn.prepareStatement(sql);
+				pstmt6.setInt(1, 1);
+				pstmt6.setInt(2, order.getOrder_usepoint());
+				pstmt6.setInt(3,order.getMem_num());
+				pstmt6.executeUpdate();
+					
+				}
+				
+				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+				pstmt7 = conn.prepareStatement(sql);
+				pstmt7.setInt(1, 0);
+				pstmt7.setInt(2, (int)(order.getOrder_total()*0.03));
+				pstmt7.setInt(3,order.getMem_num());
+				pstmt7.executeUpdate();
+				
+
 			conn.commit();
 		}catch(Exception e) {
 			conn.rollback();
 			throw new Exception(e);
 		}finally {
+			DBUtil.executeClose(null, pstmt7, null);
+			DBUtil.executeClose(null, pstmt6, null);
 			DBUtil.executeClose(null, pstmt5, null);
 			DBUtil.executeClose(null, pstmt4, null);
 			DBUtil.executeClose(null, pstmt3, null);
@@ -115,31 +137,113 @@ public class OrderDAO {
 	}
 
 	//포인트정보
-	public int getPoint(int mem_num)throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = null;
-		int point = 0;
-		try {
-			conn = DBUtil.getConnection();
-
-			sql = "SELECT p_point FROM point WHERE mem_num=?";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mem_num);
-			
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				point = rs.getInt(1);
+	//포인트정보 (총합계)
+			public int getPoint(int mem_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				PreparedStatement pstmt2 = null;
+				ResultSet rs2 = null;
+				String sql = null;
+				int point = 0;
+				try {
+					conn = DBUtil.getConnection();
+					conn.setAutoCommit(false);
+					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=0";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, mem_num);
+					
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						do {
+						point += rs.getInt(1);
+						}while(rs.next());
+						}
+					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=1";
+					
+					pstmt2 = conn.prepareStatement(sql);
+					pstmt2.setInt(1, mem_num);
+					
+					rs2 = pstmt2.executeQuery();
+					if(rs2.next()) {
+					do {
+						point -= rs2.getInt(1);
+					}while(rs2.next());
+							
+					}
+					conn.commit();
+				}catch(Exception e) {
+					conn.rollback();
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs2, pstmt2, null);
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return point;
 			}
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(rs, pstmt, conn);
-		}
-		return point;
-	}
+			//point 사용 내역 갯수 페이지 처리
+			public int getPagePoint(int mem_num)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int count = 0;
+				try {
+					conn = DBUtil.getConnection();
+					sql = "SELECT count(*) FROM point WHERE mem_num=? ";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, mem_num);
+					
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						count = rs.getInt(1);
+						}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+				
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return count;
+			}
+			//포인트 사용내역
+			public List<PointVO> getListUserPoint(int start, int end, int mem_num) throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<PointVO> list=null;
+				String sql = null;
+				try {
+					conn = DBUtil.getConnection();
+					sql="select * from (select rownum alnum, a.* from (select * from point where mem_num=? order by p_num desc)a) where alnum between ? and ?";
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						list = new ArrayList<PointVO>();
+						do {
+							PointVO point = new PointVO();
+							point.setP_num(rs.getInt("p_num"));
+							point.setP_detail(rs.getInt("p_detail"));
+							point.setP_point(rs.getInt("p_point"));
+							point.setMem_num(rs.getInt("mem_num"));
+							point.setP_rdate(rs.getDate("p_rdate"));
+							list.add(point);
+						}while(rs.next());
+						
+					}
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				
+				return list;
+			}
+
 	//관리자 - 전체/검색 주문 개수
 	//관리자 - 전체/검색 주문 목록
 	//사용자 - 전체/검색 주문 개수
@@ -199,7 +303,7 @@ public class OrderDAO {
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM ("
 					+ "SELECT * FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') "
-					+ "WITHIN GROUP (ORDER BY book_name) book_name FROM zorder_detail GROUP BY order_num) "
+					+ "WITHIN GROUP (ORDER BY book_name) book_name FROM book_order_detail GROUP BY order_num) "
 					+ "USING (order_num) WHERE mem_num=? " + sub_sql
 					+ " ORDER BY order_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 

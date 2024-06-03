@@ -74,6 +74,10 @@ $(function(){
 		inpoint.textContent = Math.ceil(total.textContent*0.03);
 		$('#inpoint').val($('#total').textContent);
 		
+	});
+	$('#pointval').keyup(function(){
+		if($(this).val()<0 $())
+		
 	})
 	
 })
