@@ -66,19 +66,47 @@ $(function(){
 		const total = document.getElementById('total');
 		const order_usepoint = document.getElementById('order_usepoint');
 		const inpoint = document.getElementById('inpoint');
+		const all_total_delivery =document.getElementById('all_total_delivery');
 		
-		
+		if(usedpoint.value != 0)
 		span.textContent = usedpoint.value;
-		$('#order_usepoint').attr('value','sda');
-		total.textContent=total.textContent-usedpoint.value;
+		else{
+		span.textContent = 0;
+		}
+		if(usedpoint.value != null)
+		total.textContent=all_total_delivery.value-usedpoint.value;
+		else{
+		total.textContent= all_total_delivery.value;
+		}
+		
 		inpoint.textContent = Math.ceil(total.textContent*0.03);
 		$('#inpoint').val($('#total').textContent);
 		
 	});
 	$('#pointval').keyup(function(){
-		if($(this).val()<0 $())
+		if($(this).val()<0 || $(this).val()>Number($('#userpoint').val())){
+			alert('소유 포인트만 사용가능');
+			$(this).val('').focus();
+			return ;
+		}
 		
 	})
+	$('#order_form').submit(function(){
+		const radio = document.querySelectorAll('input[class="payment"]:checked');
+		
+		if(radio.length<1){
+			alert('결제수단을 선택하세요');
+			return false;
+		}	
+		const inputcheck = document.getElementsByClassName('input-check');
+		for(let i=0; i<inputcheck.length; i++){
+			if(inputcheck[i].value.trim()==''){
+				alert("배송지 정보를 입력해주세요");
+				return false;
+			}
+		}
+	})
+	
 	
 })
 </script>
@@ -97,10 +125,10 @@ $(function(){
 							<span>배송지정보</span>
 							<div>
 								<ul>
-									<li><input type="text" id="receive_name" name="receive_name" value="${member.mem_name}" class="hidden r_info"><span id="displayName" class="info-span">${member.mem_name}</span></li>
-									<li><input type="text" id="receive_phone" name="receive_phone" value="${member.mem_phone}" class="hidden r_info"><span id="displayPhone" class="info-span">${member.mem_phone}</span></li>
-									<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${member.mem_zipcode}" class="hidden r_info"> <input type="button" class="hidden r_info" value="우편번호 찾기" onclick="execDaumPostcode()"><span id="displayZipcode" class="info-span">${member.mem_zipcode}</span></li>
-									<li><input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden r_info"><span id="displayAddress1" class="info-span">${member.mem_address1}</span> <input type="text" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden r_info"><span id="displayAddress2" class="info-span">${member.mem_address2}</span></li>
+									<li><input type="text" id="receive_name" name="receive_name" value="${member.mem_name}" class="hidden r_info input-check"><span id="displayName" class="info-span">${member.mem_name}</span></li>
+									<li><input   type="text" id="receive_phone" name="receive_phone" value="${member.mem_phone}" class="hidden r_info input-check"><span id="displayPhone" class="info-span">${member.mem_phone}</span></li>
+									<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${member.mem_zipcode}" class="hidden r_info input-check"> <input type="button" class="hidden r_info" value="우편번호 찾기" onclick="execDaumPostcode()"><span id="displayZipcode" class="info-span">${member.mem_zipcode}</span></li>
+									<li><input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden r_info input-check"><span id="displayAddress1" class="info-span">${member.mem_address1}</span> <input type="text" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden r_info"><span id="displayAddress2" class="info-span">${member.mem_address2}</span></li>
 
 								</ul>
 								<button type="button" onclick="editShippingInfo()">변경</button>
@@ -144,7 +172,7 @@ $(function(){
 		 						</a>
 		 					</td>
 		 					<td class="align-center">
-		 						<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width">
+		 						<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width" readonly="readonly">
 		 					</td>
 		 					<td class="align-center">
 		 						<fmt:formatNumber value="${cart.bookVO.price}"/>원
@@ -158,16 +186,16 @@ $(function(){
 				<ul>
 					<li>포인트</li>
 					<li>보유 ${point}원</li>
-				</ul>
+				</ul><input type="hidden" value="${point}" id="userpoint">
 				통합 포인트 ${point}원 <input type="number" name ="usedpoint" id="pointval" min="0" max="${point}" maxlength ="${point}" value="0">
 				<input type="button" name="pointpayment" id="pointbtn" value="사용">
 				</div>
 				
 				<div>
-					<label for="enter">결제수단</label>
-					<input type="radio" name="payment" value="1">신용카드<input type="text" name="enter_passwd" placeholder="카드번호">
-					<input type="radio" name="payment" value="2">계좌이체
-					<input type="radio" name="payment" value="3">휴대폰결제	
+					<label>결제수단</label>
+					<input type="radio" class="payment" name="payment" value="1">신용카드<input type="text" name="enter_passwd" placeholder="카드번호">
+					<input type="radio" class="payment" name="payment" value="2">계좌이체
+					<input type="radio" class="payment" name="payment" value="3">휴대폰결제	
 			 	</div>
 			</div>
 			
@@ -197,6 +225,7 @@ $(function(){
 		 				
 						<hr size="1" width="100%">
 		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><c:set var="point" value="" scope="request"/><span id="total">${all_total_delivery}</span></b>원</span>
+		 				<input type="hidden" value="${all_total_delivery}" id="all_total_delivery">
 		 				</li>
 		 				<li class="flex-container">
 		 					<span class="tooltip-container">
@@ -204,12 +233,11 @@ $(function(){
 		 						<span class="tooltip-text">상품 주문 시 적립 예정 포인트가 자동 합산되고 주문하신 상품이 발송완료 된 후에 자동으로 적립됩니다.<br>
 									상품구매시 구매액의 3%가 적립됩니다.</span>
 								</span>
-		 					<span><span id="inpoint">${all_total_delivery*0.03}</span>P</span>
+		 					<span><span id="inpoint"><fmt:formatNumber value="${all_total_delivery*0.03}"/></span>P</span>
 		 				</li>
 		 			</ul>
-		 			
 		 			<div class="align-center cart-submit">
-	 					<input type="submit" value="결제하기">
+		 			<input type="submit" value="결제하기">
 	 				</div>
 		 		</div>
 		 	</div>

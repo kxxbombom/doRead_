@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.order.vo.OrderDetailVO;
 import kr.order.vo.OrderVO;
+
 import kr.order.vo.PointVO;
 import kr.util.DBUtil;
 
@@ -335,12 +336,205 @@ public class OrderDAO {
 		}
 		return list;
 	}
-	//개별 도서 목록
-	//주문삭제(주문 내역만 삭제. 재고 원상 복귀X)
-	//관리자/사용자 - 주문상세
+	//개별상품 목록
+		public List<OrderDetailVO> getListOrder_Detail(int order_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet re= null;
+			String sql= null;
+			List<OrderDetailVO> list = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql="select * from book_order_detail join book using(book_num) where order_num=? order by book_num desc ";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, order_num);
+				re=ps.executeQuery();
+				if(re.next()) {
+					list = new ArrayList<OrderDetailVO>();
+					do {
+						OrderDetailVO detail = new OrderDetailVO();
+						detail.setDetail_num(re.getInt("detail_num"));
+						detail.setBook_num(re.getInt("book_num"));
+						detail.setBook_name(re.getString("book_name"));
+						detail.setBook_price(re.getInt("book_price"));
+						detail.setBook_total(re.getInt("Book_total"));
+						detail.setOrder_num(re.getInt("order_num"));
+						detail.setOrder_quantity(re.getInt("order_quantity"));
+						detail.setBook_image(re.getString("book_img"));
+						list.add(detail);
+					}while(re.next());
+					
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally{
+				DBUtil.executeClose(re, ps, conn);
+			}
+			
+			return list;
+		}
 	
-	//관리자/사용자 - 배송지정보 수정
-	//관리자 - 배송상태 수정
-	//사용자 - 주문 취소
+	//주문 삭제(삭제시 재고를 원상복귀 시키지 않음.) 주문취소일때 재고수량 원상복귀
+		public void deleteUserorder(int order_num ) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			PreparedStatement ps2 = null;
+			String sql= null;
+			
+			try {
+				conn =DBUtil.getConnection();
+				conn.setAutoCommit(false);
+				sql="delete from book_order where order_num =?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, order_num);
+				
+				ps.executeUpdate();
+				sql="delete from book_order_detail where order_num=? ";
+				ps2 = conn.prepareStatement(sql);
+				ps2.setInt(1, order_num);
+				ps2.executeUpdate();
+				
+				conn.commit();
+				
+			}catch(Exception e){
+				conn.rollback();
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, ps, conn);
+			}
+			
+			
+		}
+	//관리자/사용자 - 주문상세
+	public OrderVO getBookOrdervo(int order_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet re= null;
+		String sql= null;
+		OrderVO order = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql="select * from book_order where order_num=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, order_num);
+			re = ps.executeQuery();
+			if(re.next()) {
+				order = new OrderVO();
+				
+				order.setOrder_num(re.getInt("order_num"));
+				order.setOrder_total(re.getInt("order_total"));
+				order.setOrder_status(re.getInt("order_status"));
+				order.setOrder_payment(re.getInt("order_payment"));
+				order.setMem_num(re.getInt("Mem_num"));
+				order.setReceive_name(re.getString("receive_name"));
+				order.setReceive_zipcode(re.getString("receive_zipcode"));
+				order.setReceive_address1(re.getString("receive_address1"));
+				order.setReceive_address2(re.getString("receive_address2"));
+				order.setReceive_phone(re.getString("receive_phone"));
+				order.setOrder_msg(re.getString("order_msg"));
+				order.setOrder_date(re.getDate("order_date"));
+				order.setOrder_mdate(re.getDate("order_mdate"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally{
+			DBUtil.executeClose(re, ps, conn);
+		}
+		
+		return order;
+	}
+		
+	
+	//관리자 / 사용자 - 배송지 정보 수정
+		public void updateOrder(OrderVO order) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			String sql= null;
+			try {
+				conn = DBUtil.getConnection();
+				sql="update book_order set receive_name=?,receive_zipcode=?,receive_address1=?,receive_address2=?,receive_phone=?,order_msg=?,modify_date=sysdate where order_num=?";
+				ps =conn.prepareStatement(sql);
+				ps.setString(1, order.getReceive_name());
+				ps.setString(2, order.getReceive_zipcode());
+				ps.setString(3, order.getReceive_address1());
+				ps.setString(4, order.getReceive_address2());
+				ps.setString(5, order.getReceive_phone());
+				ps.setString(6, order.getOrder_msg());
+				ps.setInt(7, order.getOrder_num());
+				
+				ps.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, ps, conn);
+			}
+			
+			
+		}
+		//관리자 배송상태 수정
+		public void updatestatus(int order_num,int status) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			String sql= null;
+			try {
+				conn = DBUtil.getConnection();
+				sql="update book_order set status=? where order_num=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, order_num);
+				ps.setInt(2, order_num);
+				
+				ps.executeUpdate();
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, ps, conn);
+			}
+			
+			
+		}
+
+	//사용자 - 주문취소
+public void cancleOrderuser(int order_num) throws Exception{
+	Connection conn = null;
+	PreparedStatement ps = null;
+	PreparedStatement ps3 = null;
+	String sql= null;
+	
+	try {
+		conn =DBUtil.getConnection();
+		conn.setAutoCommit(false);
+		sql="update book_order set status=5, modify_date=sysdate where order_num=?";
+		ps = conn.prepareStatement(sql);
+		ps.setInt(1, order_num);
+		ps.executeUpdate();
+		
+		//주문취소했기때문에 환원이여
+		List<OrderDetailVO> list = getListOrder_Detail(order_num);
+		sql="update zitem set quantity=quantity+? where item_num=? ";
+		ps3 = conn.prepareStatement(sql);
+		for(int i=0; i<list.size(); i++) {
+			ps3.setInt(1, list.get(i).getOrder_quantity());
+			ps3.setInt(2, list.get(i).getBook_num());
+			ps3.addBatch();
+			if(i%1000 == 0) {
+				ps3.executeBatch();
+			}
+			
+		}
+		ps3.executeBatch();
+		
+		conn.commit();
+		
+	}catch(Exception e){
+		conn.rollback();
+		throw new Exception(e);
+	}finally {
+		DBUtil.executeClose(null, ps3, null);
+
+		DBUtil.executeClose(null, ps, conn);
+	}
+	
+	
+}
 	
 }

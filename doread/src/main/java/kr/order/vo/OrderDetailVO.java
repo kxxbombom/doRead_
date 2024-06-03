@@ -8,7 +8,14 @@ public class OrderDetailVO {
 	private int book_total;
 	private int order_quantity;
 	private int order_num;
+	private String book_image;
 	
+	public String getBook_image() {
+		return book_image;
+	}
+	public void setBook_image(String book_image) {
+		this.book_image = book_image;
+	}
 	public int getDetail_num() {
 		return detail_num;
 	}
