@@ -123,6 +123,7 @@ $(function(){
 					<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${recommend.book_img}" height="300"></div>
 					<div class="slider-image">
 						<ul>
+							<li><h2>${recommend.book_name}</h2></li>
 							<li id="book-tagtop">
 								<div class="category-tag">
 								<b>
@@ -141,7 +142,6 @@ $(function(){
 								</div>
 								<br>
 							</li>
-							<li><h2>${recommend.book_name}</h2></li>
 							<li>${recommend.author}</li>
 							<li>${recommend.publisher}</li>
 						</ul>		
