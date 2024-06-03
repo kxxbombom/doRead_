@@ -241,7 +241,7 @@ public class OrdersDAO {
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "SELECT * FROM book_order_detail WHERE order_num=? ORDER BY book_num DESC";
+			sql = "SELECT * FROM book_order_detail JOIN book USING (book_num) WHERE order_num=? ORDER BY book_num DESC";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -258,7 +258,7 @@ public class OrdersDAO {
 				detail.setBook_total(rs.getInt("book_total"));
 				detail.setOrder_quantity(rs.getInt("order_quantity"));
 				detail.setOrder_num(rs.getInt("order_num"));
-				
+				detail.setBook_image(rs.getString("book_img"));
 				list.add(detail);
 			}	
 		}catch(Exception e) {
@@ -301,6 +301,8 @@ public class OrdersDAO {
 				order.setOrder_mdate(rs.getDate("order_mdate"));
 				order.setMem_num(rs.getInt("mem_num"));
 				order.setOrder_msg(rs.getString("order_msg"));
+				order.setEnter(rs.getInt("enter"));
+				order.setEnter_passwd(rs.getString("enter_passwd"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
