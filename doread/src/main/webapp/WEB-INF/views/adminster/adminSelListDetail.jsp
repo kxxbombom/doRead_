@@ -41,7 +41,7 @@
 			
 			<tr>
 			<td>${i.order_num}</td>
-			<td><a href="${pageContext.request.contextPath}/book/detail.do?book_num=${i.book_num}"><img width="200" height="270" src="${pageContext.request.contextPath}/upload/${book_image}"></a><br>${i.book_name}</td>
+			<td><a href="${pageContext.request.contextPath}/book/detail.do?book_num=${i.book_num}"><img width="200" height="270" src="${pageContext.request.contextPath}/upload/${i.book_image}"></a><br>${i.book_name}</td>
 			<td>${i.book_price}</td>
 			<td>${i.order_quantity}</td>
 			<td> <fmt:formatNumber value="${i.book_total }"/>원</td>

@@ -331,6 +331,8 @@ public class OrderDAO {
 				order.setBook_name(rs.getString("book_name"));
 				order.setOrder_status(rs.getInt("order_status"));
 				order.setOrder_date(rs.getDate("order_date"));
+				order.setMem_num(rs.getInt("mem_num"));
+				
 				
 				list.add(order);
 			}
