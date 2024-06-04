@@ -177,7 +177,11 @@
 				<div class="myul">
 					<ul>
 						<li><a
-							href="${pageContext.request.contextPath}/qna/qnaWriteForm.do">1:1문의/도서신청</a></li>
+							href="${pageContext.request.contextPath}/qna/qnaWriteForm.do">1:1문의/도서신청</a>
+						</li>
+						<li>
+							<a href="${pageContext.request.contextPath}/qna/qnaList.do">문의내역</a> 
+						</li>
 					</ul>
 				</div></li>
 		</ul>

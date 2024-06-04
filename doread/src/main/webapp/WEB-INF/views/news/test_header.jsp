@@ -112,7 +112,7 @@
 			<a href="${pageContext.request.contextPath}/story/storyBoardList.do" class="nav">스토리</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/qna/qnaList.do" class="nav">QnA</a>
+			<a href="${pageContext.request.contextPath}/qna/faqLit.do" class="nav">FAQ</a>
 		</li>
 	</ul>
 </div>
