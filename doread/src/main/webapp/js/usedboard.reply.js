@@ -55,7 +55,7 @@
 				//page button 처리
 				if(currentPage>=Math.ceil(count/rowCount)){
 					//다음 페이지가 없음
-					$('.pageing-button').hide();
+					$('.paging-button').hide();
 				}else{
 					//다음 페이지가 존재
 					$('.paging-button').show();

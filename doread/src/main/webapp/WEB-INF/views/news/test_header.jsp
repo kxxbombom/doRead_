@@ -44,6 +44,16 @@
 			<a href="${pageContext.request.contextPath}/main/main.do" class="top-nav" id="doread"><img src="../images/pngwing.com.png" width="40px">Do Read</a>
 
 		</li>
+		<c:if test="${empty user_num}">
+		<li id="menu-cart">
+			<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 
+					height="30" onclick="location.href='${pageContext.request.contextPath}/member/loginForm.do'">
+		</li>
+		<li id="menu-mypage">
+			<img src="${pageContext.request.contextPath}/images/mypage.png" class="click-image" width="30" 
+					height="30" onclick="location.href='${pageContext.request.contextPath}/member/loginForm.do'">
+		</li>
+		</c:if>
 		<c:if test="${user_auth == 2 }">
 		<li id="menu-cart">
 			<img src="${pageContext.request.contextPath}/images/cart.png" class="click-image" width="30" 

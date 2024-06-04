@@ -46,8 +46,8 @@ $(function(){
 					}
 					output+= '<hr size="1" noshade width="100%">';
 					output+= '</div>';
-					}
 					output+= '</div>';
+					}
 					
 					//문서 객체에 추가
 					$('#output').append(output);
@@ -55,7 +55,7 @@ $(function(){
 				//page button 처리
 				if(currentPage>=Math.ceil(count/rowCount)){
 					//다음 페이지가 없음
-					$('.pageing-button').hide();
+					$('.paging-button').hide();
 				}else{
 					//다음 페이지가 존재
 					$('.paging-button').show();
