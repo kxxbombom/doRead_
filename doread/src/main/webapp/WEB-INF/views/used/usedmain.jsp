@@ -51,9 +51,6 @@
  			</c:if>
 			</div>
 			
-			<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade">
-			</div>
 			
  			<form id="list_search_form" action="usedList.do" method="get" class="list_search">
 				<select id="selectlist" name ="sel" class="input-style">

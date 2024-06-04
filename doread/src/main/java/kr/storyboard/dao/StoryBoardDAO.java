@@ -78,7 +78,7 @@ public class StoryBoardDAO {
 					
 					//SQL문 작성
 					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard " + sub_sql
-							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=?";
+							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=? AND s_auth = 0";
 					pstmt = conn.prepareStatement(sql);
 					if(keyword!=null&&!"".equals(keyword)) {
 						pstmt.setString(++cnt, keyword);
