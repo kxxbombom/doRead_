@@ -121,6 +121,7 @@ $(function(){
 			<c:if test="${count==0}">
 				<div class="slider-items">
 					<h3>관심도서를 선택하지 않아 도서를 추천할 수 없습니다.</h3>
+					<input type="button" class="order-button" value="관심도서 지정" onclick="location.href='updateCategoryForm.do'">
 				</div>
 			</c:if>
 			<c:if test="${count!=0}">
@@ -154,6 +155,7 @@ $(function(){
 						</div>
 					</div>
 				</c:forEach>
+				<input type="button" class="order-button" value="관심도서 수정" onclick="location.href='updateCategoryForm.do'">
 			</c:if>
 		</div>
 		<hr width="100%" size="1" noshade="noshade">
