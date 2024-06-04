@@ -20,7 +20,6 @@
 <body>
 <div class="page-main">
 	<div class="content-main">
-	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	
 	<h2>주문상세내역</h2>

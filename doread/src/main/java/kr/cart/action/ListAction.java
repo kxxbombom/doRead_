@@ -41,7 +41,7 @@ public class ListAction implements Action{
 		
 		request.setAttribute("all_total", all_total);
 		request.setAttribute("all_total_delivery", all_total_delivery);
-		request.setAttribute("point", point);
+		request.setAttribute("point", point);	
 		request.setAttribute("list", list);
 		request.setAttribute("cart_count", cart_count);
 		

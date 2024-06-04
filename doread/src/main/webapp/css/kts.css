@@ -549,6 +549,12 @@ ul li,a{
 	text-decoration: none;
 	color: rgb(0,0,0);
 }
+/*마일리지 내역*/
+.mileage-list td{
+    --value: 3.14159265359;
+    /* 소수점 이하 두 자리까지 자름 */
+    --rounded-value: calc(var(--value) / 1);
+} 
  
 /* 글꼴 */
 
