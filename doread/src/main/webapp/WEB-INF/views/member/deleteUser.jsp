@@ -12,7 +12,6 @@
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<div class="content-main">
 		<h2>회원탈퇴 완료</h2>

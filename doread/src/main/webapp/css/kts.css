@@ -32,7 +32,7 @@ form#search_form h2{
 #mypage-main{
 	margin:0 auto;
 	width:1000px;
-	height:200px;
+	height:230px;
 	background:rgb(26, 77, 46);
 	color:rgb(255, 255, 255) !important;
 	margin-top:50px;
@@ -53,19 +53,16 @@ div.mypage-div ul li{
 	font-size:16pt;
 	clear:both;
 	position:relative;
-	bottom:60px;
 	right:70px;
 }
 div.mypage-div ul li#myphoto{
 	position:relative;
-	bottom:40px;
+	top:40px;
 	right:50px;
 }
 div.myul ul{
-	margin-top:50px;
+	margin-top:20px;
 	margin-left:70px;
-	
-	
 }
 div.myul ul li{
 	font-size:12pt !important;
@@ -136,7 +133,6 @@ img#penimage{
 	position:absolute;
 	top:58px;
 	left:71px;
-	z-index:999;
 	border-radius:50%;
 	cursor:pointer;
 }

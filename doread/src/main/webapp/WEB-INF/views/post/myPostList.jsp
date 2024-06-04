@@ -28,7 +28,6 @@
 </head>
 <body>
 <div id="post-main">
-		<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="post-header">
 			<h2>내가 쓴 글</h2>

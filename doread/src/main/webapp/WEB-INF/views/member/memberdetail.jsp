@@ -13,7 +13,6 @@
 </head>
 <body>
 	<div class="page-main">
-		<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="detail-header">
 			<h3>회원 상세 내용</h3>
