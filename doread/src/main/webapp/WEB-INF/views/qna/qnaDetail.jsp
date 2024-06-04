@@ -81,6 +81,11 @@
 				
 			</li>
 		</ul>
+		<div class="list-space align-right">
+			<div class="list-btn">
+				<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/qna/qnaList.do'">
+			</div>
+		</div>
 	</div>
 </div>
 </body>

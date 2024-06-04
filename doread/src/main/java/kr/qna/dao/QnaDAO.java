@@ -122,11 +122,11 @@ public class QnaDAO {
 					qna.setQ_title(StringUtil.useBrNoHTML(rs.getString("q_title")));//html 태그 허용 x
 					qna.setQ_content(rs.getString("q_content"));
 					qna.setQ_auth(rs.getInt("q_auth"));
+					qna.setQ_answer(rs.getString("q_answer"));
 					qna.setQ_image(rs.getString("q_image"));
 					qna.setQ_rdate(rs.getDate("q_rdate"));
 					
 					qna.setMem_num(rs.getInt("mem_num"));
-					
 					
 					list.add(qna);
 				}
@@ -158,6 +158,61 @@ public class QnaDAO {
 				//SQL문 작성
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM (SELECT * FROM QNA JOIN member USING (mem_num)) " + sub_sql
 						+" ORDER BY q_num DESC)a) WHERE rnum>=? AND rnum <=?";
+				pstmt = conn.prepareStatement(sql);
+				if(keyword!=null&&!"".equals(keyword)) {
+					pstmt.setString(++cnt, keyword);
+				}
+				pstmt.setInt(++cnt, start);
+				pstmt.setInt(++cnt, end);
+				
+				//sql문 실행
+				rs= pstmt.executeQuery();
+				list = new ArrayList<QnaVO>();
+				while(rs.next()) {
+					QnaVO qna = new QnaVO();
+					qna.setQ_num(rs.getInt("q_num"));
+					qna.setQ_title(StringUtil.useBrNoHTML(rs.getString("q_title")));//html 태그 허용 x
+					qna.setQ_content(rs.getString("q_content"));
+					qna.setQ_auth(rs.getInt("q_auth"));
+					qna.setQ_image(rs.getString("q_image"));
+					qna.setQ_answer(rs.getString("q_answer"));
+					qna.setQ_rdate(rs.getDate("q_rdate"));
+					
+					qna.setMem_num(rs.getInt("mem_num"));
+					qna.setMem_id(rs.getString("mem_id"));
+					
+					
+					
+					list.add(qna);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
+		//답변 안한 글 목록,검색 글 목록 - 관리자용
+		public List<QnaVO> getNAnswerListForAdmin(int start, int end, String keyfield, String keyword) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<QnaVO> list = null;
+			String sql = null;
+			String sub_sql = "";
+			int cnt = 0;
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				if(keyword!=null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) sub_sql +="WHERE q_title LIKE '%' || ? || '%'";
+					else if(keyfield.equals("2")) sub_sql +="WHERE q_content LIKE '%' || ? || '%'";
+				}
+				
+				//SQL문 작성
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM (SELECT * FROM QNA JOIN member USING (mem_num)) " + sub_sql
+						+" ORDER BY q_num DESC)a) WHERE rnum>=? AND rnum <=? AND q_answer IS NULL";
 				pstmt = conn.prepareStatement(sql);
 				if(keyword!=null&&!"".equals(keyword)) {
 					pstmt.setString(++cnt, keyword);

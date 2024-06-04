@@ -28,7 +28,7 @@ window.onload= function(){
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h2 style="text-align:center;">QnA 목록</h2>
+		<h2 style="text-align:center;">답변안한 문의 목록</h2>
 		</div>
 		<c:if test="${count==0}">
 		<div class="result-display">
@@ -40,38 +40,18 @@ window.onload= function(){
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
-				<th>답변여부</th>
 				<th>작성일</th>
 			</tr>
 			<c:forEach var="qna" items="${list}">
-			<c:if test="${qna.mem_num == user_num}">
 			<tr>
 				<td>${qna.q_num}</td>
 				<td><a href="qnaDetail.do?q_num=${qna.q_num}">${qna.q_title}</a></td>
-				<td>
-					<c:if test="${empty qna.q_answer}"><b>N</b></c:if>
-					<c:if test="${!empty qna.q_answer}"><b>Y</b></c:if>
-				</td>
 				<td>${qna.q_rdate}</td>
 			</tr>
-			</c:if>
-			</c:forEach>
-			<c:forEach var="qna2" items="${list2}">
-			<c:if test="${user_auth == 9}">
-			<tr>
-				<td>${qna2.q_num}</td>
-				<td><a href="qnaDetail.do?q_num=${qna2.q_num}">${qna2.q_title}</a></td>
-				<td>
-					<c:if test="${empty qna2.q_answer}"><b>N</b></c:if>
-					<c:if test="${!empty qna2.q_answer}"><b>Y</b></c:if>
-				</td>
-				<td>${qna2.q_rdate}</td>
-			</tr>
-			</c:if>
 			</c:forEach>
 		</table>
 		</c:if>
-		<form id="list_search_form" action="qnaList.do" method="get">
+		<form id="list_search_form" action="qnaAnswerList.do" method="get">
 			<ul class="list_search">
 				<li>
 					<select name="keyfield" class="input-style">
