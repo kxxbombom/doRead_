@@ -117,10 +117,11 @@
 						src="${pageContext.request.contextPath}/upload/${member.mem_photo}"
 						width="100" height="100" class="my-photo">
 				</c:if>
+				
 				<button type="button" id="photo_btn">
 					<img id="penimage2"
 						src="${pageContext.request.contextPath}/images/pencil_1361912.png"
-						width="30" height="30">
+						width="31" height="31">
 				</button>
 				<div id="photo_choice" style="display: none;">
 					<input type="file" id="photo"
