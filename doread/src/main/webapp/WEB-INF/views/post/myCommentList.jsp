@@ -11,7 +11,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<div id="post-main">
+<div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="post-header">
 			<h2>내가 쓴 댓글</h2>

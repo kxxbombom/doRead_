@@ -13,8 +13,8 @@
 </head>
 <body>
 <div class="page-main">
-	<div class="content-main">
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
+	<div class="content-main">
 		<h2>구매 내역 조회</h2>
 		<hr size="1" noshade width="100%">
 		

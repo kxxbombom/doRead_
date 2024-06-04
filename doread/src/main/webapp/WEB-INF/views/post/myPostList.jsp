@@ -18,22 +18,15 @@
    		  $('.gide').addClass('hide');
    		
    	})
-   		
-		
-		
-		
 	})
-
 </script>
 </head>
 <body>
-<div id="post-main">
+<div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="post-header">
 			<h2>내가 쓴 글</h2>
-			
 			<hr size="1" noshade width="100%">
-			
 		</div>
 		<h4>스토리 게시판</h4>
 		<table>
