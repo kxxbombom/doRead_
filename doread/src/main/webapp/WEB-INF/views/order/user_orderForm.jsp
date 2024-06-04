@@ -14,6 +14,12 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/order.form.js"></script>
+<script type="text/javascript">
+
+
+
+</script>
+
 
 <script type="text/javascript">
 
