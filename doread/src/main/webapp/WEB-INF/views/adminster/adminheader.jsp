@@ -53,7 +53,6 @@
 				<li><label>신고내역관리</label></li>
 				<li><a href="${pageContext.request.contextPath}/adminster/ulist.do">-신고게시글/댓글</a>
 				<li><a href="${pageContext.request.contextPath}/adminster/ulimitlist.do">-정지게시글/댓글</a>
-				
 			</ul>
 			</div>
 		</li>
