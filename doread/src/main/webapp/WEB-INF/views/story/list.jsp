@@ -47,7 +47,7 @@ window.onload= function(){
 			<c:forEach var="story" items="${list}">
 	 		<tr>
 				<td>${story.s_num}</td>
-				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title}</a></td>
+				<td><a href="storyDetail.do?s_num=${story.s_num}">${story.s_title} <small>(${story.ccount })</small></a></td>
 				<td>${story.s_rdate}</td>
 				<td>${story.s_hit}</td>
 			</tr>

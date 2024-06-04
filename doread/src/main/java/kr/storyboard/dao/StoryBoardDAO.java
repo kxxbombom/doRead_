@@ -91,6 +91,7 @@ public class StoryBoardDAO {
 					list = new ArrayList<StoryBoardVO>();
 					while(rs.next()) {
 						StoryBoardVO sv = new StoryBoardVO();
+						StoryBoardDAO dao = new StoryBoardDAO();
 						sv.setS_num(rs.getInt("s_num"));
 						sv.setS_title(StringUtil.useBrNoHTML(rs.getString("s_title")));//html 태그 허용 x
 						sv.setS_content(rs.getString("s_content"));
@@ -99,6 +100,7 @@ public class StoryBoardDAO {
 						sv.setS_image(rs.getString("s_image"));
 						sv.setS_rdate(rs.getDate("s_rdate"));
 						sv.setBook_num(rs.getInt("book_num"));
+						sv.setCcount(dao.getCommentStoryCount(rs.getInt("s_num")));
 						
 						list.add(sv);
 					}

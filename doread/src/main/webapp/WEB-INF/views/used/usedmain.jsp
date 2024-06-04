@@ -40,7 +40,7 @@
  						<td><fmt:formatNumber value="${i.u_price}"/>원</td>
  						<td><c:if test="${i.u_state ==1}">판매중</c:if>
  							<c:if test="${i.u_state ==2}">거래중</c:if>
- 							<c:if test="${i.u_state ==3}">판매완료</c:if>
+ 							<c:if test="${i.u_state ==3}"><ins>판매완료</ins></c:if>
  						</td>
  						<td>${i.id}</td>
  						<td>${i.u_hit}</td>
