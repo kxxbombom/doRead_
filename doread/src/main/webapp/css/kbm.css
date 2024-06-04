@@ -5,9 +5,12 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:1000px;
+	width:1200px;
 	margin:0 auto;
-	background:#FFFFFF;
+	background:#FFF;
+	
+	
+	
 }
 a:link{
 	text-decoration:none;
@@ -29,6 +32,7 @@ a:hover{
 /* 	border-radius:5px;삭제!
 	box-shadow:0 2px 6px rgba(100,100,100);삭제! */
 	min-height:650px;
+	border-radius:10px;
 }
 .content-main{
 	padding:10px 20px;
@@ -88,7 +92,7 @@ ul {
 	padding:0;
 }
 input{
-	margin-bottom:20px;
+	margin-bottom:15px;
 	height:30px;
 	border:1px solid rgb(182, 186, 183);
 }
@@ -268,7 +272,7 @@ input[value="우편번호 찾기"]{
 
 
 #register_form hr{
-	margin-left:-300px;
+	margin-left:-360px;
 }
 .register-button{
 	padding:40px 70px;
@@ -385,7 +389,7 @@ input[value="우편번호 찾기"]{
 	color:rgb(26, 77, 46);
 }
 .login-help-btn{
-	margin:0 0 0 430px;
+	margin:0 0 0 530px;
 }
 .login-help-btn input{
 	border:none;
@@ -917,11 +921,11 @@ form#cart_order{
 	margin-bottom:25px;
 }
 div.order-info{
-	margin:0 15px;
-	width:700px;
+	margin:0 10px;
+	width:750px;
 }
 .cart-container > div.order-info > div > *{
-	padding-left:10px;
+	padding-left:15px;
 }
 
 #order_form div.cartList{
@@ -930,6 +934,49 @@ div.order-info{
 
 .hidden {
 	display:none;
+}
+
+#receive_info > ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+div#receive_div>ul>li{
+	display: flex;
+	flex-direction: column;
+}
+div#receive_div{
+	display:inline-block;
+}
+#order_form label {
+	font-weight: bold;
+ 	margin-bottom: 10px;
+}
+div#receive_info ul li label{
+	width:150px;
+}
+#receive_info textarea{
+	width:100%;
+	border-radius:5px;
+}
+.flex-column{
+	display: flex;
+	display:inline-block;
+	flex-direction: column;
+}
+#select_msg{
+	margin-bottom:10px;
+	border-radius:5px;
+}
+.enter-group{
+	display: flex;
+	flex-direction: column;
+}
+.radio-group{
+	display: flex;
+}
+.enter-group #enter_passwd{
+	width:250px;
 }
 
 /* 게시판 글 수정
@@ -982,6 +1029,11 @@ textarea {
 	font-weight:bold;
     text-decoration: none;
     cursor: pointer;
+}
+
+/*모든 버튼*/
+input[type="button"]:hover, button:hover{
+	cursor:pointer;
 }
 
 

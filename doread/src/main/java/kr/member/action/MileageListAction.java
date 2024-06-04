@@ -40,7 +40,7 @@ public class MileageListAction implements Action{
 		OrdersDAO dao = OrdersDAO.getInstance();
 		int count = dao.getOrderCount(keyfield, keyword, user_num);
 		
-		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "buylist.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "mileagelist.do");
 		
 		List<OrderVO> list = null;
 		if(count > 0) {
