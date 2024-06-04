@@ -62,13 +62,23 @@
 			<tr>
 				<th>주문번호</th>
 				<th>도서명</th>
-				<th>구매일</th>	
+				<th>총구매금액</th>
+				<th>주문날짜</th>
+				<th>주문/배송 상태</th>
 			</tr>
 			<c:forEach var="order" items="${list}">
 			<tr>
 				<td>${order.order_num}</td>
 				<td><a href="${pageContext.request.contextPath}/order/orderDetail.do?order_num=${order.order_num}">${order.book_name}</a></td>
+				<td>${order.order_total}</td>
 				<td>${order.order_date}</td>
+				<td>
+					<c:if test="${order.order_status == 1}">결제완료</c:if>
+					<c:if test="${order.order_status == 2}">배송시작</c:if>
+					<c:if test="${order.order_status == 3}">배송중</c:if>
+					<c:if test="${order.order_status == 4}">배송완료</c:if>
+					<c:if test="${order.order_status == 5}">주문취소</c:if>
+				</td>
 			</tr>
 			</c:forEach>		
 		</table>

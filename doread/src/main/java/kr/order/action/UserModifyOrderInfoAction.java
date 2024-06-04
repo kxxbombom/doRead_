@@ -27,6 +27,14 @@ public class UserModifyOrderInfoAction implements Action{
 			int order_num = Integer.parseInt(request.getParameter("order_num"));
 		
 			OrdersDAO dao = OrdersDAO.getInstance();
+			
+			OrderVO db_order = dao.getOrder(order_num);
+			if(db_order.getMem_num() != user_num) {
+				request.setAttribute("notice_msg", "잘못된 접근입니다.");
+				request.setAttribute("notice_url", request.getContextPath() + "/main/main.do");
+				return "/WEB-INF/views/common/alert_view.jsp";
+			}
+			
 			OrderVO order = new OrderVO();
 			order.setReceive_name(request.getParameter("receive_name"));
 			order.setReceive_phone(request.getParameter("receive_phone"));

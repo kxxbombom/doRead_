@@ -350,5 +350,47 @@ public class OrdersDAO {
 	}
 	//관리자 - 배송상태 수정
 	//사용자 - 주문 취소
+	public void cancelOrderUser(int order_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2 = null;
+		String sql= null;
+		
+		try {
+			conn =DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			
+			sql="UPDATE book_order set order_status=5, order_mdate=sysdate WHERE order_num=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, order_num);
+			ps.executeUpdate();
+			
+			//주문취소 재고 환원
+			List<OrderDetailVO> list = getListOrderDetail(order_num);
+			sql="UPDATE book set stock=stock+? WHERE book_num=? ";
+			ps2 = conn.prepareStatement(sql);
+			for(int i=0; i<list.size(); i++) {
+				ps2.setInt(1, list.get(i).getOrder_quantity());
+				ps2.setInt(2, list.get(i).getBook_num());
+				ps2.addBatch();
+				if(i%1000 == 0) {
+					ps2.executeBatch();
+				}
+				
+			}
+			ps2.executeBatch();
+			
+			conn.commit();
+			
+		}catch(Exception e){
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, ps2, null);
+			DBUtil.executeClose(null, ps, conn);
+		}
+		
+		
+	}
 	
 }

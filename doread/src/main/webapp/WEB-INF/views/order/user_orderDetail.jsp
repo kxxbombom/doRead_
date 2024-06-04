@@ -95,10 +95,11 @@
 				
 			</ul>
 			<div class="align-center">
+				<c:if test="${order.order_status == 1}">
+			
 				<input type="button" value="배송지수정" id="openModalBtn">
 				<input type="button" id="cancelOrder" value="주문취소">
-				<input type="button" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
-			
+				
 				<script type="text/javascript">
 	                $('#cancelOrder').click(function(event){
 	            		let check = confirm('주문을 취소하시겠습니까?');
@@ -108,6 +109,10 @@
 	            		event.preventDefault();
 	            	});
                 </script>
+                
+                </c:if>
+				
+				<input type="button" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 			
 			</div>
 		</div>
