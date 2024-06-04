@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,31 @@
 <title>마일리지	 내역 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+<script>
+$(function(){
+	$('#pointbtn').click(function(){
+		const span = document.getElementById('usedPoint');
+		const usedpoint = document.getElementById('pointval');
+		const total = document.getElementById('total');
+		const order_usepoint = document.getElementById('order_usepoint');
+		const inpoint = document.getElementById('inpoint');
+		const all_total =document.getElementById('all_total');
+		const all_total_delivery =document.getElementById('all_total_delivery');
+		if(usedpoint.value != 0)
+		span.textContent = usedpoint.value;
+		else{
+		span.textContent = 0;
+		}
+		if(usedpoint.value != null)
+		total.textContent=all_total_delivery.value-usedpoint.value;
+		else{
+		total.textContent= all_total_delivery.value;
+		}
+		
+		inpoint.textContent = Math.floor((all_total.value-usedpoint.value)*0.03);
+		
+	});
+</script>
 </head>
 <body>
 <div class="page-main">
