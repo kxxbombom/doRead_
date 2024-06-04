@@ -29,11 +29,13 @@ public class AdminUserListAction implements Action{
 			return "/WEB-INF/views/common/notice.jsp";
 		}
 		String pageNum = request.getParameter("pageNum");
+		String keyf = request.getParameter("keyf");
+		String keyw = request.getParameter("keyw");
 		if(pageNum == null) pageNum="1";
 		AdminDAO dao = AdminDAO.getInstance();
-		int count = dao.getMemberCountByAdmin(null, null);
+		int count = dao.getMemberCountByAdmin(keyf, keyw);
 		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count, 10, 10, request.getContextPath()+"/adminster/userList.do");
-		List<MemberVO> list = dao.getListMemberByAdmin(page.getStartRow(), page.getEndRow(), null, null);
+		List<MemberVO> list = dao.getListMemberByAdmin(page.getStartRow(), page.getEndRow(), keyf, keyw);
 		request.setAttribute("member", list);
 		request.setAttribute("page", page.getPage());
 		return "/WEB-INF/views/adminster/adminsterUserList.jsp";

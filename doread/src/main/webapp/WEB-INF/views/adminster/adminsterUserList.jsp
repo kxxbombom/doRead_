@@ -20,8 +20,18 @@
 
 	<h2>회원 관리</h2>
 	
+		<form id="Form" action="userList.do" method="get">
+				<select id="selectlist" name ="keyf" class="input-style">
+					<option value="1" <c:if test="${check == 1}">selected</c:if> >회원아이디</option>
+ 					<option value="2" <c:if test="${check == 2}">selected</c:if> >회원이름</option>
+ 					<option value="3" <c:if test="${check == 3}">selected</c:if> >이메일</option>
+ 				</select>
+ 				<input type="text" name="keyw" class="inputcheck input-style" id="search" maxlength="30" placeholder="">
+ 	
+ 				<input id="subbtn" type="submit" value="검색" class="button2">
+		</form>
 	<hr size="1.5" width="80%" noshade="noshade">
-	
+			
 	<c:if test="${empty member}">
 		가입된 회원이 없습니다.
 	</c:if>

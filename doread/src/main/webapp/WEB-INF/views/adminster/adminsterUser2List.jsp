@@ -18,7 +18,7 @@
 <div class="page-main">
 
 	<h2>정지 회원</h2>
-	
+		
 	<hr size="1.5" width="80%" noshade="noshade">
 	
 	<div class="content-main">
@@ -55,6 +55,7 @@
 	</div>
 
 	<div class="align-center">
+	${page}
 	<p>
 	<br>
 	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">

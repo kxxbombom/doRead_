@@ -35,6 +35,7 @@ public class AdminDAO {
 					if(keyfield.equals("1")) sub_sql += "WHERE mem_id LIKE '%' || ? || '%'";
 					else if(keyfield.equals("2")) sub_sql += "WHERE mem_name LIKE '%' || ? || '%'";
 					else if(keyfield.equals("3")) sub_sql += "WHERE mem_email LIKE '%' || ? || '%'";
+					else if(keyfield.equals("4")) sub_sql += "WHERE mem_auth=1 ";
 				}
 				
 				//SQL문 작성
@@ -42,7 +43,7 @@ public class AdminDAO {
 					+ "member_detail USING(mem_num) " + sub_sql;
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
-				if(keyword!=null && !"".equals(keyword)) {
+				if(keyword!=null && !"".equals(keyword)&& !keyfield.equals("4")) {
 					pstmt.setString(1, keyword);
 				}
 				//SQL문 실행
@@ -78,6 +79,7 @@ public class AdminDAO {
 					if(keyfield.equals("1")) sub_sql += "WHERE mem_id LIKE '%' || ? || '%'";
 					else if(keyfield.equals("2")) sub_sql += "WHERE  mem_name LIKE '%' || ? || '%'";
 					else if(keyfield.equals("3")) sub_sql += "WHERE mem_email LIKE '%' || ? || '%'";
+					else if(keyfield.equals("4")) sub_sql += "WHERE mem_auth=1 ";
 				}
 				
 				//SQL문 작성
@@ -88,7 +90,7 @@ public class AdminDAO {
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
-				if(keyword!=null && !"".equals(keyword)) {
+				if(keyword!=null && !"".equals(keyword) && !keyfield.equals("4")) {
 					pstmt.setString(++cnt, keyword);
 				}
 				pstmt.setInt(++cnt, start);

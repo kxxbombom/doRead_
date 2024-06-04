@@ -30,7 +30,6 @@ public class AdminListAction implements Action{
 		}
 		String pageNum = request.getParameter("pageNum");
 		String keyf = request.getParameter("keyf");
-		
 		String keyw = request.getParameter("keyw");
 		if(pageNum == null) pageNum="1";
 		OrderDAO order = OrderDAO.getInstance();

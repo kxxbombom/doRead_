@@ -33,11 +33,11 @@ import kr.util.PagingUtil;
 					String pageNum = request.getParameter("pageNum");
 					if(pageNum == null) pageNum="1";
 					AdminDAO dao = AdminDAO.getInstance();
-					int count = dao.getMemberCountByAdmin(null, null);
-					PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count,count, 10, request.getContextPath()+"/adminster/userList2.do");
-					List<MemberVO> list = dao.getListMemberByAdmin(page.getStartRow(), page.getEndRow(), null, null);
+					int count = dao.getMemberCountByAdmin("4", "4");
+					PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count, 10, 10, request.getContextPath()+"/adminster/userList.do");
+					List<MemberVO> list = dao.getListMemberByAdmin(page.getStartRow(), page.getEndRow(), "4", "4");
 					request.setAttribute("member", list);
-					
+					request.setAttribute("page", page.getPage());
 					return "/WEB-INF/views/adminster/adminsterUser2List.jsp";
 			
 		}
