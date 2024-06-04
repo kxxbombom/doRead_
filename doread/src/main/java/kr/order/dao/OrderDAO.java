@@ -548,7 +548,7 @@ public class OrderDAO {
 			String sql= null;
 			try {
 				conn = DBUtil.getConnection();
-				sql="update book_order set receive_name=?,receive_zipcode=?,receive_address1=?,receive_address2=?,receive_phone=?,order_msg=?,modify_date=sysdate where order_num=?";
+				sql="update book_order set receive_name=?,receive_zipcode=?,receive_address1=?,receive_address2=?,receive_phone=?,order_msg=?,ORDER_MDATE=sysdate where order_num=?";
 				ps =conn.prepareStatement(sql);
 				ps.setString(1, order.getReceive_name());
 				ps.setString(2, order.getReceive_zipcode());
@@ -574,9 +574,9 @@ public class OrderDAO {
 			String sql= null;
 			try {
 				conn = DBUtil.getConnection();
-				sql="update book_order set order_status=? where order_num=?";
+				sql="update book_order set order_status=?, ORDER_MDATE=sysdate  where order_num=?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, order_num);
+				ps.setInt(1, status);
 				ps.setInt(2, order_num);
 				
 				ps.executeUpdate();
@@ -599,7 +599,7 @@ public void cancleOrderuser(int order_num) throws Exception{
 	try {
 		conn =DBUtil.getConnection();
 		conn.setAutoCommit(false);
-		sql="update book_order set order_status=5, modify_date=sysdate where order_num=?";
+		sql="update book_order set order_status=5, ORDER_MDATE=sysdate where order_num=?";
 		ps = conn.prepareStatement(sql);
 		ps.setInt(1, order_num);
 		ps.executeUpdate();
