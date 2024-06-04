@@ -114,6 +114,53 @@ public class EventDAO {
 		}		
 		return list;
 	}
+		public List<EventVO> getListMyEvent(
+				int start, int end, int user_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<EventVO> list = null;
+			String sql = null;
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = " SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ " (SELECT * FROM eventboard"
+						+ " ORDER BY e_num DESC)a)"
+						+ " WHERE rnum >= ? AND rnum <= ? AND e_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+				pstmt.setInt(3, user_num);
+				//SQL문 실행
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					list = new ArrayList<EventVO>();
+					do{
+						EventVO item = new EventVO();
+						item.setE_num(rs.getInt("e_num"));
+						item.setE_title(rs.getString("e_title"));
+						item.setE_image(rs.getString("e_image"));
+						item.setE_rdate(rs.getDate("e_rdate"));
+						item.setE_deadline(rs.getString("e_deadline"));
+						item.setE_mem_num(rs.getInt("e_mem_num"));
+						MemberDAO dao= MemberDAO.getInstance();
+						MemberVO member =dao.getMember(item.getE_mem_num());
+						if(member != null)
+							item.setId(member.getMem_id());
+						list.add(item);
+					}while(rs.next());
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}		
+			return list;
+		}
 	
 		//이벤트 상세 페이지
 		public EventVO getEvent(int e_num) throws Exception{
@@ -186,6 +233,36 @@ public class EventDAO {
 					pstmt.setString(2, keyword);
 			
 				}
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+					
+					
+				}
+			}catch(Exception e) {
+				
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return count;
+			
+			
+		}
+		//내가 참여한 이벤트 수
+		public int getEventMyCount(int user_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			try {
+				conn = DBUtil.getConnection();
+				sql="select count(*) from eventboard WHERE e_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, user_num);
+				
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					count = rs.getInt(1);
