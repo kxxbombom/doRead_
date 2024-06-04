@@ -42,8 +42,8 @@ function saveShippingInfo() {
     document.getElementById('displayAddress1').textContent = document.getElementById('receive_address1').value;
     document.getElementById('displayAddress2').textContent = document.getElementById('receive_address2').value;
 
-    const inputs = document.querySelectorAll('input[type="text"]');
-    const spans = document.querySelectorAll('span');
+    const inputs = document.querySelectorAll('input.r_info');
+    const spans = document.querySelectorAll('span.info-span');
     const completeButton = document.querySelector('input[type="button"][value="완료"]');
     const editButton = document.querySelector('button[onclick="editShippingInfo()"]');
 
@@ -107,7 +107,23 @@ $(function(){
 	})
 	
 	
-})
+	
+	function toggleEnterPasswd(show) {
+	    var enterPasswdInput = $('#enter_passwd');
+	    if (show) {
+	        enterPasswdInput.show();
+	    } else {
+	        enterPasswdInput.hide();
+	    }
+	}
+
+	var isEnter = $('input[name="enter"]:checked').val();
+    toggleEnterPasswd(isEnter == 1);
+
+    $('input[name="enter"]').on('change', function() {
+        toggleEnterPasswd($(this).val() == 1);
+    });
+});
 </script>
 </head>
 <body>
@@ -121,11 +137,11 @@ $(function(){
 				<div id="receive_info">
 					<ul>
 						<li>
-							<span>배송지정보</span>
-							<div>
+							<label>배송지정보</label>
+							<div id="receive_div">
 								<ul>
-									<li><input type="text" id="receive_name" name="receive_name" value="${member.mem_name}" class="hidden r_info input-check"><span id="displayName" class="info-span">${member.mem_name}</span></li>
-									<li><input   type="text" id="receive_phone" name="receive_phone" value="${member.mem_phone}" class="hidden r_info input-check"><span id="displayPhone" class="info-span">${member.mem_phone}</span></li>
+									<li><input type="text" id="receive_name" name="receive_name" value="${member.mem_name}" class="hidden r_info input-check" placeholder="이름을 입력해주세요"><span id="displayName" class="info-span">${member.mem_name}</span></li>
+									<li><input type="text" id="receive_phone" name="receive_phone" value="${member.mem_phone}" class="hidden r_info input-check" placeholder="휴대폰번호를 (-)없이 입력해주세요"><span id="displayPhone" class="info-span">${member.mem_phone}</span></li>
 									<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${member.mem_zipcode}" class="hidden r_info input-check"> <input type="button" class="hidden r_info" value="우편번호 찾기" onclick="execDaumPostcode()"><span id="displayZipcode" class="info-span">${member.mem_zipcode}</span></li>
 									<li><input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden r_info input-check"><span id="displayAddress1" class="info-span">${member.mem_address1}</span> <input type="text" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden r_info"><span id="displayAddress2" class="info-span">${member.mem_address2}</span></li>
 
@@ -136,7 +152,8 @@ $(function(){
 						</li>
 						<li>
 							<label>배송요청사항</label>
-							<select name="order_message">
+							<div class="flex-column">
+							<select name="order_message" id="select_msg">
 								<option value="1">선택해 주세요.</option>
 								<option value="2">문 앞에 놓아주세요.</option>
 								<option value="3">부재시 경비실에 맡겨주세요.</option>
@@ -145,18 +162,23 @@ $(function(){
 								<option value="6">직접 입력</option>
 							</select>
 							<textarea name="order_msg"></textarea>
+							</div>
 						</li>
 						<li>
 							<label>공동현관 출입방법</label>
-								<input type="radio" name="enter" value="1">공동현관 비밀번호
-								<input type="radio" name="enter" value="2" checked>자유출입 가능
-								<input type="text" name="enter_passwd" placeholder="정확한 공동현관 출입번호를 입력하세요">
+							<div class="enter-group">
+								<div class="radio-group">
+									<input type="radio" name="enter" value="1">공동현관 비밀번호
+									<input type="radio" name="enter" value="2" checked>자유출입 가능
+								</div>
+									<input type="text" name="enter_passwd" id="enter_passwd" placeholder="정확한 공동현관 출입번호를 입력하세요">
+							</div>
 						</li>
 					</ul>
 				</div>
 				
 				<div>
-					<span>주문상품</span>
+					<span><label>주문상품</label></span>
 					<table id="cartTable">
 		 			<c:forEach var="cart" items="${list}">
 		 				<tr>
@@ -183,7 +205,7 @@ $(function(){
 				
 				<div>
 				<ul>
-					<li>포인트</li>
+					<li><label>포인트</label></li>
 					<li>보유 ${point}원</li>
 				</ul><input type="hidden" value="${point}" id="userpoint">
 				통합 포인트 ${point}원 <input type="number" name ="usedpoint" id="pointval" min="0" max="${point}" maxlength ="${point}" value="0">
