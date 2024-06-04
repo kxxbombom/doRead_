@@ -24,7 +24,7 @@
 			<a href="${pageContext.request.contextPath}/adminster/adminPage.do" >책등록</a>
 			<div class="subul">
 			<ul >
-				<li></li>
+				<li><a href="${pageContext.request.contextPath}/book/adminBookList.do">-도서 정보 변경</a></li>
 			</ul>
 			</div>
 		</li>

@@ -88,6 +88,7 @@ public class BookDAO {
 		return count;
 	}
 	
+	//카테고리별 도서 개수
 	public int getCategoryBookCount(String keyfield, String keyword, int book_category) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -250,6 +251,42 @@ public class BookDAO {
 		
 		
 		return list;
+	}
+	
+	//도서 정보 수정
+	public void UpdateBook(String book_name, String author, 
+			String publisher, String publish_date, 
+			int price, int stock, String book_img, 
+			int book_category, int book_auth, int book_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "UPDATE book SET book_name=?, author=?, publisher=?, publish_date=?, "
+					+ "price=?, stock=?, book_img=?, book_category=? book_auth=? "
+					+ "WHERE book_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_name);
+			pstmt.setString(2, author);
+			pstmt.setString(3, publisher);
+			pstmt.setString(4, publish_date);
+			pstmt.setInt(5,price);
+			pstmt.setInt(6,stock);
+			pstmt.setString(7, book_img);
+			pstmt.setInt(8, book_category);
+			pstmt.setInt(9, book_auth);
+			pstmt.setInt(10, book_num);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
 	}
 	
 	//해당 도서 리뷰 개수 구하기
