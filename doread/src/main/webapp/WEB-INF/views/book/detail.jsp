@@ -93,7 +93,7 @@
 			</ul>
 		</div>
 		</div>
-			<form id="book_cart" action="${pageContext.request.contextPath}/order/orderForm.do" method="post">
+			<form id="book_cart" action="${pageContext.request.contextPath}/order/orderOneForm.do" method="post">
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
 				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
@@ -123,7 +123,7 @@
 					<li><h3><b><fmt:formatNumber value="${book.price}"/>원</b> / 재고: <span><fmt:formatNumber value="${book.stock}"/>권</span></h3></li>
 					<c:if test="${book.stock>0}">
 						<li>
-							<label for=book_quantity id="quantity_label">구매수량</label>
+							<label for="book_quantity" id="quantity_label">구매수량</label>
 							<input type="number" name="book_quantity" id="book_quantity" min="1" max="${book.stock}">
 						</li>
 						

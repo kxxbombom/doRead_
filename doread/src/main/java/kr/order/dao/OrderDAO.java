@@ -21,7 +21,7 @@ public class OrderDAO {
 	private OrderDAO() {}
 	
 	//주문등록
-	public void insertOrder(OrderVO order, List<OrderDetailVO> orderDetailList)throws Exception{
+	public void insertOrder(OrderVO order, List<OrderDetailVO> orderDetailList, int one)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -107,26 +107,30 @@ public class OrderDAO {
 			pstmt4.executeBatch();
 			
 			//장바구니에서 삭제
+			if(one != 1) {
 			sql = "DELETE FROM cart WHERE mem_num=?";
 			pstmt5 = conn.prepareStatement(sql);
 			pstmt5.setInt(1, order.getMem_num());
 			pstmt5.executeUpdate();
+			}
+			
+			
 			if(order.getOrder_usepoint() !=0) {
-				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
-				pstmt6 = conn.prepareStatement(sql);
-				pstmt6.setInt(1, 1);
-				pstmt6.setInt(2, order.getOrder_usepoint());
-				pstmt6.setInt(3,order.getMem_num());
-				pstmt6.executeUpdate();
+			sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+			pstmt6 = conn.prepareStatement(sql);
+			pstmt6.setInt(1, 1);
+			pstmt6.setInt(2, order.getOrder_usepoint());
+			pstmt6.setInt(3,order.getMem_num());
+			pstmt6.executeUpdate();
 					
-				}
+			}
 				
-				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
-				pstmt7 = conn.prepareStatement(sql);
-				pstmt7.setInt(1, 0);
-				pstmt7.setInt(2, (int)(order.getOrder_total()*0.03));
-				pstmt7.setInt(3,order.getMem_num());
-				pstmt7.executeUpdate();
+			sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+			pstmt7 = conn.prepareStatement(sql);
+			pstmt7.setInt(1, 0);
+			pstmt7.setInt(2, (int)Math.floor(order.getAll_total()*0.03));
+			pstmt7.setInt(3,order.getMem_num());
+			pstmt7.executeUpdate();
 				
 
 			conn.commit();
@@ -135,8 +139,12 @@ public class OrderDAO {
 			throw new Exception(e);
 		}finally {
 			DBUtil.executeClose(null, pstmt7, null);
+			if(order.getOrder_usepoint() !=0) {
 			DBUtil.executeClose(null, pstmt6, null);
+			}
+			if(one != 1) {
 			DBUtil.executeClose(null, pstmt5, null);
+			}
 			DBUtil.executeClose(null, pstmt4, null);
 			DBUtil.executeClose(null, pstmt3, null);
 			DBUtil.executeClose(null, pstmt2, null);

@@ -18,6 +18,7 @@ public class OrderVO {
 	private int order_usepoint;
 	private int enter;
 	private String enter_passwd;
+	private int all_total;
 	
 	private int mem_num;
 	
@@ -25,7 +26,12 @@ public class OrderVO {
 	private String book_name;
 	
 	
-	
+	public int getAll_total() {
+		return all_total;
+	}
+	public void setAll_total(int all_total) {
+		this.all_total = all_total;
+	}
 	public int getEnter() {
 		return enter;
 	}

@@ -81,6 +81,7 @@ $(function(){
 		
 		inpoint.textContent = Math.floor((all_total.value-usedpoint.value)*0.03);
 		
+		
 	});
 	$('#pointval').keyup(function(){
 		if($(this).val()<0 || $(this).val()>Number($('#userpoint').val())){
@@ -115,7 +116,7 @@ $(function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main order-form">
 		<h2>주문/결제</h2>
-		<form id="order_form" action="order.do" method="post">
+		<form id="order_form" action="oneorder.do" method="post">
 			<div class="cart-container">
 			<div class="order-info">
 				<div id="receive_info">
@@ -158,26 +159,30 @@ $(function(){
 				<div>
 					<span>주문상품</span>
 					<table id="cartTable">
-		 			<c:forEach var="cart" items="${list}">
+		 			
 		 				<tr>
 		 					<td>
-		 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
-		 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100">
+		 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${order.book_num}">
+		 							<img src="${pageContext.request.contextPath}/upload/${order.book_image}" width="100">
 		 						</a>
+		 						<input type="hidden" value="${order.book_num}" name="book_num">
+		 						<input type="hidden" value="${order.book_name}" name="book_name">
+		 						<input type="hidden" value="${order.order_quantity}" name="order_quantity">
+		 						<input type="hidden" value="${order.book_price}" name="book_price">
 		 					</td>
 		 					<td>
-		 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
-		 							${cart.bookVO.book_name}
+		 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${order.book_num}">
+		 							${order.book_name}
 		 						</a>
 		 					</td>
 		 					<td class="align-center">
-		 						<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width" readonly="readonly">
+		 						<input type="number" name="c_quantity" min="1" max="${stock}" value="${order.order_quantity}" class="quantity-width" readonly="readonly">
 		 					</td>
 		 					<td class="align-center">
-		 						<fmt:formatNumber value="${cart.bookVO.price}"/>원
+		 						<fmt:formatNumber value="${order.book_price}"/>원
 		 					</td>
 		 				</tr>
-		 			</c:forEach>
+		 		
 		 		</table>
 				</div>
 				
