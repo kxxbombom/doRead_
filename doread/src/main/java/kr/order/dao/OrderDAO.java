@@ -574,7 +574,7 @@ public class OrderDAO {
 			String sql= null;
 			try {
 				conn = DBUtil.getConnection();
-				sql="update book_order set status=? where order_num=?";
+				sql="update book_order set order_status=? where order_num=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, order_num);
 				ps.setInt(2, order_num);
@@ -599,14 +599,14 @@ public void cancleOrderuser(int order_num) throws Exception{
 	try {
 		conn =DBUtil.getConnection();
 		conn.setAutoCommit(false);
-		sql="update book_order set status=5, modify_date=sysdate where order_num=?";
+		sql="update book_order set order_status=5, modify_date=sysdate where order_num=?";
 		ps = conn.prepareStatement(sql);
 		ps.setInt(1, order_num);
 		ps.executeUpdate();
 		
 		//주문취소했기때문에 환원이여
 		List<OrderDetailVO> list = getListOrder_Detail(order_num);
-		sql="update zitem set quantity=quantity+? where item_num=? ";
+		sql="update zitem set quantity=quantity+? where book_num=? ";
 		ps3 = conn.prepareStatement(sql);
 		for(int i=0; i<list.size(); i++) {
 			ps3.setInt(1, list.get(i).getOrder_quantity());

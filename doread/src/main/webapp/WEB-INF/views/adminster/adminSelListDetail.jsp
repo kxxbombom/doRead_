@@ -106,7 +106,26 @@
 			
 		});
 		$('#deliform').submit(function(event){
-				$.ajax({});
+				$.ajax({
+					url:'updatestatus.do',
+					data:{order_num:${order.order_num},status:$('#order_status').val()},
+					type:'post',
+					dataType:'json',
+					success:function(param){
+						if(param.result =='logout'){
+							alert('관리자로 로그인 후 이용가능');
+							
+						}else if(param.result =='success'){
+							alert('변경완료');
+							location.href='detailOrder.do?order_num=${order.order_num}';
+						}else{
+							alert('변경오류');
+						}
+					},error:function(){
+						alert('네트워크오류');
+					}
+					
+				});
 			
 			
 			event.preventDefault();
