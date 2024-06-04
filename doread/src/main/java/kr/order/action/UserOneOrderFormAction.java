@@ -74,6 +74,7 @@ public class UserOneOrderFormAction implements Action{
 		OrderDetailVO order = new OrderDetailVO();
 		
 		int point = orderDAO.getPoint(user_num);
+		
 		order.setBook_image(book.getBook_img());
 		order.setBook_name(book.getBook_name());
 		order.setBook_num(book.getBook_num());
@@ -88,6 +89,6 @@ public class UserOneOrderFormAction implements Action{
 		request.setAttribute("member", member);
 		request.setAttribute("point", point);
 		
-		return "/WEB-INF/views/order/user_orderForm.jsp";
+		return "/WEB-INF/views/order/user_OneorderForm.jsp";
 	}
 }

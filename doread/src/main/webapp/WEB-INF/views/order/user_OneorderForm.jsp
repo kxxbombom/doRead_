@@ -182,7 +182,7 @@ $(function(){
 		 						<fmt:formatNumber value="${order.book_price}"/>원
 		 					</td>
 		 				</tr>
-		 		
+	
 		 		</table>
 				</div>
 				

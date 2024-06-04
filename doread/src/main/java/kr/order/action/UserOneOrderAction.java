@@ -70,16 +70,7 @@ public class UserOneOrderAction implements Action{
 			orderDetail.setBook_name(book_name);
 			orderDetail.setBook_price(book_price);
 			orderDetail.setOrder_quantity(order_quantity);
-			if(usedpoint != null ) {
-			orderDetail.setBook_total(Integer.parseInt(usedpoint));
-				
-			orderDetail.setBook_total(all_total_delivery - Integer.parseInt(usedpoint));}
-			else {
-				orderDetail.setBook_total(all_total_delivery);
-			}
-			
-			orderDetailList.add(orderDetail);
-		
+			orderDetail.setBook_total(book_price*order_quantity);
 		
 		//구매정보 담기
 		OrderVO order = new OrderVO();
