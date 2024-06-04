@@ -218,7 +218,7 @@ cursor: pointer;
 } 
 #label {
     width: var(--btn-width);
-    height: var(--btn-height);
+    height: 4.4vh;
     display: flex;
     justify-content: center;
     align-items: center;
