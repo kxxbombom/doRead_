@@ -49,7 +49,7 @@ public class BuyListAction implements Action{
 		request.setAttribute("member", member);	
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
-		request.setAttribute("page", page);
+		request.setAttribute("page", page.getPage());
 		
 		return "/WEB-INF/views/shopping/buylist.jsp";
 	}
