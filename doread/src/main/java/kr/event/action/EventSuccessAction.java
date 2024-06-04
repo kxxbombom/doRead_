@@ -26,7 +26,7 @@ public class EventSuccessAction implements Action {
 		event.setMem_num(mem_num);
 		dao.eventDetailWrite(event);
 		request.setAttribute("notice_msg", "이벤트에 응모되었습니다.");
-		request.setAttribute("notice_url", request.getContextPath()+"/event/eventmain.do");
+		request.setAttribute("notice_url", request.getContextPath()+"/event/detailEvent.do?e_num="+e_num);
 		return "/WEB-INF/views/common/alert_view.jsp";
 	}
 
