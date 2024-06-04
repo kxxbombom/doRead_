@@ -19,6 +19,7 @@ public class UsedUpdateFormAction implements Action{
 			
 			return "redirect:/member/loginForm.do";
 		}
+		request.setCharacterEncoding("utf-8");
 		Integer mem_num =(Integer)session.getAttribute("user_num");
 		int u_num = Integer.parseInt(request.getParameter("u_num"));
 		UsedDAO dao = UsedDAO.getInstance();

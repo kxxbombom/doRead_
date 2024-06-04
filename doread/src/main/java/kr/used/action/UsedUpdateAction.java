@@ -19,6 +19,7 @@ public class UsedUpdateAction implements Action{
 			
 			return "redirect:/member/loginForm.do";
 		}
+		request.setCharacterEncoding("utf-8");
 		Integer mem_num =(Integer)session.getAttribute("user_num");
 		int u_num = Integer.parseInt(request.getParameter("u_num"));
 		UsedDAO dao = UsedDAO.getInstance();
@@ -28,7 +29,7 @@ public class UsedUpdateAction implements Action{
 			
 		}
 		
-		request.setCharacterEncoding("utf-8");
+		
 		String u_title = request.getParameter("u_title");
 		String u_content= request.getParameter("u_content");
 		int book_num = Integer.parseInt(request.getParameter("book_num"));
