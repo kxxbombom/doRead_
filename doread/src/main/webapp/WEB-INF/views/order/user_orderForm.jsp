@@ -79,7 +79,7 @@ $(function(){
 		total.textContent= all_total_delivery.value;
 		}
 		
-		inpoint.textContent = Math.ceil(total.textContent*0.03);
+		inpoint.textContent = Math.floor(total.textContent*0.03);
 		$('#inpoint').val($('#total').textContent);
 		
 	});
@@ -233,7 +233,7 @@ $(function(){
 		 						<span class="tooltip-text">상품 주문 시 적립 예정 포인트가 자동 합산되고 주문하신 상품이 발송완료 된 후에 자동으로 적립됩니다.<br>
 									상품구매시 구매액의 3%가 적립됩니다.</span>
 								</span>
-		 					<span><span id="inpoint"><fmt:formatNumber value="${all_total_delivery*0.03}"/></span>P</span>
+		 					<span><span id="inpoint"><fmt:formatNumber value="${Math.floor(all_total_delivery*0.03)}"/></span>P</span>
 		 				</li>
 		 			</ul>
 		 			<div class="align-center cart-submit">

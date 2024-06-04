@@ -87,9 +87,19 @@
 	
 	</div>
 	<script type="text/javascript">
+		$('#delivery').click(function(){
+			if($('#deliform').hasClass('hide')){
+				$('#deliform').removeClass('hide');
+			}else{
+				$('#deliform').addClass('hide');
+			}
+			
+		});
 		$('#deliform').submit(function(event){
 			
-			
+			$(this).hasClass('hide'){
+				
+			}
 			
 			
 			event.preventDefault();
