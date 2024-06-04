@@ -112,7 +112,6 @@ $(function(){
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<h2>${user_id}님을 위한 추천도서</h2>
 	<hr width="100%" size="1" noshade="noshade">
