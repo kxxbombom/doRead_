@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>중고게시판 글쓰기</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
@@ -54,7 +54,7 @@
 				</li>
 				<li><label for="book_name">책 이름</label>
 					<input type="text" name="book_name" class="inputcheck input-style "  id="book_name" maxlength="10" readonly="readonly"  >
-					<input type="button" id ="book_numbtn" value="책선택" class="button2">
+					<input type="button" id ="book_numbtn" value="책선택" >
 				</li>
 				
 				
@@ -89,7 +89,7 @@
 	
 	</form>
 </div>
-		<div class="modal hide">
+				<div class="modal hide">
 					<h4>책 검색</h4>
 					<form id="searchform" >
 					

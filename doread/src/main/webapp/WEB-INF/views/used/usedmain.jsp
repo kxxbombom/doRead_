@@ -68,7 +68,7 @@
 			</form>
  			<div class="list-space align-right">
 				<div class="list-btn">
-				<c:if test="${!empty user_num && user_auth == 9}">
+				<c:if test="${!empty user_num && user_auth == 2}">
 					<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/used/usedWriteForm.do'">
 				</c:if>
 			
