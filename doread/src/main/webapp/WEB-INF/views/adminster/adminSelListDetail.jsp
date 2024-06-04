@@ -169,6 +169,14 @@
 					alert("배송지 정보를 입력해주세요");
 					return false;
 				}
+				if(items[i].id == 'receive_zipcode' && !/^[0-9]{5}$/.test(items[i].value)){
+					alert('우편번호를 입력하세요 (숫자5자리)');
+					items[i].value='';
+					items[i].focus();
+					return false;
+					
+				}
+				
 			}
 			const address = $('#deliveryupdate').serialize();
 			$.ajax({
