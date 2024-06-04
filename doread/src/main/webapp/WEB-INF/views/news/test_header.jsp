@@ -84,18 +84,18 @@
         <input type="checkbox" id="toggle" hidden>
         <label for="toggle" id="label">도서</label>
         		<ul id="menu">
-           		 	<li class="menu-item"><a href="${pageContext.request.contextPath}/book/list.do">도서 전체</a></li>
-          			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=1">소설</a></li>
-            		<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=2">시/에세이</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=3">인문</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=4">정치/사회</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=5">과학/공학</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=6">IT/프로그래밍</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=7">자기계발</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=8">외국어</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=9">수험서/취업</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=10">만화</a></li>
-           			<li class="menu-item"><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=11">취미/스포츠</a></li>
+           		 	<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/list.do">도서 전체</a></li>
+          			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=1">소설</a></li>
+            		<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=2">시/에세이</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=3">인문</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=4">정치/사회</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=5">과학/공학</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=6">IT/프로그래밍</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=7">자기계발</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=8">외국어</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=9">수험서/취업</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=10">만화</a></li>
+           			<li class="menu-item"><br><a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=11">취미/스포츠</a></li>
        			</ul>
    		 	</div>
 		</li>

@@ -206,7 +206,7 @@ cursor: pointer;
 :root {
     --btn-width : 160px;
     --btn-height : 40px;
-    --menu-height : calc(var(--btn-height) * 11);
+    --menu-height : calc(var(--btn-height) * 15);
     --menu-min-height : calc(var(--btn-min-height) * 2);
     --font-size : 1vw;
 }
@@ -234,7 +234,6 @@ cursor: pointer;
 #menu {
     width: var(--btn-width);
     min-width: var(--btn-min-width);
-    height: 0;
     background-color: whitesmoke;
     border-radius: var(--border-rad);
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
