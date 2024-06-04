@@ -254,10 +254,7 @@ public class BookDAO {
 	}
 	
 	//도서 정보 수정
-	public void UpdateBook(String book_name, String author, 
-			String publisher, String publish_date, 
-			int price, int stock, String book_img, 
-			int book_category, int book_auth, int book_num) throws Exception{
+	public void UpdateBook(BookVO book) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -265,20 +262,20 @@ public class BookDAO {
 		try {
 			conn = DBUtil.getConnection();
 			sql = "UPDATE book SET book_name=?, author=?, publisher=?, publish_date=?, "
-					+ "price=?, stock=?, book_img=?, book_category=? book_auth=? "
+					+ "price=?, stock=?, book_img=?, book_category=?, book_auth=? "
 					+ "WHERE book_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, book_name);
-			pstmt.setString(2, author);
-			pstmt.setString(3, publisher);
-			pstmt.setString(4, publish_date);
-			pstmt.setInt(5,price);
-			pstmt.setInt(6,stock);
-			pstmt.setString(7, book_img);
-			pstmt.setInt(8, book_category);
-			pstmt.setInt(9, book_auth);
-			pstmt.setInt(10, book_num);
+			pstmt.setString(1, book.getBook_name());
+			pstmt.setString(2, book.getAuthor());
+			pstmt.setString(3, book.getPublisher());
+			pstmt.setString(4, book.getPublish_date());
+			pstmt.setInt(5,book.getPrice());
+			pstmt.setInt(6,book.getStock());
+			pstmt.setString(7, book.getBook_img());
+			pstmt.setInt(8, book.getBook_category());
+			pstmt.setInt(9, book.getBook_auth());
+			pstmt.setInt(10, book.getBook_num());
 			
 			pstmt.executeUpdate();
 			
