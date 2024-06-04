@@ -58,6 +58,10 @@ div.mypage-div ul li{
 	position:relative;
 	right:70px;
 }
+div.mypage-div ul li label{
+	margin-right:50px;
+	color: rgb(232, 223, 202);
+}
 div.mypage-div ul li#myphoto{
 	position:relative;
 	top:40px;
@@ -79,14 +83,6 @@ div#mypage-main div.mypage-div ul li a{
 	margin:0;
 }
 
-.inner-menu > a{
-	vertical-align:middle;
-	text-decoration-line: none;
-	color:#FFFFFF;
-	text-align:center;
-	line-height:150%;
-	margin-left:-20px;
-}
 #main_nav{
 	display:none;
 }

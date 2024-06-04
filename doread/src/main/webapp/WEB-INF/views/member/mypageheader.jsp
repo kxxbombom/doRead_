@@ -132,7 +132,7 @@
 			<li
 				style="padding-top: 60px; font-size: 19pt; color: rgb(255, 255, 255) !important; text-align: left;">${user_id}님<br>어서오세요
 			</li>
-			<li><a>회원정보</a>
+			<li><label>회원정보</label>
 				<div class="myul">
 					<ul>
 						<li><a
@@ -146,7 +146,7 @@
 								탈퇴</a></li>
 					</ul>
 				</div></li>
-			<li><a>쇼핑</a>
+			<li><label>쇼핑</label>
 				<div class="myul">
 					<ul>
 						<li><a
@@ -155,7 +155,7 @@
 					</ul>
 				</div></li>
 
-			<li><a>활동내역</a>
+			<li><label>활동내역</label>
 				<div class="myul">
 					<ul>
 						<li><a
@@ -166,7 +166,7 @@
 								쓴 댓글 내역</a></li>
 					</ul>
 				</div>
-			<li><a>QnA</a>
+			<li><label>QnA</label>
 				<div class="myul">
 					<ul>
 						<li><a

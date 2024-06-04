@@ -45,7 +45,6 @@ $(function(){
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<div class="content-main register-header">
 		<h2>회원정보 수정</h2>
