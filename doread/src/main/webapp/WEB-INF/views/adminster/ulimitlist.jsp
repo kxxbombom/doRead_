@@ -19,7 +19,7 @@
 <div class="page-main">
 <h2>USED 보드 정지 게시글 관리</h2>
 	<c:if test="${empty list}">
-	 신고등록된 게시글이 없습니다.
+	 정지등록된 게시글이 없습니다.
 	</c:if>
 	<c:if test="${!empty list}">
 	 <table>
@@ -63,7 +63,7 @@
 	</c:if>
 	<h2>USED 보드 정지 댓글 관리</h2>
 	<c:if test="${empty list1}">
-	 신고등록된 댓글이 없습니다.
+	 정지등록된 댓글이 없습니다.
 	</c:if>
 	<c:if test="${!empty list1}">
 	 <table>
@@ -158,7 +158,7 @@
 	
 	<h2>스토리보드 정지된 댓글 관리</h2>
 	<c:if test="${empty list3}">
-	 신고등록된 댓글이 없습니다.
+		정지등록된 댓글이 없습니다.
 	</c:if>
 	<c:if test="${!empty list3}">
 	 <table>

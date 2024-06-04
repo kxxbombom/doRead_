@@ -242,15 +242,22 @@ public class ReportDAO {
 			
 		}
 		//신고 목록 갯수
-		public int countSre() throws Exception{
+		public int countSre(String keyfield,String keyword) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
+			String sub_sql="";
 			int count =0;
+			
 			try {
 				conn= DBUtil.getConnection();
-				sql="select count(*) from story_report";
+				if(keyword!=null && !"".equals(keyword)) {
+					
+					if(keyfield.equals("1")) sub_sql += "WHERE  s_auth=2";
+					
+				}
+				sql="select count(*) from story_report join storyboard using(s_num) " +sub_sql;
 				ps = conn.prepareStatement(sql);
 				re = ps.executeQuery();
 				
@@ -267,15 +274,21 @@ public class ReportDAO {
 			
 			
 		}
-		public int countSCre() throws Exception{
+		public int countSCre(String keyfield,String keyword) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
+			String sub_sql="";
 			int count =0;
 			try {
 				conn= DBUtil.getConnection();
-				sql="select count(*) from st_comm_report";
+				if(keyword!=null && !"".equals(keyword)) {
+					
+					if(keyfield.equals("1")) sub_sql += "WHERE  sc_auth=2";
+					
+				}
+				sql="select count(*) from st_comm_report " + sub_sql ;
 				ps = conn.prepareStatement(sql);
 				re = ps.executeQuery();
 				
@@ -293,16 +306,22 @@ public class ReportDAO {
 			
 		}
 		//신고 목록보기
-		public List<SreportVO> listSre(int start,int end) throws Exception{
+		public List<SreportVO> listSre(String keyfield,String keyword,int start,int end) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
+			String sub_sql="";
 			List<SreportVO> list = null;
 			
 			try {
 				conn= DBUtil.getConnection();
-				sql="select * from (select rownum alnum, a.* from(select * from story_report join storyboard using(s_num) order by sr_num desc) a ) where alnum between ? and ? ";
+				if(keyword!=null && !"".equals(keyword)) {
+					
+					if(keyfield.equals("1")) sub_sql += "WHERE  s_auth=2";
+					
+				}
+				sql="select * from (select rownum alnum, a.* from(select * from story_report join storyboard using(s_num) "+sub_sql+" order by sr_num desc) a ) where alnum between ? and ? ";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, start);
 				ps.setInt(2, end);
@@ -335,16 +354,22 @@ public class ReportDAO {
 			
 		}
 		
-		public List<ScreportVO> listSCre(int start,int end) throws Exception{
+		public List<ScreportVO> listSCre(String keyfield,String keyword,int start,int end) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
+			String sub_sql="";
 			List<ScreportVO> list = null;
 		
 			try {
 				conn= DBUtil.getConnection();
-				sql="select * from (select rownum alnum, a.* from(select * from st_comm_report join story_comment using(sc_num) order by src_num desc) a ) where alnum between ? and ? ";
+				if(keyword!=null && !"".equals(keyword)) {
+					
+					if(keyfield.equals("1")) sub_sql += " WHERE  sc_auth=2 ";
+					
+				}
+				sql="select * from (select rownum alnum, a.* from(select * from st_comm_report join story_comment using(sc_num) "+sub_sql+" order by src_num desc) a ) where alnum between ? and ? ";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, start);
 				ps.setInt(2, end);
@@ -394,6 +419,7 @@ public class ReportDAO {
 			Connection conn = null;
 			PreparedStatement ps = null;
 			String sql=null;
+			
 			try {
 				conn = DBUtil.getConnection();
 				sql="insert into used_report(ur_num,ur_content,ur_category,mem_num,u_num) values(ur_seq.nextval,?,?,?,?)";
@@ -617,15 +643,21 @@ public class ReportDAO {
 			
 			
 			//신고 목록 갯수
-			public int countU() throws Exception{
+			public int countU(String keyfield,String keyword) throws Exception{
 				Connection conn = null;
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
+				String sub_sql="";
 				int count =0;
 				try {
 					conn= DBUtil.getConnection();
-					sql="select count(*) from used_report";
+					if(keyword!=null && !"".equals(keyword)) {
+						
+						if(keyfield.equals("1")) sub_sql += " WHERE  u_auth=2 ";
+						
+					}
+					sql="select count(*) from used_report join usedbookboard using(u_num) " + sub_sql;
 					ps = conn.prepareStatement(sql);
 					re = ps.executeQuery();
 					
@@ -642,15 +674,21 @@ public class ReportDAO {
 				
 				
 			}
-			public int countUC() throws Exception{
+			public int countUC(String keyfield,String keyword) throws Exception{
 				Connection conn = null;
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
+				String sub_sql="";
 				int count =0;
 				try {
 					conn= DBUtil.getConnection();
-					sql="select count(*) from used_comm_report";
+					if(keyword!=null && !"".equals(keyword)) {
+						
+						if(keyfield.equals("1")) sub_sql += " WHERE  uc_auth=2 ";
+						
+					}
+					sql="select count(*) from used_comm_report join ub_comment using(uc_num) " +sub_sql;
 					ps = conn.prepareStatement(sql);
 					re = ps.executeQuery();
 					
@@ -669,16 +707,22 @@ public class ReportDAO {
 			}
 			
 			//신고 목록보기
-			public List<UsedReportVO> listU(int start,int end) throws Exception{
+			public List<UsedReportVO> listU(String keyfield,String keyword,int start,int end) throws Exception{
 				Connection conn = null;
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
+				String sub_sql="";
 				List<UsedReportVO> list = null;
 				
 				try {
 					conn= DBUtil.getConnection();
-					sql="select * from (select rownum alnum, a.* from(select * from used_report join usedbookboard using(u_num) order by ur_num desc) a ) where alnum between ? and ? ";
+					if(keyword!=null && !"".equals(keyword)) {
+						
+						if(keyfield.equals("1")) sub_sql += " WHERE  u_auth=2 ";
+						
+					}
+					sql="select * from (select rownum alnum, a.* from(select * from used_report join usedbookboard using(u_num) "+sub_sql+" order by ur_num desc) a ) where alnum between ? and ? ";
 					ps = conn.prepareStatement(sql);
 					ps.setInt(1, start);
 					ps.setInt(2, end);
@@ -711,16 +755,22 @@ public class ReportDAO {
 				
 			}
 			
-			public List<UcReportVO> listUC(int start,int end) throws Exception{
+			public List<UcReportVO> listUC(String keyfield,String keyword,int start,int end) throws Exception{
 				Connection conn = null;
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
+				String sub_sql="";
 				List<UcReportVO> list = null;
 			
 				try {
 					conn= DBUtil.getConnection();
-					sql="select * from (select rownum alnum, a.* from(select * from used_comm_report join ub_comment using(uc_num) order by urc_num desc) a ) where alnum between ? and ? ";
+					if(keyword!=null && !"".equals(keyword)) {
+						
+						if(keyfield.equals("1")) sub_sql += " WHERE  uc_auth=2 ";
+						
+					}
+					sql="select * from (select rownum alnum, a.* from(select * from used_comm_report join ub_comment using(uc_num) "+sub_sql+" order by urc_num desc) a ) where alnum between ? and ? ";
 					ps = conn.prepareStatement(sql);
 					ps.setInt(1, start);
 					ps.setInt(2, end);

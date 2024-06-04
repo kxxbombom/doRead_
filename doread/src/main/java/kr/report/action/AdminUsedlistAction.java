@@ -34,12 +34,12 @@ public class AdminUsedlistAction implements Action{
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) pageNum="1";
 		ReportDAO redao = ReportDAO.getInstance();
-		int URcount = redao.countU();
+		int URcount = redao.countU(null,null);
 		
 		
 		PagingUtil URpage = new PagingUtil(Integer.parseInt(pageNum),URcount,URcount,10,request.getContextPath()+"/adminster/ulist.do");
 		
-		List<UsedReportVO> list = redao.listU(URpage.getStartRow(), URpage.getEndRow());
+		List<UsedReportVO> list = redao.listU(null,null,URpage.getStartRow(), URpage.getEndRow());
 		
 		request.setAttribute("page", URpage.getPage());
 		request.setAttribute("list", list);
@@ -49,12 +49,12 @@ public class AdminUsedlistAction implements Action{
 		String pageNum1 = request.getParameter("pageNum1");
 		if(pageNum1 == null) pageNum1="1";
 		
-		int UR1count = redao.countUC();
+		int UR1count = redao.countUC(null,null);
 		
 		
 		PagingUtil UR1page = new PagingUtil(null,null,Integer.parseInt(pageNum1),UR1count,UR1count,10,request.getContextPath()+"/adminster/uclist.do",null,"1");
 		
-		List<UcReportVO> list1 = redao.listUC(URpage.getStartRow(), URpage.getEndRow());
+		List<UcReportVO> list1 = redao.listUC(null,null,URpage.getStartRow(), URpage.getEndRow());
 		
 		request.setAttribute("page1", UR1page.getPage());
 		request.setAttribute("list1", list1);
@@ -63,12 +63,12 @@ public class AdminUsedlistAction implements Action{
 		String pageNum2 = request.getParameter("pageNum2");
 		if(pageNum2 == null) pageNum2="1";
 		
-		int SRcount = redao.countSre();
+		int SRcount = redao.countSre(null,null);
 		
 		
 		PagingUtil SRpage = new PagingUtil(null,null,Integer.parseInt(pageNum2),SRcount,SRcount,10,request.getContextPath()+"/adminster/adminreport.do",null,"2");
 		
-		List<SreportVO> list2 = redao.listSre(SRpage.getStartRow(), SRpage.getEndRow());
+		List<SreportVO> list2 = redao.listSre(null,null,SRpage.getStartRow(), SRpage.getEndRow());
 		
 		request.setAttribute("page2", SRpage.getPage());
 		request.setAttribute("list2", list2);
@@ -77,12 +77,12 @@ public class AdminUsedlistAction implements Action{
 		String pageNum3 = request.getParameter("pageNum3");
 		if(pageNum3 == null) pageNum3="1";
 	
-		int SRccount = redao.countSCre();
+		int SRccount = redao.countSCre(null,null);
 		
 		
 		PagingUtil SRcpage = new PagingUtil(null,null,Integer.parseInt(pageNum3),SRccount,10,10,request.getContextPath()+"/adminster/adminreport.do",null,"3");
 		
-		List<ScreportVO> list3 = redao.listSCre(SRcpage.getStartRow(), SRcpage.getEndRow());
+		List<ScreportVO> list3 = redao.listSCre(null,null,SRcpage.getStartRow(), SRcpage.getEndRow());
 		
 		request.setAttribute("page3", SRcpage.getPage());
 		request.setAttribute("list3", list3);

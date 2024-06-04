@@ -42,12 +42,12 @@ public class FiveReportAction implements Action{
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
 		
-		int SRccount = redao.countSCre();
+		int SRccount = redao.countSCre(null,null);
 		
 		
 		PagingUtil SRcpage = new PagingUtil(1,SRccount,SRccount,10,request.getContextPath()+"/adminster/adminreport.do");
 		
-		List<ScreportVO> list3 = redao.listSCre(SRcpage.getStartRow(), SRcpage.getEndRow());
+		List<ScreportVO> list3 = redao.listSCre(null,null,SRcpage.getStartRow(), SRcpage.getEndRow());
 		request.setAttribute("list3", list3);
 		
 		return "/WEB-INF/views/adminster/fivereport.jsp";
