@@ -80,7 +80,7 @@
 		<img src="${pageContext.request.contextPath}/upload/${used.u_image}" width="255" height="293">
 		</c:if>
 		<c:if test="${empty used.u_image}">
-		<img src="${pageContext.request.contextPath}/images/face.png" width="255" height="293">
+		<img src="${pageContext.request.contextPath}/images/noimage.jpg" width="255" height="293">
 		</c:if>
 			
 			
