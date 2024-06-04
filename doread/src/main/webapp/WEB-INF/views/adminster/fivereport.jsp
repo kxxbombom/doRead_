@@ -99,7 +99,7 @@
 	
 	
 	<div class="align-center">
-		${page}
+		
 	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	

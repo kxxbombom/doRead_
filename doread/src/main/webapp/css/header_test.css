@@ -204,8 +204,8 @@ cursor: pointer;
 
 /* 도서 */
 :root {
-    --btn-width : 8vw;
-    --btn-height : 4.4vh;
+    --btn-width : 160px;
+    --btn-height : 40px;
     --menu-height : calc(var(--btn-height) * 11);
     --menu-min-height : calc(var(--btn-min-height) * 2);
     --font-size : 1vw;
@@ -218,18 +218,18 @@ cursor: pointer;
 } 
 #label {
     width: var(--btn-width);
-    height: 4.4vh;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.15rem;
 	color:#336633;
+	z-index:999;
 }
 #label:hover{
-	color:#FFF;
+	color:#FFF !important;
 	cursor:pointer;
 }
-
 
 #menu {
     width: var(--btn-width);
@@ -239,15 +239,16 @@ cursor: pointer;
     border-radius: var(--border-rad);
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     position: absolute;
-    top: calc(var(--btn-height) + 1vh);
     display: flex;
     flex-flow: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     opacity: 0;
     overflow: hidden;
     transition: 0.5s ease-in-out;
-    z-index:999;
+    z-index:997;
+    margin:0px;
+    padding:0px;
 }
 
 	
@@ -256,6 +257,7 @@ cursor: pointer;
     min-height: var(--menu-min-height);
     opacity: 1;
     color:#FFF;	
+    
 }
 .menu-name {
     width: var(--btn-width);
@@ -263,9 +265,12 @@ cursor: pointer;
     text-decoration: none;
     font-size: var(--font-size);
     font-weight: 50;
-    line-height: 20px;	
+    	
 }
-
+#menu-item{
+	margin-bottom:10px;
+	
+}
 ul {
 	list-style:none;
 	padding:0;
