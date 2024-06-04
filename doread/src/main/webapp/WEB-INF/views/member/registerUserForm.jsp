@@ -205,7 +205,7 @@ $(function(){
 				$('#email').focus();
 				return false;
 			}
-			if(items[i].id == 'email' && emailChecked == 0){
+			if(items[i].id == 'email' && emailChecked != 1){
 				alert('이메일을 다시 입력하세요');
 				$('#email').focus();
 				return false;
