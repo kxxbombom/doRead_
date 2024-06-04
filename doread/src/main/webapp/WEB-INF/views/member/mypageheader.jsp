@@ -154,7 +154,7 @@
 								목록</a></li>
 						<li>
 							<a
-							href="${pageContext.request.contextPath}/shopping/buylist.do">마일리지 내역
+							href="${pageContext.request.contextPath}/shopping/mileagelist.do">마일리지 내역
 								목록</a>
 						</li>
 					</ul>
@@ -170,7 +170,7 @@
 							href="${pageContext.request.contextPath}/post/myCommentList.do">내가
 								쓴 댓글 내역</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/post/myCommentList.do">이벤트 참여 내역</a></li>		
+							href="${pageContext.request.contextPath}/event/eventResultList.do">이벤트 참여 내역</a></li>		
 					</ul>
 				</div>
 			<li><label>QnA</label>
