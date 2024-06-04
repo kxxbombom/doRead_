@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.order.dao.OrdersDAO;
 import kr.order.vo.OrderVO;
 import kr.util.PagingUtil;
@@ -21,6 +23,10 @@ public class BuyListAction implements Action{
 		if(user_num == null) {
 			return "redirect:/member/loginForm.do";
 		}
+		//로그인이 된 경우
+		//회원정보
+		MemberDAO dao2 = MemberDAO.getInstance();
+		MemberVO member = dao2.getMember(user_num);
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -40,6 +46,7 @@ public class BuyListAction implements Action{
 			list = dao.getListOrderByMem_num(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
 		}
 		
+		request.setAttribute("member", member);	
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
