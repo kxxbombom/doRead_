@@ -72,12 +72,14 @@
 		<input type="button" class="button2"  value="배송상태변경" id="delivery">
 		<form id="deliform" class="hide" method="post">
 		<select name="order_status" id="order_status" class="input-style"  >
-				<option value="1">배송대기</option>
-				<option value="2">배송준비중</option>
-				<option value="3">배송중</option>
-				<option value="4">배송완료</option>
+				<option value="1" <c:if test="${order.order_status == 1}">selected</c:if>>배송대기</option>
+				<option value="2" <c:if test="${order.order_status == 2}">selected</c:if>>배송준비중</option>
+				<option value="3" <c:if test="${order.order_status == 3}">selected</c:if>>배송중</option>
+				<option value="4"<c:if test="${order.order_status == 4}">selected</c:if>>배송완료</option>
+				<option value="5" <c:if test="${order.order_status == 5}">selected</c:if>>주문취소</option>
 		</select>
 		<input type="submit" class="button2"  value="변경" id="upbtn">
+		<input type="button" class="button2"  value="취소" id="delbtn">
 		</form>
 		</li>
 	</ul>
@@ -95,11 +97,16 @@
 			}
 			
 		});
-		$('#deliform').submit(function(event){
-			
-			$(this).hasClass('hide'){
-				
+		$('#delbtn').click(function(){
+			if($('#deliform').hasClass('hide')){
+				$('#deliform').removeClass('hide');
+			}else{
+				$('#deliform').addClass('hide');
 			}
+			
+		});
+		$('#deliform').submit(function(event){
+				$.ajax({});
 			
 			
 			event.preventDefault();
