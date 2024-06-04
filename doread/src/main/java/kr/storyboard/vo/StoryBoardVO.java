@@ -14,6 +14,7 @@ public class StoryBoardVO {
 	private String s_image;		//스토리 이미지 사진
 	
 	private int mem_num;		//작성자 정보
+	private String mem_id;
 	private int book_num;		//도서 정보
 	private String book_name;
 	private int ccount;
@@ -42,6 +43,12 @@ public class StoryBoardVO {
 	}
 	public void setS_title(String s_title) {
 		this.s_title = s_title;
+	}
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 	public String getS_content() {
 		return s_content;

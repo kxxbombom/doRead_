@@ -15,9 +15,12 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h2>스토리 제목 :  ${sb.s_title}</h2>
-		조회 : ${sb.s_hit}
-		<h3>리뷰 도서 : ${sb.book_name }</h3>
+		<h2 style="text-align:center">스토리 제목 :  ${sb.s_title}</h2>
+		<div class="float-clear">
+				<hr width="100%" size="1" noshade="noshade">
+		</div>
+		${sb.mem_id} &nbsp; &nbsp; 도서명 : ${sb.book_name }<br>
+		${sb.s_rdate} &nbsp;  조회 : ${sb.s_hit} 
 			<ul class="board-btn-container">
 				<li class="board-btn">
 					<span class="board-cbtn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
@@ -60,7 +63,6 @@
 				</c:if>
 			</li>
 		</ul>
-		작성일 : ${sb.s_rdate}
 		<div class="align-right">
 			<a class="report" data-id="${sb.s_num}" href="#" data-name="s_num" >신고</a>
 		</div>
