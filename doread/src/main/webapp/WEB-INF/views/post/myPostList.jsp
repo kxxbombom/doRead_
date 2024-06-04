@@ -8,18 +8,7 @@
 <title>게시글 내역</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$('.gideimage').hover(function(){
-   		 $('.gide').removeClass('hide');
-   	},function(){
-   		  $('.gide').addClass('hide');
-   		
-   	})
-	})
-</script>
+<script type="text/javascript"src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -27,7 +16,34 @@
 		<div class="post-header">
 			<h2>내가 쓴 글</h2>
 			<hr size="1" noshade width="100%">
+			<div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>
 		</div>
+		<h4>중고 게시판</h4>
+		<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성일</th>
+				<th>글등급<img class="gideimage" src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
+				</th>
+			</tr>
+			<c:forEach var="list" items="${list}">
+			<tr>
+				<td>${list.u_num}</td>
+				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${list.u_num}">${list.u_title}</a></td>
+				<td>${list.u_rdate}</td>
+				<td>
+					<c:if test="${list.u_auth == 0}">일반게시물</c:if>
+	 				<c:if test="${list.u_auth == 1}">신고게시물</c:if>
+					<c:if test="${list.u_auth == 2}"><legend style="color:red;">정지게시물</legend></c:if>
+				</td>
+			</tr>
+			</c:forEach>		
+		</table>
+		<div style="text-align:center;">
+			${page4}
+		</div>
+		<hr size="1" noshade width="100%">
 		<h4>스토리 게시판</h4>
 		<table>
 			<tr>
@@ -42,10 +58,10 @@
 				<td>${Storylist.s_num}</td>
 				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${Storylist.s_num}">${Storylist.s_title}</a></td>
 				<td>${Storylist.s_rdate}</td>
-				<td style="color:red;">
-					<c:if test="${Storylist.s_auth == 2}">
-					정지
-					</c:if>
+				<td>
+					<c:if test="${Storylist.s_auth == 0}">일반게시물</c:if>
+	 				<c:if test="${Storylist.s_auth == 1}">신고게시물</c:if>
+					<c:if test="${Storylist.s_auth == 2}"><legend style="color:red;">정지게시물</legend></c:if>
 				</td>
 			</tr>
 			</c:forEach>		
@@ -75,34 +91,8 @@
 		<div style="text-align:center;">
 			${page3}
 		</div>
-		<hr size="1" noshade width="100%">
 			 
 		
-		<h4>중고 게시판</h4>
-		<table>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성일</th>
-				<th>글등급<img class="gideimage" src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
-				</th>
-			</tr>
-			<c:forEach var="list" items="${list}">
-			<tr>
-				<td>${list.u_num}</td>
-				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${list.u_num}">${list.u_title}</a></td>
-				<td>${list.u_rdate}</td>
-				<td style="color:red;">
-					<c:if test="${list.u_auth == 2}">
-					정지
-					</c:if>
-				</td>
-			</tr>
-			</c:forEach>		
-		</table>
-		<div style="text-align:center;">
-			${page4}
-		</div>
 	</div>
 	<div class="hide gide" style="font-size:10pxt;  z-index:999; position:absolute; bottom:350px; left:20%; border:1px solid #d4d2d2; border-radius:15px; background:white;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>
 </body>

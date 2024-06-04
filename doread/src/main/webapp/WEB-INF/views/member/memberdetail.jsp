@@ -15,7 +15,7 @@
 	<div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="detail-header">
-			<h3>회원 상세 내용</h3>
+			<h2>회원 상세 내용</h2>
 			<hr size="1" noshade width="100%">
 			<div class="detail-content">
 				<ul>

@@ -77,8 +77,8 @@ public class StoryBoardDAO {
 					}
 					
 					//SQL문 작성
-					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard " + sub_sql
-							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=?";
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard JOIN member USING(mem_num) " + sub_sql
+							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=? AND s_auth = 0";
 					pstmt = conn.prepareStatement(sql);
 					if(keyword!=null&&!"".equals(keyword)) {
 						pstmt.setString(++cnt, keyword);
@@ -100,6 +100,7 @@ public class StoryBoardDAO {
 						sv.setS_image(rs.getString("s_image"));
 						sv.setS_rdate(rs.getDate("s_rdate"));
 						sv.setBook_num(rs.getInt("book_num"));
+						sv.setMem_id(rs.getString("mem_id"));
 						sv.setCcount(dao.getCommentStoryCount(rs.getInt("s_num")));
 						
 						list.add(sv);
@@ -204,6 +205,7 @@ public class StoryBoardDAO {
 						sb.setS_hit(rs.getInt("s_hit"));
 						//로그인한 회원번호와 조건 체크를 해야하기 때문에 mem_num필요
 						sb.setMem_num(rs.getInt("mem_num"));
+						sb.setMem_id(rs.getString("mem_id"));
 						sb.setBook_num(rs.getInt("book_num"));
 						sb.setBook_name(rs.getString("book_name"));
 					}
