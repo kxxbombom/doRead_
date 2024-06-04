@@ -260,6 +260,7 @@ public class MemberDAO {
 				member.setMem_zipcode(rs.getString("mem_zipcode"));
 				member.setMem_address1(rs.getString("mem_address1"));
 				member.setMem_address2(rs.getString("mem_address2"));
+				member.setMem_photo(rs.getString("mem_photo"));
 				member.setMem_rdate(rs.getDate("mem_rdate"));
 				member.setMem_mdate(rs.getDate("mem_mdate"));
 				Integer bookCategory = rs.getInt("book_category");
