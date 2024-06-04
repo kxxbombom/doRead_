@@ -15,7 +15,7 @@
 	<div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
 		<div class="detail-header">
-			<h3>회원 찜 목록</h3>
+			<h2>회원 찜 목록</h2>
 			<hr size="1" noshade width="100%">
 			<table>
 				<tr>
@@ -38,7 +38,6 @@
 		</div>
 			<div class="fav-button">
 				<input type="button" value="마이페이지" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'">
-				<input type="button" value="장바구니담기" >
 			</div>
 	</div>
 </body>

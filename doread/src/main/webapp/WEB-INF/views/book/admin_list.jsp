@@ -12,15 +12,18 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 </head>
 <body>
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
+<br><br>
+<jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
-	<jsp:include page="${pageContext.request.contextPath}/news/test_header.jsp"/>
 	<div class="content-main">
 		<form id="list_search_form" action="adminBookList.do" method="get">
 			<ul class="list_search">
 				<li>
 					<select name="keyfield" class="list_search">
-						<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>도서번호</option>
-						<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>제목</option>
+						<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
+						<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>저자</option>
 					</select>
 				</li>
 				<li>
@@ -35,23 +38,39 @@
 			<tr>
 				<th>도서번호</th>
 				<th>분류</th>
-				<th>제목</th>
+				<th style="width:300px;">제목</th>
 				<th>저자</th>
-				<th>출판사</th>
-				<th>가격</th>
 				<th>재고</th>
 				<th>상태</th>
 			</tr>
 			<c:forEach var="book" items="${list}">
 			<tr>
 				<td>${book.book_num}</td>
-				<td class="text-center">${book.book_category}</td>
+				<td>
+					<c:if test="${book.book_category==1}">소설</c:if>
+					<c:if test="${book.book_category==2}">시/에세이</c:if>
+					<c:if test="${book.book_category==3}">인문</c:if>
+					<c:if test="${book.book_category==4}">정치/사회</c:if>
+					<c:if test="${book.book_category==5}">과학/공학</c:if>
+					<c:if test="${book.book_category==6}">IT/프로그래밍</c:if>
+					<c:if test="${book.book_category==7}">자기계발</c:if>
+					<c:if test="${book.book_category==8}">외국어</c:if>
+					<c:if test="${book.book_category==9}">수험서/취업</c:if>
+					<c:if test="${book.book_category==10}">만화</c:if>
+					<c:if test="${book.book_category==11}">취미/스포츠</c:if>
+				</td>
 				<td><a href="updateBookForm.do?book_num=${book.book_num}">${book.book_name}</a></td>
 				<td class="text-center">${book.author}</td>
-				<td class="text-center">${book.publisher}</td>
-				<td class="text-center">${book.price}</td>
 				<td class="text-center">${book.stock}</td>
-				<td class="text-center">${book.book_auth}</td>
+				<td class="text-center">
+					<c:if test="${book.book_auth==0}">
+						판매중
+					</c:if>
+					<c:if test="${book.book_auth==1}">
+						판매중단
+					</c:if>	
+				</td>
+					
 			</tr>
 			</c:forEach>
 		</table>
@@ -73,7 +92,8 @@
 </script>
 		<div class="list-space align-right">
 			<div class="list-btn">
-			<input type="button" value="관리자페이지" onclick="location.href='${pageContext.request.contextPath}/adminster/adminPage.do'"> <%--다른 경로--%>
+			<input type="button" value="관리자페이지" style="width:110px;" 
+			onclick="location.href='${pageContext.request.contextPath}/adminster/adminPage.do'">
 			</div>
 		</div>
 		</div>

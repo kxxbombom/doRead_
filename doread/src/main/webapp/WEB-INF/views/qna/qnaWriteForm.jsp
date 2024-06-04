@@ -35,7 +35,7 @@ window.onload=function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2 style="text-align:center;">문의하기</h2>
-		<hr size="1.5" width="80%" noshade="noshade">
+		<hr size="1.5" width="800px" noshade="noshade">
 		<form id="write_form" action="qnaWrite.do" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
@@ -44,7 +44,7 @@ window.onload=function(){
 				</li>
 				<li>
 					<label for="q_content">내용</label>
-					<textarea rows="50" cols="60"  name="q_content" id="q_content"></textarea>
+					<textarea rows="5" cols="20"  name="q_content" id="q_content"></textarea>
 				</li>
 				<li>
 					<label for="q_image">이미지</label>
@@ -63,6 +63,7 @@ window.onload=function(){
 				<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			</div>
 		</form>
+		<hr size="1.5" width="800px" noshade="noshade">
 	</div>
 </div>
 </body>
