@@ -7,12 +7,12 @@
 	<div class="adminnav">
 	<ul >
 		<li id="myphoto">
-			<c:if test="${empty mem_photo}">
+			<c:if test="${empty user_photo}">
 			<img src="${pageContext.request.contextPath}/images/face.png" 
 						                   width="100" height="100" class="my-photo">
 			</c:if>
-			<c:if test="${!empty mem_photo}">
-			<img src="${pageContext.request.contextPath}/upload/${member.photo}" 
+			<c:if test="${!empty user_photo}">
+			<img src="${pageContext.request.contextPath}/upload/${user_photo}" 
 					                   width="100" height="100" class="my-photo">
 			</c:if>
 		
