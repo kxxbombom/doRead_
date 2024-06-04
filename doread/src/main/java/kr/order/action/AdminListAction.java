@@ -30,6 +30,7 @@ public class AdminListAction implements Action{
 		}
 		String pageNum = request.getParameter("pageNum");
 		String keyf = request.getParameter("keyf");
+		
 		String keyw = request.getParameter("keyw");
 		if(pageNum == null) pageNum="1";
 		OrderDAO order = OrderDAO.getInstance();
@@ -39,6 +40,7 @@ public class AdminListAction implements Action{
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
 		request.setAttribute("count", count);
+		if(keyf == null) keyf="1";
 		request.setAttribute("check", keyf);
 		return "/WEB-INF/views/adminster/adminSelList.jsp";
 	}

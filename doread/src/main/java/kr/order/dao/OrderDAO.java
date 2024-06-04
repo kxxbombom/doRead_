@@ -273,13 +273,14 @@ public class OrderDAO {
 			conn = DBUtil.getConnection();
 			
 			if(keyword != null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql += "WHERE book_name LIKE '%' || ? || '%'";
-				else if(keyfield.equals("2")) sub_sql += "WHERE order_num=?";
-				
+				if(keyfield.equals("1"))sub_sql += " where  order_num=? " ;
+				else if(keyfield.equals("2"))sub_sql += " where mem_id like '%' || ? || '%' ";
+				else if(keyfield.equals("3"))sub_sql += " where book_name like '%' || ? || '%' ";
+
 			}
 
 			sql = "SELECT COUNT(*) FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') WITHIN GROUP (ORDER BY book_name) book_name "
-					+ "FROM book_order_detail GROUP BY order_num) USING (order_num) " + sub_sql;
+					+ "FROM book_order_detail GROUP BY order_num) USING (order_num) join member using(mem_num) " + sub_sql;
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -312,15 +313,18 @@ public class OrderDAO {
 			conn = DBUtil.getConnection();
 			
 			if(keyword != null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql += "WHERE book_name LIKE '%' || ? || '%'";
-				else if(keyfield.equals("2")) sub_sql += "WHERE order_num=?";
+				if(keyfield.equals("1"))sub_sql += " where  order_num=? " ;
+				else if(keyfield.equals("2"))sub_sql += " where mem_id like '%' || ? || '%' ";
+				else if(keyfield.equals("3"))sub_sql += " where book_name like '%' || ? || '%' ";
+
 			}
+
 			
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM ("
 					+ "SELECT * FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') "
 					+ "WITHIN GROUP (ORDER BY book_name) book_name FROM book_order_detail GROUP BY order_num) "
-					+ "USING (order_num)  " + sub_sql
+					+ "USING (order_num) join member using(mem_num)  " + sub_sql
 					+ " ORDER BY order_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -340,7 +344,7 @@ public class OrderDAO {
 				order.setOrder_status(rs.getInt("order_status"));
 				order.setOrder_date(rs.getDate("order_date"));
 				order.setMem_num(rs.getInt("mem_num"));
-				
+				order.setMem_id(rs.getString("mem_id"));
 				
 				list.add(order);
 			}

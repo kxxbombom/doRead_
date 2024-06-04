@@ -9,7 +9,7 @@
 <title>관리자페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 
@@ -23,13 +23,24 @@
 	<div class="align-center">
  			<form id="Form" action="adminList.do" method="get">
 				<select id="selectlist" name ="keyf" class="input-style">
-					<option value="1" <c:if test="${check == 1}">selected</c:if>>주문이름</option>
- 					<option value="2" <c:if test="${check == 2}">selected</c:if> >주문번호</option>
- 					
+					<option value="1" <c:if test="${check == 1}">selected</c:if> >주문번호</option>
+ 					<option value="2" <c:if test="${check == 2}">selected</c:if> >회원아이디</option>
+ 					<option value="3" <c:if test="${check == 3}">selected</c:if> >상품명</option>
  				</select>
- 				<input type="text" name="keyw" class="inputcheck input-style" id="search" maxlength="30" placeholder="">
+ 				<input type="number" name="keyw" class="inputcheck input-style" id="search" maxlength="30" placeholder="">
+ 	
  				<input id="subbtn" type="submit" value="검색" class="button2">
 			</form>
+			<script type="text/javascript">
+				$('#search').click(function(){
+					if($('#selectlist').val()==1){
+						$('#search').attr('type','number');
+					}else{
+						$('#search').attr('type','text');
+					}
+				})
+			
+			</script>
 	</div>	
 			
 	
@@ -58,13 +69,14 @@
 			<tr>
 			<td>${i.order_num}</td>
 			<td><a href="detailOrder.do?order_num=${i.order_num}">${i.book_name}</a></td>
-			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
+			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_id}</a></td>
 			<td> <fmt:formatNumber value="${i.order_total }"/>원</td>
 			<td>
 			<c:if test="${i.order_status == 1}">배송대기</c:if>
 			<c:if test="${i.order_status == 2}">배송준비중</c:if>
 			<c:if test="${i.order_status == 3}">배송중</c:if>
-			<c:if test="${i.order_status == 4}">배송완료</c:if><c:if test="${order.status == 5}"><span style="color:red;">주문 취소</span></c:if>
+			<c:if test="${i.order_status == 4}">배송완료</c:if>
+			<c:if test="${i.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
 			</td>
 			<td>${i.order_date}</td>
 			</tr>
