@@ -19,7 +19,7 @@
 <div class="page-main">
 <div class="align-center">
 <input type="button" value="누적신고 5회이상 확인" onclick="location.href='five.do'">
-<h2>USED 보드 신고된 게시글 관리</h2>
+<h2>중고게시판 신고된 게시글 관리</h2>
 	<c:if test="${empty list}">
 	 신고등록된 게시글이 없습니다.
 	</c:if>
@@ -64,7 +64,7 @@
 	 	</c:forEach>
 	 </table>
 	</c:if>
-	<h2>USED 보드 신고된 댓글 관리</h2>
+	<h2>중고게시판 신고된 댓글 관리</h2>
 	<c:if test="${empty list1}">
 	 신고등록된 댓글이 없습니다.
 	</c:if>
@@ -114,7 +114,7 @@
 	 	</c:forEach>
 	 </table>
 	</c:if>
-	<h2>스토리 보드 신고된 게시글 관리</h2>
+	<h2>스토리게시판 신고된 게시글 관리</h2>
 	<c:if test="${empty list2}">
 	 신고등록된 게시글이 없습니다.
 	</c:if>
@@ -160,7 +160,7 @@
 	 </table>
 	</c:if>
 	
-	<h2>스토리보드 신고된 댓글 관리</h2>
+	<h2>스토리게시판 신고된 댓글 관리</h2>
 	<c:if test="${empty list3}">
 	 신고등록된 댓글이 없습니다.
 	</c:if>

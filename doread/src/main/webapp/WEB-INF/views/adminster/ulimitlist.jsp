@@ -17,7 +17,7 @@
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
-<h2>USED 보드 정지 게시글 관리</h2>
+<h2>중고게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list}">
 	 정지등록된 게시글이 없습니다.
 	</c:if>
@@ -61,7 +61,7 @@
 	 	</c:forEach>
 	 </table>
 	</c:if>
-	<h2>USED 보드 정지 댓글 관리</h2>
+	<h2>중고게시판 정지 댓글 관리</h2>
 	<c:if test="${empty list1}">
 	 정지등록된 댓글이 없습니다.
 	</c:if>
@@ -111,7 +111,7 @@
 	 </table>
 	</c:if>
 
-	<h2>스토리보드 정지 게시글 관리</h2>
+	<h2>스토리게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list2}">
 	 정지된 게시글이 없습니다.
 	</c:if>
@@ -156,7 +156,7 @@
 	 </table>
 	</c:if>
 	
-	<h2>스토리보드 정지된 댓글 관리</h2>
+	<h2>스토리게시판 정지된 댓글 관리</h2>
 	<c:if test="${empty list3}">
 		정지등록된 댓글이 없습니다.
 	</c:if>
