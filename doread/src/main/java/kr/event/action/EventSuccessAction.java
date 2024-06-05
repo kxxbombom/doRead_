@@ -18,8 +18,14 @@ public class EventSuccessAction implements Action {
 		if(user_num == null) {//로그인이 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
-		Integer mem_num =(Integer)session.getAttribute("user_num");
+		Integer user_auth = (Integer)session.getAttribute("user_auth");
 		int e_num =Integer.parseInt(request.getParameter("e_num"));
+		if(user_auth==9) {
+			request.setAttribute("notice_msg", "운영자는 이벤트에 참여할 수 없습니다.");
+			request.setAttribute("notice_url", request.getContextPath()+"/event/detailEvent.do?e_num="+e_num);
+			return "/WEB-INF/views/common/alert_view.jsp";
+		}
+		Integer mem_num =(Integer)session.getAttribute("user_num");
 		EventDAO dao = EventDAO.getInstance();
 		EventDetailVO event = new EventDetailVO();
 		event.setE_num(e_num);
