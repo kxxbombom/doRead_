@@ -107,6 +107,7 @@ public class MemberDAO {
 				member.setMem_pw(rs.getString("mem_pw"));
 				member.setMem_email(rs.getString("mem_email"));
 				member.setMem_phone(rs.getString("mem_phone"));
+				member.setMem_photo(rs.getString("mem_photo"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
