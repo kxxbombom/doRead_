@@ -34,7 +34,7 @@
 			</tr>
 			</c:forEach>	
 		</table>
-			<div class="align-center">
+			<div style="text-align:center;">
 				${spage}
 			</div>
 			<hr size="1" noshade width="100%">
@@ -54,7 +54,7 @@
 			</tr>
 			</c:forEach>	
 		</table>
-		<div class="align-center">
+		<div style="text-align:center;">
 				${upage}	
 		</div>
 </div>

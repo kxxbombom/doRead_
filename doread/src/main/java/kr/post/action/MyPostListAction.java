@@ -45,17 +45,13 @@ public class MyPostListAction implements Action{
 		int count3 = dao3.getQnaCount(keyfield, keyword);
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
-		int count = dao.getStoryBoardCountMem(keyfield, keyword, user_num);
+		int count = dao.myStoryBoardCount(user_num);
 		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum3),count, 5,10,"myPostList.do",null,"3");
-		List<StoryBoardVO> Storylist = null;
-		if(count > 0) {
-			Storylist = dao.getListMyStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
-		}
+		List<StoryBoardVO> Storylist = dao.getListMyStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
 		request.setAttribute("page", page.getPage());
 		request.setAttribute("Storylist", Storylist);
 		
 		//qna
-		
 		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum1),count3, 5,10,"myPostList.do",null,"1");
 		List<QnaVO> qnalist = null;
 		if(count3 > 0) {
