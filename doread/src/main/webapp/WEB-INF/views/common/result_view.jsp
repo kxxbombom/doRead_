@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>${result_title}</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
@@ -16,9 +17,9 @@
 		<h2>${result_title}</h2>
 		<div class="result-display">
 			<div class="align-center">
-				${result_msg}
+				<h4>${result_msg}</h4>
 				<p>
-				<input type="button" value="확인"
+				<input type="button" class="button2" value="확인"
 				   onclick="location.href='${result_url}'">
 			</div>
 		</div>
