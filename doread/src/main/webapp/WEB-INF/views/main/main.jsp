@@ -10,14 +10,31 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-$(".slider-space > div:gt(0)").hide();
 
-setInterval(function() {
-  $('.slider-space > div:first')
-    .next()
-    .end()
-    .appendTo('.slider-space');
-},  5000);
+	$(".slider-space > div:gt(0)").hide();
+
+	setInterval(function() {
+	  $('.slider-space > div:first')
+	    .next()
+	    .end()
+	    .appendTo('.slider-space');
+	},  5000);
+let i =2;
+	setInterval(function() {
+		    i++;
+		    if(i>5){
+		    	i=1;
+		    }
+		    $('#mainb').attr('src','${pageContext.request.contextPath}/mainimage/main'+i+".JPG");
+		  
+		},  5000);
+
+	
+	
+	
+	
+
+
 
 </script>
 </head> 
@@ -25,22 +42,7 @@ setInterval(function() {
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h4>이벤트</h4>
-		<div class="slider-container">
-			<div class="slider-space">
-				<c:forEach var="event" items="${eventList}">
-					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
-						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${event.e_image}" height="300"></div>
-						<div class="slider-image">
-							<ul>
-								<li><h1>${event.e_title}</h1></li>
-								<li>${event.e_rdate}~${event.e_deadline}</li>
-							</ul>		
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
+		<img id="mainb" width="100%" src="${pageContext.request.contextPath}/mainimage/main1.JPG">
 		<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 		</div>
@@ -58,6 +60,22 @@ setInterval(function() {
 			<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
+			<h4>이벤트</h4>
+		<div class="slider-container">
+			<div class="slider-space">
+				<c:forEach var="event" items="${eventList}">
+					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
+						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${event.e_image}" height="300"></div>
+						<div class="slider-image">
+							<ul>
+								<li><h1>${event.e_title}</h1></li>
+								<li>${event.e_rdate}~${event.e_deadline}</li>
+							</ul>		
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
 		</div>
 	</div>
 </div>
