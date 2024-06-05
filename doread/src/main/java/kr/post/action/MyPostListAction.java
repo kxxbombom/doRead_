@@ -31,19 +31,22 @@ public class MyPostListAction implements Action{
 		if(user_num==null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
-		String pageNum = request.getParameter("pageNum");
+		String pageNum3 = request.getParameter("pageNum3");
 		String pageNum1 = request.getParameter("pageNum1");
 		String pageNum2= request.getParameter("pageNum2");
-		if(pageNum == null) pageNum = "1";
+		if(pageNum3 == null) pageNum3 = "1";
 		if(pageNum1 == null) pageNum1 = "1";
 		if(pageNum2 == null) pageNum2 = "1";
 		String keyfield = request.getParameter("keyfield");
 		String keyword= request.getParameter("keyword");
-		
+		UsedDAO udao = UsedDAO.getInstance();
+		int countused = udao.myUsedCount(user_num);
+		QnaDAO dao3 = QnaDAO.getInstance();
+		int count3 = dao3.getQnaCount(keyfield, keyword);
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
-		int count = dao.getStoryBoardCount(keyfield, keyword);
-		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 30,10,"myPostList.do");
+		int count = dao.getStoryBoardCountMem(keyfield, keyword, user_num);
+		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum3),count, 5,10,"myPostList.do",null,"3");
 		List<StoryBoardVO> Storylist = null;
 		if(count > 0) {
 			Storylist = dao.getListMyStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
@@ -52,9 +55,8 @@ public class MyPostListAction implements Action{
 		request.setAttribute("Storylist", Storylist);
 		
 		//qna
-		QnaDAO dao3 = QnaDAO.getInstance();
-		int count3 = dao3.getQnaCount(keyfield, keyword);
-		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum1),count3, 20,10,"myPostList.do",null,"1");
+		
+		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum1),count3, 5,10,"myPostList.do",null,"1");
 		List<QnaVO> qnalist = null;
 		if(count3 > 0) {
 			qnalist = dao3.getListQna(page3.getStartRow(), page3.getEndRow(), keyfield, keyword ,user_num);
@@ -63,9 +65,8 @@ public class MyPostListAction implements Action{
 		request.setAttribute("qnalist", qnalist);
 		
 		//used
-		UsedDAO udao = UsedDAO.getInstance();
-		int countused = udao.myUsedCount(user_num);
-		PagingUtil page4 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum2),countused, 10,10,"myPostList.do",null,"2");
+		
+		PagingUtil page4 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum2),countused, 5,10,"myPostList.do",null,"2");
 
 		List<UsedVO> ulist =udao.mylistUsed(page4.getStartRow(),page4.getEndRow(), user_num);
 		request.setAttribute("page4", page4.getPage());

@@ -58,6 +58,42 @@ public class StoryBoardDAO {
 				
 				return count;
 			}
+			public int getStoryBoardCountMem(String keyfield, String keyword,int mem_num)throws Exception{
+				Connection conn=null;
+				PreparedStatement pstmt =null;
+				ResultSet rs = null;
+				String sql = null;
+				String sub_sql = "";
+				int count = 0;
+				int cnt = 0;
+				try {
+					//커넥션 풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//검색 처리
+					if(keyword!=null && !"".equals(keyword)) {
+						if(keyfield.equals("1"))sub_sql +=" and s_title LIKE '%' || ? || '%'";
+						else if(keyfield.equals("2"))sub_sql +=" and s_content LIKE '%' || ? || '%'";
+					}
+					//SQL문 작성
+					sql = "SELECT COUNT(*) FROM storyboard where mem_num=?" + sub_sql; 
+					//pstmt객체 생성
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(++cnt, mem_num);
+					if(keyword!=null&&!"".equals(keyword)) {
+						pstmt.setString(++cnt, keyword);
+					}
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						count=rs.getInt(1);
+					}
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				
+				return count;
+			}
 			
 			//글 목록,검색 글 목록
 			public List<StoryBoardVO> getListStoryBoard(int start, int end, String keyfield, String keyword)throws Exception{
@@ -579,20 +615,21 @@ public class StoryBoardDAO {
 					//커넥션풀로부터 커넥션 할당
 					conn = DBUtil.getConnection();
 					if(keyword!=null && !"".equals(keyword)) {
-						if(keyfield.equals("1")) sub_sql +="WHERE s_title LIKE '%' || ? || '%'";
-						else if(keyfield.equals("2")) sub_sql +="WHERE s_content LIKE '%' || ? || '%'";
+						if(keyfield.equals("1")) sub_sql +=" and s_title LIKE '%' || ? || '%'";
+						else if(keyfield.equals("2")) sub_sql +=" and s_content LIKE '%' || ? || '%'";
 					}
 					
 					//SQL문 작성
-					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard " + sub_sql
-							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=? AND mem_num=?" ;
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard  where mem_num=? " + sub_sql
+							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=?  " ;
 					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(++cnt, user_num);
 					if(keyword!=null&&!"".equals(keyword)) {
 						pstmt.setString(++cnt, keyword);
 					}
 					pstmt.setInt(++cnt, start);
 					pstmt.setInt(++cnt, end);
-					pstmt.setInt(++cnt, user_num);
+					
 					//sql문 실행
 					rs= pstmt.executeQuery();
 					list = new ArrayList<StoryBoardVO>();
