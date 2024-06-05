@@ -907,6 +907,31 @@ form#cart_order{
 	cursor:pointer;
 }
 
+.cart-notice{
+	background-color:#f0f0f0;
+	border-radius:7px;
+	margin-top:80px;
+	padding:20px 10px;
+	display:flex;
+	flex-direction:column;
+}
+.cart-notice label{
+	color:rgba(0,0,0,0.65);
+	font-weight:bold;
+	display:inline-block;
+	margin-bottom:10px;
+}
+.cart-notice ul{
+	display:inline-block;
+	margin:0;
+}
+.cart-notice ul li{
+	color:#787878;
+}
+
+
+
+
 /*주문 orderForm*/
 .order-form h2{
 	margin-left:25px;
@@ -922,7 +947,7 @@ form#cart_order{
 }
 div.order-info{
 	margin:0 10px;
-	width:750px;
+	width:720px;
 }
 .cart-container > div.order-info > div > *{
 	padding-left:15px;
@@ -942,13 +967,16 @@ div.order-info{
     gap: 20px;
 }
 div#receive_div>ul>li{
-	display: flex;
-	flex-direction: column;
+	display:flex;
+}
+div#receive_div>ul>li span{
+	margin-bottom:10px;
 }
 div#receive_div{
 	display:inline-block;
 }
-#order_form label {
+
+#order_form label{
 	font-weight: bold;
  	margin-bottom: 10px;
 }

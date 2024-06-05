@@ -94,7 +94,7 @@
 	 				<tr>
 	 					<td>
 	 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
-	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100">
+	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100" style="margin:8px 0;">
 	 						</a>
 	 					</td>
 	 					<td>
@@ -161,11 +161,17 @@
 		 		</div>
 	 		</div>
 	 		
-	 		<div class="cart-notice">
-	 		
-	 		</div>
-	 		
 	 	</form>
+	 	
+	 	<div class="cart-notice">
+	 			<label>장바구니 유의사항</label>
+	 			<ul>
+	 				<li>- 상품별 배송일정이 서로 다를시 가장 늦은 일정의 상품 기준으로 모두 함께 배송됩니다.</li>
+	 				<li>- 배송지 수정시 배송일정이 변경될 수 있습니다.</li>
+	 				<li>- 통합포인트 사용시 적립예정포인트가 변동 될 수 있습니다.</li>
+	 			</ul>
+	 	</div>
+	 	
 		</c:if>
 	</div>
 </div>

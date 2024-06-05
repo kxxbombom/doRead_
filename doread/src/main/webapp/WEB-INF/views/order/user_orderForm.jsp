@@ -148,8 +148,8 @@ $(function(){
 								<ul>
 									<li><input type="text" id="receive_name" name="receive_name" value="${member.mem_name}" class="hidden r_info input-check" placeholder="이름을 입력해주세요"><span id="displayName" class="info-span">${member.mem_name}</span></li>
 									<li><input type="text" id="receive_phone" name="receive_phone" value="${member.mem_phone}" class="hidden r_info input-check" placeholder="휴대폰번호를 (-)없이 입력해주세요"><span id="displayPhone" class="info-span">${member.mem_phone}</span></li>
-									<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${member.mem_zipcode}" class="hidden r_info input-check"> <input type="button" class="hidden r_info" value="우편번호 찾기" onclick="execDaumPostcode()"><span id="displayZipcode" class="info-span">${member.mem_zipcode}</span></li>
-									<li><input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden r_info input-check"><span id="displayAddress1" class="info-span">${member.mem_address1}</span> <input type="text" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden r_info"><span id="displayAddress2" class="info-span">${member.mem_address2}</span></li>
+									<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${member.mem_zipcode}" class="hidden r_info input-check"> <input type="button" style="margin-left:5px;" class="hidden r_info" value="우편번호 찾기" onclick="execDaumPostcode()"><span id="displayZipcode" class="info-span">${member.mem_zipcode}</span></li>
+									<li><input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden r_info input-check"><input type="text" style="margin-left:5px;" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden r_info"> <span id="displayAddress1" class="info-span">${member.mem_address1}</span>&nbsp;<span id="displayAddress2" class="info-span">${member.mem_address2}</span></li>
 
 								</ul>
 								<button type="button" onclick="editShippingInfo()">변경</button>
@@ -265,7 +265,7 @@ $(function(){
 		 				</li>
 		 			</ul>
 		 			<div class="align-center cart-submit">
-		 			<input type="submit" value="결제하기">
+		 			<input type="submit" value="결제하기"  style="margin-bottom:5px;">
 	 				</div>
 		 		</div>
 		 	</div>
