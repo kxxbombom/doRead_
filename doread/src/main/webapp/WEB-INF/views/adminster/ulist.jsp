@@ -63,6 +63,9 @@
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
+	 <div class="align-center">
+	 	${page }
+	 </div> <br><br>
 	</c:if>
 	<h2>중고게시판 신고된 댓글 관리</h2>
 	<c:if test="${empty list1}">
@@ -113,6 +116,9 @@
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
+	  <div class="align-center">
+	 	${page1 }
+	 </div> <br><br>
 	</c:if>
 	<h2>스토리게시판 신고된 게시글 관리</h2>
 	<c:if test="${empty list2}">
@@ -159,7 +165,9 @@
 	 	</c:forEach>
 	 </table>
 	</c:if>
-	
+	 <div class="align-center">
+	 	${page2 }
+	 </div> <br><br>
 	<h2>스토리게시판 신고된 댓글 관리</h2>
 	<c:if test="${empty list3}">
 	 신고등록된 댓글이 없습니다.
@@ -210,6 +218,10 @@
 	 	</c:forEach>
 	 </table>
 	 </c:if>
+	  <div class="align-center">
+	 	${page3 }
+	 </div>
+	 <br><br>
 	<div class="align-center">
 	<input type="submit" value="등록" class="button2">
 	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
