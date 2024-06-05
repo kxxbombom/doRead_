@@ -19,7 +19,7 @@
 		<hr size="1" noshade width="100%">
 		
 		<form id="list_search_form" action="buylist.do" method="get">
-			<ul class="list_search">
+			<ul class="list_search" style="float:right;">
 				<li>
 					<select name="keyfield" class="list_search">
 						<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>도서명</option>
@@ -69,7 +69,7 @@
 			<tr>
 				<td>${order.order_num}</td>
 				<td><a href="${pageContext.request.contextPath}/order/orderDetail.do?order_num=${order.order_num}">${order.book_name}</a></td>
-				<td>${order.order_total}</td>
+				<td>${order.order_total}원</td>
 				<td>${order.order_date}</td>
 				<td>
 					<c:if test="${order.order_status == 1}">결제완료</c:if>
