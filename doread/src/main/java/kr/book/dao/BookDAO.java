@@ -286,7 +286,7 @@ public class BookDAO {
 	}
 	
 	//도서 이미지 수정
-	public void updateBookImage(int book_num, String book_img) throws Exception{
+	public void updateBookImage(BookVO book) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -296,8 +296,8 @@ public class BookDAO {
 			sql = "UPDATE book SET book_img=? WHERE book_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, book_img);
-			pstmt.setInt(2, book_num);
+			pstmt.setString(1, book.getBook_img());
+			pstmt.setInt(2, book.getBook_num());
 			
 			pstmt.executeUpdate();
 			

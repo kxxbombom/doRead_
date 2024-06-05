@@ -34,7 +34,7 @@ window.onload=function(){
 		<h2 class="content-center">도서 목록</h2>
 		<div class="center">
 		<form id="book_search" action="list.do" method="get" class="content-center">
-			<ul>
+			<ul class="list_search">
 				<li>
 					<select name="keyfield">
 						<option value="1" <c:if test="${param.keyfield ==1}">selected</c:if>>도서 제목</option>
@@ -43,10 +43,10 @@ window.onload=function(){
 					</select>
 				</li>
 				<li>
-					<input type="search" size="30" name="keyword" id="keyword" value="${param.keyword}">
+					<input type="search" size="30" name="keyword" id="keyword" value="${param.keyword}" class="list_search">
 				</li>
 				<li>
-					<input type="submit" value="검색">
+					<input type="submit" value="검색" class="list_search">
 				</li>
 			</ul>
 		</form>

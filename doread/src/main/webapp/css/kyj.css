@@ -42,8 +42,8 @@
 /* 도서 상세 페이지
 ---------------------*/
 div.category-tag{
-	width:100px;
-	height:23px;
+	width:120px;
+	height:25px;
 	text-align:center;
 	background-color:rgb(232,223,202);
 	color:rgb(26, 77, 46);
@@ -184,11 +184,17 @@ div.slider-space .slider-items{
 	height:300px;
 }
 
+div.slider-space .empty-items{
+	display:inline-block;
+	margin-top:70px;
+	height:100px;
+}
+
 div.slider-items .slider-image{
 	position:relative;
 	display:inline-block;
 	vertical-align:top;
-	padding:10px;
+	padding:0 10px;
 }
 
 .slider-image ul{
@@ -207,3 +213,18 @@ div.slider-items .slider-image{
 .align-center{
 	text-align:center;
 }
+
+
+/* 도서정보수정 */
+.update-button{
+	width:70px;
+	height:40px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+
+
