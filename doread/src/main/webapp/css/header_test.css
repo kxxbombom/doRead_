@@ -206,7 +206,7 @@ cursor: pointer;
 :root {
     --btn-width : 160px;
     --btn-height : 40px;
-    --menu-height : calc(var(--btn-height) * 15);
+    --menu-height : calc(var(--btn-height) * 16);
     --menu-min-height : calc(var(--btn-min-height) * 2);
     --font-size : 1vw;
 }
@@ -243,32 +243,24 @@ cursor: pointer;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    overflow: hidden;
     transition: 0.5s ease-in-out;
-    z-index:997;
     margin:0px;
     padding:0px;
 }
-
 	
 #toggle:checked ~ #menu{
     height: var(--menu-height);
     min-height: var(--menu-min-height);
     opacity: 1;
-    color:#FFF;	
-    
+    color:#FFF;
 }
 .menu-name {
     width: var(--btn-width);
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: var(--font-size);
+    font-size: 1vw;
     font-weight: 50;
     	
-}
-#menu-item{
-	margin-bottom:10px;
-	
 }
 ul {
 	list-style:none;
@@ -278,6 +270,37 @@ ul {
 ul li,a{
 	text-decoration: none;
 	color: rgb(0,0,0);
+}
+/*  */
+.dropdown{
+  position : relative;
+  display : inline-block;
+  width : 160px;
+  height: 40px;
+  margin-top:8px;
+  font-size:18px;
+  color:#336633;
+}
+
+.dropdown-content{
+  display : none;
+  position : absolute;
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
+  margin-top:8px;
+  
+}
+
+.dropdown-content a{
+  display : block;
+  width : 160px;
+  height: 40px;
+}
+.dropdown:hover {
+	color:white;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color:whitesmoke;
 }
  
 /* 글꼴 */
