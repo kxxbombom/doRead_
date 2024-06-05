@@ -4,11 +4,21 @@
 
 /* 전체 레이아웃
 ---------------------*/
+@keyframes slideIn {
+    0% {
+        transform: translateY(7px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 body{
 	width:1000px;
 	margin:0 auto;
 	background:#FFF;
-	
+
 	
 	
 }
@@ -36,7 +46,7 @@ a:hover{
 }
 .content-main{
 	padding:10px 20px;
-	
+		animation: slideIn 0.8s ease-out;
 }
 
 .m-top{
@@ -389,7 +399,9 @@ input[value="우편번호 찾기"]{
 	color:rgb(26, 77, 46);
 }
 .login-help-btn{
-	margin:0 0 0 530px;
+	margin:0 auto;
+	width:280px;
+	text-align:right;
 }
 .login-help-btn input{
 	border:none;
