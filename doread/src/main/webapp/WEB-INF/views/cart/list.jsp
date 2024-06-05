@@ -160,7 +160,9 @@
 		 		</div>
 	 		</div>
 	 		
+	 		<div class="cart-notice">
 	 		
+	 		</div>
 	 		
 	 	</form>
 		</c:if>

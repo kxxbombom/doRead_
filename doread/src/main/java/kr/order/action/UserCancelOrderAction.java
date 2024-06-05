@@ -40,7 +40,7 @@ public class UserCancelOrderAction implements Action{
 		//주문 취소
 		dao.cancelOrderUser(order_num);
 		
-		request.setAttribute("notice_msg", "주문 취소가 완료되었습니다.");
+		request.setAttribute("notice_msg", "주문이 취소되었습니다.");
 		request.setAttribute("notice_url", request.getContextPath() + "/order/orderDetail.do?order_num=" + order_num);
 		
 		return "/WEB-INF/views/common/alert_view.jsp";

@@ -5,7 +5,7 @@
 /* 전체 레이아웃
 ---------------------*/
 body{
-	width:1200px;
+	width:1000px;
 	margin:0 auto;
 	background:#FFF;
 	
@@ -812,11 +812,11 @@ input[type="file"]{
 }
 form#cart_order{
 	width:1000px;
-	margin-left:5px;
+	margin-left:0;
 }
 #cartTable{
 	margin:0 15px;
-	width:700px;
+	width:720px;
 }
 #cartTable:first-child{
 	height:50px;
@@ -863,7 +863,7 @@ form#cart_order{
 }
 
 .list-header h2{
-	margin-left:25px;
+	margin-left:20px;
 }
 
 .flex-container {

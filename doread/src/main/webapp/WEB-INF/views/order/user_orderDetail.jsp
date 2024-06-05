@@ -68,7 +68,6 @@
 						<ul>
 							<li><span id="receive_name">${order.receive_name}</span></li>
 							<li><span id="receive_phone">${order.receive_zipcode}</span></li>
-							<li><span id="receive_zipcode">${order.receive_zipcode}</span></li>
 							<li><span id="receive_address1">${order.receive_address1}</span> <span id="receive_address2">${order.receive_address2}</span></li>
 
 						</ul>
