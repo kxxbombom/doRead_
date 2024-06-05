@@ -555,6 +555,12 @@ ul li,a{
     /* 소수점 이하 두 자리까지 자름 */
     --rounded-value: calc(var(--value) / 1);
 } 
+#allpoint{
+	float:right;
+	font-size:19pt;
+	border:2px solid #000;
+	
+} 
  
 /* 글꼴 */
 

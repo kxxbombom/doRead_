@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.order.dao.OrdersDAO;
 import kr.order.vo.OrderDetailVO;
 import kr.order.vo.OrderVO;
@@ -22,6 +24,7 @@ public class UserOrderDetailAction implements Action{
 		if(user_num == null) {
 			return "redirect:/member/loginForm.do";
 		}
+		
 		int order_num = Integer.parseInt(request.getParameter("order_num"));
 		
 		OrdersDAO dao = OrdersDAO.getInstance();
@@ -32,9 +35,14 @@ public class UserOrderDetailAction implements Action{
 		}
 		
 		List<OrderDetailVO> detailList = dao.getListOrderDetail(order_num);
+		//로그인이 된 경우
+		//회원정보
+		MemberDAO dao2 = MemberDAO.getInstance();
+		MemberVO member = dao2.getMember(user_num);
 		
 		request.setAttribute("order", order);
 		request.setAttribute("detailList", detailList);
+		request.setAttribute("member", member);	
 		
 		return "/WEB-INF/views/order/user_orderDetail.jsp";
 	}

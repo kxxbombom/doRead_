@@ -11,6 +11,7 @@ import kr.cart.vo.CartVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
+import kr.order.dao.OrderDAO;
 import kr.order.dao.OrdersDAO;
 import kr.order.vo.OrderVO;
 import kr.util.PagingUtil;
@@ -37,6 +38,7 @@ public class MileageListAction implements Action{
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
 		
+		OrderDAO dao4 = OrderDAO.getInstance();
 		OrdersDAO dao = OrdersDAO.getInstance();
 		int count = dao.getOrderCount(keyfield, keyword, user_num);
 		
@@ -64,8 +66,7 @@ public class MileageListAction implements Action{
 		
 		//적립금
 		int point = (int) (all_total * 0.03);
-		
-		
+		int allpoint = dao4.getPoint(user_num);
 		
 		request.setAttribute("member", member);	
 		request.setAttribute("count", count);
@@ -76,6 +77,7 @@ public class MileageListAction implements Action{
 		request.setAttribute("point", point);
 		request.setAttribute("list2", list2);
 		request.setAttribute("cart_count", cart_count);
+		request.setAttribute("allpoint", allpoint);
 		
 		return "/WEB-INF/views/shopping/mileagelist.jsp";
 	}

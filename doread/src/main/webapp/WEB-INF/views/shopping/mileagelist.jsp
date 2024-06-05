@@ -51,12 +51,12 @@ $(function(){
 				<th>마일리지</th>
 			</tr>
 			<c:forEach var="order" items="${list}">
-			<c:if test="${order.order_status == 1}">
+			<c:if test="${order.order_status != 5}">
 			<tr class="mileage-list">
 				<td>${order.order_num}</td>
 				<td><a href="${pageContext.request.contextPath}/order/orderDetail.do?order_num=${order.order_num}">${order.book_name}</a></td>
-				<td>${order.order_total}</td>
-				<td>${Math.round(order.order_total*0.03)}</td>
+				<td>${order.order_total}원</td>
+				<td>${Math.round(order.order_total*0.03)}P</td>
 			</tr>
 			</c:if>
 			</c:forEach>		
@@ -64,7 +64,7 @@ $(function(){
 		<div style="text-align:center;">${page}</div>
 		<ul>
 			<li>
-				총 마일리지 ${point}원
+				<span id="allpoint"> 총 마일리지 : ${allpoint}P </span>
 			</li>
 		</ul>
 		
