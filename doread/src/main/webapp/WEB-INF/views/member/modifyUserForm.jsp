@@ -86,10 +86,14 @@ $(function(){
 				</li>
 			</ul>    
 			<div class="modify-button">
+				<input type="button" value="관심도서 변경" onclick="location.href='updateCategoryForm.do'" style="width:200px;">
+			</div>   
+			<div class="modify-button">
 				<input type="submit" value="수정">
 				<input type="button" value="My페이지"	
 				    onclick="location.href='mypage.do'">
-			</div>                                  
+			</div>
+			                               
 		</form>
 		<!-- 다음 우편번호 API 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->

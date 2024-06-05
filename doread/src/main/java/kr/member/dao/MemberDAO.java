@@ -351,6 +351,45 @@ public class MemberDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
+	
+	//관심도서 카테고리 수정
+	public void updateCategory(MemberVO member) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "UPDATE member_detail SET book_category=?, book_category2=?, book_category3=? WHERE mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			if (member.getBook_category() != null) {
+	            pstmt.setInt(1, member.getBook_category());
+			}else{
+		        pstmt.setNull(2, java.sql.Types.INTEGER);
+		    }
+			if(member.getBook_category2()!=null) {
+	            pstmt.setInt(2, member.getBook_category2());
+			}else {
+				pstmt.setNull(2, java.sql.Types.INTEGER);
+			}
+			if(member.getBook_category3()!=null) {
+	            pstmt.setInt(3, member.getBook_category3());
+			}else {
+				pstmt.setNull(3, java.sql.Types.INTEGER);
+			}
+			
+			pstmt.setInt(4, member.getMem_num());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
 	//회원 탈퇴(삭제)
 	public void deleteMember(int mem_num)throws Exception{
 		Connection conn = null;
