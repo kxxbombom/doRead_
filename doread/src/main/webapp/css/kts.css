@@ -566,6 +566,20 @@ ul li,a{
 	
 } 
  
+/*구매내역 버튼*/
+.list_search input[type="submit"]{
+	width:45px;
+	height:30px;
+	border-radius:5px;
+	border:1px solid #4F6F52;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	margin-left:120px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
 /* 글꼴 */
 
 *{
