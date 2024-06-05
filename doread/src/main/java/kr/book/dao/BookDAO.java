@@ -262,7 +262,7 @@ public class BookDAO {
 		try {
 			conn = DBUtil.getConnection();
 			sql = "UPDATE book SET book_name=?, author=?, publisher=?, publish_date=?, "
-					+ "price=?, stock=?, book_img=?, book_category=?, book_auth=? "
+					+ "price=?, stock=?, book_category=?, book_auth=? "
 					+ "WHERE book_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -272,10 +272,32 @@ public class BookDAO {
 			pstmt.setString(4, book.getPublish_date());
 			pstmt.setInt(5,book.getPrice());
 			pstmt.setInt(6,book.getStock());
-			pstmt.setString(7, book.getBook_img());
-			pstmt.setInt(8, book.getBook_category());
-			pstmt.setInt(9, book.getBook_auth());
-			pstmt.setInt(10, book.getBook_num());
+			pstmt.setInt(7, book.getBook_category());
+			pstmt.setInt(8, book.getBook_auth());
+			pstmt.setInt(9, book.getBook_num());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	//도서 이미지 수정
+	public void updateBookImage(int book_num, String book_img) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "UPDATE book SET book_img=? WHERE book_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book_img);
+			pstmt.setInt(2, book_num);
 			
 			pstmt.executeUpdate();
 			

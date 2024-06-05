@@ -57,8 +57,7 @@
 		<h2>도서 정보 수정</h2>
 
 		<hr size="1.5" width="80%" noshade="noshade">
-		<form action="updateBook.do" method="post" id="bookupdate_form"
-			enctype="multipart/form-data">
+		<form action="updateBook.do" method="post" id="bookupdate_form">
 			<input type="hidden" name="book_num" value="${book.book_num}">
 			<div class="content-main">
 				<ul>
@@ -101,15 +100,7 @@
 							<option value="10">만화</option>
 							<option value="11">취미/스포츠</option>
 					</select></li>
-					<li>
-					<label for="book_img">책 이미지</label>
-					<input type="file" id="book_img" name="book_img" class="inputcheck input-style"
-						accept="image/gif,image/png,image/jpeg">
-					<div id="file_detail">
-						<img src="${pageContext.request.contextPath}/upload/${book.book_img}" width="100">
-						
-					</div>
-					</li>
+					
 				</ul>
 			</div>
 			<div class="align-center">

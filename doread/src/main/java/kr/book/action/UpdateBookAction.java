@@ -25,7 +25,6 @@ public class UpdateBookAction implements Action{
 		book.setPublish_date(request.getParameter("publish_date"));
 		book.setPrice(Integer.parseInt(request.getParameter("price")));
 		book.setStock(Integer.parseInt(request.getParameter("stock")));
-		book.setBook_img(FileUtil.createFile(request,"book_img"));
 		book.setBook_auth(Integer.parseInt(request.getParameter("book_auth")));
 		book.setBook_category(Integer.parseInt(request.getParameter("book_category")));
 
