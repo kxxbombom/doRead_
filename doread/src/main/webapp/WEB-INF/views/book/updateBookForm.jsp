@@ -39,7 +39,7 @@
 		
 		}//end of for
 		
-	});
+	};
 };
 
 </script>
