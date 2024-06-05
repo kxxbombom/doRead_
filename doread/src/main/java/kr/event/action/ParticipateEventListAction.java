@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.event.dao.EventDAO;
+import kr.event.vo.EventDetailVO;
 import kr.event.vo.EventVO;
 import kr.util.PagingUtil;
 
@@ -33,7 +34,7 @@ public class ParticipateEventListAction implements Action {
 		
 		//페이지 처리
 		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 10,10,"participateEventList.do");
-		List<EventVO> list = null;
+		List<EventDetailVO> list = null;
 		if(count > 0) {
 			list = dao.getListMyEvent(page.getStartRow(), page.getEndRow(),user_num);
 		}

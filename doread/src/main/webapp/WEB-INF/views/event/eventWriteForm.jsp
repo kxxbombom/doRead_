@@ -65,11 +65,9 @@
 		<li><label for="e_content">이벤트 내용</label>
 			<textarea class="inputcheck input-style" style="height:150px"  id="e_content" name="e_content"></textarea>
 		</li>
-		
 		<li>
 			<label for="e_image">이벤트 이미지</label>
-			<input type="file" id="e_image" name="e_image" class="input-style " accept="image/gif,image/png,image/jpeg">
-			
+			<input type="file" id="e_image" name="e_image" class="inputcheck input-style " accept="image/gif,image/png,image/jpeg">
 		</li>
 	</ul>
 	</div>

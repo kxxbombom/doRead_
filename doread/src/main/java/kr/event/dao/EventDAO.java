@@ -114,43 +114,39 @@ public class EventDAO {
 		}		
 		return list;
 	}
-		public List<EventVO> getListMyEvent(
+		//이벤트 참여자 정보 불러오기
+		public List<EventDetailVO> getListMyEvent(
 				int start, int end, int user_num)throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			List<EventVO> list = null;
+			List<EventDetailVO> list = null;
 			String sql = null;
 			try {
 				//커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
 				//SQL문 작성
-				sql = " SELECT * FROM (SELECT a.*, rownum rnum FROM "
-						+ " (SELECT * FROM eventboard"
-						+ " ORDER BY e_num DESC)a)"
-						+ " WHERE rnum >= ? AND rnum <= ? AND e_num=?";
+				sql =   " SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ " (SELECT * FROM eventboard e JOIN event_detail ed USING (e_num) WHERE ed.mem_num=?"
+						+ " ORDER BY e_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 				//PreparedStatement 객체 생성
 				pstmt = conn.prepareStatement(sql);
 				//?에 데이터 바인딩
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
-				pstmt.setInt(3, user_num);
+				pstmt.setInt(1, user_num);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
 				//SQL문 실행
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
-					list = new ArrayList<EventVO>();
+					list = new ArrayList<EventDetailVO>();
 					do{
-						EventVO item = new EventVO();
+						EventDetailVO item = new EventDetailVO();
 						item.setE_num(rs.getInt("e_num"));
 						item.setE_title(rs.getString("e_title"));
-						item.setE_image(rs.getString("e_image"));
-						item.setE_rdate(rs.getDate("e_rdate"));
-						item.setE_deadline(rs.getString("e_deadline"));
+						item.setMem_num(rs.getInt("mem_num"));
+						item.setEd_result(rs.getString("ed_result"));
 						item.setE_mem_num(rs.getInt("e_mem_num"));
-						MemberDAO dao= MemberDAO.getInstance();
-						MemberVO member =dao.getMember(item.getE_mem_num());
-						if(member != null)
-							item.setId(member.getMem_id());
+						
 						list.add(item);
 					}while(rs.next());
 				}
@@ -259,7 +255,7 @@ public class EventDAO {
 			int count = 0;
 			try {
 				conn = DBUtil.getConnection();
-				sql="select count(*) from eventboard WHERE e_num=?";
+				sql="select count(*) from event_detail WHERE mem_num=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, user_num);
 				

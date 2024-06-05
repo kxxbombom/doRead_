@@ -5,6 +5,22 @@ public class EventDetailVO {
 	private int e_num;
 	private int mem_num;
 	private String ed_result;
+	
+	private String e_title;
+	private int e_mem_num;
+	
+	public int getE_mem_num() {
+		return e_mem_num;
+	}
+	public void setE_mem_num(int e_mem_num) {
+		this.e_mem_num = e_mem_num;
+	}
+	public String getE_title() {
+		return e_title;
+	}
+	public void setE_title(String e_title) {
+		this.e_title = e_title;
+	}
 	public int getEd_num() {
 		return ed_num;
 	}
