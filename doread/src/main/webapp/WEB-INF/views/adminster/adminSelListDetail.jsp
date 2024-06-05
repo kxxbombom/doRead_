@@ -71,7 +71,10 @@
 		<c:if test="${order.order_status == 3}">배송중</c:if>
 		<c:if test="${order.order_status == 4}">배송완료</c:if>
 		<c:if test="${order.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
+		<c:if test="${order.order_status != 5}">
 		<input type="button" class="button2"  value="배송상태변경" id="delivery">
+		
+		
 		<form id="deliform" class="hide" method="post">
 		<select name="order_status" id="order_status" class="input-style"  >
 				<option value="1" <c:if test="${order.order_status == 1}">selected</c:if>>배송대기</option>
@@ -80,9 +83,11 @@
 				<option value="4"<c:if test="${order.order_status == 4}">selected</c:if>>배송완료</option>
 				<option value="5" <c:if test="${order.order_status == 5}">selected</c:if>>주문취소</option>
 		</select>
+		
 		<input type="submit" class="button2"  value="변경" id="upbtn">
 		<input type="button" class="button2"  value="취소" id="delbtn">
 		</form>
+		</c:if>
 		</li>
 		<li>요청사항 : ${order.order_msg}</li>
 	</ul>
@@ -100,7 +105,9 @@
 	</form>
 	<p>
 	<br>
+	<c:if test="${order.order_status == 1}">
 	<input type="button" value="배송지 정보 수정" class="button2" id="addressbtn" >
+	</c:if>
 	<input type="button" value="목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/order/adminList.do'">
 	
 	</div>
