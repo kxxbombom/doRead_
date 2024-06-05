@@ -29,6 +29,9 @@ public class LoginAction implements Action{
 		}
 		if(check) {
 			HttpSession session = request.getSession();
+			if(member.getMem_photo() != null) {
+				session.setAttribute("user_photo", member.getMem_photo());
+			}
 			session.setAttribute("user_num", member.getMem_num());
 			session.setAttribute("user_id", member.getMem_id());
 			session.setAttribute("user_auth", member.getMem_auth());
