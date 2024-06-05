@@ -153,7 +153,6 @@ $(function(){
 						</div>
 					</div>
 				</c:forEach>
-				<input type="button" class="order-button" value="관심도서 수정" onclick="location.href='updateCategoryForm.do'">
 			</c:if>
 		</div>
 		<hr width="100%" size="1" noshade="noshade">
