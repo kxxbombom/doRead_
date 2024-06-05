@@ -177,16 +177,16 @@ img#penimgae2{
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
-/*회원 알림*/
+/*테이블*/
 table{
-	width:70%;
+	width:80%;
 	border:1px solid #000;
 	border-collapse:collapse;
-	margin-top:5px;
+	margin-top:20px;
 	margin-left:150px;
 }
 table th{
-	background:#E0E0E0;
+	background:rgb(232, 223, 202);
 }
 table td, table th{
 	border:1px solid #000;
@@ -558,7 +558,7 @@ ul li,a{
 #allpoint{
 	float:right;
 	font-size:19pt;
-	border:2px solid #000;
+	border:1px solid #000;
 	
 } 
  
