@@ -38,11 +38,12 @@ public class UserOrderAction implements Action{
 		int all_total = cartdao.getTotalByMem_num(user_num);
 		int all_total_delivery = all_total;
 		if(all_total < 15000) all_total_delivery += 2500;
-		if(all_total <= 0) {
-			request.setAttribute("notice_msg", "정상적인 주문이 아니거나 상품의 수량이 부족합니다.");
-			request.setAttribute("notice_url", request.getContextPath() + "/cart/list.do");
-			return "/WEB-INF/views/common/alert_view.jsp";
-		}
+		/*
+		 * if(all_total <= 0) { request.setAttribute("notice_msg",
+		 * "정상적인 주문이 아니거나 상품의 수량이 부족합니다."); request.setAttribute("notice_url",
+		 * request.getContextPath() + "/cart/list.do"); return
+		 * "/WEB-INF/views/common/alert_view.jsp"; }
+		 */
 		
 		//장바구니에 담겨있는 도서 정보 호출
 		List<CartVO> cartList = cartdao.getListCart(user_num);

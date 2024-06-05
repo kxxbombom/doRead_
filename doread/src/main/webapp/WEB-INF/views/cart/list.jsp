@@ -94,7 +94,7 @@
 	 				<tr>
 	 					<td>
 	 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
-	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100" style="margin:8px 0;">
+	 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100" style="margin:20px 0;">
 	 						</a>
 	 					</td>
 	 					<td>
@@ -107,7 +107,7 @@
 	 						<c:if test="${cart.bookVO.stock >= cart.c_quantity}">
 	 							<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width">
 	 							<br>												<%--커스텀 데이터--%>
-	 							<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}" data-total="${all_total}">
+	 							<input type="button" value="변경" class="cartorder-btn" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}" data-total="${all_total}">
 	 						</c:if>
 	 					</td>
 	 					<td class="align-center">
@@ -116,7 +116,7 @@
 	 					<td class="align-center" style="border-left:1px;">
 	 						<fmt:formatNumber value="${cart.sub_total}"/>원
 	 						<br>
-	 						<input type="button" value="삭제" class="cart-del" id="cart-del" data-cartnum="${cart.c_num}">
+	 						<input type="button" value="삭제" class="cartorder-btn" id="cart-del" data-cartnum="${cart.c_num}">
 	 						
 	 					</td>
 	 				</tr>
