@@ -366,7 +366,7 @@ public class MemberDAO {
 			if (member.getBook_category() != null) {
 	            pstmt.setInt(1, member.getBook_category());
 			}else{
-		        pstmt.setNull(2, java.sql.Types.INTEGER);
+		        pstmt.setNull(1, java.sql.Types.INTEGER);
 		    }
 			if(member.getBook_category2()!=null) {
 	            pstmt.setInt(2, member.getBook_category2());
