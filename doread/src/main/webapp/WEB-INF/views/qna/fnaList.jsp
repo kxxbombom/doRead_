@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
+
 <script type="text/javascript">
 $(function(){
 	$('#pbtn').click(function(){
@@ -36,6 +37,10 @@ $(function(){
 		<div class="align-center">
 			<a href="#orderfaq">[주문]</a> <a href="#pointfaq" id="pointbtn">[적립]</a> <a href="#deliveryfaq" id="dbtn">[배송]</a> <a href="#pfaq" id="pbtn">[교환/반품]</a>
 		</div> 
+		<div class="list-space align-right list-btn2">
+			<input type="button" value="내QnA목록" onclick="location.href='qnaList.do'">
+			<input type="button" value="문의하기" onclick="location.href='qnaWriteForm.do'">
+		</div>
 		<table>
 			<tr>
 			<td id="orderfaq">
@@ -139,8 +144,8 @@ $(function(){
 			</tr>
 		</table>
 		</div>	
-		<div class="align-center">
-			<input type="button"  class="button2" value=" 더보기" id="addbtn"><input type="button" class="button2" value="위로가기" onclick="location.href='#up'">
+		<div class="align-center list-btn3">
+			<input type="button"  class="button2" value=" 더보기" id="addbtn"> &nbsp;<input type="button" class="button2" value="위로가기" onclick="location.href='#up'">
 		</div> 
 		
 		

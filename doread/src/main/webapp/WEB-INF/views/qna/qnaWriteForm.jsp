@@ -56,6 +56,7 @@ window.onload=function(){
 					<input type="radio" name="q_auth" value="1" id="auth1">신고
 					<input type="radio" name="q_auth" value="2" id="auth2">정지
 					<input type="radio" name="q_auth" value="3" id="auth3">도서신청
+					<input type="radio" name="q_auth" value="4" id="auth4">교환 및 반품
 				</li>
 			</ul>
 			<div class="align-center">
