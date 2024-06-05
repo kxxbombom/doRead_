@@ -116,7 +116,8 @@
 	 					<td class="align-center" style="border-left:1px;">
 	 						<fmt:formatNumber value="${cart.sub_total}"/>원
 	 						<br>
-	 						<input type="button" value="삭제" class="cart-del" data-cartnum="${cart.c_num}">
+	 						<input type="button" value="삭제" class="cart-del" id="cart-del" data-cartnum="${cart.c_num}">
+	 						
 	 					</td>
 	 				</tr>
 	 			</c:forEach>
