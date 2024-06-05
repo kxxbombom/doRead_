@@ -72,8 +72,8 @@
 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_id}</a></td>
 			<td> <fmt:formatNumber value="${i.order_total }"/>원</td>
 			<td>
-			<c:if test="${i.order_status == 1}">배송대기</c:if>
-			<c:if test="${i.order_status == 2}">배송준비중</c:if>
+			<c:if test="${i.order_status == 1}">결제완료</c:if>
+			<c:if test="${i.order_status == 2}">배송시작</c:if>
 			<c:if test="${i.order_status == 3}">배송중</c:if>
 			<c:if test="${i.order_status == 4}">배송완료</c:if>
 			<c:if test="${i.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
