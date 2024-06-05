@@ -694,7 +694,7 @@ table td:first-child, table td:last-child, td.text-center{
 }
 
 /*게시판 버튼*/
-.list-btn input, #list_search_form input[type="submit"]{
+.list-btn input, #list_search_form input[type="submit"],.homebtn{
 	width:60px;
 	height:30px;
 	border-radius:5px;
@@ -704,10 +704,13 @@ table td:first-child, table td:last-child, td.text-center{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.list-btn input:hover, #list_search_form input[type="submit"]:hover{
+.list-btn input:hover, 
+#list_search_form input[type="submit"]:hover,
+.homebtn:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
+
 .list-btn2 input, #list_search_form input[type="submit"]{
 	width:80px;
 	height:30px;
@@ -856,11 +859,11 @@ form#cart_order{
 /*총 결제 예상 금액*/
 .cartList{
 	display:inline-block;
-	width:200px;
+	width:210px;
 	margin-left:0;
 	border:2px solid #d9d8d7;
 	border-radius:5px;
-	height:250px;
+	height:275px;
 	padding:5px;
 }
 .cart-submit{
@@ -899,7 +902,7 @@ form#cart_order{
 	justify-content: space-between;
 }
 /*장바구니 변경,삭제,주문 버튼*/
-.cart-modify, .cart-del{
+.cartorder-btn{
 	width:50px;
 	height:25px;
 	border-radius:5px;
@@ -909,7 +912,7 @@ form#cart_order{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.cart-modify:hover, .cart-del:hover{
+.cartorder-btn:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
 	cursor:pointer;
@@ -924,12 +927,12 @@ form#cart_order{
 	width:190px;
 	height:40px;
 	border-radius:7px;
-	background-color:#1e6320;
+	background-color:#268029;
 	color:#FFF;
 	font-size:17px;
 }
 .cart-submit > input:hover{
-	background-color:#268029;
+	background-color:#1e6320;
 	color:#FFF;
 	font-size:17px;
 	cursor:pointer;
@@ -977,7 +980,7 @@ div.order-info{
 	margin:0 10px;
 	width:720px;
 }
-.cart-container > div.order-info > div > *{
+div.order-info > div > *{
 	padding-left:15px;
 }
 
@@ -1008,8 +1011,8 @@ div#receive_div{
 	font-weight: bold;
  	margin-bottom: 10px;
 }
-div#receive_info ul li label{
-	width:150px;
+div.order-info label{
+	width:140px;
 }
 #receive_info textarea{
 	width:100%;
@@ -1024,16 +1027,53 @@ div#receive_info ul li label{
 	margin-bottom:10px;
 	border-radius:5px;
 }
+
+#order_book{
+	width:720px;
+}
+#order_book div{
+	margin:16px 0;
+}
+
+#orderFormTable{
+	width:690px;
+	margin:15px 0;
+}
+#point_use span{
+	display:inline-block;
+	width:135px;
+	
+}
+
+
+
+
 .enter-group{
 	display: flex;
 	flex-direction: column;
 }
 .radio-group{
-	display: flex;
+	display: inline-block;
+	vertical-align:middle;
 }
 .enter-group #enter_passwd{
 	width:250px;
 }
+
+.radio-group > *{
+	vertical-align:middle;
+	margin:16px 0;
+}
+
+.ordercom-main{
+	font-size:18px;
+}
+.ordercom h2{
+	padding-left:150px;
+}
+
+
+
 
 /* 게시판 글 수정
 ---------------------*/

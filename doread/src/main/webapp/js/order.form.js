@@ -26,6 +26,17 @@ $(function(){
             return false;
         }
     });
+    
+    document.getElementById('order_msg_textarea').disabled = true;
+    document.getElementById('select_msg').addEventListener('change', function() {
+        var textarea = document.getElementById('order_msg_textarea');
+        if (this.value == '6') {
+             textarea.disabled = false;
+        } else {
+             textarea.disabled = true;
+             textarea.value = '';
+        }
+    });
 	 
 	 
 });

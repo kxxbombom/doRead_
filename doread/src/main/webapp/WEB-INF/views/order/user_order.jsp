@@ -13,16 +13,18 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 
-	<div class="content-main">
+	<div class="content-main ordercom">
 		<h2>${result_title}</h2>
+		<hr size="1" noshade width="800">
 		<div class="result-display">
-			<div class="align-center">
+			<div class="align-center ordercom-main">
 				${result_msg}
 				<p>
-				<input type="button" value="홈으로" onclick="location.href='${result_url}'">
+				<input type="button" class="homebtn" value="홈으로" onclick="location.href='${result_url}'">
 				<input type="button" value="주문/배송 조회" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 			</div>
 		</div>
+		<hr size="1" noshade width="800">
 	</div>
 </div>
 </body>

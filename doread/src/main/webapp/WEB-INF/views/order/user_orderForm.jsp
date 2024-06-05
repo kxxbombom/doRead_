@@ -95,6 +95,8 @@ $(function(){
 			return ;
 		}
 		
+		$('#pointbtn').click();
+		
 	})
 	$('#order_form').submit(function(){
 		const radio = document.querySelectorAll('input[class="payment"]:checked');
@@ -129,6 +131,29 @@ $(function(){
     $('input[name="enter"]').on('change', function() {
         toggleEnterPasswd($(this).val() == 1);
     });
+    
+    
+    
+    
+    function togglePayment(show) {
+	    var paymentInput = $('#pay_card');
+	    if (show) {
+	        paymentInput.show();
+	    } else {
+	        paymentInput.hide();
+	    }
+	}
+
+	var isPay = $('input[name="payment"]:checked').val();
+    togglePayment(isPay == 1);
+
+    $('input[name="payment"]').on('change', function() {
+        togglePayment($(this).val() == 1);
+    });
+    
+    
+    
+    
 });
 </script>
 </head>
@@ -152,8 +177,8 @@ $(function(){
 									<li><input type="text" id="receive_address1" name="receive_address1" value="${member.mem_address1}" class="hidden r_info input-check"><input type="text" style="margin-left:5px;" id="receive_address2" name="receive_address2" value="${member.mem_address2}" class="hidden r_info"> <span id="displayAddress1" class="info-span">${member.mem_address1}</span>&nbsp;<span id="displayAddress2" class="info-span">${member.mem_address2}</span></li>
 
 								</ul>
-								<button type="button" onclick="editShippingInfo()">변경</button>
-								<input type="button" value="완료" class="hidden" id="info_confirm">
+								<button type="button" onclick="editShippingInfo()" class="cartorder-btn">변경</button>
+								<input type="button" value="완료" class="hidden cartorder-btn" id="info_confirm">
 							</div>
 						</li>
 						<li>
@@ -167,67 +192,77 @@ $(function(){
 								<option value="5">배송 전 연락주세요.</option>
 								<option value="6">직접 입력</option>
 							</select>
-							<textarea name="order_msg"></textarea>
+							<textarea name="order_msg" id="order_msg_textarea"></textarea>
 							</div>
 						</li>
 						<li>
-							<label>공동현관 출입방법</label>
-							<div class="enter-group">
-								<div class="radio-group">
-									<input type="radio" name="enter" value="1">공동현관 비밀번호
-									<input type="radio" name="enter" value="2" checked>자유출입 가능
-								</div>
-									<input type="text" name="enter_passwd" id="enter_passwd" placeholder="정확한 공동현관 출입번호를 입력하세요">
+							<div class="radio-group">
+								<label>공동현관 출입방법</label>			
+								<input type="radio" name="enter" value="1">공동현관 비밀번호
+								<input type="radio" name="enter" value="2" checked>자유출입 가능
+								<input type="text" style="width:220px;" name="enter_passwd" id="enter_passwd" placeholder="정확한 공동현관 출입번호를 입력하세요">
 							</div>
 						</li>
 					</ul>
 				</div>
 				
-				<div>
-					<span><label>주문상품</label></span>
-					<table id="cartTable">
+				<div id="order_book">
+					<div>
+					<label>주문도서</label>
+					<table id="orderFormTable">
 		 			<c:forEach var="cart" items="${list}">
 		 				<tr>
 		 					<td>
 		 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
-		 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100">
+		 							<img src="${pageContext.request.contextPath}/upload/${cart.bookVO.book_img}" width="100" style="margin:10px 0;">
 		 						</a>
 		 					</td>
-		 					<td>
+		 					<td style="padding-right:50px;">
 		 						<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${cart.book_num}">
 		 							${cart.bookVO.book_name}
 		 						</a>
 		 					</td>
-		 					<td class="align-center">
-		 						<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width" readonly="readonly">
+		 					<td class="align-center" style="padding-right:30px;">
+		 						<span>${cart.c_quantity}개</span>
 		 					</td>
 		 					<td class="align-center">
 		 						<fmt:formatNumber value="${cart.bookVO.price}"/>원
 		 					</td>
 		 				</tr>
 		 			</c:forEach>
-		 		</table>
+		 			</table>
+					</div>
 				</div>
 				
 				<div>
-				<ul>
-					<li><label>포인트</label></li>
-					<li>보유 ${point}원</li>
-				</ul><input type="hidden" value="${point}" id="userpoint">
-				통합 포인트 ${point}원 <input type="number" name ="usedpoint" id="pointval" min="0" max="${point}" maxlength ="${point}" value="0">
-				<input type="button" name="pointpayment" id="pointbtn" value="사용">
+					<ul>
+						<li><label>포인트</label>보유 <span style="color:#1c782b; font-weight:bold;">${point}</span>원</li>
+					</ul>
+					<div id="point_use">
+						<input type="hidden" value="${point}" id="userpoint">
+						<span>통합 포인트</span> <span>${point}원</span>
+						<input type="number" name ="usedpoint" id="pointval" min="0" max="${point}" maxlength ="${point}" value="0">
+						<input type="button" name="pointpayment" id="pointbtn" value="사용" class="cartorder-btn">
+					</div>
 				</div>
 				
-				<div>
-					<label>결제수단</label>
-					<input type="radio" class="payment" name="payment" value="1">신용카드<input type="text" name="enter_passwd" placeholder="카드번호">
-					<input type="radio" class="payment" name="payment" value="2">계좌이체
-					<input type="radio" class="payment" name="payment" value="3">휴대폰결제	
+				<div style="display:flex;">
+					<label style="display:inline-block; width:125px; margin-top:16px;" for="payment">결제수단</label>
+
+						<div class="radio-group">
+							<input type="radio" class="payment" name="payment" value="1">신용카드
+							<input type="radio" class="payment" name="payment" value="2">계좌이체
+							<input type="radio" class="payment" name="payment" value="3">휴대폰결제	
+							<input type="text" name="enter_passwd" placeholder="카드번호" id="pay_card">
+						</div>
+						
+
 			 	</div>
+			 	
 			</div>
 			
 			<div class="cartList">
-		 			<ul>
+		 			<ul style="display:inline-block; width:200px;">
 		 				<li class="flex-container">상품 금액 <span><b><fmt:formatNumber value="${all_total}"/></b>원</span></li>
 		 				<li class="flex-container">
 		 					<span class="tooltip-container">
