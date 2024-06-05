@@ -583,66 +583,87 @@ public class OrderDAO {
 		public void updatestatus(int order_num,int status) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
+			PreparedStatement ps2 = null;
 			String sql= null;
 			try {
 				conn = DBUtil.getConnection();
+				conn.setAutoCommit(false);
 				sql="update book_order set order_status=?, ORDER_MDATE=sysdate  where order_num=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, status);
 				ps.setInt(2, order_num);
-				
 				ps.executeUpdate();
+				if(status == 5) {
+					List<OrderDetailVO> detail = getListOrder_Detail(order_num);
+					sql="update book set stock=stock+?, ORDER_MDATE=sysdate  where book_num=?";
+					ps2 = conn.prepareStatement(sql);
+					for(int i=0; i<detail.size(); i++) {
+						ps2.setInt(1, detail.get(i).getOrder_quantity());
+						ps2.setInt(2, detail.get(i).getBook_num());
+						ps2.addBatch();
+						if(i%1000==0) {
+							ps2.executeBatch();
+						}
+					}
+					
+					ps2.executeBatch();
+				}
+				conn.commit();
 			}catch(Exception e) {
+				conn.rollback();
 				throw new Exception(e);
 			}finally {
+				if(status == 5) {
+				DBUtil.executeClose(null, ps2, null);
+				}
 				DBUtil.executeClose(null, ps, conn);
 			}
 			
 			
 		}
 
-	//사용자 - 주문취소
-public void cancleOrderuser(int order_num) throws Exception{
-	Connection conn = null;
-	PreparedStatement ps = null;
-	PreparedStatement ps3 = null;
-	String sql= null;
-	
-	try {
-		conn =DBUtil.getConnection();
-		conn.setAutoCommit(false);
-		sql="update book_order set order_status=5, ORDER_MDATE=sysdate where order_num=?";
-		ps = conn.prepareStatement(sql);
-		ps.setInt(1, order_num);
-		ps.executeUpdate();
-		
-		//주문취소했기때문에 환원이여
-		List<OrderDetailVO> list = getListOrder_Detail(order_num);
-		sql="update zitem set quantity=quantity+? where book_num=? ";
-		ps3 = conn.prepareStatement(sql);
-		for(int i=0; i<list.size(); i++) {
-			ps3.setInt(1, list.get(i).getOrder_quantity());
-			ps3.setInt(2, list.get(i).getBook_num());
-			ps3.addBatch();
-			if(i%1000 == 0) {
+			//사용자 - 주문취소
+		public void cancleOrderuser(int order_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			PreparedStatement ps3 = null;
+			String sql= null;
+			
+			try {
+				conn =DBUtil.getConnection();
+				conn.setAutoCommit(false);
+				sql="update book_order set order_status=5, ORDER_MDATE=sysdate where order_num=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, order_num);
+				ps.executeUpdate();
+				
+				//주문취소했기때문에 환원이여
+				List<OrderDetailVO> list = getListOrder_Detail(order_num);
+				sql="update zitem set quantity=quantity+? where book_num=? ";
+				ps3 = conn.prepareStatement(sql);
+				for(int i=0; i<list.size(); i++) {
+					ps3.setInt(1, list.get(i).getOrder_quantity());
+					ps3.setInt(2, list.get(i).getBook_num());
+					ps3.addBatch();
+					if(i%1000 == 0) {
+						ps3.executeBatch();
+					}
+					
+				}
 				ps3.executeBatch();
+				
+				conn.commit();
+				
+			}catch(Exception e){
+				conn.rollback();
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, ps3, null);
+		
+				DBUtil.executeClose(null, ps, conn);
 			}
 			
+			
 		}
-		ps3.executeBatch();
-		
-		conn.commit();
-		
-	}catch(Exception e){
-		conn.rollback();
-		throw new Exception(e);
-	}finally {
-		DBUtil.executeClose(null, ps3, null);
-
-		DBUtil.executeClose(null, ps, conn);
-	}
-	
-	
-}
-	
-}
+			
+		}

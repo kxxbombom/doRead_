@@ -135,6 +135,9 @@
 							alert('변경완료');
 							$('#deliform').addClass('hide');
 							location.href='detailOrder.do?order_num=${order.order_num}';
+						}else if(param.result =='cancle'){
+							alert('고객이 주문취소하였습니다.');
+							
 						}else{
 							alert('변경오류');
 						}
