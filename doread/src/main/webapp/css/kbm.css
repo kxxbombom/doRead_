@@ -18,10 +18,9 @@ body{
 	width:1000px;
 	margin:0 auto;
 	background:#FFF;
-
-	
 	
 }
+
 a:link{
 	text-decoration:none;
 	color:#000000;
@@ -46,7 +45,7 @@ a:hover{
 }
 .content-main{
 	padding:10px 20px;
-		animation: slideIn 0.8s ease-out;
+	animation: slideIn 0.8s ease-out;
 }
 
 .m-top{
@@ -914,7 +913,7 @@ form#cart_order{
 	justify-content: space-between;
 }
 /*장바구니 변경,삭제,주문 버튼*/
-.cartorder-btn{
+.cartorder-btn, .cart-modify, .cart-del{
 	width:50px;
 	height:25px;
 	border-radius:5px;
@@ -924,7 +923,7 @@ form#cart_order{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.cartorder-btn:hover{
+.cartorder-btn:hover, .cart-modify:hover, .cart-del:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
 	cursor:pointer;

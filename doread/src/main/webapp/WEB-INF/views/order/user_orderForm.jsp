@@ -75,7 +75,7 @@ $(function(){
 		const all_total =document.getElementById('all_total');
 		const all_total_delivery =document.getElementById('all_total_delivery');
 		if(usedpoint.value != 0)
-		span.textContent = usedpoint.value;
+		span.textContent = parseInt(usedpoint.value).toLocaleString();
 		else{
 		span.textContent = 0;
 		}
@@ -160,7 +160,7 @@ $(function(){
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-	<div class="content-main order-form">
+	<div class="content-main order-form slide-in">
 		<h2>주문/결제</h2>
 		<form id="order_form" action="order.do" method="post">
 			<div class="cart-container">
@@ -286,7 +286,7 @@ $(function(){
 
 		 				
 						<hr size="1" width="100%">
-		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><c:set var="point" value="" scope="request"/><span id="total">${all_total_delivery}</span></b>원</span>
+		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><c:set var="point" value="" scope="request"/><span id="total"><fmt:formatNumber value="${all_total_delivery}"/></span></b>원</span>
 		 				<input type="hidden" value="${all_total}" id="all_total">
 		 				<input type="hidden" value="${all_total_delivery}" id="all_total_delivery">
 		 				</li>
