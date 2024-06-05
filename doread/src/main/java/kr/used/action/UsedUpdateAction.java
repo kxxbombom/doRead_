@@ -41,7 +41,8 @@ public class UsedUpdateAction implements Action{
 		usedvo.setU_ip(request.getRemoteAddr());
 		usedvo.setU_num(u_num);
 		usedvo.setMem_num(mem_num);
-		if(usedvo.getBook_num() == 0) {usedvo.setBook_num(book_num);}
+		if(usedvo.getBook_num() != 0) {usedvo.setBook_num(book_num);}
+		
 		if(used.getU_image()!= null) {
 			FileUtil.removeFile(request, used.getU_image());
 		}

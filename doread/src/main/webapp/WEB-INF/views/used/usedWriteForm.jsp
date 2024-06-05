@@ -44,8 +44,8 @@
  		<div class="float-clear">
 			<hr width="100%" size="1" noshade="noshade">
 		</div>
-		<div class="formdiv2">
-		<form action="usedcreate.do" method="post" id="event_form" enctype="multipart/form-data" >
+		
+		<form action="usedcreate.do" method="post" id="event_form" class="align-center" enctype="multipart/form-data" >
 		<input type="hidden" name="book_num" id="book_num" >
 			
 			<ul class="align-left">
@@ -54,8 +54,8 @@
 					<input type="text" name="u_title" class="inputcheck input-style" id="u_title" maxlength="30" >
 				</li>
 				<li><label for="book_name">책 이름</label>
-					<input type="text" name="book_name" class="inputcheck input-style "  id="book_name" maxlength="10" readonly="readonly"  >
-					<input type="button" id ="book_numbtn" value="책선택" >
+					<input type="text" name="book_name" class="inputcheck input-style" placeholder="책을 선택해주세요" id="book_name" maxlength="10" readonly="readonly"  >
+					<input type="button" id ="book_numbtn" value="책선택"  class="button2">
 				</li>
 				
 				
@@ -89,20 +89,31 @@
 			
 	
 	</form>
-</div>
+
 				<div class="modal hide">
-					<h4>책 검색</h4>
 					<form id="searchform" >
+					<h4>책 검색</h4>
 					
-					<input type="text" name="search" class="inputcheck input-style" id="search" maxlength="30" placeholder="제목을 입력하세요">
+					
+					<input type="text" name="search" class="inputcheck input-style2" id="search" maxlength="30" placeholder="제목을 입력하세요">
  					<input id="bookbtn" type="submit" value="검색" class="button2"><input id="bookbtn2" type="button" value="취소" class="button2">
-					</form>
+					
 					
 					<div id="add">
 					
 					</div>
+					<div class="paging2 button2" style="display:none;" >
+					<input type="button" value="이전">
+					</div>
+					<div class="paging button2" style="display:none;" >
+					<input type="button" value="다음">
+					</div>
+					</form>
 				</div>
 				 <script type="text/javascript">
+				 	let currentNum ;
+				 	let count;
+				 	let rowCount=10;
 			    	$("#book_numbtn").click(function() {
 			    		
 			        if($('.modal').hasClass('hide')){
@@ -117,21 +128,32 @@
 	
 			    	});
 			    	$("#searchform").submit(function(event){
+			    		selList(1);
+			    		
+			    		event.preventDefault();
+			    	});
+			    	function selList(pageNum){
+			    		currentNum=pageNum;
+			    		
+			    		if(currentNum ==0){
+			    			currentNum =1;
+			    		}
+			    		
 			    		$.ajax({
 			    			url:'searchBook.do',
-			    			data:{book_name:$("#search").val()},
+			    			data:{book_name:$("#search").val(),pageNum:currentNum},
 			    			type:'post',
 			    			dataType:'json',
 			    			success:function(param){
 			    				if(param.result=='none'){
 			    					$('#add').empty();
 			    					$('#add').append('찾으시는 제목의 책이 없습니다.');
-			    					$('#add').append('<br><input type="button" class="input-style" value="책등록요청하러가기">');
+			    					$('#add').append('<br><input type="button" class="input-style2" value="책등록요청하러가기" onclick="${pageContext.request.contextPath}/qna/qnaWriteForm.do">');
 			    					
 			    				}else if(param.result=='success'){
 			    					$('#add').empty();
 			    					let output = '';
-			    						
+			    					count = param.count;	
 			    					$(param.list).each(function(index,item){
 			    					
 			    						output += '<input type="text" value="'+item.book_name+'" readonly="readonly" class="booksh" id="'+item.book_num+'">';
@@ -139,7 +161,22 @@
 			    						
 			    					})
 			    					
+			    					
 			    					$('#add').append(output);
+			    					if(currentNum>=Math.ceil(count/rowCount)){
+			    						//다음 페이지가 없음
+			    						$('.paging').hide();
+			    					}else{
+			    						//다음 페이지가 존재
+			    						$('.paging').show();
+			    					}
+			    					if(currentNum<=1){
+			    						
+			    						$('.paging2').hide();
+			    					}else{
+			    						
+			    						$('.paging2').show();
+			    					}
 			    				}else{
 			    					alert('책찾기오류');
 			    				}
@@ -151,10 +188,7 @@
 			    			
 			    			
 			    		});
-			    		
-			    		event.preventDefault();
-			    	});
-			    	
+			    	}
 			    $(function(){$(document).on('click','.booksh',function(){
 			    	
 		    		$('#book_name').val(this.value);
@@ -164,8 +198,12 @@
 	        });});
 
 			    	
-			   
-			    
+			    $('.paging').click(function(){
+					selList(currentNum + 1);
+				});
+			    $('.paging2').click(function(){
+					selList(currentNum - 1);
+				});
 			    	
 			    </script>	
 			

@@ -1,3 +1,130 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
 
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  margin:0 5px;
+  padding: 0.4em 1.0em;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 0.3em;
+  background: rgb(224, 224, 224);
+  border: 1px solid rgb(224, 224, 224);
+
+}
+.input-style {
+  padding: 3px;
+  margin:8px 0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  width:500px;
+  
+}
+.input-style2 {
+  padding: 3px;
+  margin:8px 0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  width:200px;
+  
+}
+ul li label{
+	width:150px;
+	text-align:center;
+	float:left !important; /*태그를 왼쪽으로 정렬*/
+}
+.align-center{
+	text-align:center;
+}
+.align-right{
+	text-align:right;
+}
+.align-left{
+	text-align:left;
+	margin-left:40px;
+}
+form{
+	width:900px;
+	margin:0 auto;
+	border:none;
+	padding:10px 10px 10px 30px;
+	border-style:none;
+	z-index:1;
+}
+
+
+
+.modal{
+	position:absolute;
+	z-index:999;
+	background:white;
+	left:40%;
+	top:300px;
+	width:500px;
+	margin-bottom:8px !important;
+	border-radius:15px;
+	border:1px solid #ccc;
+	
+}
+
+.booksh{
+	border:none;
+	margin-bottom:8px;
+}
+
+table#usedtable{
+	width:100%;
+	border-collapse: collapse;
+	margin:50px 0;
+}
+table#usedtable td, table th{
+	border:1px solid #d4d2d2;
+	padding:5px;
+	border-left:0;
+	border-right: 0;
+}
+
+table#usedtable tr{
+	line-height:3rem;
+	height:50px;
+}
+table#usedtable td:first-child, table#usedtable td:last-child, td.text-center{
+	text-align:center;
+}
+.gide{
+	z-index:999;
+	border:1px solid #d4d2d2;
+	border-radius:15px;
+	width:250px;
+}
+.radio2{
+	width:100px !important; 
+}
+
+
+/*usedboard 댓글*/
+textarea#replyd{
+	resize:none;
+	width:816px;
+	height:80px;
+}
+
+form#searchform{
+	width:300px;
+	margin:0 auto;
+	border:none;
+	padding:10px 10px 10px 30px;
+	border-style:none;
+	z-index:999;
+}

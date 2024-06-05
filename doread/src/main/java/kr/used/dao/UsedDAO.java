@@ -583,12 +583,13 @@ public class UsedDAO {
 	}
 	
 	//책검색
-	public List<BookVO> getCategoryListBook(String keyfield) throws Exception{
+	public List<BookVO> getCategoryListBook(String keyfield ,int start, int end) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
 		String sub_sql = "";
+		int cnt =0;
 		List<BookVO> list = null;
 		if(keyfield != null && !"".equals(keyfield)) {
 			sub_sql +=" where book_name Like '%' || ? || '%'";
@@ -597,13 +598,14 @@ public class UsedDAO {
 			conn = DBUtil.getConnection();
 			
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-					+ "(SELECT * FROM book "+sub_sql +" ORDER BY book_num DESC)a)";
+					+ "(SELECT * FROM book "+sub_sql +" ORDER BY book_num DESC)a) where rnum between ? and ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			if(keyfield != null && !"".equals(keyfield)) {
-				pstmt.setString(1, keyfield);
+				pstmt.setString(++cnt, keyfield);
 			}
-			
+			pstmt.setInt(++cnt, start);
+			pstmt.setInt(++cnt, end);
 		
 			
 			rs = pstmt.executeQuery();
@@ -629,11 +631,47 @@ public class UsedDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		
 		
 		return list;
+	}
+	public int getCategoryListBookCount(String keyfield) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String sub_sql = "";
+		int cnt =0;
+		int count =0;
+		
+		if(keyfield != null && !"".equals(keyfield)) {
+			sub_sql +=" where book_name Like '%' || ? || '%'";
+		}
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT count(*) FROM book "+sub_sql +" ORDER BY book_num DESC";
+			
+			pstmt = conn.prepareStatement(sql);
+			if(keyfield != null && !"".equals(keyfield)) {
+				pstmt.setString(++cnt, keyfield);
+			}
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			
+			count = rs.getInt(1);
+			
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		
+		return count;
 	}
 	//글 개수
 	public int getUsedCount(int u_num)throws Exception{

@@ -13,6 +13,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import kr.book.vo.BookVO;
 import kr.controller.Action;
 import kr.used.dao.UsedDAO;
+import kr.util.PagingUtil;
 
 public class UsedBooksearchAction implements Action{
 
@@ -27,15 +28,19 @@ public class UsedBooksearchAction implements Action{
 		}
 		
 		String keyfeild = request.getParameter("book_name");
-		
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) pageNum="1";
 		UsedDAO dao = UsedDAO.getInstance();
-		List<BookVO> list = dao.getCategoryListBook(keyfeild);
+		int count = dao.getCategoryListBookCount(keyfeild);
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,null);
+		List<BookVO> list = dao.getCategoryListBook(keyfeild,page.getStartRow(),page.getEndRow());
 		if(list == null) {
 			map.put("result", "none");
 			
 		}else {
 			map.put("result", "success");
 			map.put("list", list);
+			map.put("count", count);
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(map);
