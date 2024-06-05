@@ -21,7 +21,8 @@ public class MyCommentListAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) pageNum = "1";
-		
+		String pageNum2 = request.getParameter("pageNum2");
+		if(pageNum2 == null) pageNum2 = "1";
 		String keyfield = request.getParameter("keyfield");
 		String keyword= request.getParameter("keyword");
 		
@@ -40,7 +41,7 @@ public class MyCommentListAction implements Action{
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
 		int count = dao.getCommentStoryCountByUser_num(user_num);
-		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 5,10,"storyBoardList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 5,10,"myCommentList.do");
 		List<SCommentVO> SCommentList = null;
 		if(count > 0) {
 			SCommentList = dao.getListCommentStoryByUser_num(page.getStartRow(), page.getEndRow(), user_num);
@@ -48,11 +49,11 @@ public class MyCommentListAction implements Action{
 		
 		
 		request.setAttribute("SCommentList", SCommentList);
-		
+		request.setAttribute("spage", page.getPage());
 		//used
 		UsedDAO dao2 = UsedDAO.getInstance();
 		int count2 = dao2.getCommentUsedCountByUser_num(user_num);
-		PagingUtil page2= new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 5,10,"usedList.do");
+		PagingUtil page2= new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum2),count2, 5,10,"myCommentList.do",null,"2");
 		List<UBCommentVO> UBCList = null;
 		if(count2 > 0) {
 			UBCList = dao2.getListCommentUsedByUser_num(page2.getStartRow(), page2.getEndRow(), user_num);
@@ -60,7 +61,7 @@ public class MyCommentListAction implements Action{
 		
 		
 		request.setAttribute("UBCList", UBCList);
-		
+		request.setAttribute("upage", page2.getPage());
 		
 		
 		// JSP 경로 반환

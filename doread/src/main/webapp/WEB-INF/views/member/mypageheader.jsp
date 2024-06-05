@@ -109,12 +109,12 @@
 <div id="mypage-main">
 	<div class="mypage-div">
 		<ul>
-			<li id="myphoto"><c:if test="${empty member.mem_photo}">
+			<li id="myphoto"><c:if test="${empty user_photo}">
 					<img src="${pageContext.request.contextPath}/images/face.png"
 						width="100" height="100" class="my-photo">
-				</c:if> <c:if test="${!empty member.mem_photo}">
+				</c:if> <c:if test="${!empty user_photo}">
 					<img
-						src="${pageContext.request.contextPath}/upload/${member.mem_photo}"
+						src="${pageContext.request.contextPath}/upload/${user_photo}"
 						width="100" height="100" class="my-photo">
 				</c:if>
 				

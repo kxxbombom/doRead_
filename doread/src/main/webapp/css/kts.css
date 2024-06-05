@@ -23,6 +23,9 @@ a:visited{
 	border:none;
 	min-height:650px;
 }
+.page-main h4{
+	text-align:center;
+}
 ul {
 	list-style:none;
 }
@@ -61,6 +64,7 @@ div.mypage-div ul li{
 div.mypage-div ul li label{
 	margin-right:50px;
 	color: rgb(232, 223, 202);
+	font-weight:bold;
 }
 div.mypage-div ul li#myphoto{
 	position:relative;
@@ -177,16 +181,16 @@ img#penimgae2{
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
-/*회원 알림*/
+/*테이블*/
 table{
-	width:70%;
+	width:80%;
 	border:1px solid #000;
 	border-collapse:collapse;
-	margin-top:5px;
-	margin-left:150px;
+	margin-top:20px;
+	margin-left:100px;
 }
 table th{
-	background:#E0E0E0;
+	background:rgb(232, 223, 202);
 }
 table td, table th{
 	border:1px solid #000;
@@ -255,7 +259,7 @@ table td, table th{
 /*활동내역*/
 
 .post-header h2{
-	margin-left:400px;
+	text-align:center;
 }
 
 /*회원 찜 목록*/
@@ -555,7 +559,27 @@ ul li,a{
     /* 소수점 이하 두 자리까지 자름 */
     --rounded-value: calc(var(--value) / 1);
 } 
+#allpoint{
+	float:right;
+	font-size:19pt;
+	border:1px solid #000;
+	
+} 
  
+/*구매내역 버튼*/
+.list_search input[type="submit"]{
+	width:45px;
+	height:30px;
+	border-radius:5px;
+	border:1px solid #4F6F52;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	margin-left:120px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
 /* 글꼴 */
 
 *{

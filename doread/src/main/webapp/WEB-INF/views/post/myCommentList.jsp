@@ -34,6 +34,9 @@
 			</tr>
 			</c:forEach>	
 		</table>
+			<div style="text-align:center;">
+				${spage}
+			</div>
 			<hr size="1" noshade width="100%">
 		<h4>중고 게시판 댓글</h4>
 		<table>
@@ -51,6 +54,9 @@
 			</tr>
 			</c:forEach>	
 		</table>
+		<div style="text-align:center;">
+				${upage}	
+		</div>
 </div>
 </body>
 </html>

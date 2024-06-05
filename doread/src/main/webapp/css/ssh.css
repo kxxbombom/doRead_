@@ -84,7 +84,7 @@ div.align-left b{
 /*관리자 페이지 상단바*/
 #adminpage{
 	
-	
+	z-index:1;
 	width:1000px;
 	height:163px;
 	background:rgb(26, 77, 46);

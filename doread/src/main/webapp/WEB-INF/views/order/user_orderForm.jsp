@@ -94,6 +94,7 @@ $(function(){
 			$(this).val('').focus();
 			return ;
 		}
+		$('#pointbtn').click();
 		
 	})
 	$('#order_form').submit(function(){

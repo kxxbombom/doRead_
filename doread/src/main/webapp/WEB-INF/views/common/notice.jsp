@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>안내</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
@@ -21,7 +22,7 @@
 				${accessMsg}
 				</c:if>
 				<c:if test="${empty accessMsg}">
-				잘못된 접속입니다.
+				<h4>잘못된 접속입니다.</h4>
 				</c:if>
 				<p>
 				<c:if test="${!empty accessUrl}">
@@ -29,7 +30,7 @@
 				   onclick="location.href='${accessUrl}'">
 				</c:if>
 				<c:if test="${empty accessUrl}">
-				<input type="button" value="홈으로"
+				<input type="button" class="button2" value="홈으로"
 				  onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 				</c:if>
 			</div>

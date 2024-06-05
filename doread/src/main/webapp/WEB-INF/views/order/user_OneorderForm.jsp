@@ -90,6 +90,7 @@ $(function(){
 			return ;
 		}
 		
+		$('#pointbtn').click();
 	})
 	$('#order_form').submit(function(){
 		const radio = document.querySelectorAll('input[class="payment"]:checked');

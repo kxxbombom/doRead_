@@ -66,8 +66,8 @@
 		<li>주소 : ${order.receive_address1 }  &nbsp;  ${order.receive_address2 }</li>
 		<li>
 		<span>배송상태 : </span>
-		<c:if test="${order.order_status == 1}">배송대기</c:if>
-		<c:if test="${order.order_status == 2}">배송준비중</c:if>
+		<c:if test="${order.order_status == 1}">결제완료</c:if>
+		<c:if test="${order.order_status == 2}">배송시작</c:if>
 		<c:if test="${order.order_status == 3}">배송중</c:if>
 		<c:if test="${order.order_status == 4}">배송완료</c:if>
 		<c:if test="${order.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>

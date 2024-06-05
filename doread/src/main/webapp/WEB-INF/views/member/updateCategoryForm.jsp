@@ -36,7 +36,8 @@
 				<div class="register-main">
 					<div class="container">
 						<div style="margin-bottom:10px;">
-						<h3><label for="preference">관심도서</label></h3>
+							<h3><label for="preference">관심도서</label></h3>
+							<p style="color:rgb(26, 77, 46);">*관심도서는 3개까지 선택할 수 있습니다</p>
 						</div>
 						<div class="preference-box">
 							<div class="preference-group">

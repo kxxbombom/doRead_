@@ -708,6 +708,34 @@ table td:first-child, table td:last-child, td.text-center{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
+.list-btn2 input, #list_search_form input[type="submit"]{
+	width:80px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.list-btn2 input:hover, #list_search_form input[type="submit"]:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+.list-btn3 input, #list_search_form input[type="submit"]{
+	width:100px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.list-btn3 input:hover, #list_search_form input[type="submit"]:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
 
 
 /* 게시판 글상세

@@ -24,7 +24,7 @@
 				<th>글번호</th>
 				<th>제목</th>
 				<th>작성일</th>
-				<th>글등급<img class="gideimage" src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
+				<th>글등급
 				</th>
 			</tr>
 			<c:forEach var="list" items="${list}">
