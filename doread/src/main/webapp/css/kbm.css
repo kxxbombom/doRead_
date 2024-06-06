@@ -1003,7 +1003,7 @@ form#cart_order{
 	display:flex;
 	flex-direction:column;
 }
-.cart-notice label{
+.cart-notice {
 	color:rgba(0,0,0,0.65);
 	font-weight:bold;
 	display:inline-block;
@@ -1157,6 +1157,16 @@ textarea {
 
 
 /*마이페이지 주문배송 구매내역상세*/
+.orderdetail label{
+	margin-right:0px;
+	width:150px;
+	float:left;
+	padding:0;
+}
+.orderdetail #receive_info{
+	padding:0 20px;
+}
+
 /*배송지수정 모달*/
 .mymodal {
     display: none;

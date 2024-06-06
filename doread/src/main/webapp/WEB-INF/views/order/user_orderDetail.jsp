@@ -19,9 +19,9 @@
 </head>
 <body>
 <div class="page-main">
-	<div class="content-main">
-	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
+	<div class="content-main orderdetail">
 	<h2>주문상세내역</h2>
 	<hr size="1" noshade width="100%">
 	<table>
@@ -59,24 +59,29 @@
  			</tr>
  		</table>
  		
+ 		
+ 		
 		<div id="receive_info">
+			<label>주문번호</label>
+			<span>${order.order_num}&nbsp;()</span>
 			<ul>
 				<li>
-					<span>배송지정보</span>
-					<div>
+					<label>배송지정보</label>
+					<div id="receive_div">
 						<ul>
-							<li><span id="receive_name">${order.receive_name}</span></li>
-							<li><span id="receive_phone">${order.receive_zipcode}</span></li>
-							<li><span id="receive_address1">${order.receive_address1}</span> <span id="receive_address2">${order.receive_address2}</span></li>
+							<li><span id="receive_name">${order.receive_name}</span>&nbsp;<span id="receive_phone">${order.receive_phone}</span></li>
+							<li><span id="receive_zipcode">${order.receive_zipcode}</span></li>
+							<li><span id="receive_address1">${order.receive_address1}</span>&nbsp; <span id="receive_address2">${order.receive_address2}</span></li>
 
 						</ul>
 					</div>
 				</li>
 				<li>
-					<label>배송요청사항</label> <span id="order_msg">${order.order_msg}</span>
+					<label>배송요청사항</label>
+					<span id="order_msg">${order.order_msg}</span>
 				</li>
 				<li>
-					<label>공동현관 출입방법 : </label>
+					<label>공동현관 출입방법</label>
 					<span id="enter">
 						<c:if test="${order.enter == 1}">
 							공동현관 비밀번호
@@ -88,6 +93,16 @@
 					<c:if test="${order.enter == 1}">
 						<span id="enter_passwd">${order.enter_passwd}</span>
 					</c:if>
+				</li>
+				
+				<li>
+					<label>결제정보</label>
+					<ul>
+						<li>주문금액 <fmt:formatNumber value="${order.order_total}"/>원</li>
+						<li>상품금액 </li>
+						<li>배송비</li>
+						<li>결제수단</li>
+					</ul>
 				</li>
 				
 			</ul>
