@@ -268,6 +268,38 @@ public class OrdersDAO {
 		}
 		return list;
 	}
+	//개별 도서 목록
+	public int getListOrderCount(int order_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT COUNT(*) FROM book_order_detail JOIN book USING (book_num) WHERE order_num=? ORDER BY book_num DESC";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, order_num);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+				
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+
+	
+	
 	//주문삭제(주문 내역만 삭제. 재고 원상 복귀X)
 	//관리자/사용자 - 주문상세
 	public OrderVO getOrder(int order_num)throws Exception{

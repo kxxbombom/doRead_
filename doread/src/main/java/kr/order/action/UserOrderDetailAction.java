@@ -35,6 +35,7 @@ public class UserOrderDetailAction implements Action{
 		}
 		
 		List<OrderDetailVO> detailList = dao.getListOrderDetail(order_num);
+		int order_count = dao.getListOrderCount(order_num);
 		//로그인이 된 경우
 		//회원정보
 		MemberDAO dao2 = MemberDAO.getInstance();
@@ -42,6 +43,7 @@ public class UserOrderDetailAction implements Action{
 		
 		request.setAttribute("order", order);
 		request.setAttribute("detailList", detailList);
+		request.setAttribute("order_count", order_count);
 		request.setAttribute("member", member);	
 		
 		return "/WEB-INF/views/order/user_orderDetail.jsp";

@@ -24,7 +24,6 @@
 	
 	<h2>주문상세내역</h2>
 	<hr size="1" noshade width="100%">
-	
 	<table>
  			<tr>
  				<th>도서명</th>
@@ -167,7 +166,7 @@
                			</div>
                		</li>
                 </ul>
-                <div class="align-center">
+                <div class="align-left">
                 <button type="submit" class="basicbtn">확인</button>
                 <input type="button" id="modify_cancel" value="취소" class="close basicbtn">
                 </div>
