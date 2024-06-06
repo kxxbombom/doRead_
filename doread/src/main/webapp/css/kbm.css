@@ -874,6 +874,15 @@ form#cart_order{
 	margin-left:0;
 	border:2px solid #d9d8d7;
 	border-radius:5px;
+	height:260px;
+	padding:5px;
+}
+.cartList2{
+	display:inline-block;
+	width:210px;
+	margin-left:0;
+	border:2px solid #d9d8d7;
+	border-radius:5px;
 	height:275px;
 	padding:5px;
 }
@@ -995,7 +1004,7 @@ div.order-info > div > *{
 	padding-left:15px;
 }
 
-#order_form div.cartList{
+#order_form div.cartList2{
 	padding:10px;
 }
 
@@ -1026,7 +1035,7 @@ div.order-info label{
 	width:140px;
 }
 #receive_info textarea{
-	width:100%;
+	width:110%;
 	border-radius:5px;
 }
 .flex-column{
@@ -1037,6 +1046,9 @@ div.order-info label{
 #select_msg{
 	margin-bottom:10px;
 	border-radius:5px;
+	width:200px;
+	height:28px;
+	font-size:14px;
 }
 
 #order_book{

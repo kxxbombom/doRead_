@@ -261,7 +261,7 @@ $(function(){
 			 	
 			</div>
 			
-			<div class="cartList">
+			<div class="cartList2">
 		 			<ul style="display:inline-block; width:200px;">
 		 				<li class="flex-container">상품 금액 <span><b><fmt:formatNumber value="${all_total}"/></b>원</span></li>
 		 				<li class="flex-container">
