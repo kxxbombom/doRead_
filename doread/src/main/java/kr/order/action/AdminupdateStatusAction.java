@@ -34,7 +34,9 @@ public class AdminupdateStatusAction implements Action{
 			map.put("result", "cancle");
 			
 		}else {
-		dao.updatestatus(order_num, status);
+		order.setOrder_status(status);	
+		order.setOrder_num(order_num);
+		dao.updatestatus(order);
 		map.put("result","success");
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(map);
