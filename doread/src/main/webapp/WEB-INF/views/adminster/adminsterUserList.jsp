@@ -11,8 +11,6 @@
 
 </head>
 <body>
-
-<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>

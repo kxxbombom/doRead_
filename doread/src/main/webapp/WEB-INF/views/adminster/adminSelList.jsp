@@ -12,8 +12,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-
-<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
