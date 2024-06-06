@@ -722,7 +722,7 @@ table td:first-child, table td:last-child, td.text-center{
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
-.list-btn2 input{
+.list-btn2 input, .btn2{
 	width:80px;
 	height:30px;
 	border-radius:5px;
@@ -732,11 +732,11 @@ table td:first-child, table td:last-child, td.text-center{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.list-btn2 input:hover{
+.list-btn2 input:hover, .btn2:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
-.list-btn3 input{
+.list-btn3 input, .ordercombtn{
 	width:100px;
 	height:30px;
 	border-radius:5px;
@@ -746,10 +746,44 @@ table td:first-child, table td:last-child, td.text-center{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.list-btn3 input:hover{
+.list-btn3 input:hover, .ordercombtn:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
+
+
+.btn4{
+	width:65px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.btn4:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
+.basicbtn{
+	width:50px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.basicbtn:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
 
 
 /* 게시판 글상세
@@ -1015,7 +1049,7 @@ div.order-info > div > *{
 #receive_info > ul{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 div#receive_div>ul>li{
 	display:flex;
@@ -1068,7 +1102,9 @@ div.order-info label{
 	
 }
 
-
+#point_use input[type="number"]{
+	height:25px;
+}
 
 
 .enter-group{
@@ -1119,7 +1155,7 @@ textarea {
 
 /*마이페이지 주문배송 구매내역상세*/
 /*배송지수정 모달*/
-.modal {
+.mymodal {
     display: none;
     position:fixed;
     z-index: 1;
@@ -1137,18 +1173,28 @@ textarea {
     padding: 20px;
     border: 1px solid #888;
     border-radius:10px;
-    width: 65%;
+    width: 50%;
 }
 .close {
-    color: #000;
+    /* color: #000; */
     /* float: right; */
-    font-size: 16px;
+    font-size: 14px;
 }
 .close:hover, .close:focus {
-	font-weight:bold;
     text-decoration: none;
     cursor: pointer;
 }
+form#editForm{
+	width:500px;
+}
+form#editForm  *{
+	font-size:14px;
+}
+form#editForm label{
+	width:120px;
+}
+
+
 
 /*모든 버튼*/
 input[type="button"]:hover, button:hover{

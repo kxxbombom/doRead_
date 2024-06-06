@@ -34,6 +34,19 @@ $(document).ready(function(){
     $('input[name="re_enter"]').on('change', function() {
         toggleEnterPasswd($(this).val() == 1);
     });
+    
+    
+    
+    $('#order_msg_textarea').addClass('hidden');
+    $('#select_msg').on('change',function(){
+		if (this.value == '6') {
+             $('#order_msg_textarea').removeClass('hidden');
+        } else {
+             $('#order_msg_textarea').addClass('hidden');
+        }
+	});
+    
+    
 
     
     // 폼 제출 처리

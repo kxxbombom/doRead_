@@ -18,11 +18,6 @@
 
 
 
-</script>
-
-
-<script type="text/javascript">
-
 function editShippingInfo() {
 	
     const inputs = document.querySelectorAll('input.r_info');
