@@ -48,6 +48,7 @@ $(function(){
 				<th>주문번호</th>
 				<th>도서명</th>
 				<th>총구매금액</th>
+				<th>날짜</th>
 				<th>마일리지</th>
 			</tr>
 			<c:forEach var="order" items="${list}">
