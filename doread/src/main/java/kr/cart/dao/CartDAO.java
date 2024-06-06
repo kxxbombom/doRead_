@@ -71,6 +71,36 @@ private static CartDAO instance = new CartDAO();
 		return total;
 	}
 	
+	//장바구니 상품전체개수(주문하기 표시)
+	public int getCartTotalCount(int mem_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT SUM(c_quantity) FROM cart WHERE mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}	
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+	
+	
 	//장바구니 상품개수
 	public int getCartCount(int mem_num) throws Exception{
 		Connection conn = null;
