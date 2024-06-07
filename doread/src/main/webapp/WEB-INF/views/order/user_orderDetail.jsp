@@ -60,8 +60,8 @@
  		</table>
  		
  		
- 		
-		<div id="receive_info">
+ 		<div id="floattest">
+		<div id="receive_info" class="test-left">
 			<label>주문번호</label><span>${order.order_num}</span><br>
 			<label>배송상태</label>
 			<span>
@@ -102,18 +102,19 @@
 					</c:if>
 				</li>
 			</ul>
-			
+			</div>
+			<div id="test-right">
 			<ul>
 				<li>
 					<label>결제정보</label>
 					<div id="payment_div">
 						<ul>
-							<li><label>주문금액</label> <span><fmt:formatNumber value="${order.order_total}"/>원</span></li>
-							<li><label>상품금액</label> <span><fmt:formatNumber value="${Obook_total}"/>원</span></li>
-							<li><label>배송비</label> <span><fmt:formatNumber value="${delivery}"/>원</span></li>
-							<li><label>포인트사용</label> <span><fmt:formatNumber value="${used_point}"/>원</span></li>
+							<li><span>주문금액</span> <span><fmt:formatNumber value="${order.order_total}"/>원</span></li>
+							<li><span>상품금액</span> <span><fmt:formatNumber value="${Obook_total}"/>원</span></li>
+							<li><span>배송비</span> <span><fmt:formatNumber value="${delivery}"/>원</span></li>
+							<li><span>포인트사용</span> <span><fmt:formatNumber value="${used_point}"/>원</span></li>
 
-							<li><label>결제수단</label>
+							<li><span>결제수단</span>
 								<span>
 								<c:if test="${order.order_payment == 1}">신용카드</c:if>
 								<c:if test="${order.order_payment == 2}">계좌이체</c:if>
@@ -125,7 +126,10 @@
 				</li>
 				
 			</ul>
-			<div class="align-center">
+			</div>
+			
+		</div>	
+			<div class="align-center orderdetailbtn" style="clear:both;">
 				<c:if test="${order.order_status == 1}">
 			
 				<input type="button"  class="btn2" value="배송지수정" id="openModalBtn">
@@ -146,7 +150,7 @@
 				<input type="button" class="btn4" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 			
 			</div>
-		</div>
+		
 		
 		
 		<div id="myModal" class="mymodal">

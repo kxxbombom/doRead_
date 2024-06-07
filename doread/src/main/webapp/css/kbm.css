@@ -1170,12 +1170,49 @@ textarea {
 div#payment_div>ul>li{
 	display:flex;
 	height:30px;
+	justify-content: space-between;
 }
 
 div#payment_div{
 	display:inline-block;
 }
+#payment_div ul{
+	width:180px;
+}
+#payment_div ul li span:first-child {
+	text-align: left;
+	margin-right:auto;
+}
+#payment_div ul li span:last-child {
+	text-align: right;
+}
 
+
+
+div#floattest{
+	float:left;
+	width:100%;
+	margin:20px 0;
+}
+#floattest label{
+	font-weight:bold;
+}
+.test-left{
+	float:left;
+	width:50%;
+}
+#test-right{
+	float:right;
+	padding:0 30px;
+}
+#test-right ul{
+	margin:0;
+}
+
+
+.orderdetailbtn{
+	padding:40px 0 ;
+}
 
 /*배송지수정 모달*/
 .mymodal {
