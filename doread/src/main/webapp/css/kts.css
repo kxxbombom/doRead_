@@ -37,6 +37,20 @@ form#search_form h2{
 	float: right;
 	margin-left:300px;
 }
+
+table.main-table{
+	border:none;
+	width:85%;
+}
+
+tr.main-tr{
+	border:none;
+}
+.main-td{
+	border:none;
+	padding:10px;
+}
+
 /*마이페이지 header
 -----------------------*/
 #mypage-main{

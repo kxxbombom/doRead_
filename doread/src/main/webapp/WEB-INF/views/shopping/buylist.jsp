@@ -57,21 +57,21 @@
 		
 		<c:if test="${count != 0}">
 		
-		<table>
-			<tr>
-				<th>주문번호</th>
-				<th>도서명</th>
-				<th>총구매금액</th>
-				<th>주문날짜</th>
-				<th>주문/배송 상태</th>
+		<table class="main-table">
+			<tr class="main-tr">
+				<th class="main-td">주문번호</th>
+				<th class="main-td">도서명</th>
+				<th class="main-td">총구매금액</th>
+				<th class="main-td">주문날짜</th>
+				<th class="main-td">주문/배송 상태</th>
 			</tr>
 			<c:forEach var="order" items="${list}">
 			<tr>
-				<td>${order.order_num}</td>
-				<td><a href="${pageContext.request.contextPath}/order/orderDetail.do?order_num=${order.order_num}">${order.book_name}</a></td>
-				<td>${order.order_total}원</td>
-				<td>${order.order_date}</td>
-				<td>
+				<td class="main-td">${order.order_num}</td>
+				<td class="main-td"><a href="${pageContext.request.contextPath}/order/orderDetail.do?order_num=${order.order_num}">${order.book_name}</a></td>
+				<td class="main-td">${order.order_total}원</td>
+				<td class="main-td">${order.order_date}</td>
+				<td class="main-td">
 					<c:if test="${order.order_status == 1}">결제완료</c:if>
 					<c:if test="${order.order_status == 2}">배송시작</c:if>
 					<c:if test="${order.order_status == 3}">배송중</c:if>
