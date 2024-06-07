@@ -30,7 +30,7 @@
 			<c:forEach var="list" items="${list}">
 			<tr>
 				<td>${list.u_num}</td>
-				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${list.u_num}">${list.u_title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${list.u_num}" class="board-title">${list.u_title}</a></td>
 				<td>${list.u_rdate}</td>
 				<td>
 					<c:if test="${list.u_auth == 0}">일반게시물</c:if>
@@ -56,7 +56,7 @@
 			<c:forEach var="Storylist" items="${Storylist}">
 			<tr>
 				<td>${Storylist.s_num}</td>
-				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${Storylist.s_num}">${Storylist.s_title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${Storylist.s_num}" class="board-title">${Storylist.s_title}</a></td>
 				<td>${Storylist.s_rdate}</td>
 				<td>
 					<c:if test="${Storylist.s_auth == 0}">일반게시물</c:if>
@@ -82,7 +82,7 @@
 			<c:forEach var="qna" items="${qnalist}">
 			<tr>
 				<td>${qna.q_num}</td>
-				<td><a href="${pageContext.request.contextPath}/qna/qnaDetail.do?q_num=${qna.q_num}">${qna.q_title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/qna/qnaDetail.do?q_num=${qna.q_num}" class="QnA-title">${qna.q_title}</a></td>
 				<td>${qna.q_rdate}</td>
 			
 			</tr>

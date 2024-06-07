@@ -595,6 +595,30 @@ ul li,a{
 	font-family: 'Pacifico', serif;
 }
 
-
-
-
+.comment-content{
+	display:inline-block;
+	width:400px;
+	max-width:600px;
+	overflow:hidden;
+	height:20px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+}
+.qna-content{
+	display:inline-block;
+	width:300px;
+	max-width:500px;
+	overflow:hidden;
+	height:20px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+}
+.board-title{
+	display:inline-block;
+	width:150px;
+	max-width:250px;	
+	overflow:hidden;
+	height:20px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+}

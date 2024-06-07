@@ -29,7 +29,7 @@
 			<input type="hidden" name="s_num" id="s_num" value="${SCommentList.s_num}">
 			<tr>
 				<td>${SCommentList.sc_num}</td>
-				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${SCommentList.s_num}">${SCommentList.sc_content}</a></td>
+				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${SCommentList.s_num}" class="comment-content">${SCommentList.sc_content}</a></td>
 				<td>${SCommentList.sc_rdate}</td>
 			</tr>
 			</c:forEach>	
@@ -49,7 +49,7 @@
 			<input type="hidden" name="u_num" id="u_num" value="${UBCList.u_num}">
 			<tr>
 				<td>${UBCList.uc_num}</td>
-				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${UBCList.u_num}">${UBCList.uc_content}</a></td>
+				<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${UBCList.u_num}" class="comment-content">${UBCList.uc_content}</a></td>
 				<td>${UBCList.uc_rdate}</td>
 			</tr>
 			</c:forEach>	

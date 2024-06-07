@@ -1214,5 +1214,15 @@ input[type="button"]:hover, button:hover{
 	cursor:pointer;
 }
 
+.board-title{
+	display:inline-block;
+	width:250px;
+	max-width:300px;	
+	overflow:hidden;
+	height:40px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+	margin-top: 10px; 	
+}
 
 
