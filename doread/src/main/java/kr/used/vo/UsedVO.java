@@ -18,7 +18,15 @@ public class UsedVO {
 	private int u_price;
 	private int mem_num;
 	private String book_name;
+	
+	private int cucount;
 
+	public int getCucount() {
+		return cucount;
+	}
+	public void setCucount(int cucount) {
+		this.cucount = cucount;
+	}
 	public String getUser_image() {
 		return user_image;
 	}

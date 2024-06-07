@@ -125,6 +125,7 @@ public class UsedDAO {
 				list = new ArrayList<UsedVO>();
 				do{
 					UsedVO used = new UsedVO();
+					UsedDAO dao = new UsedDAO();
 					used.setBook_num(re.getInt("book_num"));
 					used.setU_num(re.getInt("u_num"));
 					used.setU_hit(re.getInt("u_hit"));
@@ -136,6 +137,7 @@ public class UsedDAO {
 					used.setU_auth(re.getInt("u_auth"));
 					used.setU_rdate(re.getDate("u_rdate"));
 					used.setBook_name(re.getString("book_name"));
+					used.setCucount(dao.getCommentUsedCount(re.getInt("u_num")));
 					
 					list.add(used);
 				}while(re.next());
@@ -173,6 +175,7 @@ public class UsedDAO {
 				list = new ArrayList<UsedVO>();
 				do{
 					UsedVO used = new UsedVO();
+				
 					used.setBook_num(re.getInt("book_num"));
 					used.setU_num(re.getInt("u_num"));
 					used.setU_hit(re.getInt("u_hit"));
@@ -184,6 +187,7 @@ public class UsedDAO {
 					used.setU_auth(re.getInt("u_auth"));
 					used.setU_rdate(re.getDate("u_rdate"));
 					used.setBook_name(re.getString("book_name"));
+					
 					
 					list.add(used);
 				}while(re.next());
