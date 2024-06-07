@@ -24,7 +24,7 @@
 				<input type="button" class="ordercombtn" value="주문/배송 조회" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 			</div>
 		</div>
-		<hr size="1" noshade width="800">
+		<hr size="1" noshade width="800" style="margin-bottom:80px;">
 	</div>
 </div>
 </body>

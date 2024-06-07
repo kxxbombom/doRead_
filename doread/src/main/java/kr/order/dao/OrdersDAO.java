@@ -268,17 +268,18 @@ public class OrdersDAO {
 		}
 		return list;
 	}
-	//개별 도서 목록
-	public int getListOrderCount(int order_num)throws Exception{
+	
+	//배송비제외 도서금액 총액
+	public int getBookTotal(int order_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int count = 0;
+		int total = 0;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "SELECT COUNT(*) FROM book_order_detail JOIN book USING (book_num) WHERE order_num=? ORDER BY book_num DESC";
+			sql = "select SUM(book_total) from book_order_detail where order_num=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -287,17 +288,16 @@ public class OrdersDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				count = rs.getInt(1);
-			}
-				
+				total = rs.getInt(1);
+			}	
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
-		return count;
-	}
-
+		return total;
+	}	
+	
 	
 	
 	//주문삭제(주문 내역만 삭제. 재고 원상 복귀X)

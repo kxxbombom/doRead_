@@ -62,8 +62,15 @@
  		
  		
 		<div id="receive_info">
-			<label>주문번호</label>
-			<span>${order.order_num}&nbsp;()</span>
+			<label>주문번호</label><span>${order.order_num}</span><br>
+			<label>배송상태</label>
+			<span>
+				<c:if test="${order.order_status == 1}">결제완료</c:if>
+				<c:if test="${order.order_status == 2}">배송시작</c:if>
+				<c:if test="${order.order_status == 3}">배송중</c:if>
+				<c:if test="${order.order_status == 4}">배송완료</c:if>
+				<c:if test="${order.order_status == 5}">주문취소</c:if>
+			</span>
 			<ul>
 				<li>
 					<label>배송지정보</label>
@@ -94,15 +101,27 @@
 						<span id="enter_passwd">${order.enter_passwd}</span>
 					</c:if>
 				</li>
-				
+			</ul>
+			
+			<ul>
 				<li>
 					<label>결제정보</label>
-					<ul>
-						<li>주문금액 <fmt:formatNumber value="${order.order_total}"/>원</li>
-						<li>상품금액 </li>
-						<li>배송비</li>
-						<li>결제수단</li>
-					</ul>
+					<div id="payment_div">
+						<ul>
+							<li><label>주문금액</label> <span><fmt:formatNumber value="${order.order_total}"/>원</span></li>
+							<li><label>상품금액</label> <span><fmt:formatNumber value="${Obook_total}"/>원</span></li>
+							<li><label>배송비</label> <span><fmt:formatNumber value="${delivery}"/>원</span></li>
+							<li><label>포인트사용</label> <span><fmt:formatNumber value="${used_point}"/>원</span></li>
+
+							<li><label>결제수단</label>
+								<span>
+								<c:if test="${order.order_payment == 1}">신용카드</c:if>
+								<c:if test="${order.order_payment == 2}">계좌이체</c:if>
+								<c:if test="${order.order_payment == 3}">휴대폰결제</c:if>
+								</span>
+							</li>
+						</ul>
+					</div>
 				</li>
 				
 			</ul>

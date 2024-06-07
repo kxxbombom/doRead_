@@ -130,6 +130,7 @@ $(function(){
     
     
     
+    $('#pay_card').hide();
     function togglePayment(show) {
 	    var paymentInput = $('#pay_card');
 	    if (show) {
@@ -140,10 +141,10 @@ $(function(){
 	}
 
 	var isPay = $('input[name="payment"]:checked').val();
-    togglePayment(isPay == 1);
+    togglePayment(isPay == 1 || isPay == 3);
 
     $('input[name="payment"]').on('change', function() {
-        togglePayment($(this).val() == 1);
+        togglePayment($(this).val() != 2);
     });
     
     
@@ -250,7 +251,7 @@ $(function(){
 								<input type="radio" class="payment" name="payment" value="1">신용카드
 								<input type="radio" class="payment" name="payment" value="2">계좌이체
 								<input type="radio" class="payment" name="payment" value="3">휴대폰결제	
-								<input type="text" name="enter_passwd" placeholder="카드번호" id="pay_card">
+								<input type="text" name="pay_text" placeholder="카드번호" id="pay_card">
 							</div>
 				 	</div>
 			 	

@@ -1167,6 +1167,16 @@ textarea {
 	padding:0 20px;
 }
 
+div#payment_div>ul>li{
+	display:flex;
+	height:30px;
+}
+
+div#payment_div{
+	display:inline-block;
+}
+
+
 /*배송지수정 모달*/
 .mymodal {
     display: none;

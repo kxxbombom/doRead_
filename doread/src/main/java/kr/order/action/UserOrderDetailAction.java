@@ -35,16 +35,38 @@ public class UserOrderDetailAction implements Action{
 		}
 		
 		List<OrderDetailVO> detailList = dao.getListOrderDetail(order_num);
-		int order_count = dao.getListOrderCount(order_num);
 		//로그인이 된 경우
 		//회원정보
 		MemberDAO dao2 = MemberDAO.getInstance();
 		MemberVO member = dao2.getMember(user_num);
 		
+		//도서금액,배송비
+		int Obook_total = dao.getBookTotal(order_num);
+		int delivery = 2500;
+		int used_point = 0;
+		int cal = order.getOrder_total() - Obook_total;
+		if(Obook_total >= 15000 && cal == 0) { 
+			delivery = 0;
+			used_point = 0;
+		}
+		if(Obook_total >= 15000 && cal < 0) {
+			delivery = 0;
+			used_point = -cal;
+		}
+		if(Obook_total < 15000 && cal == 0) {
+			used_point = 2500;
+		}
+		if(Obook_total < 15000 && cal != 0 ) {
+			used_point = delivery - cal;
+		}
+		
+		
 		request.setAttribute("order", order);
 		request.setAttribute("detailList", detailList);
-		request.setAttribute("order_count", order_count);
 		request.setAttribute("member", member);	
+		request.setAttribute("Obook_total", Obook_total);
+		request.setAttribute("delivery", delivery);
+		request.setAttribute("used_point", used_point);
 		
 		return "/WEB-INF/views/order/user_orderDetail.jsp";
 	}
