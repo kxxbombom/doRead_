@@ -30,7 +30,7 @@
 					<input type="search"  class="list_search" size="16" name="keyword" id="keyword2" value="${param.keyword}">
 				</li>
 				<li>
-					<input type="submit" value="검색" class="list_search">
+					<input type="submit" value="검색" class="list_search" style="margin-left:0px;">
 				</li>
 			</ul>
 		</form>

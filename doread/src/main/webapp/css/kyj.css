@@ -227,4 +227,19 @@ div.slider-items .slider-image{
 	border:1px solid #4F6F52;
 }
 
+table.fav-table{
+	border:none;
+}
 
+tr.fav-tr{
+	border:none;
+}
+
+.fav-td{
+	border:none;
+	padding:10px;
+}
+
+div.fav-button{
+	margin:20px;
+}
