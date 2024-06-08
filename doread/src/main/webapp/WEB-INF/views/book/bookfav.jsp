@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,16 @@
 		<div class="detail-header">
 			<h2>회원 찜 목록</h2>
 			<hr size="1" noshade width="100%">
+			<c:if test="${fn:length(bookList)==0}">
+			<div class="align-center">
+				<h3 style="margin-top:50px;">찜한 도서가 없습니다</h3>
+			</div>
+			<div class="fav-button">
+				<input type="button" value="책 목록" onclick="location.href='${pageContext.request.contextPath}/book/list.jsp'">
+				<input type="button" value="마이페이지" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'">
+			</div>
+			</c:if>
+			<c:if test="${fn:length(bookList)!=0}">
 			<table class="fav-table">
 				<tr class="fav-tr">
 					<th class="fav-td">제목</th>
@@ -36,10 +47,11 @@
 					</tr>
 				</c:forEach>
 			</table>
-		</div>
 			<div class="fav-button">
 				<input type="button" value="마이페이지" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'">
 			</div>
+			</c:if>
+		</div>
 	</div>
 </body>
 </html>

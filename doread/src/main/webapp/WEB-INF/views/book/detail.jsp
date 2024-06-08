@@ -217,8 +217,9 @@
 	</div>
 		<ul class="book-info">
 			<li id="book_review">
+				<div class="info-title">
 				<h3>이 책의 리뷰</h3>
-				<hr width="100%" size="1" noshade="noshade">
+				</div>
 				<c:if test="${s_count==0}">
 					<div class="align-center">
 						<h4>표시할 리뷰가 없습니다.</h4>
@@ -242,15 +243,15 @@
 						</c:forEach>
 					</table>
 				</c:if>
-				<hr width="100%" size="1" noshade="noshade">
 			</li>
 			<li id="change_info">
-				<h3>교환/반품/품절 안내</h3>
-				<hr width="100%" size="1" noshade="noshade">
+				<div class="info-title">
+					<h3>교환/반품/품절 안내</h3>
+				</div>
 				<input type="button" value="교환/반품 신청" onclick="location.href='${pageContext.request.contextPath}/qna/qnaWriteForm.do'">
 				<p><b>반품/교환 방법</b></p>
 				<p>
-				QnA게시판의 [일반문의] 유형으로 반품 및 교환 신청 작성<br>
+				QnA게시판의 [교환 및 반품] 유형으로 반품 및 교환 신청 작성<br>
 				반품 및 교환 신청 시 문의 내용에 신청 사유를 기재해주셔야 처리가 가능합니다.
 				</p>
 				<p><b>반품/교환 가능기간</b></p>
