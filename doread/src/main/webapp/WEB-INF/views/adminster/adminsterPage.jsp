@@ -188,8 +188,8 @@ $(function(){
 	</ul>
 	</div>
 	<div class="align-center">
-	<input type="submit" value="등록" class="button2">
-	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="submit" value="등록" class="button2">
+		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	
 </form>

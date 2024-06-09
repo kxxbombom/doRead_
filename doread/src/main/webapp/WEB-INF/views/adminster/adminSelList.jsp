@@ -26,7 +26,6 @@
  					<option value="3" <c:if test="${check == 3}">selected</c:if> >상품명</option>
  				</select>
  				<input type="number" name="keyw" class="inputcheck input-style" id="search" maxlength="30" placeholder="">
- 	
  				<input id="subbtn" type="submit" value="검색" class="button2">
 			</form>
 			<script type="text/javascript">
@@ -41,7 +40,6 @@
 			</script>
 	</div>	
 			
-	
 	<hr size="1.5" width="80%" noshade="noshade">
 	
 	<c:if test="${empty list}">
@@ -54,29 +52,28 @@
 		<c:if test="${!empty list}">
 		<table>
 			<tr>
-			<th>주문번호</th>
-			<th>주문이름</th>
-			<th>회원번호</th>
-			<th>주문금액</th>
-			<th>배송상태</th> 
-			<th>주문일</th>
-			
+				<th>주문번호</th>
+				<th>주문이름</th>
+				<th>회원번호</th>
+				<th>주문금액</th>
+				<th>배송상태</th> 
+				<th>주문일</th>
 			</tr>
 		<c:forEach var="i" items="${list}">
 			
 			<tr>
-			<td>${i.order_num}</td>
-			<td><a href="detailOrder.do?order_num=${i.order_num}">${i.book_name}</a></td>
-			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_id}</a></td>
-			<td> <fmt:formatNumber value="${i.order_total }"/>원</td>
-			<td>
-			<c:if test="${i.order_status == 1}">결제완료</c:if>
-			<c:if test="${i.order_status == 2}">배송시작</c:if>
-			<c:if test="${i.order_status == 3}">배송중</c:if>
-			<c:if test="${i.order_status == 4}">배송완료</c:if>
-			<c:if test="${i.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
-			</td>
-			<td>${i.order_date}</td>
+				<td>${i.order_num}</td>
+				<td><a href="detailOrder.do?order_num=${i.order_num}">${i.book_name}</a></td>
+				<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_id}</a></td>
+				<td> <fmt:formatNumber value="${i.order_total }"/>원</td>
+				<td>
+				<c:if test="${i.order_status == 1}">결제완료</c:if>
+				<c:if test="${i.order_status == 2}">배송시작</c:if>
+				<c:if test="${i.order_status == 3}">배송중</c:if>
+				<c:if test="${i.order_status == 4}">배송완료</c:if>
+				<c:if test="${i.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
+				</td>
+				<td>${i.order_date}</td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -84,17 +81,13 @@
 
 	</div>
 	<div class="align-center">
-	${page}
-	
+		${page}
 	</div>
 	<div class="align-center">
-	<p>
-	<br>
-	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-	
+		<p>
+		<br>
+		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
-	
-
 </div>
 </body>
 </html>

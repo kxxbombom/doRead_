@@ -2,26 +2,25 @@
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
+ 
 <div id="adminpage" style="z-index:1;">
 	<a class="photo_btn"><img  class="photo_btn" id="penimage" src="${pageContext.request.contextPath}/images/pencil_1361912.png"  width="30" height="30"></a>
 	<div class="adminnav" style="z-index:1;">
 	<ul >
 		<li id="myphoto" style="z-index:1;">
 			<c:if test="${empty user_photo}">
-			<img src="${pageContext.request.contextPath}/images/face.png" 
+				<img src="${pageContext.request.contextPath}/images/face.png" 
 						                   width="100" height="100" class="my-photo">
 			</c:if>
 			<c:if test="${!empty user_photo}">
-			<img src="${pageContext.request.contextPath}/upload/${user_photo}"
+				<img src="${pageContext.request.contextPath}/upload/${user_photo}"
 					                   width="100" height="100" class="my-photo" id="my" >
-			
 			</c:if>
 			
 				<div id="photo_choice" style="display:none; position:absolute; z-index:999 !important; background:white;">
-					<input type="file" id="photo"
-						accept="image/gif,image/png,image/jpeg" class="input-style"> <input
-						type="button" class="button2" value="전송" id="photo_submit"> <input
-						type="button"   class="button2" value="취소" id="photo_reset">
+					<input type="file" id="photo" accept="image/gif,image/png,image/jpeg" class="input-style"> 
+					<input type="button" class="button2" value="전송" id="photo_submit"> 
+					<input type="button"   class="button2" value="취소" id="photo_reset">
 				</div>
 			
 		</li>

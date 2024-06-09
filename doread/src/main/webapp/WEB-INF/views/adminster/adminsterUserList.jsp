@@ -25,7 +25,6 @@
  					<option value="3" <c:if test="${check == 3}">selected</c:if> >이메일</option>
  				</select>
  				<input type="text" name="keyw" class="inputcheck input-style" id="search" maxlength="30" placeholder="">
- 	
  				<input id="subbtn" type="submit" value="검색" class="button2">
 		</form>
 	<hr size="1.5" width="80%" noshade="noshade">
@@ -36,28 +35,27 @@
  	
 
 	<div class="content-main">
-	
 		<c:if test="${!empty member}">
 		<table>
 			<tr>
-			<th>회원번호</th>
-			<th>회원이름</th>
-			<th>회원아이디</th>
-			<th>회원등급</th> 
-			<th>회원전화번호</th>
-			<th>회원이메일</th>
-			<th>회원가입일</th>
+				<th>회원번호</th>
+				<th>회원이름</th>
+				<th>회원아이디</th>
+				<th>회원등급</th> 
+				<th>회원전화번호</th>
+				<th>회원이메일</th>
+				<th>회원가입일</th>
 			</tr>
 		<c:forEach var="i" items="${member}">
 			
 			<tr>
-			<td>${i.mem_num}</td>
-			<td>${i.mem_name}</td>
-			<td>${i.mem_id }</td>
-			<td> <a href="detailUser.do?mem_num=${i.mem_num}">${i.mem_auth}</a></td>
-			<td>${i.mem_email}</td>
-			<td>${i.mem_email}</td>
-			<td>${i.mem_rdate}</td>
+				<td>${i.mem_num}</td>
+				<td>${i.mem_name}</td>
+				<td>${i.mem_id }</td>
+				<td> <a href="detailUser.do?mem_num=${i.mem_num}">${i.mem_auth}</a></td>
+				<td>${i.mem_email}</td>
+				<td>${i.mem_email}</td>
+				<td>${i.mem_rdate}</td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -65,14 +63,12 @@
 
 	</div>
 	<div class="align-center">
-	${page}
-	
+		${page}
 	</div>
 	<div class="align-center">
-	<p>
-	<br>
-	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-	
+		<p>
+		<br>
+		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	
 

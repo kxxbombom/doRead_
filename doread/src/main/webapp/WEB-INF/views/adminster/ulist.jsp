@@ -25,12 +25,12 @@
 	<c:if test="${!empty list}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list}">
 	 		<c:if test="${i.auth == 0}">
@@ -51,12 +51,11 @@
 	 			</td>
 	 			<td>
 	 				<c:if test="${i.auth ==0 }">일반</c:if>
-	 				
 	 				<c:if test="${i.auth ==2 }">정지</c:if>
 	 			</td>
 	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
-	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.ur_num}" data-name="ur_num" ">
+		 			<input type="button" value="변경" class="upbtn button2" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
+		 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.ur_num}" data-name="ur_num" ">
 	 			</td>
 	 		</tr>
 	 		</c:if>
@@ -64,8 +63,11 @@
 	 </table>
 	 <div class="align-center">
 	 	${page }
-	 </div> <br><br>
+	 </div>
+	 <br>
+	 <br>
 	</c:if>
+	
 	<h2>중고게시판 신고된 댓글 관리</h2>
 	<c:if test="${empty list1}">
 	 신고등록된 댓글이 없습니다.
@@ -73,14 +75,14 @@
 	<c:if test="${!empty list1}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>댓글번호</th>
-	 	<th>댓글내용</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>댓글번호</th>
+		 	<th>댓글내용</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list1}">
 	 		<c:if test="${i.auth == 0}">
@@ -108,17 +110,20 @@
 	 				<c:if test="${i.auth ==2 }">정지</c:if>
 	 			</td>
 	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.uc_num}" data-name="uc_num" data-auth="${i.auth}">
-	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.urc_num}" data-name="urc_num" ">
+		 			<input type="button" value="변경" class="upbtn button2" data-id="${i.uc_num}" data-name="uc_num" data-auth="${i.auth}">
+		 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.urc_num}" data-name="urc_num" ">
 	 			</td>
 	 		</tr>
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
-	  <div class="align-center">
+	 <div class="align-center">
 	 	${page1 }
-	 </div> <br><br>
+	 </div>
+	 <br>
+	 <br>
 	</c:if>
+	
 	<h2>스토리게시판 신고된 게시글 관리</h2>
 	<c:if test="${empty list2}">
 	 신고등록된 게시글이 없습니다.
@@ -126,12 +131,12 @@
 	<c:if test="${!empty list2}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list2}">
 	 		<c:if test="${i.auth == 0}">
@@ -151,13 +156,12 @@
 	 				${i.sr_content}
 	 			</td>
 	 			<td>
-	 				<c:if test="${i.auth ==0 }">일반</c:if>
-	 				
-	 				<c:if test="${i.auth ==2 }">정지</c:if>
+	 				<c:if test="${i.auth ==0}">일반</c:if>
+	 				<c:if test="${i.auth ==2}">정지</c:if>
 	 			</td>
 	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.s_num}" data-name="s_num" data-auth="${i.auth}">
-	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.sr_num}" data-name="sr_num" ">
+		 			<input type="button" value="변경" class="upbtn button2" data-id="${i.s_num}" data-name="s_num" data-auth="${i.auth}">
+		 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.sr_num}" data-name="sr_num" >
 	 			</td>
 	 		</tr>
 	 		</c:if>
@@ -174,14 +178,14 @@
 	<c:if test="${!empty list3}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>댓글번호</th>
-	 	<th>댓글내용</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>댓글번호</th>
+		 	<th>댓글내용</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list3}">
 	 		<c:if test="${i.auth == 0}">
@@ -205,12 +209,11 @@
 	 			</td>
 	 			<td>
 	 				<c:if test="${i.auth ==0 }">일반</c:if>
-	 				
 	 				<c:if test="${i.auth ==2 }">정지</c:if>
 	 			</td>
 	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
-	 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.src_num}" data-name="src_num" >
+	 				<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
+	 				<input type="button" value="삭제" class="delbtn button2" data-id="${i.src_num}" data-name="src_num" >
 	 			</td>
 	 		</tr>
 	 		</c:if>
@@ -227,89 +230,88 @@
 	</div>
 	<div class="hide authupdate align-center" 
 	style="width:400px; position:fixed;
-z-index:999 !important;
-bottom:400px;
-border:1px solid #999 !important;
-border-radius:15px;
-padding:8px;
-background:white;" >
+		z-index:999 !important;
+		bottom:400px;
+		border:1px solid #999 !important;
+		border-radius:15px;
+		padding:8px;
+		background:white;" >
 		<h2>등급변경</h2>
 		현재 게시글/댓글 등급:
 		<input type="radio" name="radio"  value="0" >일반
 	 	<input type="radio"  name="radio"  value="2" >정지
-	 		<br> <input type="button" value="변경"  class="button2 rebtn" id="update">	
-	 			<input type="button" value="취소"  class="button2 redelbtn" id="update">	
-	 	
-	
+	 	<br>
+	 	<input type="button" value="변경"  class="button2 rebtn" id="update">	
+	 	<input type="button" value="취소"  class="button2 redelbtn" id="update">	
 	</div>
-<script type="text/javascript">
-$(document).on('click', '.upbtn',function(){
-	if($('.authupdate').hasClass('hide')){
-        $('.authupdate').removeClass('hide');
-         $('.rebtn').attr('data-id',$(this).attr('data-id'));
-        $('.rebtn').attr('data-name',$(this).attr('data-name'));
-        $('input[value="'+$(this).attr('data-auth')+'"]').attr('checked','true');
-     
-    }else{
-        $('.authupdate').addClass('hide');
-       $('.rebtn').attr('data-id','');
-         $('.rebtn').attr('data-name','');
-         
-         $('input[type="radio"]:checked').attr('checked','false');
-	    }
-	
-});
-$(document).on('click', '.redelbtn',function(){
-	
-        $('.authupdate').addClass('hide');
-        $('.rebtn').attr('data-id','');
-        $('.rebtn').attr('data-name','');
-       
-        $('input[type="radio"]:checked').attr('checked','false');
-	    
-	
-});
-$('.rebtn').click(function(){
-	if( $('input[type="radio"]:checked').length <1){
-		alert('등급을 설정해주세요');
-		return;
-	}
-	
-	$.ajax({
-		url:'updateAuth2.do',
-		data:{num:$(this).attr('data-id'),name:$(this).attr('data-name'),auth:$('input[type="radio"]:checked').val()},
-		type:'post',
-		dataType:'json',
-		success:function(param){
-			if(param.result=='logout'){
-				alert('관리자 아이디로 로그인 후 사용해주세요');
-				
-			}else if(param.result=='success'){
-				alert('등급이 변경되었습니다.');
-				
-				$('.authupdate').addClass('hide');
-				location.href="ulist.do";
-			}else{
-				alert('신고 접수 에러');
-			}
-		},
-		error:function(){
-			alert('네트워크 오류');
+	<script type="text/javascript">
+	$(document).on('click', '.upbtn',function(){
+		if($('.authupdate').hasClass('hide')){
+	        $('.authupdate').removeClass('hide');
+	         $('.rebtn').attr('data-id',$(this).attr('data-id'));
+	        $('.rebtn').attr('data-name',$(this).attr('data-name'));
+	        $('input[value="'+$(this).attr('data-auth')+'"]').attr('checked','true');
+	     
+	    }else{
+	        $('.authupdate').addClass('hide');
+	       $('.rebtn').attr('data-id','');
+	         $('.rebtn').attr('data-name','');
+	         
+	         $('input[type="radio"]:checked').attr('checked','false');
+		    }
+		
+	});
+	$(document).on('click', '.redelbtn',function(){
+		
+	        $('.authupdate').addClass('hide');
+	        $('.rebtn').attr('data-id','');
+	        $('.rebtn').attr('data-name','');
+	       
+	        $('input[type="radio"]:checked').attr('checked','false');
+		    
+		
+	});
+	$('.rebtn').click(function(){
+		if( $('input[type="radio"]:checked').length <1){
+			alert('등급을 설정해주세요');
+			return;
 		}
+		
+		$.ajax({
+			url:'updateAuth2.do',
+			data:{num:$(this).attr('data-id'),name:$(this).attr('data-name'),auth:$('input[type="radio"]:checked').val()},
+			type:'post',
+			dataType:'json',
+			success:function(param){
+				if(param.result=='logout'){
+					alert('관리자 아이디로 로그인 후 사용해주세요');
+					
+				}else if(param.result=='success'){
+					alert('등급이 변경되었습니다.');
+					
+					$('.authupdate').addClass('hide');
+					location.href="ulist.do";
+				}else{
+					alert('신고 접수 에러');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류');
+			}
+		})
+		
+		
 	})
+	$('.delbtn').click(function(){
+	    		const choose =confirm('정말삭제하시겠습니까?');
+	    		
+	    		if(choose){
+	   			location.href="${pageContext.request.contextPath}/adminster/deleteReport.do?num="+$(this).attr('data-id')+"&name="+$(this).attr('data-name');
+	    		}
+	    		
+	    	})
 	
-	
-})
-$('.delbtn').click(function(){
-    		const choose =confirm('정말삭제하시겠습니까?');
-    		
-    		if(choose){
-   			location.href="${pageContext.request.contextPath}/adminster/deleteReport.do?num="+$(this).attr('data-id')+"&name="+$(this).attr('data-name');
-    		}
-    		
-    	})
-
-</script>
+	</script>
 </div>
 </div>
 </body>
