@@ -22,17 +22,17 @@
 			</div>
 		</div>
 		<div id="profileboard align-left">
-		
-		<c:if test="${!empty used.user_image }">
-			<img src="${pageContext.request.contextPath}/upload/${used.user_image}" class="my-photo" width="46" height="43">
-		</c:if>
-		<c:if test="${empty used.user_image}">
-			<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo" width="46" height="43">
-		</c:if>
-			${used.id}
-			<br>
-			<p>
-			${used.u_rdate} &nbsp; 조회수:${used.u_hit}
+			<h2>${used.u_title}</h2>
+			<c:if test="${!empty used.user_image }">
+				<img src="${pageContext.request.contextPath}/upload/${used.user_image}" class="my-photo" width="46" height="43">
+			</c:if>
+			<c:if test="${empty used.user_image}">
+				<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo" width="46" height="43">
+			</c:if>
+				${used.id}
+				<br>
+				<p>
+				${used.u_rdate} &nbsp; 조회수:${used.u_hit}
 		</div>
 		
 		<c:if test="${used.mem_num == user_num}">

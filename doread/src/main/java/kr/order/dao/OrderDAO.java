@@ -603,7 +603,7 @@ public class OrderDAO {
 					ps4.executeUpdate();
 					
 					List<OrderDetailVO> detail = getListOrder_Detail(order.getOrder_num());
-					sql="update book set stock=stock+?, ORDER_MDATE=sysdate  where book_num=?";
+					sql="update book set stock=stock+? where book_num=?";
 					ps2 = conn.prepareStatement(sql);
 					for(int i=0; i<detail.size(); i++) {
 						ps2.setInt(1, detail.get(i).getOrder_quantity());

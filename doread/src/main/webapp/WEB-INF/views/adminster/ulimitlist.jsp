@@ -15,7 +15,7 @@
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<div class="page-main">
+<div class="page-main align-center">
 <h2>중고게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list}">
 	 정지등록된 게시글이 없습니다.
@@ -156,7 +156,12 @@
 	
 	<h2>스토리게시판 정지된 댓글 관리</h2>
 	<c:if test="${empty list3}">
-		정지등록된 댓글이 없습니다.
+		<div class="align-center">
+			<p>
+			정지등록된 댓글이 없습니다.
+			<p>
+			<p>
+		</div>
 	</c:if>
 	<c:if test="${!empty list3}">
 	 <table>
@@ -202,8 +207,7 @@
 	 </table>
 	</c:if>
 	<div class="align-center">
-		<input type="submit" value="등록" class="button2">
-		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="button" value="HOME" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	<div class="hide authupdate align-center" 
 	style="width:400px; position:fixed;
@@ -217,10 +221,9 @@
 		현재 게시글/댓글 등급:
 		<input type="radio" name="radio"  value="0" >일반
 	 	<input type="radio"  name="radio"  value="2" >정지
-	 		<br> <input type="button" value="변경"  class="button2 rebtn" id="update">	
-	 			<input type="button" value="취소"  class="button2 redelbtn" id="update">	
-	 	
-	
+	 		<br>
+	 		<input type="button" value="변경"  class="button2 rebtn" id="update">	
+	 		<input type="button" value="취소"  class="button2 redelbtn" id="update">	
 	</div>
 	<script type="text/javascript">
 	$(document).on('click', '.upbtn',function(){
