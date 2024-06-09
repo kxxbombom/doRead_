@@ -19,7 +19,7 @@
 		<hr size="1" noshade width="100%">
 		
 		<form id="list_search_form" action="buylist.do" method="get">
-			<ul class="list_search" style="float:right;">
+			<ul class="list_search buylist-search" >
 				<li>
 					<select name="keyfield" class="list_search">
 						<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>도서명</option>

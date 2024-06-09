@@ -636,3 +636,23 @@ ul li,a{
 	white-space : nowrap;
 	text-overflow : ellipsis;
 }
+
+
+
+/*주문목록*/
+form#list_search_form{
+	margin:0 auto;
+	width:300px;
+}
+ul.buylist-search{
+	display:flex;
+	text-align:center;
+}
+ul.buylist-search li{
+	margin:3px;
+	/* display:inline-block; */
+}
+ul.buylist-search input[type="submit"]{
+	margin:0;
+	height:25px;
+}

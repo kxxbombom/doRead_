@@ -875,7 +875,7 @@ input[type="file"]{
 
 
 
-/*장바구니*/
+/*장바구니 카트*/
 #cart_container{
 	width:100%;
 	display:flex;
@@ -1002,13 +1002,13 @@ form#cart_order{
 	padding:20px 10px;
 	display:flex;
 	flex-direction:column;
-}
-.cart-notice {
 	color:rgba(0,0,0,0.65);
 	font-weight:bold;
-	display:inline-block;
 	margin-bottom:10px;
+	width:100%;
+	gap:10px;
 }
+
 .cart-notice ul{
 	display:inline-block;
 	margin:0;
@@ -1154,6 +1154,8 @@ textarea {
 	width: 80%;
     height: 6.25em;
 }
+
+
 
 
 /*마이페이지 주문배송 구매내역상세*/
