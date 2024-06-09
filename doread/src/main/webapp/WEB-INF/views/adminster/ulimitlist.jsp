@@ -18,7 +18,10 @@
 <div class="page-main align-center">
 <h2>중고게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list}">
-	 정지등록된 게시글이 없습니다.
+	 	<p>
+		정지등록된 게시글이 없습니다.
+		<p>
+		<p>
 	</c:if>
 	<c:if test="${!empty list}">
 	 <table>
@@ -62,7 +65,10 @@
 	</c:if>
 	<h2>중고게시판 정지 댓글 관리</h2>
 	<c:if test="${empty list1}">
-	 정지등록된 댓글이 없습니다.
+		<p>
+		정지등록된 댓글이 없습니다.
+		<p>
+		<p>
 	</c:if>
 	<c:if test="${!empty list1}">
 	 <table>
@@ -112,7 +118,10 @@
 	</c:if>
 	<h2>스토리게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list2}">
-	 정지된 게시글이 없습니다.
+		<p>
+		정지등록된 게시글이 없습니다.
+		<p>
+		<p>
 	</c:if>
 	<c:if test="${!empty list2}">
 	 <table>
