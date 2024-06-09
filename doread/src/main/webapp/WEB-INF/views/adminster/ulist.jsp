@@ -22,7 +22,13 @@
 		<p>
 		<h2>중고게시판 신고된 게시글 관리</h2>
 			<c:if test="${empty list}">
-			 신고등록된 게시글이 없습니다.
+			 	<br>
+				<br>
+				신고등록된 게시글이 없습니다.
+				<br>
+				<br>
+				<br>
+				<br>
 			</c:if>
 			<c:if test="${!empty list}">
 			 <table>
@@ -72,7 +78,13 @@
 			
 			<h2>중고게시판 신고된 댓글 관리</h2>
 			<c:if test="${empty list1}">
-			 신고등록된 댓글이 없습니다.
+			 	<br>
+				<br>
+				신고등록된 댓글이 없습니다.
+				<br>
+				<br>
+				<br>
+				<br>
 			</c:if>
 			<c:if test="${!empty list1}">
 			 <table>
@@ -128,7 +140,13 @@
 			
 			<h2>스토리게시판 신고된 게시글 관리</h2>
 			<c:if test="${empty list2}">
-			 신고등록된 게시글이 없습니다.
+			 	<br>
+				<br>
+				신고등록된 게시글이 없습니다.
+				<br>
+				<br>
+				<br>
+				<br>
 			</c:if>
 			<c:if test="${!empty list2}">
 			 <table>
@@ -175,7 +193,13 @@
 			 </div> <br><br>
 			<h2>스토리게시판 신고된 댓글 관리</h2>
 			<c:if test="${empty list3}">
-			 신고등록된 댓글이 없습니다.
+			 	<br>
+				<br>
+				신고등록된 댓글이 없습니다.
+				<br>
+				<br>
+				<br>
+				<br>
 			</c:if>
 			<c:if test="${!empty list3}">
 			 <table>

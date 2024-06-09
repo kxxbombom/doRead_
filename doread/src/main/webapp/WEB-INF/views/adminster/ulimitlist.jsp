@@ -18,10 +18,13 @@
 <div class="page-main align-center">
 <h2>중고게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list}">
-	 	<p>
+	 	<br>
+		<br>
 		정지등록된 게시글이 없습니다.
-		<p>
-		<p>
+		<br>
+		<br>
+		<br>
+		<br>
 	</c:if>
 	<c:if test="${!empty list}">
 	 <table>
@@ -62,13 +65,21 @@
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
+	<div class="align-center">
+			 ${page}
+	</div>
+	<br>
+	<br>
 	</c:if>
 	<h2>중고게시판 정지 댓글 관리</h2>
 	<c:if test="${empty list1}">
-		<p>
+		<br>
+		<br>
 		정지등록된 댓글이 없습니다.
-		<p>
-		<p>
+		<br>
+		<br>
+		<br>
+		<br>
 	</c:if>
 	<c:if test="${!empty list1}">
 	 <table>
@@ -114,14 +125,21 @@
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
-	 
+	<div class="align-center">
+			 ${page1}
+	</div>
+	<br>
+	<br>
 	</c:if>
 	<h2>스토리게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list2}">
-		<p>
+		<br>
+		<br>
 		정지등록된 게시글이 없습니다.
-		<p>
-		<p>
+		<br>
+		<br>
+		<br>
+		<br>
 	</c:if>
 	<c:if test="${!empty list2}">
 	 <table>
@@ -160,16 +178,24 @@
 	 		</tr>
 	 		</c:if>
 	 	</c:forEach>
-	 </table>
+	</table>
+	<div class="align-center">
+			 ${page2}
+	</div>
+	<br>
+	<br>
 	</c:if>
 	
 	<h2>스토리게시판 정지된 댓글 관리</h2>
 	<c:if test="${empty list3}">
 		<div class="align-center">
-			<p>
+			<br>
+			<br>
 			정지등록된 댓글이 없습니다.
-			<p>
-			<p>
+			<br>
+			<br>
+			<br>
+			<br>
 		</div>
 	</c:if>
 	<c:if test="${!empty list3}">
@@ -213,7 +239,12 @@
 		 		</tr>
 	 		</c:if>
 	 	</c:forEach>
-	 </table>
+	</table>
+	<div class="align-center">
+			 ${page3}
+	</div>
+	<br>
+	<br> 
 	</c:if>
 	<div class="align-center">
 		<input type="button" value="HOME" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
