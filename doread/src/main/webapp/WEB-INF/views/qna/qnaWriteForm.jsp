@@ -67,5 +67,6 @@ window.onload=function(){
 		<hr size="1.5" width="800px" noshade="noshade">
 	</div>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
