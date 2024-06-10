@@ -27,7 +27,7 @@
 			<input type="hidden" name="e_num" id="e_num" value="${event.e_num}">
 			<tr>
 				<td class="main-td">${event.e_num}</td>
-				<td class="main-td"><a href="${pageContext.request.contextPath}/event/eventDetail.do?e_num=${event.e_num}">${event.e_title}</a></td>
+				<td class="main-td"><a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">${event.e_title}</a></td>
 				<td class="main-td">
 					<c:if test="${empty event.e_mem_num and empty event.ed_result }">
 						<legend>진행중</legend>
