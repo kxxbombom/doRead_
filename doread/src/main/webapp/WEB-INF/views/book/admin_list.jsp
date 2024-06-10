@@ -99,9 +99,7 @@
 		</div>
 		
 		<div class="align-center">${page}</div>
-		
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
-
-
 </body>
 </html>

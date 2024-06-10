@@ -101,5 +101,6 @@ window.onload= function(){
 		<div class="align-center">${page}</div>
 	</div>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

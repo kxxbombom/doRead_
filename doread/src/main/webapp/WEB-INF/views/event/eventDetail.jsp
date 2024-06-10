@@ -84,7 +84,8 @@
 		<input type="button" value="목록" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">	
 	</div>
 </div>	
-
+<br><br><br><br><br><br><br>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
 

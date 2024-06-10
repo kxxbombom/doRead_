@@ -100,14 +100,10 @@
 			</div>
 		
  			<span>${page}</span>
- </div>
- 	
-			
-			
-			
-
-	
+ </div>	
 </div>
+<br><br><br><br><br><br><br>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
 

@@ -152,10 +152,10 @@ $(function(){
 			<input type="text" name="book_name" class="inputcheck input-style" id="book_name" maxlength="30" >
 		</li>
 		<li><label for="author">책 저자</label>
-			<input type="text" name="author" class="inputcheck input-style "  id="author" maxlength="10">
+			<input type="text" name="author" class="inputcheck input-style "  id="author" maxlength="30">
 		</li>
 		<li><label for="publisher">출판사</label>
-			<input type="text" name="publisher" class="inputcheck input-style " id="publisher" maxlength="10">
+			<input type="text" name="publisher" class="inputcheck input-style " id="publisher" maxlength="30">
 		</li>
 		<li><label for="publish_date">출판일</label>
 			<input type="text" name="publish_date" class="inputcheck input-style " id="publish_date" maxlength="10">
@@ -195,5 +195,6 @@ $(function(){
 	
 </form>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

@@ -42,7 +42,7 @@
 			</tr>
 			</c:forEach>	
 		</table>
-			<hr size="1" noshade width="100%">
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

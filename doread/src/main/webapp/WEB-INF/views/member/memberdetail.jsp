@@ -34,5 +34,6 @@
 				<input type="button" value="회원탈퇴" onclick="location.href='deleteUserForm.do'" >
 			</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

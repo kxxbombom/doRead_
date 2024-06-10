@@ -88,5 +88,6 @@
 		<hr size="1" noshade width="100%">
 	</div>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
