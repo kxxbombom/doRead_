@@ -56,7 +56,7 @@
 			<input type="text" name="e_title" class="inputcheck input-style" id="e_title" maxlength="30" >
 		</li>
 		<li><label for="e_item">이벤트 상품</label>
-			<input type="text" name="e_item" class="inputcheck input-style "  id="e_item" maxlength="10">
+			<input type="text" name="e_item" class="inputcheck input-style "  id="e_item" maxlength="13">
 		</li>
 		
 		<li><label for="e_deadline">이벤트종료일</label>
