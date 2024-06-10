@@ -41,8 +41,8 @@ $(function(){
 					}
 					//로그인한 회원번호와 작성자의 회원번호 일치여부 체크
 					if(param.user_num == item.mem_num){
-						output += ' <input type="button" data-renum="'+item.sc_num+'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-renum="'+item.sc_num+'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-renum="'+item.sc_num+'" value="수정" class="modify-btn btn5">';
+						output += ' <input type="button" data-renum="'+item.sc_num+'" value="삭제" class="delete-btn btn5">';
 					}
 					output+= '<hr size="1" noshade width="100%">';
 					output+= '</div>';
@@ -130,8 +130,8 @@ $(function(){
 		modifyUI += '<textarea rows="3" cols="50" name="sc_content" id ="mre_content" class="rep-content">'+content+'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += ' <input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="re-reset">';
+		modifyUI += ' <input type="submit" value="수정" class="btn5">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset btn5">';
 		modifyUI += '</div>';
 		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
