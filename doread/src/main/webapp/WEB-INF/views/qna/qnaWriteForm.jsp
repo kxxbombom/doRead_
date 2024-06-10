@@ -59,7 +59,7 @@ window.onload=function(){
 					<input type="radio" name="q_auth" value="4" id="auth4">교환 및 반품
 				</li>
 			</ul>
-			<div class="align-center">
+			<div class="qna-button">
 				<input type="submit" value="등록">
 				<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			</div>
