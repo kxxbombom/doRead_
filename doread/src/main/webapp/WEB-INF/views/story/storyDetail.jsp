@@ -15,9 +15,6 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade">
-		</div>
 		<h2>${sb.s_title}</h2>
 		<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
