@@ -29,7 +29,7 @@ window.onload=function(){
 	<br>
 	<jsp:include page="/WEB-INF/views/adminster/adminheader.jsp" />
 	<div class="page-main">
-		<h2>도서 정보 수정</h2>
+		<h2 class="vertical-margin">도서 정보 수정</h2>
 		<hr size="1.5" width="80%" noshade="noshade">
 		<form id="image_form" action="updateBookImage.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="book_num" value="${book.book_num}">
@@ -38,7 +38,7 @@ window.onload=function(){
 			</div>
 			<div class="align-center">
 				<input type="submit" value="등록" class="update-button">
-				<input type="button" value="취소" onclick="history.go(-1)">
+				<input type="button" value="취소" class="update-button" onclick="history.go(-1)">
 			</div>
 		</form>
 		<hr size="1.5" width="80%" noshade="noshade">

@@ -53,7 +53,7 @@
 	<jsp:include page="/WEB-INF/views/adminster/adminheader.jsp" />
 	<div class="page-main">
 
-		<h2>도서 정보 수정</h2>
+		<h2 class="vertical-margin">도서 정보 수정</h2>
 
 		<hr size="1.5" width="80%" noshade="noshade">
 		<form action="updateBook.do" method="post" id="bookupdate_form">
