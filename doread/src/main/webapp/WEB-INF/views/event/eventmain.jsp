@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
  			<h2 style="text-align:center;">EVENT</h2>
 		<div class="align-center">
- 			<form id="eventmainForm" action="eventmain.do" method="get">
+ 			<form id="list_search_form" action="eventmain.do" method="get">
 				<select id="selectlist" name ="sel" class="input-style">
 					<option value="1" <c:if test="${check == 1}">selected</c:if>>진행중이벤트</option>
  					<option value="2" <c:if test="${check == 2}">selected</c:if> >종료된이벤트</option>
@@ -29,13 +29,15 @@
 								$('#subbtn').click();
 				});
 			</script>
-			
-			<div class="align-right">
- 			<c:if test="${!empty user_num && user_auth == 9}">
- 				<input type="button" value="글쓰기" class="button2" onclick="location.href='${pageContext.request.contextPath}/event/eventWrite.do'">
- 			</c:if>
+			<div class="list-space align-right">
+				<div class="list-btn">
+					<c:if test="${!empty user_num && user_auth == 9}">
+						<input type="button" value="글쓰기"
+							onclick="location.href='${pageContext.request.contextPath}/event/eventWrite.do'">
+					</c:if>
+				</div>
 			</div>
-					<hr width="40%" size="1" noshade="noshade">
+			<hr width="40%" size="1" noshade="noshade">
 			
 			<c:if test="${check == 1}">
 			<c:forEach var="event" items="${List}">
