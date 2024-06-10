@@ -1,4 +1,23 @@
 @charset "UTF-8";
+/* 검색 폼
+---------------------*/
+ul.list_search{
+	width:350px;
+	list-style:none;
+	padding:0;
+	margin:10px auto;
+	text-align:center;
+}
+ul.list_search li{
+	margin:0 auto;
+	padding:0;
+	display:inline-block;
+}
+input[type="search"]{
+	width:200px;
+	box-sizing: border-box;
+	border:1px solid #4F6F52;
+}
 
 /* 도서정보
 ---------------------*/
@@ -21,7 +40,7 @@
 	padding:3px;
 	width:200px;
 	max-width:220px;
-	height:40px;
+	height:20px;
 	float:left;
 	overflow:hidden;
 	text-align:center;
@@ -274,6 +293,11 @@ div.slider-items .slider-image{
 	font-size:15px;
 	font-weight:bold;
 	border:1px solid #4F6F52;
+}
+
+.update-button:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
 table.fav-table{
