@@ -39,11 +39,11 @@ window.onload=function(){
 		<form id="write_form" action="qnaWrite.do" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
-					<label for="q_title">제목</label>
+					<label for="q_title">문의 제목</label>
 					<input type="text" name="q_title" id="q_title" maxlength="50">
 				</li>
 				<li>
-					<label for="q_content">내용</label>
+					<label for="q_content">문의 내용</label>
 					<textarea rows="5" cols="20"  name="q_content" id="q_content"></textarea>
 				</li>
 				<li>
