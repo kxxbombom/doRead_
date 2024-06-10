@@ -151,9 +151,9 @@
 		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="7"  />불쾌한 표현이 있습니다.<br>
 		<textarea class="textareareport"></textarea><br>
 		<input type="button" class="rebtn" value="신고하기" ><input class="redelbtn" type="button" id="rebtn" value="취소">
-	</div>
-		
-
+	</div>	
+<br><br><br><br><br><br><br>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
 

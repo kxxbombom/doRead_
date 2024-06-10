@@ -125,6 +125,8 @@
 		<input type="button" class="rebtn" value="신고하기" ><input class="redelbtn" type="button" id="rebtn" value="취소">
 	</div>
 </div>
+<br><br><br><br><br><br><br>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
 

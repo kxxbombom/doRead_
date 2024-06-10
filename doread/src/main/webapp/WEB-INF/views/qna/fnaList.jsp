@@ -136,8 +136,7 @@ $(function(){
 		<div class="align-center list-btn3">
 			<input type="button"  class="button2" value=" 더보기" id="addbtn"> &nbsp;<input type="button" class="button2" value="위로가기" onclick="location.href='#up'">
 		</div> 
-		
-		
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
