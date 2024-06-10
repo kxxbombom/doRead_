@@ -43,6 +43,12 @@ $(function(){
 	<div class="content-main">
 		<h2>마일리지 내역 목록</h2>
 		<hr size="1" noshade width="100%">
+		<ul>
+			<li>
+				<span id="allpoint"> 총 마일리지 : ${allpoint}P </span>
+			</li>
+		</ul>
+		<br><br>
 		<table class="main-table">
 			<tr class="main-tr">
 				<th class="main-td">주문번호</th>
@@ -64,13 +70,9 @@ $(function(){
 			</c:forEach>		
 		</table>
 		<div style="text-align:center;">${page}</div>
-		<ul>
-			<li>
-				<span id="allpoint"> 총 마일리지 : ${allpoint}P </span>
-			</li>
-		</ul>
 	</div>
+	<br><br><br>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

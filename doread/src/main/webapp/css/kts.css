@@ -581,9 +581,14 @@ ul li,a{
 } 
 #allpoint{
 	float:right;
-	font-size:19pt;
-	border:1px solid #000;
-	
+	font-size:14pt;
+	border-radius:10px;
+	border:1px solid #4F6F52;
+	background-color:rgb(232, 223, 202);
+	color:rgb(26, 77, 46);
+	padding:5px 5px;
+	margin-right:50px;
+	font-weight:bold;
 } 
  
 /*구매내역 버튼*/
@@ -593,7 +598,7 @@ ul li,a{
 	border-radius:5px;
 	border:1px solid #4F6F52;
 	background-color:#FFF;
-	color:rgb(26, 77, 46);
+	color: rgb(0,0,0);
 	font-size:15px;
 	margin-left:120px;
 	font-weight:bold;
