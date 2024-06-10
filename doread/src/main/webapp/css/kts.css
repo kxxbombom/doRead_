@@ -278,6 +278,7 @@ table td, table th{
 
 .post-header h2{
 	text-align:center;
+	padding:10px 20px;
 }
 
 /*회원 찜 목록*/

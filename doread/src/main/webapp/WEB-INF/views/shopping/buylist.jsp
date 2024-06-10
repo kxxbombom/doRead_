@@ -14,7 +14,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
-	<div class="content-main">
+	<div class="post-header">
 		<h2>주문/배송 목록</h2>
 		<hr size="1" noshade width="100%">
 		

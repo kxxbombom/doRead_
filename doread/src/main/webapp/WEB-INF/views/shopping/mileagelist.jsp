@@ -40,7 +40,7 @@ $(function(){
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
-	<div class="content-main">
+	<div class="post-header">
 		<h2>마일리지 내역 목록</h2>
 		<hr size="1" noshade width="100%">
 		<ul>
