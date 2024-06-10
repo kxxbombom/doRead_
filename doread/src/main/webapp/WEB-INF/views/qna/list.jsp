@@ -97,9 +97,9 @@ window.onload= function(){
 			</c:if>
 			<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> <%--다른 경로--%>
-		</div>
+			</div>
 		<div class="align-center">${page}</div>
-	</div>
+		</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

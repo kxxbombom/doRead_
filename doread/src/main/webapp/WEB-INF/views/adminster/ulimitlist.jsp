@@ -58,7 +58,7 @@
 	 				<c:if test="${i.auth ==2 }">정지</c:if>
 	 			</td>
 	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
+	 				<input type="button" value="변경" class="upbtn button2" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
 	 			</td>
 	 		</tr>
 	 		</c:if>
@@ -322,8 +322,6 @@
 		
 		
 	})
-	
-	
 	</script>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
