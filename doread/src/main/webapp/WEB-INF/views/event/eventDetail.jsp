@@ -24,6 +24,34 @@
 		<br>
 		진행기간 ${event.e_rdate}~${event.e_deadline} 조회수:${event.e_hit}
 	</div>
+	<c:if test="${user_auth == 9}">
+			
+			<ul class="board-btn-container">
+				<li class="board-btn">
+					<span class="board-cbtn" style="position:absolute; z-index:999; right:0; bottom:10px;"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+		
+					<ul class="btn-hide">
+		            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
+		            	<li><a href="#" id ="delete_btn">삭제</a></li>
+		        	</ul>
+		        	<script type="text/javascript">
+		        	$('.btn-hide').hide();
+		        	$('.board-cbtn').click(function() {
+		        	    $(this).parent().find('.btn-hide').toggle();
+		        	});
+		        	$('#delete_btn').click(function(event) {
+			        	let choice = confirm('삭제하시겠습니까?');
+			    		if(choice){
+			    			location.replace('newsDelete.do?news_num=${news.news_num}');
+			    		}
+			    		//기본 이벤트 제거
+			    		event.preventDefault();
+		        	});
+		        	</script>
+				</li>
+			</ul>	
+			
+		</c:if>
 		<div class="align-right" style="position:absolute; top:85px; z-index:999; right:0;">
 			<c:if test="${!empty user_num && user_auth == 9}">
 				<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>

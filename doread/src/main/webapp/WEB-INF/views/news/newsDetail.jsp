@@ -31,7 +31,7 @@
 			
 			<ul class="board-btn-container">
 				<li class="board-btn">
-					<span class="board-cbtn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+					<span class="board-cbtn" style="position:absolute; z-index:999; right:0; bottom:10px;"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
 		
 					<ul class="btn-hide">
 		            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
@@ -55,6 +55,7 @@
 			</ul>	
 			
 		</c:if>
+		
 		<hr size="1" noshade width="100%">
 		
 		<c:if test="${!empty news.news_image}">
@@ -75,7 +76,6 @@
 		</div>
 		<div class="align-center list-btn m-top">
 			<input type="button" value="목록" onclick="location.href='newsList.do'">
-			
 		</div>
 	</div>
 </div>
