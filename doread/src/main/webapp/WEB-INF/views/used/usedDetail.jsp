@@ -54,7 +54,7 @@
 		  	 	 });
 		    	
 		    	$('#delbtn').click(function(event){
-		    		const choose =confirm('정말삭제하시겠습니까?');
+		    		const choose =confirm('삭제하시겠습니까?');
 		    		
 		    		if(choose){
 		   			location.href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}"

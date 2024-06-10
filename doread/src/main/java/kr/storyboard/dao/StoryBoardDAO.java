@@ -215,7 +215,7 @@ public class StoryBoardDAO {
 					conn = DBUtil.getConnection();
 					//sql문 작성
 					//(주의) 회원 탈퇴를 하게되면 member_detail의 레코드를 지우기 때문에 조인시 데이터 누락 방지를 위해 outer join을 사용
-					sql= "SELECT * FROM storyboard JOIN member USING(mem_num) FULL OUTER JOIN book USING(book_num) "
+					sql= "SELECT * FROM ((storyboard JOIN member USING(mem_num) FULL OUTER JOIN book USING(book_num)) join member_detail using(mem_num)) "
 							+ "WHERE s_num=?";
 					//pstmt 객체 생성
 					pstmt = conn.prepareStatement(sql);
@@ -237,6 +237,7 @@ public class StoryBoardDAO {
 						sb.setMem_id(rs.getString("mem_id"));
 						sb.setBook_num(rs.getInt("book_num"));
 						sb.setBook_name(rs.getString("book_name"));
+						sb.setMem_photo(rs.getString("mem_photo"));
 					}
 					
 				}catch(Exception e) {

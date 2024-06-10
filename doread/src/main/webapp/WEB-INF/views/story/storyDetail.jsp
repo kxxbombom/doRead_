@@ -15,10 +15,19 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
+		<div class="float-clear">
+				<hr width="100%" size="1" noshade="noshade">
+		</div>
 		<h2>${sb.s_title}</h2>
 		<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 		</div>
+		<c:if test="${!empty sb.mem_photo }">
+				<img src="${pageContext.request.contextPath}/upload/${sb.mem_photo}" class="my-photo" width="46" height="43">
+		</c:if>
+		<c:if test="${empty sb.mem_photo}">
+				<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo" width="46" height="43">
+		</c:if>
 		${sb.mem_id} <br>
 		${sb.s_rdate} &nbsp;  조회 : ${sb.s_hit} <br>
 		도서명 : ${sb.book_name }
