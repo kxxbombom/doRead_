@@ -15,7 +15,7 @@
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
-
+<br>
 	<h2>판매내역</h2>
 	<div class="align-center">
  			<form id="Form" action="adminList.do" method="get">

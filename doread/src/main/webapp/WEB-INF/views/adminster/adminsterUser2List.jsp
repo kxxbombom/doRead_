@@ -14,7 +14,7 @@
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
-
+<br>
 	<h2>정지 회원</h2>
 		
 	<hr size="1.5" width="80%" noshade="noshade">
