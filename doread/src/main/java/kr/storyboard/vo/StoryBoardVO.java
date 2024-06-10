@@ -15,7 +15,15 @@ public class StoryBoardVO {
 	
 	private int mem_num;		//작성자 정보
 	private String mem_id;
+	private String mem_photo;
 	private int book_num;		//도서 정보
+	
+	public String getMem_photo() {
+		return mem_photo;
+	}
+	public void setMem_photo(String mem_photo) {
+		this.mem_photo = mem_photo;
+	}
 	private String book_name;
 	private int ccount;
 	
