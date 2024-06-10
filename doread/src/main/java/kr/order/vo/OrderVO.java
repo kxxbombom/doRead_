@@ -12,6 +12,9 @@ public class OrderVO {
 	private String receive_address1;
 	private String receive_address2;
 	private String receive_phone;
+	
+	private Integer select_msg;
+	
 	private String order_msg;
 	private int order_payment;	//1.계좌입금,2.신용카드
 	private int order_status;	//1.결제완료,2.배송시작,3.배송중,4.배송완료,5.주문취소
@@ -26,6 +29,16 @@ public class OrderVO {
 	private String book_name;
 	
 	
+	
+	
+	
+	
+	public Integer getSelect_msg() {
+		return select_msg;
+	}
+	public void setSelect_msg(Integer select_msg) {
+		this.select_msg = select_msg;
+	}
 	public int getAll_total() {
 		return all_total;
 	}

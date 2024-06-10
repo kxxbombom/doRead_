@@ -41,6 +41,7 @@ public class UserModifyOrderInfoAction implements Action{
 			order.setReceive_zipcode(request.getParameter("receive_zipcode"));
 			order.setReceive_address1(request.getParameter("receive_address1"));
 			order.setReceive_address2(request.getParameter("receive_address2"));
+			order.setSelect_msg(Integer.parseInt(request.getParameter("select_msg")));
 			order.setOrder_msg(request.getParameter("order_msg"));
 			order.setEnter(Integer.parseInt(request.getParameter("enter")));
 			order.setEnter_passwd(request.getParameter("enter_passwd"));

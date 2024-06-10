@@ -85,7 +85,13 @@
 				</li>
 				<li>
 					<label>배송요청사항</label>
-					<span id="order_msg">${order.order_msg}</span>
+					<span id="order_msg">
+						<c:if test="${order.select_msg == 2}">문 앞에 놓아주세요</c:if>
+						<c:if test="${order.select_msg == 3}">부재시 경비실에 맡겨주세요</c:if>
+						<c:if test="${order.select_msg == 4}">부재시 연락주세요</c:if>
+						<c:if test="${order.select_msg == 5}">배송 전 연락주세요</c:if>
+						<c:if test="${order.select_msg == 6}">${order.order_msg}</c:if>
+					</span>
 				</li>
 				<li>
 					<label>공동현관 출입방법</label>

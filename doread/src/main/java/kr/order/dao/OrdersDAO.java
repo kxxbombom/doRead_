@@ -332,6 +332,7 @@ public class OrdersDAO {
 				order.setOrder_date(rs.getDate("order_date"));
 				order.setOrder_mdate(rs.getDate("order_mdate"));
 				order.setMem_num(rs.getInt("mem_num"));
+				order.setSelect_msg(rs.getInt("select_msg"));
 				order.setOrder_msg(rs.getString("order_msg"));
 				order.setEnter(rs.getInt("enter"));
 				order.setEnter_passwd(rs.getString("enter_passwd"));
@@ -351,7 +352,7 @@ public class OrdersDAO {
 		try {
 			conn = DBUtil.getConnection();
 
-			sql = "UPDATE book_order SET receive_name=?, receive_phone=?, receive_zipcode=?, receive_address1=?, receive_address2=?, order_msg=?, enter=?, enter_passwd=? WHERE order_num=?";
+			sql = "UPDATE book_order SET receive_name=?, receive_phone=?, receive_zipcode=?, receive_address1=?, receive_address2=?, select_msg=?, order_msg=?, enter=?, enter_passwd=? WHERE order_num=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -360,18 +361,28 @@ public class OrdersDAO {
 			pstmt.setString(3, order.getReceive_zipcode());
 			pstmt.setString(4, order.getReceive_address1());
 			pstmt.setString(5, order.getReceive_address2());
-			if(order.getOrder_msg() == null) {
-				pstmt.setNull(6, java.sql.Types.VARCHAR);
-			}else {
-				pstmt.setString(6, order.getOrder_msg());
-			}
-			pstmt.setInt(7, order.getEnter());
-			if (order.getEnter_passwd() == null) {
-			    pstmt.setNull(8, java.sql.Types.VARCHAR);
+			
+			if (order.getSelect_msg() == null) {
+			    pstmt.setNull(6, java.sql.Types.INTEGER);
 			} else {
-			    pstmt.setString(8, order.getEnter_passwd());
+			    pstmt.setInt(6, order.getSelect_msg());
 			}
-			pstmt.setInt(9, order_num);
+			
+			if(order.getOrder_msg() == null) {
+				pstmt.setNull(7, java.sql.Types.VARCHAR);
+			}else {
+				pstmt.setString(7, order.getOrder_msg());
+			}
+			
+			pstmt.setInt(8, order.getEnter());
+			
+			if (order.getEnter_passwd() == null) {
+			    pstmt.setNull(9, java.sql.Types.VARCHAR);
+			} else {
+			    pstmt.setString(9, order.getEnter_passwd());
+			}
+			
+			pstmt.setInt(10, order_num);
 			
 			pstmt.executeUpdate();
 		}catch(Exception e) {
