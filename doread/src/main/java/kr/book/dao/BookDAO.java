@@ -611,6 +611,7 @@ public class BookDAO {
 				book.setBook_name(rs.getString("book_name"));
 				book.setAuthor(rs.getString("author"));
 				book.setPublisher(rs.getString("publisher"));
+				book.setPrice(rs.getInt("price"));
 				book.setBook_img(rs.getString("book_img"));
 				book.setBook_auth(rs.getInt("book_auth"));
 				book.setBook_category(rs.getInt("book_category"));

@@ -157,6 +157,12 @@ $(function(){
 			</c:if>
 		</div>
 	</div>
+	<br>
+	<div class="slider-container">
+		<c:if test="${count!=0}">
+			<input type="button" value="추천도서 전체보기" onclick="location.href='recommendList.do?mem_num=${user_num}'" class="update-button" style="width:200px;">
+		</c:if>
+	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

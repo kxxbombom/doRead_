@@ -61,8 +61,8 @@
 			 				<c:if test="${i.auth ==2 }">정지</c:if>
 			 			</td>
 			 			<td>
-				 			<input type="button" value="변경" class="upbtn button2" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
-				 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.ur_num}" data-name="ur_num" ">
+				 			<input type="button" value="변경" class="upbtn new-btn" data-id="${i.u_num}" data-name="u_num" data-auth="${i.auth}">
+				 			<input type="button" value="삭제" class="delbtn new-btn" data-id="${i.ur_num}" data-name="ur_num">
 			 			</td>
 			 		</tr>
 			 		</c:if>
@@ -123,8 +123,8 @@
 			 				<c:if test="${i.auth ==2 }">정지</c:if>
 			 			</td>
 			 			<td>
-				 			<input type="button" value="변경" class="upbtn button2" data-id="${i.uc_num}" data-name="uc_num" data-auth="${i.auth}">
-				 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.urc_num}" data-name="urc_num" ">
+				 			<input type="button" value="변경" class="upbtn new-btn" data-id="${i.uc_num}" data-name="uc_num" data-auth="${i.auth}">
+				 			<input type="button" value="삭제" class="delbtn new-btn" data-id="${i.urc_num}" data-name="urc_num">
 			 			</td>
 			 		</tr>
 			 		</c:if>
@@ -179,8 +179,8 @@
 			 				<c:if test="${i.auth ==2}">정지</c:if>
 			 			</td>
 			 			<td>
-				 			<input type="button" value="변경" class="upbtn button2" data-id="${i.s_num}" data-name="s_num" data-auth="${i.auth}">
-				 			<input type="button" value="삭제" class="delbtn button2" data-id="${i.sr_num}" data-name="sr_num" >
+				 			<input type="button" value="변경" class="upbtn new-btn" data-id="${i.s_num}" data-name="s_num" data-auth="${i.auth}">
+				 			<input type="button" value="삭제" class="delbtn new-btn" data-id="${i.sr_num}" data-name="sr_num" >
 			 			</td>
 			 		</tr>
 			 		</c:if>
@@ -237,20 +237,20 @@
 			 				<c:if test="${i.auth ==2 }">정지</c:if>
 			 			</td>
 			 			<td>
-			 				<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
-			 				<input type="button" value="삭제" class="delbtn button2" data-id="${i.src_num}" data-name="src_num" >
+			 				<input type="button" value="변경" class="upbtn new-btn" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
+			 				<input type="button" value="삭제" class="delbtn new-btn" data-id="${i.src_num}" data-name="src_num" >
 			 			</td>
 			 		</tr>
 			 		</c:if>
 			 	</c:forEach>
 			 </table>
 			 </c:if>
-			  <div class="align-center">
+			 <div class="align-center">
 			 	${page3 }
 			 </div>
 			 <br><br>
 			<div class="align-center">
-			<input type="button" value="HOME" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			<input type="button" value="HOME" class="new-btn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
 			<div class="hide authupdate align-center" 
 			style="width:400px; position:fixed;
@@ -265,8 +265,8 @@
 				<input type="radio" name="radio"  value="0" >일반
 			 	<input type="radio"  name="radio"  value="2" >정지
 			 	<br>
-			 	<input type="button" value="변경"  class="button2 rebtn" id="update">	
-			 	<input type="button" value="취소"  class="button2 redelbtn" id="update">	
+			 	<input type="button" value="변경"  class="new-btn rebtn" id="update">	
+			 	<input type="button" value="취소"  class="new-btn redelbtn" id="update">	
 			</div>
 			<script type="text/javascript">
 			$(document).on('click', '.upbtn',function(){

@@ -2,11 +2,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
 
 body{
-
-	
-	
 	margin:0 auto;
-	
 	font-family:"Noto Sans KR", sans-serif;
 }
 span.name a{
@@ -15,7 +11,7 @@ span.name a{
 }
 input:checked + span.name a{
 	color: rgb(26, 77, 46)!important;
-}
+} 
 a:link{
 	text-decoration:none;
 	color:black;
@@ -178,14 +174,14 @@ div#adminpage div.adminnav ul li a{
   position: relative;
   overflow: hidden;
   z-index: 1;
-  color: #090909;
+  color: rgb(26, 77, 46);
   margin:0 5px;
   padding: 0.4em 1.0em;
   cursor: pointer;
   font-size: 14px;
   border-radius: 0.3em;
-  background: rgb(224, 224, 224);
-  border: 1px solid rgb(224, 224, 224);
+  background: #FFF;
+  border: 1px solid #4F6F52;
 
 }
 hr{
@@ -215,7 +211,18 @@ hr{
   color: #0d0c22;
   transition: 0.3s ease;
 }
-
+.new-btn{
+	width:55px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+	margin-bottom:5px;
+	text-align:center;
+}
 .input::placeholder {
   color: rgb(232, 223, 202);
 }
@@ -223,9 +230,9 @@ hr{
 .input:focus,
 input:hover {
   outline: none;
-  border-color: rgba(0, 48, 73, 0.4);
+  border:1px solid rgb(26, 77, 46);
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(0 48 73 / 10%);
+  box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
 .icon {
@@ -491,10 +498,7 @@ z-index:1;
 hr{
 	z-index:1;
 }
-/*
-
-
-page util*/
+/*page util*/
 a#pre{
 	padding:4px;
 
@@ -530,8 +534,7 @@ span#currentbtn{
 	
 	width:37px;
 	height: 45px;
-	background:rgb(26, 77, 46);
-	color: rgb(255, 255, 255) !important;
+	color: black !important;
 	font-weight:bold;
 	border-radius:10%;
 }

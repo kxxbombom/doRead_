@@ -699,6 +699,24 @@ table tr{
 table td:first-child, table td:last-child, td.text-center{
 	text-align:center;
 }
+#book_name_td{
+	width:230px;
+	max-width:280px;
+	height:40px;
+	overflow:hidden;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+	
+}
+#book_author_td{
+	width:100px;
+	max-width:110px;
+	height:40px;
+	overflow:hidden;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+	
+}
 
 
 /*뉴스게시판 리스트*/
