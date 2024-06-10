@@ -19,31 +19,78 @@
 	    .end()
 	    .appendTo('.slider-space');
 	},  5000);
-let i =2;
+	
+	
+	let i =2;
 	setInterval(function() {
 		    i++;
-		    if(i>5){
+		    if(i>8){
 		    	i=1;
 		    }
 		    $('#mainb').attr('src','${pageContext.request.contextPath}/mainimage/main'+i+'.JPG');
-		  
+			
+		    if(i==2){
+		    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=246');
+		    }else if(i==6){
+		    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=245');
+		    }else if(i==7){
+		    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=72');
+		    }else if(i==8){
+		    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=247');
+		    }else{
+		    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/eventmain.do');
+
+		    }
+		    
 		},  5000);
+	
+	
 $(function(){
 	$('#lbtn').click(function(){
 		--i;
 		if(i<1){
-	    	i=5;
+	    	i=8;
 	    }
+	   
 	    $('#mainb').attr('src','${pageContext.request.contextPath}/mainimage/main'+i+'.JPG');
+	    
+	    if(i==2){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=246');
+	    }else if(i==6){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=245');
+	    }else if(i==7){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=72');
+	    }else if(i==8){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=247');
+	    }else{
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/eventmain.do');
+
+	    }
+ 
 	});
 	$('#rbtn').click(function() {
 	    ++i;
-	    if(i>5){
+	    if(i>8){
 	    	i=1;
 	    }
 	    $('#mainb').attr('src','${pageContext.request.contextPath}/mainimage/main'+i+'.JPG');
-	  
+	  	
+	    
+	    if(i==2){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=246');
+	    }else if(i==6){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=245');
+	    }else if(i==7){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=72');
+	    }else if(i==8){
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=247');
+	    }else{
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/eventmain.do');
+
+	    }
 	});
+	
+	
 	
 });
 	
@@ -67,7 +114,7 @@ $(function(){
   	<svg   viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="chevron-right"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
 	</label>
 	<br>
-		<a href="${pageContext.request.contextPath}/event/eventmain.do"><img id="mainb" width="100%" src="${pageContext.request.contextPath}/mainimage/main1.JPG"  style="z-index:9;"></a>
+		<a href="${pageContext.request.contextPath}/event/eventmain.do" id="main_link"><img id="mainb" width="100%" src="${pageContext.request.contextPath}/mainimage/main1.JPG"  style="z-index:9;"></a>
 	
 		<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
