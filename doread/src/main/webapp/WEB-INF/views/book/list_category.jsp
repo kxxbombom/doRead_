@@ -31,9 +31,8 @@ window.onload=function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2>도서 목록</h2>
-		<div class="align-center">
-		<form id="book_search" action="listCategory.do" method="get">
-			<ul>
+		<form id="book_search" action="listCategory.do" method="get" class="form-center">
+			<ul class="list_search">
 				<li>
 					<select name="keyfield">
 						<option value="1" <c:if test="${param.keyfield ==1}">selected</c:if>>도서 제목</option>
@@ -52,7 +51,6 @@ window.onload=function(){
 		</form>
 		<div class="float-clear">
 			<hr width="100%" size="1" noshade="noshade">
-		</div>
 		</div>
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">

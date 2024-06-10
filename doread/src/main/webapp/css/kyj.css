@@ -2,8 +2,8 @@
 
 /* 도서정보
 ---------------------*/
- h2,form.content-center{
-	text-align:center;
+.form-center{
+	margin: 10px 80px;
 }
 
 .image-space .horizontal-area{
@@ -169,6 +169,21 @@ form#book_search ul li{
 	display:inline;
 }
 
+form#book_search input[type="submit"]{
+	width:60px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+
+form#book_search input[type="submit"]:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
 
 
 .slider-container{

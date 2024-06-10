@@ -31,9 +31,8 @@ window.onload=function(){
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h2 class="content-center">도서 목록</h2>
-		<div class="center">
-		<form id="book_search" action="list.do" method="get" class="content-center">
+		<h2>도서 목록</h2>
+		<form id="book_search" action="list.do" method="get" class="form-center">
 			<ul class="list_search">
 				<li>
 					<select name="keyfield">
@@ -52,7 +51,6 @@ window.onload=function(){
 		</form>
 		<div class="float-clear">
 			<hr width="100%" size="1" noshade="noshade">
-		</div>
 		</div>
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">
