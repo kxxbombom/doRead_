@@ -82,7 +82,7 @@
 		<li>
 		<div class="dropdown">
      	<span class="dropbtn">도서</span>
-     	<div class="dropdown-content">
+     	<div class="dropdown-content"  style="z-index:30;">
         <a href="${pageContext.request.contextPath}/book/list.do">도서 전체</a>
         <a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=1">소설</a>
         <a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=2">시/에세이</a>
