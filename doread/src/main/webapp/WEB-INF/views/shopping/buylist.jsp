@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구매 내역 조회</title>
+<title>주문/배송 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 </head>
@@ -15,7 +15,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<div class="content-main">
-		<h2>구매 내역 조회</h2>
+		<h2>주문/배송 목록</h2>
 		<hr size="1" noshade width="100%">
 		
 		<form id="list_search_form" action="buylist.do" method="get">
