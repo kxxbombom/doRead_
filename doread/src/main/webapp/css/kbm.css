@@ -855,6 +855,20 @@ ul.btn-hide{
     display: none;
     background:#FFF;
 }
+ul.btn-hide2{
+	border:1px solid #000;
+	border-radius:5px;
+	display:inline-block;
+	width:80px;
+	height:75px;
+	text-align:right;
+	padding-right: 10px;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    display: none;
+    background:#FFF;
+}
 .board-btn{
 	display: flex;
 	flex-direction:column;

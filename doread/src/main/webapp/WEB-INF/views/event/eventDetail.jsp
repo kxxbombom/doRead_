@@ -30,68 +30,38 @@
 				<li class="board-btn">
 					<span class="board-cbtn" style="position:absolute; z-index:999; right:0; bottom:10px;"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
 		
-					<ul class="btn-hide">
-		            	<li><a href="newsUpdateForm.do?news_num=${news.news_num}">수정</a></li>
+					<ul class="btn-hide2">
+		            	<li><a href="updateFormEvent.do?e_num=${event.e_num}">수정</a></li>
 		            	<li><a href="#" id ="delete_btn">삭제</a></li>
+		            	 <li class=""><a id ="eventbtn" href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}" target="_blank">이벤트발표</a></li>
 		        	</ul>
 		        	<script type="text/javascript">
-		        	$('.btn-hide').hide();
+		        	$('.btn-hide2').hide();
 		        	$('.board-cbtn').click(function() {
-		        	    $(this).parent().find('.btn-hide').toggle();
+		        	    $(this).parent().find('.btn-hide2').toggle();
 		        	});
 		        	$('#delete_btn').click(function(event) {
 			        	let choice = confirm('삭제하시겠습니까?');
 			    		if(choice){
-			    			location.replace('newsDelete.do?news_num=${news.news_num}');
+			    			location.replace('deleteEvent.do?e_num=${event.e_num}');
 			    		}
 			    		//기본 이벤트 제거
 			    		event.preventDefault();
 		        	});
+		        	$('#eventbtn').click(function(event){
+			    		const choose =prompt('당첨 멤버 번호를 입력하세요');
+			    		
+			    		if(choose){
+			    			location.href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}&e_mem_num="+choose;
+			    		}
+			    		event.preventDefault();
+			    	})
 		        	</script>
 				</li>
 			</ul>	
 			
 		</c:if>
-		<div class="align-right" style="position:absolute; top:85px; z-index:999; right:0;">
-			<c:if test="${!empty user_num && user_auth == 9}">
-				<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
-				<div id="updel" class="hide"  style="z-index:999; position:absolute;  top:25px; right:0; width:300px;" >
-			        <ul class="siteLink">
-			            <li class=""><a href="${pageContext.request.contextPath}/event/updateFormEvent.do?e_num=${event.e_num}" target="_blank">수정</a></li>
-			            <li class=""><a id ="delbtn"  href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}" target="_blank">삭제</a></li>
-			            <li class=""><a id ="eventbtn" href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}" target="_blank">이벤트발표</a></li>
-			        </ul>
-		     	 </div>
-		     
-		        <script type="text/javascript">
-		    	$(".global_site a").click(function() {
-		        if($('#updel').hasClass('hide')){
-		            $('#updel').removeClass('hide');
-		        }else{
-		            $('#updel').addClass('hide');
-		    	    }
-		  	  });
-		    	
-		    	$('#delbtn').click(function(event){
-		    		const choose =confirm('정말삭제하시겠습니까?');
-		    		
-		    		if(choose){
-		    			location.href="${pageContext.request.contextPath}/event/deleteEvent.do?e_num=${event.e_num}"
-		    		}
-		    		event.preventDefault();
-		    	})
-		    	
-		    	$('#eventbtn').click(function(event){
-		    		const choose =prompt('당첨 멤버 번호를 입력하세요');
-		    		
-		    		if(choose){
-		    			location.href="${pageContext.request.contextPath}/event/eventPresent.do?e_num=${event.e_num}&e_mem_num="+choose;
-		    		}
-		    		event.preventDefault();
-		    	})
-				</script>
-				</c:if>
-			</div>
+		
 			<div class="align-center">
 				<hr width="100%" size="1" noshade="noshade">
 				<img  src="${pageContext.request.contextPath}/upload/${event.e_image}"	width="600" height="600">

@@ -35,34 +35,33 @@
 				${used.u_rdate} &nbsp; 조회수:${used.u_hit}
 		</div>
 		
-		<c:if test="${used.mem_num == user_num}">
-			<div class="align-right" style="position:absolute; top:127px; z-index:999; right:0;">
-				<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
-				<div id="updel" class="hide" style="z-index:999; position:absolute; right:0; width:300px;">
-			        <ul class="siteLink">
-			            <li class=""><a href="${pageContext.request.contextPath}/used/updateUsedForm.do?u_num=${used.u_num}" >수정</a></li>
-			            <li class=""><a id ="delbtn"  href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}">삭제</a></li>
-			        </ul>
-		       </div>
-		       	<script type="text/javascript">
-		    	$(".global_site a").click(function() {
-		        if($('#updel').hasClass('hide')){
-		            $('#updel').removeClass('hide');
-		        }else{
-		            $('#updel').addClass('hide');
-		    	    }
-		  	 	 });
-		    	
-		    	$('#delbtn').click(function(event){
-		    		const choose =confirm('삭제하시겠습니까?');
-		    		
-		    		if(choose){
-		   			location.href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}"
-		    		}
-		    		event.preventDefault();
-		    	})
-				</script>
-			</div>
+		<c:if test="${user_auth == 2}">
+			
+			<ul class="board-btn-container">
+				<li class="board-btn">
+					<span class="board-cbtn" style="position:absolute; z-index:999; right:0; bottom:10px;"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+		
+					<ul class="btn-hide">
+		            	<li><a href="updateUsedForm.do?u_num=${used.u_num}">수정</a></li>
+		            	<li><a href="#" id ="delete_btn">삭제</a></li>
+		        	</ul>
+		        	<script type="text/javascript">
+		        	$('.btn-hide').hide();
+		        	$('.board-cbtn').click(function() {
+		        	    $(this).parent().find('.btn-hide').toggle();
+		        	});
+		        	$('#delete_btn').click(function(event) {
+			        	let choice = confirm('삭제하시겠습니까?');
+			    		if(choice){
+			    			location.replace('deleteUsed.do?u_num=${used.u_num}');
+			    		}
+			    		//기본 이벤트 제거
+			    		event.preventDefault();
+		        	});
+		        	</script>
+				</li>
+			</ul>	
+			
 		</c:if>
 
 		<hr width="100%" size="1" noshade="noshade" style="z-index:1;" >
