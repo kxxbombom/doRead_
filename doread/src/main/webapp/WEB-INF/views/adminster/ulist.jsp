@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>관리자페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
