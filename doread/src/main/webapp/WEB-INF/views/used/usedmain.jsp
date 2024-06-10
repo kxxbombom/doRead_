@@ -23,9 +23,8 @@
  			<c:if test="${!empty list }">
  				<table  id="usedtable">
  					<tr>
- 						<th>글번호</th>
- 						<th>글제목 </th>
  						<th>책제목</th>
+ 						<th>글제목 </th>
  						<th>가격</th>
  						<th>판매상태</th>
  						<th>작성자</th>
@@ -34,13 +33,12 @@
  				<c:forEach var="i" items="${list}">
  					<c:if test="${i.u_auth == 0}">
  					<tr>
- 						<td>${i.u_num}</td>
- 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title} <small>(${i.cucount })</small></a></td>
  						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.book_name}</a></td>
+ 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title} <small>(${i.cucount })</small></a></td>
  						<td><fmt:formatNumber value="${i.u_price}"/>원</td>
  						<td><c:if test="${i.u_state ==1}">판매중</c:if>
  							<c:if test="${i.u_state ==2}">거래중</c:if>
- 							<c:if test="${i.u_state ==3}"><ins>판매완료</ins></c:if>
+ 							<c:if test="${i.u_state ==3}"><ins><b>판매완료</b></ins></c:if>
  						</td>
  						<td>${i.id}</td>
  						<td>${i.u_hit}</td>
