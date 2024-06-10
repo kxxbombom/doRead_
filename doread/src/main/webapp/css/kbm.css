@@ -1344,3 +1344,9 @@ input[type="button"]:hover, button:hover{
 	font-weight:bold;
 	margin-left:300px;
 }
+
+
+/*중고게시판 used*/
+table#usedtable th, #table#usedtable td{
+	padding:0;
+}
