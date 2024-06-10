@@ -39,11 +39,11 @@ window.onload=function(){
 		<form id="write_form" action="qnaWrite.do" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
-					<label for="q_title">제목</label>
+					<label for="q_title">문의 제목</label>
 					<input type="text" name="q_title" id="q_title" maxlength="50">
 				</li>
 				<li>
-					<label for="q_content">내용</label>
+					<label for="q_content">문의 내용</label>
 					<textarea rows="5" cols="20"  name="q_content" id="q_content"></textarea>
 				</li>
 				<li>
@@ -59,7 +59,7 @@ window.onload=function(){
 					<input type="radio" name="q_auth" value="4" id="auth4">교환 및 반품
 				</li>
 			</ul>
-			<div class="align-center">
+			<div class="qna-button">
 				<input type="submit" value="등록">
 				<input type="button" value="목록" onclick="location.href='qnaList.do'">
 			</div>

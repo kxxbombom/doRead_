@@ -15,12 +15,13 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h2 style="text-align:center">스토리 제목 :  ${sb.s_title}</h2>
+		<h2>${sb.s_title}</h2>
 		<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 		</div>
-		${sb.mem_id} &nbsp; &nbsp; 도서명 : ${sb.book_name }<br>
-		${sb.s_rdate} &nbsp;  조회 : ${sb.s_hit} 
+		${sb.mem_id} <br>
+		${sb.s_rdate} &nbsp;  조회 : ${sb.s_hit} <br>
+		도서명 : ${sb.book_name }
 			<ul class="board-btn-container">
 				<li class="board-btn">
 					<span class="board-cbtn"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>

@@ -7,6 +7,7 @@
 <title>관리자페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 	window.onload = function(){
@@ -135,7 +136,7 @@ $(function(){
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 <div class="page-main">
 
-	<h2>책 등록</h2>
+	<h2 class="vertical-margin">책 등록</h2>
 	
 	<hr size="1.5" width="80%" noshade="noshade">
 	<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
@@ -188,8 +189,8 @@ $(function(){
 	</ul>
 	</div>
 	<div class="align-center">
-		<input type="submit" value="등록" class="button2">
-		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="submit" value="등록" class="update-button">
+		<input type="button" value="메인" class="update-button" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	
 </form>
