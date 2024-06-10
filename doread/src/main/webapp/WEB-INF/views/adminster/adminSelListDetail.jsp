@@ -18,7 +18,7 @@
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
 
 <div class="page-main">
-	
+	<br>
 	<h2>판매상세내역</h2>
 		
 	<hr size="1.5" width="80%" noshade="noshade">
@@ -209,7 +209,7 @@
 			})
 		
 		</script>
-
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
 <%--다음 우편번호 api 시작 --%>
 		 	<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
