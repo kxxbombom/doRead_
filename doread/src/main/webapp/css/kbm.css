@@ -771,6 +771,22 @@ table td:first-child, table td:last-child, td.text-center{
 }
 
 
+.btn5{
+	width:40px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.btn5:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
 .basicbtn{
 	width:50px;
 	height:30px;

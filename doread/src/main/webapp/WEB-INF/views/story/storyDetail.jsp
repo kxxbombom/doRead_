@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의 상세</title>
+<title>스토리</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
@@ -52,7 +52,7 @@
 		<img src="${pageContext.request.contextPath}/upload/${sb.s_image}" class="detail-img">
 		</div>
 		</c:if>
-		<p>
+		<p id="board_content">
 			${sb.s_content}
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
@@ -80,7 +80,7 @@
 					<span class="letter-count">300/300</span>
 				</div>
 				<div id="re_second" class="align-right">
-					<input type="submit" value="전송">
+					<input type="submit" value="등록" class="btn5">
 				</div>
 				</c:if>
 			</form>
