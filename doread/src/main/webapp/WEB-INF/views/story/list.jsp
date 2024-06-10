@@ -38,7 +38,7 @@ window.onload= function(){
 		</c:if>
 		<c:if test="${count>0}">
 		<table>
-			<tr>
+			<tr style="background-color:rgb(26, 77, 46); color:#FFF;">
 				<th>글번호</th>
 				<th>제목</th>
 				<th>작성자</th>
