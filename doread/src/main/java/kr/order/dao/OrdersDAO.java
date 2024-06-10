@@ -268,6 +268,38 @@ public class OrdersDAO {
 		}
 		return list;
 	}
+	
+	//배송비제외 도서금액 총액
+	public int getBookTotal(int order_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int total = 0;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "select SUM(book_total) from book_order_detail where order_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, order_num);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}	
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return total;
+	}	
+	
+	
+	
 	//주문삭제(주문 내역만 삭제. 재고 원상 복귀X)
 	//관리자/사용자 - 주문상세
 	public OrderVO getOrder(int order_num)throws Exception{

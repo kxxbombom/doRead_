@@ -36,7 +36,7 @@ public class LimitListUAction implements Action{
 		int URcount = redao.countU("1","1");
 		
 		
-		PagingUtil URpage = new PagingUtil(Integer.parseInt(pageNum),URcount,10,10,request.getContextPath()+"/adminster/ulist.do");
+		PagingUtil URpage = new PagingUtil(Integer.parseInt(pageNum),URcount,URcount,10,request.getContextPath()+"/adminster/ulist.do");
 		
 		List<UsedReportVO> list = redao.listU("1","1",URpage.getStartRow(), URpage.getEndRow());
 		

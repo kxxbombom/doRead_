@@ -58,7 +58,6 @@
 </script>
 </head>
 <body>
-<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
@@ -92,18 +91,11 @@
 		</tr>
 	 		</c:if>
 	 	</c:forEach>
-	 
 	 </table>
 	</c:if>
-	
-	
-	
-	<div class="align-center">
-		
-	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+	<div class="align-center">	
+		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
-	
-
 </div>
 </body>
 </html>

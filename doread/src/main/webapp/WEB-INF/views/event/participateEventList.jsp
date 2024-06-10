@@ -17,18 +17,18 @@
 			<h2>내가 참여한 이벤트 내역</h2>
 			<hr size="1" noshade width="100%">
 		</div>
-		<table>
-			<tr>
-				<th>이벤트 번호</th>
-				<th>이벤트 명</th>
-				<th>당첨 여부</th>
+		<table class="main-table">
+			<tr class="main-tr">
+				<th class="main-td">이벤트 번호</th>
+				<th class="main-td">이벤트 명</th>
+				<th class="main-td">당첨 여부</th>
 			</tr>
 			<c:forEach var="event" items="${list}">
 			<input type="hidden" name="e_num" id="e_num" value="${event.e_num}">
 			<tr>
-				<td>${event.e_num}</td>
-				<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${event.e_num}">${event.e_title}</a></td>
-				<td>
+				<td class="main-td">${event.e_num}</td>
+				<td class="main-td"><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${event.e_num}">${event.e_title}</a></td>
+				<td class="main-td">
 					<c:if test="${empty event.e_mem_num and empty event.ed_result }">
 						<legend>진행중</legend>
 					</c:if>

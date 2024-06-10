@@ -266,7 +266,7 @@ public class ReportDAO {
 					
 				}
 			}catch(Exception e) {
-				
+				throw new Exception(e);
 			}finally {
 				DBUtil.executeClose(re, ps, conn);
 			}
@@ -288,7 +288,7 @@ public class ReportDAO {
 					if(keyfield.equals("1")) sub_sql += "WHERE  sc_auth=2";
 					
 				}
-				sql="select count(*) from st_comm_report " + sub_sql ;
+				sql="select count(*) from st_comm_report join story_comment using(sc_num) " + sub_sql ;
 				ps = conn.prepareStatement(sql);
 				re = ps.executeQuery();
 				
@@ -297,7 +297,7 @@ public class ReportDAO {
 					
 				}
 			}catch(Exception e) {
-				
+				throw new Exception(e);
 			}finally {
 				DBUtil.executeClose(re, ps, conn);
 			}
@@ -395,7 +395,7 @@ public class ReportDAO {
 					
 				}
 			}catch(Exception e) {
-				
+				throw new Exception(e);
 			}finally {
 				DBUtil.executeClose(re, ps, conn);
 			}

@@ -18,7 +18,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-	<div class="content-main list-header">
+	<div class="content-main list-header" id="main">
 		<h2>장바구니</h2>
 		
 		<c:if test="${empty list}">
@@ -107,7 +107,7 @@
 	 						<c:if test="${cart.bookVO.stock >= cart.c_quantity}">
 	 							<input type="number" name="c_quantity" min="1" max="${cart.bookVO.stock}" value="${cart.c_quantity}" class="quantity-width">
 	 							<br>												<%--커스텀 데이터--%>
-	 							<input type="button" value="변경" class="cartorder-btn" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}" data-total="${all_total}">
+	 							<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.c_num}" data-booknum="${cart.book_num}" data-total="${all_total}">
 	 						</c:if>
 	 					</td>
 	 					<td class="align-center">
@@ -116,7 +116,7 @@
 	 					<td class="align-center" style="border-left:1px;">
 	 						<fmt:formatNumber value="${cart.sub_total}"/>원
 	 						<br>
-	 						<input type="button" value="삭제" class="cartorder-btn" id="cart-del" data-cartnum="${cart.c_num}">
+	 						<input type="button" value="삭제" class="cart-del" id="cart-del" data-cartnum="${cart.c_num}">
 	 						
 	 					</td>
 	 				</tr>
@@ -157,6 +157,7 @@
 		 			
 		 			<div class="align-center cart-submit">
 	 					<input type="submit" value="주문하기(${cart_count})">
+	 					
 	 				</div>
 		 		</div>
 	 		</div>

@@ -4,14 +4,23 @@
 
 /* 전체 레이아웃
 ---------------------*/
+@keyframes slideIn {
+    0% {
+        transform: translateY(7px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 body{
 	width:1000px;
 	margin:0 auto;
 	background:#FFF;
 	
-	
-	
 }
+
 a:link{
 	text-decoration:none;
 	color:#000000;
@@ -28,7 +37,7 @@ a:hover{
 ---------------------*/
 .page-main{
 	background:#FFFFFF;
-	margin:40px 0;
+/* 	margin:40px 0; */
 /* 	border-radius:5px;삭제!
 	box-shadow:0 2px 6px rgba(100,100,100);삭제! */
 	min-height:650px;
@@ -36,7 +45,7 @@ a:hover{
 }
 .content-main{
 	padding:10px 20px;
-	
+	animation: slideIn 0.8s ease-out;
 }
 
 .m-top{
@@ -63,6 +72,9 @@ a:hover{
 }
 .align-right{
 	text-align:right;
+}
+.align-left{
+	text-align:left;
 }
 /*
 메뉴
@@ -389,7 +401,9 @@ input[value="우편번호 찾기"]{
 	color:rgb(26, 77, 46);
 }
 .login-help-btn{
-	margin:0 0 0 530px;
+	margin:0 auto;
+	width:280px;
+	text-align:right;
 }
 .login-help-btn input{
 	border:none;
@@ -711,7 +725,7 @@ table td:first-child, table td:last-child, td.text-center{
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
 
-.list-btn2 input{
+.list-btn2 input, .btn2{
 	width:80px;
 	height:30px;
 	border-radius:5px;
@@ -721,11 +735,11 @@ table td:first-child, table td:last-child, td.text-center{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.list-btn2 input:hover{
+.list-btn2 input:hover, .btn2:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
-.list-btn3 input{
+.list-btn3 input, .ordercombtn{
 	width:100px;
 	height:30px;
 	border-radius:5px;
@@ -735,10 +749,44 @@ table td:first-child, table td:last-child, td.text-center{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.list-btn3 input:hover{
+.list-btn3 input:hover, .ordercombtn:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
 }
+
+
+.btn4{
+	width:65px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.btn4:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
+.basicbtn{
+	width:50px;
+	height:30px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+}
+.basicbtn:hover{
+	border:1px solid rgb(26, 77, 46);
+	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+}
+
+
 
 
 /* 게시판 글상세
@@ -827,7 +875,7 @@ input[type="file"]{
 
 
 
-/*장바구니*/
+/*장바구니 카트*/
 #cart_container{
 	width:100%;
 	display:flex;
@@ -858,6 +906,15 @@ form#cart_order{
 }
 /*총 결제 예상 금액*/
 .cartList{
+	display:inline-block;
+	width:210px;
+	margin-left:0;
+	border:2px solid #d9d8d7;
+	border-radius:5px;
+	height:260px;
+	padding:5px;
+}
+.cartList2{
 	display:inline-block;
 	width:210px;
 	margin-left:0;
@@ -902,7 +959,7 @@ form#cart_order{
 	justify-content: space-between;
 }
 /*장바구니 변경,삭제,주문 버튼*/
-.cartorder-btn{
+.cartorder-btn, .cart-modify, .cart-del{
 	width:50px;
 	height:25px;
 	border-radius:5px;
@@ -912,7 +969,7 @@ form#cart_order{
 	font-weight:bold;
 	border:1px solid #4F6F52;
 }
-.cartorder-btn:hover{
+.cartorder-btn:hover, .cart-modify:hover, .cart-del:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
 	cursor:pointer;
@@ -945,13 +1002,13 @@ form#cart_order{
 	padding:20px 10px;
 	display:flex;
 	flex-direction:column;
-}
-.cart-notice label{
 	color:rgba(0,0,0,0.65);
 	font-weight:bold;
-	display:inline-block;
 	margin-bottom:10px;
+	width:100%;
+	gap:10px;
 }
+
 .cart-notice ul{
 	display:inline-block;
 	margin:0;
@@ -984,7 +1041,7 @@ div.order-info > div > *{
 	padding-left:15px;
 }
 
-#order_form div.cartList{
+#order_form div.cartList2{
 	padding:10px;
 }
 
@@ -995,7 +1052,7 @@ div.order-info > div > *{
 #receive_info > ul{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 div#receive_div>ul>li{
 	display:flex;
@@ -1015,7 +1072,7 @@ div.order-info label{
 	width:140px;
 }
 #receive_info textarea{
-	width:100%;
+	width:110%;
 	border-radius:5px;
 }
 .flex-column{
@@ -1026,6 +1083,9 @@ div.order-info label{
 #select_msg{
 	margin-bottom:10px;
 	border-radius:5px;
+	width:200px;
+	height:28px;
+	font-size:14px;
 }
 
 #order_book{
@@ -1045,7 +1105,9 @@ div.order-info label{
 	
 }
 
-
+#point_use input[type="number"]{
+	height:25px;
+}
 
 
 .enter-group{
@@ -1094,9 +1156,68 @@ textarea {
 }
 
 
+
+
 /*마이페이지 주문배송 구매내역상세*/
+.orderdetail label{
+	margin-right:0px;
+	width:150px;
+	float:left;
+	padding:0;
+}
+.orderdetail #receive_info{
+	padding:0 20px;
+}
+
+div#payment_div>ul>li{
+	display:flex;
+	height:30px;
+	justify-content: space-between;
+}
+
+div#payment_div{
+	display:inline-block;
+}
+#payment_div ul{
+	width:180px;
+}
+#payment_div ul li span:first-child {
+	text-align: left;
+	margin-right:auto;
+}
+#payment_div ul li span:last-child {
+	text-align: right;
+}
+
+
+
+div#floattest{
+	float:left;
+	width:100%;
+	margin:20px 0;
+}
+#floattest label{
+	font-weight:bold;
+}
+.test-left{
+	float:left;
+	width:50%;
+}
+#test-right{
+	float:right;
+	padding:0 30px;
+}
+#test-right ul{
+	margin:0;
+}
+
+
+.orderdetailbtn{
+	padding:40px 0 ;
+}
+
 /*배송지수정 모달*/
-.modal {
+.mymodal {
     display: none;
     position:fixed;
     z-index: 1;
@@ -1114,23 +1235,43 @@ textarea {
     padding: 20px;
     border: 1px solid #888;
     border-radius:10px;
-    width: 65%;
+    width: 50%;
 }
 .close {
-    color: #000;
+    /* color: #000; */
     /* float: right; */
-    font-size: 16px;
+    font-size: 14px;
 }
 .close:hover, .close:focus {
-	font-weight:bold;
     text-decoration: none;
     cursor: pointer;
 }
+form#editForm{
+	width:500px;
+}
+form#editForm  *{
+	font-size:14px;
+}
+form#editForm label{
+	width:120px;
+}
+
+
 
 /*모든 버튼*/
 input[type="button"]:hover, button:hover{
 	cursor:pointer;
 }
 
+.board-title{
+	display:inline-block;
+	width:250px;
+	max-width:300px;	
+	overflow:hidden;
+	height:40px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+	margin-top: 10px; 	
+}
 
 

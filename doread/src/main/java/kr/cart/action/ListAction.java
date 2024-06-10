@@ -29,7 +29,7 @@ public class ListAction implements Action{
 		List<CartVO> list = null;
 		if(all_total > 0){
 			list = dao.getListCart(user_num);
-			cart_count = dao.getCartCount(user_num);
+			cart_count = dao.getCartTotalCount(user_num);
 		}
 		
 		//배송비 적용 총구매액

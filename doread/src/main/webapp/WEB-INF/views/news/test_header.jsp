@@ -78,7 +78,7 @@
 	</ul>
 </div>
 <div class="main-nav-container">
-	<ul id="main_nav">
+	<ul id="main_nav" style="font-weight:500;">
 		<li>
 		<div class="dropdown">
      	<span class="dropbtn">도서</span>

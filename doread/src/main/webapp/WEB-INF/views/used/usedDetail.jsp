@@ -14,111 +14,96 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-<div class="page-main">
-
-		
-
-<div class="align-center">
- 		<h2>중고게시판</h2>	
- 		<div class="float-clear">
+	<div class="page-main" style="z-index:1; position:relative;">
+		<div class="align-center" style="z-index:1;" >
+		 	<h2>중고게시판</h2>	
+		 	<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
-		</div>
-</div>
-		<div id="profileboard align-left">
-		<c:if test="${!empty used.user_image }">
-		<img src="${pageContext.request.contextPath}/upload/${used.user_image}" class="my-photo" width="46" height="43">
-		</c:if>
-		<c:if test="${empty used.user_image}">
-		<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo" width="46" height="43">
-		</c:if>
-		${used.id}<br>
-		${used.u_rdate} &nbsp; 조회수:${used.u_hit}
-		
-		</div>
-		<c:if test="${used.mem_num == user_num}">
-		<div class="align-right">
-		
-	
-		<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
-		<div id="updel" class="hide">
-        <ul class="siteLink">
-            <li class=""><a href="${pageContext.request.contextPath}/used/updateUsedForm.do?u_num=${used.u_num}" target="_blank">수정</a></li>
-            <li class=""><a id ="delbtn"  href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}" target="_blank">삭제</a></li>
-           	
-        </ul>
-       </div>
-       	<script type="text/javascript">
-    	$(".global_site a").click(function() {
-        if($('#updel').hasClass('hide')){
-            $('#updel').removeClass('hide');
-        }else{
-            $('#updel').addClass('hide');
-    	    }
-  	  });
-    	
-    	$('#delbtn').click(function(event){
-    		const choose =confirm('정말삭제하시겠습니까?');
-    		
-    		if(choose){
-   			location.href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}"
-    		}
-    		event.preventDefault();
-    	})
-    	
-   	
-		</script>
-		
-        
-		</div>
-		</c:if>
-		<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade">
-		</div>
-		
-		<div id="usedimage">
-		<c:if test="${!empty used.u_image }">
-		<img src="${pageContext.request.contextPath}/upload/${used.u_image}" width="255" height="293">
-		</c:if>
-		<c:if test="${empty used.u_image}">
-		<img src="${pageContext.request.contextPath}/images/noimage.jpg" width="255" height="293">
-		</c:if>
-			
-			
-		</div>
-		<div id="usedcontent">
-			<div class="float-clear">
-			<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${used.book_num}"><b>[<c:if test="${used.u_state == 1}">판매중</c:if><c:if test="${used.u_state == 2}">거래중</c:if><c:if test="${used.u_state == 3}">판매완료</c:if>]${used.book_name}</b> <br></a>
-			
-			가격(배송비포함명시) <fmt:formatNumber value="${used.u_price}"/>원<br>
-			Do READ 중고 품질 판정 가이드:<b>
-			<c:if test="${used.u_condition == 1}">미개봉</c:if>
-			<c:if test="${used.u_condition == 2}">최상</c:if>
-			<c:if test="${used.u_condition == 3}">상</c:if>
-			<c:if test="${used.u_condition == 4}">중</c:if>
-			<c:if test="${used.u_condition == 5}">하</c:if>
-			<img id="gideimage" src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
-			</b><br>
-			<div class="hide gide siteLink" style="font-size:10pxt;  z-index:999; position:absolute; border:1px solid #d4d2d2; border-radius:15px; background:white;">
-				&lt;Do READ 중고 품질 판정 가이드&gt;<br>
-					
-					미개봉(개봉하지않았음)<br>
-					최상(개봉,사용감없음)<br>
-					상(개봉, 2개이하의 파손이나 낙서)<br>
-					중(개봉,4개이하의 파손이나 낙서)<br>
-					하(개봉,5개이상의 파손,낙서)<br>
-	
-				
-			<br> 
 			</div>
+		</div>
+		<div id="profileboard align-left">
+			<h2>${used.u_title}</h2>
+			<c:if test="${!empty used.user_image }">
+				<img src="${pageContext.request.contextPath}/upload/${used.user_image}" class="my-photo" width="46" height="43">
+			</c:if>
+			<c:if test="${empty used.user_image}">
+				<img src="${pageContext.request.contextPath}/images/face.png" class="my-photo" width="46" height="43">
+			</c:if>
+				${used.id}
+				<br>
+				<p>
+				${used.u_rdate} &nbsp; 조회수:${used.u_hit}
+		</div>
+		
+		<c:if test="${used.mem_num == user_num}">
+			<div class="align-right" style="position:absolute; top:127px; z-index:999; right:0;">
+				<span class="global_site"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+				<div id="updel" class="hide" style="z-index:999; position:absolute; right:0; width:300px;">
+			        <ul class="siteLink">
+			            <li class=""><a href="${pageContext.request.contextPath}/used/updateUsedForm.do?u_num=${used.u_num}" >수정</a></li>
+			            <li class=""><a id ="delbtn"  href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}">삭제</a></li>
+			        </ul>
+		       </div>
+		       	<script type="text/javascript">
+		    	$(".global_site a").click(function() {
+		        if($('#updel').hasClass('hide')){
+		            $('#updel').removeClass('hide');
+		        }else{
+		            $('#updel').addClass('hide');
+		    	    }
+		  	 	 });
+		    	
+		    	$('#delbtn').click(function(event){
+		    		const choose =confirm('정말삭제하시겠습니까?');
+		    		
+		    		if(choose){
+		   			location.href="${pageContext.request.contextPath}/used/deleteUsed.do?u_num=${used.u_num}"
+		    		}
+		    		event.preventDefault();
+		    	})
+				</script>
+			</div>
+		</c:if>
+
+		<hr width="100%" size="1" noshade="noshade" style="z-index:1;" >
+		
+		<div id="usedimage" style="z-index:1;">
+			<c:if test="${!empty used.u_image }">
+				<img src="${pageContext.request.contextPath}/upload/${used.u_image}" width="255" height="293">
+			</c:if>
+			<c:if test="${empty used.u_image}">
+				<img src="${pageContext.request.contextPath}/images/noimage.jpg" width="255" height="293">
+			</c:if>
+		</div>
+		
+		<div id="usedcontent" style="z-index:1;">
+				<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${used.book_num}"><b>[<c:if test="${used.u_state == 1}">판매중</c:if><c:if test="${used.u_state == 2}">거래중</c:if><c:if test="${used.u_state == 3}">판매완료</c:if>]${used.book_name}</b> <br></a>
+				가격(배송비포함명시) <fmt:formatNumber value="${used.u_price}"/>원<br>
+				Do READ 중고 품질 판정 가이드:<b>
+				<c:if test="${used.u_condition == 1}">미개봉</c:if>
+				<c:if test="${used.u_condition == 2}">최상</c:if>
+				<c:if test="${used.u_condition == 3}">상</c:if>
+				<c:if test="${used.u_condition == 4}">중</c:if>
+				<c:if test="${used.u_condition == 5}">하</c:if>
+				<img id="gideimage" src="${pageContext.request.contextPath}/images/question_471664.png"  width="15px">
+				</b>
+				<br>
+				<div class="hide gide siteLink" style="font-size:10pxt;  z-index:999; position:absolute; border:1px solid #d4d2d2; border-radius:15px; background:white;">
+					&lt;Do READ 중고 품질 판정 가이드&gt;<br>
+						미개봉(개봉하지않았음)<br>
+						최상(개봉,사용감없음)<br>
+						상(개봉, 2개이하의 파손이나 낙서)<br>
+						중(개봉,4개이하의 파손이나 낙서)<br>
+						하(개봉,5개이상의 파손,낙서)<br>
+				<br> 
+				</div>
 			<br>
 			<p>
 			${used.u_content}
- 	
-		</div>
-		</div>
-		<div class="align-right">
-			<a class="report" data-id="${used.u_num}" href="#" data-name="u_num" >신고</a>
-		</div>
+	</div>
+	<div class="align-right" style="z-index:1;">
+		<a class="report" data-id="${used.u_num}" href="#" data-name="u_num" >신고</a>
+	</div>
 		<hr width="100%" size="1" noshade="noshade">
 	<!-- 댓글시작 -->
 		<div id="reply_div">
@@ -151,9 +136,9 @@
 		</div>
 		<!-- 댓글 목록 출력 끝 -->
 		<!-- 댓글끝 -->
-</div>
-<div class="hide reportdiv" style="width:400px; position:fixed; z-index:999 !important;
-	bottom:400px;border:1px solid #999 !important;background:white;">
+	</div>
+	<div class="hide reportdiv" style="width:400px; position:fixed; z-index:999 !important;
+		bottom:400px;border:1px solid #999 !important;background:white;">
 		<h3>신고하기</h3>
 		<span> </span>
 		<hr size="1" width="100%" >

@@ -13,125 +13,179 @@
 
 </head>
 <body>
-
-<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<div class="page-main">
 
+<div class="page-main">
+	
 	<h2>판매상세내역</h2>
 		
-			
-	
 	<hr size="1.5" width="80%" noshade="noshade">
 
 	<div class="content-main">
 	
 		<c:if test="${!empty list}">
-		<table>
-			<tr>
-			<th>상세번호</th>
-			<th>책이름</th>
-			<th>책가격</th>
-			<th>수량</th> 
-			<th>합계</th>
-			
-			</tr>
-		<c:forEach var="i" items="${list}">
-			
-			<tr>
-			<td>${i.order_num}</td>
-			<td><a href="${pageContext.request.contextPath}/book/detail.do?book_num=${i.book_num}"><img width="200" height="270" src="${pageContext.request.contextPath}/upload/${i.book_image}"></a><br>${i.book_name}</td>
-			<td>${i.book_price}</td>
-			<td>${i.order_quantity}</td>
-			<td> <fmt:formatNumber value="${i.book_total }"/>원</td>
-			
-			</tr>
-			<tr>
-				<td colspan="5"><hr size="1.5" width="80%" noshade="noshade"></td>
-			</tr>
-		</c:forEach>
-		</table>
+			<table>
+				<tr>
+					<th>상세번호</th>
+					<th>책이름</th>
+					<th>책가격</th>
+					<th>수량</th> 
+					<th>합계</th>
+				</tr>
+			<c:forEach var="i" items="${list}">
+				<tr>
+					<td>${i.order_num}</td>
+					<td><a href="${pageContext.request.contextPath}/book/detail.do?book_num=${i.book_num}"><img width="200" height="270" src="${pageContext.request.contextPath}/upload/${i.book_image}"></a><br>${i.book_name}</td>
+					<td>${i.book_price}</td>
+					<td>${i.order_quantity}</td>
+					<td> <fmt:formatNumber value="${i.book_total }"/>원</td>
+				</tr>
+				<tr>
+					<td colspan="5"><hr size="1.5" width="80%" noshade="noshade"></td>
+				</tr>
+			</c:forEach>
+			</table>
 		</c:if>
 
 	</div>
 	
 	<div class="align-center" style="margin:0 auto;">
 	
-	<ul class="align-left addressmm">
-		<li>받는 사람 : ${order.receive_name }</li>
-		<li>전화번호 : ${order.receive_phone }</li>
-		<li>우편번호 : ${order.receive_zipcode }</li>
-		<li>주소 : ${order.receive_address1 }  &nbsp;  ${order.receive_address2 }</li>
-		<li>
-		<span>배송상태 : </span>
-		<c:if test="${order.order_status == 1}">결제완료</c:if>
-		<c:if test="${order.order_status == 2}">배송시작</c:if>
-		<c:if test="${order.order_status == 3}">배송중</c:if>
-		<c:if test="${order.order_status == 4}">배송완료</c:if>
-		<c:if test="${order.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
-		<c:if test="${order.order_status != 5}">
-		<input type="button" class="button2"  value="배송상태변경" id="delivery">
-		
-		
-		<form id="deliform" class="hide" method="post">
-		<select name="order_status" id="order_status" class="input-style"  >
-				<option value="1" <c:if test="${order.order_status == 1}">selected</c:if>>배송대기</option>
-				<option value="2" <c:if test="${order.order_status == 2}">selected</c:if>>배송준비중</option>
-				<option value="3" <c:if test="${order.order_status == 3}">selected</c:if>>배송중</option>
-				<option value="4"<c:if test="${order.order_status == 4}">selected</c:if>>배송완료</option>
-				<option value="5" <c:if test="${order.order_status == 5}">selected</c:if>>주문취소</option>
-		</select>
-		
-		<input type="submit" class="button2"  value="변경" id="upbtn">
-		<input type="button" class="button2"  value="취소" id="delbtn">
-		</form>
-		</c:if>
-		</li>
-		<li>요청사항 : ${order.order_msg}</li>
-	</ul>
-	<form method="post" id="deliveryupdate" class="hide" >
-		<input type="hidden" name="order_num" value="${order.order_num}" class="input-style input-check">
-		<ul class="align-left" style="margin:0 auto;">
-			<li><input type="text" id="receive_name" name="receive_name" value="${order.receive_name}" class="input-style input-check"></li>
-			<li><input   type="text" id="receive_phone" name="receive_phone" value="${order.receive_phone}" class="input-style input-check"></li>
-			<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${order.receive_zipcode}" class="input-style input-check"> <input type="button" class="hidden input-style" value="우편번호 찾기" onclick="execDaumPostcode()"></li>
-			<li><input type="text" id="receive_address1" name="receive_address1" value="${order.receive_address1}" class="input-style input-check"></li>
-			<li><input type="text" id="receive_address2" name="receive_address2" value="${order.receive_address2}" class="input-style"></li>
+		<ul class="align-left addressmm">
+			<li>받는 사람 : ${order.receive_name }</li>
+			<li>전화번호 : ${order.receive_phone }</li>
+			<li>우편번호 : ${order.receive_zipcode }</li>
+			<li>주소 : ${order.receive_address1 }  &nbsp;  ${order.receive_address2 }</li>
+			<li>
+			<span>배송상태 : </span>
+				<c:if test="${order.order_status == 1}">결제완료</c:if>
+				<c:if test="${order.order_status == 2}">배송시작</c:if>
+				<c:if test="${order.order_status == 3}">배송중</c:if>
+				<c:if test="${order.order_status == 4}">배송완료</c:if>
+				<c:if test="${order.order_status == 5}"><span style="color:red;">주문 취소</span></c:if>
+				<c:if test="${order.order_status != 5}">
+			<input type="button" class="button2"  value="배송상태변경" id="delivery">
+			
+			
+			<form id="deliform" class="hide" method="post">
+			<select name="order_status" id="order_status" class="input-style"  >
+					<option value="1" <c:if test="${order.order_status == 1}">selected</c:if>>배송대기</option>
+					<option value="2" <c:if test="${order.order_status == 2}">selected</c:if>>배송준비중</option>
+					<option value="3" <c:if test="${order.order_status == 3}">selected</c:if>>배송중</option>
+					<option value="4"<c:if test="${order.order_status == 4}">selected</c:if>>배송완료</option>
+					<option value="5" <c:if test="${order.order_status == 5}">selected</c:if>>주문취소</option>
+			</select>
+			
+			<input type="submit" class="button2"  value="변경" id="upbtn">
+			<input type="button" class="button2"  value="취소" id="delbtn">
+			</form>
+			</c:if>
+			</li>
+			<li>요청사항 : ${order.order_msg}</li>
 		</ul>
-		<input type="submit" class="button2"  value="변경" id="up2btn">
-		<input type="button" class="button2"  value="취소" id="del2btn">
-	</form>
-	<p>
-	<br>
-	<c:if test="${order.order_status == 1}">
-	<input type="button" value="배송지 정보 수정" class="button2" id="addressbtn" >
-	</c:if>
-	<input type="button" value="목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/order/adminList.do'">
-	
-	</div>
-	<script type="text/javascript">
-		$('#delivery').click(function(){
-			if($('#deliform').hasClass('hide')){
-				$('#deliform').removeClass('hide');
-			}else{
-				$('#deliform').addClass('hide');
-			}
+		<form method="post" id="deliveryupdate" class="hide" >
+			<input type="hidden" name="order_num" value="${order.order_num}" class="input-style input-check">
+			<ul class="align-left" style="margin:0 auto;">
+				<li><input type="text" id="receive_name" name="receive_name" value="${order.receive_name}" class="input-style input-check"></li>
+				<li><input   type="text" id="receive_phone" name="receive_phone" value="${order.receive_phone}" class="input-style input-check"></li>
+				<li><input type="text" id="receive_zipcode" name="receive_zipcode" value="${order.receive_zipcode}" class="input-style input-check"> <input type="button" class="hidden input-style" value="우편번호 찾기" onclick="execDaumPostcode()"></li>
+				<li><input type="text" id="receive_address1" name="receive_address1" value="${order.receive_address1}" class="input-style input-check"></li>
+				<li><input type="text" id="receive_address2" name="receive_address2" value="${order.receive_address2}" class="input-style"></li>
+			</ul>
+			<input type="submit" class="button2"  value="변경" id="up2btn">
+			<input type="button" class="button2"  value="취소" id="del2btn">
+		</form>
+		<p>
+		<br>
+		<c:if test="${order.order_status == 1}">
+			<input type="button" value="배송지 정보 수정" class="button2" id="addressbtn" >
+		</c:if>
+			<input type="button" value="목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/order/adminList.do'">
+		
+		</div>
+		<script type="text/javascript">
+			$('#delivery').click(function(){
+				if($('#deliform').hasClass('hide')){
+					$('#deliform').removeClass('hide');
+				}else{
+					$('#deliform').addClass('hide');
+				}
+				
+			});
+			$('#delbtn').click(function(){
+				if($('#deliform').hasClass('hide')){
+					$('#deliform').removeClass('hide');
+				}else{
+					$('#deliform').addClass('hide');
+				}
+				
+			});
+			$('#deliform').submit(function(event){
+					$.ajax({
+						url:'updatestatus.do',
+						data:{order_num:${order.order_num},status:$('#order_status').val()},
+						type:'post',
+						dataType:'json',
+						success:function(param){
+							if(param.result =='logout'){
+								alert('관리자로 로그인 후 이용가능');
+								
+							}else if(param.result =='success'){
+								alert('변경완료');
+								$('#deliform').addClass('hide');
+								location.href='detailOrder.do?order_num=${order.order_num}';
+							}else if(param.result =='cancle'){
+								alert('고객이 주문취소하였습니다.');
+								
+							}else{
+								alert('변경오류');
+							}
+						},error:function(){
+							alert('네트워크오류');
+						}
+						
+					});
+				
+				
+				event.preventDefault();
+				
+			});
+			$('#addressbtn').click(function(){
+				if($('.addressmm').hasClass('hide')){
+					
+				}else{
+					$('.addressmm').addClass('hide');
+					$('#deliveryupdate').removeClass('hide');
+				}
+			});
+			$('#del2btn').click(function(){
+				$('.addressmm').removeClass('hide');
+				$('#deliveryupdate').addClass('hide');
+				
+			});
 			
-		});
-		$('#delbtn').click(function(){
-			if($('#deliform').hasClass('hide')){
-				$('#deliform').removeClass('hide');
-			}else{
-				$('#deliform').addClass('hide');
-			}
-			
-		});
-		$('#deliform').submit(function(event){
+			$('#deliveryupdate').submit(function(event){
+				const inputcheck = document.getElementsByClassName('input-check');
+				for(let i=0; i<inputcheck.length; i++){
+					if(inputcheck[i].value.trim()==''){
+						alert("배송지 정보를 입력해주세요");
+						return false;
+					}
+					if(items[i].id == 'receive_zipcode' && !/^[0-9]{5}$/.test(items[i].value)){
+						alert('우편번호를 입력하세요 (숫자5자리)');
+						items[i].value='';
+						items[i].focus();
+						return false;
+						
+					}
+					
+				}
+				const address = $('#deliveryupdate').serialize();
 				$.ajax({
-					url:'updatestatus.do',
-					data:{order_num:${order.order_num},status:$('#order_status').val()},
+					url:'updateadminaddress.do',
+					data:address,
 					type:'post',
 					dataType:'json',
 					success:function(param){
@@ -140,11 +194,9 @@
 							
 						}else if(param.result =='success'){
 							alert('변경완료');
-							$('#deliform').addClass('hide');
+							$('.addressmm').removeClass('hide');
+							$('#deliveryupdate').addClass('hide');
 							location.href='detailOrder.do?order_num=${order.order_num}';
-						}else if(param.result =='cancle'){
-							alert('고객이 주문취소하였습니다.');
-							
 						}else{
 							alert('변경오류');
 						}
@@ -153,68 +205,10 @@
 					}
 					
 				});
-			
-			
-			event.preventDefault();
-			
-		});
-		$('#addressbtn').click(function(){
-			if($('.addressmm').hasClass('hide')){
-				
-			}else{
-				$('.addressmm').addClass('hide');
-				$('#deliveryupdate').removeClass('hide');
-			}
-		});
-		$('#del2btn').click(function(){
-			$('.addressmm').removeClass('hide');
-			$('#deliveryupdate').addClass('hide');
-			
-		});
+				event.preventDefault();
+			})
 		
-		$('#deliveryupdate').submit(function(event){
-			const inputcheck = document.getElementsByClassName('input-check');
-			for(let i=0; i<inputcheck.length; i++){
-				if(inputcheck[i].value.trim()==''){
-					alert("배송지 정보를 입력해주세요");
-					return false;
-				}
-				if(items[i].id == 'receive_zipcode' && !/^[0-9]{5}$/.test(items[i].value)){
-					alert('우편번호를 입력하세요 (숫자5자리)');
-					items[i].value='';
-					items[i].focus();
-					return false;
-					
-				}
-				
-			}
-			const address = $('#deliveryupdate').serialize();
-			$.ajax({
-				url:'updateadminaddress.do',
-				data:address,
-				type:'post',
-				dataType:'json',
-				success:function(param){
-					if(param.result =='logout'){
-						alert('관리자로 로그인 후 이용가능');
-						
-					}else if(param.result =='success'){
-						alert('변경완료');
-						$('.addressmm').removeClass('hide');
-						$('#deliveryupdate').addClass('hide');
-						location.href='detailOrder.do?order_num=${order.order_num}';
-					}else{
-						alert('변경오류');
-					}
-				},error:function(){
-					alert('네트워크오류');
-				}
-				
-			});
-			event.preventDefault();
-		})
-	
-	</script>
+		</script>
 
 </div>
 <%--다음 우편번호 api 시작 --%>

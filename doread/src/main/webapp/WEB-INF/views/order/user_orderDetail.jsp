@@ -19,12 +19,11 @@
 </head>
 <body>
 <div class="page-main">
-	<div class="content-main">
-	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
+	<div class="content-main orderdetail">
 	<h2>주문상세내역</h2>
 	<hr size="1" noshade width="100%">
-	
 	<table>
  			<tr>
  				<th>도서명</th>
@@ -60,24 +59,36 @@
  			</tr>
  		</table>
  		
-		<div id="receive_info">
+ 		
+ 		<div id="floattest">
+		<div id="receive_info" class="test-left">
+			<label>주문번호</label><span>${order.order_num}</span><br>
+			<label>배송상태</label>
+			<span>
+				<c:if test="${order.order_status == 1}">결제완료</c:if>
+				<c:if test="${order.order_status == 2}">배송시작</c:if>
+				<c:if test="${order.order_status == 3}">배송중</c:if>
+				<c:if test="${order.order_status == 4}">배송완료</c:if>
+				<c:if test="${order.order_status == 5}">주문취소</c:if>
+			</span>
 			<ul>
 				<li>
-					<span>배송지정보</span>
-					<div>
+					<label>배송지정보</label>
+					<div id="receive_div">
 						<ul>
-							<li><span id="receive_name">${order.receive_name}</span></li>
-							<li><span id="receive_phone">${order.receive_zipcode}</span></li>
-							<li><span id="receive_address1">${order.receive_address1}</span> <span id="receive_address2">${order.receive_address2}</span></li>
+							<li><span id="receive_name">${order.receive_name}</span>&nbsp;<span id="receive_phone">${order.receive_phone}</span></li>
+							<li><span id="receive_zipcode">${order.receive_zipcode}</span></li>
+							<li><span id="receive_address1">${order.receive_address1}</span>&nbsp; <span id="receive_address2">${order.receive_address2}</span></li>
 
 						</ul>
 					</div>
 				</li>
 				<li>
-					<label>배송요청사항</label> <span id="order_msg">${order.order_msg}</span>
+					<label>배송요청사항</label>
+					<span id="order_msg">${order.order_msg}</span>
 				</li>
 				<li>
-					<label>공동현관 출입방법 : </label>
+					<label>공동현관 출입방법</label>
 					<span id="enter">
 						<c:if test="${order.enter == 1}">
 							공동현관 비밀번호
@@ -90,13 +101,39 @@
 						<span id="enter_passwd">${order.enter_passwd}</span>
 					</c:if>
 				</li>
+			</ul>
+			</div>
+			<div id="test-right">
+			<ul>
+				<li>
+					<label>결제정보</label>
+					<div id="payment_div">
+						<ul>
+							<li><span>주문금액</span> <span><fmt:formatNumber value="${order.order_total}"/>원</span></li>
+							<li><span>상품금액</span> <span><fmt:formatNumber value="${Obook_total}"/>원</span></li>
+							<li><span>배송비</span> <span><fmt:formatNumber value="${delivery}"/>원</span></li>
+							<li><span>포인트사용</span> <span><fmt:formatNumber value="${used_point}"/>원</span></li>
+
+							<li><span>결제수단</span>
+								<span>
+								<c:if test="${order.order_payment == 1}">신용카드</c:if>
+								<c:if test="${order.order_payment == 2}">계좌이체</c:if>
+								<c:if test="${order.order_payment == 3}">휴대폰결제</c:if>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</li>
 				
 			</ul>
-			<div class="align-center">
+			</div>
+			
+		</div>	
+			<div class="align-center orderdetailbtn" style="clear:both;">
 				<c:if test="${order.order_status == 1}">
 			
-				<input type="button" value="배송지수정" id="openModalBtn">
-				<input type="button" id="cancelOrder" value="주문취소">
+				<input type="button"  class="btn2" value="배송지수정" id="openModalBtn">
+				<input type="button" class="btn4" id="cancelOrder" value="주문취소">
 				
 				<script type="text/javascript">
 	                $('#cancelOrder').click(function(event){
@@ -110,13 +147,13 @@
                 
                 </c:if>
 				
-				<input type="button" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
+				<input type="button" class="btn4" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 			
 			</div>
-		</div>
 		
 		
-		<div id="myModal" class="modal">
+		
+		<div id="myModal" class="mymodal">
         <div class="modal-content">
             <h2>배송지정보 수정</h2>
             <form id="editForm">
@@ -132,8 +169,8 @@
                 	</li>
                 	<li>
                		 	<label for="zipcode">우편번호</label>
-                		<input type="text" id="zipcode" name="re_zipcode" required value="${order.receive_zipcode}"><br><br>
-                		<input type="button" value="우편번호 찾기" onclick="execDaumPostcode()">
+                		<input type="text" id="zipcode" name="re_zipcode" required value="${order.receive_zipcode}">
+                		<input type="button" value="우편번호 찾기" onclick="execDaumPostcode()"><br><br>
                 	</li>
                 	<li>
                 		<label for="address1">주소</label>
@@ -144,15 +181,33 @@
                 		<input type="text" id="address2" name="re_address2" required value="${order.receive_address2}"><br><br>
                		</li>
                		<li>
+                		<label>배송요청사항</label>
+							<div class="flex-column">
+							<select name="order_message" id="select_msg">
+								<option value="1">선택해 주세요.</option>
+								<option value="2">문 앞에 놓아주세요.</option>
+								<option value="3">부재시 경비실에 맡겨주세요.</option>
+								<option value="4">부재시 연락주세요.</option>
+								<option value="5">배송 전 연락주세요.</option>
+								<option value="6">직접 입력</option>
+							</select>
+							<textarea name="order_msg" id="order_msg_textarea">${order.order_msg}</textarea>
+							</div>
+							<br><br>
+               		</li>
+               		<li>
+               			<div class="radio-group">
                 		<label for="re_enter">공동현관 출입방법</label>
                 		<input type="radio" name="re_enter" required value="1" <c:if test="${order.enter == 1}">checked</c:if> onclick="toggleEnterPasswd(true)">공동현관 비밀번호
 						<input type="radio" name="re_enter" required value="2" <c:if test="${order.enter == 2}">checked</c:if> onclick="toggleEnterPasswd(false)">자유출입
-						<input style="display: none;" type="text" id="re_enter_passwd" name="re_enter_passwd" placeholder="공동현관 비밀번호를 정확하게 입력하세요" <c:if test="${order.enter == 1}">value="${order.enter_passwd}"</c:if>>
+						<input style="display: none; width:150px;" type="text" id="re_enter_passwd" name="re_enter_passwd" placeholder="공동현관 비밀번호" <c:if test="${order.enter == 1}">value="${order.enter_passwd}"</c:if>>
+               			</div>
                		</li>
                 </ul>
-                <button type="submit">확인</button>
-                <input type="button" id="modify_cancel" value="취소" class="close">
-                
+                <div class="align-left">
+                <button type="submit" class="basicbtn">확인</button>
+                <input type="button" id="modify_cancel" value="취소" class="close basicbtn">
+                </div>
                 
                <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">

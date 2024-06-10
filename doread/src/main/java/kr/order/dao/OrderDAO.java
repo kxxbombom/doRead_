@@ -176,7 +176,7 @@ public class OrderDAO {
 						point += rs.getInt(1);
 						}while(rs.next());
 						}
-					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=1";
+					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=1 or p_detail=2";
 					
 					pstmt2 = conn.prepareStatement(sql);
 					pstmt2.setInt(1, mem_num);
@@ -580,22 +580,30 @@ public class OrderDAO {
 			
 		}
 		//관리자 배송상태 수정
-		public void updatestatus(int order_num,int status) throws Exception{
+		public void updatestatus(OrderVO order) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
 			PreparedStatement ps2 = null;
+			PreparedStatement ps4 = null;
 			String sql= null;
 			try {
 				conn = DBUtil.getConnection();
 				conn.setAutoCommit(false);
 				sql="update book_order set order_status=?, ORDER_MDATE=sysdate  where order_num=?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, status);
-				ps.setInt(2, order_num);
+				ps.setInt(1, order.getOrder_status());
+				ps.setInt(2, order.getOrder_num());
 				ps.executeUpdate();
-				if(status == 5) {
-					List<OrderDetailVO> detail = getListOrder_Detail(order_num);
-					sql="update book set stock=stock+?, ORDER_MDATE=sysdate  where book_num=?";
+				if(order.getOrder_status() == 5) {
+					sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+					ps4 = conn.prepareStatement(sql);
+					ps4.setInt(1, 2);
+					ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
+					ps4.setInt(3,order.getMem_num());
+					ps4.executeUpdate();
+					
+					List<OrderDetailVO> detail = getListOrder_Detail(order.getOrder_num());
+					sql="update book set stock=stock+? where book_num=?";
 					ps2 = conn.prepareStatement(sql);
 					for(int i=0; i<detail.size(); i++) {
 						ps2.setInt(1, detail.get(i).getOrder_quantity());
@@ -613,7 +621,7 @@ public class OrderDAO {
 				conn.rollback();
 				throw new Exception(e);
 			}finally {
-				if(status == 5) {
+				if(order.getOrder_status() == 5) {
 				DBUtil.executeClose(null, ps2, null);
 				}
 				DBUtil.executeClose(null, ps, conn);
@@ -623,10 +631,11 @@ public class OrderDAO {
 		}
 
 			//사용자 - 주문취소
-		public void cancleOrderuser(int order_num) throws Exception{
+		public void cancleOrderuser(OrderVO order) throws Exception{
 			Connection conn = null;
 			PreparedStatement ps = null;
 			PreparedStatement ps3 = null;
+			PreparedStatement ps4 = null;
 			String sql= null;
 			
 			try {
@@ -634,11 +643,18 @@ public class OrderDAO {
 				conn.setAutoCommit(false);
 				sql="update book_order set order_status=5, ORDER_MDATE=sysdate where order_num=?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, order_num);
+				ps.setInt(1, order.getOrder_num());
 				ps.executeUpdate();
 				
+				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+				ps4 = conn.prepareStatement(sql);
+				ps4.setInt(1, 2);
+				ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
+				ps4.setInt(3,order.getMem_num());
+				ps4.executeUpdate();
+				
 				//주문취소했기때문에 환원이여
-				List<OrderDetailVO> list = getListOrder_Detail(order_num);
+				List<OrderDetailVO> list = getListOrder_Detail(order.getOrder_num());
 				sql="update zitem set quantity=quantity+? where book_num=? ";
 				ps3 = conn.prepareStatement(sql);
 				for(int i=0; i<list.size(); i++) {
@@ -658,6 +674,7 @@ public class OrderDAO {
 				conn.rollback();
 				throw new Exception(e);
 			}finally {
+				DBUtil.executeClose(null, ps4, null);
 				DBUtil.executeClose(null, ps3, null);
 		
 				DBUtil.executeClose(null, ps, conn);

@@ -37,7 +37,7 @@
 			<c:forEach var="news" items="${list}">
 			<tr>
 				<td>${news.news_num}</td>
-				<td><a href="newsDetail.do?news_num=${news.news_num}">${news.news_title}</a></td>
+				<td><a href="newsDetail.do?news_num=${news.news_num}" class="board-title">${news.news_title}</a></td>
 				<c:if test="${user_auth == 9}">
 				<td class="text-center">${news.mem_id}</td>
 				</c:if>

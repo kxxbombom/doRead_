@@ -7,6 +7,8 @@ body{
 	width:960px;
 	margin:0 auto;
 	background:#FFFFFF;
+	margin-top:0;
+	padding-top:0;
 }
 a:link{
 	text-decoration:none;
@@ -19,9 +21,11 @@ a:visited{
 .page-main{
 	width:100%;
 	background:#FFFFFF;
-	margin:40px auto;
+	margin:0 auto;
 	border:none;
 	min-height:650px;
+	margin-top:0 !important;
+	padding-top:0;
 }
 .page-main h4{
 	text-align:center;
@@ -33,6 +37,20 @@ form#search_form h2{
 	float: right;
 	margin-left:300px;
 }
+
+table.main-table{
+	border:none;
+	width:85%;
+}
+
+tr.main-tr{
+	border:none;
+}
+.main-td{
+	border:none;
+	padding:10px;
+}
+
 /*마이페이지 header
 -----------------------*/
 #mypage-main{
@@ -285,7 +303,7 @@ body{
 }
 .page-main{
 	background:#FFFFFF;
-	margin:40px 0;
+
 	min-height:650px;
 }
 .content-main{
@@ -322,7 +340,8 @@ body{
 #mini_nav ul li{
 	display:inline-block;
 	text-align:center;
-	vertical-align:middle; 
+	vertical-align:middle;
+	margin-bottom:30px; 
 	padding-top:10px;
 	margin-right:8px;
 }
@@ -412,6 +431,7 @@ cursor: pointer;
 	height:40px;
 	vertical-align: middle;
 	display: table-cell;
+	
 	border-top:1px solid #C8C8C8;
 	border-bottom:1px solid #C8C8C8;
 }
@@ -589,6 +609,50 @@ ul li,a{
 	font-family: 'Pacifico', serif;
 }
 
+.comment-content{
+	display:inline-block;
+	width:400px;
+	max-width:600px;
+	overflow:hidden;
+	height:20px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+}
+.qna-content{
+	display:inline-block;
+	width:300px;
+	max-width:500px;
+	overflow:hidden;
+	height:20px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+}
+.board-title{
+	display:inline-block;
+	width:150px;
+	max-width:250px;	
+	overflow:hidden;
+	height:20px;
+	white-space : nowrap;
+	text-overflow : ellipsis;
+}
 
 
 
+/*주문목록*/
+form#list_search_form{
+	margin:0 auto;
+	width:300px;
+}
+ul.buylist-search{
+	display:flex;
+	text-align:center;
+}
+ul.buylist-search li{
+	margin:3px;
+	/* display:inline-block; */
+}
+ul.buylist-search input[type="submit"]{
+	margin:0;
+	height:25px;
+}

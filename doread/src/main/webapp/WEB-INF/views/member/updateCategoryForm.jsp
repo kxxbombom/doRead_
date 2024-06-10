@@ -5,15 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>관심도서 등록</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/header_test.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kts.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('input[type="checkbox"]').on('click', function() {
@@ -34,10 +31,10 @@
 			<h2>회원정보 수정</h2>
 			<form id="modify_form" action="updateCategory.do" method="post">
 				<div class="register-main">
-					<div class="container">
+					<div class="fav-container">
 						<div style="margin-bottom:10px;">
-							<h3><label for="preference">관심도서</label></h3>
-							<p style="color:rgb(26, 77, 46);">*관심도서는 3개까지 선택할 수 있습니다</p>
+							<h2><label for="preference">관심도서</label></h2>
+							<p class="fav-notice">*관심도서는 3개까지 선택할 수 있습니다</p>
 						</div>
 						<div class="preference-box">
 							<div class="preference-group">

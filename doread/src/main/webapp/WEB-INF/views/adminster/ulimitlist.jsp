@@ -12,24 +12,29 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<div class="page-main">
+<div class="page-main align-center">
 <h2>중고게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list}">
-	 정지등록된 게시글이 없습니다.
+	 	<br>
+		<br>
+		정지등록된 게시글이 없습니다.
+		<br>
+		<br>
+		<br>
+		<br>
 	</c:if>
 	<c:if test="${!empty list}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list}">
 	 		<c:if test="${i.auth == 2}">
@@ -60,22 +65,33 @@
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
+	<div class="align-center">
+			 ${page}
+	</div>
+	<br>
+	<br>
 	</c:if>
 	<h2>중고게시판 정지 댓글 관리</h2>
 	<c:if test="${empty list1}">
-	 정지등록된 댓글이 없습니다.
+		<br>
+		<br>
+		정지등록된 댓글이 없습니다.
+		<br>
+		<br>
+		<br>
+		<br>
 	</c:if>
 	<c:if test="${!empty list1}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>댓글번호</th>
-	 	<th>댓글내용</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>댓글번호</th>
+		 	<th>댓글내용</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list1}">
 	 		<c:if test="${i.auth == 2}">
@@ -109,21 +125,31 @@
 	 		</c:if>
 	 	</c:forEach>
 	 </table>
+	<div class="align-center">
+			 ${page1}
+	</div>
+	<br>
+	<br>
 	</c:if>
-
 	<h2>스토리게시판 정지 게시글 관리</h2>
 	<c:if test="${empty list2}">
-	 정지된 게시글이 없습니다.
+		<br>
+		<br>
+		정지등록된 게시글이 없습니다.
+		<br>
+		<br>
+		<br>
+		<br>
 	</c:if>
 	<c:if test="${!empty list2}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list2}">
 	 		<c:if test="${i.auth == 2}">
@@ -144,7 +170,6 @@
 	 			</td>
 	 			<td>
 	 				<c:if test="${i.auth ==0 }">일반</c:if>
-	 				
 	 				<c:if test="${i.auth ==2 }">정지</c:if>
 	 			</td>
 	 			<td>
@@ -153,140 +178,154 @@
 	 		</tr>
 	 		</c:if>
 	 	</c:forEach>
-	 </table>
+	</table>
+	<div class="align-center">
+			 ${page2}
+	</div>
+	<br>
+	<br>
 	</c:if>
 	
 	<h2>스토리게시판 정지된 댓글 관리</h2>
 	<c:if test="${empty list3}">
-		정지등록된 댓글이 없습니다.
+		<div class="align-center">
+			<br>
+			<br>
+			정지등록된 댓글이 없습니다.
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
 	</c:if>
 	<c:if test="${!empty list3}">
 	 <table>
 	 	<tr>
-	 	<th>글번호</th>
-	 	<th>댓글번호</th>
-	 	<th>댓글내용</th>
-	 	<th>신고한회원번호</th>
-	 	<th>신고카테고리</th>
-	 	<th>신고내용</th>
-	 	<th>현재등급</th>
-	 	<th>등급변경<th>
+		 	<th>글번호</th>
+		 	<th>댓글번호</th>
+		 	<th>댓글내용</th>
+		 	<th>신고한회원번호</th>
+		 	<th>신고카테고리</th>
+		 	<th>신고내용</th>
+		 	<th>현재등급</th>
+		 	<th>등급변경<th>
 	 	</tr>
 	 	<c:forEach var="i" items="${list3}">
 	 		<c:if test="${i.auth == 2}">
-	 		<tr>
-	 			<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${i.s_num}">${i.s_num}</a></td>
-	 			<td>${i.sc_num}</td>
-	 			<td>${i.content}</td>
-	 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
-	 			<td><c:if test="${i.src_category ==1 }">스팸홍보글/도배글</c:if>
-	 				<c:if test="${i.src_category ==2 }">음란물</c:if>
-	 				<c:if test="${i.src_category ==3 }">불법정보</c:if>
-	 				<c:if test="${i.src_category ==4 }">청소년에게 유해한내용</c:if>
-	 				<c:if test="${i.src_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
-	 				<c:if test="${i.src_category ==6 }">개인정보노출</c:if>
-	 				<c:if test="${i.src_category ==7 }">불쾌한 표현이 있습니다.</c:if>
-	 				
-	 			</td>
-	 	
-	 			<td>
-	 				${i.src_content}
-	 			</td>
-	 			<td>
-	 				<c:if test="${i.auth ==0 }">일반</c:if>
-	 				
-	 				<c:if test="${i.auth ==2 }">정지</c:if>
-	 			</td>
-	 			<td>
-	 			<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
-	 			</td>
-	 		</tr>
+		 		<tr>
+		 			<td><a href="${pageContext.request.contextPath}/story/storyDetail.do?s_num=${i.s_num}">${i.s_num}</a></td>
+		 			<td>${i.sc_num}</td>
+		 			<td>${i.content}</td>
+		 			<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_num}</a></td>
+		 			<td><c:if test="${i.src_category ==1 }">스팸홍보글/도배글</c:if>
+		 				<c:if test="${i.src_category ==2 }">음란물</c:if>
+		 				<c:if test="${i.src_category ==3 }">불법정보</c:if>
+		 				<c:if test="${i.src_category ==4 }">청소년에게 유해한내용</c:if>
+		 				<c:if test="${i.src_category ==5 }">욕설/생명경시/혐오/차별적표현</c:if>
+		 				<c:if test="${i.src_category ==6 }">개인정보노출</c:if>
+		 				<c:if test="${i.src_category ==7 }">불쾌한 표현이 있습니다.</c:if>
+		 				
+		 			</td>
+		 			<td>
+		 				${i.src_content}
+		 			</td>
+		 			<td>
+		 				<c:if test="${i.auth ==0 }">일반</c:if>
+		 				<c:if test="${i.auth ==2 }">정지</c:if>
+		 			</td>
+		 			<td>
+		 				<input type="button" value="변경" class="upbtn button2" data-id="${i.sc_num}" data-name="sc_num" data-auth="${i.auth}">
+		 			</td>
+		 		</tr>
 	 		</c:if>
 	 	</c:forEach>
-	 </table>
+	</table>
+	<div class="align-center">
+			 ${page3}
+	</div>
+	<br>
+	<br> 
 	</c:if>
 	<div class="align-center">
-	<input type="submit" value="등록" class="button2">
-	<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="button" value="HOME" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	<div class="hide authupdate align-center" 
 	style="width:400px; position:fixed;
-z-index:999 !important;
-bottom:400px;
-border:1px solid #999 !important;
-border-radius:15px;
-padding:8px;
-background:white;" >
+		z-index:999 !important;
+		bottom:400px;
+		border:1px solid #999 !important;
+		border-radius:15px;
+		padding:8px;
+		background:white;" >
 		<h2>등급변경</h2>
 		현재 게시글/댓글 등급:
 		<input type="radio" name="radio"  value="0" >일반
 	 	<input type="radio"  name="radio"  value="2" >정지
-	 		<br> <input type="button" value="변경"  class="button2 rebtn" id="update">	
-	 			<input type="button" value="취소"  class="button2 redelbtn" id="update">	
-	 	
-	
+	 		<br>
+	 		<input type="button" value="변경"  class="button2 rebtn" id="update">	
+	 		<input type="button" value="취소"  class="button2 redelbtn" id="update">	
 	</div>
-<script type="text/javascript">
-$(document).on('click', '.upbtn',function(){
-	if($('.authupdate').hasClass('hide')){
-        $('.authupdate').removeClass('hide');
-         $('.rebtn').attr('data-id',$(this).attr('data-id'));
-        $('.rebtn').attr('data-name',$(this).attr('data-name'));
-        $('input[value="'+$(this).attr('data-auth')+'"]').attr('checked','true');
-     
-    }else{
-        $('.authupdate').addClass('hide');
-       $('.rebtn').attr('data-id','');
-         $('.rebtn').attr('data-name','');
-         
-         $('input[type="radio"]:checked').attr('checked','false');
-	    }
-	
-});
-$(document).on('click', '.redelbtn',function(){
-	
-        $('.authupdate').addClass('hide');
-        $('.rebtn').attr('data-id','');
-        $('.rebtn').attr('data-name','');
-       
-        $('input[type="radio"]:checked').attr('checked','false');
-	    
-	
-});
-$('.rebtn').click(function(){
-	if( $('input[type="radio"]:checked').length <1){
-		alert('등급을 설정해주세요');
-		return;
-	}
-	
-	$.ajax({
-		url:'updateAuth2.do',
-		data:{num:$(this).attr('data-id'),name:$(this).attr('data-name'),auth:$('input[type="radio"]:checked').val()},
-		type:'post',
-		dataType:'json',
-		success:function(param){
-			if(param.result=='logout'){
-				alert('관리자 아이디로 로그인 후 사용해주세요');
-				
-			}else if(param.result=='success'){
-				alert('등급이 변경되었습니다.');
-				
-				$('.authupdate').addClass('hide');
-				location.href="ulimitlist.do";
-			}else{
-				alert('신고 접수 에러');
-			}
-		},
-		error:function(){
-			alert('네트워크 오류');
+	<script type="text/javascript">
+	$(document).on('click', '.upbtn',function(){
+		if($('.authupdate').hasClass('hide')){
+	        $('.authupdate').removeClass('hide');
+	         $('.rebtn').attr('data-id',$(this).attr('data-id'));
+	        $('.rebtn').attr('data-name',$(this).attr('data-name'));
+	        $('input[value="'+$(this).attr('data-auth')+'"]').attr('checked','true');
+	     
+	    }else{
+	        $('.authupdate').addClass('hide');
+	       $('.rebtn').attr('data-id','');
+	         $('.rebtn').attr('data-name','');
+	         
+	         $('input[type="radio"]:checked').attr('checked','false');
+		    }
+		
+	});
+	$(document).on('click', '.redelbtn',function(){
+		
+	        $('.authupdate').addClass('hide');
+	        $('.rebtn').attr('data-id','');
+	        $('.rebtn').attr('data-name','');
+	       
+	        $('input[type="radio"]:checked').attr('checked','false');
+		    
+		
+	});
+	$('.rebtn').click(function(){
+		if( $('input[type="radio"]:checked').length <1){
+			alert('등급을 설정해주세요');
+			return;
 		}
+		
+		$.ajax({
+			url:'updateAuth2.do',
+			data:{num:$(this).attr('data-id'),name:$(this).attr('data-name'),auth:$('input[type="radio"]:checked').val()},
+			type:'post',
+			dataType:'json',
+			success:function(param){
+				if(param.result=='logout'){
+					alert('관리자 아이디로 로그인 후 사용해주세요');
+					
+				}else if(param.result=='success'){
+					alert('등급이 변경되었습니다.');
+					
+					$('.authupdate').addClass('hide');
+					location.href="ulimitlist.do";
+				}else{
+					alert('신고 접수 에러');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류');
+			}
+		})
+		
+		
 	})
 	
 	
-})
-
-
-</script>
+	</script>
 
 </div>
 </body>
