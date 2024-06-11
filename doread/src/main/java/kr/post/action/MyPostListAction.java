@@ -39,10 +39,8 @@ public class MyPostListAction implements Action{
 		if(pageNum2 == null) pageNum2 = "1";
 		String keyfield = request.getParameter("keyfield");
 		String keyword= request.getParameter("keyword");
-		UsedDAO udao = UsedDAO.getInstance();
-		int countused = udao.myUsedCount(user_num);
-		QnaDAO dao3 = QnaDAO.getInstance();
-		int count3 = dao3.getQnaCount(keyfield, keyword);
+		
+		
 		//story
 		StoryBoardDAO dao = StoryBoardDAO.getInstance();
 		int count = dao.myStoryBoardCount(user_num);
@@ -52,6 +50,8 @@ public class MyPostListAction implements Action{
 		request.setAttribute("Storylist", Storylist);
 		
 		//qna
+		QnaDAO dao3 = QnaDAO.getInstance();
+		int count3 = dao3.getMEMQnaCount(keyfield, keyword, user_num);
 		PagingUtil page3 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum1),count3, 5,10,"myPostList.do",null,"1");
 		List<QnaVO> qnalist = null;
 		if(count3 > 0) {
@@ -61,9 +61,9 @@ public class MyPostListAction implements Action{
 		request.setAttribute("qnalist", qnalist);
 		
 		//used
-		
+		UsedDAO udao = UsedDAO.getInstance();
+		int countused = udao.myUsedCount(user_num);
 		PagingUtil page4 = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum2),countused, 5,10,"myPostList.do",null,"2");
-
 		List<UsedVO> ulist =udao.mylistUsed(page4.getStartRow(),page4.getEndRow(), user_num);
 		request.setAttribute("page4", page4.getPage());
 		request.setAttribute("list", ulist);

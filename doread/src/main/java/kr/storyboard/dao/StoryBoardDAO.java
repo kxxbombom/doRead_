@@ -609,20 +609,21 @@ public class StoryBoardDAO {
 					//커넥션풀로부터 커넥션 할당
 					conn = DBUtil.getConnection();
 					if(keyword!=null && !"".equals(keyword)) {
-						if(keyfield.equals("1")) sub_sql +="WHERE s_title LIKE '%' || ? || '%'";
-						else if(keyfield.equals("2")) sub_sql +="WHERE s_content LIKE '%' || ? || '%'";
+						if(keyfield.equals("1")) sub_sql +="and s_title LIKE '%' || ? || '%'";
+						else if(keyfield.equals("2")) sub_sql +="and s_content LIKE '%' || ? || '%'";
 					}
 					
 					//SQL문 작성
-					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard " + sub_sql
-							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=? AND mem_num=?" ;
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM storyboard where mem_num=? " + sub_sql
+							+" ORDER BY s_num DESC)a) WHERE rnum>=? AND rnum <=? " ;
 					pstmt = conn.prepareStatement(sql);
 					if(keyword!=null&&!"".equals(keyword)) {
 						pstmt.setString(++cnt, keyword);
 					}
+					pstmt.setInt(++cnt, user_num);
 					pstmt.setInt(++cnt, start);
 					pstmt.setInt(++cnt, end);
-					pstmt.setInt(++cnt, user_num);
+					
 					//sql문 실행
 					rs= pstmt.executeQuery();
 					list = new ArrayList<StoryBoardVO>();
