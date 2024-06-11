@@ -30,7 +30,7 @@
 		<div class="content-main register-header">
 			<h2>회원정보 수정</h2>
 			<form id="modify_form" action="updateCategory.do" method="post">
-				<div class="register-main">
+				<div class="updateCategory-main">
 					<div class="fav-container">
 						<div style="margin-bottom:10px;">
 							<h2><label for="preference">관심도서</label></h2>

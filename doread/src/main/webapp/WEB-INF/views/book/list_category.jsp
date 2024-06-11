@@ -65,17 +65,15 @@ window.onload=function(){
 						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
 						</div>
 						</c:if>
-						<span>${book.book_name}</span>
+						<span style="width:220px;">${book.book_name}</span>
 						<br>
 						<b><fmt:formatNumber value="${book.price}"/>원</b>
 					</a>
 				</div>
 			</c:forEach>
-			<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade" style="margin-top:30px;">
-			</div>
 		</div>
 		<div class="align-center">${page}</div>
+		<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	</div>
 </div>
 </body>

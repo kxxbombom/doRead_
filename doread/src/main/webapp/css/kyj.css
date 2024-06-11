@@ -276,6 +276,7 @@ div.slider-items .slider-image{
 }
 
 .main-slider{
+	margin-top:50px;
 	position:relative;
 	text-align:center;
 	height:300px;
@@ -333,6 +334,13 @@ div.fav-button{
 
 /* 선호 카테고리 변경
 ------------------*/
+
+.updateCategory-main{
+	padding:10px 20px;
+	display: flex;
+	flex-direction:row;
+
+}
 
 p.fav-notice{
 	margin:5px;

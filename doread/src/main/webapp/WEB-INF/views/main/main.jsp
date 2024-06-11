@@ -21,8 +21,6 @@ $(function(){
 			
 		    if(i==2){
 		    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=246');
-		    }else if(i==5){
-		    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=182');
 			}else if(i==6){
 		    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=245');
 		    }else if(i==7){
@@ -86,7 +84,7 @@ $(function(){
 	let j = 1;
 	setInterval(function() {
 	    j++;
-	    if(j>3){
+	    if(j>4){
 	    	j=1;
 	    }
 	    $('#eventb').attr('src','${pageContext.request.contextPath}/eventimage/eventimage'+j+'.jpg');
@@ -95,6 +93,8 @@ $(function(){
 	    	$('#event_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=203');
 	    }else if(j==3){
 	    	$('#event_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=204');
+	    }else if(j==4){
+	    	$('#event_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=182');
 	    }
 	},  5000);
 	
@@ -135,7 +135,6 @@ $(function(){
 			<div class="float-clear">
 				<hr width="100%" size="1" noshade="noshade">
 			</div>
-			<h4>이벤트</h4>
 		<div class="slider-container">
 			<div class="main-slider">
 				<div>

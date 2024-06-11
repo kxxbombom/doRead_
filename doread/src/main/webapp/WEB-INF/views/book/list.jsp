@@ -55,7 +55,7 @@ window.onload=function(){
 		<div class="image-space">
 			<c:forEach var="book" items="${bookList}">
 				<div class="horizontal-area" id="book_item">
-					<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${book.book_num}">
+					<a href="${pageContext.request.contextPath}/book/detail.do?book_num=${book.book_num}" class="book_link">
 						<c:if test="${book.book_auth ==0}">
 						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
 						</c:if>
@@ -65,18 +65,16 @@ window.onload=function(){
 						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
 						</div>
 						</c:if>
-					<span>${book.book_name}</span>
+					<span style="width:220px;">${book.book_name}</span>
 					<br>
 					<b><fmt:formatNumber value="${book.price}"/>원</b>
 					</a>
 				</div>
 			</c:forEach>
-			<div class="float-clear">
-				<br>
-				<hr width="100%" size="1" noshade="noshade">
-			</div>
 		</div>
 		<div class="align-center">${page}</div>
+		<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+		
 	</div>
 </div>
 </body>
