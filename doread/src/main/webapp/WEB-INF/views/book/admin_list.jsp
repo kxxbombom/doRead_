@@ -58,6 +58,7 @@
 					<c:if test="${book.book_category==9}">수험서/취업</c:if>
 					<c:if test="${book.book_category==10}">만화</c:if>
 					<c:if test="${book.book_category==11}">취미/스포츠</c:if>
+					<c:if test="${book.book_category==12}">e-book</c:if>
 				</td>
 				<td id="book_name_td"><a href="updateBookForm.do?book_num=${book.book_num}">${book.book_name}</a></td>
 				<td class="text-center" id="book_author_td">${book.author}</td>

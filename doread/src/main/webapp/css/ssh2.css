@@ -4,11 +4,139 @@
 	width: 550px;
 	height:750px;
 }
+#book_title{
+	position:fixed;
+	background:white;
+}
+#book_content{
+	margin:0 30px;
+	padding-top:120px;
+}
+#mini_nav ul{
+	list-style:none;
+	margin-right:10px;
+	padding:0;
+}
+#mini_nav ul li{
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle; 
+	padding-top:10px;
+	margin-bottom:30px;
+	margin-right:8px;
+}
+#mini_nav{
+	float:right;
+}
 .disabled{
 	background:rgb(224, 224, 224);
 	color:rgb(224, 224, 224);
 }
+#pre{
+	transform: scaleX(-1);
+}
+#prespan{
+	transform: scaleX(-1);
+}
+.previous{
+	position:fixed;
+	left:170px;
+	bottom:20px;
+	display:inline-block;
+	width:300px;
+}
+.next{
+	position:fixed;
+	right:-30px;
+	bottom:20px;
+	display:inline-block;
+	clear:both;
+	width:300px;
+}
+.cta {
+  display: flex;
+  padding: 11px 11px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: rgb(232, 223, 202);
+  background: #336633;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  width:50px;
+  height:30px;
+  text-align:center;
+}
 
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #FBC638;
+}
+
+.cta .second {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover  .second {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg)
+}
+
+.second {
+  width: 10px;
+  margin-left: 10px;
+  position: relative;
+  top: 12%;
+}
+
+.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover .two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: rgb(232, 223, 202);
+  }
+
+  50% {
+    fill: #FBC638;
+  }
+
+  100% {
+    fill: rgb(232, 223, 202);
+  }
+}
 .button2 {
   display: inline-block;
   transition: all 0.2s ease-in;

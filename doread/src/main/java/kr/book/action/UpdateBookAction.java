@@ -27,7 +27,7 @@ public class UpdateBookAction implements Action{
 		book.setStock(Integer.parseInt(request.getParameter("stock")));
 		book.setBook_auth(Integer.parseInt(request.getParameter("book_auth")));
 		book.setBook_category(Integer.parseInt(request.getParameter("book_category")));
-
+		book.setBook_content(request.getParameter("book_content"));
 		dao.UpdateBook(book);
 
 		request.setAttribute("result_title", "도서 정보 수정 완료");

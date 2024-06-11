@@ -193,7 +193,7 @@ $(function(){
 	</ul>
 	</div>
 	<div  id ="e-bookcontent" >
-		<label for="book_content">책내용</label>
+		<label for="book_content">책내용</label><div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">*한장씩 이미지 선택하여 출력이 완료되면 다음 이미지 선택,로딩후 오타 수정 필수* </div>
 		<textarea name="book_content" id="book_content" class="input-style" placeholder="책이미지 한장씩 선택/로딩대기/로딩후 오타수정 필수,특수문자제거 필수"></textarea>
 		<input type="file" id="uploader" >
 		<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
