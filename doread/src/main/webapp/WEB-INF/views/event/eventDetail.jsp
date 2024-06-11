@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>이벤트 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 </head>
@@ -65,23 +66,25 @@
 			<div class="align-center">
 				<hr width="100%" size="1" noshade="noshade">
 				<img  src="${pageContext.request.contextPath}/upload/${event.e_image}"	width="600" height="600">
-				<br>이벤트내용 : ${event.e_content}<br>
-				이벤트 유의사항:이벤트 대상 상품 1건 이상 포함,<br>
-				국내도서·외국도서 5만원 이상 구입 시 또는 전자책 3만원 이상 구입 시 (택1)<br>
+				<p class="event-content">${event.e_content}</p>
+				<div class="event-notice">
+					이벤트 유의사항:이벤트 대상 상품 1건 이상 포함,<br>
+					국내도서·외국도서 5만원 이상 구입 시 또는 전자책 3만원 이상 구입 시 (택1)<br>
+					
+					사은품의 수량이 한정되어 있으므로, 조기품절 될 수 있습니다.<br>
+					
+					사은품 선택 시 할인쿠폰 사용에 제한이 있을 수 있습니다.<br>
+					(할인쿠폰 사용으로 적립예정 포인트가 사은품 선사용 포인트에 미달할 경우)<br>
+					이벤트발표는 검색>당첨자보기 또는 마이페이지>이벤트내역에서 확인할 수 있습니다 <br>
+				</div>
 				
-				사은품의 수량이 한정되어 있으므로, 조기품절 될 수 있습니다.<br>
-				
-				사은품 선택 시 할인쿠폰 사용에 제한이 있을 수 있습니다.<br>
-				(할인쿠폰 사용으로 적립예정 포인트가 사은품 선사용 포인트에 미달할 경우)<br>
-				이벤트발표는 검색>당첨자보기 또는 마이페이지>이벤트내역에서 확인할 수 있습니다 <br>
-		
-				<input id="eventUser" type="button" value="이벤트 응모하기"	  class="eventbutton" onclick="location.href='${pageContext.request.contextPath}/event/eventUserForm.do?e_num=${event.e_num}'">				
+				<input id="eventUser" type="button" value="이벤트 응모하기"  class="event-button" onclick="location.href='${pageContext.request.contextPath}/event/eventUserForm.do?e_num=${event.e_num}'">				
 	 		</div>
 		
 	<hr width="100%" size="1" noshade="noshade">
 	</div>
 	<div class="align-center">
-		<input type="button" value="목록" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">	
+		<input type="button" value="목록" class="btn2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">	
 	</div>
 </div>	
 <br><br><br><br><br><br><br>
