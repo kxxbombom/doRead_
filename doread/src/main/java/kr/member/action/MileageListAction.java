@@ -14,6 +14,7 @@ import kr.member.vo.MemberVO;
 import kr.order.dao.OrderDAO;
 import kr.order.dao.OrdersDAO;
 import kr.order.vo.OrderVO;
+import kr.order.vo.PointVO;
 import kr.util.PagingUtil;
 
 public class MileageListAction implements Action{
@@ -38,45 +39,27 @@ public class MileageListAction implements Action{
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
 		
-		OrderDAO dao4 = OrderDAO.getInstance();
-		OrdersDAO dao = OrdersDAO.getInstance();
-		int count = dao.getOrderCount(keyfield, keyword, user_num);
+		
+		
+		OrderDAO dao = OrderDAO.getInstance();
+
+		int count = dao.getPagePoint(user_num);
 		
 		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum), count, 10, 10, "mileagelist.do");
 		
-		List<OrderVO> list = null;
+		List<PointVO> list = null;
 		if(count > 0) {
-			list = dao.getListOrderByMem_num(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
+			list = dao.getListUserPoint(page.getStartRow(), page.getEndRow(), user_num);
 		}
 		
-		CartDAO dao3 = CartDAO.getInstance();
-		//회원번호별 총 구매액
-		int all_total = dao3.getTotalByMem_num(user_num);
-		int cart_count = 0;
-		
-		List<CartVO> list2 = null;
-		if(all_total > 0){
-			list2 = dao3.getListCart(user_num);
-			cart_count = dao3.getCartCount(user_num);
-		}
-		
-		//배송비 적용 총구매액
-		int all_total_delivery = all_total;
-		if(all_total < 15000) all_total_delivery += 2500;
-		
-		//적립금
-		int point = (int) (all_total * 0.03);
-		int allpoint = dao4.getPoint(user_num);
+		//총적립금
+		int allpoint = dao.getPoint(user_num);
 		
 		request.setAttribute("member", member);	
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
-		request.setAttribute("all_total", all_total);
-		request.setAttribute("all_total_delivery", all_total_delivery);
-		request.setAttribute("point", point);
-		request.setAttribute("list2", list2);
-		request.setAttribute("cart_count", cart_count);
+
 		request.setAttribute("allpoint", allpoint);
 		
 		return "/WEB-INF/views/shopping/mileagelist.jsp";

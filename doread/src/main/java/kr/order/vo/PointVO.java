@@ -8,6 +8,22 @@ public class PointVO {
 	private int p_point;
 	private Date P_rdate;
 	private int mem_num;
+	private int order_num;
+	
+	private int rownum;
+	
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+	public int getOrder_num() {
+		return order_num;
+	}
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
+	}
 	public int getP_num() {
 		return p_num;
 	}
