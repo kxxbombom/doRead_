@@ -320,14 +320,6 @@ th,td{
 	height: 40px;
 	border:none !important;
 }
-#order_list_td{
-	width:230px;
-	max-width:280px;
-	height:40px;
-	overflow:hidden;
-	white-space : nowrap;
-	text-overflow : ellipsis;
-}
 img#modifyauth{
 	cursor:pointer;
 }
