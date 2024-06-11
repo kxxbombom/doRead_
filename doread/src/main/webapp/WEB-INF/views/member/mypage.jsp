@@ -114,7 +114,7 @@ $(function(){
 	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp"/>
 	<h2>${user_id}님을 위한 추천도서</h2>
 	<hr width="100%" size="1" noshade="noshade">
-	<div class="slider-container">
+	<div class="content-main slider-container">
 		<div class="slider-space">
 			<c:if test="${count==0}">
 				<div class="empty-items">

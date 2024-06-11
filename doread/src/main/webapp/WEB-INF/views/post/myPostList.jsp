@@ -13,6 +13,7 @@
 <body>
 <div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
+	<div class="content-main">
 		<div class="post-header">
 			<h2>내가 쓴 글</h2>
 			<hr size="1" noshade width="100%">
@@ -90,9 +91,8 @@
 		</table>
 		<div style="text-align:center;">
 			${page3}
+		</div>	 
 		</div>
-			 
-		
 	</div>
 	<div class="hide gide" style="font-size:10pxt;  z-index:999; position:absolute; bottom:350px; left:20%; border:1px solid #d4d2d2; border-radius:15px; background:white;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

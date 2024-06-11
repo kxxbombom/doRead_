@@ -12,7 +12,8 @@
 </head>
 <body>
 <div class="page-main">
-		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
+	<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
+	<div class="content-main">
 		<div class="post-header">
 			<h2>내가 참여한 이벤트 내역</h2>
 			<hr size="1" noshade width="100%">
@@ -42,6 +43,7 @@
 			</tr>
 			</c:forEach>	
 		</table>
+	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
