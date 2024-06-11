@@ -48,15 +48,13 @@ $(function(){
 	    if(i==2){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=246');
 	    }else if(i==5){
-	    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=182');
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=214');
 		}else if(i==6){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=245');
 	    }else if(i==7){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=72');
 	    }else if(i==8){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=247');
-	    }else{
-	    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/eventmain.do');
 	    }
  
 	});
@@ -71,15 +69,13 @@ $(function(){
 	    if(i==2){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=246');
 	    }else if(i==5){
-	    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=182');
+	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=214');
 		}else if(i==6){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=245');
 	    }else if(i==7){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=72');
 	    }else if(i==8){
 	    	$('#main_link').attr('href','${pageContext.request.contextPath}/book/detail.do?book_num=247');
-	    }else{
-	    	$('#main_link').attr('href','${pageContext.request.contextPath}/event/eventmain.do');
 	    }
 	});
 	
