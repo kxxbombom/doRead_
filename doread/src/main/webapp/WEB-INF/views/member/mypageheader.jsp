@@ -123,11 +123,11 @@
 						src="${pageContext.request.contextPath}/images/pencil_1361912.png"
 						width="31" height="31">
 				</button>
-				<div id="photo_choice" style="display: none;">
+				<div id="photo_choice" style="display:none; position:absolute; z-index:999 !important; background:white;">
 					<input type="file" id="photo"
 						accept="image/gif,image/png,image/jpeg"> <input
-						type="button" value="전송" id="photo_submit"> <input
-						type="button" value="취소" id="photo_reset">
+						type="button" class="button2" value="전송" id="photo_submit"> <input
+						type="button" class="button2" value="취소" id="photo_reset">
 				</div></li>
 			<li
 				style="padding-top: 60px; font-size: 19pt; color: rgb(255, 255, 255) !important; text-align: left;">${user_id}님<br>어서오세요

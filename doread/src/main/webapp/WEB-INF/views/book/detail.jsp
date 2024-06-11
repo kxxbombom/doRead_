@@ -184,8 +184,11 @@
 											if(param.result == 'logout'){
 												alert('로그인 후 사용하세요');
 											}else if(param.result == 'success'){
-												alert('장바구니에 상품을 담았습니다.');
-												location.href='../cart/list.do';
+												let choice = confirm('장바구니에 상품을 담았습니다.\n장바구니로 이동하시겠습니까?');
+												if(choice){
+													location.href='../cart/list.do';
+												}
+
 											}else if(param.result == 'overquantity'){
 												alert('기존에 주문한 상품입니다. 개수를 추가하면 재고가 부족합니다.');
 											}else{
@@ -284,6 +287,6 @@
 			</li>
 		</ul>
 	</div>
-</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

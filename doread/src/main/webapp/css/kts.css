@@ -55,6 +55,22 @@ tr.main-tr{
 	max-width:300px;	
 	overflow:hidden;
 }
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: rgb(26, 77, 46);
+  margin:0 5px;
+  padding: 0.4em 1.0em;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 0.3em;
+  background: #FFF;
+  border: 1px solid #4F6F52;
+
+}
 /*마이페이지 header
 -----------------------*/
 #mypage-main{

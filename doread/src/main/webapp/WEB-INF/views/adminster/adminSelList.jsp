@@ -49,7 +49,7 @@
 	<div class="content-main">
 	
 		<c:if test="${!empty list}">
-		<table>
+		<table class="order_list_admin">
 			<tr>
 				<th>주문번호</th>
 				<th>주문이름</th>
@@ -63,7 +63,7 @@
 			<tr>
 				<td>${i.order_num}</td>
 				<td><a href="detailOrder.do?order_num=${i.order_num}">${i.book_name}</a></td>
-				<td><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_id}</a></td>
+				<td id="order_list_td"><a href="${pageContext.request.contextPath}/adminster/detailUser.do?mem_num=${i.mem_num}">${i.mem_id}</a></td>
 				<td> <fmt:formatNumber value="${i.order_total }"/>원</td>
 				<td>
 				<c:if test="${i.order_status == 1}">결제완료</c:if>
