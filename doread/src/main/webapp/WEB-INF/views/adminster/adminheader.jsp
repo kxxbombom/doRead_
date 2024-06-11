@@ -48,8 +48,9 @@
 		<li >
 			<div class="subul">
 			<ul >
-				<li><label>판매내역</label></li>
+				<li><label>판매</label></li>
 				<li><a href="${pageContext.request.contextPath}/order/adminList.do">-판매내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/qna/qnaList.do">-문의내역</a></li>
 			
 			</ul>
 			</div>

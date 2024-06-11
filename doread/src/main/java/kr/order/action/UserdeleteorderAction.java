@@ -29,7 +29,7 @@ public class UserdeleteorderAction implements Action{
 			return "/WEB-INF/views/common/alert_view.jsp";
 		}
 		
-		if(db_order.getOrder_status() != 4 || db_order.getOrder_status() != 5) {
+		if(db_order.getOrder_status() < 4) {
 			//배송준비중 이상
 			request.setAttribute("notice_msg", "배송상태가 변경되어 주문을 삭제할 수 없습니다.");
 			request.setAttribute("notice_url", request.getContextPath() + "/order/orderDetail.do?order_num=" + order_num);

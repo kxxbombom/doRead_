@@ -32,7 +32,7 @@ public class QnaAnswerListAction implements Action{
 		int count = dao.getQnaCount(keyfield, keyword);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 10,10,"qnaAnswerList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 10,10,"adminQNAList.do");
 		List<QnaVO> list = null;
 		if(count > 0) {
 			list = dao.getNAnswerListForAdmin(page.getStartRow(), page.getEndRow(), keyfield, keyword);
