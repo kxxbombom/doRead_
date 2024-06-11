@@ -20,7 +20,7 @@
 		
 		
 		<c:if test="${count == 0}">
-			<div class="result-display">
+			<div class="result-display buylist-align-center">
 				e-book 구매내역이 없습니다.
 			</div>
 		</c:if>

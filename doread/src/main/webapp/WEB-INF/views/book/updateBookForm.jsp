@@ -97,18 +97,18 @@
 					<li>
 					<label for="book_category">책카테고리</label>
 					<select name="book_category" id="book_category" class="inputcheck input-style" style="margin:4px 0; padding:0;">
-							<option value="1">소설</option>
-							<option value="2">시/에세이</option>
-							<option value="3">인문</option>
-							<option value="4">정치/사회</option>
-							<option value="5">과학/공학</option>
-							<option value="6">IT/프로그래밍</option>
-							<option value="7">자기계발</option>
-							<option value="8">외국어</option>
-							<option value="9">수험서/취업</option>
-							<option value="10">만화</option>
-							<option value="11">취미/스포츠</option>
-							<option value="12">e-book</option>
+							<option value="1" <c:if test="${book.book_category==1}">selected</c:if>>소설</option>
+							<option value="2" <c:if test="${book.book_category==2}">selected</c:if>>시/에세이</option>
+							<option value="3"<c:if test="${book.book_category==3}">selected</c:if>>인문</option>
+							<option value="4" <c:if test="${book.book_category==4}">selected</c:if>>정치/사회</option>
+							<option value="5"<c:if test="${book.book_category==5}">selected</c:if>>과학/공학</option>
+							<option value="6"<c:if test="${book.book_category==6}">selected</c:if>>IT/프로그래밍</option>
+							<option value="7" <c:if test="${book.book_category==7}">selected</c:if>>자기계발</option>
+							<option value="8" <c:if test="${book.book_category==8}">selected</c:if>>외국어</option>
+							<option value="9" <c:if test="${book.book_category==9}">selected</c:if>>수험서/취업</option>
+							<option value="10" <c:if test="${book.book_category==10}">selected</c:if>>만화</option>
+							<option value="11" <c:if test="${book.book_category==11}">selected</c:if>>취미/스포츠</option>
+							<option value="12" <c:if test="${book.book_category==12}">selected</c:if>>e-book</option>
 					</select>
 					</li>
 				</ul>
