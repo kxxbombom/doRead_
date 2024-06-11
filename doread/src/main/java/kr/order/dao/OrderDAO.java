@@ -49,7 +49,7 @@ public class OrderDAO {
 			
 			//주문정보 처리
 			sql = "INSERT INTO book_order (order_num, order_total, receive_name, receive_zipcode, receive_address1,"
-					+ "receive_address2, receive_phone, order_msg, order_payment, mem_num, enter, enter_passwd,order_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "receive_address2, receive_phone, order_msg, order_payment, mem_num, enter, enter_passwd,order_status, all_total) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?, ?)";
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(++cnt, order_num);
 			pstmt2.setInt(++cnt, order.getOrder_total());
@@ -62,6 +62,7 @@ public class OrderDAO {
 			pstmt2.setInt(++cnt, order.getOrder_payment());
 			pstmt2.setInt(++cnt, order.getMem_num());
 			pstmt2.setInt(++cnt, order.getEnter());
+			
 			if(order.getEnter_passwd() != null) {
 				pstmt2.setString(++cnt, order.getEnter_passwd());
 			}else {
@@ -72,7 +73,7 @@ public class OrderDAO {
 			}else {
 				pstmt2.setInt(++cnt, 1);
 			}
-			
+			pstmt2.setInt(++cnt, order.getAll_total());
 			pstmt2.executeUpdate();
 			
 			
@@ -123,20 +124,22 @@ public class OrderDAO {
 			
 			
 			if(order.getOrder_usepoint() !=0) {
-			sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+			sql="insert into point(p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
 			pstmt6 = conn.prepareStatement(sql);
 			pstmt6.setInt(1, 1);
 			pstmt6.setInt(2, order.getOrder_usepoint());
 			pstmt6.setInt(3,order.getMem_num());
+			pstmt6.setInt(4, order.getOrder_num());
 			pstmt6.executeUpdate();
 					
 			}
 				
-			sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+			sql="insert into point(p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
 			pstmt7 = conn.prepareStatement(sql);
 			pstmt7.setInt(1, 0);
 			pstmt7.setInt(2, (int)Math.floor(order.getAll_total()*0.03));
 			pstmt7.setInt(3,order.getMem_num());
+			pstmt7.setInt(4, order.getOrder_num());
 			pstmt7.executeUpdate();
 				
 
@@ -664,6 +667,7 @@ public class OrderDAO {
 			Connection conn = null;
 			PreparedStatement ps = null;
 			PreparedStatement ps2 = null;
+			PreparedStatement ps3 = null;
 			PreparedStatement ps4 = null;
 			String sql= null;
 			try {
@@ -678,7 +682,7 @@ public class OrderDAO {
 					sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
 					ps4 = conn.prepareStatement(sql);
 					ps4.setInt(1, 2);
-					ps4.setInt(2,(int)Math.floor(order.getOrder_total()*0.03));
+					ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
 					ps4.setInt(3,order.getMem_num());
 					ps4.executeUpdate();
 					
@@ -721,16 +725,18 @@ public class OrderDAO {
 			try {
 				conn =DBUtil.getConnection();
 				conn.setAutoCommit(false);
+				
 				sql="update book_order set order_status=5, ORDER_MDATE=sysdate where order_num=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, order.getOrder_num());
 				ps.executeUpdate();
 				
-				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+				sql="insert into point(p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
 				ps4 = conn.prepareStatement(sql);
 				ps4.setInt(1, 2);
-				ps4.setInt(2,(int)Math.floor(order.getOrder_total()*0.03));
+				ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
 				ps4.setInt(3,order.getMem_num());
+				ps4.setInt(4, order.getOrder_num());
 				ps4.executeUpdate();
 				
 				//주문취소했기때문에 환원이여

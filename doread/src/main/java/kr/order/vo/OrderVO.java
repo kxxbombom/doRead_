@@ -21,7 +21,7 @@ public class OrderVO {
 	private int order_usepoint;
 	private int enter;
 	private String enter_passwd;
-	private int all_total;
+	private int all_total;	//도서금액합계(배송비제외)
 	
 	private int mem_num;
 	
