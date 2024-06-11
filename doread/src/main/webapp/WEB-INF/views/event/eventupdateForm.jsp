@@ -75,8 +75,8 @@
 	</ul>
 	</div>
 	<div class="align-center">
-	<input type="submit" value="수정" class="button2">
-	<input type="button" value="이벤트목록" class="button2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">
+	<input type="submit" value="수정" class="btn2">
+	<input type="button" value="이벤트목록" class="btn2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">
 	
 	</div>
 	

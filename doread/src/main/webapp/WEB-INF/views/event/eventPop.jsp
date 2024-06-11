@@ -18,8 +18,8 @@
  	<p>
  	<div class="align-center">
 	이벤트에 응모 하시겠습니까?<p>
-	<input type="button" value="응모" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventsucess.do?e_num=${e_num}'">		
-	<input type="button" value="취소" class="eventbutton2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">		
+	<input type="button" value="응모" class="btn2" onclick="location.href='${pageContext.request.contextPath}/event/eventsucess.do?e_num=${e_num}'">		
+	<input type="button" value="취소" class="btn2" onclick="location.href='${pageContext.request.contextPath}/event/eventmain.do'">		
 	</div>
 </div>
 
