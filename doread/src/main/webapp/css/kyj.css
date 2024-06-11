@@ -83,6 +83,7 @@ div.category-tag{
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	cursor: pointer;
 }
 .book-image{
 	width:400px;
@@ -127,6 +128,7 @@ div.category-tag{
 	font-size:15pt;
 	border:none;
 	box-shadow:none;
+	cursor: pointer;
 }
 
 .order-button:hover{
@@ -146,7 +148,7 @@ div.category-tag{
 }
 
 #button-margin{
-margin-top: 25px;
+	margin-top: 25px;
 }
 
 label#quantity_label{
@@ -189,6 +191,7 @@ input#book_quantity{
 	color:white;
 	float:right;
 	margin-top:10px;
+	cursor: pointer;
 }
 
 
@@ -255,6 +258,7 @@ div.slider-items .slider-image{
 	display:inline-block;
 	vertical-align:top;
 	padding:0 10px;
+	cursor: pointer;
 }
 
 
@@ -313,6 +317,7 @@ div.slider-items .slider-image{
 .update-button:hover{
 	border:1px solid rgb(26, 77, 46);
 	box-shadow:0 0 7px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
 }
 
 table.fav-table{
