@@ -129,7 +129,7 @@ public class OrderDAO {
 			pstmt6.setInt(1, 1);
 			pstmt6.setInt(2, order.getOrder_usepoint());
 			pstmt6.setInt(3,order.getMem_num());
-			pstmt6.setInt(4, order.getOrder_num());
+			pstmt6.setInt(4, order_num);
 			pstmt6.executeUpdate();
 					
 			}
@@ -139,7 +139,7 @@ public class OrderDAO {
 			pstmt7.setInt(1, 0);
 			pstmt7.setInt(2, (int)Math.floor(order.getAll_total()*0.03));
 			pstmt7.setInt(3,order.getMem_num());
-			pstmt7.setInt(4, order.getOrder_num());
+			pstmt7.setInt(4, order_num);
 			pstmt7.executeUpdate();
 				
 
@@ -625,6 +625,7 @@ public class OrderDAO {
 				order.setOrder_msg(re.getString("order_msg"));
 				order.setOrder_date(re.getDate("order_date"));
 				order.setOrder_mdate(re.getDate("order_mdate"));
+				order.setAll_total(re.getInt("all_total"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -667,8 +668,9 @@ public class OrderDAO {
 			Connection conn = null;
 			PreparedStatement ps = null;
 			PreparedStatement ps2 = null;
-			PreparedStatement ps3 = null;
 			PreparedStatement ps4 = null;
+			
+			PreparedStatement ps5 = null;
 			String sql= null;
 			try {
 				conn = DBUtil.getConnection();
@@ -679,12 +681,23 @@ public class OrderDAO {
 				ps.setInt(2, order.getOrder_num());
 				ps.executeUpdate();
 				if(order.getOrder_status() == 5) {
-					sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
+					//구매시 적립된 포인트 취소
+					sql="insert into point(p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
 					ps4 = conn.prepareStatement(sql);
 					ps4.setInt(1, 2);
 					ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
 					ps4.setInt(3,order.getMem_num());
+					ps4.setInt(4, order.getOrder_num());
 					ps4.executeUpdate();
+					
+					//구매시 사용한 포인트
+					sql = "INSERT INTO point (p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
+					ps5 = conn.prepareStatement(sql);
+					ps5.setInt(1, 4);
+					ps5.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
+					ps5.setInt(3,order.getMem_num());
+					ps5.setInt(4, order.getOrder_num());
+					ps5.executeUpdate();
 					
 					List<OrderDetailVO> detail = getListOrder_Detail(order.getOrder_num());
 					sql="update book set stock=stock+? where book_num=?";

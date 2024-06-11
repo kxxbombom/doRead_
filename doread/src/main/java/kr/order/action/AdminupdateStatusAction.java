@@ -32,6 +32,7 @@ public class AdminupdateStatusAction implements Action{
 		OrderVO order = dao.getBookOrdervo(order_num);
 		if(order.getOrder_status() == 5) {
 			map.put("result", "cancle");
+
 			
 		}else {
 		order.setOrder_status(status);	

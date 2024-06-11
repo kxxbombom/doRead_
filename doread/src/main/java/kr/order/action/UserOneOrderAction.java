@@ -86,7 +86,7 @@ public class UserOneOrderAction implements Action{
 		order.setEnter_passwd(request.getParameter("enter_passwd"));
 		order.setMem_num(user_num);
 		order.setAll_total(all_total);
-		order.setOrder_status(0);
+		order.setOrder_status(1);
 		if(book.getBook_category() ==12)
 		order.setOrder_status(4);
 		
