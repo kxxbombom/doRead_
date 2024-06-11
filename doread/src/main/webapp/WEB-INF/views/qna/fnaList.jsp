@@ -32,7 +32,7 @@ $(function(){
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
 		<h2 style="text-align:center;" >FAQ 목록</h2>
-	</div>
+
 		<hr size="1.5" width="80%" noshade="noshade">
 		<div class="align-center">
 			<a href="#orderfaq">[주문]</a> <a href="#pointfaq" id="pointbtn">[적립]</a> <a href="#deliveryfaq" id="dbtn">[배송]</a> <a href="#pfaq" id="pbtn">[교환/반품]</a>
@@ -136,6 +136,7 @@ $(function(){
 		<div class="align-center list-btn3">
 			<input type="button"  class="button2" value=" 더보기" id="addbtn"> &nbsp;<input type="button" class="button2" value="위로가기" onclick="location.href='#up'">
 		</div> 
+		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
