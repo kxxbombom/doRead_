@@ -22,7 +22,7 @@
  			</c:if>
  			<c:if test="${!empty list }">
  				<table  id="usedtable">
- 					<tr>
+ 					<tr  style="background-color:rgb(26, 77, 46); color:#FFF;">
  						<th>책제목</th>
  						<th>글제목 </th>
  						<th>가격</th>
