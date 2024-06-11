@@ -95,6 +95,7 @@
         <a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=9">수험서/취업</a>
         <a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=10">만화</a>
         <a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=11">취미/스포츠</a>
+        <a href="${pageContext.request.contextPath}/book/listCategory.do?book_category=12">e-book</a>
      	</div>
    		</div> 
 		</li>
