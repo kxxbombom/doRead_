@@ -88,6 +88,7 @@ public class UserOrderAction implements Action{
 		order.setEnter_passwd(request.getParameter("enter_passwd"));
 		order.setMem_num(user_num);
 		order.setAll_total(all_total);
+		order.setOrder_status(1);
 		
 		String usedpoint = request.getParameter("usedpoint");
 		if(usedpoint != null ) {

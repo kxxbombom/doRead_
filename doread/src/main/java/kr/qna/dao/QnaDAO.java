@@ -312,6 +312,7 @@ public class QnaDAO {
 					qna.setQ_mdate(rs.getDate("q_mdate"));
 					qna.setQ_image(rs.getString("q_image"));
 					qna.setQ_answer(rs.getString("q_answer"));
+					qna.setQ_auth(rs.getInt("q_auth"));
 	
 					//로그인한 회원번호와 조건 체크를 해야하기 때문에 mem_num필요
 					qna.setMem_num(rs.getInt("mem_num"));
