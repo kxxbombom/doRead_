@@ -80,7 +80,7 @@ $(function(){
 						<c:if test="${point.p_detail == 5}">이벤트 지급</c:if>
 					</td>
 					<td class="main-td">
-						<c:if test="${point.p_detail != 5}">
+						<c:if test="${point.p_detail != 5 && point.order_num != 0 }">
 							<a href="${pageContext.request.contextPath}/order/orderDetail.do?order_num=${point.order_num}">${point.order_num}</a>
 						</c:if>
 					</td>	
