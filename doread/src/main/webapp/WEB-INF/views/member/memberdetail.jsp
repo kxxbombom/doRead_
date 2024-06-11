@@ -28,7 +28,6 @@
 				</ul>
 			</div>
 		</div>
-		<hr size="1" noshade width="100%">
 			<div class="detail-button">
 				<input type="button" value="수정" onclick="location.href='modifyUserForm.do'">
 				<input type="button" value="회원탈퇴" onclick="location.href='deleteUserForm.do'" >

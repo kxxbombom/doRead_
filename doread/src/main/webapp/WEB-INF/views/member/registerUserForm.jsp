@@ -18,7 +18,11 @@ $(function(){
 	
 	$('#passwd_checkmessage').hide();
 	$('#email_checkmessage').hide();
+	$('#email_checkmessage2').hide();
+	$('#email_checkmessage3').hide();
 	$('#phone_checkmessage').hide();
+	$('#phone_checkmessage2').hide();
+	$('#phone_checkmessage3').hide();
 	
 	
 	$('#id_check').click(function(){
@@ -90,6 +94,9 @@ $(function(){
 	
 	$('#register_form #email').keydown(function(){
 		emailChecked = 0;
+		$('#email_checkmessage').hide();
+		$('#email_checkmessage2').hide();
+		$('#email_checkmessage3').hide();
 	});
 	
 	$('#register_form #email').keyup(function(){
@@ -108,12 +115,12 @@ $(function(){
 						$('#email_checkmessage').show();
 						$('#email').focus();
 					}else{
-						alert('이메일 중복 체크 오류 발생');
+						$('#email_checkmessage2').show();
 						emailChecked = 0;
 					}
 				},
 				error:function(){
-					alert('네트워크 오류 발생');
+					$('#email_checkmessage3').show();
 					emailChecked = 0;
 				}
 			});
@@ -124,6 +131,9 @@ $(function(){
 	
 	$('#register_form #phone').keydown(function(){
 		phoneChecked = 0;
+		$('#phone_checkmessage').hide();
+		$('#phone_checkmessage2').hide();
+		$('#phone_checkmessage3').hide();
 	});
 	$('#register_form #phone').keyup(function(){
 		if(/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('#phone').val())){
@@ -141,12 +151,12 @@ $(function(){
 						$('#phone_checkmessage').show();
 						$('#phone').focus();
 					}else{
-						alert('전화번호 중복 체크 오류 발생');
+						$('#phone_checkmessage2').show();
 						phoneChecked = 0;
 					}
 				},
 				error:function(){
-					alert('네트워크 오류 발생');
+					$('#phone_checkmessage3').show();
 					phoneChecked = 0;
 				}
 			});
@@ -205,7 +215,7 @@ $(function(){
 				$('#email').focus();
 				return false;
 			}
-			if(items[i].id == 'email' && emailChecked != 1){
+			if(items[i].id == 'email' && emailChecked == 0){
 				alert('이메일을 다시 입력하세요');
 				$('#email').focus();
 				return false;
@@ -249,7 +259,7 @@ $(function(){
         		<span>일반 개인회원</span>
   	 		 </div>
 		</div>
-	</div>
+	
 	<%-- <hr size="1" noshade width="650"> --%>
 	<div class="register-main">
 		<span>기본 정보 입력</span>
@@ -279,12 +289,16 @@ $(function(){
 					<label for="email">이메일</label>
 					<input type="email" name="email" id="email" maxlength="50" placeholder="example@example.com" class="input-check">
 					<span id="email_checkmessage">이미 사용 중인 이메일입니다</span>
+					<span id="email_checkmessage2">이메일 중복체크 오류</span>
+					<span id="email_checkmessage3">네트워크 오류</span>
 				
 				</li>
 				<li>
 					<label for="phone">전화번호</label>
 					<input type="text" name="phone" id="phone" maxlength="15" autocomplete="off" class="input-check">
 					<span id="phone_checkmessage">이미 사용 중인 전화번호입니다</span>
+					<span id="phone_checkmessage2">전화번호 중복체크 오류</span>
+					<span id="phone_checkmessage3">네트워크 오류</span>
 					<div class="form-notice2">*숫자만 입력</div>
 					
 				</li>
@@ -361,7 +375,7 @@ $(function(){
 					</div>
 				</li>
 			</ul>
-			<hr size="1" noshade width="149%">
+			
 			<div class="register-button">
 				<input type="submit" value="회원가입">
 				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
@@ -465,6 +479,9 @@ $(function(){
 		    }
 		</script>
 		</form>
+		
+	</div>
+	<hr size="1" noshade width="100%" style="margin-bottom:50px;">
 	</div>
 </div>
 </body>

@@ -24,7 +24,7 @@
 				<h3 style="margin-top:50px;">찜한 도서가 없습니다</h3>
 			</div>
 			<div class="fav-button">
-				<input type="button" value="책 목록" onclick="location.href='${pageContext.request.contextPath}/book/list.jsp'">
+				<input type="button" value="책 목록" onclick="location.href='${pageContext.request.contextPath}/book/list.do'">
 				<input type="button" value="마이페이지" onclick="location.href='${pageContext.request.contextPath}/member/mypage.do'">
 			</div>
 			</c:if>
