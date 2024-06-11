@@ -92,6 +92,7 @@ public class UserOneOrderAction implements Action{
 		
 		if(usedpoint != null ) {
 		order.setOrder_usepoint(Integer.parseInt(usedpoint));
+		order.setAll_total((all_total-Integer.parseInt(usedpoint)));
 		
 		order.setOrder_total(all_total_delivery - Integer.parseInt(usedpoint));}
 		else {
