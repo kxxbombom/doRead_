@@ -366,6 +366,7 @@ public class BookDAO {
 				book.setBook_img(rs.getString("book_img"));
 				book.setBook_category(rs.getInt("book_category"));
 				book.setBook_auth(rs.getInt("book_auth"));
+				book.setBook_content(rs.getString("book_content"));
 			}
 			return book;
 		}catch(Exception e) {

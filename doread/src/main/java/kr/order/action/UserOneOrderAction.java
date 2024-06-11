@@ -71,7 +71,7 @@ public class UserOneOrderAction implements Action{
 			orderDetail.setBook_price(book_price);
 			orderDetail.setOrder_quantity(order_quantity);
 			orderDetail.setBook_total(book_price*order_quantity);
-		
+		orderDetailList.add(orderDetail);
 		//구매정보 담기
 		OrderVO order = new OrderVO();
 		
@@ -86,7 +86,8 @@ public class UserOneOrderAction implements Action{
 		order.setEnter_passwd(request.getParameter("enter_passwd"));
 		order.setMem_num(user_num);
 		order.setAll_total(all_total);
-		
+		if(book.getBook_category() ==12)
+		order.setOrder_status(4);
 		
 		if(usedpoint != null ) {
 		order.setOrder_usepoint(Integer.parseInt(usedpoint));

@@ -1,5 +1,13 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
+.e_book{
+	width: 550px;
+	height:750px;
+}
+.disabled{
+	background:rgb(224, 224, 224);
+	color:rgb(224, 224, 224);
+}
 
 .button2 {
   display: inline-block;

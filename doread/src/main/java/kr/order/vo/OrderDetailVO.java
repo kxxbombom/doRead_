@@ -9,7 +9,14 @@ public class OrderDetailVO {
 	private int order_quantity;
 	private int order_num;
 	private String book_image;
+	private int book_category;
 	
+	public int getBook_category() {
+		return book_category;
+	}
+	public void setBook_category(int book_category) {
+		this.book_category = book_category;
+	}
 	public String getBook_image() {
 		return book_image;
 	}

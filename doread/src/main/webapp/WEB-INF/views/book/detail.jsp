@@ -62,6 +62,7 @@
 							<c:if test="${book.book_category==9}">수험서/취업</c:if>
 							<c:if test="${book.book_category==10}">만화</c:if>
 							<c:if test="${book.book_category==11}">취미/스포츠</c:if>
+							<c:if test="${book.book_category==12}">e-book</c:if>
 							</b>
 						</div>
 						<br>
@@ -112,6 +113,7 @@
 							<c:if test="${book.book_category==9}">수험서/취업</c:if>
 							<c:if test="${book.book_category==10}">만화</c:if>
 							<c:if test="${book.book_category==11}">취미/스포츠</c:if>
+							<c:if test="${book.book_category==12}">e-book</c:if>
 							</b>
 						</div>
 						<br>
@@ -126,12 +128,17 @@
 							<label for="book_quantity" id="quantity_label">구매수량</label>
 							<input type="number" name="book_quantity" id="book_quantity" min="1" max="${book.stock}">
 						</li>
-						
+						<c:if test="${book.book_category!=12}">
 						<li id="button-margin">
 							<input type="submit" value="바로구매" id="order" class="order-button">
 							<input type="button" value="장바구니" id="insert_cart" class="order-button">
 						</li>
-						
+						</c:if>
+						<c:if test="${book.book_category==12}">
+						<li id="button-margin">
+							<input type="submit" value="바로구매" id="order" class="order-button">
+						</li>
+						</c:if>
 						<script type="text/javascript">
 							$(function(){
 								$('#book_quantity').on('keyup',function(){
@@ -245,6 +252,15 @@
 				</c:if>
 			</li>
 			<li id="change_info">
+				<c:if test="${book.book_category==12}">
+					<div class="info-title">
+						<h3>E-BOOK 안내</h3>
+					</div>
+					<p>e-book은 구매 후 바로 배송완료단계로 설정되며, 마이페이지 e-book에서 읽으실 수 있습니다.
+					<br>
+					<p>
+					<br>
+				</c:if>
 				<div class="info-title">
 					<h3>교환/반품/품절 안내</h3>
 				</div>

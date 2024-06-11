@@ -33,6 +33,7 @@ public class OrderDAO {
 		ResultSet rs = null;
 		String sql = null;
 		int order_num = 0; //시퀀스
+		int cnt =0;
 		try {
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
@@ -48,24 +49,30 @@ public class OrderDAO {
 			
 			//주문정보 처리
 			sql = "INSERT INTO book_order (order_num, order_total, receive_name, receive_zipcode, receive_address1,"
-					+ "receive_address2, receive_phone, order_msg, order_payment, mem_num, enter, enter_passwd) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "receive_address2, receive_phone, order_msg, order_payment, mem_num, enter, enter_passwd,order_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt2 = conn.prepareStatement(sql);
-			pstmt2.setInt(1, order_num);
-			pstmt2.setInt(2, order.getOrder_total());
-			pstmt2.setString(3, order.getReceive_name());
-			pstmt2.setString(4, order.getReceive_zipcode());
-			pstmt2.setString(5, order.getReceive_address1());
-			pstmt2.setString(6, order.getReceive_address2());
-			pstmt2.setString(7, order.getReceive_phone());
-			pstmt2.setString(8, order.getOrder_msg());
-			pstmt2.setInt(9, order.getOrder_payment());
-			pstmt2.setInt(10, order.getMem_num());
-			pstmt2.setInt(11, order.getEnter());
+			pstmt2.setInt(++cnt, order_num);
+			pstmt2.setInt(++cnt, order.getOrder_total());
+			pstmt2.setString(++cnt, order.getReceive_name());
+			pstmt2.setString(++cnt, order.getReceive_zipcode());
+			pstmt2.setString(++cnt, order.getReceive_address1());
+			pstmt2.setString(++cnt, order.getReceive_address2());
+			pstmt2.setString(++cnt, order.getReceive_phone());
+			pstmt2.setString(++cnt, order.getOrder_msg());
+			pstmt2.setInt(++cnt, order.getOrder_payment());
+			pstmt2.setInt(++cnt, order.getMem_num());
+			pstmt2.setInt(++cnt, order.getEnter());
 			if(order.getEnter_passwd() != null) {
-				pstmt2.setString(12, order.getEnter_passwd());
+				pstmt2.setString(++cnt, order.getEnter_passwd());
 			}else {
-				pstmt2.setNull(12, java.sql.Types.VARCHAR);
+				pstmt2.setNull(++cnt, java.sql.Types.VARCHAR);
 			}
+			if(order.getOrder_status() != 0) {
+				pstmt2.setInt(++cnt, order.getOrder_status());
+			}else {
+				pstmt2.setInt(++cnt, 1);
+			}
+			
 			pstmt2.executeUpdate();
 			
 			
@@ -356,7 +363,7 @@ public class OrderDAO {
 		return list;
 	}
 	//사용자 - 전체/검색 주문 개수
-	public int getOrderCount(String keyfield, String keyword, int mem_num)throws Exception{
+	public int getOrderCount(String keyfield, String keyword, int mem_num, String e_book)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -370,7 +377,10 @@ public class OrderDAO {
 				if(keyfield.equals("1")) sub_sql += "AND book_name LIKE '%' || ? || '%'";
 				else if(keyfield.equals("2")) sub_sql += "AND order_num=?";
 			}
-
+			if(e_book != null && !"".equals(e_book)) {
+				if(e_book.equals("1")) sub_sql += "AND book_category = 12 ";
+				
+			}
 			sql = "SELECT COUNT(*) FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') WITHIN GROUP (ORDER BY book_name) book_name "
 					+ "FROM book_order_detail GROUP BY order_num) USING (order_num) WHERE mem_num=? " + sub_sql;
 
@@ -393,7 +403,7 @@ public class OrderDAO {
 		return count;
 	}
 	//사용자 - 전체/검색 주문 목록
-	public List<OrderVO> getListOrderByMem_num(int start, int end, String keyfield, String keyword, int mem_num)throws Exception{
+	public List<OrderVO> getListOrderByMem_num(int start, int end, String keyfield, String keyword, int mem_num, String e_book)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -408,7 +418,10 @@ public class OrderDAO {
 				if(keyfield.equals("1")) sub_sql += "AND book_name LIKE '%' || ? || '%'";
 				else if(keyfield.equals("2")) sub_sql += "AND order_num=?";
 			}
-			
+			if(e_book != null && !"".equals(e_book)) {
+				if(e_book.equals("1")) sub_sql += "AND book_category = 12 ";
+				
+			}
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM ("
 					+ "SELECT * FROM book_order JOIN (SELECT order_num, LISTAGG(book_name,',') "
@@ -481,6 +494,73 @@ public class OrderDAO {
 			
 			return list;
 		}
+		//ebook상품목록
+		public List<OrderDetailVO> getEbookDetail(int start, int end,int mem_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet re= null;
+			String sql= null;
+			List<OrderDetailVO> list = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql="select * from (select rownum alnum, a.* from(select * from book_order_detail join book using(book_num) join book_order using(order_num) where mem_num=? and book_category=12 order by book_num desc ) a ) where alnum between ? and ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, mem_num);
+				ps.setInt(2, start);
+				ps.setInt(3, end);
+				re=ps.executeQuery();
+				if(re.next()) {
+					list = new ArrayList<OrderDetailVO>();
+					do {
+						OrderDetailVO detail = new OrderDetailVO();
+						detail.setDetail_num(re.getInt("detail_num"));
+						detail.setBook_num(re.getInt("book_num"));
+						detail.setBook_name(re.getString("book_name"));
+						detail.setBook_price(re.getInt("book_price"));
+						detail.setBook_total(re.getInt("Book_total"));
+						detail.setOrder_num(re.getInt("order_num"));
+						detail.setOrder_quantity(re.getInt("order_quantity"));
+						detail.setBook_image(re.getString("book_img"));
+						detail.setBook_category(re.getInt("book_category"));
+						
+						list.add(detail);
+					}while(re.next());
+					
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally{
+				DBUtil.executeClose(re, ps, conn);
+			}
+			
+			return list;
+		}
+		//ebook상품갯수
+			public int getEbookDetailCount(int mem_num) throws Exception{
+				Connection conn = null;
+				PreparedStatement ps = null;
+				ResultSet re= null;
+				String sql= null;
+				int count =0;
+				try {
+					conn = DBUtil.getConnection();
+					sql="select count(*) from book_order_detail join book using(book_num) join book_order using(order_num) where mem_num=? and book_category=12 order by book_num desc ";
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, mem_num);
+					re=ps.executeQuery();
+					if(re.next()) {
+						count = re.getInt(1);
+						
+					}
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally{
+					DBUtil.executeClose(re, ps, conn);
+				}
+				
+				return count;
+			}
+		
 	
 	//주문 삭제(삭제시 재고를 원상복귀 시키지 않음.) 주문취소일때 재고수량 원상복귀
 		public void deleteUserorder(int order_num ) throws Exception{

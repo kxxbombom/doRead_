@@ -157,6 +157,11 @@
 							href="${pageContext.request.contextPath}/shopping/mileagelist.do">마일리지 내역
 								목록</a>
 						</li>
+						<li>
+							<a
+							href="${pageContext.request.contextPath}/shopping/myebookList.do">e-book내역
+								목록</a>
+						</li>
 					</ul>
 				</div></li>
 
