@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의 목록</title>
+<title>스토리 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ysw.css" type="text/css">
