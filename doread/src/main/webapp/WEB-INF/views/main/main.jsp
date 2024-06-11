@@ -137,8 +137,8 @@ $(function(){
 			</div>
 			<h4>이벤트</h4>
 		<div class="slider-container">
-			<div class="slider-space">
-				<div class="slider-items">
+			<div class="main-slider">
+				<div>
 					<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=202" id="event_link"><img id="eventb" width="100%" src="${pageContext.request.contextPath}/eventimage/eventimage1.jpg"  style="z-index:9;"></a></div>
 				</div>
 			</div>

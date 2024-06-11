@@ -231,14 +231,16 @@ form#book_search input[type="submit"]:hover{
 .slider-space{
 	position:relative;
 	text-align:center;
+	width:800px;
+	height:300px;
 	overflow:hidden;
 }
 
 div.slider-space .slider-items{
 	position:relative;
 	display:inline-block;
-	text-align:center;
-	width:960px;
+	text-align:center;	
+	width:800px;
 	height:300px;
 }
 
@@ -254,6 +256,7 @@ div.slider-items .slider-image{
 	vertical-align:top;
 	padding:0 10px;
 }
+
 
 .slider-image ul{
 	list-style:none;
@@ -272,6 +275,19 @@ div.slider-items .slider-image{
 	text-align:center;
 }
 
+.main-slider{
+	position:relative;
+	text-align:center;
+	height:300px;
+	overflow:hidden;
+}
+
+.main-slider>div{
+	position:relative;
+	display:inline-block;
+	text-align:center;
+	
+}
 
 /* 도서정보수정 */
 
