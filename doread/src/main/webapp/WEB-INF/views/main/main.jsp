@@ -10,17 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kyj.css" type="text/css">
 <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-
-	$(".slider-space > div:gt(0)").hide();
-
-	setInterval(function() {
-	  $('.slider-space > div:first')
-	    .next()
-	    .end()
-	    .appendTo('.slider-space');
-	},  5000);
-	
-	
+$(function(){	
 	let i =2;
 	setInterval(function() {
 		    i++;
@@ -46,7 +36,7 @@
 		},  5000);
 	
 	
-$(function(){
+
 	$('#lbtn').click(function(){
 		--i;
 		if(i<1){
@@ -97,10 +87,6 @@ $(function(){
 	
 });
 	
-	
-	
-
-
 
 </script>
 </head> 
@@ -139,17 +125,9 @@ $(function(){
 			<h4>이벤트</h4>
 		<div class="slider-container">
 			<div class="slider-space">
-				<c:forEach var="event" items="${eventList}">
-					<div class="slider-items" onclick="location.href='${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}'">
-						<div class="slider-image"><img src="${pageContext.request.contextPath}/upload/${event.e_image}" height="300"></div>
-						<div class="slider-image">
-							<ul>
-								<li><h1>${event.e_title}</h1></li>
-								<li>${event.e_rdate}~${event.e_deadline}</li>
-							</ul>		
-						</div>
-					</div>
-				</c:forEach>
+				<div class="slider-items">
+					<a href="${pageContext.request.contextPath}/event/eventmain.do" id="event_link"><img id="eventb" width="100%" src="${pageContext.request.contextPath}/eventimage/eventimage1.jpg"  style="z-index:9;"></a></div>
+				</div>
 			</div>
 		</div>
 		</div>
@@ -178,6 +156,8 @@ $(function(){
     </button>
    </div>
 </div>
+<div class="floBanPc1 hidden-md hidden-sm"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/upload/btn_side_kakaotalk.png" href="#" width="100" height="100"></a></div>
+<div class="floBanPc2 hidden-md hidden-sm	"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/upload/btn_side_phone.png" href="#" width="100" height="100"></a></div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>

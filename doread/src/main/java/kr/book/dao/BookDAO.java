@@ -27,7 +27,7 @@ public class BookDAO {
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO book (book_num,book_name,author,publisher,publish_date,price,stock,book_category,book_img,book_auth) VALUES (book_seq.nextval,?,?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO book (book_num,book_name,author,publisher,publish_date,price,stock,book_category,book_img,book_auth,book_content) VALUES (book_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBook_name());
@@ -39,6 +39,7 @@ public class BookDAO {
 			pstmt.setInt(7, book.getBook_category());
 			pstmt.setString(8,book.getBook_img());
 			pstmt.setInt(9,book.getBook_auth());
+			pstmt.setString(10, book.getBook_content());
 			
 			pstmt.executeUpdate();
 		}catch(Exception e) {

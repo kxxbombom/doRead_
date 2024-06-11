@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html  lang="en">
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
@@ -139,8 +139,11 @@ $(function(){
 	<h2 class="vertical-margin">책 등록</h2>
 	
 	<hr size="1.5" width="80%" noshade="noshade">
+	
+	
 	<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
 	<div class="content-main">
+	<div >
 	<ul>
 		<li><label for="book_auth">판매여부</label>
 			<select name="book_auth" id="book_auth" class="inputcheck input-style">
@@ -179,6 +182,7 @@ $(function(){
 				<option value="9">수험서/취업</option>
 				<option value="10">만화</option>
 				<option value="11">취미/스포츠</option>
+				<option value="12">e-book</option>
 			</select>
 		</li>
 		<li>
@@ -187,6 +191,24 @@ $(function(){
 			
 		</li>
 	</ul>
+	</div>
+	<div  id ="e-bookcontent" >
+		<label for="book_content">책내용</label>
+		<textarea name="book_content" id="book_content" class="input-style" placeholder="책이미지 한장씩 선택/로딩대기/로딩후 오타수정 필수,특수문자제거 필수"></textarea>
+		<input type="file" id="uploader" >
+		<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
+		<script>
+	         const recognize = async ({ target: { files }  }) => {
+	         const { data: { text } } = await Tesseract.recognize(files[0], 'eng+kor', {
+	             corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
+	             logger: m => console.log(m),
+	          });
+	          $('#book_content').append(text);
+	        }
+	        const elm = document.getElementById('uploader');
+	        elm.addEventListener('change', recognize);
+	     </script>
+	</div>
 	</div>
 	<div class="align-center">
 		<input type="submit" value="등록" class="update-button">
