@@ -23,10 +23,9 @@
 				<input type="button" class="homebtn" value="홈으로" onclick="location.href='${result_url}'">
 
 				<span class="list-btn3">
-				<input type="button" value="주문/배송 조회" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
+				<input type="button" class="ordercombtn" value="주문/배송 조회" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 				</span>
 
-				<input type="button" class="ordercombtn" value="주문/배송 조회" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 
 			</div>
 		</div>
