@@ -13,13 +13,14 @@
 <body>
 <div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
+	<div class="content-main">
 		<div class="post-header">
 			<h2>내가 쓴 댓글</h2>
 			<hr size="1" noshade width="100%">
 			<div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>
 		</div>
 		<h4>스토리 게시판 댓글</h4>
-		<table class="main-table">
+		<table class="content-main main-table">
 			<tr class="main-tr">
 				<th class="main-td">댓글 번호</th>
 				<th class="main-td">내용</th>
@@ -57,6 +58,7 @@
 		<div style="text-align:center;">
 				${upage}	
 		</div>
+	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

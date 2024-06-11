@@ -16,7 +16,7 @@
 <body>
 	<div class="page-main">
 		<jsp:include page="/WEB-INF/views/member/mypageheader.jsp" />
-		<div class="post-header">
+		<div class="content-main post-header">
 			<h2>회원 찜 목록</h2>
 			<hr size="1" noshade width="100%">
 			<c:if test="${fn:length(bookList)==0}">

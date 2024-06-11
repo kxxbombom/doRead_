@@ -19,7 +19,7 @@
 		<p>
 		<input type="button" class="button2" value="누적신고 5회이상 확인" onclick="location.href='five.do'">
 		<p>
-		<h2>중고게시판 신고된 게시글 관리</h2>
+		<h2>중고게시판 신고된 게시글 관리</h2><br>
 			<c:if test="${empty list}">
 			 	<br>
 				<br>
@@ -75,7 +75,7 @@
 			 <br>
 			</c:if>
 			
-			<h2>중고게시판 신고된 댓글 관리</h2>
+			<h2>중고게시판 신고된 댓글 관리</h2><br>
 			<c:if test="${empty list1}">
 			 	<br>
 				<br>
@@ -137,7 +137,7 @@
 			 <br>
 			</c:if>
 			
-			<h2>스토리게시판 신고된 게시글 관리</h2>
+			<h2>스토리게시판 신고된 게시글 관리</h2><br>
 			<c:if test="${empty list2}">
 			 	<br>
 				<br>
@@ -190,7 +190,7 @@
 			 <div class="align-center">
 			 	${page2 }
 			 </div> <br><br>
-			<h2>스토리게시판 신고된 댓글 관리</h2>
+			<h2>스토리게시판 신고된 댓글 관리</h2><br>
 			<c:if test="${empty list3}">
 			 	<br>
 				<br>

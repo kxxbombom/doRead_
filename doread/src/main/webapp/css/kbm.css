@@ -1340,6 +1340,7 @@ input[type="button"]:hover, button:hover{
 	font-size:15px;
 	font-weight:bold;
 	border:1px solid #4F6F52;
+	cursor:pointer;
 }
 .qna-button input[type="submit"]{
 	width:55px;
@@ -1352,5 +1353,15 @@ input[type="button"]:hover, button:hover{
 	margin-right:10px;
 	font-weight:bold;
 	margin-left:300px;
+	cursor:pointer;
 }
-
+.button2{
+	height:35px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+	cursor:pointer;	
+}

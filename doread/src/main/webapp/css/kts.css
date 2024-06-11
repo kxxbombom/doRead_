@@ -3,6 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Danfo&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Danfo&family=Noto+Sans+KR:wght@100..900&family=Pacifico&display=swap');
 
+@keyframes slideIn {
+    0% {
+        transform: translateY(7px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.content-main{
+	padding:10px 20px;
+	animation: slideIn 0.8s ease-out;
+}
+
 body{
 	width:960px;
 	margin:0 auto;
