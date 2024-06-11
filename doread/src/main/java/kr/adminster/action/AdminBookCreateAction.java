@@ -37,6 +37,7 @@ public class AdminBookCreateAction implements Action{
 		book.setBook_category(Integer.parseInt(request.getParameter("book_category")));
 		book.setBook_img(FileUtil.createFile(request,"book_img"));
 		book.setBook_auth(Integer.parseInt(request.getParameter("book_auth")));
+		book.setBook_content(request.getParameter("book_content"));
 		BookDAO dao = BookDAO.getInstance();
 		dao.InsertBook(book);
 		

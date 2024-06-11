@@ -11,6 +11,13 @@ public class BookVO {
 	private String book_img;		//책 이미지
 	private int book_category;		//책 분야
 	private int book_auth; //0판매중 1판매중단
+	private String book_content;
+	public String getBook_content() {
+		return book_content;
+	}
+	public void setBook_content(String book_content) {
+		this.book_content = book_content;
+	}
 	public int getBook_auth() {
 		return book_auth;
 	}
