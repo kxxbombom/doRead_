@@ -164,6 +164,8 @@
 	 		
 	 	</form>
 	 	
+	 	</c:if>
+	 	
 	 	<div class="cart-notice">
 	 			<label>장바구니 유의사항</label>
 	 			<ul>
@@ -173,7 +175,7 @@
 	 			</ul>
 	 	</div>
 	 	
-		</c:if>
+		
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
