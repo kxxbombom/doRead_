@@ -196,6 +196,9 @@ $(function(){
 		<label for="book_content">책내용</label><div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">*한장씩 이미지 선택하여 출력이 완료되면 다음 이미지 선택,로딩후 오타 수정 필수* </div>
 		<textarea name="book_content" id="book_content" class="input-style" placeholder="책이미지 한장씩 선택/로딩대기/로딩후 오타수정 필수,특수문자제거 필수"></textarea>
 		<input type="file" id="uploader" >
+		<div id="loading" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
+		</div>
 		<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
 		<script>
 	         const recognize = async ({ target: { files }  }) => {
@@ -204,9 +207,17 @@ $(function(){
 	             logger: m => console.log(m),
 	          });
 	          $('#book_content').append(text);
+			  $('#book_content').click();
 	        }
 	        const elm = document.getElementById('uploader');
+			elm.onchange=function(){
+				$('#loading').show();
+			};
 	        elm.addEventListener('change', recognize);
+			
+			$('#book_content').click(function(){
+				$('#loading').hide();
+			})
 	     </script>
 	</div>
 	</div>

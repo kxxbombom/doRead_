@@ -77,7 +77,7 @@
 				
 				<li>
 					<label for="u_image">이미지 첨부</label>
-					<input type="file" id="u_image" name="u_image" class="input-style " accept="image/gif,image/png,image/jpeg">
+					<input type="file" id="u_image" name="u_image" class="input-style" accept="image/gif,image/png,image/jpeg">
 					
 				</li>
 			</ul>

@@ -30,6 +30,10 @@
                 stopPrntScr();
                 window.close();
             }
+            if (keyCode == 93) {
+                stopPrntScr();
+                window.close();
+            }
         });
 		function stopPrntScr() {
 

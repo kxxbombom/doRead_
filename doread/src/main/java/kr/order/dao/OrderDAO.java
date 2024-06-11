@@ -577,15 +577,18 @@ public class OrderDAO {
 			try {
 				conn =DBUtil.getConnection();
 				conn.setAutoCommit(false);
+				
+				sql="delete from book_order_detail where order_num=? ";
+				ps2 = conn.prepareStatement(sql);
+				ps2.setInt(1, order_num);
+				ps2.executeUpdate();
+				
 				sql="delete from book_order where order_num =?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, order_num);
 				
 				ps.executeUpdate();
-				sql="delete from book_order_detail where order_num=? ";
-				ps2 = conn.prepareStatement(sql);
-				ps2.setInt(1, order_num);
-				ps2.executeUpdate();
+				
 				
 				conn.commit();
 				

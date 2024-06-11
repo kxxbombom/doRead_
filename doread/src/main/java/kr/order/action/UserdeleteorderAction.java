@@ -40,7 +40,7 @@ public class UserdeleteorderAction implements Action{
 		dao.deleteUserorder(order_num);
 		
 		request.setAttribute("notice_msg", "주문이 삭제되었습니다.");
-		request.setAttribute("notice_url", request.getContextPath() + "/order/orderDetail.do?order_num=" + order_num);
+		request.setAttribute("notice_url", request.getContextPath() + "/shopping/buylist.do");
 		
 		return "/WEB-INF/views/common/alert_view.jsp";
 	}
