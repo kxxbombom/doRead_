@@ -60,8 +60,8 @@ window.onload=function(){
 				</li>
 			</ul>
 			<div class="align-center">
-				<input type="submit" value="등록">
-				<input type="button" value="목록" onclick="location.href='storyBoardList.do'">
+				<input type="submit" value="등록" class="button2">
+				<input type="button" value="목록" class="button2" onclick="location.href='storyBoardList.do'">
 			</div>
 		</form>
 	</div>

@@ -14,8 +14,8 @@
 <jsp:include page="/WEB-INF/views/adminster/adminheader3.jsp"/>
 <br><br>
 <jsp:include page="/WEB-INF/views/adminster/adminheader.jsp"/>
-<div class="page-main align-center">
-<h2>중고게시판 정지 게시글 관리</h2>
+<div class="page-main align-center"><br>
+<h2>중고게시판 정지 게시글 관리</h2><br>
 	<c:if test="${empty list}">
 	 	<br>
 		<br>
@@ -70,7 +70,7 @@
 	<br>
 	<br>
 	</c:if>
-	<h2>중고게시판 정지 댓글 관리</h2>
+	<h2>중고게시판 정지 댓글 관리</h2><br>
 	<c:if test="${empty list1}">
 		<br>
 		<br>
@@ -130,7 +130,7 @@
 	<br>
 	<br>
 	</c:if>
-	<h2>스토리게시판 정지 게시글 관리</h2>
+	<h2>스토리게시판 정지 게시글 관리</h2><br>
 	<c:if test="${empty list2}">
 		<br>
 		<br>
@@ -185,7 +185,7 @@
 	<br>
 	</c:if>
 	
-	<h2>스토리게시판 정지된 댓글 관리</h2>
+	<h2>스토리게시판 정지된 댓글 관리</h2><br>
 	<c:if test="${empty list3}">
 		<div class="align-center">
 			<br>
