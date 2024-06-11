@@ -301,17 +301,32 @@ div.subul ul li label{
 }
 /*관리자 유저페이지*/
 table{
-	width:90% !important;
-	text-align:center !important;
-	margin:30px auto !important;
-	border:none !important;
-}
-tr{
-	border:none !important;
+	width:90% ;
+	margin: auto !important;
+	border:none ;
 }
 th,td{
-	width:150px;
+	text-align:center ;
 	border:none !important;
+}
+.order_list_admin{
+	width:90% ;
+	margin: auto ;
+	border:none ;
+}
+.order_list_admin th,td{
+	text-align:center ;
+	width:250px;
+	height: 40px;
+	border:none !important;
+}
+#order_list_td{
+	width:230px;
+	max-width:280px;
+	height:40px;
+	overflow:hidden;
+	white-space : nowrap;
+	text-overflow : ellipsis;
 }
 img#modifyauth{
 	cursor:pointer;
