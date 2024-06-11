@@ -260,6 +260,10 @@ input[value="우편번호 찾기"]{
 #register_form input[id="phone"]{
 	margin-bottom:0;
 }
+
+.register-help{
+	font-size:14px;
+}
 /*checkbox*/
 .test{
 	width:120px;

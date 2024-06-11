@@ -288,17 +288,17 @@ $(function(){
 				<li>
 					<label for="email">이메일</label>
 					<input type="email" name="email" id="email" maxlength="50" placeholder="example@example.com" class="input-check">
-					<span id="email_checkmessage">이미 사용 중인 이메일입니다</span>
-					<span id="email_checkmessage2">이메일 중복체크 오류</span>
-					<span id="email_checkmessage3">네트워크 오류</span>
+					<span id="email_checkmessage" class="register-help">이미 사용 중인 이메일입니다</span>
+					<span id="email_checkmessage2" class="register-help">이메일 중복체크 오류</span>
+					<span id="email_checkmessage3" class="register-help">네트워크 오류</span>
 				
 				</li>
 				<li>
 					<label for="phone">전화번호</label>
 					<input type="text" name="phone" id="phone" maxlength="15" autocomplete="off" class="input-check">
-					<span id="phone_checkmessage">이미 사용 중인 전화번호입니다</span>
-					<span id="phone_checkmessage2">전화번호 중복체크 오류</span>
-					<span id="phone_checkmessage3">네트워크 오류</span>
+					<span id="phone_checkmessage" class="register-help">이미 사용 중인 전화번호입니다</span>
+					<span id="phone_checkmessage2" class="register-help">전화번호 중복체크 오류</span>
+					<span id="phone_checkmessage3" class="register-help">네트워크 오류</span>
 					<div class="form-notice2">*숫자만 입력</div>
 					
 				</li>
