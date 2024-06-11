@@ -71,10 +71,13 @@ window.onload=function(){
 					</a>
 				</div>
 			</c:forEach>
+			<div class="float-clear">
+				<hr width="100%" size="1" noshade="noshade" style="margin-top:30px;">
+			</div>
 		</div>
 		<div class="align-center">${page}</div>
-		<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
 </body>
 </html>
