@@ -83,7 +83,20 @@ $(function(){
 	    }
 	});
 	
-	
+	let j = 1;
+	setInterval(function() {
+	    j++;
+	    if(j>3){
+	    	j=1;
+	    }
+	    $('#eventb').attr('src','${pageContext.request.contextPath}/eventimage/eventimage'+j+'.jpg');
+		
+	    if(j==2){
+	    	$('#event_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=203');
+	    }else if(j==3){
+	    	$('#event_link').attr('href','${pageContext.request.contextPath}/event/detailEvent.do?e_num=204');
+	    }
+	},  5000);
 	
 });
 	
@@ -126,7 +139,7 @@ $(function(){
 		<div class="slider-container">
 			<div class="slider-space">
 				<div class="slider-items">
-					<a href="${pageContext.request.contextPath}/event/eventmain.do" id="event_link"><img id="eventb" width="100%" src="${pageContext.request.contextPath}/eventimage/eventimage1.jpg"  style="z-index:9;"></a></div>
+					<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=202" id="event_link"><img id="eventb" width="100%" src="${pageContext.request.contextPath}/eventimage/eventimage1.jpg"  style="z-index:9;"></a></div>
 				</div>
 			</div>
 		</div>
