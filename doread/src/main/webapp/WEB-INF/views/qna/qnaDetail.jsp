@@ -64,21 +64,20 @@
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
 		</c:if>
-		<ul class="detail-sub">
+		<ul class="detail-sub" style="text-align:right;">
 			<li>
-				<c:if test="${!empty qna.q_mdate}">
-				최근 수정일 : ${qna.q_mdate}
-				</c:if>
-				작성일 : ${qna.q_rdate}
-				<%-- 관리자 등급만 답변 가능--%>
-				<%-- 관리자가 작성한 글만 수정 가능?--%>
-				<c:if test="${!empty user_num && user_auth == 9 && empty qna.q_answer}">
-				<input type="button" value="답변하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'">				
-				</c:if> 
-				<c:if test="${!empty user_num && user_auth == 9 && !empty qna.q_answer}">
-				<input type="button" value="답변수정하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'">				
-				</c:if> 
-				
+					<c:if test="${!empty qna.q_mdate}">
+					최근 수정일 : ${qna.q_mdate}
+					</c:if>
+					작성일 : ${qna.q_rdate}
+					<%-- 관리자 등급만 답변 가능--%>
+					<%-- 관리자가 작성한 글만 수정 가능?--%>
+					<c:if test="${!empty user_num && user_auth == 9 && empty qna.q_answer}" >
+					<input type="button" value="답변하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'" class="btn2">				
+					</c:if> 
+					<c:if test="${!empty user_num && user_auth == 9 && !empty qna.q_answer}">
+					<input type="button" value="답변수정하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'" class="btn2">				
+					</c:if> 
 			</li>
 		</ul>
 		<div class="list-space align-right">
