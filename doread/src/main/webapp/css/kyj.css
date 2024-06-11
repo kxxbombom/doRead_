@@ -231,16 +231,14 @@ form#book_search input[type="submit"]:hover{
 .slider-space{
 	position:relative;
 	text-align:center;
-	width:800px;
-	height:300px;
 	overflow:hidden;
 }
 
 div.slider-space .slider-items{
 	position:relative;
 	display:inline-block;
-	text-align:center;	
-	width:800px;
+	text-align:center;
+	width:960px;
 	height:300px;
 }
 
