@@ -676,6 +676,7 @@ input[type="search"]{
 }
 input[type="submit"].list_search, select.search{
 	width:55px;
+	cursor: pointer;
 }
 .list_search{
 	height:30px;
@@ -742,6 +743,7 @@ table td:first-child, table td:last-child, td.text-center{
 	font-size:14px;
 	font-weight:bold;
 	border:1px solid #4F6F52;
+	cursor: pointer;
 }
 .list-btn input:hover, 
 #list_search_form input[type="submit"]:hover,
