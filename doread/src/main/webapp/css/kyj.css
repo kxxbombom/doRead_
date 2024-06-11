@@ -328,3 +328,18 @@ p.fav-notice{
 .float-clear{
 	padding:10px 0;
 }
+
+/* 사이드바
+-----------------*/
+.floBanPc1 {
+	position: fixed;
+	top:128px;
+	right:0;
+	z-index: 99;
+}
+.floBanPc2 {
+	position: fixed;
+	top:228px;
+	right:0;
+	z-index: 99;
+}

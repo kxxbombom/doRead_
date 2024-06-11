@@ -156,6 +156,8 @@ $(function(){
     </button>
    </div>
 </div>
+<div class="floBanPc1 hidden-md hidden-sm"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/upload/btn_side_kakaotalk.png" href="#" width="100" height="100"></a></div>
+<div class="floBanPc2 hidden-md hidden-sm	"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/upload/btn_side_phone.png" href="#" width="100" height="100"></a></div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
