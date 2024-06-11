@@ -73,10 +73,10 @@
 					<%-- 관리자 등급만 답변 가능--%>
 					<%-- 관리자가 작성한 글만 수정 가능?--%>
 					<c:if test="${!empty user_num && user_auth == 9 && empty qna.q_answer}" >
-					<input type="button" value="답변하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'" class="btn2">				
+					<input type="button" value="답변하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'" class="btn2 list-btn">				
 					</c:if> 
 					<c:if test="${!empty user_num && user_auth == 9 && !empty qna.q_answer}">
-					<input type="button" value="답변수정하기" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'" class="btn2">				
+					<input type="button" value="답변수정" onclick="location.href='qnaUpdateAnswerForm.do?q_num=${qna.q_num}'" class="btn2 list-btn">				
 					</c:if> 
 			</li>
 		</ul>
