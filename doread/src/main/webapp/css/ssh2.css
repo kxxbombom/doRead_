@@ -137,21 +137,17 @@
     fill: rgb(232, 223, 202);
   }
 }
-.button2 {
-	display: inline-block;
-	transition: all 0.2s ease-in;
-	position: relative;
-	overflow: hidden;
-	z-index: 1;
-	color: #090909;
-	margin:0 5px;
-	padding: 0.4em 1.0em;
-	cursor: pointer;
-	font-size: 14px;
-	border-radius: 0.3em;
-	background: rgb(224, 224, 224);
-	border: 1px solid rgb(224, 224, 224);	
+.button2{
+	height:35px;
+	border-radius:5px;
+	background-color:#FFF;
+	color:rgb(26, 77, 46);
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #4F6F52;
+	cursor:pointer;	
 }
+
 .input-style {
   padding: 3px;
   margin:8px 0;
@@ -208,6 +204,7 @@ form{
 	top:30%;
 	width:500px;
 	margin-bottom:8px !important;
+	padding-bottom:15px;
 	border-radius:15px;
 	border:1px solid #ccc;
 	

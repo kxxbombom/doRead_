@@ -102,12 +102,8 @@
 					<div id="add">
 					
 					</div>
-					<div class="paging2 button2" style="display:none;" >
-					<input type="button" value="이전">
-					</div>
-					<div class="paging button2" style="display:none;" >
-					<input type="button" value="다음">
-					</div>
+					<input type="button" class="button2 paging2" style="display:none;"  value="이전">
+					<input type="button"  class="button2 paging" style="display:none;"  value="다음">
 					</form>
 				</div>
 				 <script type="text/javascript">
