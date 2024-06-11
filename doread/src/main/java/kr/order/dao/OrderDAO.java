@@ -175,7 +175,8 @@ public class OrderDAO {
 				try {
 					conn = DBUtil.getConnection();
 					conn.setAutoCommit(false);
-					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=0";
+					
+					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=0 or p_detail=4";
 					
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, mem_num);
@@ -185,7 +186,8 @@ public class OrderDAO {
 						do {
 						point += rs.getInt(1);
 						}while(rs.next());
-						}
+					}
+					
 					sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=1 or p_detail=2";
 					
 					pstmt2 = conn.prepareStatement(sql);
@@ -193,9 +195,9 @@ public class OrderDAO {
 					
 					rs2 = pstmt2.executeQuery();
 					if(rs2.next()) {
-					do {
-						point -= rs2.getInt(1);
-					}while(rs2.next());
+						do {
+							point -= rs2.getInt(1);
+						}while(rs2.next());
 							
 					}
 					conn.commit();
@@ -669,9 +671,12 @@ public class OrderDAO {
 			PreparedStatement ps = null;
 			PreparedStatement ps2 = null;
 			PreparedStatement ps4 = null;
+			PreparedStatement ps6 = null;
 			
 			PreparedStatement ps5 = null;
+			ResultSet rs = null;
 			String sql= null;
+			int usedpoint = 0;
 			try {
 				conn = DBUtil.getConnection();
 				conn.setAutoCommit(false);
@@ -691,10 +696,18 @@ public class OrderDAO {
 					ps4.executeUpdate();
 					
 					//구매시 사용한 포인트
+					sql = "SELECT p_point FROM point WHERE order_num=? AND p_detail=1";
+					ps6 = conn.prepareStatement(sql);
+					ps6.setInt(1, order.getOrder_num());
+					rs = ps6.executeQuery();
+					if(rs.next()) {
+						usedpoint = rs.getInt(1);
+					}
+					
 					sql = "INSERT INTO point (p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
 					ps5 = conn.prepareStatement(sql);
 					ps5.setInt(1, 4);
-					ps5.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
+					ps5.setInt(2, usedpoint);
 					ps5.setInt(3,order.getMem_num());
 					ps5.setInt(4, order.getOrder_num());
 					ps5.executeUpdate();
@@ -720,8 +733,11 @@ public class OrderDAO {
 			}finally {
 				if(order.getOrder_status() == 5) {
 				DBUtil.executeClose(null, ps2, null);
+				DBUtil.executeClose(null, ps4, null);
+				DBUtil.executeClose(null, ps5, null);
+				DBUtil.executeClose(null, ps6, null);
 				}
-				DBUtil.executeClose(null, ps, conn);
+				DBUtil.executeClose(rs, ps, conn);
 			}
 			
 			
@@ -732,18 +748,24 @@ public class OrderDAO {
 			Connection conn = null;
 			PreparedStatement ps = null;
 			PreparedStatement ps3 = null;
+			
+			PreparedStatement ps6 = null;
+			ResultSet rs = null;
+			int usedpoint = 0;
+			PreparedStatement ps7 = null;
+			
 			PreparedStatement ps4 = null;
 			String sql= null;
 			
 			try {
 				conn =DBUtil.getConnection();
 				conn.setAutoCommit(false);
-				
+				//주문상태 변경
 				sql="update book_order set order_status=5, ORDER_MDATE=sysdate where order_num=?";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, order.getOrder_num());
 				ps.executeUpdate();
-				
+				//주문시 적립된 포인트 취소
 				sql="insert into point(p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
 				ps4 = conn.prepareStatement(sql);
 				ps4.setInt(1, 2);
@@ -751,6 +773,23 @@ public class OrderDAO {
 				ps4.setInt(3,order.getMem_num());
 				ps4.setInt(4, order.getOrder_num());
 				ps4.executeUpdate();
+				
+				//주문시 사용한 포인트
+				sql = "SELECT p_point FROM point WHERE order_num=? AND p_detail=1";
+				ps6 = conn.prepareStatement(sql);
+				ps6.setInt(1, order.getOrder_num());
+				rs = ps6.executeQuery();
+				if(rs.next()) {
+					usedpoint = rs.getInt(1);
+				}
+				sql = "INSERT INTO point (p_num,p_detail,p_point,mem_num, order_num) values(point_seq.nextval,?,?,?, ?)";
+				ps7 = conn.prepareStatement(sql);
+				ps7.setInt(1, 4);
+				ps7.setInt(2, usedpoint);
+				ps7.setInt(3, order.getMem_num());
+				ps7.setInt(4, order.getOrder_num());
+				ps7.executeUpdate();
+				
 				
 				//주문취소했기때문에 환원이여
 				List<OrderDetailVO> list = getListOrder_Detail(order.getOrder_num());
@@ -775,8 +814,10 @@ public class OrderDAO {
 			}finally {
 				DBUtil.executeClose(null, ps4, null);
 				DBUtil.executeClose(null, ps3, null);
+				DBUtil.executeClose(null, ps6, conn);
+				DBUtil.executeClose(null, ps7, conn);
 		
-				DBUtil.executeClose(null, ps, conn);
+				DBUtil.executeClose(rs, ps, conn);
 			}
 			
 			

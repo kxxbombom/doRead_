@@ -37,7 +37,7 @@ public class ListAction implements Action{
 		if(all_total < 15000) all_total_delivery += 2500;
 		
 		//적립금
-		int point = (int) (all_total * 0.03);
+		int point = (int)Math.floor(all_total * 0.03);
 		
 		request.setAttribute("all_total", all_total);
 		request.setAttribute("all_total_delivery", all_total_delivery);
