@@ -678,7 +678,7 @@ public class OrderDAO {
 					sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
 					ps4 = conn.prepareStatement(sql);
 					ps4.setInt(1, 2);
-					ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
+					ps4.setInt(2,(int)Math.floor(order.getOrder_total()*0.03));
 					ps4.setInt(3,order.getMem_num());
 					ps4.executeUpdate();
 					
@@ -729,13 +729,13 @@ public class OrderDAO {
 				sql="insert into point(p_num,p_detail,p_point,mem_num) values(point_seq.nextval,?,?,?)";
 				ps4 = conn.prepareStatement(sql);
 				ps4.setInt(1, 2);
-				ps4.setInt(2,(int)Math.floor(order.getAll_total()*0.03));
+				ps4.setInt(2,(int)Math.floor(order.getOrder_total()*0.03));
 				ps4.setInt(3,order.getMem_num());
 				ps4.executeUpdate();
 				
 				//주문취소했기때문에 환원이여
 				List<OrderDetailVO> list = getListOrder_Detail(order.getOrder_num());
-				sql="update zitem set quantity=quantity+? where book_num=? ";
+				sql="update book set stock=stock+? where book_num=? ";
 				ps3 = conn.prepareStatement(sql);
 				for(int i=0; i<list.size(); i++) {
 					ps3.setInt(1, list.get(i).getOrder_quantity());

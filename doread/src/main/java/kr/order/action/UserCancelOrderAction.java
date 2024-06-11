@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.order.dao.OrderDAO;
 import kr.order.dao.OrdersDAO;
 import kr.order.vo.OrderVO;
 
@@ -22,8 +23,8 @@ public class UserCancelOrderAction implements Action{
 		//주문번호 반환
 		int order_num = Integer.parseInt(request.getParameter("order_num"));
 		
-		OrdersDAO dao = OrdersDAO.getInstance();
-		OrderVO db_order = dao.getOrder(order_num);
+		OrderDAO dao = OrderDAO.getInstance();
+		OrderVO db_order = dao.getBookOrdervo(order_num);
 		if(db_order.getMem_num() != user_num) {
 			request.setAttribute("notice_msg", "잘못된 접근입니다.");
 			request.setAttribute("notice_url", request.getContextPath() + "/main/main.do");
@@ -38,7 +39,7 @@ public class UserCancelOrderAction implements Action{
 		}
 		
 		//주문 취소
-		dao.cancelOrderUser(order_num);
+		dao.cancleOrderuser(db_order);
 		
 		request.setAttribute("notice_msg", "주문이 취소되었습니다.");
 		request.setAttribute("notice_url", request.getContextPath() + "/order/orderDetail.do?order_num=" + order_num);
