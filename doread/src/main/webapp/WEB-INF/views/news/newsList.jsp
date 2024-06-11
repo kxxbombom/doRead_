@@ -25,14 +25,14 @@
 		
 		<c:if test="${count > 0}">
 		<table>
-			<tr  style="background-color:rgb(26, 77, 46); color:#FFF;">
+			<tr style="background-color:rgb(26, 77, 46); color:#FFF;">
 				<th>번호</th>
 				<th>제목</th>
 				<c:if test="${user_auth == 9}">
 				<th>작성자</th>
 				</c:if>
 				<th>작성일</th>
-				<th>조회</th>
+				<th>조회수</th>
 			</tr>
 			<c:forEach var="news" items="${list}">
 			<tr>

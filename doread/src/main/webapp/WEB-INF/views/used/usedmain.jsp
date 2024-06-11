@@ -21,8 +21,8 @@
  				작성 게시글이 없습니다
  			</c:if>
  			<c:if test="${!empty list }">
- 				<table  id="usedtable">
- 					<tr  style="background-color:rgb(26, 77, 46); color:#FFF;">
+ 				<table>
+ 					<tr style="background-color:rgb(26, 77, 46); color:#FFF;">
  						<th>책제목</th>
  						<th>글제목 </th>
  						<th>가격</th>
@@ -33,8 +33,8 @@
  				<c:forEach var="i" items="${list}">
  					<c:if test="${i.u_auth == 0}">
  					<tr>
- 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.book_name}</a></td>
- 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}">${i.u_title} <small>(${i.cucount })</small></a></td>
+ 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}" class="board-title">${i.book_name}</a></td>
+ 						<td><a href="${pageContext.request.contextPath}/used/usedDetail.do?u_num=${i.u_num}" class="board-title">${i.u_title} <small>(${i.cucount })</small></a></td>
  						<td><fmt:formatNumber value="${i.u_price}"/>원</td>
  						<td><c:if test="${i.u_state ==1}">판매중</c:if>
  							<c:if test="${i.u_state ==2}">거래중</c:if>
