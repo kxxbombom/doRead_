@@ -16,10 +16,19 @@
 		});
 	});
 	
-	document.addEventListener("keyup", function (e) {
+	document.addEventListener("keydown", function (e) {
     var keyCode = e.keyCode ? e.keyCode : e.which;
+    		if (keyCode == 120) {
+       			stopPrntScr();
+       			window.close();
+    		}
+   	 		if (keyCode == 42) {
+            	stopPrntScr();
+            	window.close();
+        	}
             if (keyCode == 44) {
                 stopPrntScr();
+                window.close();
             }
         });
 		function stopPrntScr() {
@@ -41,6 +50,11 @@
             } catch (err) {
             }
         }
+       document.addEventListener('contextmenu', function(e) {
+    		e.preventDefault();
+    		alert('마우스 오른쪽 클릭은 사용할 수 없습니다.');
+    	});
+    	
 </script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
 </head>

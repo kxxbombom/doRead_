@@ -152,6 +152,18 @@
                 </script>
                 
                 </c:if>
+                <c:if test="${order.order_status == 4 or order.order_status == 5}">
+                	<input type="button" class="btn4" id="delorder" value="주문삭제">
+                	<script type="text/javascript">
+	                $('#delorder').click(function(event){
+	            		let check = confirm('주문을 삭제하시겠습니까? 주문을 삭제하면 e-book은 더이상 볼수 없습니다. ');
+	            		if(check){
+	            			location.href="deleteOrderuser.do?order_num=${order.order_num}";
+	            		}
+	            		event.preventDefault();
+	            	});
+                </script>
+                </c:if>
 				
 				<input type="button" class="btn4" value="주문목록" onclick="location.href='${pageContext.request.contextPath}/shopping/buylist.do'">
 			

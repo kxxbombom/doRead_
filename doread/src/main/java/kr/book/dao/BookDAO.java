@@ -263,7 +263,7 @@ public class BookDAO {
 		try {
 			conn = DBUtil.getConnection();
 			sql = "UPDATE book SET book_name=?, author=?, publisher=?, publish_date=?, "
-					+ "price=?, stock=?, book_category=?, book_auth=? "
+					+ "price=?, stock=?, book_category=?, book_auth=?, book_content=? "
 					+ "WHERE book_num=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -275,7 +275,8 @@ public class BookDAO {
 			pstmt.setInt(6,book.getStock());
 			pstmt.setInt(7, book.getBook_category());
 			pstmt.setInt(8, book.getBook_auth());
-			pstmt.setInt(9, book.getBook_num());
+			pstmt.setString(9, book.getBook_content());
+			pstmt.setInt(10, book.getBook_num());
 			
 			pstmt.executeUpdate();
 			
