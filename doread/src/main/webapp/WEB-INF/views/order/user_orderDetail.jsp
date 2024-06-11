@@ -54,7 +54,7 @@
 				</tr>
  			</c:forEach>
  			<tr>
- 				<td colspan="4" class="align-right"><b>총구매금액</b></td>
+ 				<td colspan="4" class="align-right"><b>총결제금액</b></td>
  				<td class="align-center"><fmt:formatNumber value="${order.order_total}"/>원</td>
  			</tr>
  		</table>
@@ -115,7 +115,7 @@
 					<label>결제정보</label>
 					<div id="payment_div">
 						<ul>
-							<li><span>주문금액</span> <span><fmt:formatNumber value="${order.order_total}"/>원</span></li>
+							<li><span>결제금액</span> <span><fmt:formatNumber value="${order.order_total}"/>원</span></li>
 							<li><span>상품금액</span> <span><fmt:formatNumber value="${Obook_total}"/>원</span></li>
 							<li><span>배송비</span> <span><fmt:formatNumber value="${delivery}"/>원</span></li>
 							<li><span>포인트사용</span> <span><fmt:formatNumber value="${used_point}"/>원</span></li>
