@@ -8,6 +8,8 @@
 <title>Story 작성하기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
+
 <script type="text/javascript">
 window.onload=function(){
 	const myForm = document.getElementById('write_form');
@@ -34,17 +36,17 @@ window.onload=function(){
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-	<div class="content-main">
+	<div class="content-main align-center">
 		<h2>Story 작성하기</h2>
-		<form id="write_form" action="storyWrite.do" method="post" enctype="multipart/form-data">
-			<ul>
+		<form id="write_form" action="storyWrite.do" method="post" class="align-center" enctype="multipart/form-data">
+			<ul class="align-left">
 				<li>
 					<label for="s_title">제목</label>
-					<input type="text" name="s_title" id="s_title" maxlength="50">
+					<input type="text" name="s_title" id="s_title" class="input-style" maxlength="50" width="500px">
 				</li>
 				<li>
 					<label for="s_content">내용</label>
-					<textarea rows="10" cols="50"  name="s_content" id="s_content"></textarea>
+					<textarea rows="10" cols="50"  name="s_content" class="inputcheck input-style" id="s_content"></textarea>
 				</li>
 				<li>
 					<label for="s_image">이미지</label>
@@ -52,7 +54,7 @@ window.onload=function(){
 				</li>
 				<li>
 					<label for="book_num">도서명</label>
-					<select name="book_num">
+					<select name="book_num" class="inputcheck input-style">
 						<c:forEach var="book" items="${list}">
 							<option value="${book.book_num}">${book.book_name}</option>
 						</c:forEach>

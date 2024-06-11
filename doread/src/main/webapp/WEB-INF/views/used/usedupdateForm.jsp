@@ -102,21 +102,16 @@
 	</form>
 </div>
 		<div class="modal hide">
-					<h4>책 검색</h4>
-					<form id="searchform" >
+			<h4>책 검색</h4>
+			<form id="searchform" >	
+				<input type="text" name="search" class="inputcheck input-style2" id="search" maxlength="30" placeholder="제목을 입력하세요">
+ 				<input id="bookbtn" type="submit" value="검색" class="button2"><input id="bookbtn2" type="button" value="취소" class="button2">
+			</form>
 					
-					<input type="text" name="search" class="inputcheck input-style2" id="search" maxlength="30" placeholder="제목을 입력하세요">
- 					<input id="bookbtn" type="submit" value="검색" class="button2"><input id="bookbtn2" type="button" value="취소" class="button2">
-					</form>
-					
-					<div id="add"></div>
-					<div class="paging2 button2" style="display:none;" >
-					<input type="button" value="이전">
-					</div>
-					<div class="paging button2" style="display:none;" >
-					<input type="button" value="다음">
-					</div>
-					</div>
+			<div id="add"></div>
+			<input type="button" class="paging2 button2" style="display:none;"  value="이전">
+			<input type="button"   class="paging button2" style="display:none;"value="다음">
+		</div>
 				 <script type="text/javascript">
 				 	let currentNum ;
 				 	let count;

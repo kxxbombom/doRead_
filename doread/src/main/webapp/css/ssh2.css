@@ -156,7 +156,8 @@
   font-size: 16px;
   color: #555;
   outline: none;
-  width:500px;
+  width:500px !important;
+  resize:none;
   
 }
 .input-style2 {
@@ -183,7 +184,7 @@ ul li label{
 }
 .align-left{
 	text-align:left;
-	margin-left:40px;
+	margin-left:7%;
 }
 form{
 	width:900px;

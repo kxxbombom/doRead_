@@ -8,6 +8,7 @@
 <title>Story 수정하기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
 <script type="text/javascript">
 window.onload=function(){
 	const myForm = document.getElementById('write_form');
@@ -34,26 +35,26 @@ window.onload=function(){
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
-	<div class="content-main">
+	<div class="content-main align-center">
 		<h2>Story 수정하기</h2>
-		<form id="write_form" action="storyUpdate.do" method="post" enctype="multipart/form-data">
+		<form id="write_form" action="storyUpdate.do" method="post" class="align-center" enctype="multipart/form-data">
 		<input type="hidden" name="s_num" value="${sb.s_num}">
-			<ul>
+			<ul class="align-left">
 				<li>
 					<label for="s_title">제목</label>
-					<input type="text" name="s_title" id="s_title" maxlength="50" value="${sb.s_title }">
+					<input type="text" name="s_title" id="s_title"  class="input-style" maxlength="50" value="${sb.s_title }">
 				</li>
 				<li>
 					<label for="s_content">내용</label>
-					<textarea rows="10" cols="50"  name="s_content" id="s_content">${sb.s_content}</textarea>
+					<textarea rows="10" cols="50"  name="s_content" class="input-style" id="s_content">${sb.s_content}</textarea>
 				</li>
 				<li>
 					<label for="s_image">이미지</label>
-					<input type="file" name="s_image" id="s_image" accept="image/gif,image/png,image/jpeg">
+					<input type="file" name="s_image" id="s_image"  class="input-style" accept="image/gif,image/png,image/jpeg">
 				</li>
 				<li>
 					<label for="book_num">도서명</label>
-					<select name="book_num">
+					<select name="book_num" id="" class="input-style">
 						<c:forEach var="book" items="${list}">
 							<option value="${book.book_num}">${book.book_name}</option>
 						</c:forEach>

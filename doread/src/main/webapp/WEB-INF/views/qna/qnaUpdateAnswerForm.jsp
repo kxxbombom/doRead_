@@ -8,6 +8,7 @@
 <title>문의 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_test.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kbm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
 <script type="text/javascript">
 window.onload=function(){
 	const myForm = document.getElementById('write_form');
@@ -60,12 +61,12 @@ window.onload=function(){
 				</li>
 				<li>
 					<label for="q_answer">답변</label>
-					<textarea rows="5" cols="40"  name="q_answer" id="q_answer" placeholder="답변을 입력해주세요"></textarea>
+					<textarea rows="5" cols="40"  name="q_answer" class="input-style"  id="q_answer" placeholder="답변을 입력해주세요"></textarea>
 				</li>
 			</ul>
 			<div class="align-center">
-				<input type="submit" value="답변 등록" class="btn2">
-				<input type="button" value="목록" class="btn2" onclick="location.href='qnaList.do'">
+				<input type="submit" value="답변 등록"  class="button2">
+				<input type="button" value="목록"  class="button2" onclick="location.href='qnaList.do'">
 			</div>
 		</form>
 	</div>

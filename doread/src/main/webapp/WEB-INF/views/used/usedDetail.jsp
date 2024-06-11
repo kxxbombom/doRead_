@@ -35,11 +35,11 @@
 				${used.u_rdate} &nbsp; 조회수:${used.u_hit}
 		</div>
 		
-		<c:if test="${user_auth == 2}">
+		<c:if test="${used.mem_num == user_num}">
 			
 			<ul class="board-btn-container">
 				<li class="board-btn">
-					<span class="board-cbtn" style="position:absolute; z-index:999; right:0; bottom:10px;"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/upload/ellipsis-vertical-outline.svg" width="25px"></a></span>
+					<span class="board-cbtn" style="position:absolute; z-index:999; right:0; bottom:10px;"><a href="" onclick="return false;"><img src="${pageContext.request.contextPath}/images/ellipsis-vertical-outline.svg" width="25px"></a></span>
 		
 					<ul class="btn-hide">
 		            	<li><a href="updateUsedForm.do?u_num=${used.u_num}">수정</a></li>
