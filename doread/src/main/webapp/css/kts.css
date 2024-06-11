@@ -98,6 +98,8 @@ div.myul ul li{
 	text-align:left;
 	
  }
+ 
+
 div#mypage-main div.mypage-div ul li a{
 	color:rgb(255, 255, 255) !important;
 }
@@ -661,4 +663,10 @@ ul.buylist-search li{
 ul.buylist-search input[type="submit"]{
 	margin:0;
 	height:25px;
+}
+
+
+.buylist-align-center{
+	padding:50px 0;
+	text-align:center;
 }
