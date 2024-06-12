@@ -47,7 +47,7 @@ public class UsedDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.getConnection();
+			DBUtil.executeClose(null, ps, conn);
 		}
 		
 	}
@@ -87,7 +87,7 @@ public class UsedDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.getConnection();
+			DBUtil.executeClose(re, ps, conn);
 		}
 		return count;
 	}
@@ -149,7 +149,7 @@ public class UsedDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.getConnection();
+			DBUtil.executeClose(re, ps, conn);
 		}
 		return list;
 	}
@@ -199,7 +199,7 @@ public class UsedDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.getConnection();
+			DBUtil.executeClose(re, ps, conn);
 		}
 		return list;
 	}
