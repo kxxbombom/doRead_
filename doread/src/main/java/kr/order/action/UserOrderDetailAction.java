@@ -53,7 +53,6 @@ public class UserOrderDetailAction implements Action{
 			delivery = 0;
 			used_point = -cal;
 		}
-		
 		if(Obook_total < 15000 && cal == 0 ) {
 			used_point = 2500;
 		}
