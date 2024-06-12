@@ -59,7 +59,7 @@ window.onload= function(){
 		<form id="list_search_form" action="storyBoardList.do" method="get">
 			<ul class="list_search">
 				<li>
-					<select name="keyfield" class="input-style">
+					<select name="keyfield" class="list_search">
 							<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
 							<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
 					</select>

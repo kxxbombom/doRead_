@@ -16,7 +16,7 @@
  			<h2 style="text-align:center;">EVENT</h2>
 		<div class="align-center eventmain">
  			<form id="list_search_form" action="eventmain.do" method="get">
-				<select id="selectlist" name ="sel" class="input-style">
+				<select id="selectlist" name ="sel" class="list_search">
 					<option value="1" <c:if test="${check == 1}">selected</c:if>>진행중이벤트</option>
  					<option value="2" <c:if test="${check == 2}">selected</c:if> >종료된이벤트</option>
  					<option value="3" <c:if test="${check == 3}">selected</c:if>>당첨자보기</option>
