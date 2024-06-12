@@ -61,7 +61,7 @@ window.onload=function(){
 						</c:if>
 						<c:if test="${book.book_auth !=0}">
 						<div style="opacity:0.4;">
-						<div style="postion:absolute; z-index:998;">품절되었습니다</div>
+						<div style="postion:absolute; z-index:998;">구매할 수 없는 도서입니다</div>
 						<img src="${pageContext.request.contextPath}/upload/${book.book_img}">
 						</div>
 						</c:if>
