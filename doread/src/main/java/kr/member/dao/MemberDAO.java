@@ -398,6 +398,7 @@ public class MemberDAO {
 		PreparedStatement pstmt2 = null;
 		PreparedStatement pstmt3 = null;
 		PreparedStatement pstmt4 = null;
+		PreparedStatement pstmt5 = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
@@ -408,6 +409,11 @@ public class MemberDAO {
 			pstmt3 = conn.prepareStatement(sql);
 			pstmt3.setInt(1, mem_num);
 			pstmt3.executeUpdate();
+			
+			sql = "DELETE FROM usedbookboard WHERE mem_num=?";
+			pstmt5 = conn.prepareStatement(sql);
+			pstmt5.setInt(1, mem_num);
+			pstmt5.executeUpdate();
 			
 			sql = "UPDATE member SET mem_auth=0 WHERE mem_num=?";
 			pstmt = conn.prepareStatement(sql);
@@ -429,6 +435,7 @@ public class MemberDAO {
 			conn.rollback();
 			throw new Exception(e);
 		}finally {
+			DBUtil.executeClose(null, pstmt5, null);
 			DBUtil.executeClose(null, pstmt4, null);
 			DBUtil.executeClose(null, pstmt3, null);
 			DBUtil.executeClose(null, pstmt2, null);
