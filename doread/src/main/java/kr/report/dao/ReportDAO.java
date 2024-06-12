@@ -910,7 +910,7 @@ public class ReportDAO {
 						count.setMem_num(re.getInt(3));
 						count.setType("s_num");
 						list.add(count);
-						}while(re.next());
+						}while(re.next());  
 						
 					}
 					re.close();
