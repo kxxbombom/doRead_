@@ -20,12 +20,52 @@ $(function(){
 		}
 	 });
 	 
-	 $('#order_form').submit(function() {
-        if ($('input[name="enter"]:checked').val() == '1' && $('input[name="enter_passwd"]').val().trim() == '') {
-            alert('공동현관 비밀번호를 입력하세요.');
-            return false;
-        }
-    });
+	$('#order_form').submit(function() {
+		
+		if ($('#select_msg').val() == '6' && $('#order_msg_textarea').val().trim() == '') {
+			alert('배송요청사항을 입력하세요.');
+			return false;
+		}
+		
+		if ($('input[name="enter"]:checked').val() == '1' && $('input[name="enter_passwd"]').val().trim() == '') {
+			alert('공동현관 비밀번호를 입력하세요.');
+			return false;
+		}
+		
+		if ($('#select_msg').val() == '6' && $('#order_msg_textarea').val().trim() == '') {
+			alert('배송요청사항을 입력하세요.');
+			return false;
+		}
+		const radio = document.querySelectorAll('input[class="payment"]:checked');
+				
+		if(radio.length<1){
+			alert('결제수단을 선택하세요');
+			return false;
+		}	
+		
+		const inputcheck = document.getElementsByClassName('input-check');
+		for(let i=0; i<inputcheck.length; i++){
+			if(inputcheck[i].value.trim()==''){
+				alert("배송지 정보를 입력해주세요");
+				return false;
+			}
+		}
+		
+		if ($('input[name="payment"]:checked').val() == '1' && $('input[name="pay_text"]').val().trim() == '') {
+			alert('카드번호를 입력하세요.');
+			return false;
+		}
+		
+		if ($('input[name="payment"]:checked').val() == '3' && $('input[name="pay_text"]').val().trim() == '') {
+			alert('휴대폰번호를 입력하세요.');
+			return false;
+		}
+		
+		
+		
+		
+		
+	});
     
     $('#order_msg_textarea').addClass('hidden');
     $('#select_msg').on('change',function(){

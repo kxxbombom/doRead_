@@ -96,13 +96,10 @@ $(function(){
 	
 	
 	
+	
+	
 	$('#order_form').submit(function(){
-		const radio = document.querySelectorAll('input[class="payment"]:checked');
-		
-		if(radio.length<1){
-			alert('결제수단을 선택하세요');
-			return false;
-		}	
+			
 		const inputcheck = document.getElementsByClassName('input-check');
 		for(let i=0; i<inputcheck.length; i++){
 			if(inputcheck[i].value.trim()==''){
@@ -110,7 +107,7 @@ $(function(){
 				return false;
 			}
 		}
-	})
+	});
 	
 	
 	
