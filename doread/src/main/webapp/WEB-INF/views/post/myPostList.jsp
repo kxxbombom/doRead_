@@ -20,6 +20,12 @@
 			<div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>
 		</div>
 		<h4>중고 게시판</h4>
+		<c:if test="${ucount == 0}">
+			<div class="result-display buylist-align-center">
+				내역이 없습니다.
+			</div>
+		</c:if>
+		<c:if test="${ucount> 0}">
 		<table class="main-table">
 			<tr class="main-tr">
 				<th class="main-td">글번호</th>
@@ -44,8 +50,15 @@
 		<div style="text-align:center;">
 			${page4}
 		</div>
+		</c:if>
 		<hr size="1" noshade width="100%">
 		<h4>스토리 게시판</h4>
+		<c:if test="${scount == 0}">
+			<div class="result-display buylist-align-center">
+				내역이 없습니다.
+			</div>
+		</c:if>
+		<c:if test="${scount > 0}">
 		<table class="main-table">
 			<tr class="main-tr">
 				<th class="main-td">글번호</th>
@@ -70,8 +83,15 @@
 		<div style="text-align:center;">
 			${page}
 		</div>
+		</c:if>
 		<hr size="1" noshade width="100%">
 		<h4>Qna 게시판</h4>
+		<c:if test="${qcount == 0}">
+			<div class="result-display buylist-align-center">
+				내역이 없습니다.
+			</div>
+		</c:if>
+		<c:if test="${qcount > 0}">
 		<table class="main-table">
 			<tr class="main-tr">
 				<th class="main-td">글번호</th>
@@ -91,7 +111,8 @@
 		</table>
 		<div style="text-align:center;">
 			${page3}
-		</div>	 
+		</div>
+		</c:if>	 
 		</div>
 	</div>
 	<div class="hide gide" style="font-size:10pxt;  z-index:999; position:absolute; bottom:350px; left:20%; border:1px solid #d4d2d2; border-radius:15px; background:white;">***게시글/댓글당 신고 누적횟수가 5회이상이면 정지게시글/댓글이되며, 정지게시글/댓글이 5개이상이면 회원 정지가 될 수 있습니다.</div>

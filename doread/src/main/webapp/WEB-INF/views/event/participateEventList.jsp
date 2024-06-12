@@ -18,6 +18,12 @@
 			<h2>내가 참여한 이벤트 내역</h2>
 			<hr size="1" noshade width="100%">
 		</div>
+		<c:if test="${count == 0}">
+			<div class="result-display buylist-align-center">
+				내역이 없습니다.
+			</div>
+		</c:if>
+		<c:if test="${count> 0}">
 		<table class="main-table">
 			<tr class="main-tr">
 				<th class="main-td">이벤트 번호</th>
@@ -43,6 +49,7 @@
 			</tr>
 			</c:forEach>	
 		</table>
+		</c:if>
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

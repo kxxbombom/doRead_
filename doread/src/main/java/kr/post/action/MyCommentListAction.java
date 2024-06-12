@@ -50,6 +50,7 @@ public class MyCommentListAction implements Action{
 		
 		request.setAttribute("SCommentList", SCommentList);
 		request.setAttribute("spage", page.getPage());
+		request.setAttribute("scount", count);
 		//used
 		UsedDAO dao2 = UsedDAO.getInstance();
 		int count2 = dao2.getCommentUsedCountByUser_num(user_num);
@@ -62,7 +63,7 @@ public class MyCommentListAction implements Action{
 		
 		request.setAttribute("UBCList", UBCList);
 		request.setAttribute("upage", page2.getPage());
-		
+		request.setAttribute("ucount", count2);
 		
 		// JSP 경로 반환
 		return "/WEB-INF/views/post/myCommentList.jsp";

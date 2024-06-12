@@ -48,7 +48,7 @@ public class MyPostListAction implements Action{
 		List<StoryBoardVO> Storylist = dao.getListMyStoryBoard(page.getStartRow(), page.getEndRow(), keyfield, keyword, user_num);
 		request.setAttribute("page", page.getPage());
 		request.setAttribute("Storylist", Storylist);
-		
+		request.setAttribute("scount", count);
 		//qna
 		QnaDAO dao3 = QnaDAO.getInstance();
 		int count3 = dao3.getMEMQnaCount(keyfield, keyword, user_num);
@@ -59,6 +59,7 @@ public class MyPostListAction implements Action{
 		}
 		request.setAttribute("page3", page3.getPage());
 		request.setAttribute("qnalist", qnalist);
+		request.setAttribute("qcount", count3);
 		
 		//used
 		UsedDAO udao = UsedDAO.getInstance();
@@ -67,6 +68,7 @@ public class MyPostListAction implements Action{
 		List<UsedVO> ulist =udao.mylistUsed(page4.getStartRow(),page4.getEndRow(), user_num);
 		request.setAttribute("page4", page4.getPage());
 		request.setAttribute("list", ulist);
+		request.setAttribute("ucount", countused);
 		// JSP 경로 반환
 		return "/WEB-INF/views/post/myPostList.jsp";
 	}

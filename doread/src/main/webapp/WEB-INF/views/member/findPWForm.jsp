@@ -21,11 +21,26 @@ $(function(){
 	let pwChecked = 0;
 	$('#passwd_checkmessage').hide();
 	
+	
+	$('#findPW_form #passwd').keydown(function(){
+		pwChecked = 0;
+		$('#passwd_checkmessage').hide();
+	});
+	
 	$('#findPW_form #cpasswd').keydown(function(){
 		pwChecked = 0;
 		$('#passwd_checkmessage').hide();
 	});
+	
+	
 	$('#findPW_form #cpasswd').keyup(function(){
+		if($('#passwd').val() == $('#cpasswd').val()){
+			pwChecked = 1;
+			$('#passwd_checkmessage').show();
+		}
+	});
+	
+	$('#findPW_form #passwd').keyup(function(){
 		if($('#passwd').val() == $('#cpasswd').val()){
 			pwChecked = 1;
 			$('#passwd_checkmessage').show();
@@ -42,16 +57,24 @@ $(function(){
 				items[i].focus();
 				return false;
 			}
-			if(items[i].id == 'cpasswd' && pwChecked == 0){
-				alert('비밀번호를 다시 입력하세요');
-				$('#cpasswd').focus();
-				return false;
-			}
 			if(items[i].id == 'phone' && !/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('#phone').val())){
 				alert('전화번호를 양식에 맞게 입력하세요');
 				$('#id').focus();
 				return false;
 			}
+			
+			if(items[i].id == 'passwd' && !/^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,12}$/.test($('#passwd').val())){
+				alert('비밀번호는 영문,숫자,특수문자 조합(8~12자)으로 입력하세요');
+				$('#passwd').focus();
+				return false;
+			}
+			
+			if(items[i].id == 'cpasswd' && pwChecked == 0){
+				alert('비밀번호를 다시 입력하세요');
+				$('#cpasswd').focus();
+				return false;
+			}
+			
 		}
 	});
 });
@@ -82,11 +105,11 @@ $(function(){
 				</li>
 				<li>
 					<label for="phone">전화번호</label>
-					<input type="text" name="phone" id="phone" maxlength="15" class="input-check" placeholder="-없이 전화번호 입력">
+					<input type="text" name="phone" id="phone" maxlength="15" class="input-check" placeholder="숫자만 입력">
 				</li>
 				<li>
 					<label for="passwd">새 비밀번호</label>
-					<input type="password" name="passwd" id="passwd" maxlength="12" class="input-check">
+					<input type="password" name="passwd" id="passwd" maxlength="12" class="input-check" placeholder="영문,숫자,특수문자 조합(8~12자)">
 				</li>
 				<li>
 					<label for="cpasswd">새 비밀번호 확인</label>

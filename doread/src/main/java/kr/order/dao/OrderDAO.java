@@ -175,7 +175,7 @@ public class OrderDAO {
 			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false);
 			
-			sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=0 or p_detail=4";
+			sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and (p_detail=0 or p_detail=4)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_num);
@@ -187,7 +187,7 @@ public class OrderDAO {
 				}while(rs.next());
 			}
 			
-			sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and p_detail=1 or p_detail=2";
+			sql = "SELECT sum(p_point) FROM point WHERE mem_num=? and (p_detail=1 or p_detail=2)";
 			
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(1, mem_num);
