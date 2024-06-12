@@ -85,10 +85,20 @@ $(function(){
 						</c:if>
 					</td>	
 					<td class="main-td">
+						<c:set var="deletedStyle" value="text-decoration: line-through;" />
+						
 						<c:if test="${point.p_detail == 0}">+<fmt:formatNumber value="${point.p_point}"/></c:if>
 						<c:if test="${point.p_detail == 1}">-<fmt:formatNumber value="${point.p_point}"/></c:if>
-						<c:if test="${point.p_detail == 2}">-<fmt:formatNumber value="${point.p_point}"/></c:if>
-						<c:if test="${point.p_detail == 4}">+<fmt:formatNumber value="${point.p_point}"/></c:if>
+						<c:if test="${point.p_detail == 2}">
+							<span style="text-decoration: line-through;">
+								+<fmt:formatNumber value="${point.p_point}" />
+							</span>
+						</c:if>
+						<c:if test="${point.p_detail == 4}">
+							<span style="text-decoration: line-through;">
+								<fmt:formatNumber value="${point.p_point}" />
+							</span>
+						</c:if>
 						<c:if test="${point.p_detail == 5}">+<fmt:formatNumber value="${point.p_point}"/></c:if>
 					</td>
 					<td class="main-td">${point.p_rdate}</td>
