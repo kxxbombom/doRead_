@@ -1365,3 +1365,34 @@ input[type="button"]:hover, button:hover{
 	border:1px solid #4F6F52;
 	cursor:pointer;	
 }
+/*
+이벤트메인
+*/
+.horizontal-area{
+		margin:2px;
+		padding:3px;
+		width:420px;
+		height:620px;
+		float:left;
+		overflow:hidden;
+		text-align:center;
+		
+	
+}
+
+.horizontal-area span{
+	padding:5px;
+	margin:5px;
+	
+}
+.float-clear{
+	clear:both;
+}
+
+.eventmain{
+	text-align:center;
+	margin: 0 auto;
+	margin-left:30px;
+	
+}
+
