@@ -307,6 +307,7 @@ input[value="우편번호 찾기"]{
 	font-size:15px;
 	margin-right:10px;
 	font-weight:bold;
+	cursor:pointer;
 }
 
 .register-button input[type="button"]{
@@ -401,6 +402,7 @@ input[value="우편번호 찾기"]{
 	font-size:20px;
 	font-weight:bold;
 	margin-bottom:0;
+	cursor:pointer;
 }
 #login_form input[type="submit"]:hover{
 	border:2px solid rgb(79, 111, 82);

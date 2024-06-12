@@ -230,6 +230,7 @@ img#penimgae2{
 	font-size:15px;
 	font-weight:bold;
 	border:1px solid #4F6F52;
+	cursor:pointer;
 }
 .detail-button input[type="button"]:hover{
 	border:1px solid rgb(26, 77, 46);
@@ -279,6 +280,7 @@ table td, table th{
 	font-size:15px;
 	margin-right:10px;
 	font-weight:bold;
+	cursor:pointer;
 }
 /*회원 탈퇴*/
 #delete_form{
