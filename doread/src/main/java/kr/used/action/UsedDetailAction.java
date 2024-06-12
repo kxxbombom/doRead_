@@ -26,11 +26,7 @@ public class UsedDetailAction implements Action	{
 		//HTML을 허용하지 않으면서 줄바꿈
 		used.setU_content(StringUtil.useBrNoHTML(used.getU_content()));
 		
-		MemberDAO mem_dao = MemberDAO.getInstance();
-		MemberVO member = mem_dao.getMember(used.getMem_num());
-		
 		request.setAttribute("used", used);
-		request.setAttribute("mem_auth", member);
 		
 		return "/WEB-INF/views/used/usedDetail.jsp";
 	}
