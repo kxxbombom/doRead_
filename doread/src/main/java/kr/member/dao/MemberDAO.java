@@ -396,11 +396,17 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
 			
 			conn.setAutoCommit(false);
+			
+			sql = "DELETE FROM point WHERE mem_num=?";
+			pstmt3 = conn.prepareStatement(sql);
+			pstmt3.setInt(1, mem_num);
+			pstmt3.executeUpdate();
 			
 			sql = "UPDATE member SET mem_auth=0 WHERE mem_num=?";
 			pstmt = conn.prepareStatement(sql);
