@@ -307,6 +307,7 @@ input[value="우편번호 찾기"]{
 	font-size:15px;
 	margin-right:10px;
 	font-weight:bold;
+	cursor:pointer;
 }
 
 .register-button input[type="button"]{
