@@ -66,7 +66,12 @@
 			<div class="align-center">
 				<hr width="100%" size="1" noshade="noshade">
 				<img  src="${pageContext.request.contextPath}/upload/${event.e_image}"	width="600" height="600">
-				<p class="event-content">${event.e_content}</p>
+				<p>
+				<br>이벤트내용 : ${event.e_content}<br>
+				</p>
+				<p>이벤트상품 : ${event.e_item }</p>
+				
+				<hr width="100%" size="1" noshade="noshade">
 				<div class="event-notice">
 					이벤트 유의사항:이벤트 대상 상품 1건 이상 포함,<br>
 					국내도서·외국도서 5만원 이상 구입 시 또는 전자책 3만원 이상 구입 시 (택1)<br>
