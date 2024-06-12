@@ -150,7 +150,7 @@
 			    				if(param.result=='none'){
 			    					$('#add').empty();
 			    					$('#add').append('찾으시는 제목의 책이 없습니다.');
-			    					$('#add').append('<br><input type="button" class="input-style2" value="책등록요청하러가기" onclick="${pageContext.request.contextPath}/qna/qnaWriteForm.do">');
+			    					$('#add').append('<br><a href="${pageContext.request.contextPath}/qna/qnaWriteForm.do" style="height:35px; border-radius:5px; background-color:#FFF; color:rgb(26, 77, 46); font-size:15px; font-weight:bold; border:1px solid #4F6F52; cursor:pointer; padding:3px;">책등록요청하러가기</a>');
 			    					
 			    				}else if(param.result=='success'){
 			    					$('#add').empty();
@@ -179,6 +179,10 @@
 			    						
 			    						$('.paging2').show();
 			    					}
+			    					$("#bookbtn").click(function(){
+			    						$('.paging').hide();
+			    						$('.paging2').hide();
+			    					});
 			    				}else{
 			    					alert('책찾기오류');
 			    				}
