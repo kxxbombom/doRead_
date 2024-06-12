@@ -44,7 +44,7 @@ public class NewsDAO {
 				throw new Exception(e);
 			}finally {
 				DBUtil.executeClose(null, pstmt, conn);
-		}
+			}
 
 	}
 	//총 글 개수, 검색 개수
