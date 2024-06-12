@@ -39,9 +39,10 @@ public class UserOneOrderAction implements Action{
 		BookVO book = bookDAO.getBookDetail(book_num);
 		int order_quantity = Integer.parseInt(request.getParameter("order_quantity"));
 		int book_price =Integer.parseInt(request.getParameter("book_price"));
+		int book_category =Integer.parseInt(request.getParameter("book_category"));
 		int all_total = order_quantity * book_price;
 		int all_total_delivery = all_total;
-		if(all_total < 15000) all_total_delivery += 2500;
+		if(all_total < 15000 && book_category !=12) all_total_delivery += 2500;
 		if(all_total <= 0) {
 			request.setAttribute("notice_msg", "정상적인 주문이 아니거나 상품의 수량이 부족합니다.");
 			request.setAttribute("notice_url", request.getContextPath() + "/cart/list.do");
@@ -71,7 +72,7 @@ public class UserOneOrderAction implements Action{
 			orderDetail.setBook_price(book_price);
 			orderDetail.setOrder_quantity(order_quantity);
 			orderDetail.setBook_total(book_price*order_quantity);
-		orderDetailList.add(orderDetail);
+			orderDetailList.add(orderDetail);
 		//구매정보 담기
 		OrderVO order = new OrderVO();
 		

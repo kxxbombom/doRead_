@@ -267,10 +267,10 @@ $(function(){
 									도서 1만5천원 미만 구매시 배송비 2,500원 부과</span>
 							</span>
 			 					<span>
-								<c:if test="${all_total >= 15000}">
+								<c:if test="${all_total >= 15000 || category == 12}">
 								0원
 								</c:if>
-								<c:if test="${all_total < 15000}">
+								<c:if test="${all_total < 15000 && category != 12}">
 								<fmt:formatNumber value="2500"/>원
 								</c:if>
 								
@@ -283,6 +283,7 @@ $(function(){
 		 				
 						<hr size="1" width="100%">
 		 				<li class="flex-container" style="margin-top:20px;"><b>결제 예정 금액</b> <span><b><c:set var="point" value="" scope="request"/><span id="total"><fmt:formatNumber value="${all_total_delivery}"/></span></b>원</span>
+		 				<input type="hidden" value="${category}" name="book_category">
 		 				<input type="hidden" value="${all_total}" id="all_total">
 		 				<input type="hidden" value="${all_total_delivery}" id="all_total_delivery">
 		 				</li>

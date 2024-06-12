@@ -14,6 +14,17 @@
 		$('body').mouseover(function(){
 			$('.e_book').removeClass('disabled');
 		});
+		$('.previous').on('click', () => {
+			  $('html, body').animate({
+			      scrollTop:-30
+			  }, 300)
+			});
+	       $('.next').on('click', () => {
+	    	   $('html, body').animate({
+	    		   scrollTop:30
+	    		  }, 300)
+	    		});
+	    
 	});
 	
 	document.addEventListener("keydown", function (e) {
@@ -54,10 +65,8 @@
             } catch (err) {
             }
         }
-       document.addEventListener('contextmenu', function(e) {
-    		e.preventDefault();
-    		alert('마우스 오른쪽 클릭은 사용할 수 없습니다.');
-    	});
+      
+       
     	
 </script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">

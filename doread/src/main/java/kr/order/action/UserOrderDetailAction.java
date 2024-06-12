@@ -45,21 +45,29 @@ public class UserOrderDetailAction implements Action{
 		int delivery = 2500;
 		int used_point = 0;
 		int cal = order.getOrder_total() - Obook_total;
-		if(Obook_total >= 15000 && cal == 0) { 
+		if(Obook_total >= 15000 && cal == 0 && detailList.get(0).getBook_category()== 12) { 
 			delivery = 0;
 			used_point = 0;
 		}
-		if(Obook_total >= 15000 && cal < 0) {
+		if(Obook_total >= 15000 && cal < 0 && detailList.get(0).getBook_category()== 12) {
 			delivery = 0;
 			used_point = -cal;
 		}
-		if(Obook_total < 15000 && cal == 0) {
+		
+		if(Obook_total < 15000 && cal == 0 ) {
 			used_point = 2500;
 		}
 		if(Obook_total < 15000 && cal != 0 ) {
 			used_point = delivery - cal;
 		}
-		
+		if(detailList.get(0).getBook_category()== 12) { 
+			delivery = 0;
+			
+		}
+		if( detailList.get(0).getBook_category()== 12) {
+			delivery = 0;
+			
+		}
 		
 		request.setAttribute("order", order);
 		request.setAttribute("detailList", detailList);

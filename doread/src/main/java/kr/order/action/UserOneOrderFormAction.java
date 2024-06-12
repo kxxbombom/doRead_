@@ -34,12 +34,13 @@ public class UserOneOrderFormAction implements Action{
 			return "/WEB-INF/views/common/alert_view.jsp";
 		
 		}
-		
+		request.setCharacterEncoding("utf-8");
 		int book_quantity = Integer.parseInt(request.getParameter("book_quantity"));
 		int book_price =Integer.parseInt(request.getParameter("book_price"));
+		int book_category =Integer.parseInt(request.getParameter("book_category"));
 		int all_total = book_quantity * book_price;
 		int all_total_delivery = all_total;
-		if(all_total < 15000) all_total_delivery += 2500;
+		if(all_total < 15000 && book_category != 12) all_total_delivery += 2500;
 		
 		if(all_total <= 0) {
 			request.setAttribute("notice_msg", "정상적인 주문이 아니거나 상품의 수량이 부족합니다.");
@@ -81,7 +82,7 @@ public class UserOneOrderFormAction implements Action{
 		order.setOrder_quantity(book_quantity);
 		order.setBook_price(book.getPrice());
 		order.setBook_total(all_total_delivery);
-		
+		request.setAttribute("category", book_category);
 		request.setAttribute("order", order);
 		request.setAttribute("stock", book.getStock());
 		request.setAttribute("all_total", all_total);

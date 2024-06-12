@@ -47,6 +47,7 @@
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
 				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
+				<input type="hidden" name="book_category" value="${book.book_category}" id="book_category">
 				<ul>
 					<li id="book-tagtop">
 						<div class="category-tag">
@@ -98,6 +99,7 @@
 				<input type="hidden" name="book_num" value="${book.book_num}" id="book_num">
 				<input type="hidden" name="book_price" value="${book.price}" id="book_price">
 				<input type="hidden" name="book_stock" value="${book.stock}" id="book_stock">
+				<input type="hidden" name="book_category" value="${book.book_category}" id="book_category">
 				<ul>
 					<li id="book-tagtop">
 						<div class="category-tag">
