@@ -28,8 +28,7 @@
  					<br>
  					<br>
  					<br>
- 					<br>
-					 				
+ 					<br>			
  				</div>
  			</c:if>
  			<c:if test="${!empty list }">
