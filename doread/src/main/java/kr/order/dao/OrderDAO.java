@@ -263,10 +263,10 @@ public class OrderDAO {
 					point.setP_rdate(rs.getDate("p_rdate"));
 					point.setOrder_num(rs.getInt("order_num"));
 					
-					if(getCancledPoint(rs.getInt("order_num")) > 1) {
+					if(point.getP_detail() == 0 && getCancledPoint(rs.getInt("order_num")) > 1) {
 						point.setP_detail(2);
 					}
-					if(getCancledPoint2(rs.getInt("order_num")) > 1) {
+					if(point.getP_detail() == 1 && getCancledPoint2(rs.getInt("order_num")) > 1) {
 						point.setP_detail(4);
 					}
 					
@@ -897,4 +897,4 @@ public class OrderDAO {
 			
 		}
 			
-		}
+}

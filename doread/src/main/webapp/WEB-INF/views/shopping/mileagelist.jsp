@@ -96,7 +96,7 @@ $(function(){
 						</c:if>
 						<c:if test="${point.p_detail == 4}">
 							<span style="text-decoration: line-through;">
-								<fmt:formatNumber value="${point.p_point}" />
+								-<fmt:formatNumber value="${point.p_point}" />
 							</span>
 						</c:if>
 						<c:if test="${point.p_detail == 5}">+<fmt:formatNumber value="${point.p_point}"/></c:if>
