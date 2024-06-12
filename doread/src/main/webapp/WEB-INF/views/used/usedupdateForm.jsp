@@ -26,6 +26,11 @@
 				return false;
 				
 			}
+			if(inputcheck[i].id == 'u_price' && !/^[0-9]{1,8}$/.test($('#u_price').val())){
+				alert('가격을 입력해주세요(최대 숫자 8자리)');
+				$('#u_price').val('').focus();
+				return false;
+			}
 			
 				
 			}

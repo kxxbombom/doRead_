@@ -79,7 +79,7 @@ $(function(){
 	});
 	
 	
-	$('#register_form #cpasswd').keydown(function(){
+	$('#register_form #cpasswd').keyup(function(){
 		pwChecked = 0;
 		$('#passwd_checkmessage').hide();
 	});
@@ -92,7 +92,7 @@ $(function(){
 	});
 	
 	
-	$('#register_form #email').keydown(function(){
+	$('#register_form #email').keyup(function(){
 		emailChecked = 0;
 		$('#email_checkmessage').hide();
 		$('#email_checkmessage2').hide();
@@ -129,7 +129,7 @@ $(function(){
 	
 	
 	
-	$('#register_form #phone').keydown(function(){
+	$('#register_form #phone').keyup(function(){
 		phoneChecked = 0;
 		$('#phone_checkmessage').hide();
 		$('#phone_checkmessage2').hide();

@@ -42,8 +42,8 @@ function saveShippingInfo() {
     document.getElementById('displayAddress1').textContent = document.getElementById('receive_address1').value;
     document.getElementById('displayAddress2').textContent = document.getElementById('receive_address2').value;
 
-    const inputs = document.querySelectorAll('input[type="text"]');
-    const spans = document.querySelectorAll('span');
+    const inputs = document.querySelectorAll('input.r_info');
+    const spans = document.querySelectorAll('span.info-span');
     const completeButton = document.querySelector('input[type="button"][value="완료"]');
     const editButton = document.querySelector('button[onclick="editShippingInfo()"]');
 
