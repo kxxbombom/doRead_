@@ -287,6 +287,9 @@ public class StoryBoardDAO {
 			public void deleteStory(int s_num)throws Exception{
 				Connection conn = null;
 				PreparedStatement pstmt = null;
+				PreparedStatement pstmt2 = null;
+				PreparedStatement pstmt3 = null;
+				PreparedStatement pstmt4 = null;
 				String sql = null;
 				try {
 					//커넥션 풀에서 커넥션 할당
@@ -294,6 +297,21 @@ public class StoryBoardDAO {
 					//오토커밋 해제
 					conn.setAutoCommit(false);
 					
+					//SQL문 작성
+					sql = "DELETE FROM story_report WHERE s_num=?";
+					//pstmt 객체 생성
+					pstmt2 = conn.prepareStatement(sql);
+					//?에 데이터 바인딩
+					pstmt2.setInt(1, s_num);
+					pstmt2.executeUpdate();
+					sql = "DELETE FROM st_comm_report WHERE sc_num in(select sc_num from story_comment where s_num=? )";
+					pstmt4 = conn.prepareStatement(sql);
+					pstmt4.setInt(1, s_num);
+					pstmt4.executeUpdate();
+					sql = "DELETE FROM story_comment WHERE s_num=?";
+					pstmt3 = conn.prepareStatement(sql);
+					pstmt3.setInt(1, s_num);
+					pstmt3.executeUpdate();
 					//부모글 삭제
 					sql="DELETE FROM storyboard WHERE s_num=?";
 					pstmt = conn.prepareStatement(sql);
@@ -308,6 +326,9 @@ public class StoryBoardDAO {
 					conn.rollback();
 					throw new Exception(e);
 				}finally {
+					DBUtil.executeClose(null, pstmt4, null);
+					DBUtil.executeClose(null, pstmt3, null);
+					DBUtil.executeClose(null, pstmt2, null);
 					DBUtil.executeClose(null, pstmt, conn);
 				}
 				
@@ -578,11 +599,19 @@ public class StoryBoardDAO {
 			public void deleteCommentStory(int sc_num)throws Exception{
 				Connection conn = null;
 				PreparedStatement pstmt = null;
+				PreparedStatement pstmt2 = null;
 				String sql = null;
 				try {
 					//커넥션 풀로부터 커넥션을 할당
 					conn = DBUtil.getConnection();
+					conn.setAutoCommit(false);
 					//SQL문 작성
+					sql = "DELETE FROM st_comm_report WHERE sc_num=?";
+					//pstmt 객체 생성
+					pstmt2 = conn.prepareStatement(sql);
+					//?에 데이터 바인딩
+					pstmt2.setInt(1, sc_num);
+					pstmt2.executeUpdate();
 					sql = "DELETE FROM story_comment WHERE sc_num=?";
 					//pstmt 객체 생성
 					pstmt = conn.prepareStatement(sql);
@@ -590,9 +619,12 @@ public class StoryBoardDAO {
 					pstmt.setInt(1, sc_num);
 					//SQL문 실행
 					pstmt.executeUpdate();
+					conn.commit();
 				}catch(Exception e) {
+					conn.rollback();
 					throw new Exception(e);
 				}finally {
+					DBUtil.executeClose(null, pstmt2, null);
 					DBUtil.executeClose(null, pstmt, conn);
 				}
 			}

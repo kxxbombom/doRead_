@@ -251,7 +251,8 @@
 	<div class="hide authupdate align-center" 
 	style="width:400px; position:fixed;
 		z-index:999 !important;
-		bottom:400px;
+		bottom:40%;
+		left:40%;
 		border:1px solid #999 !important;
 		border-radius:15px;
 		padding:8px;
