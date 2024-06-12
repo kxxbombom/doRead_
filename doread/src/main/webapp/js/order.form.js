@@ -1,7 +1,7 @@
 $(function(){
 	$('#info_confirm').on('click',function(){
 		if(!/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('#receive_phone').val())){
-			alert('전화번호를 양식에 맞게 입력하세요(하이픈(_)제외)');
+			alert('전화번호를 양식에 맞게 입력하세요(하이픈(-)제외)');
 			$('#receive_phone').val('').focus();
 		}else if(!/^[0-9]{5}$/.test($('#receive_zipcode').val())){
 			alert('우편번호를 입력하세요(숫자5자리)');
@@ -43,21 +43,23 @@ $(function(){
 			return false;
 		}	
 		
-		const inputcheck = document.getElementsByClassName('input-check');
-		for(let i=0; i<inputcheck.length; i++){
-			if(inputcheck[i].value.trim()==''){
-				alert("배송지 정보를 입력해주세요");
-				return false;
-			}
-		}
+		
 		
 		if ($('input[name="payment"]:checked').val() == '1' && $('input[name="pay_text"]').val().trim() == '') {
 			alert('카드번호를 입력하세요.');
+			$('input[name="pay_text"]').focus();
 			return false;
 		}
 		
 		if ($('input[name="payment"]:checked').val() == '3' && $('input[name="pay_text"]').val().trim() == '') {
 			alert('휴대폰번호를 입력하세요.');
+			$('input[name="pay_text"]').focus();
+			return false;
+		}
+		
+		if ($('input[name="payment"]:checked').val() == '3' && !/^01(0|1|[6-9])[0-9]{3,4}[0-9]{4}$/.test($('input[name="pay_text"]').val())) {
+			alert('전화번호를 올바르게 입력하세요(하이픈(-)제외)');
+			$('input[name="pay_text"]').focus();
 			return false;
 		}
 		
