@@ -85,7 +85,7 @@
 				<c:if test="${!empty user_num}">
 				<div id="re_first">
 					<span class="letter-count">300/300</span>
-				</div>
+				</div>  
 				<div id="re_second" class="align-right">
 					<input type="submit" value="등록" class="btn5">
 				</div>
