@@ -18,7 +18,19 @@
  		<h2 style="text-align:center;">중고게시판</h2>	
 		
  			<c:if test="${empty list}">
- 				작성 게시글이 없습니다
+ 				<div class="align-center">
+ 					<br>
+ 					<br>
+ 					<br>
+ 					<br>
+ 					작성 게시글이 없습니다
+					<br>
+ 					<br>
+ 					<br>
+ 					<br>
+ 					<br>
+					 				
+ 				</div>
  			</c:if>
  			<c:if test="${!empty list }">
  				<table>
