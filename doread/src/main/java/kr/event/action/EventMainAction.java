@@ -25,7 +25,7 @@ public class EventMainAction implements Action{
 		
 		if(pageNum == null) pageNum = "1";
 		
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,4,1,request.getContextPath()+"/event/eventmain.do");
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,4,5,request.getContextPath()+"/event/eventmain.do");
 		
 		List<EventVO> list = dao.getListEvent(page.getStartRow(), page.getEndRow(),  keyfeild, keyvalue);
 		int check = Integer.parseInt(keyfeild);

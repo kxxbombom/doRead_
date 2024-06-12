@@ -14,7 +14,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
  			<h2 style="text-align:center;">EVENT</h2>
-		<div class="align-center">
+		<div class="align-center eventmain">
  			<form id="list_search_form" action="eventmain.do" method="get">
 				<select id="selectlist" name ="sel" class="input-style">
 					<option value="1" <c:if test="${check == 1}">selected</c:if>>진행중이벤트</option>
@@ -38,69 +38,67 @@
 				</div>
 			</div>
 			<hr width="40%" size="1" noshade="noshade">
-			
-			<c:if test="${check == 1}">
-			<c:forEach var="event" items="${List}">
-			<div class="horizontal-area">
-				<p>
-				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
-					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="260px" height="320"><br>
-					<span id ="e_title"><b>${event.e_title}</b></span>
-					<br>
-					이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
-				</a>
-				</p>
-				<hr width="40%" size="1" noshade="noshade">
-				<br><br><br>
-			</div>
-			</c:forEach>
-			</c:if>
-			
-			<c:if test="${check == 2 }">
-			<c:forEach var="event" items="${List}">
-			<div class="horizontal-area">
-				<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
-					<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="260px" height="320">
-					<span id ="e_title"><b>${event.e_title}</b></span>
-					<br>
-					이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
-				</a>
-			</div>
-			</c:forEach>
-			</c:if>
-			
-			<c:if test="${check == 3}">
-			<div class="horizontal-area">
-			<div class="align-center">
-			<c:if test="${empty List}">
-						<tr><td><b>당첨자가 없습니다.</b><td></tr>
+			<div  class="eventmain">
+				<c:if test="${check == 1}">
+				<c:forEach var="event" items="${List}">
+				<div class="horizontal-area">
+					<p>
+					<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
+						<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="360px" height="460"><br>
+						<span id ="e_title"><b>${event.e_title}</b></span>
+						<br>
+						이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
+					</a>
+					</p>
+					<hr width="40%" size="1" noshade="noshade">
+					<br><br><br>
+				</div>
+				</c:forEach>
 				</c:if>
-				<c:if test="${!empty List}">
-				<table>
-				<tr>
-					<th>이벤트</th>
-					<th>당첨자 id</th>
-				</tr>
-					<c:forEach var="event" items="${List}">
-					<tr>
-					<td>${event.e_title}</td>
-					<td>${event.id}</td>
-					</tr>
-					</c:forEach>
 				
-					
-				</table>
+				<c:if test="${check == 2 }">
+				<c:forEach var="event" items="${List}">
+				<div class="horizontal-area">
+					<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
+						<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="360px" height="460"><br>
+						<span id ="e_title"><b>${event.e_title}</b></span>
+						<br>
+						이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
+					</a>
+				</div>
+				</c:forEach>
 				</c:if>
-			</div>
-			</div>
-		
-			</c:if>
-			<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade">
-			</div>
-		
- 			<span>${page}</span>
- </div>	
+				
+				<c:if test="${check == 3}">
+					<div class="align-center">
+					<c:if test="${empty List}">
+								<tr><td><b>당첨자가 없습니다.</b><td></tr>
+					</c:if>
+					<c:if test="${!empty List}">
+						<table>
+						<tr>
+							<th>이벤트</th>
+							<th>당첨자 id</th>
+						</tr>
+							<c:forEach var="event" items="${List}">
+							<tr>
+							<td>${event.e_title}</td>
+							<td>${event.id}</td>
+							</tr>
+							</c:forEach>
+						
+							
+						</table>
+					</c:if>
+					</div>
+				</c:if>
+				<div class="float-clear">
+					<hr width="100%" size="1" noshade="noshade">
+				</div>
+			
+	 			<span>${page}</span>
+ 			</div>
+ 	</div>	
 </div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
