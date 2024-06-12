@@ -89,7 +89,7 @@ $(function(){
 						<c:if test="${point.p_detail == 1}">-<fmt:formatNumber value="${point.p_point}"/></c:if>
 						<c:if test="${point.p_detail == 2}">-<fmt:formatNumber value="${point.p_point}"/></c:if>
 						<c:if test="${point.p_detail == 4}">+<fmt:formatNumber value="${point.p_point}"/></c:if>
-						<c:if test="${point.p_detail == 5}">이벤트 지급</c:if>
+						<c:if test="${point.p_detail == 5}">+<fmt:formatNumber value="${point.p_point}"/></c:if>
 					</td>
 					<td class="main-td">${point.p_rdate}</td>
 					
