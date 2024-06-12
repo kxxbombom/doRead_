@@ -413,6 +413,7 @@ public class StoryBoardDAO {
 						if(rs.getString("sc_mdate")!=null) {
 							comment.setSc_mdate(DurationFromNow.getTimeDiffLabel(rs.getString("sc_mdate")));					
 						}
+						comment.setSc_auth(rs.getInt("sc_auth"));
 						comment.setSc_content(StringUtil.useBrNoHTML(rs.getString("sc_content")));
 						comment.setSc_num(rs.getInt("sc_num"));
 						comment.setMem_num(rs.getInt("mem_num"));//작성자 회원번호

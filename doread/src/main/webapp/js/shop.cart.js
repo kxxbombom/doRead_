@@ -23,7 +23,7 @@ $(function(){
 			success:function(param){
 				if(param.result == 'logout'){
 					alert('로그인 후 사용하세요');
-					location.href="${pageContext.request.contextPath}/member/loginForm.do"
+					location.href="../member/loginForm.do"
 				}else if(param.result == 'overQuantity'){
 					alert('상품의 수량이 부족합니다.');
 					location.href='list.do';

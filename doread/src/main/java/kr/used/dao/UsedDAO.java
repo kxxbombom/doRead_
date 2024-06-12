@@ -491,6 +491,9 @@ public class UsedDAO {
 				if(rs.getString("uc_mdate")!=null) {
 					ub.setUc_mdate(DurationFromNow.getTimeDiffLabel(rs.getString("uc_mdate")));					
 				}
+				
+				ub.setUc_auth(rs.getInt("uc_auth"));
+				
 				ub.setUc_content(StringUtil.useBrNoHTML(rs.getString("uc_content")));
 				ub.setUc_num(rs.getInt("uc_num"));
 				ub.setMem_num(rs.getInt("mem_num"));//작성자 회원번호

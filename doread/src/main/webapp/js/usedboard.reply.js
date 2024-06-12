@@ -30,24 +30,24 @@
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
 					if(item.uc_auth == 0){
-					output += '<h4>' + item.mem_id + '</h4>';
-					output += '<div class="sub-item">';
-					output += '<p>'+item.uc_content+ '</p>';
-					output+='<div class="align-right"><a class="report" data-name="uc_num" data-id="'+item.uc_num+'"  href="#">신고</a></div>';
-					if(item.uc_mdate){
-						output+= '<span class="modify-date">최근 수정일 : '+ item.uc_mdate+ '</span>';
-					}else{
-						output+= '<span class="modify-date">등록일 : '+ item.uc_rdate + '</span>';
+						output += '<h4>' + item.mem_id + '</h4>';
+						output += '<div class="sub-item">';
+						output += '<p>'+item.uc_content+ '</p>';
+						output+='<div class="align-right"><a class="report" data-name="uc_num" data-id="'+item.uc_num+'"  href="#">신고</a></div>';
+						if(item.uc_mdate){
+							output+= '<span class="modify-date">최근 수정일 : '+ item.uc_mdate+ '</span>';
+						}else{
+							output+= '<span class="modify-date">등록일 : '+ item.uc_rdate + '</span>';
+						}
+						//로그인한 회원번호와 작성자의 회원번호 일치여부 체크
+						if(param.user_num == item.mem_num){
+							output += ' <input type="button" data-renum="'+item.uc_num+'" value="수정" class="modify-btn btn5">';
+							output += ' <input type="button" data-renum="'+item.uc_num+'" value="삭제" class="delete-btn btn5">';
+						}
+						output+= '<hr size="1" noshade width="100%">';
+						output+= '</div>';
 					}
-					//로그인한 회원번호와 작성자의 회원번호 일치여부 체크
-					if(param.user_num == item.mem_num){
-						output += ' <input type="button" data-renum="'+item.uc_num+'" value="수정" class="modify-btn btn5">';
-						output += ' <input type="button" data-renum="'+item.uc_num+'" value="삭제" class="delete-btn btn5">';
-					}
-					output+= '<hr size="1" noshade width="100%">';
-					output+= '</div>';
-					}
-					output+= '</div>';
+						output+= '</div>';
 					
 					//문서 객체에 추가
 					$('#output').append(output);
