@@ -397,6 +397,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
 		PreparedStatement pstmt3 = null;
+		PreparedStatement pstmt4 = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
@@ -417,12 +418,18 @@ public class MemberDAO {
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(1, mem_num);
 			pstmt2.executeUpdate();
+
+			sql = "DELETE FROM qna WHERE mem_num=?";
+			pstmt4 = conn.prepareStatement(sql);
+			pstmt4.setInt(1, mem_num);
+			pstmt4.executeUpdate();
 			
 			conn.commit();
 		}catch(Exception e) {
 			conn.rollback();
 			throw new Exception(e);
 		}finally {
+			DBUtil.executeClose(null, pstmt4, null);
 			DBUtil.executeClose(null, pstmt3, null);
 			DBUtil.executeClose(null, pstmt2, null);
 			DBUtil.executeClose(null, pstmt, conn);
