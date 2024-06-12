@@ -11,6 +11,8 @@ public class OrderDetailVO {
 	private String book_image;
 	private int book_category;
 	
+	
+	
 	public int getBook_category() {
 		return book_category;
 	}

@@ -8,6 +8,13 @@ public class OrderDetialVO {
 	private int order_num;
 	private int book_num;
 	private String book_name;
+	private int book_category;
+	public int getBook_category() {
+		return book_category;
+	}
+	public void setBook_category(int book_category) {
+		this.book_category = book_category;
+	}
 	public int getDetail_num() {
 		return detail_num;
 	}

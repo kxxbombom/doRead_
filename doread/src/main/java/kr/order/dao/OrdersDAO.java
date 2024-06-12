@@ -259,6 +259,7 @@ public class OrdersDAO {
 				detail.setOrder_quantity(rs.getInt("order_quantity"));
 				detail.setOrder_num(rs.getInt("order_num"));
 				detail.setBook_image(rs.getString("book_img"));
+				detail.setBook_category(rs.getInt("book_category"));
 				list.add(detail);
 			}	
 		}catch(Exception e) {
