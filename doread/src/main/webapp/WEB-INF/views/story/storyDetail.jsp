@@ -15,10 +15,9 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
+		<h2 class="align-center"><a href="storyBoardList.do">스토리</a></h2>
+		<hr width="100%" size="1" noshade="noshade">
 		<h2>${sb.s_title}</h2>
-		<div class="float-clear">
-				<hr width="100%" size="1" noshade="noshade">
-		</div>
 		<c:if test="${!empty sb.mem_photo }">
 				<img src="${pageContext.request.contextPath}/upload/${sb.mem_photo}" class="my-photo" width="46" height="43">
 		</c:if>

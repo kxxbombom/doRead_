@@ -46,7 +46,7 @@
 		<img src="${pageContext.request.contextPath}/upload/${qna.q_image}" class="detail-img">
 		</div>
 		</c:if>
-		<p>
+		<p id="qna_content">
 			${qna.q_content}
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
@@ -59,7 +59,7 @@
 		</c:if>
 		<c:if test="${!empty qna.q_answer}">
 		<h2>A: </h2>
-		<p>
+		<p id="qna_content">
 			${qna.q_answer}
 		</p>
 		<hr size="1" noshade="noshade" width="100%">
