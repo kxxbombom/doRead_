@@ -28,7 +28,7 @@
 				return;
 			}
 			$.ajax({
-				url:'updateAuth.do',
+				url:'updateAuthmem.do',
 				data:{auth:$('#auth').val(),mem_num:$('#mem_num').val()},
 				type:'post',
 				dataType:'json',
@@ -79,7 +79,16 @@
 			${member.mem_name }
 		</li>
 		<li><label >회원 등급 <img id ="modifyauth" src="${pageContext.request.contextPath}/images/pencil_1361912.png"  width="18" height="18"></label>
-			<span id="authspan">${member.mem_auth }</span> <div id="auth_update" style="display:none;"><input type="number" name="auth" class="inputcheck input-style" id="auth" maxlength="1"><input type="button" value="수정" id="authbtn" class="button2" ><input type="button" value="취소" id="delbtn" class="button2" ></div>
+			<span id="authspan">${member.mem_auth }</span> 
+			<div id="auth_update" style="display:none;">
+				<select id="auth" name ="auth" class="list_search">
+				<option value="0" <c:if test="${member.mem_auth == 0}">selected</c:if>>탈퇴</option>
+ 				<option value="1" <c:if test="${member.mem_auth == 1}">selected</c:if>>정지</option>
+ 				<option value="2" <c:if test="${member.mem_auth == 2}">selected</c:if>>일반</option>
+ 				<option value="9" <c:if test="${member.mem_auth == 9}">selected</c:if>>관리자</option>
+ 				</select>
+				<input type="button" value="수정" id="authbtn" class="button2" ><input type="button" value="취소" id="delbtn" class="button2" >
+			</div>
 		</li>
 		<li><label >회원 아이디</label>
 			${member.mem_id }
