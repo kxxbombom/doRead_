@@ -51,12 +51,12 @@
 			
 			
  			<form id="list_search_form" action="usedList.do" method="get" class="list_search">
-				<select id="selectlist" name ="sel" class="input-style">
+				<select id="selectlist" name ="sel" class="list_search">
 				<option value="1" <c:if test="${check =='1'}">selected</c:if>>판매중</option>
  				<option value="2" <c:if test="${check =='2'}">selected</c:if>>거래중</option>
  				<option value="3" <c:if test="${check == '3'}">selected</c:if>>판매완료</option>
  				</select>
- 				<select id="selectlist2" name ="sel2" class="input-style">
+ 				<select id="selectlist2" name ="sel2" class="list_search">
 				<option value="1" <c:if test="${check2 == '1'}">selected</c:if>>책제목</option>
  				<option value="2" <c:if test="${check2 == '2'}">selected</c:if>>글제목</option>
  				<option value="3" <c:if test="${check2 == '3'}">selected</c:if>>아이디</option>

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
 import kr.used.dao.UsedDAO;
 import kr.used.vo.UsedVO;
 import kr.util.PagingUtil;
@@ -31,6 +32,11 @@ public class UsedmainAction implements Action{
 		if(count > 0) {
 			list = dao.listUsed(page.getStartRow(), page.getEndRow(), keys, keyf, keyw); 
 		}
+		
+		MemberDAO mem_dao = MemberDAO.getInstance();
+		
+		
+		
 		request.setAttribute("list",list);
 		request.setAttribute("count",count);
 		request.setAttribute("page",page.getPage());

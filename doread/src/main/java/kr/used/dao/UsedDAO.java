@@ -212,7 +212,7 @@ public class UsedDAO {
 		String sql=null;
 		try {
 			conn = DBUtil.getConnection();
-			sql="select * from ((usedbookboard join book using(book_num))join member using(mem_num)) join member_detail using(mem_num) where u_num=?";
+			sql="select * from ((usedbookboard join book using(book_num))join member using(mem_num))left outer join member_detail using(mem_num) where u_num=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, u_num);
 			re = ps.executeQuery();

@@ -45,10 +45,12 @@ window.onload=function(){
 					${qna.q_content}
 					</p>
 				</li>
+				<c:if test="${!empty qna.q_image}">
 				<li>
 					<label for="q_image">이미지</label>
 					<img src="${pageContext.request.contextPath}/upload/${qna.q_image}">
 				</li>
+				</c:if>
 				<li>
 					<label for="q_auth">문의 유형</label>
 					<input type="radio" name="q_auth" value="0" id="auth0" <c:if test="${qna.q_auth == 0}">checked</c:if> disabled>일반
@@ -61,7 +63,8 @@ window.onload=function(){
 				</li>
 				<li>
 					<label for="q_answer">답변</label>
-					<textarea rows="5" cols="40"  name="q_answer" class="input-style"  id="q_answer" placeholder="답변을 입력해주세요"></textarea>
+					<textarea rows="5" cols="40"  name="q_answer" class="input-style"  id="q_answer" 
+					placeholder="답변을 입력해주세요"><c:if test="${!empty qna.q_answer }">${qna.q_answer }</c:if></textarea>
 				</li>
 			</ul>
 			<div class="align-center">
