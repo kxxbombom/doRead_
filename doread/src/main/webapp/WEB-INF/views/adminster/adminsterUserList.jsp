@@ -16,7 +16,7 @@
 <div class="page-main">
 <br>
 	<h2>회원 관리</h2>
-	
+	<div class="align-center">
 		<form id="Form" action="userList.do" method="get">
 				<select id="selectlist" name ="keyf" class="input-style">
 					<option value="1" <c:if test="${check == 1}">selected</c:if> >회원아이디</option>
@@ -70,6 +70,7 @@
 		<input type="button" value="메인" class="button2" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	</div>
 </div>
 </body>
 </html>
