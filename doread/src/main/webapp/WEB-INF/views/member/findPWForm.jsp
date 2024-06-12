@@ -22,12 +22,12 @@ $(function(){
 	$('#passwd_checkmessage').hide();
 	
 	
-	$('#findPW_form #passwd').keydown(function(){
+	$('#findPW_form #passwd').keyup(function(){
 		pwChecked = 0;
 		$('#passwd_checkmessage').hide();
 	});
 	
-	$('#findPW_form #cpasswd').keydown(function(){
+	$('#findPW_form #cpasswd').keyup(function(){
 		pwChecked = 0;
 		$('#passwd_checkmessage').hide();
 	});
