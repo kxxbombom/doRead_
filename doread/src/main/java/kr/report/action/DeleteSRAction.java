@@ -40,14 +40,14 @@ public class DeleteSRAction implements Action{
 			if(name.equals("sr_num")) {
 				dao.deleteSre(num);
 				request.setAttribute("notice_msg", "삭제완료");
-				request.setAttribute("notice_url",request.getContextPath()+"/adminster/adminreport.do");
+				request.setAttribute("notice_url",request.getContextPath()+"/adminster/ulist.do");
 				return "/WEB-INF/views/common/alert_view.jsp";
 			
 			}else if(name.equals("src_num")) {
 				dao.deleteSrCe(num);
 
 				request.setAttribute("notice_msg", "삭제완료");
-				request.setAttribute("notice_url",request.getContextPath()+"/adminster/srclist.do");
+				request.setAttribute("notice_url",request.getContextPath()+"/adminster/ulist.do");
 				return "/WEB-INF/views/common/alert_view.jsp";
 				
 			}else if(name.equals("ur_num")) {
@@ -62,7 +62,7 @@ public class DeleteSRAction implements Action{
 			}else if(name.equals("urc_num")) {
 				dao.deleteUC(num);
 				request.setAttribute("notice_msg", "삭제완료");
-				request.setAttribute("notice_url",request.getContextPath()+"/adminster/uclimitlist.do");
+				request.setAttribute("notice_url",request.getContextPath()+"/adminster/ulist.do");
 				return "/WEB-INF/views/common/alert_view.jsp";
 				
 				

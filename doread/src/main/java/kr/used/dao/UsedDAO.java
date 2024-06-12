@@ -288,18 +288,39 @@ public class UsedDAO {
 	public void deleteUsed(int u_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		PreparedStatement pstmt4 = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			sql = "DELETE FROM used_report WHERE u_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, u_num);
+			pstmt2.executeUpdate();
+			sql = "DELETE FROM used_comm_report WHERE uc_num in(select uc_num from ub_comment where u_num=? )";
+			pstmt4 = conn.prepareStatement(sql);
+			pstmt4.setInt(1, u_num);
+			pstmt4.executeUpdate();
+			sql = "DELETE FROM UB_comment WHERE u_num=?";
+			pstmt3 = conn.prepareStatement(sql);
+			pstmt3.setInt(1, u_num);
+			pstmt3.executeUpdate();
 			sql="delete from usedbookboard where u_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, u_num);
 			pstmt.executeUpdate();
 			
+			conn.commit();
 		}catch(Exception e) {
+			conn.rollback();
 			throw new Exception(e);
 			
 		}finally {
+			DBUtil.executeClose(null, pstmt4, null);
+			DBUtil.executeClose(null, pstmt3, null);
+			DBUtil.executeClose(null, pstmt2, null);
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 		
@@ -412,11 +433,17 @@ public class UsedDAO {
 	public void deleteCommentUsed(int uc_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
 		String sql = null;
 		try {
 			//커넥션 풀로부터 커넥션을 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성
+			conn.setAutoCommit(false);
+			sql = "DELETE FROM used_comm_report WHERE uc_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, uc_num);
+			pstmt2.executeUpdate();
 			sql = "DELETE FROM UB_comment WHERE uc_num=?";
 			//pstmt 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -424,9 +451,12 @@ public class UsedDAO {
 			pstmt.setInt(1, uc_num);
 			//SQL문 실행
 			pstmt.executeUpdate();
+			conn.commit();
 		}catch(Exception e) {
+			conn.rollback();
 			throw new Exception(e);
 		}finally {
+			DBUtil.executeClose(null, pstmt2, null);
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
