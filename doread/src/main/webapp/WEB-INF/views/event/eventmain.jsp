@@ -45,7 +45,7 @@
 					<p>
 					<a href="${pageContext.request.contextPath}/event/detailEvent.do?e_num=${event.e_num}">
 						<img src="${pageContext.request.contextPath}/upload/${event.e_image}" width="360px" height="460"><br>
-						<span id ="e_title"><b>${event.e_title}</b></span>
+						<span id ="e_title" ><b style="font-size:15pt;">${event.e_title}</b></span>
 						<br>
 						이벤트기간 ${event.e_rdate} ~ ${event.e_deadline}
 					</a>

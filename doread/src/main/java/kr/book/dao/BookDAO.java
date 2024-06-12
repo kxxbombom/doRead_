@@ -333,7 +333,7 @@ public class BookDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		
 		return s_count;
