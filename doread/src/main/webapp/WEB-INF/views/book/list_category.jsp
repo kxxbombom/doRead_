@@ -30,7 +30,20 @@ window.onload=function(){
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="content-main">
-		<h2>도서 목록</h2>
+		<h2>
+			<c:if test="${param.book_category == 1}">소설</c:if>
+			<c:if test="${param.book_category == 2}">시/에세이</c:if>
+			<c:if test="${param.book_category == 3}">인문</c:if>
+			<c:if test="${param.book_category == 4}">정치/사회</c:if>
+			<c:if test="${param.book_category == 5}">과학/공학</c:if>
+			<c:if test="${param.book_category == 6}">IT/프로그래밍</c:if>
+			<c:if test="${param.book_category == 7}">자기계발</c:if>
+			<c:if test="${param.book_category == 8}">외국어</c:if>
+			<c:if test="${param.book_category == 9}">수험서/취업</c:if>
+			<c:if test="${param.book_category == 10}">만화</c:if>
+			<c:if test="${param.book_category == 11}">취미/스포츠</c:if>
+			<c:if test="${param.book_category == 12}">e-book</c:if>
+		</h2>
 		<form id="book_search" action="listCategory.do" method="get" class="form-center">
 			<ul class="list_search">
 				<li>

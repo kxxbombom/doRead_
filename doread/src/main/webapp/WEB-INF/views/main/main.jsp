@@ -11,6 +11,10 @@
 <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){	
+	$('#deleterbanner').click(function(event){
+		$('.floBanPc3').hide();
+		event.preventDefault();
+	});
 	let i =2;
 	setInterval(function() {
 		    i++;
@@ -146,29 +150,25 @@ $(function(){
 <div class="wrapper1">
   <input type="checkbox" id="toogle" class="hidden-trigger">
   <label for="toogle" class="circle">
-<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" xml:space="preserve" version="1.1" viewBox="0 0 48 48">
-    <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAbElEQVR4Ae3XwQnFQAiE4eVVsGAP1mkPFjwvQvYSWCQYCYGZv4Dv5MGB5ghcIiDQI+kCftCzNsAR8y5gYu2rwCBAgMBTgEC3rek2yQEtAZoDjso8AyaKexmIDJUZD40AAQIE0gwx449GgMC9/t0b7GTsa7J+AAAAAElFTkSuQmCC"></image>
-  </svg>
+	<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" xml:space="preserve" version="1.1" viewBox="0 0 48 48">
+	    <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAbElEQVR4Ae3XwQnFQAiE4eVVsGAP1mkPFjwvQvYSWCQYCYGZv4Dv5MGB5ghcIiDQI+kCftCzNsAR8y5gYu2rwCBAgMBTgEC3rek2yQEtAZoDjso8AyaKexmIDJUZD40AAQIE0gwx449GgMC9/t0b7GTsa7J+AAAAAElFTkSuQmCC"></image>
+	</svg>
   </label>
   <div class="subs">
     <button class="sub-circle">
-    <button class="sub-circle">
-      <input value="1" name="sub-circle" type="radio" id="sub6" class="hidden-sub-trigger">
-      <label for="sub6"></label>
+    	<img src="${pageContext.request.contextPath}/upload/btn_side_kakaotalk.png" width="90" height="90">
     </button>
-    <button class="sub-circle">
-      <input value="1" name="sub-circle" type="radio" id="sub7" class="hidden-sub-trigger">
-      <label for="sub7"></label>
+    <br>
+    <br>
+    <br>
+    <button onclick="location.href='${pageContext.request.contextPath}/qna/faqLit.do'" class="sub-circle">
+		<img src="${pageContext.request.contextPath}/upload/btn_side_phone.png" width="90" height="90">
     </button>
-    <button class="sub-circle">
-      <input value="1" name="sub-circle" type="radio" id="sub8" class="hidden-sub-trigger">
-      <label for="sub8"></label>
-    </button>
-   </div>
+  </div>
 </div>
-<div class="floBanPc1 hidden-md hidden-sm"><a href="${pageContext.request.contextPath}/qna/faqLit.do" target="_blank"><img src="${pageContext.request.contextPath}/upload/btn_side_kakaotalk.png"width="100" height="100"></a></div>
-<div class="floBanPc2 hidden-md hidden-sm	"><a href="${pageContext.request.contextPath}/qna/faqLit.do" target="_blank"><img src="${pageContext.request.contextPath}/upload/btn_side_phone.png" width="100" height="100"></a></div>
-<div class="floBanPc3 hidden-md hidden-sm	"><a href="${pageContext.request.contextPath}/event/eventmain.do" target="_blank"><img src="${pageContext.request.contextPath}/upload/side_ban.png" width="100" height="311"></a></div>
+
+
+<div class="floBanPc3 hidden-md hidden-sm" style="border:none; zindex:997;"><a href="${pageContext.request.contextPath}/event/eventmain.do" target="_blank"><img src="${pageContext.request.contextPath}/upload/side_ban.png" width="100" height="311"></a><a id="deleterbanner" href="#" style="z-index:999; position:relative; left:-90px; top:20px; font-size:10pt; color:#a5a5b0;">창닫기</a></div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>

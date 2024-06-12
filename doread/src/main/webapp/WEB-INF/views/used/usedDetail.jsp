@@ -137,7 +137,7 @@
 		<!-- 댓글끝 -->
 	</div>
 	<div class="hide reportdiv" style="width:400px; position:fixed; z-index:999 !important;
-		bottom:400px;border:1px solid #999 !important;background:white;">
+		bottom:300px;border:1px solid #999 !important;background:white;">
 		<h3>신고하기</h3>
 		<span> </span>
 		<hr size="1" width="100%" >
@@ -149,7 +149,7 @@
 		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="6"  />개인정보노출<br>
 		<input  type="radio" name="reportcategory" class="inputcheck input-style radio2" value="7"  />불쾌한 표현이 있습니다.<br>
 		<textarea class="textareareport"></textarea><br>
-		<input type="button" class="rebtn" value="신고하기" ><input class="redelbtn" type="button" id="rebtn" value="취소">
+		<input type="button" class="rebtn button2" value="신고하기" ><input class="redelbtn button2" type="button" id="rebtn" value="취소">
 	</div>	
 <br><br><br><br><br><br><br>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
