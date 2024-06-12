@@ -399,6 +399,9 @@ public class MemberDAO {
 		PreparedStatement pstmt3 = null;
 		PreparedStatement pstmt4 = null;
 		PreparedStatement pstmt5 = null;
+		PreparedStatement pstmt6 = null;
+		PreparedStatement pstmt7 = null;
+		PreparedStatement pstmt8 = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
@@ -410,11 +413,6 @@ public class MemberDAO {
 			pstmt.setInt(1, mem_num);
 			pstmt.executeUpdate();
 			
-			sql = "DELETE FROM member_detail WHERE mem_num=?";
-			pstmt2 = conn.prepareStatement(sql);
-			pstmt2.setInt(1, mem_num);
-			pstmt2.executeUpdate();
-			
 			sql = "DELETE FROM point WHERE mem_num=?";
 			pstmt3 = conn.prepareStatement(sql);
 			pstmt3.setInt(1, mem_num);
@@ -424,17 +422,36 @@ public class MemberDAO {
 			pstmt4 = conn.prepareStatement(sql);
 			pstmt4.setInt(1, mem_num);
 			pstmt4.executeUpdate();
-			
+			sql = "DELETE from used_comm_report where uc_num in (select uc_num FROM ub_comment WHERE u_num in (select u_num FROM usedbookboard WHERE mem_num=?))";
+			pstmt7 = conn.prepareStatement(sql);
+			pstmt7.setInt(1, mem_num);
+			pstmt7.executeUpdate();
+			sql = "DELETE FROM ub_comment WHERE u_num in (select u_num FROM usedbookboard WHERE mem_num=?)";
+			pstmt6 = conn.prepareStatement(sql);
+			pstmt6.setInt(1, mem_num);
+			pstmt6.executeUpdate();
+			sql = "DELETE used_report where u_num in (select u_num FROM usedbookboard WHERE mem_num=?)";
+			pstmt8 = conn.prepareStatement(sql);
+			pstmt8.setInt(1, mem_num);
+			pstmt8.executeUpdate();
 			sql = "DELETE FROM usedbookboard WHERE mem_num=?";
 			pstmt5 = conn.prepareStatement(sql);
 			pstmt5.setInt(1, mem_num);
 			pstmt5.executeUpdate();
+			
+			sql = "DELETE FROM member_detail WHERE mem_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, mem_num);
+			pstmt2.executeUpdate();
 			
 			conn.commit();
 		}catch(Exception e) {
 			conn.rollback();
 			throw new Exception(e);
 		}finally {
+			DBUtil.executeClose(null, pstmt8, null);
+			DBUtil.executeClose(null, pstmt7, null);
+			DBUtil.executeClose(null, pstmt6, null);
 			DBUtil.executeClose(null, pstmt5, null);
 			DBUtil.executeClose(null, pstmt4, null);
 			DBUtil.executeClose(null, pstmt3, null);
