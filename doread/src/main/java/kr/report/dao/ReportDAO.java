@@ -40,7 +40,7 @@ public class ReportDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.getConnection();
+			DBUtil.executeClose(null, ps, conn);
 		}
 		}
 		
@@ -64,7 +64,7 @@ public class ReportDAO {
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
-				DBUtil.getConnection();
+				DBUtil.executeClose(null, ps, conn);
 			}
 		}
 			//관리자 전용 게시글 등급 수정
@@ -85,7 +85,7 @@ public class ReportDAO {
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
-				DBUtil.getConnection();
+				DBUtil.executeClose(null, ps, conn);
 			}
 			
 		}
@@ -107,7 +107,7 @@ public class ReportDAO {
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
-				DBUtil.getConnection();
+				DBUtil.executeClose(null, ps, conn);
 			}
 			
 		}
@@ -130,7 +130,7 @@ public class ReportDAO {
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
-				DBUtil.getConnection();
+				DBUtil.executeClose(null, ps, conn);
 			}
 			
 		}
@@ -152,7 +152,7 @@ public class ReportDAO {
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
-				DBUtil.getConnection();
+				DBUtil.executeClose(null, ps, conn);
 			}
 			
 		}
@@ -459,7 +459,7 @@ public class ReportDAO {
 				}catch(Exception e) {
 					throw new Exception(e);
 				}finally {
-					DBUtil.getConnection();
+					DBUtil.executeClose(null, ps, conn);
 				}
 			}
 		
@@ -567,7 +567,7 @@ public class ReportDAO {
 				}catch(Exception e) {
 					throw new Exception(e);
 				}finally {
-					DBUtil.getConnection();
+					DBUtil.executeClose(null, ps, conn);
 				}
 				
 			}
@@ -589,7 +589,7 @@ public class ReportDAO {
 				}catch(Exception e) {
 					throw new Exception(e);
 				}finally {
-					DBUtil.getConnection();
+					DBUtil.executeClose(null, ps, conn);
 				}
 				
 			}
@@ -612,7 +612,7 @@ public class ReportDAO {
 				}catch(Exception e) {
 					throw new Exception(e);
 				}finally {
-					DBUtil.getConnection();
+					DBUtil.executeClose(null, ps, conn);
 				}
 				
 			}
@@ -634,7 +634,7 @@ public class ReportDAO {
 				}catch(Exception e) {
 					throw new Exception(e);
 				}finally {
-					DBUtil.getConnection();
+					DBUtil.executeClose(null, ps, conn);
 				}
 				
 			}
