@@ -29,7 +29,8 @@ public class ListAction implements Action{
 		String keyword= request.getParameter("keyword");
 		
 		QnaDAO dao = QnaDAO.getInstance();
-		int count = dao.getQnaCount(keyfield, keyword);
+		int count = dao.getMEMQnaCount(keyfield, keyword,user_num );
+		int count2 = dao.getQnaCount(keyfield, keyword );
 		
 		//페이지 처리
 		PagingUtil page = new PagingUtil(keyfield, keyword,Integer.parseInt(pageNum),count, 10,10,"qnaList.do");
@@ -38,12 +39,13 @@ public class ListAction implements Action{
 			list = dao.getListQna(page.getStartRow(), page.getEndRow(), keyfield, keyword,user_num);
 		}
 		List<QnaVO> list2 = null;
-		if(count > 0) {
+		if(count2 > 0) {
 			list2 = dao.getListQnaForAdmin(page.getStartRow(), page.getEndRow(), keyfield, keyword);
 		}
 		request.setAttribute("user_num", user_num);
 		request.setAttribute("user_auth", user_auth);
 		request.setAttribute("count", count);
+		request.setAttribute("count2", count2);
 		request.setAttribute("list", list);
 		request.setAttribute("list2", list2);
 		request.setAttribute("page", page.getPage());

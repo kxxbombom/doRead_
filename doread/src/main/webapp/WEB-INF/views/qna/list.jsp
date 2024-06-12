@@ -30,9 +30,12 @@ window.onload= function(){
 	<div class="content-main">
 		<h2 style="text-align:center;">QnA 목록</h2>
 		</div>
+		<c:if test="${user_auth!=9 }">
 		<c:if test="${count==0}">
 		<div class="result-display">
-			표시할 게시물이 없습니다.
+		<hr size="1" width="80%" noshade="noshade">
+			<p>표시할 게시물이 없습니다.</p>
+		<hr size="1" width="80%" noshade="noshade">
 		</div>
 		</c:if>
 		<c:if test="${count>0}">
@@ -56,8 +59,25 @@ window.onload= function(){
 			</tr>
 			</c:if>
 			</c:forEach>
+		</table>
+		</c:if>
+		</c:if>
+		
+		<c:if test="${user_auth == 9}">
+		<c:if test="${count2==0}">
+		<div class="result-display">
+			표시할 게시물이 없습니다.
+		</div>
+		</c:if>
+		<c:if test="${count2>0}">
+		<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>답변여부</th>
+				<th>작성일</th>
+			</tr>
 			<c:forEach var="qna2" items="${list2}">
-			<c:if test="${user_auth == 9}">
 			<tr>
 				<td>${qna2.q_num}</td>
 				<td><a href="qnaDetail.do?q_num=${qna2.q_num}">${qna2.q_title}</a></td>
@@ -67,9 +87,9 @@ window.onload= function(){
 				</td>
 				<td>${qna2.q_rdate}</td>
 			</tr>
-			</c:if>
 			</c:forEach>
 		</table>
+		</c:if>
 		</c:if>
 		<form id="list_search_form" action="qnaList.do" method="get">
 			<ul class="list_search">
