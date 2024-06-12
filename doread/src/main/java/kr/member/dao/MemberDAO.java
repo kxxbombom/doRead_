@@ -423,6 +423,7 @@ public class MemberDAO {
 			conn.rollback();
 			throw new Exception(e);
 		}finally {
+			DBUtil.executeClose(null, pstmt3, null);
 			DBUtil.executeClose(null, pstmt2, null);
 			DBUtil.executeClose(null, pstmt, conn);
 		}
