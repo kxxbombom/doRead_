@@ -230,7 +230,9 @@ private static CartDAO instance = new CartDAO();
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			throw new Exception(e);
-		}DBUtil.executeClose(null, pstmt, conn);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);			
+		}
 	}
 	
 	//장바구니 수정 (상품번호와 회원번호별 수정)
@@ -274,6 +276,8 @@ private static CartDAO instance = new CartDAO();
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			throw new Exception(e);
-		}DBUtil.executeClose(null, pstmt, conn);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
 	}
 }

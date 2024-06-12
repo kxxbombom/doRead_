@@ -81,7 +81,6 @@ public class OrderDAO {
 			sql = "INSERT INTO book_order_detail (detail_num, book_price, book_total, order_quantity, order_num, book_num, book_name) "
 					+ "VALUES (order_detail_seq.nextval,?,?,?,?,?,?)";
 			pstmt3 = conn.prepareStatement(sql);
-			
 			for(int i=0;i<orderDetailList.size();i++) {
 				OrderDetailVO orderDetail = orderDetailList.get(i);
 				pstmt3.setInt(1, orderDetail.getBook_price());
@@ -141,9 +140,7 @@ public class OrderDAO {
 			pstmt6.executeUpdate();
 					
 			}
-				
-			
-				
+	
 
 			conn.commit();
 		}catch(Exception e) {
@@ -248,7 +245,7 @@ public class OrderDAO {
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql="select * from (select rownum alnum, a.* from (select * from point where mem_num=? order by p_num desc)a) where alnum between ? and ?";
+			sql="select * from (select rownum alnum, a.* from (select * from point where mem_num=? AND (p_detail = 0 OR p_detail = 1 OR p_detail = 5) order by p_num desc)a) where alnum between ? and ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_num);
 			pstmt.setInt(2, start);
@@ -266,6 +263,13 @@ public class OrderDAO {
 					point.setP_rdate(rs.getDate("p_rdate"));
 					point.setOrder_num(rs.getInt("order_num"));
 					
+					if(getCancledPoint(rs.getInt("order_num")) > 1) {
+						point.setP_detail(2);
+					}
+					if(getCancledPoint2(rs.getInt("order_num")) > 1) {
+						point.setP_detail(4);
+					}
+					
 					point.setRownum(rs.getInt("alnum"));
 					list.add(point);
 				}while(rs.next());
@@ -280,6 +284,62 @@ public class OrderDAO {
 		return list;
 	}
 
+	//주문취소(적립된포인트)
+	public int getCancledPoint(int order_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT COUNT(*) FROM point WHERE order_num=? AND (p_detail = 0 or p_detail = 2)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, order_num);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		return count;
+	}
+	//주문취소(사용된포인트)
+		public int getCancledPoint2(int order_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			try {
+				conn = DBUtil.getConnection();
+				sql = "SELECT COUNT(*) FROM point WHERE order_num=? AND (p_detail = 1 or p_detail = 4)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, order_num);
+
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return count;
+		}
+	
+	
+	
+	
 	//관리자 - 전체/검색 주문 개수
 	public int getAdminOrderCount(String keyfield, String keyword)throws Exception{
 		Connection conn = null;
@@ -604,6 +664,7 @@ public class OrderDAO {
 				conn.rollback();
 				throw new Exception(e);
 			}finally {
+				DBUtil.executeClose(null, ps2, null);
 				DBUtil.executeClose(null, ps, conn);
 			}
 			
