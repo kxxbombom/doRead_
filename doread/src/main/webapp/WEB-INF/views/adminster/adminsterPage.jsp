@@ -33,7 +33,17 @@
 					inputcheck[i].focus();
 					return false;
 				}	
-				
+			
+			}
+			if(inputcheck[i].id == 'price' && !/^[0-9]{1,8}$/.test($('#price').val())){
+				alert('가격를 입력하세요(숫자 최대 8자리)');
+				$('#price').val('').focus();
+				return false;
+			}
+			if(inputcheck[i].id == 'stock' && !/^[0-9]{1,8}$/.test($('#stock').val())){
+				alert('재고를 입력하세요(숫자 최대 8자리)');
+				$('#stock').val('').focus();
+				return false;
 			}
 		}//end of for
 		

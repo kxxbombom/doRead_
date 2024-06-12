@@ -11,28 +11,28 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ssh2.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
-	window.onload = function(){
-		const inputcheck = document.getElementsByClassName('inputcheck');
-		const form = document.getElementById('event_form');
+window.onload = function(){
+	const inputcheck = document.getElementsByClassName('inputcheck');
+	const form = document.getElementById('event_form');
 		
-		form.onsubmit = function(){
-			for(let i=0; i<inputcheck.length; i++){
-			const label = document.querySelector('label[for="'+inputcheck[i].id+'"]');
+	form.onsubmit = function(){
+		for(let i=0; i<inputcheck.length; i++){
+		const label = document.querySelector('label[for="'+inputcheck[i].id+'"]');
 			
-			if(inputcheck[i].value.trim()==''){
-				alert(label.textContent+' 필수 입력');
-				inputcheck[i].value='';
-				inputcheck[i].focus();
-				return false;
+		if(inputcheck[i].value.trim()==''){
+			alert(label.textContent+' 필수 입력');
+			inputcheck[i].value='';
+			inputcheck[i].focus();
+			return false;
 			}
-			}
-			}
-		
-		
-		
-		
-	};
-
+		if(inputcheck[i].id == 'u_price' && !/^[0-9]{1,8}$/.test($('#u_price').val())){
+			alert('가격을 입력해주세요(최대 숫자 8자리)');
+			$('#u_price').val('').focus();
+			return false;
+		}
+		}
+	}
+};
 </script>
 </head>
 <body>
