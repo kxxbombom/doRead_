@@ -38,8 +38,20 @@
 		}//end of for
 		
 	};
+	
 };
+
+function fileChange() {
+    var cur = $("#fileUpload").val().split("\\");
+    $("#fileNm").val(cur[cur.length - 1]);
+}
+function fileChange1() {
+    var cur = $("#uploader").val().split("\\");
+    $("#fileNme").val(cur[cur.length - 1]);
+}
+
 $(function(){
+	
 	$('.photo_btn').click(function(event){	
 		
 		$('#photo_choice').show();
@@ -143,7 +155,6 @@ $(function(){
 	
 	<form action="bookcreate.do" method="post" id="bookcreate_form" enctype="multipart/form-data" >
 	<div class="content-main">
-	<div >
 	<ul>
 		<li><label for="book_auth">판매여부</label>
 			<select name="book_auth" id="book_auth" class="inputcheck input-style">
@@ -186,42 +197,59 @@ $(function(){
 			</select>
 		</li>
 		<li>
-			<label for="book_img">책 이미지</label>
-			<input type="file" id="book_img" name="book_img" class="inputcheck input-style " accept="image/gif,image/png,image/jpeg">
-			
+			<label for="fileUpload">책 이미지</label>
+			<label for="fileUpload">
+  					<svg class="fbutton" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+    				<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125" stroke="#fffffff" stroke-width="2"></path>
+					<path d="M17 15V18M17 21V18M17 18H14M17 18H20" stroke="#fffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  					</svg>
+  					<input type="file" id="fileUpload" name="book_img" class="inputcheck input-style" accept="image/gif,image/png,image/jpeg"  style="display:none;" onChange="fileChange()">
+  					<input type='text' class='fileNmBox' id='fileNm' placeholder="파일을 선택하세요." readonly="readonly"/>	
+			</label>
+		</li>
+		<li>
+			<div  id ="e-bookcontent" >
+				<label for="book_content">책내용</label>
+				<br>
+				<div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">*한장씩 이미지 선택하여 출력이 완료되면 다음 이미지 선택,로딩후 오타 수정 필수* </div>
+				<textarea name="book_content" id="book_content" class="input-style" placeholder="책이미지 한장씩 선택/로딩대기/로딩후 오타수정 필수,특수문자제거 필수"></textarea>
+				<label for="uploader">
+  					<svg class="fbutton" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+    				<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125" stroke="#fffffff" stroke-width="2"></path>
+					<path d="M17 15V18M17 21V18M17 18H14M17 18H20" stroke="#fffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  					</svg>
+  					<input type="file" id="uploader" class="inputcheck input-style" accept="image/gif,image/png,image/jpeg"  style="display:none;" onChange="fileChange1()">
+  					<input type="text" class="fileNmBox" id="fileNme" placeholder="파일을 선택하세요." readonly="readonly"/>	
+				</label>
+				<div id="loading" style="display:none;">
+					<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
+				</div>
+				<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
+				<script>
+			         const recognize = async ({ target: { files }  }) => {
+			         const { data: { text } } = await Tesseract.recognize(files[0], 'eng+kor', {
+			             corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
+			             logger: m => console.log(m),
+			          });
+			          $('#book_content').append(text);
+					  $('#book_content').click();
+			        }
+			        const elm = document.getElementById('uploader');
+					elm.onchange=function(){
+						$('#loading').show();
+					};
+			        elm.addEventListener('change', recognize);
+					
+					$('#book_content').click(function(){
+						$('#loading').hide();
+					})
+			     </script>
+			</div>
 		</li>
 	</ul>
-	</div>
-	<div  id ="e-bookcontent" >
-		<label for="book_content">책내용</label><div class="alertfont" style="font-size:10pxt; color:#d4d2d2;">*한장씩 이미지 선택하여 출력이 완료되면 다음 이미지 선택,로딩후 오타 수정 필수* </div>
-		<textarea name="book_content" id="book_content" class="input-style" placeholder="책이미지 한장씩 선택/로딩대기/로딩후 오타수정 필수,특수문자제거 필수"></textarea>
-		<input type="file" id="uploader" >
-		<div id="loading" style="display:none;">
-			<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
-		</div>
-		<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
-		<script>
-	         const recognize = async ({ target: { files }  }) => {
-	         const { data: { text } } = await Tesseract.recognize(files[0], 'eng+kor', {
-	             corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
-	             logger: m => console.log(m),
-	          });
-	          $('#book_content').append(text);
-			  $('#book_content').click();
-	        }
-	        const elm = document.getElementById('uploader');
-			elm.onchange=function(){
-				$('#loading').show();
-			};
-	        elm.addEventListener('change', recognize);
-			
-			$('#book_content').click(function(){
-				$('#loading').hide();
-			})
-	     </script>
-	</div>
-	</div>
-	<div class="align-center">
+</div>
+	<br>
+	<div class="float-clear align-center">
 		<input type="submit" value="등록" class="update-button">
 		<input type="button" value="메인" class="update-button" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
