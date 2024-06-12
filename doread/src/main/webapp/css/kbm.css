@@ -846,6 +846,7 @@ ul.detail-info li{
 ul.detail-sub{
 	margin:0;
 	padding:0;
+	text-align:right;
 }
 ul.detail-sub li{
 	display:inline-block;
