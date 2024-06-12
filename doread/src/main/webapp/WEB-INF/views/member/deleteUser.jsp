@@ -13,16 +13,25 @@
 </head>
 <body>
 <div class="page-main">
+	<jsp:include page="/WEB-INF/views/news/test_header.jsp"/>
 	<div class="list-space align-right">
 		<h2>회원탈퇴 완료</h2>
+		<div class="float-clear">
+			<br>
+			<hr width="100%" size="1" noshade="noshade">
+		</div>
 		<div class="result-display">
 				<div class="align-center">
 					회원탈퇴가 완료되었습니다.
 					<p>
 						<div class="list-btn"><input type="button" value="홈으로"
 							onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+					</div>
 				</div>
-				</div>
+		</div>
+		<div class="float-clear">
+			<br>
+			<hr width="100%" size="1" noshade="noshade">
 		</div>
 	</div>
 </div>
