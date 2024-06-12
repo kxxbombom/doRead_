@@ -327,6 +327,7 @@ ul li,a{
   padding-top: 40px;
   font-family: "Poppins", sans-serif;
   justify-content: center;
+  text-align:center;
 }
 
 .wrapper .icon {
@@ -358,6 +359,7 @@ ul li,a{
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  left:-9px;
 }
 
 .wrapper .tooltip::before {
@@ -403,6 +405,14 @@ ul li,a{
 .wrapper .instagram:hover .tooltip::before {
   background: #e4405f;
   color: #fff;
+}
+li.icon svg{
+	margin:0 auto;
+	
+}
+li.icon a{
+	
+	
 }
 /*------ Settings ------*/
 .container {

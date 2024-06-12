@@ -156,10 +156,11 @@
                 	<input type="button" class="btn4" id="delorder" value="주문삭제">
                 	<script type="text/javascript">
 	                $('#delorder').click(function(event){
+	                	let check =false;
 	                	if(${detailList.get(0).book_category == 12}){
-	                		let check = confirm('주문을 삭제하시겠습니까? 주문을 삭제하면 e-book은 더이상 볼수 없습니다. ');
+	                		check = confirm('주문을 삭제하시겠습니까? 주문을 삭제하면 e-book은 더이상 볼수 없습니다. ');
 	                	}else{
-	                		let check = confirm('주문을 삭제하시겠습니까?');
+	                		check = confirm('주문을 삭제하시겠습니까?');
 	                	}
 	            		
 	            		if(check){
