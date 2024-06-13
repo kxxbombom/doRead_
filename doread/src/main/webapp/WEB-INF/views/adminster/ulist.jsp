@@ -242,12 +242,14 @@
 			 			</td>
 			 		</tr>
 			 		</c:if>
-			 	</c:forEach>
+				  </c:forEach>
 			 </table>
-			 </c:if>
+			
+			
 			 <div class="align-center">
 			 	${page3 }
 			 </div>
+			 </c:if>
 			 <br><br>
 			<div class="align-center">
 			<input type="button" value="HOME" class="new-btn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">

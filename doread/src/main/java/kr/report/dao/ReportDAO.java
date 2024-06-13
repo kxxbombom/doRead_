@@ -359,7 +359,7 @@ public class ReportDAO {
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
-			String sub_sql = " WHERE  sc_auth=2 ";
+			String sub_sql = " WHERE  sc_auth=0";
 			List<ScreportVO> list = null;
 		
 			try {
