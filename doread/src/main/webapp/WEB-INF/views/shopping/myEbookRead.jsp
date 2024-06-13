@@ -8,6 +8,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		let sroll=0;
 		$('body').mouseout(function(){
 			$('.e_book').addClass('disabled');
 		});
@@ -15,15 +16,21 @@
 			$('.e_book').removeClass('disabled');
 		});
 		$('.previous').on('click', () => {
+				sroll=sroll-30;
 			  $('html, body').animate({
-			      scrollTop:-30
-			  }, 300)
+			      scrollTop:sroll
+			  }, 100)
 			});
 	       $('.next').on('click', () => {
+	    	   sroll=sroll+30;
 	    	   $('html, body').animate({
-	    		   scrollTop:30
-	    		  }, 300)
+	    		   scrollTop:sroll
+	    		  }, 100)
 	    		});
+	       document.addEventListener('contextmenu', function(e) {
+	      		e.preventDefault();
+	      		alert('마우스 오른쪽 클릭은 사용할 수 없습니다.');
+	      		});
 	    
 	});
 	
@@ -65,10 +72,7 @@
             } catch (err) {
             }
         }
-       document.addEventListener('contextmenu', function(e) {
-   		e.preventDefault();
-   		alert('마우스 오른쪽 클릭은 사용할 수 없습니다.');
-   		});
+      
        
     	
 </script>
