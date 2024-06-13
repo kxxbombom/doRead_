@@ -52,7 +52,7 @@ public class AdminUsedlistAction implements Action{
 		int UR1count = redao.countUC(null,null);
 		
 		
-		PagingUtil UR1page = new PagingUtil(null,null,Integer.parseInt(pageNum1),UR1count,5,10,request.getContextPath()+"/adminster/uclist.do",null,"1");
+		PagingUtil UR1page = new PagingUtil(null,null,Integer.parseInt(pageNum1),UR1count,5,10,request.getContextPath()+"/adminster/ulist.do",null,"1");
 		
 		List<UcReportVO> list1 = redao.listUC(null,null,URpage.getStartRow(), URpage.getEndRow());
 		
@@ -66,7 +66,7 @@ public class AdminUsedlistAction implements Action{
 		int SRcount = redao.countSre(null,null);
 		
 		
-		PagingUtil SRpage = new PagingUtil(null,null,Integer.parseInt(pageNum2),SRcount,5,10,request.getContextPath()+"/adminster/adminreport.do",null,"2");
+		PagingUtil SRpage = new PagingUtil(null,null,Integer.parseInt(pageNum2),SRcount,5,10,request.getContextPath()+"/adminster/ulist.do",null,"2");
 		
 		List<SreportVO> list2 = redao.listSre(null,null,SRpage.getStartRow(), SRpage.getEndRow());
 		
@@ -80,7 +80,7 @@ public class AdminUsedlistAction implements Action{
 		int SRccount = redao.countSCre(null,null);
 		
 		
-		PagingUtil SRcpage = new PagingUtil(null,null,Integer.parseInt(pageNum3),SRccount,5,10,request.getContextPath()+"/adminster/adminreport.do",null,"3");
+		PagingUtil SRcpage = new PagingUtil(null,null,Integer.parseInt(pageNum3),SRccount,5,10,request.getContextPath()+"/adminster/ulist.do",null,"3");
 		
 		List<ScreportVO> list3 = redao.listSCre(null,null,SRcpage.getStartRow(), SRcpage.getEndRow());
 		

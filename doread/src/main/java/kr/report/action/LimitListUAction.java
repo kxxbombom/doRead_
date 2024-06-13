@@ -36,7 +36,7 @@ public class LimitListUAction implements Action{
 		int URcount = redao.countU("1","1");
 		
 		
-		PagingUtil URpage = new PagingUtil(Integer.parseInt(pageNum),URcount,URcount,10,request.getContextPath()+"/adminster/ulist.do");
+		PagingUtil URpage = new PagingUtil(Integer.parseInt(pageNum),URcount,URcount,10,request.getContextPath()+"/adminster/ulimitlist.do");
 		
 		List<UsedReportVO> list = redao.listU("1","1",URpage.getStartRow(), URpage.getEndRow());
 		
@@ -50,7 +50,7 @@ public class LimitListUAction implements Action{
 		int UR1count = redao.countUC("1","1");
 		
 		
-		PagingUtil UR1page = new PagingUtil(null,null,Integer.parseInt(pageNum1),UR1count,UR1count,10,request.getContextPath()+"/adminster/uclist.do",null,"1");
+		PagingUtil UR1page = new PagingUtil(null,null,Integer.parseInt(pageNum1),UR1count,UR1count,10,request.getContextPath()+"/adminster/ulimitlist.do",null,"1");
 		
 		List<UcReportVO> list1 = redao.listUC("1","1",URpage.getStartRow(), URpage.getEndRow());
 		
@@ -63,7 +63,7 @@ public class LimitListUAction implements Action{
 		if(pageNum2 == null) pageNum2="1";
 		
 		int SRcount = redao.countSre("1","1");
-		PagingUtil SRpage = new PagingUtil(null,null,Integer.parseInt(pageNum2),SRcount,SRcount,10,request.getContextPath()+"/adminster/adminreport.do",null,"2");
+		PagingUtil SRpage = new PagingUtil(null,null,Integer.parseInt(pageNum2),SRcount,SRcount,10,request.getContextPath()+"/adminster/ulimitlist.do",null,"2");
 		
 		List<SreportVO> list2 = redao.listSre("1","1",SRpage.getStartRow(), SRpage.getEndRow());
 		
@@ -77,7 +77,7 @@ public class LimitListUAction implements Action{
 		int SRccount = redao.countSCre("1","1");
 		
 		
-		PagingUtil SRcpage = new PagingUtil(null,null,Integer.parseInt(pageNum3),SRccount,SRccount,10,request.getContextPath()+"/adminster/adminreport.do",null,"3");
+		PagingUtil SRcpage = new PagingUtil(null,null,Integer.parseInt(pageNum3),SRccount,SRccount,10,request.getContextPath()+"/adminster/ulimitlist.do",null,"3");
 		
 		List<ScreportVO> list3 = redao.listSCre("1","1",SRcpage.getStartRow(), SRcpage.getEndRow());
 		

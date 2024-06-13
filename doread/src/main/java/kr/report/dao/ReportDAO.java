@@ -247,14 +247,14 @@ public class ReportDAO {
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
-			String sub_sql="";
+			String sub_sql = "WHERE  s_auth=0";
 			int count =0;
 			
 			try {
 				conn= DBUtil.getConnection();
 				if(keyword!=null && !"".equals(keyword)) {
 					
-					if(keyfield.equals("1")) sub_sql += "WHERE  s_auth=2";
+					if(keyfield.equals("1")) sub_sql = "WHERE  s_auth=2";
 					
 				}
 				sql="select count(*) from story_report join storyboard using(s_num) " +sub_sql;
@@ -279,13 +279,13 @@ public class ReportDAO {
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
-			String sub_sql="";
+			String sub_sql = "WHERE  sc_auth=0";
 			int count =0;
 			try {
 				conn= DBUtil.getConnection();
 				if(keyword!=null && !"".equals(keyword)) {
 					
-					if(keyfield.equals("1")) sub_sql += "WHERE  sc_auth=2";
+					if(keyfield.equals("1")) sub_sql = "WHERE  sc_auth=2";
 					
 				}
 				sql="select count(*) from st_comm_report join story_comment using(sc_num) " + sub_sql ;
@@ -311,14 +311,14 @@ public class ReportDAO {
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
-			String sub_sql="";
+			String sub_sql = "WHERE  s_auth=0";
 			List<SreportVO> list = null;
 			
 			try {
 				conn= DBUtil.getConnection();
 				if(keyword!=null && !"".equals(keyword)) {
 					
-					if(keyfield.equals("1")) sub_sql += "WHERE  s_auth=2";
+					if(keyfield.equals("1")) sub_sql = "WHERE  s_auth=2";
 					
 				}
 				sql="select * from (select rownum alnum, a.* from(select * from story_report join storyboard using(s_num) "+sub_sql+" order by sr_num desc) a ) where alnum between ? and ? ";
@@ -359,14 +359,14 @@ public class ReportDAO {
 			PreparedStatement ps = null;
 			ResultSet re = null;
 			String sql=null;
-			String sub_sql="";
+			String sub_sql = " WHERE  sc_auth=2 ";
 			List<ScreportVO> list = null;
 		
 			try {
 				conn= DBUtil.getConnection();
 				if(keyword!=null && !"".equals(keyword)) {
 					
-					if(keyfield.equals("1")) sub_sql += " WHERE  sc_auth=2 ";
+					if(keyfield.equals("1")) sub_sql = " WHERE  sc_auth=2 ";
 					
 				}
 				sql="select * from (select rownum alnum, a.* from(select * from st_comm_report join story_comment using(sc_num) "+sub_sql+" order by src_num desc) a ) where alnum between ? and ? ";
@@ -648,13 +648,13 @@ public class ReportDAO {
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
-				String sub_sql="";
+				String sub_sql = " WHERE  u_auth=0 ";
 				int count =0;
 				try {
 					conn= DBUtil.getConnection();
 					if(keyword!=null && !"".equals(keyword)) {
 						
-						if(keyfield.equals("1")) sub_sql += " WHERE  u_auth=2 ";
+						if(keyfield.equals("1")) sub_sql = " WHERE  u_auth=2 ";
 						
 					}
 					sql="select count(*) from used_report join usedbookboard using(u_num) " + sub_sql;
@@ -679,13 +679,13 @@ public class ReportDAO {
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
-				String sub_sql="";
+				String sub_sql = " WHERE  uc_auth=0 ";
 				int count =0;
 				try {
 					conn= DBUtil.getConnection();
 					if(keyword!=null && !"".equals(keyword)) {
 						
-						if(keyfield.equals("1")) sub_sql += " WHERE  uc_auth=2 ";
+						if(keyfield.equals("1")) sub_sql = " WHERE  uc_auth=2 ";
 						
 					}
 					sql="select count(*) from used_comm_report join ub_comment using(uc_num) " +sub_sql;
@@ -712,14 +712,14 @@ public class ReportDAO {
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
-				String sub_sql="";
+				String sub_sql = " WHERE  u_auth=0 ";
 				List<UsedReportVO> list = null;
 				
 				try {
 					conn= DBUtil.getConnection();
 					if(keyword!=null && !"".equals(keyword)) {
 						
-						if(keyfield.equals("1")) sub_sql += " WHERE  u_auth=2 ";
+						if(keyfield.equals("1")) sub_sql = " WHERE  u_auth=2 ";
 						
 					}
 					sql="select * from (select rownum alnum, a.* from(select * from used_report join usedbookboard using(u_num) "+sub_sql+" order by ur_num desc) a ) where alnum between ? and ? ";
@@ -760,14 +760,14 @@ public class ReportDAO {
 				PreparedStatement ps = null;
 				ResultSet re = null;
 				String sql=null;
-				String sub_sql="";
+				String sub_sql = " WHERE  uc_auth=0 ";
 				List<UcReportVO> list = null;
 			
 				try {
 					conn= DBUtil.getConnection();
 					if(keyword!=null && !"".equals(keyword)) {
 						
-						if(keyfield.equals("1")) sub_sql += " WHERE  uc_auth=2 ";
+						if(keyfield.equals("1")) sub_sql = " WHERE  uc_auth=2 ";
 						
 					}
 					sql="select * from (select rownum alnum, a.* from(select * from used_comm_report join ub_comment using(uc_num) "+sub_sql+" order by urc_num desc) a ) where alnum between ? and ? ";
