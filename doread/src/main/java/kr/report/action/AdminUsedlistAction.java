@@ -54,7 +54,7 @@ public class AdminUsedlistAction implements Action{
 		
 		PagingUtil UR1page = new PagingUtil(null,null,Integer.parseInt(pageNum1),UR1count,5,10,request.getContextPath()+"/adminster/ulist.do",null,"1");
 		
-		List<UcReportVO> list1 = redao.listUC(null,null,URpage.getStartRow(), URpage.getEndRow());
+		List<UcReportVO> list1 = redao.listUC(null,null,UR1page.getStartRow(), UR1page.getEndRow());
 		
 		request.setAttribute("page1", UR1page.getPage());
 		request.setAttribute("list1", list1);
