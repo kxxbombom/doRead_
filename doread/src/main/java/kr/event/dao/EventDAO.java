@@ -426,6 +426,75 @@ public class EventDAO {
 					
 					
 				}
+				//관리자이벤트응모 수카운트 페이지처리
+				public int getAdminEvenDetailCount(int e_num) throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					int count = 0;
+					
+					try {
+						conn = DBUtil.getConnection();
+						sql="select count(*) from event_detail where e_num=? ";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, e_num);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							count = rs.getInt(1);
+							
+							
+						}
+					}catch(Exception e) {
+						
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(rs, pstmt, conn);
+					}
+					
+					return count;
+					
+					
+				}
+		//관리자 응모기록확인
+				public List<EventDetailVO> getEventdetailAdmin(int start, int end, int e_num) throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					List<EventDetailVO> list = null;
+					
+					try {
+						conn = DBUtil.getConnection();
+						sql="select * from (select rownum alnum , a.* from (select * from event_detail where e_num=? order by ed_num desc)a ) where alnum between ? and ? ";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, e_num);
+						pstmt.setInt(2,start);
+						pstmt.setInt(3,end);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							list = new ArrayList<EventDetailVO>();
+							do {
+								EventDetailVO event = new EventDetailVO();
+								event.setEd_num(rs.getInt("ed_num"));
+								event.setE_num(rs.getInt("e_num"));
+								event.setMem_num(rs.getInt("mem_num"));
+								event.setEd_result(rs.getString("ed_result"));
+								list.add(event);
+							}while(rs.next());
+							
+						}
+					}catch(Exception e) {
+						
+						throw new Exception(e);
+					}finally {
+						DBUtil.executeClose(rs, pstmt, conn);
+					}
+					
+					return list;
+					
+					
+				}
 		//이벤트 응모기록
 		public List<EventDetailVO> getEventdetailUser(int start, int end, int mem_num) throws Exception{
 			Connection conn = null;

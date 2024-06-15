@@ -32,6 +32,8 @@
 			<div class="list-space align-right">
 				<div class="list-btn">
 					<c:if test="${!empty user_num && user_auth == 9}">
+						<input type="button" value="응모회원조회"
+								onclick="location.href='${pageContext.request.contextPath}/event/adminEventList.do'">
 						<input type="button" value="글쓰기"
 							onclick="location.href='${pageContext.request.contextPath}/event/eventWrite.do'">
 					</c:if>
